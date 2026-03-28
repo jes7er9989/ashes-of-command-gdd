@@ -456,8 +456,10 @@ const Dashboard = {
   buildRogueLiteFlow() {
     return `
       <section class="dashboard-section">
-        <div class="card" style="padding:10px 18px;text-align:center;margin-bottom:32px;background:rgba(0,180,255,0.03);border-color:rgba(0,180,255,0.1)">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:2px;color:var(--text-dim)">ROGUE-LITE LOOP: MAP \u2192 ARMADA \u2192 APPROACH \u2192 SPACE \u2192 GROUND \u2192 REPEAT \u2192 VICTORY OR DEATH \u2192 NEW SIMULATION RUN</span>
+        <div class="card" style="padding:16px 24px;text-align:center;margin-bottom:32px;background:rgba(0,180,255,0.06);border:1px solid rgba(0,180,255,0.2);border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,0.3)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:3px;color:var(--accent);text-shadow:0 0 20px rgba(0,180,255,0.3)">ROGUE-LITE LOOP</span>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:2px;color:var(--text-hi);margin-top:8px">MAP \u2192 ARMADA \u2192 APPROACH \u2192 SPACE \u2192 GROUND \u2192 REPEAT</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:2px;color:var(--text-dim);margin-top:6px">VICTORY OR DEATH \u2192 NEW SIMULATION RUN</div>
         </div>
         <div class="divider"></div>
       </section>`;

@@ -1234,19 +1234,23 @@ html {
 .phase-block {
   flex: 1;
   min-width: 180px;
-  padding: 20px 16px 16px;
-  border-radius: 4px;
-  border: 1px solid rgba(255,255,255,0.08);
+  padding: 22px 18px 18px;
+  border-radius: 6px;
+  border: 1px solid rgba(0,180,255,0.15);
+  border-top: 3px solid rgba(0,180,255,0.4);
   background: var(--bg-card);
   position: relative;
   transition: all 0.3s ease;
   scroll-snap-align: start;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  text-align: center;
 }
 
 .phase-block:hover {
-  border-color: var(--border-hi);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  transform: translateY(-2px);
+  border-color: rgba(0,180,255,0.3);
+  border-top-color: var(--accent);
+  box-shadow: 0 4px 24px rgba(0,180,255,0.15);
+  transform: translateY(-3px);
 }
 
 .phase-num {
@@ -1254,11 +1258,13 @@ html {
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   display: inline-block;
-  padding: 2px 8px;
-  background: rgba(0,180,255,0.08);
-  border-radius: 2px;
+  padding: 4px 12px;
+  background: rgba(0,180,255,0.12);
+  border: 1px solid rgba(0,180,255,0.2);
+  border-radius: 3px;
+  color: var(--accent);
 }
 
 .phase-name {
@@ -1298,69 +1304,90 @@ html {
 }
 
 .system-card {
-  background: rgba(0,180,255,0.04);
-  border: 1px solid rgba(0,180,255,0.1);
-  border-left: 3px solid rgba(0,180,255,0.35);
-  border-radius: 4px;
-  padding: 18px;
+  background: var(--bg-card);
+  border: 1px solid rgba(0,180,255,0.15);
+  border-left: 4px solid rgba(0,180,255,0.45);
+  border-radius: 6px;
+  padding: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
 }
 
 .system-card:hover {
-  border-color: var(--border-hi);
+  border-color: rgba(0,180,255,0.3);
   border-left-color: var(--accent);
   background: var(--bg-hover);
   box-shadow:
-    0 0 16px rgba(0,180,255,0.08),
-    inset 0 0 20px rgba(0,180,255,0.02);
-  transform: translateY(-1px);
+    0 4px 24px rgba(0,180,255,0.15),
+    inset 0 0 20px rgba(0,180,255,0.03);
+  transform: translateY(-3px);
 }
 
 .system-card-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: var(--text-hi);
+  color: #fff;
   letter-spacing: 0.06em;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .system-card-desc {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-mid);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 
 /* ── 7l. Differentiator Cards — Accent Left Border ──────── */
 
 .card-accent {
-  border-left: 3px solid var(--accent);
-  padding: 18px 22px;
+  padding: 20px 24px;
   line-height: 1.7;
   font-size: 0.9rem;
   background: var(--bg-card);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-left: 3px solid var(--accent);
+  border: 1px solid rgba(0,180,255,0.12);
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
   text-align: left;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
 }
 
 .card-accent:hover {
   border-left-color: var(--text-hi);
   background: var(--bg-hover);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,180,255,0.15);
 }
 
 .card-accent:nth-child(odd) {
-  background: rgba(0,180,255,0.03);
+  background: rgba(0,180,255,0.04);
 }
 
 .card-accent:nth-child(even) {
   background: var(--bg-card);
+}
+
+/* ── 7l-b. Document Structure Cards ─────────────────────── */
+
+.dashboard-section .card {
+  background: var(--bg-card);
+  border: 1px solid rgba(0,180,255,0.12);
+  border-radius: 6px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.dashboard-section .card:hover {
+  border-color: rgba(0,180,255,0.25);
+  background: var(--bg-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,180,255,0.12);
 }
 
 
