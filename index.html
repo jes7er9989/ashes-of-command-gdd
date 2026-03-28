@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ══════════════ HEAD - Meta, Fonts & Styles ══════════════
+       Standard meta tags, Google Fonts preconnect, and the single
+       global stylesheet that themes the entire application.        -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashes of Command: The Reclamation — Interactive GDD</title>
+  <meta name="description" content="Ashes of Command: The Reclamation — Interactive Game Design Document v5.9.1">
+  <meta name="theme-color" content="#07080c">
+
+  <!-- Fonts: preconnect speeds up the Google Fonts fetch -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <!-- Styles: single stylesheet - no component-level CSS -->
+  <link rel="stylesheet" href="css/global.css">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+  <!-- ══════════════ MOBILE NAV CONTROLS ══════════════
+       Hamburger button and dark overlay shown only at ≤768px.
+       The overlay closes the sidebar when tapped.                 -->
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+
+  <div class="app-layout">
+
+    <!-- ══════════════ SIDEBAR ══════════════
+         Fixed left panel containing:
+           • Brand header (title + version)
+           • Quick-filter input for chapters
+           • Scrollable nav tree (rendered by Nav.render())
+           • Footer with document stats                            -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">ASHES OF COMMAND</div>
+        <div class="sidebar-subtitle-sm">THE RECLAMATION</div>
+        <div class="sidebar-subtitle">Interactive GDD v5.9.1</div>
+      </div>
+
+      <div class="sidebar-filter">
+        <input type="text" id="nav-filter" placeholder="Filter chapters…" autocomplete="off" spellcheck="false">
+      </div>
+
+      <nav class="sidebar-nav" id="nav-container">
+        <!-- Nav tree is rendered here by Nav.render() -->
+      </nav>
+
+      <div class="sidebar-footer">
+        <div>8 Parts · 46 Chapters · 13 Appendices</div>
+        <div>7 Factions · 105 Units · 208 Equipment</div>
+      </div>
+    </aside>
+
+    <!-- ══════════════ SIDEBAR TOGGLE ══════════════
+         Desktop-only collapse button (hidden on mobile where
+         the hamburger is used instead).                           -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle sidebar">◀</button>
+
+    <!-- ══════════════ MAIN CONTENT ══════════════
+         Primary content area. Chapter HTML fragments and the
+         dashboard are injected into #content-area by the router.  -->
+    <main class="main-content" id="main-content">
+      <div id="content-area">
+        <!-- Pages render here (Dashboard or Chapter HTML) -->
+      </div>
+    </main>
+  </div>
+
+  <!-- ══════════════ SEARCH OVERLAY ══════════════
+       Command-palette style search (Ctrl+K / Cmd+K).
+       Floats above everything at z-index 1000.                    -->
+  <div class="search-overlay" id="search-overlay">
+    <div class="search-box">
+      <div class="search-input-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="search-input" placeholder="Search chapters, factions, units, equipment…" autocomplete="off" spellcheck="false">
+        <span class="search-hint">ESC</span>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════ AUDIO CONTROLS ══════════════
+       Small speaker icon in bottom-right. Click to toggle audio.
+       Auto-muted on load - user must opt in.                      -->
+  <button class="audio-toggle" id="audio-toggle" aria-label="Toggle audio" title="Toggle ambient audio">
+    <span id="audio-icon">🔇</span>
+  </button>
+
+  <!-- ══════════════ BACK TO TOP ══════════════
+       Floating button in the bottom-right corner. Hidden until
+       the user scrolls down 300px (toggled by JS below).          -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <!-- ══════════════ PROCEDURAL BACKGROUND ══════════════
+       Full-page layer behind all content. FactionBgSwitcher applies
+       faction-specific CSS classes (bg-terran, bg-shards, etc.).   -->
+  <div id="procedural-bg"></div>
+
+  <!-- ══════════════ LORE QUOTE ROTATOR ══════════════
+       Rotating lore quotes displayed in the sidebar footer area.
+       LoreQuoteRotator.init() populates and cycles content.        -->
+  <div id="lore-quote-rotator"></div>
+
+  <!-- ══════════════ EDIT BAR (Dev Mode) ══════════════
+       Hidden by default. Revealed when body.dev-mode-active is set
+       via the 10-click unlock on .sidebar-title.                    -->
+  <div id="edit-bar">
+    <button id="edit-toggle"><span>✎</span> <span>OFF</span></button>
+    <span id="edit-count">0 fields modified</span>
+    <button id="export-btn">⤓ Export HTML</button>
+  </div>
+
+  <!-- ══════════════ SCRIPTS ══════════════
+       Load order matters — 14 files total:
+         1. data-loader.js        - No dependencies; provides DataLoader cache
+         2. sprite-engine.js      - Depends on DataLoader (reads cached sprite/shape data)
+         3. icon-renderer.js      - Depends on DataLoader (reads cached icon data)
+         4. faction-renderer.js   - Depends on SpriteEngine + IconRenderer
+         5. content-renderers.js  - Depends on DataLoader (planets, formations)
+         6. chapter-loader.js     - Depends on DataLoader + FactionRenderer + ContentRenderers
+         7. dashboard.js          - Depends on DataLoader
+         8. search.js             - Depends on DataLoader
+         9. chapter-index.js      - Depends on DataLoader (loads nav-data.json for index tree)
+        10. glossary.js           - No dependencies (self-contained glossary terms)
+        11. nav.js                - Depends on DataLoader + Dashboard + ChapterLoader
+                                    (Nav.route() calls Dashboard.render or ChapterLoader.load)
+        12. audio-engine.js       - No dependencies; Web Audio API ambient engine
+        13. visual-effects.js     - No dependencies; scanlines, particles, cursor glow, CRT
+        14. dev-mode.js           - No dependencies; 10-click unlock, edit bar, export
+
+       nav.js triggers the initial route on init — all renderers
+       must be defined before it. Post-nav scripts (12–14) are
+       initialized in the boot() sequence below.
+
+       service-worker.js is registered at runtime, not loaded
+       as a script tag.                                            -->
+  <script src="js/data-loader.js"></script>
+  <script src="js/sprite-engine.js"></script>
+  <script src="js/icon-renderer.js"></script>
+  <script src="js/faction-renderer.js"></script>
+  <script src="js/content-renderers.js"></script>
+  <script src="js/chapter-loader.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/chapter-index.js"></script>
+  <script src="js/glossary.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/audio-engine.js"></script>
+  <script src="js/visual-effects.js"></script>
+  <script src="js/dev-mode.js"></script>
+
+  <script>
+    /**
+     * Global navigation helper used by onclick handlers in chapter
+     * HTML fragments (e.g. onclick="navTo('ch5')").
+     * @param {string} id - Chapter ID to navigate to
+     */
+    function navTo(id) { location.hash = '#' + id; }
+
+    /**
+     * Boot Sequence - Initialize all modules in dependency order:
+     *   1. ChapterLoader.init()  - cache the content-area reference
+     *   2. Nav.init()            - fetch nav data, render sidebar, trigger initial route
+     *   3. Search.init()         - wire up Ctrl+K shortcut
+     *   4. ChapterIndex.init()   - build index overlay + sidebar toggle button
+     *   5. VisualEffects.init()  - scanlines, particles, lore quotes, cursor, tilt, CRT
+     *   6. DevMode.init()        - attach 10-click unlock listener to sidebar title
+     *   7. Back-to-top button    - show/hide on scroll
+     *   8. Service worker        - register for offline caching
+     *   Note: Glossary.init() is called by ChapterLoader.load() after each chapter renders
+     */
+    (async function boot() {
+      try {
+        ChapterLoader.init();
+        await Nav.init();
+        Search.init();
+        await ChapterIndex.init();
+        VisualEffects.init();
+        DevMode.init();
+
+        // Audio engine - auto-muted, user clicks speaker icon to enable
+        const audioBtn = document.getElementById('audio-toggle');
+        const audioIcon = document.getElementById('audio-icon');
+        let audioPlaying = false;
+        if (audioBtn && typeof AudioEngine !== 'undefined') {
+          audioBtn.addEventListener('click', () => {
+            AudioEngine.init();
+            AudioEngine.toggle();
+            audioPlaying = !audioPlaying;
+            audioIcon.textContent = audioPlaying ? '🔊' : '🔇';
+          });
+        }
+
+        // Show the back-to-top button after scrolling 300px
+        const btt = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+          btt.classList.toggle('visible', window.scrollY > 300);
+        });
+        btt.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Register service worker for offline caching
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('js/service-worker.js')
+            .then(reg => console.log('%c[SW] Registered (scope: ' + reg.scope + ')', 'color:#44ff66;font-family:monospace'))
+            .catch(err => console.warn('[SW] Registration failed:', err));
+        }
+
+        console.log('%c[AOC] Systems online.', 'color:#00b4ff;font-family:monospace');
+      } catch (e) {
+        console.error('[AOC] Boot failure:', e);
+      }
+    })();
+  </script>
+</body>
+</html>

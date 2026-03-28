@@ -1,0 +1,66 @@
+[
+  {
+    "beat": "First Contact",
+    "trigger": "First time player encounters Core Guardians",
+    "lines": [
+      {
+        "speaker": "Celestial-Throne",
+        "style": "italic",
+        "text": "We predate your wars. We will postdate your extinction."
+      },
+      {
+        "speaker": "Celestial-Throne",
+        "style": "normal",
+        "text": "You have found us because we permitted it. Consider carefully what that implies about your intelligence operations."
+      }
+    ]
+  },
+  {
+    "beat": "Mid-Game Observation",
+    "trigger": "Player has controlled territory adjacent to Guardians for 10 cycles",
+    "lines": [
+      {
+        "speaker": "Celestial-Throne",
+        "style": "italic",
+        "text": "Every civilization believes itself the final one. You are not the first to be wrong."
+      },
+      {
+        "speaker": "Celestial-Throne",
+        "style": "normal",
+        "text": "We have watched fourteen extinction events from this position. We are still here. The fourteen are not. This is relevant data."
+      }
+    ]
+  },
+  {
+    "beat": "Alliance Offer",
+    "trigger": "Player initiates diplomacy with Core Guardians",
+    "lines": [
+      {
+        "speaker": "Celestial-Throne",
+        "style": "italic",
+        "text": "We do not fight for territory. We fight to preserve what the galaxy will need when the noise ends."
+      },
+      {
+        "speaker": "Celestial-Throne",
+        "style": "normal",
+        "text": "You wish to ally with us. Curious. You are temporary. But you are resisting the Vorax, which makes you briefly useful. We will consider the arrangement."
+      }
+    ]
+  },
+  {
+    "beat": "Vorax Threat Grows",
+    "trigger": "Vorax controls 40% of the map",
+    "lines": [
+      {
+        "speaker": "Celestial-Throne",
+        "style": "italic",
+        "text": "You call us gods. We call you temporary."
+      },
+      {
+        "speaker": "Celestial-Throne",
+        "style": "normal",
+        "text": "The Vorax have entered the inner systems. This was the condition under which we agreed to intervene directly. We suggest you not stand between us and them."
+      }
+    ]
+  }
+]

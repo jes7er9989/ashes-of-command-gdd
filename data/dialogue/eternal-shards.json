@@ -1,0 +1,111 @@
+[
+  {
+    "beat": "First Victory",
+    "trigger": "After winning first territory battle as Eternal Shards",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "Victory. The enemy scattered by precision honed over millennia. The cost: one Zealot squad. One consciousness, gone forever from the psychic web. I feel the gap — a small silence in the choir."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Engagement successful. Zero percent consciousness recovery chance — psychic dispersal is irreversible. Recommend reducing frontline exposure of irreplaceable assets."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "Clean win. Surgical. I respect the efficiency — but you can't win a war one scalpel cut at a time. Eventually you need the hammer."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "The enemy will remember how easily their best troops were undone. Fear is our second army. Let it work."
+      }
+    ]
+  },
+  {
+    "beat": "First Defeat",
+    "trigger": "After losing first territory battle as Eternal Shards",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "Loss. Not a setback — a death. Three Zealot squads silenced. Soul-stones shattered by crude explosive ordnance. No echo to recover. No pattern to rebuild. Simply... gone. The web is thinner. I feel the cold coming in through the gaps."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Explosive ordnance bypassed Phase Blink entirely. Critical vulnerability — area-effect weapons must be neutralized before committing melee units."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "They hit us with bombs because they couldn't hit us with bullets. Respect the adaptation. The enemy is learning."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "Three souls. Irreplaceable. The mathematics of our extinction accelerated. Every loss from this point must be JUSTIFIED by ten times its strategic value."
+      }
+    ]
+  },
+  {
+    "beat": "Vorax First Encounter",
+    "trigger": "First Vorax engagement as Eternal Shards",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "The Swarm. I felt them before I saw them — hunger pressing against our consciousness like hot static. No thoughts. Just appetite. And then the Synapse creature died and the feedback — They are our antithesis. And killing their commanders hurts US."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Synapse feedback: 8% HP per proximate kill to psychic units. Maintain 50m minimum distance. Delegate Vorax engagements to non-psychic commanders where possible."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "The bugs hit your MIND when they die? That's a problem. You can't lead from the front against these things."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "The feedback is a weapon. Not theirs — ours. If we can modulate the frequency during Synapse kills, we might weaponize the loop against the Hive Mind itself."
+      }
+    ]
+  },
+  {
+    "beat": "Core Guardian First Contact",
+    "trigger": "Fleet enters Core Guardian exclusion zone as Eternal Shards",
+    "lines": [
+      {
+        "speaker": "BROADCAST",
+        "style": "normal",
+        "text": "YOU ARE APPROACHING THE EXCLUSION ZONE. TURN BACK. THIS IS YOUR FINAL WARNING."
+      },
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "The Silent Gods. I can feel them — not minds, not hunger, but PRESENCE. A frequency so vast my senses register it as background radiation. They are a condition. Like gravity. Like time."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Energy frequencies predating known physics. Our psychic abilities are irrelevant at this scale. Our energy weapons will HEAL them. We need kinetic solutions — the Shuriken configuration."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "Energy weapons heal them. Everything you're good at is useless. Time to learn how to throw rocks."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "They are energy. We manipulate energy. There MUST be a harmonic that disrupts containment. Shuriken weapons — physical crystal projectiles with psychic guidance. Crude, but functional."
+      }
+    ]
+  }
+]

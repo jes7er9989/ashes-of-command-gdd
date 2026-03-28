@@ -1,0 +1,104 @@
+[
+  {
+    "branch": "Biological Evolution",
+    "branchNum": 1,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Bio-Surge",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "+1 movement for all Vorax infantry units",
+        "notes": "Cheaper legs grow faster"
+      },
+      {
+        "tier": "T2a",
+        "name": "Spore Proliferation",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Spore Grenade blast radius +1 hex, duration +1 cycle",
+        "notes": "More spores, more suffering"
+      },
+      {
+        "tier": "T2b",
+        "name": "Acid Immunity",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Vorax units immune to friendly acid weapon splash damage",
+        "notes": "Consume everything, fear nothing"
+      },
+      {
+        "tier": "T3",
+        "name": "Chitinous Evolution",
+        "cost": "25⚙ / 5 cycles",
+        "effect": "All Vorax armor values +1 globally. Carapace armor +3 instead.",
+        "notes": "The hive adapts to every threat it faces"
+      }
+    ]
+  },
+  {
+    "branch": "Synaptic Dominance",
+    "branchNum": 2,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Synapse Expansion",
+        "cost": "10⚙ / 3 cycles",
+        "effect": "Synapse-Brain command aura +3 hexes",
+        "notes": "Every mind connected is another weapon"
+      },
+      {
+        "tier": "T2a",
+        "name": "Regeneration Protocol",
+        "cost": "18⚙ / 4 cycles",
+        "effect": "All Vorax ground units heal 1 HP per cycle if not in active combat",
+        "notes": "The swarm cannot be worn down"
+      },
+      {
+        "tier": "T2b",
+        "name": "Hive Awareness",
+        "cost": "18⚙ / 4 cycles",
+        "effect": "All Vorax units on this planet share vision — no fog of war",
+        "notes": "One mind, ten thousand eyes"
+      },
+      {
+        "tier": "T3",
+        "name": "Omega Spore",
+        "cost": "30⚙ / 6 cycles",
+        "effect": "Unlock: Omega Spore ability — target planet hex, all enemy units take 2 damage next cycle. 3 cycle cooldown.",
+        "notes": "The sky itself becomes a weapon"
+      }
+    ]
+  },
+  {
+    "branch": "Hive Fleet Ascendancy",
+    "branchNum": 3,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Bio-Titan Efficiency",
+        "cost": "12⚙ / 3 cycles",
+        "effect": "Bio-Titan unit cost -20% scrap",
+        "notes": "The largest specimens grow for free"
+      },
+      {
+        "tier": "T2a",
+        "name": "The Great Devouring",
+        "cost": "20⚙ / 5 cycles",
+        "effect": "When a Vorax unit destroys an enemy unit, gain +1 scrap immediately",
+        "notes": "Every kill feeds the next assault"
+      },
+      {
+        "tier": "T2b",
+        "name": "Tendril Advance",
+        "cost": "20⚙ / 5 cycles",
+        "effect": "Vorax units gain +1 to all invasion rolls. Adjacent territory absorption costs -2 scrap.",
+        "notes": "The swarm always expands"
+      },
+      {
+        "tier": "T3",
+        "name": "Full Consumption",
+        "cost": "35⚙ / 7 cycles",
+        "effect": "Unlock: once per game, a fully consumed planet yields +30 scrap and all Vorax units on it fully heal",
+        "notes": "Nothing remains. Nothing is wasted."
+      }
+    ]
+  }
+]

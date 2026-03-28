@@ -1,0 +1,111 @@
+[
+  {
+    "beat": "First Victory",
+    "trigger": "After winning first territory battle as Necro-Legion",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "AFTER-ACTION LOG: Territory secured. Hostile forces neutralized. Reanimation events: 3 out of 7 fallen units restored. Net force reduction: 4. Acceptable within parameters. Note: the biological defenders attempted to flee when the first Legionnaire stood back up. Their morale system identifies Reanimation as a threat stimulus. Useful."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Clean operation. Reanimation rate exceeded projections — your aura appears enhanced. Deploy within aura range of front-line units for maximum coverage."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "I'll never get used to watching dead machines stand back up. It's effective. It's also deeply unpleasant. Good work, Commander."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "The enemy ran when your dead started moving. That fear is a strategic asset. Make sure every enemy sees the Reanimation. Let the galaxy know: the Necro-Legion does not stay dead."
+      }
+    ]
+  },
+  {
+    "beat": "First Defeat",
+    "trigger": "After losing first territory battle as Necro-Legion",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "AFTER-ACTION LOG: Territory lost. 6 units destroyed. Reanimation: 0 of 6. The enemy employed sustained incendiary bombardment — fire damage compromised the living metal's self-repair matrix, preventing molecular reassembly. Note: fire is a critical vulnerability. Thermal-resistant coatings now priority-one research."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Incendiary weapons neutralize Reanimation by destroying the molecular structure before reassembly can initiate. Prioritize engagements where incendiary threats can be neutralized first."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "They burned your troops to slag. No coming back from slag. Kill their fire units first — remove the fire, and your machines are nearly unkillable."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "Six units. Permanently lost. For a faction that cannot easily replace casualties, this is an erosion of strategic capital. Be precise, Commander."
+      }
+    ]
+  },
+  {
+    "beat": "Vorax First Encounter",
+    "trigger": "First Vorax engagement as Necro-Legion",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "AFTER-ACTION LOG: First Vorax contact. They attack in overwhelming numbers. Melee attacks are corrosive — acid degrades living metal. Reanimation partially compromised by acid contamination. Note: the Swarm consumes everything organic. We are not organic. They attack anyway — not for biomass, but because we occupy space. We are terrain to be cleared. This is... unfamiliar."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Vorax acid corrodes living metal's repair matrix similarly to fire. However, gauss weapons are fully effective against biological targets. Maintain range. Do NOT allow melee contact."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "Bugs. Lots of bugs. Not smart, but a million of them. Keep distance — your machines are tough but not acid-proof."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "The Vorax are consuming the galaxy's archaeological record. Every tomb-world stripped is 100,000 years of history turned to mulch. This is not just military — it is a crime against memory. The Necro-Legion has a specific reason to fight beyond survival: preservation of the record."
+      }
+    ]
+  },
+  {
+    "beat": "Core Guardian First Contact",
+    "trigger": "Fleet enters Core Guardian exclusion zone as Necro-Legion",
+    "lines": [
+      {
+        "speaker": "BROADCAST",
+        "style": "normal",
+        "text": "YOU ARE APPROACHING THE EXCLUSION ZONE. TURN BACK. THIS IS YOUR FINAL WARNING."
+      },
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "AFTER-ACTION LOG: Contact with Core Guardian exclusion zone. Sensor analysis reveals anomalous results. Their energy signatures predate our own construction. Their technology operates on principles our databases cannot model. The Guardians are OLDER than us. We are 100,000 years old. They are older than the stars. Revised classification: not 'hostile alien force.' Classification: 'fundamental cosmic entity.' We are attempting to approach a natural law and ask it to move aside."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Energy weapons will HEAL Guardian constructs. All engagements require kinetic-only loadouts. Gauss flayers have a partial kinetic component — effectiveness against Guardians estimated at 60% of standard targets."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "Something older than YOUR ancient machines? That's... I didn't think that was possible. How do you fight something that was here before the STARS?"
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "They are not alive. They are energy patterns held in geometric containment. We are not alive either — we are data patterns held in living metal. We have more in common with the Guardians than any biological faction. Perhaps that is an advantage."
+      }
+    ]
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "beat": "First Contact",
+    "trigger": "First time the player encounters Vorax units",
+    "lines": [
+      {
+        "speaker": "Synapse-Brain",
+        "style": "italic",
+        "text": "You are already absorbed. You simply have not accepted it yet."
+      },
+      {
+        "speaker": "Synapse-Brain",
+        "style": "normal",
+        "text": "Every civilization believes resistance is a strategy. The first seventeen we encountered believed this also."
+      }
+    ]
+  },
+  {
+    "beat": "Mid-Game Warning",
+    "trigger": "When Vorax controls 30% of the map",
+    "lines": [
+      {
+        "speaker": "Synapse-Brain",
+        "style": "italic",
+        "text": "The galaxy does not belong to builders. It belongs to what consumes them."
+      },
+      {
+        "speaker": "Synapse-Brain",
+        "style": "normal",
+        "text": "We have eaten older things than you. We have eaten things that had names for us. They did not survive long enough to teach those names to anyone."
+      }
+    ]
+  },
+  {
+    "beat": "Player Survives Major Assault",
+    "trigger": "Player repels a Vorax planetary invasion",
+    "lines": [
+      {
+        "speaker": "Synapse-Brain",
+        "style": "italic",
+        "text": "Every faction we have faced has a word for us. Monster. Plague. End. We prefer: inevitable."
+      },
+      {
+        "speaker": "Synapse-Brain",
+        "style": "normal",
+        "text": "You have survived this wave. There are seventeen more behind it. We are not attacking you. We are digesting you. Slowly."
+      }
+    ]
+  },
+  {
+    "beat": "Final Confrontation",
+    "trigger": "Approaching endgame with Vorax as primary threat",
+    "lines": [
+      {
+        "speaker": "Synapse-Brain",
+        "style": "italic",
+        "text": "Resistance is protein. Come closer."
+      },
+      {
+        "speaker": "Synapse-Brain",
+        "style": "normal",
+        "text": "You will not stop the Devouring. You will only delay when it reaches your core. But delay is interesting. Delay means more material to consume when it ends."
+      }
+    ]
+  }
+]

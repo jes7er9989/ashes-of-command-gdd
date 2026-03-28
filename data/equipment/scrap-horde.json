@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Rusted Cleaver",
+    "slot": "[W]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "effect": "+30% melee damage. Simple, brutal, reliably lethal at close range."
+  },
+  {
+    "name": "\"Da Big Choppa\"",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "+80% melee damage, −30% movement speed. Cleaves multiple adjacent enemies in a single swing."
+  },
+  {
+    "name": "Nuclear Scrap Bomb",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Single-use massive AOE explosion. Irradiates the territory for 3 cycles after detonation."
+  },
+  {
+    "name": "Spiked Armor",
+    "slot": "[A]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "effect": "Anyone who strikes this unit in melee takes 15% reflected damage. Touch the Horde and bleed."
+  },
+  {
+    "name": "\"Lucky Plate\"",
+    "slot": "[A]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "10% chance to completely negate any single incoming hit. The scratch on the plate that stopped the killshot."
+  },
+  {
+    "name": "Grog Flask",
+    "slot": "[G]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "effect": "+20% melee damage, +10% movement speed, −15% accuracy for 10 seconds. Worth it."
+  },
+  {
+    "name": "Waaagh! Banner",
+    "slot": "[G]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "AOE aura: +10% damage and +10% speed to all Horde units within 20m. Morale weapon."
+  },
+  {
+    "name": "Acid-Dipped (Vorax salvage)",
+    "slot": "[AM]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "+25% damage specifically vs Vorax. Reverse-engineered Vorax acid applied to projectile tips."
+  },
+  {
+    "name": "Boom-Stick",
+    "slot": "[W]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "effect": "Sawn-off double-barrel cobbled from pipe fittings and a pressure valve. Fires anything that fits. Kicks like a grox. Breaks after 3 shots. Immediately replaced with another Boom-Stick."
+  },
+  {
+    "name": "Scrap-Weave Hide",
+    "slot": "[A]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "effect": "Layers of salvaged plating, chain links, stripped circuitry and Vorax chitin bolted onto flesh. Crude but thick. Pain tolerance is the real defense."
+  },
+  {
+    "name": "Salvage Magnet",
+    "slot": "[S]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Extends Wreckage Salvage collection radius from 30m to 45m. More deaths in range = more stacks."
+  }
+]

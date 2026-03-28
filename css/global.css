@@ -1,0 +1,2764 @@
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL STYLESHEET — Ashes of Command Interactive GDD v5.9.1
+   ───────────────────────────────────────────────────────────
+   Dark sci-fi command-console theme for the interactive
+   Game Design Document browser. All visual styling lives here;
+   no component-level CSS files exist.
+
+   Sections:
+     1. Imports & Variables   – Fonts, faction colors, spacing tokens
+     2. Reset & Base          – Box-model reset, scrollbars, body
+     3. Typography            – Headings, code, links
+     4. Layout                – App shell, sidebar, main content
+     5. Navigation            – Sidebar nav tree, chapter links
+     6. Cards & Components    – Generic cards, faction cards, stat bars
+     7. Dashboard             – Landing-page header & summary bar
+     8. Search Overlay        – Ctrl+K command-palette search
+     9. Back to Top           – Floating scroll-to-top button
+    10. Hamburger / Mobile    – Mobile nav toggle & responsive rules
+    11. Utility Classes       – Shared helpers, animations, scanline FX
+
+   Dependencies: Google Fonts (Rajdhani, Orbitron, JetBrains Mono,
+                 Share Tech Mono) loaded via @import below.
+   ═══════════════════════════════════════════════════════════ */
+
+
+/* ═══════════════════════════════════════════════════════════
+   1. IMPORTS & VARIABLES
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Font Import ──
+   Rajdhani     → body text
+   Orbitron     → headings, UI labels
+   JetBrains    → code, stats, monospace data
+   Share Tech   → decorative mono (version tags, footers)       */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+/* ── CSS Custom Properties ──
+   Faction colors map 1-to-1 with the seven playable factions.
+   Background scale goes from darkest (base) to lightest (hover).
+   Text scale goes from dimmest (dim) to brightest (hi).          */
+:root {
+  /* Faction accent colors */
+  --terran: #00b4ff;
+  --shards: #00ffee;
+  --horde: #ff6622;
+  --necro: #44ff66;
+  --accord: #ffaa22;
+  --vorax: #ff2266;
+  --guardians: #cc44ff;
+
+  /* Background scale (dark → light) */
+  --bg-base: #07080c;
+  --bg-panel: #0c0e14;
+  --bg-card: #10131b;
+  --bg-hover: #161a26;
+
+  /* Border opacity levels */
+  --border: rgba(255,255,255,0.05);
+  --border-hi: rgba(255,255,255,0.12);
+
+  /* Text luminance scale (dim → bright) */
+  --text-dim: #445566;
+  --text-mid: #778899;
+  --text-body: #b8beca;
+  --text-hi: #e0e4ec;
+
+  /* Primary UI accent (Terran blue) */
+  --accent: #00b4ff;
+
+  /* Layout tokens */
+  --sidebar-w: 260px;
+  --transition: 0.2s ease;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   2. RESET & BASE
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Box-Model Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Custom Scrollbar ──
+   Thin, dark scrollbar that blends with the console theme.
+   Webkit rules for Chrome/Edge, standard props for Firefox.    */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-hi);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dim);
+}
+
+html {
+  scrollbar-color: var(--border-hi) var(--bg-base);
+  scrollbar-width: thin;
+}
+
+/* ── Body ── */
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-body);
+  background: var(--bg-base);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   3. TYPOGRAPHY
+   ═══════════════════════════════════════════════════════════ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--text-hi);
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+h1 { font-size: 1.6rem; font-weight: 700; }
+h2 { font-size: 1.25rem; font-weight: 600; }
+h3 { font-size: 1.05rem; font-weight: 500; }
+
+code, pre, .mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+}
+
+.tech-mono {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover {
+  color: var(--text-hi);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   4. LAYOUT — App shell: sidebar + main content flex pair
+   ═══════════════════════════════════════════════════════════ */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sidebar ──
+   Fixed-position left panel. On mobile, slides off-screen via
+   transform and is toggled by the hamburger button.             */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--bg-panel);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+  padding: 20px 16px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sidebar-subtitle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-top: 2px;
+  letter-spacing: 0.06em;
+}
+
+.sidebar-subtitle-sm {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.55rem;
+  color: var(--accent);
+  letter-spacing: 0.25em;
+  opacity: 0.6;
+  margin-top: -2px;
+}
+
+/* ── Dashboard "The Reclamation" subtitle ── */
+.subtitle-reclamation {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.1rem;
+  color: var(--accent);
+  letter-spacing: 0.35em;
+  opacity: 0.7;
+  margin-top: -4px;
+  margin-bottom: 8px;
+}
+
+/* ── Sidebar Filter ──
+   Quick-filter input that narrows the chapter nav tree.         */
+.sidebar-filter {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-filter input {
+  width: 100%;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 6px 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-body);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.sidebar-filter input::placeholder {
+  color: var(--text-dim);
+}
+
+.sidebar-filter input:focus {
+  border-color: var(--accent);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   5. NAVIGATION — Sidebar chapter tree
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Nav Container ── */
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+/* ── Part Group ──
+   Each "Part" is a collapsible group of chapters.               */
+.nav-part {
+  margin-bottom: 2px;
+}
+
+.nav-part-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--transition);
+}
+
+.nav-part-header:hover {
+  color: var(--text-mid);
+}
+
+.nav-part-header .chevron {
+  font-size: 0.5rem;
+  transition: transform 0.2s ease;
+  color: var(--text-dim);
+}
+
+.nav-part-header.collapsed .chevron {
+  transform: rotate(-90deg);
+}
+
+/* ── Chapter List (collapsible) ── */
+.nav-part-chapters {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.nav-part-chapters.collapsed {
+  max-height: 0 !important;
+}
+
+/* ── Individual Chapter Link ── */
+.nav-chapter {
+  display: block;
+  padding: 5px 16px 5px 20px;
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: all var(--transition);
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.nav-chapter:hover {
+  color: var(--text-hi);
+  background: var(--bg-hover);
+  border-left-color: var(--text-dim);
+}
+
+.nav-chapter.active {
+  color: var(--text-hi);
+  background: var(--bg-hover);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+
+.nav-chapter .ch-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-right: 6px;
+  min-width: 22px;
+  display: inline-block;
+}
+
+/* ── Sidebar Footer ── */
+.sidebar-footer {
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* ── Sidebar Collapse Toggle ──
+   Desktop-only button that slides the sidebar off-screen.       */
+.sidebar-toggle {
+  position: fixed;
+  top: 12px;
+  left: calc(var(--sidebar-w) + 8px);
+  width: 28px;
+  height: 28px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 101;
+  transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+body.sidebar-collapsed .sidebar {
+  transform: translateX(calc(-1 * var(--sidebar-w)));
+}
+
+body.sidebar-collapsed .sidebar-toggle {
+  left: 8px;
+}
+
+body.sidebar-collapsed .main-content {
+  margin-left: 0;
+}
+
+/* ── Main Content Area ──
+   Offset by sidebar width on desktop; fills remaining space.    */
+.main-content {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-height: 100vh;
+  padding: 24px 32px 60px;
+  transition: margin-left 0.3s ease;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   6. CARDS & COMPONENTS
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Generic Card ── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px;
+  transition: all var(--transition);
+}
+
+.card:hover {
+  border-color: var(--border-hi);
+  background: var(--bg-hover);
+}
+
+/* ── Faction Cards ──
+   Moved to Section 7 (Dashboard) — see .faction-grid,
+   .faction-card and related rules in the Dashboard section.
+   Kept here as section marker only.                              */
+
+/* ── Stat Bars ──
+   Horizontal progress bars showing early/mid/late power curves. */
+.stat-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  width: 36px;
+  text-transform: uppercase;
+}
+
+.stat-bar-track {
+  flex: 1;
+  height: 4px;
+  background: var(--bg-base);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--faction-color, var(--accent));
+  transition: width 0.6s ease;
+}
+
+.stat-value {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-mid);
+  width: 24px;
+  text-align: right;
+}
+
+/* ── NPC Badge ──
+   Corner tag on non-playable factions (e.g. Core Guardians).   */
+.npc-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: var(--vorax);
+  background: rgba(255, 34, 102, 0.1);
+  border: 1px solid rgba(255, 34, 102, 0.3);
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.15em;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   7. DASHBOARD — Cinematic Hero Landing Page
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 7a. Hero Section — Full-Viewport Starfield ────────── */
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: -24px -32px 0;
+  padding: 60px 32px 40px;
+}
+
+/* CSS-only starfield — three layers of radial-gradient dots
+   at different sizes and animation speeds for depth parallax.
+   No canvas, no JS — pure CSS animation.                       */
+.hero-starfield {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    /* Layer 1 — tiny distant stars (slow) */
+    radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 40% 8%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 55% 42%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 70% 22%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 85% 48%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 15% 55%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 30% 72%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 48% 60%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 62% 78%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 78% 65%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 92% 85%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 5% 90%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 35% 88%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 50% 95%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 68% 92%, rgba(255,255,255,0.6), transparent),
+    /* Layer 2 — medium stars (medium speed) */
+    radial-gradient(1.5px 1.5px at 8% 28%, rgba(180,220,255,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 22% 12%, rgba(180,220,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 38% 52%, rgba(180,220,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 52% 18%, rgba(180,220,255,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 68% 38%, rgba(180,220,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 82% 55%, rgba(180,220,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 95% 12%, rgba(180,220,255,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 18% 75%, rgba(180,220,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 45% 82%, rgba(180,220,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 75% 88%, rgba(180,220,255,0.7), transparent),
+    /* Layer 3 — bright nearby stars (fast twinkle) */
+    radial-gradient(2px 2px at 12% 45%, rgba(0,180,255,0.8), transparent),
+    radial-gradient(2px 2px at 33% 25%, rgba(0,255,238,0.6), transparent),
+    radial-gradient(2px 2px at 58% 70%, rgba(255,170,34,0.5), transparent),
+    radial-gradient(2px 2px at 77% 15%, rgba(204,68,255,0.6), transparent),
+    radial-gradient(2px 2px at 90% 45%, rgba(0,180,255,0.7), transparent),
+    radial-gradient(2px 2px at 20% 85%, rgba(255,102,34,0.5), transparent),
+    radial-gradient(2px 2px at 65% 55%, rgba(68,255,102,0.4), transparent);
+  animation: starfieldDrift 120s linear infinite;
+}
+
+@keyframes starfieldDrift {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-20px); }
+}
+
+/* ── Hero Content ── */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  animation: heroFadeIn 1.5s ease forwards;
+}
+
+@keyframes heroFadeIn {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Hero Title — Main game title with animated glow ── */
+.hero-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+  text-shadow:
+    0 0 20px rgba(0,180,255,0.4),
+    0 0 60px rgba(0,180,255,0.15),
+    0 0 100px rgba(0,180,255,0.05);
+  animation: titleGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow:
+      0 0 20px rgba(0,180,255,0.3),
+      0 0 60px rgba(0,180,255,0.1),
+      0 0 100px rgba(0,180,255,0.03);
+  }
+  100% {
+    text-shadow:
+      0 0 30px rgba(0,180,255,0.6),
+      0 0 80px rgba(0,180,255,0.25),
+      0 0 120px rgba(0,180,255,0.1);
+  }
+}
+
+/* ── Hero Subtitle ── */
+.hero-subtitle {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.2rem;
+  color: var(--accent);
+  letter-spacing: 0.4em;
+  opacity: 0.75;
+  margin-bottom: 8px;
+}
+
+/* ── Hero Version Tag ── */
+.hero-version {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+}
+
+/* ── Hero Lore Quote — Cycles with fade animation ── */
+.hero-lore-quote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  max-width: 600px;
+  margin: 0 auto;
+  transition: opacity 0.5s ease;
+}
+
+.hero-lore-quote.quote-fading {
+  opacity: 0;
+}
+
+.hero-lore-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-mid);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.hero-lore-source {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+/* ── Scroll Indicator — Bouncing arrow at bottom of hero ── */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+
+.hero-scroll-indicator.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-scroll-arrow {
+  font-size: 0.8rem;
+  color: var(--accent);
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(8px); }
+}
+
+.hero-scroll-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+}
+
+
+/* ── 7b. Galactic Overview — SVG Spiral Galaxy ─────────── */
+
+.galaxy-section {
+  margin: 40px 0;
+}
+
+.galaxy-map-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.galaxy-svg {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+}
+
+/* Slow rotation of the spiral arms */
+.galaxy-rotation {
+  transform-origin: 300px 300px;
+  animation: galaxySpin 180s linear infinite;
+}
+
+@keyframes galaxySpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ── Homeworld Dots — Pulse and label hover ── */
+
+.galaxy-homeworld .homeworld-glow-outer {
+  animation: homeworldPulse 3s ease-in-out infinite alternate;
+}
+
+.galaxy-homeworld .homeworld-ping {
+  animation: homeworldPing 3s ease-out infinite;
+}
+
+@keyframes homeworldPulse {
+  0%   { r: 14; opacity: 0.05; }
+  100% { r: 20; opacity: 0.12; }
+}
+
+@keyframes homeworldPing {
+  0%   { r: 5; opacity: 0.6; stroke-width: 1.5; }
+  100% { r: 18; opacity: 0; stroke-width: 0.5; }
+}
+
+/* Show faction name on hover */
+.galaxy-homeworld:hover .homeworld-label {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.galaxy-homeworld:hover .homeworld-dot {
+  r: 7;
+  transition: r 0.2s ease;
+}
+
+
+/* ── 7c. Enhanced Faction Cards ────────────────────────── */
+
+.faction-section {
+  margin: 40px 0;
+}
+
+/* 2-column desktop, 1-column mobile */
+.faction-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.faction-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faction-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--faction-color, var(--accent));
+}
+
+.faction-card:hover {
+  border-color: var(--faction-color, var(--accent));
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--faction-color, var(--accent)) 20%, transparent),
+    0 0 50px color-mix(in srgb, var(--faction-color, var(--accent)) 8%, transparent),
+    inset 0 0 30px color-mix(in srgb, var(--faction-color, var(--accent)) 3%, transparent);
+  transform: translateY(-2px);
+}
+
+/* ── Faction Card Header — Emblem + Titles ── */
+.faction-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.faction-emblem {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.faction-card:hover .faction-emblem {
+  opacity: 1;
+}
+
+.faction-emblem svg {
+  display: block;
+}
+
+.faction-card-titles {
+  flex: 1;
+  min-width: 0;
+}
+
+.faction-card .faction-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--faction-color, var(--text-hi));
+  margin-bottom: 2px;
+}
+
+.faction-card .faction-subtitle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.faction-card .faction-desc {
+  font-size: 0.8rem;
+  color: var(--text-mid);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.faction-card .faction-mechanic {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--faction-color, var(--accent));
+  background: color-mix(in srgb, var(--faction-color, var(--accent)) 8%, transparent);
+  padding: 3px 8px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.faction-card .faction-meta {
+  display: flex;
+  gap: 12px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+
+.faction-card .faction-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+/* ── 7d. Command-Console Statistics Banner ─────────────── */
+
+.stats-section {
+  margin: 40px 0;
+}
+
+.summary-bar {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 14px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+/* Console readout enhancement — monospace aesthetic with scan line */
+.console-readout {
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(0,180,255,0.15);
+  background:
+    linear-gradient(180deg, var(--bg-card) 0%, rgba(0,180,255,0.02) 50%, var(--bg-card) 100%);
+}
+
+/* Animated scanning line that sweeps across the readout */
+.console-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,180,255,0.3) 30%,
+    rgba(0,180,255,0.6) 50%,
+    rgba(0,180,255,0.3) 70%,
+    transparent 100%);
+  animation: consoleScan 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes consoleScan {
+  0%   { top: 0; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.summary-stat {
+  text-align: center;
+}
+
+.summary-stat .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(0,180,255,0.3);
+}
+
+.summary-stat .label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+
+/* ── 7e. Footer Lore Quote ─────────────────────────────── */
+
+.footer-quote-section {
+  margin: 48px 0 24px;
+  padding: 0 20px;
+}
+
+.footer-quote-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-hi), transparent);
+  margin: 16px 0;
+}
+
+.footer-quote {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.footer-quote-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text-mid);
+  line-height: 1.8;
+  max-width: 640px;
+  margin: 0 auto 12px;
+}
+
+.footer-quote-source {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  font-style: normal;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+
+/* ── 7f. Dashboard Section Spacing & Shared Elements ───── */
+
+/* ── Smooth scroll behavior ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Dashboard Section — consistent vertical rhythm ── */
+.dashboard-section {
+  padding: 48px 0 0;
+}
+
+/* ── Section Label — small uppercase pre-heading ── */
+.section-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.6;
+  margin-bottom: 6px;
+}
+
+/* ── Section Heading — enhanced Orbitron heading with dim divider ── */
+.section-heading {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-hi);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Divider — gradient horizontal rule between sections ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-hi), transparent);
+  margin: 48px 0 0;
+}
+
+
+/* ── 7g. Epigraph & Quotes ──────────────────────────────── */
+
+.quote-block {
+  text-align: center;
+  padding: 24px 32px;
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Decorative top/bottom lines */
+.quote-block::before,
+.quote-block::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-hi), transparent);
+  margin: 0 auto 20px;
+}
+
+.quote-block::after {
+  margin: 20px auto 0;
+}
+
+.quote-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text-mid);
+  line-height: 1.8;
+}
+
+.quote-attr {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
+
+/* ── 7h. Game Description — Title & Elevator Pitch ──────── */
+
+.page-title-wrap {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.page-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-hi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  text-shadow: 0 0 20px rgba(0,180,255,0.15);
+}
+
+.page-subtitle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.body-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  color: var(--text-body);
+  line-height: 1.85;
+  max-width: 720px;
+}
+
+
+/* ── 7i. By The Numbers — Stat Cards Grid ───────────────── */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.stat-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 20px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Subtle top glow line */
+.stat-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,180,255,0.3), transparent);
+}
+
+.stat-block:hover {
+  border-color: var(--border-hi);
+  box-shadow: 0 0 20px rgba(0,180,255,0.06), inset 0 0 20px rgba(0,180,255,0.02);
+}
+
+.stat-block .stat-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 6px;
+  width: auto;
+  text-align: center;
+  text-shadow: 0 0 12px currentColor;
+}
+
+.stat-block .stat-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-hi);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  width: auto;
+}
+
+.stat-sub {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+
+/* ── 7j. Core Loop — Phase Cards ────────────────────────── */
+
+.phase-loop {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 32px;
+  /* Snap scrolling on mobile */
+  scroll-snap-type: x mandatory;
+}
+
+.phase-block {
+  flex: 1;
+  min-width: 180px;
+  padding: 20px 16px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  position: relative;
+  transition: all 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.phase-block:hover {
+  border-color: var(--border-hi);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
+}
+
+.phase-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+
+.phase-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-hi);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.phase-desc {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+
+.phase-arrow {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem;
+  color: var(--text-dim);
+  z-index: 1;
+}
+
+
+/* ── 7k. Game Systems — Navigation Grid ─────────────────── */
+
+.systems-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.system-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid rgba(0,180,255,0.25);
+  border-radius: 4px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.system-card:hover {
+  border-color: var(--border-hi);
+  border-left-color: var(--accent);
+  background: var(--bg-hover);
+  box-shadow:
+    0 0 16px rgba(0,180,255,0.08),
+    inset 0 0 20px rgba(0,180,255,0.02);
+  transform: translateY(-1px);
+}
+
+.system-card-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-hi);
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.system-card-desc {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+
+/* ── 7l. Differentiator Cards — Accent Left Border ──────── */
+
+.card-accent {
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  line-height: 1.6;
+  font-size: 0.88rem;
+}
+
+.card-accent:nth-child(odd) {
+  background: rgba(255,255,255,0.01);
+}
+
+.card-accent:nth-child(even) {
+  background: var(--bg-card);
+}
+
+
+/* ── 7m. Dashboard Responsive Overrides ─────────────────── */
+
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .systems-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-section {
+    padding: 32px 0 0;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .phase-loop {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .phase-block {
+    min-width: 220px;
+    flex: 0 0 auto;
+  }
+
+  .phase-arrow {
+    display: none;
+  }
+
+  .systems-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-title {
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+  }
+
+  .quote-block {
+    padding: 16px;
+  }
+
+  .stat-block .stat-value {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-block .stat-value {
+    font-size: 1.3rem;
+  }
+
+  .page-title {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   8. SEARCH OVERLAY — Ctrl+K command-palette search
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Backdrop ──
+   Full-screen dark overlay; starts hidden (opacity 0, no pointer
+   events) and activates when .active is added by Search.open(). */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 15vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.search-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Search Box ── */
+.search-box {
+  width: 560px;
+  max-width: 90vw;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hi);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+/* ── Search Input Row ── */
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  gap: 10px;
+}
+
+.search-input-wrap .search-icon {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+.search-input-wrap input {
+  flex: 1;
+  background: none;
+  border: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  color: var(--text-hi);
+  outline: none;
+}
+
+.search-input-wrap input::placeholder {
+  color: var(--text-dim);
+}
+
+.search-input-wrap .search-hint {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  background: var(--bg-base);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+/* ── Search Results List ── */
+.search-results {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.search-result-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background var(--transition);
+}
+
+.search-result-item:hover,
+.search-result-item.selected {
+  background: var(--bg-hover);
+}
+
+.search-result-item .result-type {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: var(--bg-base);
+  padding: 2px 6px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  min-width: 48px;
+  text-align: center;
+}
+
+.search-result-item .result-text {
+  font-size: 0.85rem;
+  color: var(--text-body);
+}
+
+.search-result-item .result-text mark {
+  background: none;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.search-empty {
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   9. BACK TO TOP — Floating scroll-to-top button
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Back to Dashboard Button ────────────────────────────── */
+.back-to-dashboard-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0 32px 0;
+}
+
+.back-to-dashboard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--bg-card), var(--bg-panel));
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--accent);
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 14px 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0, 180, 255, 0.1), inset 0 0 12px rgba(0, 180, 255, 0.03);
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.back-to-dashboard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 180, 255, 0.08), transparent);
+  transition: left 0.5s ease;
+}
+
+.back-to-dashboard:hover::before {
+  left: 100%;
+}
+
+.back-to-dashboard:hover {
+  background: linear-gradient(135deg, var(--bg-hover), var(--bg-card));
+  border-color: var(--text-hi);
+  color: var(--text-hi);
+  box-shadow: 0 0 24px rgba(0, 180, 255, 0.25), inset 0 0 16px rgba(0, 180, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+.dash-btn-icon {
+  font-size: 0.5rem;
+  opacity: 0.5;
+}
+
+.back-to-dashboard:hover .dash-btn-icon {
+  opacity: 1;
+}
+
+/* ── Audio Toggle Button ─────────────────────────────────── */
+.audio-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 68px;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  z-index: 50;
+}
+
+.audio-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── Back to Top Button ─────────────────────────────────── */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--transition);
+  z-index: 50;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.back-to-top:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   10. HAMBURGER / MOBILE — Mobile nav toggle & responsive
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Hamburger Button ──
+   Hidden on desktop; shown at ≤768px. Three <span> bars
+   animate into an X when .open is toggled.                      */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  width: 36px;
+  height: 36px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 200;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text-mid);
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+/* Animated X state */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(4px, 4px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* ── Mobile Overlay ──
+   Dark scrim behind the sidebar when open on mobile.            */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 99;
+}
+
+.mobile-overlay.active {
+  display: block;
+}
+
+/* ── Responsive Breakpoints ── */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .sidebar {
+    transform: translateX(calc(-1 * var(--sidebar-w)));
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 16px;
+    padding-top: 56px;
+  }
+
+  .faction-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-bar {
+    gap: 12px;
+  }
+
+  /* Hero responsive — smaller title, tighter spacing */
+  .hero-section {
+    min-height: 85vh;
+    margin: -16px -16px 0;
+    padding: 40px 16px 30px;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+  }
+
+  .hero-lore-text {
+    font-size: 0.85rem;
+  }
+
+  .hero-version {
+    font-size: 0.6rem;
+  }
+
+  /* Galaxy map — constrain on mobile */
+  .galaxy-svg {
+    max-width: 340px;
+  }
+
+  /* Faction cards — single column */
+  .faction-card-header {
+    gap: 10px;
+  }
+
+  .faction-emblem {
+    width: 36px;
+    height: 36px;
+  }
+
+  .faction-emblem svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .search-box {
+    width: 95vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .summary-bar {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .summary-stat .num {
+    font-size: 0.9rem;
+  }
+
+  .hero-title {
+    font-size: 1.3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   11. UTILITY CLASSES — Shared helpers & animations
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Section Heading ──
+   Moved to Section 7f (Dashboard shared elements).
+   See .section-heading in the Dashboard block.                  */
+
+/* ── Animations ── */
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Scanline Effect ──
+   Subtle CRT-style horizontal lines overlaid on an element.
+   Used on the dashboard header for atmosphere.                  */
+.scanline {
+  position: relative;
+}
+
+.scanline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 180, 255, 0.015) 2px,
+    rgba(0, 180, 255, 0.015) 4px
+  );
+  pointer-events: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   12. DEVELOPER MODE — Toast, edit bar, priming/unlock glow
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Dev Mode Toast Notification ──
+   Fixed bar that slides down from the top when dev mode unlocks.
+   Hidden by default; .show triggers the slide-in animation.       */
+#dev-mode-toast {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, rgba(7,8,12,0.95) 0%, rgba(0,180,255,0.12) 50%, rgba(7,8,12,0.95) 100%);
+  border-bottom: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  z-index: 9999;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  pointer-events: none;
+}
+
+#dev-mode-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ── Toast Badge (SYS label) ── */
+.toast-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--bg-base);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 2px;
+  margin-right: 8px;
+  letter-spacing: 0.12em;
+  vertical-align: middle;
+}
+
+/* ── Sidebar Title — Priming Glow ──
+   Pulsing glow while the user is clicking toward the 10-click
+   threshold. Removed if the timer expires or unlock triggers.     */
+.sidebar-title.dev-priming {
+  animation: devPriming 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes devPriming {
+  from { text-shadow: 0 0 4px rgba(0,180,255,0.3); }
+  to   { text-shadow: 0 0 12px rgba(0,180,255,0.7), 0 0 24px rgba(0,180,255,0.3); }
+}
+
+/* ── Sidebar Title — Unlocked Glow ──
+   Permanent subtle glow after dev mode is activated.              */
+.sidebar-title.dev-unlocked {
+  text-shadow: 0 0 8px rgba(0,180,255,0.5), 0 0 20px rgba(0,180,255,0.2);
+}
+
+/* ── Hidden Chapters (ch44–ch46) ──
+   Dev-only chapters are hidden by default in the nav.
+   Revealed when body.dev-mode-active is present.                  */
+.nav-chapter[data-id="ch44"],
+.nav-chapter[data-id="ch45"],
+.nav-chapter[data-id="ch46"] {
+  display: none;
+}
+
+body.dev-mode-active .nav-chapter[data-id="ch44"],
+body.dev-mode-active .nav-chapter[data-id="ch45"],
+body.dev-mode-active .nav-chapter[data-id="ch46"] {
+  display: block;
+}
+
+/* ── Edit Bar ──
+   Fixed bottom toolbar shown only in dev mode + edit active.
+   Houses the edit toggle, field counter, and export button.       */
+#edit-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 42px;
+  background: linear-gradient(180deg, var(--bg-panel) 0%, rgba(7,8,12,0.98) 100%);
+  border-top: 1px solid var(--border-hi);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 20px;
+  z-index: 500;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+#edit-bar.active {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Edit Bar Buttons ── */
+#edit-toggle,
+#export-btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+#edit-toggle:hover,
+#export-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+#edit-toggle.active {
+  color: var(--bg-base);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── Edit Count Label ── */
+#edit-count {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+/* ── Editable Field Highlight ──
+   When edit mode is active, editable elements get a subtle
+   left-border indicator and highlight on focus.                   */
+body.edit-mode [data-editable] {
+  outline: 1px dashed rgba(0,180,255,0.15);
+  outline-offset: 2px;
+  transition: outline-color 0.2s ease, background 0.2s ease;
+  cursor: text;
+}
+
+body.edit-mode [data-editable]:hover {
+  outline-color: rgba(0,180,255,0.35);
+}
+
+[data-editable]:focus {
+  outline: 1px solid var(--accent) !important;
+  outline-offset: 2px;
+  background: rgba(0,180,255,0.04);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   13. VISUAL EFFECTS — Faction backgrounds, particles, CRT
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Procedural Background Layer ──
+   Full-page fixed div behind all content. Faction classes
+   apply radial gradient washes keyed to faction colors.           */
+#procedural-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  transition: background 1s ease;
+}
+
+#procedural-bg.bg-terran {
+  background: radial-gradient(ellipse at 30% 60%, rgba(0,180,255,0.06) 0%, transparent 60%);
+}
+#procedural-bg.bg-shards {
+  background: radial-gradient(ellipse at 70% 40%, rgba(0,255,238,0.06) 0%, transparent 60%);
+}
+#procedural-bg.bg-horde {
+  background: radial-gradient(ellipse at 50% 70%, rgba(255,102,34,0.06) 0%, transparent 60%);
+}
+#procedural-bg.bg-necro {
+  background: radial-gradient(ellipse at 40% 50%, rgba(68,255,102,0.06) 0%, transparent 60%);
+}
+#procedural-bg.bg-accord {
+  background: radial-gradient(ellipse at 60% 30%, rgba(255,170,34,0.06) 0%, transparent 60%);
+}
+#procedural-bg.bg-vorax {
+  background: radial-gradient(ellipse at 50% 50%, rgba(255,34,102,0.06) 0%, transparent 60%);
+}
+#procedural-bg.bg-guardians {
+  background: radial-gradient(ellipse at 40% 40%, rgba(204,68,255,0.06) 0%, transparent 60%);
+}
+
+/* ── Body Faction Background Classes ──
+   Applied to <body> for faction-specific border accents
+   on the sidebar and subtle page tinting.                         */
+body.faction-bg-terran    { --faction-active: var(--terran); }
+body.faction-bg-shards    { --faction-active: var(--shards); }
+body.faction-bg-horde     { --faction-active: var(--horde); }
+body.faction-bg-necro     { --faction-active: var(--necro); }
+body.faction-bg-accord    { --faction-active: var(--accord); }
+body.faction-bg-vorax     { --faction-active: var(--vorax); }
+body.faction-bg-guardians { --faction-active: var(--guardians); }
+
+body[class*="faction-bg-"] .sidebar {
+  border-right-color: color-mix(in srgb, var(--faction-active) 25%, transparent);
+}
+
+body[class*="faction-bg-"] .sidebar-title {
+  color: var(--faction-active);
+}
+
+/* ── Ambient Particles Container ──
+   Full-viewport container for floating particle elements.
+   Individual .ambient-particle divs are spawned by JS.            */
+#ambient-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ambient-particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: particleFloat var(--dur, 6s) linear forwards;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: var(--particle-opacity, 0.3);
+  }
+  100% {
+    transform: translateY(-100vh) translateX(var(--drift, 0px));
+    opacity: 0;
+  }
+}
+
+/* ── Faction Cursor Glow ──
+   Soft radial glow that follows the mouse cursor.
+   Color set inline by JS based on active faction.                 */
+#faction-cursor-glow {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  display: none;
+  will-change: left, top;
+  transition: background 0.6s ease;
+}
+
+/* ── Faction Flag Badge ──
+   Fixed-position faction glyph in the bottom-left corner.
+   Displays the current faction's Unicode symbol.                  */
+#faction-flag-badge {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 40px;
+  height: 40px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: var(--bg-panel);
+  z-index: 50;
+  transition: color 0.4s ease, text-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* ── Lore Quote Rotator ──
+   Positioned in the sidebar footer or a dedicated slot.
+   Fades between faction-themed lore quotes on a timer.            */
+#lore-quote-rotator {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--text-mid);
+  text-align: center;
+  padding: 12px 16px;
+  min-height: 48px;
+  line-height: 1.5;
+  transition: opacity 0.4s ease;
+}
+
+.lore-quote-faction {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  font-style: normal;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+/* ── Scanline Overlay ──
+   Full-page repeating horizontal lines for CRT atmosphere.
+   Very low opacity — visible but not distracting.                 */
+#scanline-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9990;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 180, 255, 0.012) 2px,
+    rgba(0, 180, 255, 0.012) 4px
+  );
+}
+
+/* ── CRT Overlay ──
+   Vignette + subtle curve effect for a monitor look.
+   Hidden by default; .active class enables it.                    */
+#crt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9991;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+#crt-overlay.active {
+  opacity: 1;
+  background:
+    radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.35) 100%);
+  box-shadow: inset 0 0 80px rgba(0,0,0,0.3);
+}
+
+body.crt-active {
+  /* Subtle text rendering shift for CRT feel */
+  text-shadow: 0 0 1px rgba(0,180,255,0.08);
+}
+
+/* ── Holo-Tilt Card Transition ──
+   Smooth transform transitions for the JS-driven tilt effect.
+   The transform itself is applied inline by HoloTilt._onMove().  */
+.card,
+.faction-card {
+  transition: all 0.3s ease, transform 0.15s ease-out;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   14. CHAPTER INDEX — Full document index overlay
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Index Toggle Button (sidebar) ──
+   Compact button placed above the filter input.               */
+.chapter-index-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 6px 10px;
+  margin-bottom: 8px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.chapter-index-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.chapter-index-toggle-icon {
+  font-size: 0.75rem;
+}
+
+/* ── Index Overlay ──
+   Full-screen dark backdrop with centered scrollable panel.
+   Hidden by default; .active shows it.                        */
+.chapter-index-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  z-index: 900;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 6vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.chapter-index-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Index Panel ──
+   Contained card within the overlay.                          */
+.chapter-index-panel {
+  width: 640px;
+  max-width: 92vw;
+  max-height: 84vh;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hi);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+
+/* ── Panel Header ── */
+.chapter-index-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.chapter-index-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.chapter-index-close {
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.chapter-index-close:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── Panel Search ── */
+.chapter-index-search {
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.chapter-index-search input {
+  width: 100%;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 7px 12px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-body);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.chapter-index-search input::placeholder {
+  color: var(--text-dim);
+}
+
+.chapter-index-search input:focus {
+  border-color: var(--accent);
+}
+
+/* ── Chapter Tree Container ── */
+.chapter-index-tree {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+/* ── Part Header ── */
+.ci-part {
+  margin-bottom: 2px;
+}
+
+.ci-part-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--transition), background var(--transition);
+}
+
+.ci-part-header:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+.ci-chevron {
+  font-size: 0.5rem;
+  color: var(--text-dim);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.ci-part-header.collapsed .ci-chevron {
+  transform: rotate(-90deg);
+}
+
+.ci-part-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  flex: 1;
+}
+
+.ci-part-count {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  background: var(--bg-base);
+  padding: 1px 6px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Chapter List (collapsible) ── */
+.ci-chapters {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 2000px;
+}
+
+.ci-chapters.collapsed {
+  max-height: 0 !important;
+}
+
+/* ── Individual Chapter Link ── */
+.ci-chapter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px 6px 32px;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.ci-chapter:hover {
+  background: var(--bg-hover);
+  border-left-color: var(--text-dim);
+}
+
+.ci-chapter.active {
+  background: var(--bg-hover);
+  border-left-color: var(--accent);
+}
+
+.ci-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  min-width: 24px;
+  flex-shrink: 0;
+}
+
+.ci-title {
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  line-height: 1.4;
+}
+
+.ci-chapter.active .ci-title {
+  color: var(--text-hi);
+  font-weight: 600;
+}
+
+.ci-chapter:hover .ci-title {
+  color: var(--text-hi);
+}
+
+/* ── Empty State ── */
+.ci-empty {
+  padding: 24px 18px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+/* ── Mobile adjustments ── */
+@media (max-width: 768px) {
+  .chapter-index-panel {
+    width: 96vw;
+    max-height: 90vh;
+  }
+
+  .chapter-index-overlay {
+    padding-top: 3vh;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   15. GLOSSARY — Auto-linked term tooltips
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Glossary Term (inline) ──
+   Dotted underline and help cursor indicate a defined term.
+   Hover shows a tooltip with the definition.                  */
+.glossary-term {
+  border-bottom: 1px dotted var(--text-dim);
+  cursor: help;
+  position: relative;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.glossary-term:hover {
+  border-bottom-color: var(--accent);
+  color: var(--text-hi);
+}
+
+/* ── Glossary Tooltip ──
+   CSS-only tooltip via ::after using the data-definition attr.
+   Appears above the term on hover with a subtle fade-in.       */
+.glossary-term::after {
+  content: attr(data-definition);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 320px;
+  padding: 8px 12px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hi);
+  border-radius: 4px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--text-body);
+  line-height: 1.5;
+  white-space: normal;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  z-index: 950;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.glossary-term:hover::after {
+  opacity: 1;
+}
+
+/* ── Tooltip Arrow ──
+   Small triangle pointing down toward the term.               */
+.glossary-term::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--border-hi);
+  z-index: 951;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+
+.glossary-term:hover::before {
+  opacity: 1;
+}
+
+/* ── Mobile: position tooltip differently to avoid overflow ── */
+@media (max-width: 768px) {
+  .glossary-term::after {
+    left: 0;
+    transform: none;
+    max-width: 260px;
+  }
+
+  .glossary-term::before {
+    left: 12px;
+    transform: none;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   16. PLANET CARDS — Expandable planet type rows
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Planet Row ──
+   Expandable row in the planet type catalog table.
+   Header is always visible; detail panel toggles open/closed. */
+.planet-row:last-child {
+  border-bottom: none !important;
+}
+
+/* ── Planet Detail (collapsed by default) ── */
+.planet-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.planet-detail.planet-detail-open {
+  max-height: 600px;
+}
+
+.planet-detail-inner {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+  padding: 12px 14px 18px;
+  border-top: 1px solid var(--border);
+  background: rgba(0, 180, 255, 0.015);
+}
+
+/* ── Planet SVG Artwork ── */
+.planet-svg-wrap {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #04060e;
+}
+
+.planet-svg-wrap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── Planet Detail Text ── */
+.planet-detail-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.planet-detail-section {
+  line-height: 1.55;
+}
+
+.planet-detail-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.planet-detail-body {
+  font-size: 0.75rem;
+  color: var(--text-mid);
+}
+
+/* ── Territory Bar Chart ── */
+.territory-bar-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 60px;
+  align-items: center;
+  gap: 10px;
+  padding: 3px 0;
+}
+
+.territory-bar-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.territory-bar-track {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.territory-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  opacity: 0.7;
+  transition: width 0.4s ease;
+}
+
+.territory-bar-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+/* ── Mobile: stack planet detail vertically ── */
+@media (max-width: 768px) {
+  .planet-detail-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .planet-svg-wrap {
+    max-width: 200px;
+  }
+
+  .territory-bar-row {
+    grid-template-columns: 90px 1fr 50px;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   17. FORMATION CARDS — Fleet formation display
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Formation Grid ──
+   Responsive grid for formation cards. Dark sci-fi style
+   with accent-colored borders and inline SVG diagrams.      */
+.formation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.formation-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.formation-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(0, 180, 255, 0.08);
+}
+
+/* ── Formation Diagram ── */
+.formation-diagram {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  border: 1px solid var(--border);
+}
+
+.formation-svg {
+  width: 80px;
+  height: 60px;
+}
+
+/* ── Formation Text ── */
+.formation-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.formation-desc {
+  font-size: 0.75rem;
+  color: var(--text-mid);
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+
+.formation-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+.formation-tag {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 1px 5px;
+  border-radius: 2px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.formation-tag-best {
+  background: rgba(68, 255, 102, 0.12);
+  color: #44ff66;
+  border: 1px solid rgba(68, 255, 102, 0.25);
+}
+
+.formation-tag-weak {
+  background: rgba(255, 34, 102, 0.12);
+  color: #ff2266;
+  border: 1px solid rgba(255, 34, 102, 0.25);
+}
+
+/* ── Mobile: single-column formations ── */
+@media (max-width: 768px) {
+  .formation-grid {
+    grid-template-columns: 1fr;
+  }
+}

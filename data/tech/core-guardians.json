@@ -1,0 +1,104 @@
+[
+  {
+    "branch": "Ancient Protocols",
+    "branchNum": 1,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Ancient Protocols",
+        "cost": "10⚙ / 3 cycles",
+        "effect": "All Core Guardian units +1 to all defense rolls",
+        "notes": "The oldest systems are still the best systems"
+      },
+      {
+        "tier": "T2a",
+        "name": "Silent Advance",
+        "cost": "18⚙ / 4 cycles",
+        "effect": "Core Guardian units cannot be detected by standard Intel actions or scouting units",
+        "notes": "They were here before your sensors"
+      },
+      {
+        "tier": "T2b",
+        "name": "Resonance Tuning",
+        "cost": "18⚙ / 4 cycles",
+        "effect": "All Core Guardian energy weapons +1 damage. Arc Cannon ignores shields permanently.",
+        "notes": "Frequency calibrated over millions of years"
+      },
+      {
+        "tier": "T3",
+        "name": "Warden Consciousness",
+        "cost": "28⚙ / 5 cycles",
+        "effect": "All Core Guardian units share full vision across the entire planet map, regardless of position",
+        "notes": "One mind, no blindspots"
+      }
+    ]
+  },
+  {
+    "branch": "Temporal Mastery",
+    "branchNum": 2,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Temporal Calibration",
+        "cost": "12⚙ / 3 cycles",
+        "effect": "Stasis Sphere duration +1 cycle, recharge time -1 cycle",
+        "notes": "Time is a tool"
+      },
+      {
+        "tier": "T2a",
+        "name": "Null-Field Expansion",
+        "cost": "20⚙ / 5 cycles",
+        "effect": "Dimensional Anchor radius +1 hex, duration +1 cycle",
+        "notes": "The anchor holds wider"
+      },
+      {
+        "tier": "T2b",
+        "name": "Temporal Reserves",
+        "cost": "20⚙ / 5 cycles",
+        "effect": "When a Core Guardian unit would be destroyed, 15% chance it is instead frozen for 1 cycle and returns at 1 HP",
+        "notes": "Even death can be delayed"
+      },
+      {
+        "tier": "T3",
+        "name": "The Unbreakable Law",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "Unlock: once per game, negate any single enemy ability, attack, or event entirely. No resistance roll. No partial effect.",
+        "notes": "What the Guardians forbid does not happen."
+      }
+    ]
+  },
+  {
+    "branch": "Celestial Authority",
+    "branchNum": 3,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Nexus Efficiency",
+        "cost": "10⚙ / 3 cycles",
+        "effect": "Nexus-Colossus unit cost -15% scrap. Deploy time -1 cycle.",
+        "notes": "The largest weapons are the oldest"
+      },
+      {
+        "tier": "T2a",
+        "name": "Celestial Judgment",
+        "cost": "22⚙ / 5 cycles",
+        "effect": "Celestial-Throne flagship special ability cooldown -2 cycles",
+        "notes": "Judgment falls faster when it must"
+      },
+      {
+        "tier": "T2b",
+        "name": "Ascendant Form",
+        "cost": "22⚙ / 5 cycles",
+        "effect": "Nexus-Colossus base HP +50%. Gains Regeneration: heals 2 HP per cycle out of combat.",
+        "notes": "Evolution has had millions of years to refine this form"
+      },
+      {
+        "tier": "T3",
+        "name": "The Final Ward",
+        "cost": "45⚙ / 9 cycles",
+        "effect": "Unlock: permanently negate all Vorax consumption effects on any planet with a Core Guardian structure. Planets cannot be consumed while Guardians stand.",
+        "notes": "This is why we remained."
+      }
+    ]
+  }
+]

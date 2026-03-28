@@ -1,0 +1,122 @@
+[
+  {
+    "part": "I — Foundation",
+    "chapters": [
+      { "id": "ch1", "num": "1", "title": "Game Identity & Vision" },
+      { "id": "ch2", "num": "2", "title": "Five-Phase Gameplay Loop" },
+      { "id": "ch3", "num": "3", "title": "Narrative Arc — \"The Last Decant\"" },
+      { "id": "ch4", "num": "4", "title": "Commander Origins" }
+    ]
+  },
+  {
+    "part": "II — The Seven Factions",
+    "chapters": [
+      { "id": "ch5", "num": "5", "title": "Terran League — The Last Bastion", "color": "#00b4ff" },
+      { "id": "ch6", "num": "6", "title": "Eternal Shards — The Dying Light", "color": "#00ffee" },
+      { "id": "ch7", "num": "7", "title": "Scrap-Horde — The Rust Tide", "color": "#ff6622" },
+      { "id": "ch8", "num": "8", "title": "Necro-Legion — The Undying Protocol", "color": "#00e070" },
+      { "id": "ch9", "num": "9", "title": "Unity Accord — The Burning Covenant", "color": "#ffaa22" },
+      { "id": "ch10", "num": "10", "title": "Vorax — The Devouring Swarm", "color": "#ff2266" },
+      { "id": "ch11", "num": "11", "title": "Core Guardians — The Silent Gods", "color": "#cc44ff" }
+    ]
+  },
+  {
+    "part": "III — The Galactic Map",
+    "chapters": [
+      { "id": "ch12", "num": "12", "title": "Galaxy Generation & Structure" },
+      { "id": "ch13", "num": "13", "title": "Planetary Bodies & Biomes" },
+      { "id": "ch14", "num": "14", "title": "Galactic Phenomena & Events" },
+      { "id": "ch15", "num": "15", "title": "Supply Chain & Logistics" },
+      { "id": "ch16", "num": "16", "title": "Planetary Infrastructure" }
+    ]
+  },
+  {
+    "part": "IV — Combat Systems",
+    "chapters": [
+      { "id": "ch17", "num": "17", "title": "The Auto-Battle Engine" },
+      { "id": "ch18", "num": "18", "title": "Space Combat" },
+      { "id": "ch19", "num": "19", "title": "Ground Combat" },
+      { "id": "ch19b", "num": "19b", "title": "Ground Combat Vision" },
+      { "id": "ch20", "num": "20", "title": "Equipment System" },
+      { "id": "ch21", "num": "21", "title": "CP Abilities Reference" },
+      { "id": "ch22", "num": "22", "title": "Chain of Command — Generals" },
+      { "id": "ch23", "num": "23", "title": "War Council & Advisors" }
+    ]
+  },
+  {
+    "part": "V — Strategic Systems",
+    "chapters": [
+      { "id": "ch24", "num": "24", "title": "Espionage & Intelligence" },
+      { "id": "ch25", "num": "25", "title": "Alignment & Win Paths" },
+      { "id": "ch26", "num": "26", "title": "Diplomacy & Faction Relations" },
+      { "id": "ch27", "num": "27", "title": "Economy, Trade & Piracy" },
+      { "id": "ch28", "num": "28", "title": "Tech Tree & Research" },
+      { "id": "ch29", "num": "29", "title": "Random Events & Reclamation" },
+      { "id": "ch30", "num": "30", "title": "Veteran XP & Progression" },
+      { "id": "ch31", "num": "31", "title": "The Dual Threat Model" }
+    ]
+  },
+  {
+    "part": "VI — Final War & Meta",
+    "chapters": [
+      { "id": "ch32", "num": "32", "title": "The Final War — Reality Mode" },
+      { "id": "ch33", "num": "33", "title": "Meta-Progression (3 Layers)" },
+      { "id": "ch34", "num": "34", "title": "The Galactic Compendium" },
+      { "id": "ch35", "num": "35", "title": "Empire Delegation" },
+      { "id": "ch36", "num": "36", "title": "Difficulty & Accessibility" }
+    ]
+  },
+  {
+    "part": "VII — Presentation",
+    "chapters": [
+      { "id": "ch37", "num": "37", "title": "Art Direction & Visual Identity" },
+      { "id": "ch38", "num": "38", "title": "The Diegetic UI" },
+      { "id": "ch39", "num": "39", "title": "Audio Design" },
+      { "id": "ch40", "num": "40-41", "title": "UI/UX & Save System" },
+      { "id": "ch42", "num": "42", "title": "Commanders & Dialogue" },
+      { "id": "ch43-ai", "num": "43", "title": "The AI Director" }
+    ]
+  },
+  {
+    "part": "VIII — Business",
+    "chapters": [
+      { "id": "ch43", "num": "43", "title": "DLC Expansion Roadmap" },
+      { "id": "ch44", "num": "44", "title": "Development Priority Order" },
+      { "id": "ch45", "num": "45", "title": "Multi-Chat Workflow" },
+      { "id": "ch46", "num": "46", "title": "Resolved Design Decisions (143)" }
+    ]
+  },
+  {
+    "part": "Appendices A–F",
+    "chapters": [
+      { "id": "appA", "num": "A", "title": "Unit Roster Quick-Reference" },
+      { "id": "appB", "num": "B", "title": "Equipment Catalog Reference" },
+      { "id": "appC", "num": "C", "title": "Faction Comparison Matrix" },
+      { "id": "appD", "num": "D", "title": "Volatile Death Reference" },
+      { "id": "appE", "num": "E", "title": "Planetary Type Reference" },
+      { "id": "appF", "num": "F", "title": "Glossary of Terms" }
+    ]
+  },
+  {
+    "part": "Appendix L — Prototype Log",
+    "chapters": [
+      { "id": "appL", "num": "L", "title": "Prototype Implementation Log", "color": "#ffaa22" }
+    ]
+  },
+  {
+    "part": "Appendix M — Project Checklist",
+    "chapters": [
+      { "id": "appM", "num": "M", "title": "Project Development Checklist", "color": "#ffaa22" }
+    ]
+  },
+  {
+    "part": "Supplementary G–K",
+    "chapters": [
+      { "id": "suppG", "num": "G", "title": "Complete Tech Trees (124 Nodes)" },
+      { "id": "suppH", "num": "H", "title": "Vorax Evolution Templates" },
+      { "id": "suppI", "num": "I", "title": "Unification Negotiation" },
+      { "id": "suppJ", "num": "J", "title": "Procedural Commander Gen" },
+      { "id": "suppK", "num": "K", "title": "Tutorial Campaign" }
+    ]
+  }
+]

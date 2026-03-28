@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Gauss Flayer",
+    "slot": "[W]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "effect": "Strips target atom by atom — damage ramps up over sustained fire. More effective the longer contact is maintained."
+  },
+  {
+    "name": "Void Blade",
+    "slot": "[W]",
+    "rarity": "Uncommon",
+    "rarityColor": "#44cc66",
+    "effect": "Dimensionally-sharpened edge ignores all armor — cuts without resistance regardless of plating thickness."
+  },
+  {
+    "name": "Staff of the Overlord",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Low direct damage. Grants +15% damage aura to all Necro-Legion units within 25m. Command weapon."
+  },
+  {
+    "name": "Necrodermis Shell",
+    "slot": "[A]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "+35% HP, +1.5% HP/sec passive regen. −20% movement speed. Walking bunker of living metal."
+  },
+  {
+    "name": "Resurrection Shroud",
+    "slot": "[A]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "+10% Reanimation chance (stacks additively with faction base of 15%). Total base 25% before tech upgrades."
+  },
+  {
+    "name": "Resurrection Orb",
+    "slot": "[G]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "On death: all Necro units within 15m receive +25% Reanimation chance for 10 seconds."
+  },
+  {
+    "name": "Chronometron",
+    "slot": "[G]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Passive aura slows all enemies within 15m by 25% for 8 seconds after activation."
+  },
+  {
+    "name": "Entropic Charge",
+    "slot": "[AM]",
+    "rarity": "Uncommon",
+    "rarityColor": "#44cc66",
+    "effect": "Target armor degrades 5% per hit (cumulative, persists for the battle). 10 hits = −50% armor."
+  },
+  {
+    "name": "Hybrid Gauss/Kinetic Slug",
+    "slot": "[AM]",
+    "rarity": "Legendary",
+    "rarityColor": "#ffaa22",
+    "effect": "Physical kinetic projectile wrapped in gauss containment field. +15% damage vs BOTH Vorax AND Core Guardians. Limited production."
+  },
+  {
+    "name": "Temporal Stasis Field",
+    "slot": "[S]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "On unit death: all enemies within 10m are frozen for 3 seconds. Even death serves the Legion."
+  }
+]

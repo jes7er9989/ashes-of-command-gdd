@@ -1,0 +1,166 @@
+[
+  {
+    "branch": "Psychic Warfare",
+    "branchNum": 1,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Focused Resonance",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "All psychic and energy weapons +8% damage. Crystal Shard homing +10% accuracy.",
+        "notes": "Baseline psychic damage increase"
+      },
+      {
+        "tier": "T2a",
+        "name": "Prism Amplification",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Sustained beam ramp-up time −25% (full power faster). All beam weapons +10% continuous DPS.",
+        "notes": "Less time on target needed for full damage"
+      },
+      {
+        "tier": "T2b",
+        "name": "Mind-Shatter Protocols",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Unlocks Mind-Shatter Projector equipment. All psychic attack units +5% confusion effect chance.",
+        "notes": "Psychic crowd control branch"
+      },
+      {
+        "tier": "T3",
+        "name": "Void Scythe Forging",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Unlocks Void Scythe (15% instant kill vs light infantry). All melee attacks +15%. Zealots +1 attack per second.",
+        "notes": "Melee power spike — makes Zealots terrifying"
+      },
+      {
+        "tier": "T4",
+        "name": "Warp Rift Technology",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "Battlefield teleportation gates: 1 CP creates two linked portals lasting 15 seconds. 2 uses per battle.",
+        "notes": "CULMINATION — tactical teleportation on demand"
+      }
+    ]
+  },
+  {
+    "branch": "Wraith-Bone Mastery",
+    "branchNum": 2,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Resonant Armor Growth",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "All wraith-bone armor regenerates 0.5% HP/sec passively during combat.",
+        "notes": "Passive sustainability baseline"
+      },
+      {
+        "tier": "T2a",
+        "name": "Prismatic Shield Enhancement",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Energy shield absorption 100→150. Recharge delay 10s→8s.",
+        "notes": "Meaningful shield upgrade for fragile units"
+      },
+      {
+        "tier": "T2b",
+        "name": "Phase-Shift Harmonics",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Phase Blink base chance +3% (12%→15% base). Displacement distance +1m (2m→3m).",
+        "notes": "PRIMARY mechanic upgrade — core Shards identity"
+      },
+      {
+        "tier": "T3",
+        "name": "Soul-Stone Refinement",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Soul-Stone Ward +10% (20%→30%). All units gain passive 3% baseline resurrection chance.",
+        "notes": "Pseudo-Reanimation — the Shards' answer to Necro persistence"
+      },
+      {
+        "tier": "T4",
+        "name": "Soul-Stone Integration",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "All units: 5% base resurrection (total 8% with T3). Return at 40% HP. Auto-capture range 200m.",
+        "notes": "CULMINATION — halt the extinction curve"
+      }
+    ]
+  },
+  {
+    "branch": "Dimensional Manipulation",
+    "branchNum": 3,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Enhanced Grav-Fields",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "All Shards units +5% movement speed. Grav-Tank traverses steeper terrain grades.",
+        "notes": "Speed is survival for fragile units"
+      },
+      {
+        "tier": "T2a",
+        "name": "Extended Farsight",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Precognitive Warning range +1 system. Sensor detection range +30%.",
+        "notes": "See further, plan better — maximize Phase Blink uptime"
+      },
+      {
+        "tier": "T2b",
+        "name": "Dimensional Anchoring",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Commander aura grants immunity to displacement, knockback, and forced teleportation within 50m radius.",
+        "notes": "Choose when and where to engage — not the enemy's choice"
+      },
+      {
+        "tier": "T3",
+        "name": "Chronal Distortion Fields",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Unlocks Chronal Disruptor ability (50% slow for 8 seconds). All units +5% attack speed.",
+        "notes": "Time manipulation — slow enemies, speed allies"
+      },
+      {
+        "tier": "T4",
+        "name": "Chronal Acceleration",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "All units +10% movement speed (15% total with T1). Precognitive combat window extends to 5 seconds.",
+        "notes": "CULMINATION — the Shards move faster through time than their enemies"
+      }
+    ]
+  },
+  {
+    "branch": "Special Projects",
+    "branchNum": 4,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Wraith-Bone Cultivation",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "Wraith-bone unit production time −15%. Equipment repair cost −20%.",
+        "notes": "Offset the Shards' production disadvantage"
+      },
+      {
+        "tier": "T2a",
+        "name": "Avatar Awakening Protocol",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Unlocks Avatar of the Ancients production. 8 cycles at Spirit Shrine. 50m Phase Blink aura on deployment.",
+        "notes": "Walking cathedral of psychic legacy"
+      },
+      {
+        "tier": "T2b",
+        "name": "Infinity-Mothership Construction",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Unlocks Infinity-Mothership flagship. Requires orbital Shipyard + 10 cycles. Charge time initialized at 15 seconds.",
+        "notes": "Reality-warping flagship — the final argument"
+      },
+      {
+        "tier": "T3",
+        "name": "Hybrid Crystal/Kinetic Forging",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Unlocks Hybrid Crystal/Kinetic Slugs (Legendary: +15% vs BOTH Vorax AND Guardians). 1 set per 5 cycles per Forge.",
+        "notes": "The kinetic solution to the Shards' energy-weapon problem"
+      },
+      {
+        "tier": "T4",
+        "name": "Infinity Lance Optimization",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "Infinity Lance charge time 15s→10s. Damage +25%. Beam width increases — sweeps 5 seconds (from 3s pinpoint).",
+        "notes": "CULMINATION — faster, deadlier, sweeping destruction"
+      }
+    ]
+  }
+]

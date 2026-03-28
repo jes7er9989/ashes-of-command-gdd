@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Rending Talons",
+    "slot": "[W]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "effect": "Razor-edged chitinous blades grown from the forearm. Severs power armor plating on focused strike. +30% melee damage vs armored targets."
+  },
+  {
+    "name": "Acid Launcher",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Bio-organic sac launcher firing pressurized acid globules. Melts vehicle plating on contact. +40% damage vs vehicles and structures."
+  },
+  {
+    "name": "Spine Barrage",
+    "slot": "[W]",
+    "rarity": "Uncommon",
+    "rarityColor": "#44ff88",
+    "effect": "Compressed burst of hundreds of hollow-tipped toxic spines. AOE cone, 8m. Inflicts Poison: -1 HP/cycle for 3 cycles."
+  },
+  {
+    "name": "Chitinous Carapace",
+    "slot": "[A]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "effect": "Layered organic shell grown over vital organs. Self-seals around minor wounds between engagements. +2 base defense."
+  },
+  {
+    "name": "Regeneration Membrane",
+    "slot": "[A]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Sub-dermal tissue layer that actively heals damage. Regenerate 1 HP per cycle while not in active combat."
+  },
+  {
+    "name": "Spore Grenade",
+    "slot": "[G]",
+    "rarity": "Uncommon",
+    "rarityColor": "#44ff88",
+    "effect": "Biological grenade bursting into choking toxic spore cloud. Suppresses unit vision, applies Poison status, and disables ranged attack for 1 cycle."
+  },
+  {
+    "name": "Synapse Relay Node",
+    "slot": "[G]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Organic psionic relay grown into the spine. Boosts Synapse command range +2 hexes for all nearby Vorax units."
+  },
+  {
+    "name": "Venom-Tipped Rounds",
+    "slot": "[AM]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Biological toxin coating on all projectiles. Units hit suffer Poison: -1 HP/cycle for 3 cycles regardless of armor."
+  },
+  {
+    "name": "Hive-Link Transmitter",
+    "slot": "[S]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Biological psionic uplink to the Hive fleet. Shares all unit sensor data with the Synapse-Brain in range. +1 Intel/cycle on this planet."
+  }
+]

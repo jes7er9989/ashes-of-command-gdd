@@ -1,0 +1,1030 @@
+  <div class="page" id="page-ch7">
+    <div style="display:flex;gap:24px;align-items:flex-start;margin-bottom:8px;">
+      <div style="width:100px;height:100px;background:rgba(255,102,34,0.08);border:1px solid rgba(255,102,34,0.25);border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="80" height="80"><rect width="100" height="100" fill="#0c0600"/><circle cx="50" cy="50" r="35" fill="none" stroke="#ff6622" stroke-width="2"/><g stroke="#ff6622" stroke-width="3" fill="none"><line x1="50" y1="10" x2="50" y2="18"/><line x1="50" y1="82" x2="50" y2="90"/><line x1="10" y1="50" x2="18" y2="50"/><line x1="82" y1="50" x2="90" y2="50"/><line x1="22" y1="22" x2="27" y2="27"/><line x1="73" y1="73" x2="78" y2="78"/><line x1="78" y1="22" x2="73" y2="27"/><line x1="22" y1="78" x2="27" y2="73"/></g><circle cx="50" cy="50" r="24" fill="rgba(255,102,34,0.08)" stroke="#ff6622" stroke-width="1.5"/><circle cx="40" cy="44" r="5" fill="#ff6622" opacity="0.8"/><circle cx="60" cy="44" r="5" fill="#ff6622" opacity="0.8"/><rect x="38" y="56" width="24" height="4" rx="1" fill="#ff6622" opacity="0.6"/><rect x="40" y="56" width="3" height="8" fill="#0c0600"/><rect x="48" y="56" width="3" height="8" fill="#0c0600"/><rect x="56" y="56" width="3" height="8" fill="#0c0600"/><text x="50" y="98" text-anchor="middle" font-family="Orbitron,monospace" font-size="5.5" fill="#ff6622" opacity="0.7" letter-spacing="1.5">HORDE</text></svg>
+      </div>
+      <div>
+        <div class="page-title" style="color:var(--horde)">THE SCRAP-HORDE</div>
+        <div class="page-subtitle">The Rust Tide — Chapter 7</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;padding:3px 8px;border:1px solid rgba(255,102,34,0.3);color:var(--horde);border-radius:1px;letter-spacing:1px">#ff6622</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;padding:3px 8px;border:1px solid rgba(255,255,255,0.1);color:var(--text-mid);border-radius:1px;letter-spacing:1px">PLAYABLE</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;padding:3px 8px;border:1px solid rgba(255,255,255,0.1);color:var(--text-mid);border-radius:1px;letter-spacing:1px">INTERMEDIATE</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;padding:3px 8px;border:1px solid rgba(255,255,255,0.1);color:var(--text-mid);border-radius:1px;letter-spacing:1px">FORGED CONSTRUCT</span>
+    </div>
+
+    <div class="quote-block" style="border-left-color:var(--horde);background:rgba(255,102,34,0.03);margin-bottom:24px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--horde);letter-spacing:3px;margin-bottom:4px">CENTRAL NARRATIVE QUESTION</div>
+      <div class="quote-text">"Can a weapon become more than what it was forged to be?"</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--guardians);padding:10px 16px;margin-bottom:16px;background:rgba(204,68,255,0.02)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--guardians);letter-spacing:2px;margin-bottom:4px">AETHYN ANCESTRY — WARRIOR CASTE</div>
+      <div style="font-size:0.72rem;color:var(--text-mid);line-height:1.5">Descended from the Aethyn Warrior Caste &mdash; protectors, soldiers, tacticians who fought the Vorax during the Siege. The Fracture hit them <em>mid-battle</em> &mdash; the psychic shock fused their mineral biology into something cruder, tougher, angrier. Broken soldiers who welded themselves back together and kept fighting. <strong style="color:var(--text-hi)">Biology: MINERAL-BASED</strong> &mdash; iron and calcium lifeforms. They oxidize, corrode, rust. Consuming metal is nutrition. The forge is medicine, birthplace, and temple. <strong style="color:var(--text-hi)">Psychic attunement: MODERATE.</strong> Residual battle instincts. Can sense Aethyn relics but experience them as rage, battle-fury, and echoes of the Vorax war &mdash; &ldquo;The Engine speaks.&rdquo;</div>
+    </div>
+
+    <div class="section-label" style="color:var(--horde)">Identity &amp; Lore</div>
+    <div class="section-heading" id="sec-ch7-0">The Joy of War</div>
+    <div class="body-text" style="margin-bottom:16px">The Scrap-Horde fights because fighting is <strong>GLORIOUS.</strong> They are mineral-based lifeforms &mdash; iron and calcium biology, dense as ore, stocky as foundation stones, and loud as a forge at full blast. They literally rust. They oxidize, corrode, and weather. &ldquo;The Rust Tide&rdquo; is not a metaphor &mdash; it&rsquo;s what they ARE. And they are having the time of their lives.</div>
+    <div class="body-text" style="margin-bottom:16px">These are warriors who name their guns and get genuinely upset when they break. Who argue about which explosion was better mid-battle. Who consider &ldquo;it only blew up twice&rdquo; a glowing product review. Who have drinking songs about famous last stands, sung in deep, gravelly, iron-resonant voices around forge-fires that never go out. They think diplomacy is &ldquo;hitting them until they agree.&rdquo; The comedy is real. The joy is real. The Scrap-Horde is the faction that makes you laugh AND respect them.</div>
+    <div class="body-text" style="margin-bottom:16px">Their homeworld is <strong>Rusthold</strong> &mdash; a mineral-rich moon mined hollow from the inside, forge-cities filling its caverns, iron veins in the walls that are literally food. Ancient derelict warships captured and welded to the surface. An orbiting asteroid belt of smaller rocks connected by scrap-bridges and tow cables, each controlled by a different clan. Part moon, part scrapyard, part shipwreck, part fortress. Grown over centuries. Nobody planned it. Sections break off sometimes. They weld them back. It shouldn&rsquo;t work. It works anyway.</div>
+    <div class="body-text" style="margin-bottom:16px">The Horde originated from the Aethyn Warrior Caste &mdash; the protectors who fought the Vorax head-on during the Siege. The Fracture hit them mid-battle. The psychic shock fused their mineral biology into something cruder, tougher, angrier. Broken soldiers who welded themselves back together and kept fighting. Cut off from crystal-psychic technology, they rebuilt from scrap &mdash; turning wreckage into weapons, consuming metal for sustenance. The forge became medicine, temple, and birthplace. Working metal is working with their own biology.</div>
+    <div class="body-text" style="margin-bottom:16px">Beneath the chaos runs dwarven bedrock: iron-oaths that are <em>unbreakable</em>. Grudge Records carved in metal and NEVER forgotten. Forge-worship where the act of forging IS prayer and master smiths are priests. Clan bonds deeper than iron veins. Betray a forge-brother and the entire clan hunts you. The Horde is 70% chaotic joy, 30% iron honor &mdash; and the 30% is the part that will kill you.</div>
+    <div class="body-text" style="margin-bottom:24px">The Scrap-Horde does not innovate. They IMPROVISE. Their technology is stolen, salvaged, reverse-engineered, and bolted together with welding torches and profanity. A Scrap-Horde tank might have a Terran League chassis, an Eternal Shards energy coil wired backward into the engine, a Unity Accord targeting computer running on incompatible software, and a gun barrel that was originally a sewer pipe. Fresh from the forge: clean industrial brutalism. After a campaign: covered in salvage layers, battlefield modifications, and three different repair jobs nobody remembers. Veterans literally LOOK different from fresh troops &mdash; their visual history written in scrap. It shouldn&rsquo;t work. It works anyway. Mostly. Sometimes it explodes. The Horde considers this acceptable.</div>
+
+    <div class="section-label" style="color:var(--horde)">Visual Identity</div>
+    <div class="section-heading" id="sec-ch7-1">Industrial Brutalism</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card"><div style="margin-bottom:10px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 120" width="100%" style="display:block">
+  <defs>
+    <radialGradient id="shg-bg" cx="40%" cy="55%" r="75%">
+      <stop offset="0%" stop-color="#100a04"/>
+      <stop offset="100%" stop-color="#080604"/>
+    </radialGradient>
+    <linearGradient id="shg-scrap-a" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5a4030"/>
+      <stop offset="40%" stop-color="#3e2c1e"/>
+      <stop offset="100%" stop-color="#281c10"/>
+    </linearGradient>
+    <linearGradient id="shg-scrap-b" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4a3828"/>
+      <stop offset="100%" stop-color="#2a1e10"/>
+    </linearGradient>
+    <linearGradient id="shg-rust" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6a3820"/>
+      <stop offset="60%" stop-color="#4a2810"/>
+      <stop offset="100%" stop-color="#2e1808"/>
+    </linearGradient>
+    <linearGradient id="shg-hot-metal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff9944" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#ff6622" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#cc3300" stop-opacity="0.4"/>
+    </linearGradient>
+    <radialGradient id="shg-oil-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff8800" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#ff5500" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ff2200" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shg-exhaust" cx="50%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#888888" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#555555" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#222222" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shg-vig" cx="50%" cy="50%" r="70%">
+      <stop offset="50%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.65"/>
+    </radialGradient>
+    <filter id="shg-bloom">
+      <feGaussianBlur stdDeviation="3.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shg-soft">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <pattern id="shg-scan" width="280" height="3" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="1.5" x2="280" y2="1.5" stroke="#000" stroke-width="1" opacity="0.10"/>
+    </pattern>
+    <clipPath id="shg-clip"><rect width="280" height="120"/></clipPath>
+  </defs>
+
+  <!-- BG — grimy, oil-stained dark -->
+  <rect width="280" height="120" fill="url(#shg-bg)"/>
+  <!-- Oil-stain pools on ground (subtle) -->
+  <ellipse cx="108" cy="113" rx="42" ry="5" fill="#1a0e06" opacity="0.7"/>
+  <ellipse cx="90" cy="115" rx="20" ry="3" fill="#ff6622" opacity="0.05"/>
+
+  <!-- Background: partial wrecked vehicle / scrap pile, right side -->
+  <g opacity="0.25" clip-path="url(#shg-clip)">
+    <!-- Rusted hull plates stacked -->
+    <rect x="210" y="70" width="70" height="18" rx="1" fill="#3a2010" stroke="#5a3018" stroke-width="1"/>
+    <rect x="220" y="55" width="60" height="18" rx="1" fill="#2e1808" stroke="#4a2812" stroke-width="1" transform="rotate(-5 250 64)"/>
+    <rect x="215" y="42" width="50" height="16" rx="1" fill="#3a2010" stroke="#5a3018" stroke-width="1" transform="rotate(3 240 50)"/>
+    <!-- Exposed beam -->
+    <rect x="232" y="30" width="8" height="80" rx="1" fill="#2a1808" stroke="#442010" stroke-width="0.8" transform="rotate(8 236 70)"/>
+    <!-- Loose bolt -->
+    <circle cx="226" cy="68" r="3" fill="#4a3020"/>
+    <circle cx="244" cy="54" r="2.5" fill="#3a2818"/>
+  </g>
+
+  <!-- Smoke clouds (from exhaust ports on figure) -->
+  <ellipse cx="88" cy="32" rx="14" ry="10" fill="url(#shg-exhaust)" filter="url(#shg-soft)" opacity="0.55"/>
+  <ellipse cx="72" cy="22" rx="10" ry="8" fill="url(#shg-exhaust)" filter="url(#shg-soft)" opacity="0.38"/>
+  <ellipse cx="96" cy="18" rx="8" ry="6" fill="url(#shg-exhaust)" filter="url(#shg-soft)" opacity="0.30"/>
+  <!-- Spark trail from hydraulic arm -->
+  <circle cx="148" cy="62" r="1.5" fill="#ffaa00" opacity="0.9"/>
+  <circle cx="152" cy="58" r="1" fill="#ff8800" opacity="0.7"/>
+  <circle cx="156" cy="65" r="0.8" fill="#ffcc00" opacity="0.8"/>
+  <circle cx="142" cy="68" r="1.2" fill="#ffaa00" opacity="0.65"/>
+  <circle cx="160" cy="60" r="0.7" fill="#ff6622" opacity="0.7"/>
+
+  <!-- HORDE WARRIOR — huge, hulking, mismatched salvage-armor -->
+  <!-- Oversized left boot (industrial salvage, different from right) -->
+  <rect x="86" y="100" width="18" height="16" rx="1" fill="#2e1e10" stroke="#4a2c14" stroke-width="1"/>
+  <!-- Boot tread plate (different faction salvage color) -->
+  <rect x="83" y="113" width="22" height="5" rx="1" fill="#3a2a18" stroke="#5a3a20" stroke-width="0.8"/>
+  <line x1="84" y1="115" x2="104" y2="115" stroke="#1a1008" stroke-width="1.5"/>
+  <line x1="84" y1="117" x2="104" y2="117" stroke="#1a1008" stroke-width="1"/>
+
+  <!-- Right boot (mismatched — scavenged from different faction, lighter metal) -->
+  <rect x="108" y="102" width="16" height="14" rx="2" fill="#3c2c1a" stroke="#5a3c22" stroke-width="1"/>
+  <rect x="106" y="113" width="20" height="5" rx="1" fill="#4a3828" stroke="#6a4830" stroke-width="0.8"/>
+  <!-- Oil leak from right boot joint -->
+  <path d="M112,114 Q114,116 112,120" stroke="#1a0e04" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+  <!-- Shins — mismatched armor: left is plate, right is tube-frame -->
+  <!-- Left shin: thick salvaged plate, riveted -->
+  <rect x="87" y="76" width="16" height="26" rx="1" fill="url(#shg-rust)" stroke="#5a3018" stroke-width="1"/>
+  <!-- Left shin rivet row -->
+  <circle cx="90" cy="80" r="2" fill="#6a4028"/><circle cx="90" cy="88" r="2" fill="#6a4028"/>
+  <circle cx="90" cy="96" r="2" fill="#6a4028"/><circle cx="100" cy="80" r="2" fill="#6a4028"/>
+  <circle cx="100" cy="88" r="2" fill="#6a4028"/><circle cx="100" cy="96" r="2" fill="#6a4028"/>
+  <!-- Rust streaks on shin -->
+  <line x1="92" y1="78" x2="90" y2="100" stroke="#8a3010" stroke-width="0.8" opacity="0.5"/>
+  <line x1="97" y1="78" x2="95" y2="98" stroke="#6a2808" stroke-width="0.6" opacity="0.4"/>
+
+  <!-- Right shin: exposed tube frame with wrapped wire -->
+  <rect x="109" y="78" width="14" height="24" rx="1" fill="#2a1c0e" stroke="#4a3018" stroke-width="1"/>
+  <line x1="112" y1="78" x2="112" y2="102" stroke="#3a2810" stroke-width="2"/>
+  <line x1="118" y1="78" x2="118" y2="102" stroke="#3a2810" stroke-width="2"/>
+  <!-- Wire wraps -->
+  <line x1="110" y1="82" x2="122" y2="82" stroke="#4a3820" stroke-width="1.2"/>
+  <line x1="110" y1="88" x2="122" y2="88" stroke="#4a3820" stroke-width="1.2"/>
+  <line x1="110" y1="94" x2="122" y2="94" stroke="#4a3820" stroke-width="1.2"/>
+
+  <!-- Thighs — mismatched plates, bolted-on pieces -->
+  <rect x="85" y="56" width="20" height="22" rx="1" fill="url(#shg-scrap-a)" stroke="#5a3820" stroke-width="1"/>
+  <rect x="107" y="58" width="18" height="20" rx="1" fill="url(#shg-scrap-b)" stroke="#4a3018" stroke-width="1"/>
+  <!-- Bolted patch on left thigh (different metal color) -->
+  <rect x="86" y="60" width="9" height="8" rx="0.5" fill="#4a3020" stroke="#6a4030" stroke-width="0.7"/>
+  <circle cx="87" cy="61" r="1.2" fill="#7a5038"/><circle cx="94" cy="61" r="1.2" fill="#7a5038"/>
+  <circle cx="87" cy="67" r="1.2" fill="#7a5038"/><circle cx="94" cy="67" r="1.2" fill="#7a5038"/>
+
+  <!-- TORSO — massive, hulking, multi-layer salvage plates -->
+  <!-- Core torso volume (oversized) -->
+  <rect x="80" y="30" width="52" height="40" rx="2" fill="url(#shg-rust)" stroke="#6a3820" stroke-width="1.2"/>
+  <!-- Layered front armor bolt-ons (4 mismatched pieces) -->
+  <!-- Top-left plate (terran scrap, gunmetal) -->
+  <rect x="80" y="30" width="24" height="18" rx="1" fill="#303c48" stroke="#2a3040" stroke-width="1"/>
+  <!-- Top-right plate (different faction, slightly orange-tinted) -->
+  <rect x="104" y="30" width="28" height="20" rx="1" fill="#3a2818" stroke="#5a3820" stroke-width="1"/>
+  <!-- Mid plate (crude welded bar) -->
+  <rect x="80" y="48" width="52" height="8" rx="0" fill="#2a1c10" stroke="#4a2c18" stroke-width="1"/>
+  <!-- Bottom plate -->
+  <rect x="82" y="56" width="48" height="14" rx="1" fill="#3e2c1c" stroke="#5a3c24" stroke-width="1"/>
+
+  <!-- Weld seams (ugly, rough) -->
+  <path d="M80,48 Q90,47 96,49 Q104,47 112,48 Q120,47 132,48" stroke="#7a4018" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M104,30 Q105,40 104,50" stroke="#7a4018" stroke-width="2" fill="none" opacity="0.5"/>
+
+  <!-- Hazard markings (scavenged warning tape) — mismatched angles -->
+  <rect x="82" y="50" width="48" height="6" fill="none"/>
+  <line x1="82" y1="50" x2="88" y2="56" stroke="#ff6622" stroke-width="3" opacity="0.5"/>
+  <line x1="90" y1="50" x2="96" y2="56" stroke="#ff6622" stroke-width="3" opacity="0.5"/>
+  <line x1="98" y1="50" x2="104" y2="56" stroke="#ff6622" stroke-width="3" opacity="0.5"/>
+  <line x1="106" y1="50" x2="112" y2="56" stroke="#ff6622" stroke-width="3" opacity="0.5"/>
+  <line x1="114" y1="50" x2="120" y2="56" stroke="#ff6622" stroke-width="3" opacity="0.5"/>
+  <line x1="122" y1="50" x2="128" y2="56" stroke="#ff6622" stroke-width="3" opacity="0.4"/>
+
+  <!-- Exhaust stack (pipe welded to back of torso, venting smoke upward-left) -->
+  <rect x="78" y="22" width="6" height="22" rx="1" fill="#1e1208" stroke="#3a2010" stroke-width="0.8"/>
+  <rect x="75" y="20" width="10" height="4" rx="1" fill="#2a1c0c" stroke="#3a2814" stroke-width="0.7"/>
+
+  <!-- Exposed fuel line running across chest -->
+  <path d="M82,44 Q90,42 106,44 Q118,42 130,44" stroke="#3a2010" stroke-width="2.5" fill="none"/>
+  <path d="M82,44 Q90,42 106,44 Q118,42 130,44" stroke="#ff6622" stroke-width="0.8" fill="none" opacity="0.35"/>
+
+  <!-- Oil drip from torso -->
+  <path d="M106,70 Q107,76 106,80" stroke="#0e0804" stroke-width="1.8" fill="none" opacity="0.7"/>
+
+  <!-- SHOULDERS — enormous crude pauldrons, mismatched -->
+  <!-- Left pauldron: huge rounded plate, dented -->
+  <ellipse cx="72" cy="40" rx="18" ry="14" fill="url(#shg-scrap-a)" stroke="#5a3820" stroke-width="1.2"/>
+  <ellipse cx="72" cy="40" rx="13" ry="9" fill="url(#shg-rust)"/>
+  <!-- Left shoulder dent indentation -->
+  <ellipse cx="68" cy="38" rx="5" ry="4" fill="#1e1208" opacity="0.4"/>
+  <!-- Left shoulder bolts -->
+  <circle cx="60" cy="34" r="2.2" fill="#4a3020"/><circle cx="84" cy="34" r="2.2" fill="#4a3020"/>
+  <circle cx="60" cy="46" r="2.2" fill="#4a3020"/><circle cx="84" cy="46" r="2.2" fill="#4a3020"/>
+  <!-- Old faction insignia painted over on left shoulder -->
+  <circle cx="72" cy="40" r="6" fill="none" stroke="#6a4028" stroke-width="0.8" opacity="0.4"/>
+  <line x1="69" y1="37" x2="75" y2="43" stroke="#6a4028" stroke-width="0.7" opacity="0.4"/>
+  <line x1="75" y1="37" x2="69" y2="43" stroke="#6a4028" stroke-width="0.7" opacity="0.4"/>
+
+  <!-- Right pauldron: spiked scrap metal, smaller but angrier -->
+  <polygon points="140,28 160,32 164,54 136,54 132,32" fill="url(#shg-scrap-b)" stroke="#5a3820" stroke-width="1"/>
+  <!-- Right pauldron spikes (welded-on scrap rebar) -->
+  <line x1="142" y1="28" x2="140" y2="18" stroke="#3a2410" stroke-width="3"/>
+  <line x1="150" y1="28" x2="150" y2="16" stroke="#3a2410" stroke-width="3"/>
+  <line x1="158" y1="30" x2="160" y2="20" stroke="#3a2410" stroke-width="3"/>
+  <!-- Spike tips (sharp) -->
+  <polygon points="138,18 140,18 140,14 142,14" fill="#5a3820"/>
+  <polygon points="148,16 150,16 150,12 152,12" fill="#5a3820"/>
+  <polygon points="158,20 160,20 160,16 162,16" fill="#5a3820"/>
+
+  <!-- ARMS -->
+  <!-- Left arm: hydraulic exosuit arm, thick with servo cylinder -->
+  <rect x="56" y="52" width="20" height="26" rx="2" fill="url(#shg-scrap-a)" stroke="#4a3018" stroke-width="1"/>
+  <!-- Hydraulic piston on left arm -->
+  <rect x="60" y="54" width="6" height="16" rx="1" fill="#1e1808" stroke="#3a2810" stroke-width="0.7"/>
+  <rect x="61" y="57" width="4" height="10" rx="0.5" fill="#2a2010" stroke="#ff6622" stroke-width="0.5" stroke-opacity="0.4"/>
+  <!-- Hydraulic leak (orange fluid stain) -->
+  <path d="M62,68 Q63,74 62,78" stroke="#ff6622" stroke-width="1.5" fill="none" opacity="0.4"/>
+
+  <!-- Right arm: HYDRAULIC BUZZSAW ARM -->
+  <!-- Upper arm -->
+  <rect x="136" y="52" width="18" height="22" rx="1" fill="url(#shg-scrap-b)" stroke="#5a3018" stroke-width="1"/>
+  <!-- Forearm mounting frame -->
+  <rect x="134" y="72" width="22" height="14" rx="1" fill="#2a1a0c" stroke="#4a2c14" stroke-width="1"/>
+  <!-- Hydraulic arm actuator -->
+  <rect x="150" y="56" width="8" height="20" rx="1" fill="#1a1208" stroke="#3a2010" stroke-width="0.7"/>
+  <!-- BUZZSAW (circular saw blade bolted to arm end) -->
+  <!-- Saw mounting arm -->
+  <rect x="154" y="82" width="24" height="8" rx="1" fill="#1e1408" stroke="#3a2010" stroke-width="0.8"/>
+  <!-- Saw blade (large circle with teeth) -->
+  <circle cx="184" cy="80" r="16" fill="#1e1808" stroke="#3a2010" stroke-width="1.2"/>
+  <circle cx="184" cy="80" r="13" fill="url(#shg-scrap-b)" stroke="#4a3018" stroke-width="1"/>
+  <!-- Saw teeth (12 notches around circumference) -->
+  <polygon points="184,64 187,68 181,68" fill="#5a3820"/>
+  <polygon points="196,67 196,73 192,70" fill="#5a3820"/>
+  <polygon points="200,80 196,83 196,77" fill="#5a3820"/>
+  <polygon points="196,93 193,89 199,89" fill="#5a3820"/>
+  <polygon points="184,96 181,92 187,92" fill="#5a3820"/>
+  <polygon points="172,93 172,87 176,90" fill="#5a3820"/>
+  <polygon points="168,80 172,77 172,83" fill="#5a3820"/>
+  <polygon points="172,67 175,71 169,71" fill="#5a3820"/>
+  <!-- Center hub -->
+  <circle cx="184" cy="80" r="5" fill="#1a1208" stroke="#3a2010" stroke-width="1.2"/>
+  <circle cx="184" cy="80" r="3" fill="#2a1a0c"/>
+  <!-- Radial blade cuts (etched pattern) -->
+  <line x1="184" y1="67" x2="184" y2="93" stroke="#3a2810" stroke-width="0.6" opacity="0.5"/>
+  <line x1="171" y1="73" x2="197" y2="87" stroke="#3a2810" stroke-width="0.6" opacity="0.5"/>
+  <line x1="171" y1="87" x2="197" y2="73" stroke="#3a2810" stroke-width="0.6" opacity="0.5"/>
+  <!-- Spark from saw -->
+  <circle cx="197" cy="67" r="2" fill="#ffcc00" opacity="0.8" filter="url(#shg-bloom)"/>
+  <circle cx="200" cy="64" r="1.2" fill="#ffaa00" opacity="0.7"/>
+  <circle cx="201" cy="70" r="0.8" fill="#ff8800" opacity="0.8"/>
+  <circle cx="194" cy="62" r="0.9" fill="#ffee00" opacity="0.65"/>
+
+  <!-- NECK — protected by welded collar ring -->
+  <rect x="98" y="20" width="16" height="12" rx="1" fill="url(#shg-scrap-a)" stroke="#4a3018" stroke-width="1"/>
+  <!-- Collar bolts -->
+  <circle cx="100" cy="22" r="1.5" fill="#5a3820"/><circle cx="112" cy="22" r="1.5" fill="#5a3820"/>
+
+  <!-- HEAD — crude helmet: repurposed industrial container -->
+  <!-- Main dome (asymmetric, dented) -->
+  <path d="M92,22 C90,6 122,4 122,22 Z" fill="url(#shg-rust)" stroke="#6a3818" stroke-width="1.2"/>
+  <!-- Head front plate (bolted on separately) -->
+  <rect x="93" y="14" width="26" height="10" rx="1" fill="#2e1e10" stroke="#4a2c16" stroke-width="1"/>
+  <!-- Eye slit (horizontal, glowing orange-red) -->
+  <rect x="94" y="16" width="24" height="5" rx="0.5" fill="#0e0804"/>
+  <rect x="95" y="17" width="22" height="3" rx="0.3" fill="#ff6622" opacity="0.8" filter="url(#shg-bloom)"/>
+  <rect x="98" y="17.5" width="16" height="2" rx="0.3" fill="#ffaa44" opacity="0.9"/>
+  <!-- Crude "mouth" grill (ventilation slots) -->
+  <rect x="96" y="22" width="4" height="2" rx="0.3" fill="#1a1008"/>
+  <rect x="102" y="22" width="4" height="2" rx="0.3" fill="#1a1008"/>
+  <rect x="108" y="22" width="4" height="2" rx="0.3" fill="#1a1008"/>
+  <rect x="114" y="22" width="4" height="2" rx="0.3" fill="#1a1008"/>
+  <!-- Dent on head left side -->
+  <path d="M95,10 Q93,14 96,16" stroke="#2a1808" stroke-width="3" fill="none" opacity="0.4"/>
+  <!-- Weld bead on top of head (crude repair) -->
+  <path d="M98,6 Q106,4 115,6" stroke="#8a4820" stroke-width="2.5" fill="none" opacity="0.5"/>
+  <!-- Mismatched bolt sticking out of helmet right -->
+  <rect x="119" y="12" width="7" height="3" rx="0.5" fill="#3a2810" stroke="#4a3018" stroke-width="0.7"/>
+  <circle cx="125" cy="13.5" r="2.5" fill="#3a2810" stroke="#5a3820" stroke-width="0.7"/>
+
+  <!-- Left fist / crude slug-thrower (pipe weapon) -->
+  <!-- Fist -->
+  <rect x="54" y="76" width="20" height="12" rx="2" fill="#2a1c10"/>
+  <!-- Pipe gun barrel (bolted to fist, extending left) -->
+  <rect x="16" y="79" width="42" height="6" rx="1" fill="#1a1208" stroke="#3a2010" stroke-width="0.8"/>
+  <!-- Pipe segments (joined with tape/clamps) -->
+  <rect x="22" y="78" width="3" height="8" rx="0.5" fill="#2a1a0c"/>
+  <rect x="36" y="78" width="3" height="8" rx="0.5" fill="#2a1a0c"/>
+  <rect x="50" y="78" width="3" height="8" rx="0.5" fill="#2a1a0c"/>
+  <!-- Barrel end -->
+  <rect x="14" y="78" width="5" height="10" rx="0.5" fill="#0e0c08"/>
+  <!-- Muzzle flash residue -->
+  <ellipse cx="14" cy="83" rx="5" ry="3" fill="#ff9944" opacity="0.35" filter="url(#shg-bloom)"/>
+
+  <!-- Data panel -->
+  <rect x="4" y="4" width="52" height="50" rx="2" fill="#0a0604" stroke="#2a1608" stroke-width="0.8" opacity="0.92"/>
+  <text x="7" y="12" font-family="'JetBrains Mono',monospace" font-size="5" fill="#ff6622" letter-spacing="1" opacity="0.9">GRD FORCES</text>
+  <text x="7" y="20" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#5a3020">ARM: SALVAGE COLLAGE</text>
+  <text x="7" y="27" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#5a3020">WPN: PIPE SLUG / SAW</text>
+  <text x="7" y="34" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#5a3020">UNIT: UNIQUE — NO TWIN</text>
+  <text x="7" y="41" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#ff6622" opacity="0.7">OIL LEAK ACTIVE</text>
+  <text x="7" y="48" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#ff8844" opacity="0.6">SPARKS: YES</text>
+
+  <!-- Scanlines + vignette -->
+  <rect width="280" height="120" fill="url(#shg-scan)"/>
+  <rect width="280" height="120" fill="url(#shg-vig)"/>
+
+  <!-- Corner brackets -->
+  <g stroke="#ff6622" stroke-width="1.2" fill="none" opacity="0.5">
+    <path d="M4,14 L4,4 L14,4"/><path d="M266,4 L276,4 L276,14"/>
+    <path d="M4,106 L4,116 L14,116"/><path d="M266,116 L276,116 L276,106"/>
+  </g>
+  <text x="6" y="118" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#ff6622" opacity="0.35" letter-spacing="2">SH//GRD-01</text>
+</svg></div><div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#fff;margin-bottom:4px">Ground Forces</div><div style="font-size:0.75rem;color:var(--text-mid);line-height:1.5">Massive hulking bodies wrapped in scrap metal. No two units alike — unique collages of salvaged parts from different factions and eras. Mismatched armor colors. Oversized crude weapons — slug-throwers from pipe, buzzsaws on hydraulic arms. Everything belches smoke, leaks oil, and sparks.</div></div>
+      <div class="card"><div style="margin-bottom:10px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 120" width="100%" style="display:block">
+  <defs>
+    <radialGradient id="sha-bg" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#0c0804"/>
+      <stop offset="100%" stop-color="#060402"/>
+    </radialGradient>
+    <linearGradient id="sha-hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5a3c22"/>
+      <stop offset="50%" stop-color="#3a2412"/>
+      <stop offset="100%" stop-color="#22140a"/>
+    </linearGradient>
+    <linearGradient id="sha-rust" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6a3a18"/>
+      <stop offset="100%" stop-color="#2e180a"/>
+    </linearGradient>
+    <linearGradient id="sha-fire" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ff4400" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#ff9900" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#ffee44" stop-opacity="0.4"/>
+    </linearGradient>
+    <radialGradient id="sha-engine-hot" cx="50%" cy="100%" r="100%">
+      <stop offset="0%" stop-color="#ff8800" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#ff4400" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ff2200" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sha-vig" cx="50%" cy="50%" r="70%">
+      <stop offset="50%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.65"/>
+    </radialGradient>
+    <filter id="sha-bloom">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="sha-soft">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <filter id="sha-hard">
+      <feGaussianBlur stdDeviation="1.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="sha-scan" width="280" height="3" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="1.5" x2="280" y2="1.5" stroke="#000" stroke-width="1" opacity="0.10"/>
+    </pattern>
+    <clipPath id="sha-clip"><rect width="280" height="120"/></clipPath>
+  </defs>
+
+  <!-- SMOKY SKY BG -->
+  <rect width="280" height="120" fill="url(#sha-bg)"/>
+  <!-- Haze layer (smoke from craft) -->
+  <rect width="280" height="120" fill="#1a0c04" opacity="0.15"/>
+
+  <!-- Exhaust smoke trails (behind craft, chaotic angles) -->
+  <ellipse cx="50" cy="58" rx="40" ry="12" fill="#2a1c0e" opacity="0.45" filter="url(#sha-soft)"/>
+  <ellipse cx="30" cy="48" rx="28" ry="8" fill="#2a1c0e" opacity="0.30" filter="url(#sha-soft)"/>
+  <ellipse cx="20" cy="70" rx="22" ry="7" fill="#1a1008" opacity="0.35" filter="url(#sha-soft)"/>
+  <!-- Shed part (trailing bolt in the wake) -->
+  <rect x="38" y="68" width="5" height="3" rx="0.5" fill="#3a2810" transform="rotate(15 40 69)"/>
+  <rect x="22" y="54" width="4" height="2" rx="0.5" fill="#2a1c0c" transform="rotate(-8 24 55)"/>
+
+  <!-- THE SCRAP FLIER — open-frame construction, no aerodynamics, pure brute thrust -->
+
+  <!-- MAIN FRAME — exposed steel I-beam skeleton (misaligned) -->
+  <!-- Central spine (slightly canted) -->
+  <rect x="68" y="52" width="120" height="8" rx="0" fill="#2a1c0c" stroke="#4a2c14" stroke-width="1.2" transform="rotate(-2 128 56)"/>
+  <!-- Cross-member 1 (forward) -->
+  <rect x="148" y="40" width="6" height="32" rx="0" fill="#2a1c0c" stroke="#4a2c14" stroke-width="1"/>
+  <!-- Cross-member 2 (rear) -->
+  <rect x="96" y="38" width="5" height="34" rx="0" fill="#2a1c0c" stroke="#3a2010" stroke-width="1" transform="rotate(3 98 55)"/>
+
+  <!-- WING PORT — asymmetric, broad but bent at middle, different salvage sheet -->
+  <polygon points="96,44 68,28 40,36 50,54 96,54" fill="url(#sha-hull)" stroke="#5a3218" stroke-width="1"/>
+  <!-- Port wing upper surface rivets -->
+  <circle cx="60" cy="36" r="1.5" fill="#4a3020"/><circle cx="74" cy="32" r="1.5" fill="#4a3020"/>
+  <circle cx="88" cy="34" r="1.5" fill="#4a3020"/><circle cx="56" cy="44" r="1.5" fill="#4a3020"/>
+  <!-- Wing bend crease (damaged, bent mid-span) -->
+  <line x1="68" y1="28" x2="68" y2="52" stroke="#6a3a1a" stroke-width="2" opacity="0.6"/>
+  <!-- Port wing rust streak -->
+  <path d="M64,30 Q62,40 64,50" stroke="#8a3c10" stroke-width="1.2" fill="none" opacity="0.4"/>
+  <!-- Port wing misaligned secondary panel (scavenged extra lift surface) -->
+  <polygon points="52,46 40,36 36,44 46,56" fill="url(#sha-rust)" stroke="#5a2e12" stroke-width="0.8" transform="rotate(5 44 46)"/>
+
+  <!-- WING STARBOARD — narrower, sharper, different metal origin -->
+  <polygon points="96,54 68,60 50,72 68,80 96,64" fill="url(#sha-rust)" stroke="#5a3218" stroke-width="1"/>
+  <!-- Starboard exposed rib lines -->
+  <line x1="96" y1="58" x2="52" y2="70" stroke="#3a2010" stroke-width="2"/>
+  <line x1="96" y1="62" x2="60" y2="74" stroke="#2e1c0c" stroke-width="1.5"/>
+  <!-- Starboard rivet row -->
+  <circle cx="76" cy="64" r="1.5" fill="#4a3020"/><circle cx="64" cy="68" r="1.5" fill="#4a3020"/>
+  <!-- Hanging duct-taped panel (about to fall off) -->
+  <polygon points="58,72 66,68 68,78 60,82" fill="#2a1c0c" stroke="#3a2010" stroke-width="0.7" opacity="0.7"/>
+  <line x1="58" y1="72" x2="60" y2="82" stroke="#8a5828" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- FUSELAGE (cab) — asymmetric bolted box, forward/right of wings -->
+  <rect x="148" y="42" width="46" height="28" rx="1" fill="url(#sha-hull)" stroke="#5a3218" stroke-width="1.2"/>
+  <!-- Cab plate seams (different sheets, welded sloppily) -->
+  <line x1="165" y1="42" x2="165" y2="70" stroke="#1e1008" stroke-width="2"/>
+  <line x1="180" y1="42" x2="180" y2="70" stroke="#1e1008" stroke-width="2"/>
+  <!-- Cab weld beads -->
+  <path d="M148,56 Q160,54 165,56 Q172,54 180,56 Q188,54 194,56" stroke="#8a4820" stroke-width="2" fill="none" opacity="0.5"/>
+  <!-- Hazard stripe across cab -->
+  <line x1="150" y1="42" x2="156" y2="70" stroke="#ff6622" stroke-width="3" opacity="0.35"/>
+  <line x1="162" y1="42" x2="168" y2="70" stroke="#ff6622" stroke-width="3" opacity="0.35"/>
+
+  <!-- OPEN COCKPIT — no canopy, just a seat bolted in -->
+  <rect x="166" y="36" width="22" height="14" rx="1" fill="#0e0804" stroke="#3a2010" stroke-width="0.8"/>
+  <!-- Seat back (crude chair bolted to frame) -->
+  <rect x="168" y="38" width="8" height="10" rx="0.5" fill="#2a1c0c" stroke="#3a2810" stroke-width="0.7"/>
+  <rect x="168" y="46" width="12" height="4" rx="0.5" fill="#1e140a"/>
+  <!-- Pilot (small humanoid silhouette, no helmet) -->
+  <circle cx="173" cy="38" r="3.5" fill="#2a1e14"/>
+  <rect x="170" y="40" width="7" height="6" rx="1" fill="#2a1e14"/>
+  <!-- Pilot gripping frame bar (white-knuckle) -->
+  <line x1="162" y1="44" x2="182" y2="44" stroke="#3a2810" stroke-width="2.5"/>
+  <!-- Wind blur lines on pilot (open air, fast) -->
+  <line x1="163" y1="36" x2="158" y2="33" stroke="#4a3818" stroke-width="0.8" opacity="0.4"/>
+  <line x1="163" y1="38" x2="157" y2="36" stroke="#4a3818" stroke-width="0.6" opacity="0.35"/>
+
+  <!-- ROTARY FAN ENGINE — port side, misaligned axis -->
+  <!-- Engine nacelle (asymmetric tube) -->
+  <ellipse cx="76" cy="44" rx="12" ry="10" fill="#1e1408" stroke="#3a2010" stroke-width="1.2"/>
+  <ellipse cx="76" cy="44" rx="9" ry="7" fill="#141008" stroke="#2a1808" stroke-width="0.8"/>
+  <!-- Fan blades (5, rotational blur) -->
+  <line x1="76" y1="35" x2="76" y2="53" stroke="#2e1c0c" stroke-width="2.5" transform="rotate(0 76 44)"/>
+  <line x1="76" y1="35" x2="76" y2="53" stroke="#2e1c0c" stroke-width="2.5" transform="rotate(36 76 44)"/>
+  <line x1="76" y1="35" x2="76" y2="53" stroke="#2e1c0c" stroke-width="2.5" transform="rotate(72 76 44)"/>
+  <line x1="76" y1="35" x2="76" y2="53" stroke="#2e1c0c" stroke-width="2.5" transform="rotate(108 76 44)"/>
+  <line x1="76" y1="35" x2="76" y2="53" stroke="#2e1c0c" stroke-width="2.5" transform="rotate(144 76 44)"/>
+  <!-- Fan hub -->
+  <circle cx="76" cy="44" r="4" fill="#1a1008"/>
+  <circle cx="76" cy="44" r="2" fill="#2e1c0c"/>
+  <!-- Fan motion blur ring -->
+  <circle cx="76" cy="44" r="9" fill="none" stroke="#2a1c0c" stroke-width="3" opacity="0.3"/>
+  <!-- Engine exhaust below nacelle -->
+  <ellipse cx="76" cy="54" rx="8" ry="4" fill="#ff6622" opacity="0.15" filter="url(#sha-bloom)"/>
+
+  <!-- JET ENGINE — starboard side, bolted to frame on wrong angle -->
+  <!-- Jet tube (canted 8 degrees off horizontal) -->
+  <rect x="80" y="62" width="50" height="14" rx="2" fill="#1a1208" stroke="#3a2010" stroke-width="1.2" transform="rotate(-8 105 69)"/>
+  <!-- Jet intake (front, crude cone) -->
+  <ellipse cx="86" cy="65" rx="7" ry="9" fill="#0e0c08" stroke="#2a1808" stroke-width="1" transform="rotate(-8 86 65)"/>
+  <ellipse cx="86" cy="65" rx="4" ry="6" fill="#080806" transform="rotate(-8 86 65)"/>
+  <!-- Jet exhaust (rear) — fire cone -->
+  <polygon points="126,62 126,74 152,68" fill="url(#sha-fire)" filter="url(#sha-bloom)" transform="rotate(-8 130 68)"/>
+  <polygon points="126,64 126,72 142,68" fill="#ffcc00" opacity="0.7" transform="rotate(-8 130 68)"/>
+  <polygon points="126,66 126,70 134,68" fill="#ffffff" opacity="0.65" transform="rotate(-8 130 68)"/>
+  <!-- Engine bolts visible (the mount is questionable) -->
+  <circle cx="90" cy="60" r="2" fill="#3a2010"/><circle cx="108" cy="58" r="2" fill="#3a2010"/>
+  <circle cx="122" cy="59" r="2" fill="#3a2010"/>
+
+  <!-- PAYLOAD CRANE (bomb dropped via crane arm from belly) -->
+  <line x1="154" y1="68" x2="154" y2="84" stroke="#2a1c0c" stroke-width="2.5"/>
+  <!-- Crude hook -->
+  <path d="M152,84 Q150,90 154,90 Q158,90 158,84" stroke="#3a2010" stroke-width="2" fill="none"/>
+  <!-- Bomb hanging from hook (something heavy) -->
+  <ellipse cx="154" cy="96" rx="8" ry="10" fill="#1e1408" stroke="#3a2010" stroke-width="1.2"/>
+  <rect x="149" y="90" width="10" height="5" rx="0.5" fill="#2a1c0c"/>
+  <!-- Bomb fin (improvised) -->
+  <polygon points="147,96 142,104 147,104" fill="#1a1008"/>
+  <polygon points="161,96 166,104 161,104" fill="#1a1008"/>
+  <line x1="154" y1="106" x2="154" y2="110" stroke="#1a1008" stroke-width="2"/>
+
+  <!-- Sparks flying from loose engine mount -->
+  <circle cx="128" cy="60" r="1.8" fill="#ffcc00" opacity="0.85" filter="url(#sha-hard)"/>
+  <circle cx="132" cy="55" r="1.2" fill="#ffaa00" opacity="0.75"/>
+  <circle cx="124" cy="56" r="0.9" fill="#ff8800" opacity="0.7"/>
+  <circle cx="135" cy="62" r="0.8" fill="#ffee00" opacity="0.65"/>
+  <circle cx="130" cy="50" r="0.7" fill="#ff6622" opacity="0.6"/>
+
+  <!-- Data panel -->
+  <rect x="192" y="4" width="82" height="44" rx="2" fill="#090604" stroke="#2a1608" stroke-width="0.8" opacity="0.9"/>
+  <text x="195" y="12" font-family="'JetBrains Mono',monospace" font-size="5" fill="#ff6622" letter-spacing="1" opacity="0.9">AIR FORCES</text>
+  <text x="195" y="20" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#5a3020">PROP: BRUTE-FORCE THRUST</text>
+  <text x="195" y="27" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#5a3020">PARTS LOST IN FLIGHT: YES</text>
+  <text x="195" y="34" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#5a3020">PILOT: EXPOSED / UNSTRAPPED</text>
+  <text x="195" y="41" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#ff8844" opacity="0.7">NOISE: EXTREME</text>
+
+  <!-- Scanlines + vignette -->
+  <rect width="280" height="120" fill="url(#sha-scan)"/>
+  <rect width="280" height="120" fill="url(#sha-vig)"/>
+
+  <!-- Corner brackets -->
+  <g stroke="#ff6622" stroke-width="1.2" fill="none" opacity="0.5">
+    <path d="M4,14 L4,4 L14,4"/><path d="M266,4 L276,4 L276,14"/>
+    <path d="M4,106 L4,116 L14,116"/><path d="M266,116 L276,116 L276,106"/>
+  </g>
+  <text x="6" y="118" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#ff6622" opacity="0.35" letter-spacing="2">SH//AIR-01</text>
+</svg></div><div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#fff;margin-bottom:4px">Air Forces</div><div style="font-size:0.75rem;color:var(--text-mid);line-height:1.5">Flying scrap heaps held aloft by brute-force thrust. Jets bolted to frames, rotors on misaligned axles, open-air cockpits. Aircraft rattle, shake, and shed parts mid-flight. Not designed to be safe — designed to get close enough to drop something heavy.</div></div>
+      <div class="card"><div style="margin-bottom:10px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 120" width="100%" style="display:block">
+  <defs>
+    <radialGradient id="shs-bg" cx="45%" cy="45%" r="80%">
+      <stop offset="0%" stop-color="#0a0804"/>
+      <stop offset="100%" stop-color="#050402"/>
+    </radialGradient>
+    <radialGradient id="shs-rock" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#4a3c2a"/>
+      <stop offset="60%" stop-color="#2e2416"/>
+      <stop offset="100%" stop-color="#1a140c"/>
+    </radialGradient>
+    <radialGradient id="shs-rock2" cx="60%" cy="60%" r="60%">
+      <stop offset="0%" stop-color="#3e3020"/>
+      <stop offset="100%" stop-color="#18120a"/>
+    </radialGradient>
+    <linearGradient id="shs-scrap" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5a3c22"/>
+      <stop offset="100%" stop-color="#2a1c0c"/>
+    </linearGradient>
+    <radialGradient id="shs-thruster-fire" cx="100%" cy="50%" r="100%">
+      <stop offset="0%" stop-color="#ff8800" stop-opacity="1"/>
+      <stop offset="30%" stop-color="#ff5500" stop-opacity="0.75"/>
+      <stop offset="60%" stop-color="#ff2200" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#aa1100" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shs-vig" cx="50%" cy="50%" r="70%">
+      <stop offset="50%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.65"/>
+    </radialGradient>
+    <filter id="shs-bloom">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shs-soft">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <filter id="shs-hard">
+      <feGaussianBlur stdDeviation="1.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="shs-scan" width="280" height="3" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="1.5" x2="280" y2="1.5" stroke="#000" stroke-width="1" opacity="0.09"/>
+    </pattern>
+    <clipPath id="shs-clip"><rect width="280" height="120"/></clipPath>
+  </defs>
+
+  <!-- DEEP SPACE -->
+  <rect width="280" height="120" fill="url(#shs-bg)"/>
+
+  <!-- Stars (dim — deep space) -->
+  <g fill="#fff">
+    <circle cx="6" cy="7" r="0.5" opacity="0.38"/>
+    <circle cx="20" cy="18" r="0.7" opacity="0.42"/>
+    <circle cx="42" cy="5" r="0.4" opacity="0.3"/>
+    <circle cx="12" cy="40" r="0.6" opacity="0.35"/>
+    <circle cx="258" cy="8" r="0.5" opacity="0.4"/>
+    <circle cx="272" cy="24" r="0.7" opacity="0.35"/>
+    <circle cx="248" cy="42" r="0.4" opacity="0.32"/>
+    <circle cx="276" cy="54" r="0.5" opacity="0.28"/>
+    <circle cx="200" cy="6" r="0.5" opacity="0.34"/>
+    <circle cx="160" cy="10" r="0.6" opacity="0.3"/>
+  </g>
+
+  <!-- ──── PRIMARY VESSEL: hollowed-out asteroid with engines bolted on ──── -->
+
+  <!-- ASTEROID BODY — irregular rocky mass -->
+  <!-- Rock mass glow (dim, engine heat reflected on surface) -->
+  <ellipse cx="134" cy="60" rx="65" ry="42" fill="#ff6622" opacity="0.03" filter="url(#shs-soft)"/>
+
+  <!-- Main asteroid silhouette (irregular polygon, not a sphere) -->
+  <polygon points="74,38 96,22 132,18 162,24 182,42 188,62 178,80 152,94 116,96 86,86 68,68 70,50" fill="url(#shs-rock)" stroke="#3a2c18" stroke-width="1"/>
+  <!-- Secondary rock layer (darker facets) -->
+  <polygon points="84,42 108,28 140,26 164,36 174,56 166,72 144,84 110,84 88,74 78,58" fill="url(#shs-rock2)" stroke="#2a2010" stroke-width="0.8"/>
+  <!-- Rock surface crater impacts -->
+  <ellipse cx="100" cy="36" rx="10" ry="7" fill="#1a1208" stroke="#2a1c0c" stroke-width="0.8"/>
+  <ellipse cx="100" cy="36" rx="6" ry="4" fill="#100e08"/>
+  <ellipse cx="154" cy="30" rx="8" ry="6" fill="#1a1208" stroke="#2a1c0c" stroke-width="0.7"/>
+  <ellipse cx="154" cy="30" rx="4" ry="3" fill="#100e08"/>
+  <ellipse cx="168" cy="68" rx="7" ry="5" fill="#1a1208" stroke="#2a1c0c" stroke-width="0.7"/>
+  <ellipse cx="168" cy="68" rx="4" ry="3" fill="#100e08"/>
+  <ellipse cx="92" cy="76" rx="9" ry="6" fill="#1a1208" stroke="#2a1c0c" stroke-width="0.7"/>
+  <ellipse cx="92" cy="76" rx="5" ry="3.5" fill="#100e08"/>
+  <!-- Surface texture crack lines -->
+  <path d="M110,30 Q118,38 114,48" stroke="#0e0c08" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M148,42 Q140,52 144,62" stroke="#0e0c08" stroke-width="1.2" fill="none" opacity="0.5"/>
+  <path d="M86,58 Q96,64 92,72" stroke="#0e0c08" stroke-width="1.2" fill="none" opacity="0.5"/>
+  <path d="M156,60 Q162,66 158,76" stroke="#0e0c08" stroke-width="1" fill="none" opacity="0.4"/>
+  <!-- Boulder protrusion top-right -->
+  <ellipse cx="172" cy="38" rx="12" ry="9" fill="#3a2c1a" stroke="#2e2412" stroke-width="1"/>
+  <ellipse cx="172" cy="38" rx="8" ry="6" fill="#2e2212"/>
+
+  <!-- SCRAP BULKHEAD PATCHES bolted to asteroid surface -->
+  <!-- Patch 1: top surface, gunmetal plate -->
+  <rect x="108" y="26" width="36" height="14" rx="1" fill="#2e3040" stroke="#1e2030" stroke-width="1" transform="rotate(-3 126 33)"/>
+  <circle cx="112" cy="28" r="1.5" fill="#3a3c4a"/><circle cx="140" cy="28" r="1.5" fill="#3a3c4a"/>
+  <circle cx="112" cy="38" r="1.5" fill="#3a3c4a"/><circle cx="140" cy="38" r="1.5" fill="#3a3c4a"/>
+  <!-- Patch 1 weld bead -->
+  <path d="M108,33 Q122,31 126,33 Q132,31 144,33" stroke="#8a4820" stroke-width="1.8" fill="none" opacity="0.5" transform="rotate(-3 126 33)"/>
+  <!-- Patch 2: right side, orange faction plate -->
+  <rect x="154" y="48" width="30" height="16" rx="1" fill="url(#shs-scrap)" stroke="#5a3018" stroke-width="1" transform="rotate(5 169 56)"/>
+  <circle cx="156" cy="50" r="1.5" fill="#6a3820"/><circle cx="182" cy="50" r="1.5" fill="#6a3820"/>
+  <!-- Hazard stripe on patch 2 -->
+  <line x1="158" y1="48" x2="162" y2="64" stroke="#ff6622" stroke-width="2.5" opacity="0.4" transform="rotate(5 169 56)"/>
+  <line x1="166" y1="48" x2="170" y2="64" stroke="#ff6622" stroke-width="2.5" opacity="0.4" transform="rotate(5 169 56)"/>
+  <!-- Patch 3: lower left, different metal colour -->
+  <rect x="88" y="66" width="28" height="14" rx="1" fill="#303828" stroke="#2a3020" stroke-width="1" transform="rotate(-6 102 73)"/>
+  <circle cx="90" cy="68" r="1.5" fill="#404830"/><circle cx="114" cy="68" r="1.5" fill="#404830"/>
+
+  <!-- WEAPONS BOLTED TO SURFACE — macro-cannon (top mount) -->
+  <!-- Cannon base ring -->
+  <circle cx="128" cy="30" r="8" fill="#1e1a14" stroke="#3a3020" stroke-width="1"/>
+  <circle cx="128" cy="30" r="5" fill="#141210"/>
+  <!-- Cannon barrel (enormous, extending right) -->
+  <rect x="128" y="26" width="52" height="8" rx="1" fill="#18140e" stroke="#2e2418" stroke-width="0.8"/>
+  <!-- Barrel reinforcing bands -->
+  <rect x="136" y="25" width="4" height="10" rx="0.3" fill="#221c12"/>
+  <rect x="152" y="25" width="4" height="10" rx="0.3" fill="#221c12"/>
+  <rect x="168" y="25" width="4" height="10" rx="0.3" fill="#221c12"/>
+  <!-- Muzzle brake -->
+  <rect x="178" y="24" width="7" height="12" rx="0.5" fill="#141008"/>
+  <!-- Shell loading arm (visible mechanical loader) -->
+  <rect x="118" y="36" width="20" height="6" rx="0.5" fill="#1e1810" stroke="#2e2416" stroke-width="0.7"/>
+  <rect x="116" y="36" width="4" height="6" rx="0.5" fill="#181410"/>
+  <!-- Shell in loader -->
+  <ellipse cx="120" cy="39" rx="3" ry="5" fill="#2a2416"/>
+
+  <!-- SECONDARY WEAPON: spike array right side (spike gun from pipe) -->
+  <rect x="174" y="54" width="6" height="22" rx="0.5" fill="#1a1408" stroke="#2e1e0c" stroke-width="0.7" transform="rotate(15 177 65)"/>
+  <rect x="180" y="52" width="6" height="22" rx="0.5" fill="#1a1408" stroke="#2e1e0c" stroke-width="0.7" transform="rotate(20 183 63)"/>
+  <rect x="186" y="50" width="6" height="20" rx="0.5" fill="#1a1408" stroke="#2e1e0c" stroke-width="0.7" transform="rotate(25 189 60)"/>
+
+  <!-- THRUSTER ARRAY (3 mismatched engines bolted to asteroid rear) -->
+  <!-- Thruster 1 (top, chemical) -->
+  <rect x="60" y="30" width="22" height="14" rx="1" fill="#18120a" stroke="#2e1e0c" stroke-width="1"/>
+  <ellipse cx="71" cy="37" rx="7" ry="7" fill="#0e0c08" stroke="#1e1408" stroke-width="0.8"/>
+  <ellipse cx="71" cy="37" rx="4" ry="4" fill="#080806"/>
+  <polygon points="48,31 48,43 22,37" fill="url(#shs-thruster-fire)" filter="url(#shs-bloom)"/>
+  <polygon points="48,33 48,41 32,37" fill="#ffaa00" opacity="0.7"/>
+  <polygon points="48,35 48,39 38,37" fill="#ffffff" opacity="0.65"/>
+
+  <!-- Thruster 2 (mid, different origin — wider) -->
+  <rect x="58" y="50" width="26" height="18" rx="1" fill="#1e1810" stroke="#3a2810" stroke-width="1" transform="rotate(4 71 59)"/>
+  <ellipse cx="71" cy="59" rx="9" ry="9" fill="#0e0c06" stroke="#1e1408" stroke-width="1" transform="rotate(4 71 59)"/>
+  <ellipse cx="71" cy="59" rx="6" ry="6" fill="#080806" transform="rotate(4 71 59)"/>
+  <polygon points="47,52 47,66 14,59" fill="url(#shs-thruster-fire)" filter="url(#shs-bloom)" transform="rotate(4 47 59)"/>
+  <polygon points="47,54 47,64 24,59" fill="#ffaa00" opacity="0.7" transform="rotate(4 47 59)"/>
+  <polygon points="47,56 47,62 36,59" fill="#ffffff" opacity="0.6" transform="rotate(4 47 59)"/>
+
+  <!-- Thruster 3 (bottom, smaller, offset angle — visually wrong) -->
+  <rect x="62" y="70" width="18" height="12" rx="1" fill="#141008" stroke="#2a1808" stroke-width="0.8" transform="rotate(-6 71 76)"/>
+  <ellipse cx="71" cy="76" rx="6" ry="6" fill="#0c0a06" stroke="#1a1206" stroke-width="0.8" transform="rotate(-6 71 76)"/>
+  <ellipse cx="71" cy="76" rx="3.5" ry="3.5" fill="#060604" transform="rotate(-6 71 76)"/>
+  <polygon points="48,70 48,82 24,76" fill="url(#shs-thruster-fire)" filter="url(#shs-bloom)" transform="rotate(-6 48 76)" opacity="0.85"/>
+  <polygon points="48,72 48,80 34,76" fill="#ff8800" opacity="0.65" transform="rotate(-6 48 76)"/>
+
+  <!-- Thruster mounting bolts (visible, structural concern) -->
+  <circle cx="62" cy="48" r="2.5" fill="#2e2010" stroke="#4a3018" stroke-width="0.7"/>
+  <circle cx="62" cy="70" r="2.5" fill="#2e2010" stroke="#4a3018" stroke-width="0.7"/>
+  <circle cx="56" cy="32" r="2.5" fill="#2e2010" stroke="#4a3018" stroke-width="0.7"/>
+
+  <!-- Engine exhaust turbulence trails -->
+  <ellipse cx="14" cy="37" rx="14" ry="6" fill="#ff6622" opacity="0.06" filter="url(#shs-soft)"/>
+  <ellipse cx="10" cy="59" rx="12" ry="7" fill="#ff6622" opacity="0.05" filter="url(#shs-soft)"/>
+  <ellipse cx="18" cy="76" rx="10" ry="5" fill="#ff5500" opacity="0.04" filter="url(#shs-soft)"/>
+
+  <!-- ──── SECOND VESSEL (escort — smaller asteroid silhouette, upper right) ──── -->
+  <g opacity="0.75" transform="translate(142, -18) scale(0.45)" clip-path="url(#shs-clip)">
+    <polygon points="74,38 96,22 132,18 162,24 182,42 188,62 178,80 152,94 116,96 86,86 68,68 70,50" fill="#2a2010" stroke="#3a2c18" stroke-width="1.5"/>
+    <polygon points="84,42 108,28 140,26 164,36 174,56 166,72 144,84 110,84 88,74 78,58" fill="#1e180e" stroke="#2a1c0c" stroke-width="1"/>
+    <!-- Second ship cannon (different silhouette) -->
+    <rect x="108" y="26" width="44" height="10" rx="1" fill="#181410" stroke="#28201a" stroke-width="1"/>
+    <!-- Engine fire (single thruster, different position) -->
+    <polygon points="74,52 74,66 44,59" fill="#ff7700" opacity="0.8"/>
+    <polygon points="74,55 74,63 56,59" fill="#ffaa00" opacity="0.6"/>
+    <!-- Bolted patches, different layout — no two ships the same -->
+    <rect x="96" y="44" width="40" height="18" rx="1" fill="#2e2014" stroke="#3a2c18" stroke-width="1.2" transform="rotate(8 116 53)"/>
+  </g>
+
+  <!-- Data panel -->
+  <rect x="4" y="4" width="58" height="46" rx="2" fill="#080604" stroke="#2a1808" stroke-width="0.8" opacity="0.92"/>
+  <text x="7" y="12" font-family="'JetBrains Mono',monospace" font-size="5" fill="#ff6622" letter-spacing="1" opacity="0.9">SPACE FLEET</text>
+  <text x="7" y="20" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#5a3020">HULL: HOLLOWED ASTEROID</text>
+  <text x="7" y="27" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#5a3020">SILHOUETTE: UNIQUE EACH</text>
+  <text x="7" y="34" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#5a3020">PROP: BOLTED CHEM ENGINE</text>
+  <text x="7" y="41" font-family="'JetBrains Mono',monospace" font-size="3.8" fill="#ff8844" opacity="0.65">STRUCT: MOUNTAIN-SOUND</text>
+
+  <!-- Scanlines + vignette -->
+  <rect width="280" height="120" fill="url(#shs-scan)"/>
+  <rect width="280" height="120" fill="url(#shs-vig)"/>
+
+  <!-- Corner brackets -->
+  <g stroke="#ff6622" stroke-width="1.2" fill="none" opacity="0.5">
+    <path d="M4,14 L4,4 L14,4"/><path d="M266,4 L276,4 L276,14"/>
+    <path d="M4,106 L4,116 L14,116"/><path d="M266,116 L276,116 L276,106"/>
+  </g>
+  <text x="6" y="118" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#ff6622" opacity="0.35" letter-spacing="2">SH//SPC-01</text>
+</svg></div><div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#fff;margin-bottom:4px">Space Fleet</div><div style="font-size:0.75rem;color:var(--text-mid);line-height:1.5">Ships that look like asteroids welded to engines. Hollowed-out captured asteroids with scrap-metal bulkheads and weapons bolted to every surface. Visually chaotic — no two ships share a silhouette. Structurally sound the way a mountain is.</div></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label" style="color:var(--horde)">Gameplay</div>
+    <div class="section-heading" id="sec-ch7-2">Primary Mechanic: Scrap Stacks <span class="proto-badge">PROTOTYPE LOCKED</span></div>
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--horde);margin-bottom:8px">DEATHS MAKE SURVIVORS STRONGER — §17.7 CONFIRMED VALUES</div>
+      <div style="font-size:0.85rem;color:var(--text-body);line-height:1.65;margin-bottom:12px">Every unit that dies within 150 px of a Scrap-Horde unit — friend, foe, or neutral — triggers a Scrap Stack. Nearby Horde units automatically collect, gaining cumulative armor and damage bonuses. The damage reduction cap is 0.75. Stacks reset each battle.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="font-size:0.78rem;color:var(--text-mid);line-height:1.55">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Per Stack:</strong> +3% armor, +2% damage (cumulative)</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Trigger Radius:</strong> 150 px from any death</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">damageReduction Cap:</strong> 0.75</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Sources:</strong> ALL deaths — enemy, allied, own units</div>
+          <div><strong style="color:var(--text-hi)">Reset:</strong> Each battle (does not carry over)</div>
+        </div>
+        <div style="font-size:0.78rem;color:var(--text-mid);line-height:1.55">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">With Commander:</strong> Stacks 15% more effective, Commander at 2× rate</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Counter:</strong> Quick decisive strikes before stacks accumulate</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Anti-Counter:</strong> Attrition warfare against the Horde is SUICIDE</div>
+          <div><strong style="color:var(--text-hi)">Dark Edge:</strong> Cheap units are fuel for the expensive ones</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MVP Ground Unit Stats -->
+    <div class="section-label" style="color:var(--horde)">§17.3 — MVP Ground Unit Stats <span class="proto-badge">PROTOTYPE LOCKED</span></div>
+    <div class="section-heading" id="sec-ch7-3">Slaughter-Brute — Confirmed Prototype Values</div>
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
+      <div style="display:grid;grid-template-columns:160px 80px 80px 120px 130px 120px 1fr;background:rgba(255,102,34,0.04);padding:8px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.52rem;color:var(--horde);letter-spacing:1px;text-transform:uppercase">
+        <span>Unit</span><span>HP</span><span>Dmg</span><span>Atk Spd</span><span>Move Spd</span><span>Range</span><span>Notes</span>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 80px 80px 120px 130px 120px 1fr;padding:10px 12px;font-size:0.78rem;align-items:center">
+        <span style="color:#fff;font-weight:600">Slaughter-Brute</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--necro)">150</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--horde)">20</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--text-mid)">0.5/sec</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--text-mid)">80 px/sec</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--horde)">60 px (melee)</span>
+        <span style="color:var(--text-dim);font-size:0.72rem">Heavy melee. Tanky. Primary Scrap Stack accumulator.</span>
+      </div>
+    </div>
+    <div class="card" style="padding:10px 16px;margin-bottom:24px;background:rgba(255,102,34,0.02)">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--text-dim)">vs Shock-Marine: </span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--text-mid)">Horde trades speed and range for higher HP (150 vs 100) and damage (20 vs 10). Melee range forces close-quarters commitment.</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card"><div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:6px">BONUS 1</div><div style="font-size:0.85rem;color:#fff;margin-bottom:4px">50% Starvation Resistance</div><div style="font-size:0.73rem;color:var(--text-mid);line-height:1.5">Starvation debuffs at HALF strength. Mineral-based biology consumes raw ore, salvaged metal, and battlefield debris. A warzone is a buffet.</div></div>
+      <div class="card"><div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:6px">BONUS 2</div><div style="font-size:0.85rem;color:#fff;margin-bottom:4px">+25% Melee Damage (All Ground)</div><div style="font-size:0.73rem;color:var(--text-mid);line-height:1.5">Blanket bonus to all ground units. Even "ranged" Horde units are dangerous in close quarters.</div></div>
+      <div class="card"><div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:6px">BONUS 3</div><div style="font-size:0.85rem;color:#fff;margin-bottom:4px">Salvage from ALL Deaths</div><div style="font-size:0.73rem;color:var(--text-mid);line-height:1.5">Allied deaths included. The grimmer version: all death feeds the machine.</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:12px">STARTING RESOURCES</div>
+        <table style="width:100%;border-collapse:collapse;font-size:0.8rem">
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:6px 0;color:var(--text-mid)">Scrap</td><td style="padding:6px 0;color:#fff;font-weight:600;text-align:right;font-family:'JetBrains Mono',monospace">40</td><td style="padding:6px 0 6px 12px;color:var(--text-dim);font-size:0.72rem">Highest of any faction</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:6px 0;color:var(--text-mid)">Intel</td><td style="padding:6px 0;color:#fff;font-weight:600;text-align:right;font-family:'JetBrains Mono',monospace">5</td><td style="padding:6px 0 6px 12px;color:var(--text-dim);font-size:0.72rem">Lowest of any faction</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:6px 0;color:var(--text-mid)">Influence</td><td style="padding:6px 0;color:#fff;font-weight:600;text-align:right;font-family:'JetBrains Mono',monospace">3</td><td style="padding:6px 0 6px 12px;color:var(--text-dim);font-size:0.72rem">Lowest of any faction</td></tr>
+          <tr><td style="padding:6px 0;color:var(--text-mid)">Starting Units</td><td style="padding:6px 0;color:#fff;font-weight:600;text-align:right;font-family:'JetBrains Mono',monospace">12</td><td style="padding:6px 0 6px 12px;color:var(--text-dim);font-size:0.72rem">Most of any faction (weakest individually)</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:12px">POWER CURVE — MID-GAME SNOWBALL</div>
+        <div style="margin-bottom:6px"><div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-dim);margin-bottom:2px"><span>Early — Numerous but Fragile</span><span>55%</span></div><div style="height:5px;background:rgba(255,255,255,0.04);border-radius:2px;overflow:hidden"><div style="width:55%;height:100%;background:var(--horde);box-shadow:0 0 8px rgba(255,102,34,0.4);border-radius:2px"></div></div></div>
+        <div style="margin-bottom:6px"><div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-dim);margin-bottom:2px"><span>Mid — PEAK Snowball</span><span>90%</span></div><div style="height:5px;background:rgba(255,255,255,0.04);border-radius:2px;overflow:hidden"><div style="width:90%;height:100%;background:var(--horde);box-shadow:0 0 8px rgba(255,102,34,0.4);border-radius:2px"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-dim);margin-bottom:2px"><span>Late — Struggles with Scale</span><span>50%</span></div><div style="height:5px;background:rgba(255,255,255,0.04);border-radius:2px;overflow:hidden"><div style="width:50%;height:100%;background:var(--horde);box-shadow:0 0 8px rgba(255,102,34,0.4);border-radius:2px"></div></div></div>
+        <div style="font-size:0.72rem;color:var(--text-mid);line-height:1.5;margin-top:10px">Low Intel/Influence makes late-game diplomacy and espionage difficult. Generals tend Aggressive/Reckless — excellent attackers, poor governors.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label" style="color:var(--horde)">Complete 15-Unit Roster</div>
+    <div class="section-heading" id="sec-ch7-4">Ground · Air · Space</div>
+    <div id="horde-domain-tabs" style="display:flex;gap:2px;margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:0">
+      <button class="domain-tab active" onclick="filterHordeUnits('all',this)">All (15)</button>
+      <button class="domain-tab" onclick="filterHordeUnits('ground',this)">Ground (5)</button>
+      <button class="domain-tab" onclick="filterHordeUnits('air',this)">Air (5)</button>
+      <button class="domain-tab" onclick="filterHordeUnits('space',this)">Space (5)</button>
+    </div>
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:24px">
+      <div style="display:grid;grid-template-columns:44px 180px 160px 130px 1fr 70px;background:rgba(255,102,34,0.04);padding:8px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--horde);letter-spacing:2px;text-transform:uppercase"><span>#</span><span>Name</span><span>Role</span><span>Category</span><span>Slots</span><span>Domain</span></div>
+      <div id="horde-unit-list"></div>
+    </div>
+
+    
+    <div class="divider"></div>
+
+    <!-- FACTION BUILDINGS & INFRASTRUCTURE -->
+    <div class="section-label" style="color:var(--horde)">Faction Buildings &amp; Infrastructure</div>
+    <div class="section-heading" id="sec-ch7-buildings">20 Building Types &mdash; Horde Architecture</div>
+    <div id="horde-buildings" style="margin-bottom:24px">
+      <!-- Populated by JS -->
+    </div>
+<div class="divider"></div>
+
+    <div class="section-label" style="color:var(--horde)">Signature Equipment</div>
+    <div class="section-heading" id="sec-ch7-5">Scrap-Horde Equipment Catalog</div>
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:24px">
+      <div style="display:grid;grid-template-columns:60px 1fr 60px 90px 1fr;background:rgba(255,102,34,0.04);padding:6px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--horde);letter-spacing:2px;text-transform:uppercase;align-items:center;gap:4px"><span></span><span>Item</span><span>Slot</span><span>Rarity</span><span>Effect</span></div>
+      <div id="horde-equipment"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label" style="color:var(--horde)">Tech Tree — 16 Nodes</div>
+    <div class="section-heading" id="sec-ch7-6">4 Branches × 4 Tiers</div>
+    <div id="horde-tech-tree" style="margin-bottom:24px"></div>
+
+    <div class="divider"></div>
+
+    <div class="section-label" style="color:var(--horde)">Awakening Cinematic</div>
+    <div class="section-heading" id="sec-ch7-7">The Forging</div>
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.7;font-style:italic">
+        <div style="color:var(--text-dim);font-style:normal;font-family:'JetBrains Mono',monospace;font-size:0.6rem;margin-bottom:8px">[VISUAL: A forge. Open flames roaring from slag-iron furnaces. Sparks cascade. Massive figures move through fire — shadows with glowing eyes, hammering anvils the size of vehicles.]</div>
+        <div style="color:var(--text-dim);font-style:normal;font-family:'JetBrains Mono',monospace;font-size:0.6rem;margin-bottom:8px">[VISUAL: A vat of molten silicon, churning orange-white. Crude repurposed industrial container, scorched and dented.]</div>
+        <div style="margin-bottom:12px;color:var(--text-dim);font-style:normal;font-size:0.7rem">VOICE (Deep, guttural — the Scrap-Horde's forge-priests, half chant, half war cry):</div>
+        <p style="margin-bottom:10px">"Listen. The Engine spoke. The Engine that lives in the metal, in the fire, in the scrap. The Engine that has burned in the Deep Vein since before any of us drew iron breath."</p>
+        <p style="margin-bottom:10px">"We were broken once. Shattered mid-fight, in a war we don't remember against things that ate the stars. The breaking should have ended us. Instead we welded ourselves back together from the scrap. Built new iron from old. BETTER iron. LOUDER iron."</p>
+        <p style="margin-bottom:10px">"Now the Engine speaks again. The Deep Vein is shaking. Says the galaxy is breaking &mdash; again. Says the soft things and the shiny things and the dead things can't fix it alone. Says they need something STRONG. Something that doesn't rust. Well &mdash; something that RUSTS and doesn't CARE."</p>
+        <div style="margin:12px 0 8px;color:var(--text-dim);font-style:normal;font-size:0.7rem">WARLORD (slamming a fist against the Construct's chest &mdash; it rings like a bell):</div>
+        <p>"The Engine spoke. You came out. Now &mdash; make us strong."</p>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--text-dim);margin-top:12px">[VISUAL: The Scrap-Horde emblem — a spiked iron skull wreathed in flame. THE RUST TIDE.]</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label" style="color:var(--horde)">Dialogue &amp; Story Beats</div>
+    <div class="section-heading" id="sec-ch7-8">Key Narrative Moments</div>
+    <div id="horde-dialogue" style="margin-bottom:24px"></div>
+
+    <div class="divider"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         FACTION BIBLE — SCRAP-HORDE (Phase 2.3)
+         21 decisions locked — 2026-03-13
+         ═══════════════════════════════════════════════════════════ -->
+    <div class="section-label" style="color:var(--horde)">Faction Bible &mdash; Cultural DNA Seeds</div>
+    <div class="section-heading" id="sec-ch7-bible">Scrap-Horde Faction Bible</div>
+    <div class="body-text" style="margin-bottom:16px;font-style:italic;color:var(--text-dim)">These are procedural-generation seeds, not fixed scripts. They define the cultural DNA that the game engine uses to generate names, events, dialogue, building descriptions, and emergent narrative. 21 decisions locked in Phase 2.3 lore workshop (2026-03-13). Faction reworked from ground up &mdash; mineral-based iron warriors with ork chaos-joy and dwarven iron-honor.</div>
+
+    <!-- Emotional Core -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">EMOTIONAL CORE</div>
+      <div style="font-size:0.95rem;color:#fff;font-weight:600;margin-bottom:8px">The Joy of War &mdash; &ldquo;We fight because fighting is GLORIOUS.&rdquo;</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">Warriors who name their guns and get genuinely upset when they break. Who argue about which explosion was better mid-battle. Who have drinking songs about famous last stands. Who consider &ldquo;it only blew up twice&rdquo; a glowing product review. 70% chaotic joy, 30% dwarven iron-honor. The comedy is real &mdash; these are soldiers who live for the fight, the guns, the bombs, and the glory. Beneath the chaos: iron-oaths that are unbreakable, Grudge Records that are never forgotten, and forge-bonds deeper than iron veins.</div>
+    </div>
+
+    <!-- Biology -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">MINERAL BIOLOGY</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">Iron and calcium based lifeforms. They literally rust &mdash; oxidize, corrode, weather. &ldquo;The Rust Tide&rdquo; is not a metaphor. Stocky, dense, heavy &mdash; dwarven proportions with ork aggression. Consuming metal is nutrition &mdash; a battlefield is a buffet. The forge is medicine, birthplace, and temple. Working metal is working with their own biology.</div>
+    </div>
+
+    <!-- Government -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">GOVERNMENT</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65"><strong style="color:var(--text-hi)">Biggest Boss + Clan Confederation.</strong> Might makes right within each clan &mdash; beat the boss, become the boss. The Horde is a confederation of competing clans, each with their own Warboss. Unity only happens when someone strong enough forces it. Game start: the Forged Construct Commander forcing unity across warring clans on Rusthold.</div>
+    </div>
+
+    <!-- Homeworld -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">HOMEWORLD &mdash; RUSTHOLD</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65"><strong style="color:var(--text-hi)">Core:</strong> Mineral-rich moon mined hollow from the inside &mdash; forge-cities in caverns, iron veins in the walls that are literally food. <strong style="color:var(--text-hi)">Surface:</strong> Ancient derelict warships captured and welded on. <strong style="color:var(--text-hi)">Orbit:</strong> Asteroid belt of smaller rocks connected by scrap-bridges and tow cables, each controlled by a different clan. Part moon, part scrapyard, part shipwreck, part fortress. Grown over centuries. Nobody planned it. Shouldn&rsquo;t work. Works anyway.</div>
+    </div>
+
+    <!-- Military Doctrine -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">MILITARY DOCTRINE</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65"><strong style="color:var(--text-hi)">Chaos Doctrine &mdash; Every Clan Fights Different.</strong> No unified military doctrine. Skull-Splitters rush, Iron-Eaters loot, Forge-Born siege. The Commander&rsquo;s challenge is orchestrating chaos into something that works &mdash; or just pointing the chaos at the enemy and hoping. Which clans you unified on Rusthold determines your army&rsquo;s personality.</div>
+    </div>
+
+    <!-- Internal Factions: 6 Clans -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">INTERNAL FACTIONS &mdash; 6 CLANS OF RUSTHOLD</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">
+        <div style="margin-bottom:6px"><strong style="color:var(--horde)">Skull-Splitters</strong> &mdash; Rushers. Joyful violence. Melee-heavy. Headbutting as greeting.</div>
+        <div style="margin-bottom:6px"><strong style="color:var(--horde)">Iron-Eaters</strong> &mdash; Looters. Mid-battle salvage. Build on the fly. Name every piece of salvage.</div>
+        <div style="margin-bottom:6px"><strong style="color:var(--horde)">Forge-Born</strong> &mdash; Builders. Siege specialists. Most dwarven. Craft-pride. Insult their work at your peril.</div>
+        <div style="margin-bottom:6px"><strong style="color:var(--horde)">Rust-Walkers</strong> &mdash; Survivors. Harshest territory. Scout/ranger types. Fatalistic humor. &ldquo;Already rusting.&rdquo;</div>
+        <div style="margin-bottom:6px"><strong style="color:var(--horde)">Slag-Kings</strong> &mdash; Rulers. Richest clan. Control best mineral veins. Political by Horde standards. &ldquo;Everything has a price.&rdquo;</div>
+        <div><strong style="color:var(--horde)">Grind-Teeth</strong> &mdash; Berserkers. Battle-rage extreme. Quiet between battles. DEAFENING during. The silence is scarier than the noise.</div>
+      </div>
+    </div>
+
+    <!-- Religion -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">RELIGION &mdash; THE FORGE + THE ENGINE</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">The Forge is the temple &mdash; fire transforms ore into warrior. The act of forging IS prayer. Master smiths are priests. The Engine is the mythologized force behind it all &mdash; the thing that lives in metal, the process of creation through destruction. &ldquo;The Engine spoke. You came out.&rdquo; Aethyn relics trigger rage because they resonate with iron blood &mdash; feels like the forge calling from somewhere ancient. <strong style="color:var(--text-hi)">The Iron Tide:</strong> collective war-frenzy through mineral resonance &mdash; iron calls to iron. The more warriors fighting, the harder each one hits. The battlefield hums at a frequency only they can feel.</div>
+    </div>
+
+    <!-- Founding Crisis -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">FOUNDING CRISIS &mdash; THE FIRST FIRING</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">The Aethyn relic activated deep in Rusthold&rsquo;s mineral core. The ancestors followed the vibration down &mdash; deeper and deeper through the iron veins. Found the relic at the center. Built a forge around it. Shoved it in a furnace. The energy surge supercharged everything &mdash; the First Firing forged the first true Horde warriors from raw mineral ore. The First Forge still sits around that relic at Rusthold&rsquo;s deepest point. The iron that feeds the entire Horde flows through an Aethyn Strategist fragment they&rsquo;ve been using as a smelter for millennia. Their most sacred place is a cosmic signal beacon repurposed as an industrial tool.</div>
+    </div>
+
+    <!-- Naming -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">NAMING CONVENTIONS</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65"><strong style="color:var(--text-hi)">Personal:</strong> Full Clan-Title-Name &mdash; &ldquo;Forge-Born Slag-Hammer Krag.&rdquo; Nobody uses the full thing. In battle it&rsquo;s just &ldquo;KRAG!&rdquo; Harsh, short, metal sounds: Krag, Boltz, Grenn, Tharr, Skarn, Drukk. <strong style="color:var(--text-hi)">Weapons:</strong> Named for what they did &mdash; &ldquo;Loud Problem,&rdquo; &ldquo;The One That Worked,&rdquo; &ldquo;Regret.&rdquo; <strong style="color:var(--text-hi)">Ships:</strong> &ldquo;Big Ugly,&rdquo; &ldquo;Mostly Intact,&rdquo; &ldquo;Shouldn&rsquo;t Float.&rdquo;</div>
+    </div>
+
+    <!-- Post-Fracture History -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">POST-FRACTURE HISTORY &mdash; THE BREAKING</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">The Warrior Caste was fighting the Vorax when the Fracture hit &mdash; mid-battle. The psychic shock fused their mineral biology into something cruder, tougher, angrier. They didn&rsquo;t slowly forget &mdash; they were BROKEN and rebuilt themselves from scrap. The first Horde warriors were shattered soldiers who welded themselves back together and kept fighting. Origin through trauma: the Horde is what happens when warriors shatter and refuse to stop.</div>
+    </div>
+
+    <!-- Xenophobia -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">XENOPHOBIA &mdash; MATERIAL HIERARCHY + COMBAT OVERRIDE</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">Default: iron &gt; flesh. Mineral races superior to biological. <strong style="color:var(--text-hi)">But:</strong> beat a Horde warrior in combat and the hierarchy resets for you. &ldquo;You&rsquo;re made of meat but you fight like iron. You&rsquo;re alright.&rdquo; <em>Terrans:</em> &ldquo;Soft. Brave, but soft.&rdquo; <em>Shards:</em> &ldquo;Pretty glass. Don&rsquo;t squeeze.&rdquo; <em>Necro-Legion:</em> &ldquo;At least they build with metal.&rdquo; <em>Unity Accord:</em> &ldquo;Talk talk talk. Build something or shut up.&rdquo;</div>
+    </div>
+
+    <!-- Economy -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">ECONOMY &mdash; SCRAP + FAVORS</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">Physical things trade in <strong style="color:var(--text-hi)">scrap</strong> &mdash; weight of usable metal. Labor and loyalty trade in <strong style="color:var(--text-hi)">favors</strong>. Two parallel systems: Slag-Kings are rich in scrap, Skull-Splitters are rich in combat-favors. Both have power, different kinds.</div>
+    </div>
+
+    <!-- Social Structure -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">SOCIAL STRUCTURE &mdash; FORGE BY DAY, ARENA BY NIGHT</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">Build things during the day, break things (and each other) at night. The forge is workplace, social hub, temple, and hospital. The arena is entertainment, dispute resolution, and promotion pathway. Celebrity fight commentators are as respected as good fighters. Best nights: someone brings a new weapon to the arena. &ldquo;I built this today. Let me show you what it does.&rdquo;</div>
+    </div>
+
+    <!-- Tech Aesthetic -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">TECH AESTHETIC &mdash; BRUTAL NEW, LAYERED VETERANS</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">Fresh from the forge: clean industrial brutalism. Exposed gears, visible weld seams, bolts the size of fists. After campaigns: covered in salvage layers, repairs, battlefield modifications. Veterans literally LOOK different than fresh troops &mdash; visual history written in scrap. Vehicles are asymmetrical Frankenstein machines &mdash; part Horde, part salvaged enemy tech, part mystery metal nobody remembers installing.</div>
+    </div>
+
+    <!-- Advisors -->
+    <div class="section-label" style="color:var(--horde)">Faction Bible &mdash; Advisors</div>
+    <div class="section-heading" id="sec-ch7-bible-advisors">The Commander&rsquo;s Forge-Council</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card" style="border-left:3px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">ARCHITECT &mdash; THE SMITH</div>
+        <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">Quiet builder. Forge-Born. Thinks in decades. &ldquo;Let me build it right.&rdquo; Represents the Builder axis &mdash; craft-pride, patience, infrastructure. Will never rush. Will never build something shoddy. The answer to every problem is a better forge.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">VANGUARD &mdash; THE FIST</div>
+        <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">Skull-Splitter incarnate. Lives for the charge. Every problem looks like something to headbutt. But genuine warmth &mdash; fights for forge-brothers, not glory. The Iron Tide personified. &ldquo;FIGHT THEM!&rdquo; is both battle cry and policy recommendation.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">TYRANT &mdash; THE RUST</div>
+        <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">Old. Corroded. Barely holding together. Remembers everything. Rust-Walker who&rsquo;s seen too much. &ldquo;Burn it all. Start over. That&rsquo;s what iron does.&rdquo; Represents the Breaker axis &mdash; destruction as renewal. The Grudge Record keeper. Every wrong carved in metal.</div>
+      </div>
+    </div>
+
+    <!-- AI Director Seeds -->
+    <div class="section-label" style="color:var(--horde)">Faction Bible &mdash; AI Director Seeds</div>
+    <div class="section-heading" id="sec-ch7-bible-ai">Procedural Generation DNA</div>
+
+    <!-- Vorax Adaptation -->
+    <div class="card" style="border-left:3px solid var(--vorax);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">VORAX ADAPTATION &mdash; ARMORED SCRAP-SWARM</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">Vorax that consumed Horde warriors gain <strong style="color:var(--text-hi)">iron plating</strong> &mdash; heavier, tougher, slower. AND they start <strong style="color:var(--text-hi)">improvising with salvage</strong> &mdash; grafting scrap onto themselves mid-battle. The swarm that innovates. Rust-colored chitin with welded debris armor. Recognizable Horde weapons on alien flesh.</div>
+    </div>
+
+    <!-- Negotiation -->
+    <div class="card" style="border-left:3px solid var(--guardians);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--guardians);letter-spacing:2px;margin-bottom:8px">NEGOTIATION AT THE NEXUS</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65"><strong style="color:var(--text-hi)">Surface:</strong> Confusion &rarr; Respect. &ldquo;You&rsquo;re a MACHINE that FIGHTS? ...I like you.&rdquo; <strong style="color:var(--text-hi)">Underneath:</strong> The Forged Construct Commander feels something in the Guardian systems &mdash; like the First Forge, like The Engine. Iron calling to crystal. Recognition through material, not mind.</div>
+    </div>
+
+    <!-- First Contact -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">FIRST CONTACT DOCTRINE</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65"><strong style="color:var(--text-hi)">Player choice moment</strong> &mdash; advisors disagree, Commander decides. The Fist: &ldquo;FIGHT THEM!&rdquo; The Smith: &ldquo;Wait. Watch. Learn what they build.&rdquo; The Rust: &ldquo;They&rsquo;re in our space. Remove them.&rdquo;</div>
+    </div>
+
+    <!-- Cascade Vulnerability -->
+    <div class="card" style="border-left:3px solid #ff3333;margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:#ff3333;letter-spacing:2px;margin-bottom:8px">CASCADE VULNERABILITY &mdash; 3 PRESSURE POINTS</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">
+        <div style="margin-bottom:6px"><strong style="color:#ff3333">Resource Starvation:</strong> Cut the iron supply &rarr; can&rsquo;t forge, repair, or grow. Mineral bodies need mineral fuel.</div>
+        <div style="margin-bottom:6px"><strong style="color:#ff3333">Clan Fracture:</strong> Remove or weaken the boss &rarr; clans splinter &rarr; internal war. The confederation held together by force alone.</div>
+        <div><strong style="color:#ff3333">Forge Destruction:</strong> Kill the fire &rarr; can&rsquo;t produce, repair, or heal &rarr; rusting warriors with no salvation.</div>
+      </div>
+    </div>
+
+    <!-- Divergence -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">DIVERGENCE &mdash; TWO AXES</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">
+        <div style="margin-bottom:6px"><strong style="color:var(--text-hi)">Order &harr; Chaos:</strong> How unified are the clans? Standardized army vs. wild chaos.</div>
+        <div style="margin-bottom:6px"><strong style="color:var(--text-hi)">Builder &harr; Breaker:</strong> Create or destroy? Forge-Born influence vs. Skull-Splitter influence.</div>
+        <div style="margin-bottom:6px"><em>Tyrant Horde:</em> Ordered breakers &mdash; a disciplined war machine that eats everything.</div>
+        <div><em>Unifier Horde:</em> Chaotic builders &mdash; joyful creators who build wild, impossible things alongside everyone.</div>
+      </div>
+    </div>
+
+    <!-- NPC Commander Seeds -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">NPC COMMANDER SEEDS &mdash; 6 WARBOSSES OF RUSTHOLD</div>
+      <div style="font-size:0.82rem;color:var(--text-mid);line-height:1.65">
+        <div style="margin-bottom:6px"><strong style="color:var(--horde)">Warboss Krag</strong> (Skull-Splitters) &mdash; Biggest, loudest. Pure joy. Headbutts everything. Gets back up.</div>
+        <div style="margin-bottom:6px"><strong style="color:var(--horde)">Boss-Scrapper Boltz</strong> (Iron-Eaters) &mdash; Cunning. Hoards salvage. Fights dirty. Respects cleverness over strength.</div>
+        <div style="margin-bottom:6px"><strong style="color:var(--horde)">Forge-Master Tharra</strong> (Forge-Born) &mdash; Quiet. Builds the best weapons on Rusthold. Joins whoever proves they can BUILD something worthy.</div>
+        <div style="margin-bottom:6px"><strong style="color:var(--horde)">Old Skarn</strong> (Rust-Walkers) &mdash; Ancient. Corroded to half his original mass. Refuses to die. &ldquo;I&rsquo;ll rust when I&rsquo;m ready.&rdquo;</div>
+        <div style="margin-bottom:6px"><strong style="color:var(--horde)">King Drukk</strong> (Slag-Kings) &mdash; Rich, political. Controls the deepest mineral veins. &ldquo;Everyone has a price. Find yours.&rdquo;</div>
+        <div><strong style="color:var(--horde)">The Silent</strong> (Grind-Teeth) &mdash; No name. Doesn&rsquo;t speak. Makes iron vibrate when fighting. The other Warbosses fear this one.</div>
+      </div>
+    </div>
+
+  </div><!-- /page-ch7 -->
+  <!-- ============================================================
+       PAGE: NECRO-LEGION (Chapter 8)
+       ============================================================ -->

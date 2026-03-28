@@ -1,0 +1,325 @@
+  <div class="page" id="page-ch43-ai">
+    <div class="page-title-wrap">
+<div class="page-title">THE AI DIRECTOR</div>
+    <div class="page-subtitle">Procedural Narrative Engine · 42 Features · Baked-In Intelligence — Chapter 43</div>
+</div>
+
+    <div class="quote-block" style="border-left-color:var(--accent);margin-bottom:24px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--accent);letter-spacing:3px;margin-bottom:4px">DESIGN PHILOSOPHY</div>
+      <div class="quote-text">"Every playthrough tells a different story — not because it's random, but because the galaxy is paying attention."</div>
+    </div>
+
+    <div class="section-label">Architecture</div>
+    <div class="section-heading" id="sec-ch43ai-0">What the AI Director Is (and Isn't)</div>
+    <div class="body-text" style="margin-bottom:16px">The AI Director is a <strong>baked-in, offline procedural narrative engine</strong>. No LLM. No internet. No cloud processing. It runs on deterministic systems with weighted randomization, event templates with variable slots, faction personality matrices, and Markov chains for dialogue variation. It works on "a potato" — every calculation is local, every outcome reproducible with the same seed (geography-deterministic; player-reactive events vary by behavior).</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:24px">
+      <div class="card" style="text-align:center;border-top:2px solid var(--terran)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--terran);margin-bottom:6px">EVENT TEMPLATES</div>
+        <div style="font-size:0.72rem;color:var(--text-mid)">Pre-written narrative structures with variable slots filled by game state. "General [NAME] held [SYSTEM] for [N] rounds. [CASUALTIES] survived." — never the same twice.</div>
+      </div>
+      <div class="card" style="text-align:center;border-top:2px solid var(--shards)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--shards);margin-bottom:6px">PERSONALITY MATRICES</div>
+        <div style="font-size:0.72rem;color:var(--text-mid)">Every General, commander, and advisor has personality weights (Aggressive/Cautious/Loyal/Ambitious) that determine dialogue selection, tactical preference, and relationship evolution.</div>
+      </div>
+      <div class="card" style="text-align:center;border-top:2px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--horde);margin-bottom:6px">MARKOV CHAINS</div>
+        <div style="font-size:0.72rem;color:var(--text-mid)">Dialogue variation engine. Template pools per personality type, assembled with controlled randomization. Consistent character voice, variable specific words. Deterministic with seeds.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- NARRATIVE SYSTEMS -->
+    <div class="section-label" style="color:var(--terran)">Narrative Systems (8 Features)</div>
+    <div class="section-heading" id="sec-ch43ai-1">The Galaxy Remembers Everything</div>
+
+    <div class="card" style="border-left:3px solid var(--terran);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">RIVALRY ENGINE — CROSS-FACTION RELATIONSHIPS</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Tracks relationships between YOUR commanders and ENEMY commanders through repeated encounters. Can be hostile or friendly. Five relationship types:<br><br>
+        <strong style="color:var(--text-hi)">Bitter Nemesis:</strong> Multiple losses to same enemy. Morale penalty on their field, bonus damage against their forces.<br>
+        <strong style="color:var(--text-hi)">Grudging Respect:</strong> Evenly matched. Back-and-forth victories. Neutral morale, acknowledgment dialogue.<br>
+        <strong style="color:var(--text-hi)">Friendly Rival:</strong> Honorable repeated engagements. Easier diplomacy with that faction. Potential Final War defection/intel.<br>
+        <strong style="color:var(--text-hi)">Blood Feud:</strong> Named veteran killed. Permanent aggression modifier. No negotiation through this commander.<br>
+        <strong style="color:var(--text-hi)">Hunter/Prey:</strong> One-sided dominance. Enemy avoids your General's sector. Overconfidence risk if enemy adapts.<br><br>
+        <em style="color:var(--vorax)">Vorax:</em> No rivalries (swarm). Generals develop "Vorax Specialist" tags instead.<br>
+        <em style="color:var(--guardians)">Guardians:</em> One-sided until The Negotiation.<br><br>
+        Does NOT modify internal Loyalty Score (0–100 system untouched). Affects combat modifiers, diplomacy options, and generated dialogue.</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--terran);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">WAR CORRESPONDENT</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Auto-generated after-action reports written into the Compendium. Not "you won" — "The 3rd Terran Armored held the ridge for 14 rounds. 4 survived." Pulls actual battle data: unit names, round counts, casualties, decisive moments. Procedural military journalism that makes every battle feel documented and real.</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--terran);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">FACTION MEMORY</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">AI factions remember what you did to them. Burned an Accord colony? Their diplomats reference it 20 turns later. Spared a Shards fleet? They remember the mercy. Long-term grudge/gratitude tracking that makes every diplomatic interaction informed by history. Factions are not goldfish — they are civilizations with institutional memory.</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--terran);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">ADVISOR MOOD SYSTEM</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Valerius, Krell, and Vane (and their faction equivalents) gradually shift tone based on alignment drift. An Architect advisor watching you lean Tyrant doesn't snap — they slowly become colder, more formal, more distant. A Vanguard advisor watching you embrace their doctrine becomes warmer, more personal. Subtle tonal shifts across dozens of interactions, not binary mood switches.</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--terran);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">UNIFIED CASCADE EVENT SYSTEM</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Cosmic events (Nebula Surge, Gravitational Pulse, Meteor Shower, Pulsar Flare, Wormhole Resonance, Ion Storms) keep their existing timer values as <strong>defaults</strong> but now serve as first dominoes in cause-effect chains. The AI director chains political/economic consequences from cosmic triggers.<br><br>
+        <strong style="color:var(--text-hi)">Example chain:</strong> Pulsar Flare → electronics disabled in adjacent system → supply route severed → garrison morale drops → border system vulnerability → Horde AI detects weakness and launches opportunistic raid → your fleet is out of position because of the Gravitational Pulse that fired 3 cycles ago.<br><br>
+        Cosmic events are weather. Cascades are the politics that weather creates. One system, not two.</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--terran);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">DIPLOMATIC INCIDENTS</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">NPC factions have their own relationships and wars. The Shards and the Accord might go to war over a border system — without your involvement. You can exploit the distraction, mediate for influence, or stay out of it entirely. The galaxy has politics even when you're not looking.</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--terran);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">CULTURAL DRIFT</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Long-held planets adopt faction traits over time. A Terran world held by the Accord for 30 cycles starts generating hybrid events — Terran citizens adopting Accord governance, resistance cells, cultural fusion that creates unique narrative moments. Occupation isn't just a flag change.</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--terran);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">WHISPER NETWORK</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Incomplete intelligence fragments based on espionage investment. You don't get "The Horde is attacking System Kepler-7." You get "Horde fleet movements detected near Kepler sector." Or "Intercepted transmission: '...the big push is...[garbled]...third cycle...'" Higher espionage investment = clearer fragments. The fog of war applies to information, not just territory.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- COMBAT FLAVOR -->
+    <div class="section-label" style="color:var(--horde)">Combat Flavor (4 Features)</div>
+    <div class="section-heading" id="sec-ch43ai-2">Battles That Tell Stories</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card" style="border-left:3px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:6px">BATTLE CHATTER</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Text popups generated from battle state. Units under fire call for support. Flanking units report success. Dying units leave last words. Pulled from personality-tagged template pools — a Cautious General's troops say different things than an Aggressive General's troops.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:6px">LAST STAND MOMENTS</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">When high-rank units die, the game generates rank/history-based death scenes. A Veteran who survived 12 battles doesn't just disappear — "Sergeant Voss held the line until the ammunition ran out. Then he held it with his hands." Written into the Compendium permanently.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:6px">POST-BATTLE SCARS</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Procedural veteran flavor text with stat effects. A unit that survived a Vorax encounter might gain "Swarm Survivor: +10% vs Vorax, -5% morale in contested systems." Battle history becomes mechanical identity. Units that fought together develop bonds. Veterans carry their war.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:6px">ENEMY TAUNTS</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Personality/history-based pre-battle messages from enemy commanders. A Bitter Nemesis sends threats. A Friendly Rival sends warnings. A Hunter sends nothing — silence is the taunt. Pulled from the Rivalry Engine relationship data and the commander's personality matrix.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- POLITICAL SYSTEMS -->
+    <div class="section-label" style="color:var(--accord)">Political Systems (2 Features)</div>
+    <div class="section-heading" id="sec-ch43ai-3">Factions Are Not Monoliths</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card" style="border-left:3px solid var(--accord)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--accord);letter-spacing:2px;margin-bottom:6px">FACTION CIVIL WARS</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">AI factions aren't monoliths. Internal power struggles generate coups, splinter groups, defectors. A Necro-Legion subfaction reactivates with different protocols and breaks away. An Accord caste challenges the Supreme Commander's authority. You can exploit these fractures — or they can exploit yours.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accord)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--accord);letter-spacing:2px;margin-bottom:6px">TRADE ROUTE POLITICS</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Trade routes are political leverage. Cutting supply to an enemy system through trade manipulation is quieter than an invasion and sometimes more effective. Trade agreements create dependencies — and dependencies create vulnerabilities.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CHARACTER DEPTH -->
+    <div class="section-label" style="color:var(--shards)">Character Depth (4 Features)</div>
+    <div class="section-heading" id="sec-ch43ai-4">People, Not Units</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card" style="border-left:3px solid var(--shards)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--shards);letter-spacing:2px;margin-bottom:6px">GENERAL JOURNALS → COMPENDIUM DOSSIERS</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">AI director generates journal-style entries that populate Commander Dossiers in the Compendium. No separate journal UI — the Dossier IS the journal. Military record mixed with personal voice. Open a General's Dossier and see stats, battle history, AND personality — all from one system.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--shards)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--shards);letter-spacing:2px;margin-bottom:6px">MENTOR CHAINS</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">When a veteran General trains a rookie, the rookie inherits personality traces. Kill the mentor and the student's dialogue shifts — anger, grief, determination to live up to the legacy. Emergent lineages across campaigns.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--shards)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--shards);letter-spacing:2px;margin-bottom:6px">DEFECTOR STORIES</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">When units or commanders defect (from loyalty failure or diplomatic events), they bring story with them. A defecting Accord commander explains WHY they left. Their former faction sends messages — threats, pleas, or silence. Defection is a narrative event, not just a faction swap.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--shards)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--shards);letter-spacing:2px;margin-bottom:6px">BETRAYAL FORESHADOWING</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Before a General betrays you (loyalty collapse), there are signs. Missed orders explained away. Reports that don't quite add up. A subtle shift in dialogue tone. The AI director plants foreshadowing 5-10 cycles before the betrayal. Observant players can catch it. Most won't — until the second playthrough.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ENVIRONMENTAL STORYTELLING -->
+    <div class="section-label" style="color:var(--necro)">Environmental Storytelling (4 Features)</div>
+    <div class="section-heading" id="sec-ch43ai-5">The Galaxy's Scars</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card" style="border-left:3px solid var(--necro)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--necro);letter-spacing:2px;margin-bottom:6px">RUINS TELL STORIES</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Pre-Fracture ruins discovered during expansion contain procedurally assembled lore fragments. Each ruin has a story template filled with Aethyn history, Fracture details, or faction origins. Discovering multiple ruins in sequence can piece together larger narratives. Feeds Compendium entries and unlocks Negotiation dialogue options.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--necro)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--necro);letter-spacing:2px;margin-bottom:6px">GHOST STATIONS</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Abandoned stations with automated distress signals still broadcasting. Board them for resources, technology fragments, or lore. Some are traps. Some contain AI still following orders from civilizations that no longer exist. Each one is a micro-story about what happened when the Fracture hit.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--necro)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--necro);letter-spacing:2px;margin-bottom:6px">DERELICT FLEETS</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Fleets that died mid-transit during the Fracture, still drifting in formation. Salvageable for resources. Some contain commander logs. Some contain prototype equipment from pre-Fracture tech that no faction has rediscovered. Encounter type varies by location — Core-adjacent derelicts are Aethyn. Outer rim derelicts are early faction attempts at expansion that failed.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--necro)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--necro);letter-spacing:2px;margin-bottom:6px">ANCIENT BATTLEFIELD SITES</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Locations where major battles occurred during or after the Fracture. Wreckage fields with salvage bonuses. Sensor ghosts from old engagements. Occasionally, Necro-Legion units reactivating from battlefield remains — were they always here, or did someone wake them?</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SOUND & ATMOSPHERE -->
+    <div class="section-label">Sound &amp; Atmosphere (3 Features)</div>
+    <div class="section-heading" id="sec-ch43ai-6">What You Hear Matters</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:24px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">ADAPTIVE SOUNDTRACK</div>
+        <div style="font-size:0.72rem;color:var(--text-mid);line-height:1.55">Music layers respond to game state. Peaceful exploration has ambient layers. Approaching Vorax territory adds tension. Combat escalates. Near-defeat strips to a single instrument. Victory swells. The AI director controls music intensity as a narrative tool.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">ENVIRONMENTAL AUDIO</div>
+        <div style="font-size:0.72rem;color:var(--text-mid);line-height:1.55">Faction-specific ambient audio when viewing their territory. Terran systems hum with industry. Shards systems shimmer with crystal resonance. Horde systems rattle and grind. Vorax territory... pulses. Biological. Wrong. The sound design tells you whose space you're in before you read the label.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">SILENCE AS DESIGN</div>
+        <div style="font-size:0.72rem;color:var(--text-mid);line-height:1.55">Consumed Vorax worlds have no sound. No ambient audio. No music. Nothing. After hours of rich soundscape, the absence is deafening. Silence is the most disturbing sound effect in the game. Post-consumption worlds are dead — and they sound like it.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- METAGAME & CROSS-RUN -->
+    <div class="section-label" style="color:var(--guardians)">Metagame &amp; Cross-Run (3 Features)</div>
+    <div class="section-heading" id="sec-ch43ai-7">The Simulation Remembers</div>
+
+    <div class="card" style="border-left:3px solid var(--guardians);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--guardians);letter-spacing:2px;margin-bottom:6px">GHOST FLEETS</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">In subsequent simulation runs, you occasionally encounter "echo" fleets in positions where you placed fleets in previous runs. They aren't real — they're the Crucible testing whether you'll repeat patterns. Defeating your own ghosts teaches the simulation that you've evolved. Ties into Archive persistence layer (Ch 33).</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--guardians);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--guardians);letter-spacing:2px;margin-bottom:6px">CRUCIBLE MEMORY</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">The simulation tracks broad strategic patterns across runs. Relied on choke points last time? They're less advantageous this time — enemy AI avoids them or the galaxy generates fewer of them. The Crucible isn't cheating — it's training you. Each run, the galaxy adapts to what worked before, forcing you to evolve. Aligns with Procedural Destiny (Ch 3).</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--guardians);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--guardians);letter-spacing:2px;margin-bottom:6px">SEED SHARING</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Galaxy seeds are shareable — same seed produces same geography, same faction placements, same static hazard positions. Player-reactive events (cascades, Vorax adaptation, rivalries) vary by behavior, so two players with the same seed get the same MAP but different STORIES. Geography-deterministic, narrative-reactive.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- VORAX-SPECIFIC -->
+    <div class="section-label" style="color:var(--vorax)">Vorax-Specific (4 Features)</div>
+    <div class="section-heading" id="sec-ch43ai-8">The Swarm Evolves</div>
+
+    <div class="card" style="border-left:3px solid var(--vorax);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--vorax);letter-spacing:2px;margin-bottom:6px">FULL ADAPTIVE SWARM TACTICS</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">ALL Vorax parameters are available to the AI director: spawn timing, movement speed, force composition, and targeting priority. Current values (Cycle 6 spawn, 1 hop/cycle, 10 cycle respawn) serve as <strong>defaults</strong> the AI director can modify based on player behavior. Fortify the east? Next Tendril hits from the south. Go mobile? They mass up. Rely on armor? Acid-spitter compositions shift to melt it. The Deep Hive Mind is ancient and strategic — it doesn't move faster, it moves <em>smarter</em>.</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--vorax);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--vorax);letter-spacing:2px;margin-bottom:6px">TENDRIL PERSONALITIES</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Each Vorax Tendril has behavioral variation generated by the AI director. One Tendril is aggressive and direct. Another is cautious, probing, pulling back when it meets resistance. A third targets infrastructure exclusively — ignoring fleets to eat your supply lines. The hive mind isn't a single strategy. It's a portfolio of approaches testing which one works against YOU.</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--vorax);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--vorax);letter-spacing:2px;margin-bottom:6px">CONSUMPTION AFTERMATH</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Worlds consumed by Vorax aren't just "captured" — they're transformed. Short occupation = corrupted biosphere, partially recoverable. Long occupation = bare rock, no atmosphere, no resources. Engine purge = molecular erasure, the planet itself is smaller. The visual and mechanical degradation of consumed worlds tells the story of what the Vorax are — hunger doesn't leave ruins, it leaves husks.</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--vorax);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--vorax);letter-spacing:2px;margin-bottom:6px">TIERED EVOLUTION EVENTS</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Two-layer evolution system:<br><br>
+        <strong style="color:var(--text-hi)">Minor (Mid-Campaign, Visible):</strong> Gradual cosmetic + small stat shifts as Vorax consume territory. A Tendril that ate Terran worlds visibly gains armor plating over multiple cycles. Slow enough to react. The horror of watching them become your weapons turned against you.<br><br>
+        <strong style="color:var(--text-hi)">Major (Per-Encounter, Surprise):</strong> Significant ability absorption revealed only when you next fight them. "They have PHASE BLINK now?!" — a Tendril that consumed Shards space gained their signature ability. The Deep Hive Mind pushes strategic evolution down from above.<br><br>
+        Tendril-level learning = gradual. Deep Hive Mind strategic evolution = between fights. Starvation resets Tendril adaptations but not Deep Hive Mind memory.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- GUARDIAN-SPECIFIC -->
+    <div class="section-label" style="color:var(--guardians)">Guardian-Specific (4 Features)</div>
+    <div class="section-heading" id="sec-ch43ai-9">The Ancient Watchers</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card" style="border-left:3px solid var(--guardians)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--guardians);letter-spacing:2px;margin-bottom:6px">DEGRADATION SPECTRUM</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Guardian behavior varies by corruption level. Clean units (Bastion) are precise and rational. Moderately degraded units exhibit strange patterns — repetitive patrol routes, scanning objects that aren't there. Severely corrupted units (The Veil) are hostile, unpredictable, and may attack other Guardians. The AI director selects from different behavior pools based on each unit's corruption state.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--guardians)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--guardians);letter-spacing:2px;margin-bottom:6px">OUTPOST ENCOUNTERS</div>
+        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Automated Guardian outposts along the Shattered Expanse approach and rare lost units drifting in the wider galaxy. Each encounter is procedurally flavored — some are hostile (degraded, shoot first), some are communicative (partial data exchanges), some are mysteries (what is this unit doing so far from Core?). Research data source for Compendium entries.</div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--guardians);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--guardians);letter-spacing:2px;margin-bottom:6px">THE NEGOTIATION — ENDGAME DIPLOMATIC ENCOUNTER</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Three-phase diplomatic encounter with the Warden-Commander at the Nexus. Not a quiz — a conversation between two intelligences shaped by everything the player has done.<br><br>
+        <strong style="color:var(--text-hi)">Phase 1 — Grievances:</strong> The Warden-Commander confronts you with actual campaign data. "You burned 14 worlds." "You enslaved three of my outpost garrisons." Your responses depend on alignment AND Compendium knowledge. Deep knowledge unlocks nuanced diplomatic responses. Without it, you're arguing blind.<br><br>
+        <strong style="color:var(--text-hi)">Phase 2 — Understanding:</strong> Philosophical challenges based on discovered Compendium entries. "The Engine can restore the warp lanes. It can also weaponize them. Which would you do?" If you've found Strategist fragments, you can recontextualize the Warden-Commander's millennia of guilt — its failure was DESIGNED. The Strategist needed the factions to evolve independently.<br><br>
+        <strong style="color:var(--text-hi)">Phase 3 — Terms:</strong> Path-dependent negotiation. Unifier = alliance with conditions (Guardian autonomy, representation, joint restoration). Architect = knowledge access under oversight. Vanguard = military constraints negotiation. Tyrant = confrontation/combat (no negotiation, lose Engine expertise).<br><br>
+        <em style="color:var(--text-dim)">Warden-Commander personality varies by entry point: Bastion = calm, The Veil = hostile, The Garden = gentle. Compendium entries unlock dialogue options, not quiz answers. Negotiation "temperature" tracked — push too hard and the door closes, too passive and respect is lost.</em></div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--guardians);margin-bottom:12px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--guardians);letter-spacing:2px;margin-bottom:6px">GUARDIAN MEMORY</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">The Guardians have been watching the galaxy for millennia. They know things. If you build trust (through outpost encounters, careful approach to Core, Strategist fragment collection), they share fragments of pre-Fracture history. Not freely — grudgingly, testing whether you'll use the knowledge well. The oldest functioning Guardian has memories of the Aethyn themselves. Finding it is a quest. Earning its trust is a campaign.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SIMULATION LAYER -->
+    <div class="section-label" style="color:var(--accent)">Simulation Layer (3 Features)</div>
+    <div class="section-heading" id="sec-ch43ai-10">Cracks in the Crucible</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:24px">
+      <div class="card" style="border-top:2px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">SIMULATION GLITCHES</div>
+        <div style="font-size:0.72rem;color:var(--text-mid);line-height:1.55">Subtle foreshadowing of the Crucible's true nature. A star that flickers like a rendering artifact. A unit that clips through terrain for one frame. Textures that briefly show grid lines. Not bugs — breadcrumbs. The AI director places 3-5 per simulation run, increasing in frequency as the player approaches the truth. Players who notice them are already asking the right questions.</div>
+      </div>
+      <div class="card" style="border-top:2px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">STRATEGIST ECHOES</div>
+        <div style="font-size:0.72rem;color:var(--text-mid);line-height:1.55">The Original Strategist's personality bleeding through the simulation. Odd turns of phrase in advisor dialogue that don't match their character. A battle report that reads like it was written by someone ancient. The Strategist isn't communicating — it's LEAKING. The simulation was built from its mind, and sometimes the seams show.</div>
+      </div>
+      <div class="card" style="border-top:2px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">ADAPTIVE DIFFICULTY WITHOUT NUMBERS</div>
+        <div style="font-size:0.72rem;color:var(--text-mid);line-height:1.55">The AI director adjusts challenge through BEHAVIOR, not stat scaling. Winning too easily? Enemy commanders play smarter — flanking, feinting, retreating to regroup. Struggling? They make tactical errors — overextending, splitting forces, ignoring flanks. No invisible health buffs. No damage multipliers. The enemies just think differently. The player never feels cheated because nothing was inflated — the opponents just adapted.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- THE BIG ONE -->
+    <div class="section-label" style="color:var(--vorax)">The Big One</div>
+    <div class="section-heading" id="sec-ch43ai-11">The Crucible Learns</div>
+
+    <div class="card" style="border:2px solid var(--accent);margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:3px;margin-bottom:8px">THE CRUCIBLE LEARNS — CROSS-RUN STRATEGIC ADAPTATION</div>
+      <div style="font-size:0.78rem;color:var(--text-mid);line-height:1.6">Each simulation run tracks the player's strategic patterns: preferred fleet compositions, favored expansion directions, alliance tendencies, combat timing. The next run, the galaxy adapts. Horde repositioned to counter your expansion route. Accord more aggressive on your weak flank. Vorax Tendrils hitting where you historically leave gaps.<br><br>
+        The simulation literally trains the player. You cannot win the same way twice. The Crucible is an Ender's Game battle room that watched every fight you've ever had and designed the next one to break your habits.<br><br>
+        <strong style="color:var(--text-hi)">The in-lore justification:</strong> The Strategist built the Crucible to produce a leader capable of saving the galaxy. Not a leader who can win ONE scenario — a leader who can adapt to ANYTHING. Every failed run teaches the Crucible what you can handle. Every successful run raises the bar. The simulation isn't your enemy. It's your teacher. And it's the most patient teacher in the universe — it's been running for millennia, waiting for someone who can graduate.<br><br>
+        <em style="color:var(--text-dim)">Integrates with: Archive persistence (Ch 33), Procedural Destiny (Ch 3), Ghost Fleets, Crucible Memory. Scope: behavior tracking + weighted adjustments to galaxy generation and AI personality selection. No stat inflation — smarter opponents, harder scenarios, evolved challenges.</em></div>
+    </div>
+
+    <div class="card" style="background:rgba(255,255,255,0.02);margin-bottom:16px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:6px">FEATURES CUT (5)</div>
+      <div style="font-size:0.72rem;color:var(--text-dim);line-height:1.55">The following were evaluated and cut during design review: Propaganda Engine (scope creep), Refugee Flows (too much simulation overhead), Puppet States (overlaps with diplomacy system), Commander Legacy (cross-run identity conflicts with fresh starts), The Watcher (redundant with Crucible Learns).</div>
+    </div>
+
+  </div><!-- /page-ch43-ai -->
+
+  <!-- ============================================================
+       PAGE: DLC & DEVELOPMENT ROADMAP (Chapters 43-44)
+       ============================================================ -->

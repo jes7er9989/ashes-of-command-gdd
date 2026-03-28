@@ -1,0 +1,166 @@
+[
+  {
+    "branch": "Ballistics Mastery",
+    "branchNum": 1,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Improved Rifling",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "All kinetic infantry weapons +8% accuracy at all ranges",
+        "notes": "The foundation — makes Shock-Marines measurably more effective immediately"
+      },
+      {
+        "tier": "T2a",
+        "name": "Heavy Caliber Rounds",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "All kinetic weapons +10% damage, +5% armor penetration",
+        "notes": "Raw damage increase across the board"
+      },
+      {
+        "tier": "T2b",
+        "name": "Stabilized Platforms",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Vehicle and mech weapons +12% accuracy while moving (normally reduced)",
+        "notes": "Allows Aegis-Walkers and Siege-Breakers to fire effectively during advance"
+      },
+      {
+        "tier": "T3",
+        "name": "Depleted Uranium Manufacturing",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Unlocks DU ammo (Rare: +30% dmg, irradiates zone). All kinetic weapons +5% crit chance.",
+        "notes": "The premium ammo unlock — expensive but devastating"
+      },
+      {
+        "tier": "T4",
+        "name": "Magnetic Accelerator Technology",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "Unlocks Magnetic Accelerator (hyper-velocity slugs penetrate multiple targets in a line). Ship MAC weapons +15% dmg.",
+        "notes": "CULMINATION — brute-force kinetic supremacy"
+      }
+    ]
+  },
+  {
+    "branch": "Field Engineering",
+    "branchNum": 2,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Improved Field Repair Protocols",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "Field Repair trigger threshold raised to 85% HP (heals more often, from the standard &lt;75% to &lt;85%)",
+        "notes": "Direct upgrade to PRIMARY mechanic — activates healing earlier in every engagement"
+      },
+      {
+        "tier": "T2a",
+        "name": "Advanced Repair Nanites",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Field Repair rate +50%: heals at 3% HP/sec instead of base 2%. Drone HP +50%.",
+        "notes": "Stacks with the T1 threshold increase — faster healing AND more often"
+      },
+      {
+        "tier": "T2b",
+        "name": "Hardened Composites",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "All Terran armor equipment +15% HP. Fortress Plate and Reactive Plating benefits compounded.",
+        "notes": "Raises the armor ceiling across the entire unit roster"
+      },
+      {
+        "tier": "T3",
+        "name": "Combat Medic Integration",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Field Repair now also affects adjacent friendly units at 50% effectiveness. AoE healing aura at 100px radius.",
+        "notes": "Transforms solo-unit mechanic into battlefield-wide support system"
+      },
+      {
+        "tier": "T4",
+        "name": "Fortress Doctrine",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "All Terran units +20% HP. All Terran buildings +40% HP. Fortified positions count as heavy cover.",
+        "notes": "CULMINATION — every Terran unit becomes a walking bunker"
+      }
+    ]
+  },
+  {
+    "branch": "Strategic Command",
+    "branchNum": 3,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Supply Line Optimization",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "Supply speed degradation reduced by 1 hop tier (3–4 hops = 100% instead of 75%). Reinforcement delivery −1 cycle for adjacent systems.",
+        "notes": "Makes the already-fast Terran supply chain even faster"
+      },
+      {
+        "tier": "T2a",
+        "name": "Advanced Logistics Network",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "War Factory production speed +20%. Armada Phase access from Logistics Hub added 1 cycle earlier.",
+        "notes": "More units, faster"
+      },
+      {
+        "tier": "T2b",
+        "name": "Commander Doctrine Training",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "All Commander aura radii +25%. Generals' command delay −1 cycle.",
+        "notes": "Direct upgrade to delegation system"
+      },
+      {
+        "tier": "T3",
+        "name": "General Staff Protocol",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Generals' standing order switches cost 0 loyalty (normally 5). After-Action Reports +20% detail. General auto-resolve +5%.",
+        "notes": "Reduces the cost of adapting strategy in the field"
+      },
+      {
+        "tier": "T4",
+        "name": "Strategic Command Network",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "All Terran Generals share intel galaxy-wide in real-time. All General stat bonuses in their sector +15%. Global auto-resolve +15%.",
+        "notes": "CULMINATION — Generals become a coordinated, galaxy-spanning hive mind"
+      }
+    ]
+  },
+  {
+    "branch": "Special Projects",
+    "branchNum": 4,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Prototype Weapons Lab",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "Cross-faction reverse-engineering +25% faster. Black Market equipment refresh +1 per cycle.",
+        "notes": "Opens cross-faction tech adoption pipeline"
+      },
+      {
+        "tier": "T2a",
+        "name": "Titan Activation Protocol",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Unlocks Titan-Class Leviathan production. 6 cycles at Advanced War Factory. Doubles repair drone pool within 200m of deployed Leviathan.",
+        "notes": "The mobile fortress — enormously expensive, but game-changing on the ground"
+      },
+      {
+        "tier": "T2b",
+        "name": "Nova-Class Construction",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Unlocks Nova-Dreadnought flagship. Requires orbital Shipyard + 8 cycles. Spinal MAC calibrated on construction.",
+        "notes": "The MAC gun — the ultimate capital ship in the galaxy"
+      },
+      {
+        "tier": "T3",
+        "name": "Hybrid Ammunition Research",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Unlocks Hybrid Rounds (Legendary: +15% vs BOTH Vorax AND Guardians, +5% all other targets). 1 set per 5 cycles per War Factory.",
+        "notes": "The dual-purpose endgame solution — essential when fighting two fronts"
+      },
+      {
+        "tier": "T4",
+        "name": "Project Overlord",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "Commander: +20% HP, +15% dmg, +10% aura radius. Starting CP per battle = 4 (↑ from 3). All CP abilities +10% effectiveness.",
+        "notes": "CULMINATION — Commander becomes a one-person army with enhanced battle control"
+      }
+    ]
+  }
+]

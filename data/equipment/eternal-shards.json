@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Psychic-Edge Halberd",
+    "slot": "[W]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "effect": "Molecular-level melee edge guided by precognition — ignores 50% of target armor."
+  },
+  {
+    "name": "Mind-Shatter Projector",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Targeted psychic burst turns enemy against nearest ally for 4 seconds. No direct damage."
+  },
+  {
+    "name": "Void Scythe",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Dimensional edge — 15% instant-kill chance on light infantry targets. Unlocked via Branch 1 T3."
+  },
+  {
+    "name": "Phase-Shift Weave",
+    "slot": "[A]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "effect": "+12% Phase Blink probability. Stacks with faction mechanic base value."
+  },
+  {
+    "name": "Soul-Stone Ward",
+    "slot": "[A]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "20% chance on death: consciousness captured. Unit respawns at 50% HP after 8 seconds."
+  },
+  {
+    "name": "Phase Jump Pack",
+    "slot": "[G]",
+    "rarity": "Uncommon",
+    "rarityColor": "#44cc66",
+    "effect": "Active teleport — 30m range, 1 charge per battle. No cooldown once activated."
+  },
+  {
+    "name": "Warp-Laced Rounds",
+    "slot": "[AM]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "10% chance per hit to dimensionally displace target to random nearby location."
+  },
+  {
+    "name": "Hybrid Crystal/Kinetic Slugs",
+    "slot": "[AM]",
+    "rarity": "Legendary",
+    "rarityColor": "#ffaa22",
+    "effect": "Physical crystal flechettes guided by psychic aim. +15% damage vs BOTH Vorax AND Core Guardians. Limited production."
+  },
+  {
+    "name": "Chronal Accelerator",
+    "slot": "[S]",
+    "rarity": "Legendary",
+    "rarityColor": "#ffaa22",
+    "effect": "Unit operates 20% faster across all action timings (attack, move, Phase Blink recharge)."
+  }
+]

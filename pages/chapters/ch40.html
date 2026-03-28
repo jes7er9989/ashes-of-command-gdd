@@ -1,0 +1,41 @@
+  <div class="page" id="page-ch40">
+    <div class="page-title-wrap">
+<div class="page-title">UI/UX SPECIFICATIONS &amp; SAVE SYSTEM</div>
+    <div class="page-subtitle">HUD Layout · Prototype HUD Positions · Save System — Chapters 40-41</div>
+</div>
+
+    <div class="section-label">HUD Layout</div>
+    <div class="section-heading" id="sec-ch40-0">Diegetic Holographic Framework · Interface Modes</div>
+    <div class="card" style="margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">INTERFACE MODES</div>
+      <div style="font-size:0.72rem;color:var(--text-mid);line-height:1.6">Dual-layer minimap (current battle zoom + galaxy position). Map Phase overworld interface · Armada Phase sub-mode (fleet management) · Approach Phase decision screen · War Room equipment/loadout panel · Auto-Battle HUD (CP bar, unit portraits, speed controls, status rings) · War Council interface · Compendium browser · Replay Coaching interface.</div>
+    </div>
+
+    <div class="section-label">Prototype HUD Positions</div>
+    <div class="section-heading" id="sec-ch40-1">Auto-Battle Canvas — Confirmed Element Layout</div>
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:24px">
+      <div style="display:grid;grid-template-columns:160px 120px 1fr;background:rgba(0,180,255,0.04);padding:7px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.52rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase"><span>Element</span><span>Position</span><span>Notes</span></div>
+      <div style="display:grid;grid-template-columns:160px 120px 1fr;padding:6px 12px;border-bottom:1px solid var(--border);font-size:0.72rem;color:var(--text-mid)"><span style="color:var(--text-hi)">CP Bar</span><span>Top center</span><span>Shows current CP / max 10. Fills left-to-right. Accent blue.</span></div>
+      <div style="display:grid;grid-template-columns:160px 120px 1fr;padding:6px 12px;border-bottom:1px solid var(--border);font-size:0.72rem;color:var(--text-mid);background:rgba(0,180,255,0.02)"><span style="color:var(--text-hi)">Speed Controls</span><span>Top right</span><span>0.5× / 1× / 1.5× / 2× buttons. Active = bright fill.</span></div>
+      <div style="display:grid;grid-template-columns:160px 120px 1fr;padding:6px 12px;border-bottom:1px solid var(--border);font-size:0.72rem;color:var(--text-mid)"><span style="color:var(--text-hi)">Unit Health Bars</span><span>Above each unit</span><span>Faction-colored. Width = HP%. Depletes smoothly.</span></div>
+      <div style="display:grid;grid-template-columns:160px 120px 1fr;padding:6px 12px;border-bottom:1px solid var(--border);font-size:0.72rem;color:var(--text-mid);background:rgba(0,180,255,0.02)"><span style="color:var(--text-hi)">Rank Badge</span><span>Below health bar</span><span>R/V/E/C/G initials. Color by rank tier.</span></div>
+      <div style="display:grid;grid-template-columns:160px 120px 1fr;padding:6px 12px;border-bottom:1px solid var(--border);font-size:0.72rem;color:var(--text-mid)"><span style="color:var(--text-hi)">Orbital Strike</span><span>Canvas click (CP≥3)</span><span>75 px radius. Shows radius preview on hover. 150 dmg (172 Terran).</span></div>
+      <div style="display:grid;grid-template-columns:160px 120px 1fr;padding:6px 12px;font-size:0.72rem;color:var(--text-mid)"><span style="color:var(--text-hi)">Battle Log</span><span>Bottom left</span><span>Scrolling combat events. Truncated to last 12 entries.</span></div>
+    </div>
+
+    <div class="section-label">Save System</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">STORY / STANDARD</div>
+        <div style="font-size:0.72rem;color:var(--text-mid);line-height:1.55">Unlimited manual saves at any point. Autosave every 3 cycles (configurable). Save file contains complete game state: galaxy, all factions, all units, Archive, Compendium, alignment scores, active operations.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--vorax);letter-spacing:2px;margin-bottom:6px">HARDCORE</div>
+        <div style="font-size:0.72rem;color:var(--text-mid);line-height:1.55">Ironman — single autosave file, overwritten every cycle. No manual saves. No Account bonuses. Death is permanent and unrecoverable. Archive SD still awards based on battles won before defeat.</div>
+      </div>
+    </div>
+  </div><!-- /page-ch40 -->
+
+  <!-- ============================================================
+       PAGE: NAMED COMMANDERS & DYNAMIC DIALOGUE (Chapter 42)
+       ============================================================ -->

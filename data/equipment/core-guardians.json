@@ -1,0 +1,65 @@
+[
+  {
+    "name": "Null-Lance",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Crystalline energy spear disrupting electronics on contact. Instantly disables vehicle and ship systems for 1 cycle. +25% damage vs mechanical units."
+  },
+  {
+    "name": "Arc Cannon",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Charged particle beam drawn from the planet's electromagnetic field. Ignores all shields. Full damage against shielded targets."
+  },
+  {
+    "name": "Verdict Pulse",
+    "slot": "[W]",
+    "rarity": "Legendary",
+    "rarityColor": "#ffaa22",
+    "effect": "Wide-cone energy burst. +50% damage against Necro-Legion and corrupted units. Standard damage against all others. Passes through cover."
+  },
+  {
+    "name": "Resonance Field",
+    "slot": "[A]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Personal energy lattice absorbing the first hit of each engagement entirely. Recharges after 2 cycles out of combat."
+  },
+  {
+    "name": "Ancient Plate",
+    "slot": "[A]",
+    "rarity": "Legendary",
+    "rarityColor": "#ffaa22",
+    "effect": "Pre-galactic alloy of unknown composition. Cannot be penetrated by standard munitions. +4 base defense. Cannot be destroyed, only disabled."
+  },
+  {
+    "name": "Stasis Sphere",
+    "slot": "[G]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Freezes a single target in temporal stasis for 2 cycles. Target cannot act and cannot be damaged while frozen."
+  },
+  {
+    "name": "Dimensional Anchor",
+    "slot": "[G]",
+    "rarity": "Legendary",
+    "rarityColor": "#ffaa22",
+    "effect": "Prevents Phase Blink, cloaking, and all teleport abilities in a 2-hex radius for 3 cycles. Counters Eternal Shards mechanics directly."
+  },
+  {
+    "name": "Void-Charged Rounds",
+    "slot": "[AM]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Ammunition infused with null-space energy. Bypasses all armor save values on a roll of 5+. Effective vs all target types."
+  },
+  {
+    "name": "Warden Network",
+    "slot": "[S]",
+    "rarity": "Legendary",
+    "rarityColor": "#ffaa22",
+    "effect": "Links all Core Guardian units on the planet into shared awareness. +2 Defense for all units while active. Cannot be jammed or disrupted."
+  }
+]

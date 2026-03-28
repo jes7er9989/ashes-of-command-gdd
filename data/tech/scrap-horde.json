@@ -1,0 +1,166 @@
+[
+  {
+    "branch": "Brutality",
+    "branchNum": 1,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Sharper Choppas",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "All melee weapons +10% damage (total +35% with faction passive). Melee attack speed +5%.",
+        "notes": "Hit harder, hit faster — the foundational Horde doctrine"
+      },
+      {
+        "tier": "T2a",
+        "name": "Rage Fuel",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "At &lt;30% HP: +20% damage, +15% attack speed (berserker state). Unit cannot voluntarily retreat while active.",
+        "notes": "Low-HP units become MORE dangerous — planned attrition fuel"
+      },
+      {
+        "tier": "T2b",
+        "name": "Wreckage Salvage Optimization",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Scrap Stack collection radius +10m (total 40m from 30m). Stack bonus: +4% armor, +3% damage (up from +3%/+2%).",
+        "notes": "DIRECT upgrade to primary mechanic — more range, bigger bonus per stack"
+      },
+      {
+        "tier": "T3",
+        "name": "WAAAGH! Fervor",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "First enemy kill each battle: all Horde units +15% damage, +10% speed for 8 seconds. Once per battle.",
+        "notes": "First blood triggers faction-wide frenzy — timing the first kill matters"
+      },
+      {
+        "tier": "T4",
+        "name": "WAAAGH! Momentum",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "WAAAGH! buff persists until the Horde takes a casualty. +30% damage, +15% speed. Each kill refreshes the timer.",
+        "notes": "CULMINATION — snowball until one casualty breaks the streak"
+      }
+    ]
+  },
+  {
+    "branch": "Scrap-Tek",
+    "branchNum": 2,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Thicker Plates",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "All armor equipment +10% HP. Scrap Plate and Looted Composite receive additional +5% HP on top.",
+        "notes": "Another welded layer — direct durability baseline"
+      },
+      {
+        "tier": "T2a",
+        "name": "Spiked Everything",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Spiked Armor reflected damage 15%→25%. All vehicles gain +5% melee contact reflection.",
+        "notes": "Touching the Horde in melee becomes increasingly inadvisable"
+      },
+      {
+        "tier": "T2b",
+        "name": "Looted Systems Integration",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Cross-faction looted equipment effectiveness 75%→90%. Random jam chance 8%→3%.",
+        "notes": "Stolen tech works better — Mek-Boys learn from experience"
+      },
+      {
+        "tier": "T3",
+        "name": "Ablative Wreckage Layering",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Unlocks Ablative Wreckage armor (+25% HP, first 5 hits absorbed by wreckage layer). All vehicles +15% HP passive.",
+        "notes": "The battlefield itself becomes armor — turn Scrap Stacks into literal plating"
+      },
+      {
+        "tier": "T4",
+        "name": "Nuclear Scrap-Forging",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "Unlocks Nuclear Scrap Bomb equipment. Irradiated wreckage produces +35% HP plating. All units +10% radiation resistance.",
+        "notes": "CULMINATION — junk becomes weapons-grade material"
+      }
+    ]
+  },
+  {
+    "branch": "Kunnin'",
+    "branchNum": 3,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Bigger Trukks",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "Scrap-Trukk capacity +4 (to 12 Brutes). All Horde vehicle movement speed +5%.",
+        "notes": "More bodies, faster delivery — core Horde logistics"
+      },
+      {
+        "tier": "T2a",
+        "name": "Basic Rekon",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Unlocks basic Recon actions for Horde (normally unavailable). Intel cost: 0 (Brutes scout for free).",
+        "notes": "Crude but free intelligence — the Horde stumbles onto useful information"
+      },
+      {
+        "tier": "T2b",
+        "name": "Factory Overdrive",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "War Factory production speed +25%. Advanced War Factory +15%. Unit Scrap cost −10%.",
+        "notes": "Mass production flood — replace casualties faster than the enemy kills them"
+      },
+      {
+        "tier": "T3",
+        "name": "Salvage Logistics",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "+3⚙ Scrap flat bonus per battle won. Tether-Barge processing efficiency +30%.",
+        "notes": "Profit from every fight — war is a resource-generating activity"
+      },
+      {
+        "tier": "T4",
+        "name": "Da Grand Plan",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "General auto-resolve +15%. COMBINED OPERATIONS: two Horde Generals can assault one target simultaneously. Standing orders improved.",
+        "notes": "CULMINATION — rare strategic coherence from the least strategic faction"
+      }
+    ]
+  },
+  {
+    "branch": "Special Projects",
+    "branchNum": 4,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Scrap Innovation",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "Battlefield salvage equipment rolls +10% quality. 15% chance to generate a bonus Common item after each battle.",
+        "notes": "Find useful junk more often — luck of the scrap heap"
+      },
+      {
+        "tier": "T2a",
+        "name": "War-God Idol Activation",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Unlocks War-God Idol production. 5 cycles at Advanced War Factory. +15% damage Waaagh!-Caller aura on deployment.",
+        "notes": "Walking shrine — 30 crew, 12 meters of mobile violence"
+      },
+      {
+        "tier": "T2b",
+        "name": "Asteroid-Fortress Construction",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Unlocks Asteroid-Fortress flagship. Requires capturable asteroid node + Shipyard + 7 cycles.",
+        "notes": "800m diameter of rock, guns, and fury"
+      },
+      {
+        "tier": "T3",
+        "name": "Reverse-Engineered Acid",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Unlocks Acid-Dipped ammo (+25% vs Vorax). All Horde weapons +5% damage-over-time duration.",
+        "notes": "Vorax biology weaponized against the Vorax — poetic"
+      },
+      {
+        "tier": "T4",
+        "name": "Da Biggest Gun",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "Asteroid-Fortress gains Da Big Gun: deals 50% of target's max HP as direct damage per shot, regardless of armor. Once per battle. Recoils Fortress 200m.",
+        "notes": "CULMINATION — one shot, one problem solved. Probably."
+      }
+    ]
+  }
+]

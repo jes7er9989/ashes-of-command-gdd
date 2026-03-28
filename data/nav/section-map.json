@@ -1,0 +1,936 @@
+{
+  "ch1": [
+    {
+      "id": "sec-ch1-0",
+      "label": "4X · Auto-Battler · Rogue-Lite · Deep Narrative"
+    },
+    {
+      "id": "sec-ch1-1",
+      "label": "Every Design Decision Must Serve At Least One"
+    },
+    {
+      "id": "sec-ch1-2",
+      "label": "Precise Design Targets"
+    }
+  ],
+  "ch2": [
+    {
+      "id": "sec-ch2-0",
+      "label": "Five Phases, One Core Loop"
+    },
+    {
+      "id": "sec-ch2-1",
+      "label": "The Game’s Home State"
+    },
+    {
+      "id": "sec-ch2-2",
+      "label": "Starting Fleet Composition"
+    },
+    {
+      "id": "sec-ch2-3",
+      "label": "Three Options at Every System — Confirmed Resource Costs"
+    },
+    {
+      "id": "sec-ch2-4",
+      "label": "Enemy Fleet Compositions by System Type"
+    }
+  ],
+  "ch3": [
+    {
+      "id": "sec-ch3-0",
+      "label": "The Crucible (Simulation) → The Final War (Reality)"
+    },
+    {
+      "id": "sec-ch3-1",
+      "label": "Canonical Victory and Defeat States"
+    },
+    {
+      "id": "sec-ch3-2",
+      "label": "Fragments of the Original Strategist’s Life"
+    },
+    {
+      "id": "sec-ch3-3",
+      "label": "Conquest · Unification · Pyrrhic · Secret Unifier"
+    }
+  ],
+  "ch4": [
+    {
+      "id": "sec-ch4-1",
+      "label": "Bridge Between Faction & Resonance"
+    },
+    {
+      "id": "sec-ch4-2",
+      "label": "Awareness Arc — Zero to Full"
+    },
+    {
+      "id": "sec-ch4-3",
+      "label": "Death & Permadeath Stakes"
+    },
+    {
+      "id": "sec-ch4-4",
+      "label": "Commander Personality Framework"
+    },
+    {
+      "id": "sec-ch4-5",
+      "label": "Commander–Faction Relationship Arc"
+    },
+    {
+      "id": "sec-ch4-6",
+      "label": "Truth Revealed — Path-Dependent"
+    },
+    {
+      "id": "sec-ch4-7",
+      "label": "DLC Commander Equivalents"
+    }
+  ],
+  "ch5": [
+    {
+      "id": "sec-ch5-0",
+      "label": "Survival at Any Cost"
+    },
+    {
+      "id": "sec-ch5-1",
+      "label": "Military Industrial Realism"
+    },
+    {
+      "id": "sec-ch5-2",
+      "label": "Primary Mechanic: Field Repairs"
+    },
+    {
+      "id": "sec-ch5-3",
+      "label": "Confirmed Prototype Values — Default 6 Units Per Side"
+    },
+    {
+      "id": "sec-ch5-4",
+      "label": "Default Equipment Loadout at Battle Start"
+    },
+    {
+      "id": "sec-ch5-5",
+      "label": "Ground · Air · Space"
+    },
+    {
+      "id": "sec-ch5-6",
+      "label": "Terran League Equipment Catalog"
+    },
+    {
+      "id": "sec-ch5-7",
+      "label": "4 Branches × 4 Tiers"
+    },
+    {
+      "id": "sec-ch5-8",
+      "label": "The Decanting"
+    },
+    {
+      "id": "sec-ch5-9",
+      "label": "Key Narrative Moments"
+    },
+    {
+      "id": "sec-ch5-bible",
+      "label": "Faction Bible — Cultural DNA"
+    },
+    {
+      "id": "sec-ch5-bible-advisors",
+      "label": "Advisor Full Profiles"
+    },
+    {
+      "id": "sec-ch5-bible-ai",
+      "label": "AI Director Seeds"
+    }
+  ],
+  "ch6": [
+    {
+      "id": "sec-ch6-0",
+      "label": "The Long Goodbye"
+    },
+    {
+      "id": "sec-ch6-1",
+      "label": "Crystalline Psychic Elegance"
+    },
+    {
+      "id": "sec-ch6-2",
+      "label": "Primary Mechanic: Phase Blink"
+    },
+    {
+      "id": "sec-ch6-3",
+      "label": "Ground · Air · Space"
+    },
+    {
+      "id": "sec-ch6-4",
+      "label": "Eternal Shards Equipment Catalog"
+    },
+    {
+      "id": "sec-ch6-5",
+      "label": "4 Branches × 4 Tiers"
+    },
+    {
+      "id": "sec-ch6-6",
+      "label": "The Resonance"
+    },
+    {
+      "id": "sec-ch6-7",
+      "label": "Key Narrative Moments"
+    },
+    {
+      "id": "sec-ch6-bible",
+      "label": "Faction Bible — Cultural DNA"
+    },
+    {
+      "id": "sec-ch6-bible-advisors",
+      "label": "Advisor Archetypes"
+    },
+    {
+      "id": "sec-ch6-bible-ai",
+      "label": "AI Director Seeds"
+    }
+  ],
+  "ch7": [
+    {
+      "id": "sec-ch7-0",
+      "label": "The Joy of War"
+    },
+    {
+      "id": "sec-ch7-1",
+      "label": "Industrial Brutalism"
+    },
+    {
+      "id": "sec-ch7-2",
+      "label": "Primary Mechanic: Scrap Stacks"
+    },
+    {
+      "id": "sec-ch7-3",
+      "label": "Slaughter-Brute — Confirmed Prototype Values"
+    },
+    {
+      "id": "sec-ch7-4",
+      "label": "Ground · Air · Space"
+    },
+    {
+      "id": "sec-ch7-5",
+      "label": "Scrap-Horde Equipment Catalog"
+    },
+    {
+      "id": "sec-ch7-6",
+      "label": "4 Branches × 4 Tiers"
+    },
+    {
+      "id": "sec-ch7-7",
+      "label": "The Forging"
+    },
+    {
+      "id": "sec-ch7-8",
+      "label": "Key Narrative Moments"
+    },
+    {
+      "id": "sec-ch7-bible",
+      "label": "★ Faction Bible"
+    },
+    {
+      "id": "sec-ch7-bible-advisors",
+      "label": "★ Advisors — Forge-Council"
+    },
+    {
+      "id": "sec-ch7-bible-ai",
+      "label": "★ AI Director Seeds"
+    }
+  ],
+  "ch8": [
+    {
+      "id": "sec-ch8-0",
+      "label": "The Weight of Eternity"
+    },
+    {
+      "id": "sec-ch8-1",
+      "label": "Ancient Machine Death"
+    },
+    {
+      "id": "sec-ch8-2",
+      "label": "Primary Mechanic: Reanimation"
+    },
+    {
+      "id": "sec-ch8-3",
+      "label": "Kill-Count Thresholds — Confirmed for All Factions"
+    },
+    {
+      "id": "sec-ch8-4",
+      "label": "Ground · Air · Space"
+    },
+    {
+      "id": "sec-ch8-5",
+      "label": "Necro-Legion Equipment Catalog"
+    },
+    {
+      "id": "sec-ch8-6",
+      "label": "4 Branches × 4 Tiers"
+    },
+    {
+      "id": "sec-ch8-7",
+      "label": "The Reactivation"
+    },
+    {
+      "id": "sec-ch8-bible",
+      "label": "★ Faction Bible"
+    },
+    {
+      "id": "sec-ch8-bible-advisors",
+      "label": "★ Advisors — Commander’s Council"
+    },
+    {
+      "id": "sec-ch8-bible-ai",
+      "label": "★ AI Director Seeds"
+    },
+    {
+      "id": "sec-ch8-8",
+      "label": "Key Narrative Moments"
+    }
+  ],
+  "ch9": [
+    {
+      "id": "sec-ch9-0",
+      "label": "The Price of Order"
+    },
+    {
+      "id": "sec-ch9-1",
+      "label": "Precision Engineering"
+    },
+    {
+      "id": "sec-ch9-2",
+      "label": "Primary Mechanic: Marked Targets (Tactical Link)"
+    },
+    {
+      "id": "sec-ch9-3",
+      "label": "Command Points — Starting 3, Max 10, Regen 1/30sec"
+    },
+    {
+      "id": "sec-ch9-4",
+      "label": "Ground · Air · Space"
+    },
+    {
+      "id": "sec-ch9-5",
+      "label": "Unity Accord Equipment Catalog"
+    },
+    {
+      "id": "sec-ch9-6",
+      "label": "4 Branches × 4 Tiers"
+    },
+    {
+      "id": "sec-ch9-7",
+      "label": "The Boot Sequence"
+    },
+    {
+      "id": "sec-ch9-8",
+      "label": "Key Narrative Moments"
+    }
+  ],
+  "ch10": [
+    {
+      "id": "sec-ch10-0",
+      "label": "The Extra-Galactic Threat"
+    },
+    {
+      "id": "sec-ch10-1",
+      "label": "Biological Nightmare"
+    },
+    {
+      "id": "sec-ch10-2",
+      "label": "Galactic Clock — First Spawn, Movement, Respawn"
+    },
+    {
+      "id": "sec-ch10-3",
+      "label": "Tendrils, Biomass, Creep"
+    },
+    {
+      "id": "sec-ch10-4",
+      "label": "Ground · Air · Space"
+    },
+    {
+      "id": "sec-ch10-5",
+      "label": "\"The Swarm Unbound\" — Playable Vorax"
+    }
+  ],
+  "ch11": [
+    {
+      "id": "sec-ch11-0",
+      "label": "The Last Servants of the Aethyn"
+    },
+    {
+      "id": "sec-ch11-1",
+      "label": "Nexus, Haven, and RNG — Canonical Coordinates"
+    },
+    {
+      "id": "sec-ch11-2",
+      "label": "Cosmic Geometry Made Manifest"
+    },
+    {
+      "id": "sec-ch11-3",
+      "label": "Energy Absorption · Kinetic Vulnerability · Volatile Death · Hard-Light"
+    },
+    {
+      "id": "sec-ch11-4",
+      "label": "Ground · Air · Space"
+    },
+    {
+      "id": "sec-ch11-5",
+      "label": "The Only Voice That Speaks"
+    },
+    {
+      "id": "sec-ch11-6",
+      "label": "\"The Core Awakens\" — Playable Guardians"
+    },
+    {
+      "id": "sec-ch11-7",
+      "label": "Corruption Spectrum by Core Planet"
+    },
+    {
+      "id": "sec-ch11-8",
+      "label": "Architecture — Forerunner Skeleton + Hard-Light Flesh"
+    },
+    {
+      "id": "sec-ch11-9",
+      "label": "Strategist Connection — Two Halves of the Same Plan"
+    },
+    {
+      "id": "sec-ch11-10",
+      "label": "Guardian Fate — Path-Dependent Outcomes"
+    },
+    {
+      "id": "sec-ch11-11",
+      "label": "Outposts & Lost Units Outside the Core"
+    },
+    {
+      "id": "sec-ch11-12",
+      "label": "Faction Perceptions of the Guardians"
+    },
+    {
+      "id": "sec-ch11-13",
+      "label": "Dyson Spheres — Aethyn Power Infrastructure"
+    }
+  ],
+  "ch12": [
+    {
+      "id": "sec-ch12-0",
+      "label": "Player-Selected at Campaign Start"
+    },
+    {
+      "id": "sec-ch12-1",
+      "label": "Fixed Anchors · Fisher-Yates RNG · Post-Lane Pruning"
+    },
+    {
+      "id": "sec-ch12-2",
+      "label": "5 Types Determine Planet Distribution"
+    },
+    {
+      "id": "sec-ch12-3",
+      "label": "Procedural Network with Guaranteed Connectivity"
+    }
+  ],
+  "ch13": [
+    {
+      "id": "sec-ch13-0",
+      "label": "12 Types — Click Any Row to Expand"
+    },
+    {
+      "id": "sec-ch13-1",
+      "label": "Battle Length Scales with Territory Count"
+    },
+    {
+      "id": "sec-ch13-2",
+      "label": "Resource · Combat · Strategic"
+    },
+    {
+      "id": "sec-ch13-3",
+      "label": "Stripped World Restoration: 100⚙ & 20 Cycles"
+    }
+  ],
+  "ch14": [
+    {
+      "id": "sec-ch14-0",
+      "label": "Permanent Features That Shape Strategy"
+    },
+    {
+      "id": "sec-ch14-1",
+      "label": "The Galaxy’s Weather — Unpredictable, Impactful"
+    }
+  ],
+  "ch15": [
+    {
+      "id": "sec-ch15-0",
+      "label": "Unlimited Range, Degrading Speed"
+    },
+    {
+      "id": "sec-ch15-1",
+      "label": "Supply % at Time of Battle Determines Stat Modifier"
+    },
+    {
+      "id": "sec-ch15-2",
+      "label": "Defenders Degrade Gradually — Supply Distance Matters Even at Home"
+    },
+    {
+      "id": "sec-ch15-3",
+      "label": "The Sequence That Resolves All Modifier Conflicts"
+    },
+    {
+      "id": "sec-ch15-4",
+      "label": "Economic · Military · Logistics · Research · Special"
+    }
+  ],
+  "ch16": [
+    {
+      "id": "sec-ch16-0",
+      "label": "Three Confirmed Buildings for Prototype Slice"
+    },
+    {
+      "id": "sec-ch16-1",
+      "label": "Economic · Military · Logistics · Research · Special"
+    },
+    {
+      "id": "sec-ch16-2",
+      "label": "Tier-Locked Recruitment — Unit Tier → Building Req"
+    },
+    {
+      "id": "sec-ch16-3",
+      "label": "War Factory — Auto-Produce · Recruit · Repair"
+    },
+    {
+      "id": "sec-ch16-4",
+      "label": "Rally Points — Per-System Unit Gathering"
+    }
+  ],
+  "ch17": [
+    {
+      "id": "sec-ch17-0",
+      "label": "Preparation → Observation → Intervention"
+    },
+    {
+      "id": "sec-ch17-1",
+      "label": "Three Roles · Spawn Index · Reactive Repositioning"
+    },
+    {
+      "id": "sec-ch17-2",
+      "label": "5 Minutes (Skirmish) to 25 Minutes (Core Guardian Assault)"
+    },
+    {
+      "id": "sec-ch17-3",
+      "label": "Cover · Elevation · Garrison"
+    },
+    {
+      "id": "sec-ch17-4",
+      "label": "5 Fleet Formations"
+    }
+  ],
+  "ch18": [
+    {
+      "id": "sec-ch18-0",
+      "label": "Pre-Battle → Formation Select → Auto-Battle → Resolution"
+    },
+    {
+      "id": "sec-ch18-1",
+      "label": "Each Determines Starting Position + Movement AI"
+    },
+    {
+      "id": "sec-ch18-2",
+      "label": "Terran League — Starting Armada Ships"
+    },
+    {
+      "id": "sec-ch18-3",
+      "label": "Horde / Enemy Fleet Ships"
+    },
+    {
+      "id": "sec-ch18-4",
+      "label": "Three Tiers of Opposition"
+    },
+    {
+      "id": "sec-ch18-5",
+      "label": "2 Frigates · Persistent · No HP Restore Between Battles"
+    },
+    {
+      "id": "sec-ch18-6",
+      "label": "The Object Passed to Ground Combat Modifier"
+    },
+    {
+      "id": "sec-ch18-7",
+      "label": "Pre-Battle Choices · Intel & Influence Spend"
+    },
+    {
+      "id": "sec-ch18-8",
+      "label": "Canvas Rendering — Colors & Background"
+    },
+    {
+      "id": "sec-ch18-9",
+      "label": "7 Targeted Abilities · 1 CP/30 sec Regen · 10 Max Pool"
+    },
+    {
+      "id": "sec-ch18-10",
+      "label": "6 Types Based on Strategic Context"
+    },
+    {
+      "id": "sec-ch18-11",
+      "label": "6 Classes from Interceptor to Dreadnought"
+    }
+  ],
+  "ch19": [
+    {
+      "id": "sec-ch19-0",
+      "label": "Canonical Reference — 6 Units Per Side Default"
+    },
+    {
+      "id": "sec-ch19-1",
+      "label": "5 Cover Types · All Destructible"
+    },
+    {
+      "id": "sec-ch19-2",
+      "label": "3 Tiers of Elevation Bonus"
+    },
+    {
+      "id": "sec-ch19-3",
+      "label": "Space Performance → Beachhead Size → Reserve Triggers"
+    },
+    {
+      "id": "sec-ch19-4",
+      "label": "7 Targeted Abilities"
+    }
+  ],
+  "ch19b": [
+    {
+      "id": "sec-ch19b-0",
+      "label": "Dark Crusade · StarCraft · Mechabellum"
+    },
+    {
+      "id": "sec-ch19b-1",
+      "label": "How Each Contributes to Ground Combat"
+    },
+    {
+      "id": "sec-ch19b-2",
+      "label": "Missing Pieces — Systems Not Yet Implemented"
+    }
+  ],
+  "ch20": [
+    {
+      "id": "sec-ch20-0",
+      "label": "Primary Weapon · Armor · Gear · Ammo · System · Special"
+    },
+    {
+      "id": "sec-ch20-1",
+      "label": "8 Items · Prototype Slice · All Confirmed Values"
+    },
+    {
+      "id": "sec-ch20-2",
+      "label": "What the Player Begins With"
+    },
+    {
+      "id": "sec-ch20-3",
+      "label": "Probability Scales with Campaign Progress"
+    },
+    {
+      "id": "sec-ch20-4",
+      "label": "Larger Units = More Slots"
+    },
+    {
+      "id": "sec-ch20-5",
+      "label": "Veterancy Grants Equipment Access"
+    },
+    {
+      "id": "sec-ch20-6",
+      "label": "Common · Uncommon · Rare · Legendary"
+    },
+    {
+      "id": "sec-ch20-7",
+      "label": "5 Ways to Get Equipment"
+    },
+    {
+      "id": "sec-ch20-8",
+      "label": "4–5 Tiers × 3–4 Branches Per Faction · 124 Nodes Total"
+    }
+  ],
+  "ch21": [
+    {
+      "id": "sec-ch21-0",
+      "label": "Generation · Pool · Starting CP"
+    },
+    {
+      "id": "sec-ch21-1",
+      "label": "Universal Ground Abilities (3) — Always Available"
+    },
+    {
+      "id": "sec-ch21-1b",
+      "label": "Faction-Specific Ground Abilities (6×7) — 42 Unique"
+    },
+    {
+      "id": "sec-ch21-2",
+      "label": "Space CP Abilities (7) — Unchanged"
+    },
+    {
+      "id": "sec-ch21-3",
+      "label": "Commander Abilities — Now General Rank 3+ Unlock"
+    }
+  ],
+  "ch22": [
+    {
+      "id": "sec-ch22-0",
+      "label": "Kill-Count Thresholds · Confirmed Stat Modifiers"
+    },
+    {
+      "id": "sec-ch22-1",
+      "label": "All Strengths — No Trait Is a Weakness"
+    },
+    {
+      "id": "sec-ch22-2",
+      "label": "Each Trait Determines the Active CP Ability at Commander Rank"
+    },
+    {
+      "id": "sec-ch22-3",
+      "label": "9 Orders · Personality Modifies Interpretation"
+    },
+    {
+      "id": "sec-ch22-4",
+      "label": "Loyalty · Friction · Defection Arc"
+    }
+  ],
+  "ch23": [
+    {
+      "id": "sec-ch23-0",
+      "label": "6 Automatic Triggers — Never On-Demand"
+    },
+    {
+      "id": "sec-ch23-1",
+      "label": "Valerius · Krell · Vane — Three Doctrines, Three Hidden Depths"
+    },
+    {
+      "id": "sec-ch23-2",
+      "label": "Each Advisor Has a Preferred Path"
+    },
+    {
+      "id": "sec-ch23-3",
+      "label": "The Twist That Recontextualizes Everything"
+    },
+    {
+      "id": "sec-ch23-4",
+      "label": "Three Independent Scores · Dominant Score = Alignment"
+    },
+    {
+      "id": "sec-ch23-5",
+      "label": "15 Unique Advisor Characters (5 × 3)"
+    },
+    {
+      "id": "sec-ch23-6",
+      "label": "Faction-Specific Reveal Moments"
+    },
+    {
+      "id": "sec-ch23-7",
+      "label": "The Advisor Triangle — Shifts With Alignment"
+    },
+    {
+      "id": "sec-ch23-8",
+      "label": "The Wake-Up Moment — Earned, Not Scripted"
+    },
+    {
+      "id": "sec-ch23-9",
+      "label": "Advisor Death — The Sidelined Advisor"
+    },
+    {
+      "id": "sec-ch23-10",
+      "label": "Advisors & the Strategist"
+    },
+    {
+      "id": "sec-ch23-11",
+      "label": "Advisor Fate by Ending"
+    }
+  ],
+  "ch24": [
+    {
+      "id": "sec-ch24-0",
+      "label": "Five Operation Types"
+    },
+    {
+      "id": "sec-ch24-1",
+      "label": "Event-Driven Audiences · 6 Actions · Betrayal Consequences"
+    },
+    {
+      "id": "sec-ch24-2",
+      "label": "6 Event Types Open Diplomatic Audiences — Never On-Demand"
+    },
+    {
+      "id": "sec-ch24-3",
+      "label": "Three Resources · Trade Routes · Black Market · Pirates"
+    },
+    {
+      "id": "sec-ch24-4",
+      "label": "Narrative Events Every 3-5 Cycles · 5 Expansion Encounter Types"
+    }
+  ],
+  "ch25": [
+    {
+      "id": "sec-ch25-0",
+      "label": "Every Decision Builds Your Command Philosophy"
+    },
+    {
+      "id": "sec-ch25-1",
+      "label": "Conquest ← → Unification · 75% = Point of No Return"
+    },
+    {
+      "id": "sec-ch25-2",
+      "label": "Your Simulation Runs Shape the Final War Galaxy"
+    },
+    {
+      "id": "sec-ch25-3",
+      "label": "Nearly Every Decision Counts"
+    }
+  ],
+  "ch26": [
+    {
+      "id": "sec-ch26-0",
+      "label": "Cannot Be Treated as a Standard Faction"
+    },
+    {
+      "id": "sec-ch26-1",
+      "label": "6 Event Types Open Diplomatic Windows"
+    },
+    {
+      "id": "sec-ch26-2",
+      "label": "Reputation Consequences — Decaying Over Cycles"
+    }
+  ],
+  "ch29": [
+    {
+      "id": "sec-ch29-0",
+      "label": "Every 3-5 Cycles · State-Sensitive · Max 2 Per Cycle"
+    },
+    {
+      "id": "sec-ch29-1",
+      "label": "5 Types · Alignment Consequences"
+    }
+  ],
+  "ch30": [
+    {
+      "id": "sec-ch30-0",
+      "label": "Option C — Confirmed Values (see §22.1 for full table)"
+    },
+    {
+      "id": "sec-ch30-1",
+      "label": "Unit Destroyed — Two Possible Fates"
+    },
+    {
+      "id": "sec-ch30-2",
+      "label": "Each Rank = +1 Equipment Slot · Terran Early Bonus"
+    }
+  ],
+  "ch31": [
+    {
+      "id": "sec-ch31-0",
+      "label": "Ring Closes → Player Pushed Toward Guardian Wall"
+    }
+  ],
+  "ch32": [
+    {
+      "id": "sec-ch32-0",
+      "label": "Three Permadeath Tiers"
+    },
+    {
+      "id": "sec-ch32-1",
+      "label": "Conquest or Unification — A Third Hybrid Exists"
+    },
+    {
+      "id": "sec-ch32-2",
+      "label": "Canonical System IDs"
+    },
+    {
+      "id": "sec-ch32-3",
+      "label": "Alignment Determines the Galaxy’s Fate"
+    }
+  ],
+  "ch33": [
+    {
+      "id": "sec-ch33-0",
+      "label": "In-Run · Archive · Account"
+    },
+    {
+      "id": "sec-ch33-1",
+      "label": "localStorage key: 'aoc_archive'"
+    },
+    {
+      "id": "sec-ch33-2",
+      "label": "500–800 Entries · Three Voices · Persistent Across All Campaigns"
+    },
+    {
+      "id": "sec-ch33-3",
+      "label": "The Galactic Emperor Shift — General Autonomous Command"
+    }
+  ],
+  "ch37": [
+    {
+      "id": "sec-ch37-0",
+      "label": "Grimdark Atmosphere · StarCraft Readability · Diegetic UI"
+    },
+    {
+      "id": "sec-ch37-1",
+      "label": "All MVP Units Generated Programmatically · No External Assets"
+    },
+    {
+      "id": "sec-ch37-2",
+      "label": "The UI IS the Game World — Not a Menu Layer"
+    },
+    {
+      "id": "sec-ch37-3",
+      "label": "Every Unit Has Distinct Audio · Dynamic State Music"
+    }
+  ],
+  "ch40": [
+    {
+      "id": "sec-ch40-0",
+      "label": "Diegetic Holographic Framework · Interface Modes"
+    },
+    {
+      "id": "sec-ch40-1",
+      "label": "Auto-Battle Canvas — Confirmed Element Layout"
+    }
+  ],
+  "ch43": [
+    {
+      "id": "sec-ch43-0",
+      "label": "Three Major DLCs + Conceptual Future Content"
+    },
+    {
+      "id": "sec-ch43-1",
+      "label": "9-Phase Pipeline"
+    },
+    {
+      "id": "sec-ch43-2",
+      "label": "9 Specialized Sub-Chats for GDD Development"
+    }
+  ],
+  "ch46": [
+    {
+      "id": "sec-ch46-0",
+      "label": "All Integrated into Canonical Chapters · See Appendix L"
+    }
+  ],
+  "appendices": [
+    {
+      "id": "sec-appendices-0",
+      "label": "105 Units · 7 Factions · 5 Ground / 5 Air / 5 Space Each"
+    },
+    {
+      "id": "sec-appendices-1",
+      "label": "208 Items Full Catalog · 8 MVP Prototype Items Locked"
+    },
+    {
+      "id": "sec-appendices-2",
+      "label": "Side-by-Side Comparison — All 5 Playable Factions"
+    },
+    {
+      "id": "sec-appendices-3",
+      "label": "All 16 Core Guardian Units · Blast Radius · Chain Risk"
+    },
+    {
+      "id": "sec-appendices-4",
+      "label": "12 Planet Types · Territory Ranges · Resource Yields"
+    },
+    {
+      "id": "sec-appendices-5",
+      "label": "Key Terminology Quick-Reference"
+    },
+    {
+      "id": "sec-appM-0",
+      "label": "GDD Status · Godot Code · Living Universe · Kickstarter · Roadmap"
+    }
+  ]
+}

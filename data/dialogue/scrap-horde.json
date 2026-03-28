@@ -1,0 +1,111 @@
+[
+  {
+    "beat": "First Victory",
+    "trigger": "After winning first territory battle as Scrap-Horde",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "Victory. Blood, fire, and wreckage. The survivors are pulling armor plates from the dead — ours and theirs — welding them onto their own frames. They're SINGING. I don't know the words. My silicon knows the rhythm."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Territory captured. Note the casualty ratio — 3:1 in their favor. Your force sustained significant losses. Standard tactical doctrine would consider this—"
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "A win is a win, Valerius. The Horde doesn't count its dead. It counts its victories."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "The enemy saw your losses and will underestimate you. They don't understand that your dead make your living stronger. Let them keep counting our bodies. We'll count their planets."
+      }
+    ]
+  },
+  {
+    "beat": "First Defeat",
+    "trigger": "After losing first territory battle as Scrap-Horde",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "Defeat. They broke us. Not through superior strategy — through firepower. Concentrated, coordinated, overwhelming. No wreckage close enough to salvage. No time to build momentum. Just... death, and then silence."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "The enemy exploited your reliance on attrition warfare by engaging at maximum range and refusing close combat. Recommendation: invest in ranged capability before next assault."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "They kept their distance. Smart. Cowardly, but smart. Next time we bring Bommers. Let them keep their distance from THAT."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "You lost cheap units. That is by design. The expensive units are intact. The math still works — your army is a furnace. Feed it scrap and it produces steel."
+      }
+    ]
+  },
+  {
+    "beat": "Vorax First Encounter",
+    "trigger": "First Vorax engagement as Scrap-Horde",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "The Swarm. They came from every direction. For the first time in Horde history, our warriors paused. Not from fear. From RECOGNITION. The Vorax fight like us. They swarm. They overwhelm. They consume the dead to grow stronger. The only difference — we do it for freedom. They do it because they're hungry."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "The Vorax adaptive mutation mirrors your Wreckage Salvage at a biological level. They learn from what they consume. Rotate weapon types between engagements to prevent counter-adaptation."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "Finally. An enemy that fights PROPERLY. None of that shiny, dodgy, stay-at-range garbage. These things get in your face and FIGHT. I can respect that."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "They're our mirror. Born for consumption, evolved for war, growing stronger from death. The difference is we CHOOSE our violence. They're slaves to instinct."
+      }
+    ]
+  },
+  {
+    "beat": "Core Guardian First Contact",
+    "trigger": "Fleet enters Core Guardian exclusion zone as Scrap-Horde",
+    "lines": [
+      {
+        "speaker": "BROADCAST",
+        "style": "normal",
+        "text": "YOU ARE APPROACHING THE EXCLUSION ZONE. TURN BACK. THIS IS YOUR FINAL WARNING."
+      },
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "The Silent Gods. They glow. Everything glows — ships, weapons, existence compressed into shapes. They are the opposite of everything we are. Rust, scrap, fire vs crystal, light, mathematics. Something in the silicon hates them. Something deeper wants to take them apart and see what's inside."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Their energy composition renders our kinetic weapons highly effective — physical projectiles destabilize containment fields. However, Volatile Death chain reactions make close-range boarding doctrine inadvisable."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "Bullets work on them? BULLETS? That's the first good news all campaign. Point me at 'em."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "They explode when they die. Chain reactions. The closer we are, the more die when THEY die. This requires restraint. A word the Horde doesn't like. If we charge them like everyone else, our victory kills us."
+      }
+    ]
+  }
+]

@@ -1,0 +1,166 @@
+[
+  {
+    "branch": "Pulse Weaponry",
+    "branchNum": 1,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Focused Pulse Emitters",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "All pulse weapon damage +8%. Burst fire accuracy +5%.",
+        "notes": "Precision becomes more precise — the compounding foundation"
+      },
+      {
+        "tier": "T2a",
+        "name": "Overcharged Plasma Cells",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Unlocks Overcharged Plasma mode (+15% damage, +20% heat generation, overheats after 6s). All energy weapons +5%.",
+        "notes": "More damage at the cost of sustained fire — situational but devastating"
+      },
+      {
+        "tier": "T2b",
+        "name": "EMP Integration",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Unlocks EMP Pulse variant (−5% damage, disables target's system module for 4s). 3% chance to disable on any hit.",
+        "notes": "Anti-vehicle disruption — stops mechs and tanks cold"
+      },
+      {
+        "tier": "T3",
+        "name": "Ion Accelerator Development",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Unlocks Ion Accelerator (Rare: disables vehicles 3s per hit). All energy weapons +10% vs vehicles.",
+        "notes": "Vehicles cease to function — precision doctrine's hard counter to armor"
+      },
+      {
+        "tier": "T4",
+        "name": "Predictive Fire Control",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "First shot vs any new target +25% accuracy. First shot receives full Mark bonus as if target was pre-Marked.",
+        "notes": "CULMINATION — eliminates Tactical Link's cold-contact disadvantage entirely"
+      }
+    ]
+  },
+  {
+    "branch": "Tactical Systems",
+    "branchNum": 2,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Enhanced Marker Arrays",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "Mark accuracy bonus +3% (to +18%). Mark duration +1 second (to 9s).",
+        "notes": "PRIMARY mechanic upgrade — longer, stronger Marks cascade across the network"
+      },
+      {
+        "tier": "T2a",
+        "name": "Drone Network Expansion",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "All units receive +1 support drone. Drone sensor range +20%. Drones gain light self-defense capability.",
+        "notes": "More drones, better drones — the network sees everything"
+      },
+      {
+        "tier": "T2b",
+        "name": "Tactical Network Hub Distribution",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Hub equipment effectiveness +75% (from +50%). Effect range extended to 40m.",
+        "notes": "Stronger amplification at greater range — Mark bonuses saturate the field"
+      },
+      {
+        "tier": "T3",
+        "name": "Multi-Spectrum Targeting",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Sensor Array detects ALL hidden or stealthed units. Marked Targets cannot benefit from cover of any kind.",
+        "notes": "Nothing hides, cover becomes meaningless — precision doctrine's peak expression"
+      },
+      {
+        "tier": "T4",
+        "name": "Predictive Targeting AI Deployment",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "Unlocks Predictive Targeting AI equipment. Entire fleet +5% base accuracy. Link extends to coalition allies (+8% Mark sharing).",
+        "notes": "CULMINATION — coalition allies benefit from Accord targeting network"
+      }
+    ]
+  },
+  {
+    "branch": "Diplomacy & Influence",
+    "branchNum": 3,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Cultural Exchange Programs",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "Influence income +15%. Embassy building generates +1 Influence/cycle.",
+        "notes": "More Influence faster — the Accord's strategic resource advantage compounds"
+      },
+      {
+        "tier": "T2a",
+        "name": "Diplomatic Corps Training",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Audience success rate +15%. Demand/Threaten actions +20% effective. Betrayal recovery time −2 cycles.",
+        "notes": "Silver tongue sharpens — relationships repair faster too"
+      },
+      {
+        "tier": "T2b",
+        "name": "Coalition Coordination Protocols",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Allied factions contribute +1 auxiliary fleet to joint operations. Alliance upkeep cost −20%.",
+        "notes": "Stronger alliances at lower cost — the Unification path becomes viable"
+      },
+      {
+        "tier": "T3",
+        "name": "Interspecies Trust Architecture",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Maximum simultaneous alliances +1 (3 vs standard 2). Allied reputation decay rate −50%.",
+        "notes": "Larger coalition — essential for the Unification ending path"
+      },
+      {
+        "tier": "T4",
+        "name": "Galactic Congress Protocol",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "Unification path: alliance formation costs −50%. Coalition shares vision and supply networks. Congress Vote: all allies follow Accord strategic direction for 5 cycles.",
+        "notes": "CULMINATION — leads a GOVERNMENT, not just an alliance"
+      }
+    ]
+  },
+  {
+    "branch": "Special Projects",
+    "branchNum": 4,
+    "nodes": [
+      {
+        "tier": "T1",
+        "name": "Advanced Metallurgy",
+        "cost": "8⚙ / 2 cycles",
+        "effect": "Unlocks Solid-State Tungsten ammunition (+20% vs Core Guardians). All railgun weapons +5% damage.",
+        "notes": "First step to solving the Guardian problem — kinetic doctrine begins"
+      },
+      {
+        "tier": "T2a",
+        "name": "Broadside-Battlesuit Deployment",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Unlocks Broadside-Battlesuit production. 6 cycles at Advanced War Factory.",
+        "notes": "Walking firebase — twin synchronized railguns dominating entire sectors"
+      },
+      {
+        "tier": "T2b",
+        "name": "Corona-Titan Construction",
+        "cost": "15⚙ / 4 cycles",
+        "effect": "Unlocks Corona-Titan flagship. Requires Shipyard + 9 cycles.",
+        "notes": "Sun Cannon — stellar energy focusing array"
+      },
+      {
+        "tier": "T3",
+        "name": "Seeker Round Development",
+        "cost": "25⚙ / 6 cycles",
+        "effect": "Unlocks Seeker Rounds equipment (+30% accuracy vs Marked targets). All guided munitions +10% tracking precision.",
+        "notes": "Munitions literally chase Marked targets — Tactical Link extends into the projectiles themselves"
+      },
+      {
+        "tier": "T4",
+        "name": "Sun Cannon Optimization",
+        "cost": "40⚙ / 8 cycles",
+        "effect": "Corona-Titan Sun Cannon charge time 15s→10s. Beam duration 3s→5s. Tracking arc ±30° while firing. All Accord energy weapons fleet-wide +10%.",
+        "notes": "CULMINATION — superweapon efficiency trickles down to entire fleet"
+      }
+    ]
+  }
+]

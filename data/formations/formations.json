@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Wedge",
+    "desc": "Capital ships form the spearhead, escort ships trail behind. Maximum forward firepower — excellent for breaking through static enemy lines. Vulnerable to flanking attacks that expose the rear ships once the formation commits.",
+    "best": "Aggressive breakthrough vs static defenses",
+    "weak": "Flanking attacks, encirclement"
+  },
+  {
+    "name": "Line",
+    "desc": "All ships abreast, presenting maximum combined broadside firepower. Excellent for sustained ranged exchanges. Prevents flanking but spreads fire across the enemy formation rather than concentrating it on priority targets.",
+    "best": "Broadside exchanges, sustained fire",
+    "weak": "Concentrated alpha strikes, fast flankers"
+  },
+  {
+    "name": "Screen",
+    "desc": "Escort ships form a forward screen protecting capital ships behind. Maximum point-defense coverage against Vorax Sporeshot salvos and missiles. Capitals are protected but contribute less direct fire while screening is active.",
+    "best": "Anti-Vorax, anti-torpedo, defensive",
+    "weak": "Aggressive enemies who push through the screen"
+  },
+  {
+    "name": "Encircle",
+    "desc": "Fleet splits into two wings attempting to wrap around the enemy's flanks. Threatens devastating crossfire from multiple angles. High risk, high reward — if either wing is destroyed before the encirclement completes, the fleet loses.",
+    "best": "Numerical superiority, overwhelming weaker fleets",
+    "weak": "Concentrated enemy push through the center gap"
+  },
+  {
+    "name": "Scatter",
+    "desc": "All ships spread to maximum separation distance. Minimizes chain-reaction damage from Core Guardian Volatile Death events. Essential for Guardian engagements. Reduces fire concentration but ensures no single explosion destroys multiple ships.",
+    "best": "Anti-Guardian (Volatile Death), anti-AOE",
+    "weak": "Focus fire, coordinated attacks from any direction"
+  }
+]

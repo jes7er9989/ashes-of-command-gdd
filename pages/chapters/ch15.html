@@ -1,0 +1,124 @@
+  <div class="page" id="page-ch15">
+    <div class="page-title-wrap">
+<div class="page-title">SUPPLY CHAIN &amp; INFRASTRUCTURE</div>
+    <div class="page-subtitle">Supply Lines · Starvation · Combat Penalties — Chapters 15-16</div>
+</div>
+
+    <div class="section-label">Supply Lines</div>
+    <div class="section-heading" id="sec-ch15-0">Unlimited Range, Degrading Speed</div>
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
+      <div style="display:grid;grid-template-columns:160px 100px 1fr;background:rgba(0,180,255,0.04);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--accent);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>DISTANCE</span><span>SPEED</span><span>PRACTICAL EFFECT</span></div>
+      <div style="display:grid;grid-template-columns:160px 100px 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>1-2 hops</span><span style="color:var(--necro)">100%</span><span>Next-cycle reinforcements. Instant re-equip.</span></div>
+      <div style="display:grid;grid-template-columns:160px 100px 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>3-4 hops</span><span style="color:var(--accord)">75%</span><span>+1 cycle delay. Re-equip +1 cycle.</span></div>
+      <div style="display:grid;grid-template-columns:160px 100px 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>5-6 hops</span><span style="color:var(--terran)">50%</span><span>+2 cycle delay. Re-equip +2 cycles.</span></div>
+      <div style="display:grid;grid-template-columns:160px 100px 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>7-8 hops</span><span style="color:var(--horde)">25%</span><span>+3-4 cycle delay. Effectively needs relay depot.</span></div>
+      <div style="display:grid;grid-template-columns:160px 100px 1fr;padding:5px 12px;font-size:0.72rem;color:var(--vorax)"><span>9+ hops</span><span>10%</span><span>+5+ cycle delay. Practically unsupplied without depots.</span></div>
+    </div>
+
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">STARVATION SYSTEM</div>
+      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.6">
+        <div style="margin-bottom:3px"><strong style="color:var(--text-dim)">Cycle 1-2:</strong> Warning. Emergency reserves consumed.</div>
+        <div style="margin-bottom:3px"><strong style="color:var(--accord)">Cycle 3-4:</strong> Mild. -10% combat effectiveness. No re-equip.</div>
+        <div style="margin-bottom:3px"><strong style="color:var(--horde)">Cycle 5-6:</strong> Moderate. -25% effectiveness. 1% HP/cycle attrition.</div>
+        <div style="margin-bottom:3px"><strong style="color:var(--vorax)">Cycle 7+:</strong> Severe. -50% effectiveness. 2% HP/cycle. 5% desertion chance/cycle.</div>
+        <div style="margin-top:6px;font-size:0.68rem;color:var(--text-dim)">Scrap-Horde: 50% starvation resistance (all timelines doubled). Necro-Legion: immune to biological starvation (equipment degradation only — no HP attrition or desertion).</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §15.7 Attacker Supply Penalty -->
+    <div class="section-label">§15.7 — Attacker Supply Penalty <span class="proto-badge">PROTOTYPE LOCKED</span></div>
+    <div class="section-heading" id="sec-ch15-1">Supply % at Time of Battle Determines Stat Modifier</div>
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
+      <div style="display:grid;grid-template-columns:160px 120px 120px 1fr;background:rgba(0,180,255,0.04);padding:8px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.52rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase"><span>Supply Level</span><span>Status</span><span>Dmg Mod</span><span>HP Mod</span></div>
+      <div style="display:grid;grid-template-columns:160px 120px 120px 1fr;padding:8px 12px;border-bottom:1px solid var(--border);font-size:0.78rem;align-items:center">
+        <span style="color:#fff;font-weight:600">≥ 75%</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--necro)">FULL</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--necro)">1.0× (no penalty)</span>
+        <span style="color:var(--text-dim)">No penalty. Standard operation.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 120px 120px 1fr;padding:8px 12px;border-bottom:1px solid var(--border);font-size:0.78rem;align-items:center">
+        <span style="color:#fff;font-weight:600">50 – 74%</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--horde)">DEGRADED</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--horde)">0.85×</span>
+        <span style="color:var(--text-dim)">0.90× HP. Reduced combat effectiveness — noticeable in sustained fights.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 120px 120px 1fr;padding:8px 12px;font-size:0.78rem;align-items:center">
+        <span style="color:var(--vorax);font-weight:700">&lt; 50%</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--vorax)">CRITICAL</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--vorax)">0.70×</span>
+        <span style="color:var(--text-dim)">0.80× HP. Severe degradation. Do not attack unless forced.</span>
+      </div>
+    </div>
+
+    <!-- §15.8 Defender Supply Penalty -->
+    <div class="section-label">§15.8 — Defender Supply Penalty <span class="proto-badge">PROTOTYPE LOCKED</span></div>
+    <div class="section-heading" id="sec-ch15-2">Defenders Degrade Gradually — Supply Distance Matters Even at Home</div>
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
+      <div style="display:grid;grid-template-columns:160px 120px 1fr;background:rgba(0,180,255,0.04);padding:8px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.52rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase"><span>Supply Level</span><span>Stat Modifier</span><span>Notes</span></div>
+      <div style="display:grid;grid-template-columns:160px 120px 1fr;padding:7px 12px;border-bottom:1px solid var(--border);font-size:0.78rem;align-items:center">
+        <span style="color:#fff;font-weight:600">≥ 75%</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--necro)">1.0×</span>
+        <span style="color:var(--text-dim)">Full defensive capability.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 120px 1fr;padding:7px 12px;border-bottom:1px solid var(--border);font-size:0.78rem;align-items:center">
+        <span style="color:#fff;font-weight:600">≥ 50%</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accord)">0.9×</span>
+        <span style="color:var(--text-dim)">Minor degradation. Still viable defense.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 120px 1fr;padding:7px 12px;border-bottom:1px solid var(--border);font-size:0.78rem;align-items:center">
+        <span style="color:#fff;font-weight:600">≥ 25%</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--horde)">0.75×</span>
+        <span style="color:var(--text-dim)">Significant degradation. Fortification recommended.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:160px 120px 1fr;padding:7px 12px;font-size:0.78rem;align-items:center">
+        <span style="color:var(--vorax);font-weight:700">≥ 10%</span>
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--vorax)">0.5×</span>
+        <span style="color:var(--text-dim)">Collapse-level. Territory is effectively undefendable without reinforcement.</span>
+      </div>
+    </div>
+
+    <!-- §15.9 Canonical Stat Application Order -->
+    <div class="section-label">§15.9 — Canonical Stat Application Order <span class="proto-badge">PROTOTYPE LOCKED</span></div>
+    <div class="section-heading" id="sec-ch15-3">The Sequence That Resolves All Modifier Conflicts</div>
+    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--accent)">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:#fff;letter-spacing:2px;margin-bottom:10px;text-align:center">
+        base stats → equipment mods → supply penalty → space combat ground mod → rank mods
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;font-size:0.68rem;text-align:center">
+        <div style="padding:8px;background:rgba(0,180,255,0.04);border:1px solid rgba(0,180,255,0.15);border-radius:2px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--accent);margin-bottom:4px">① BASE</div>
+          <div style="color:var(--text-dim)">Unit archetype stats. HP, Dmg, Atk Spd, Move Spd, Range.</div>
+        </div>
+        <div style="padding:8px;background:rgba(0,180,255,0.04);border:1px solid rgba(0,180,255,0.15);border-radius:2px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--terran);margin-bottom:4px">② EQUIPMENT</div>
+          <div style="color:var(--text-dim)">W/A/G/AM/S/SP slot bonuses applied multiplicatively.</div>
+        </div>
+        <div style="padding:8px;background:rgba(255,34,102,0.04);border:1px solid rgba(255,34,102,0.15);border-radius:2px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--vorax);margin-bottom:4px">③ SUPPLY</div>
+          <div style="color:var(--text-dim)">Attacker or Defender penalty (see §15.7–15.8) applied to result.</div>
+        </div>
+        <div style="padding:8px;background:rgba(255,102,34,0.04);border:1px solid rgba(255,102,34,0.15);border-radius:2px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--horde);margin-bottom:4px">④ SPACE MOD</div>
+          <div style="color:var(--text-dim)">spaceCombatResult groundDamageMod (0.80/1.0/1.15) applied to damage only.</div>
+        </div>
+        <div style="padding:8px;background:rgba(204,68,255,0.04);border:1px solid rgba(204,68,255,0.15);border-radius:2px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:var(--guardians);margin-bottom:4px">⑤ RANK</div>
+          <div style="color:var(--text-dim)">Rookie +0% · Veteran +5% · Elite +12% · Commander +20%. Applied last.</div>
+        </div>
+      </div>
+      <div style="font-size:0.68rem;color:var(--text-dim);margin-top:10px;text-align:center">General rank stat modifier TBD — see Appendix L open flags. Resolve before implementing General AI.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Building Catalog — 15 Types</div>
+    <div class="section-heading" id="sec-ch15-4">Economic · Military · Logistics · Research · Special</div>
+    <div id="building-list" style="margin-bottom:24px"></div>
+  </div><!-- /page-ch15 -->
+
+  <!-- ============================================================
+       PAGE: PLANETARY INFRASTRUCTURE (Chapter 16)
+       ============================================================ -->

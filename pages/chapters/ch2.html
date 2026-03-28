@@ -1,0 +1,84 @@
+  <div class="page" id="page-ch2">
+    <div class="page-title-wrap">
+<div class="page-title">THE FIVE-PHASE GAMEPLAY LOOP</div>
+    <div class="page-subtitle">Map → Armada → Approach → War → Resolution — Chapter 2</div>
+</div>
+
+    <div class="section-label">Loop Overview</div>
+    <div class="section-heading" id="sec-ch2-0">Five Phases, One Core Loop</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-bottom:24px">
+      <div class="card" style="border-top:3px solid var(--terran);text-align:center;padding:14px 8px"><div style="font-family:'Orbitron',monospace;font-size:0.72rem;color:var(--terran);margin-bottom:6px">1. MAP PHASE</div><div style="font-size:0.68rem;color:var(--text-mid)">Macro strategy. Build, expand, manage resources, move fleets, assign Generals. Paradox-style pause. 4 speed settings.</div></div>
+      <div class="card" style="border-top:3px solid var(--shards);text-align:center;padding:14px 8px"><div style="font-family:'Orbitron',monospace;font-size:0.72rem;color:var(--shards);margin-bottom:6px">2. ARMADA PHASE</div><div style="font-size:0.68rem;color:var(--text-mid)">Fleet logistics sub-mode. Assemble invasion force, load troops, customize equipment. Overlays on Map Phase.</div></div>
+      <div class="card" style="border-top:3px solid var(--accord);text-align:center;padding:14px 8px"><div style="font-family:'Orbitron',monospace;font-size:0.72rem;color:var(--accord);margin-bottom:6px">3. APPROACH PHASE</div><div style="font-size:0.68rem;color:var(--text-mid)">The decision point. Fleet arrives at target. Choose: Espionage (intel), Diplomacy (negotiate), or War (attack).</div></div>
+      <div class="card" style="border-top:3px solid var(--vorax);text-align:center;padding:14px 8px"><div style="font-family:'Orbitron',monospace;font-size:0.72rem;color:var(--vorax);margin-bottom:6px">4. WAR PHASE</div><div style="font-size:0.68rem;color:var(--text-mid)">Auto-battle. Space combat (formations, CP), then ground combat (deployment, cover, garrison). 5–25 min per battle.</div></div>
+      <div class="card" style="border-top:3px solid var(--necro);text-align:center;padding:14px 8px"><div style="font-family:'Orbitron',monospace;font-size:0.72rem;color:var(--necro);margin-bottom:6px">5. RESOLUTION</div><div style="font-size:0.68rem;color:var(--text-mid)">All simultaneous actions resolve. Territory changes. Casualties tallied. XP awarded. Cycle ends. Return to Map Phase.</div></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">Map Phase Details</div>
+    <div class="section-heading" id="sec-ch2-1">The Game's Home State</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card"><div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">SIMULTANEOUS TURNS</div><div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">All factions act simultaneously. Conflicts trigger interrupts. Paradox-style pause freezes EVERYTHING — plan in peace, execute in real-time. 4 speed settings: 1×, 2×, 4×, Pause.</div></div>
+      <div class="card"><div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--accord);letter-spacing:2px;margin-bottom:6px">OPERATIONS = GENERALS</div><div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Operations limited by General count. No General assigned = operation can't proceed past planning. Promote more Generals = run more simultaneous fronts. The core bottleneck.</div></div>
+    </div>
+
+    <div class="section-label">§2.3.6 — MVP Armada <span class="proto-badge">PROTOTYPE LOCKED</span></div>
+    <div class="section-heading" id="sec-ch2-2">Starting Fleet Composition</div>
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:24px">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;background:rgba(0,180,255,0.04);padding:8px 16px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--accent);letter-spacing:2px"><span>DETAIL</span><span>VALUE</span><span>NOTES</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:8px 16px;border-bottom:1px solid var(--border);font-size:0.8rem"><span style="color:var(--text-mid)">Starting Fleet</span><span style="color:#fff;font-weight:600">2× Frigates</span><span style="color:var(--text-dim)">Terran — persistent full run</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:8px 16px;border-bottom:1px solid var(--border);font-size:0.8rem"><span style="color:var(--text-mid)">HP Restore Between Battles</span><span style="color:#fff;font-weight:600">NO</span><span style="color:var(--text-dim)">HP not restored between battles</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:8px 16px;border-bottom:1px solid var(--border);font-size:0.8rem"><span style="color:var(--text-mid)">Ship Destruction</span><span style="color:#fff;font-weight:600">Spliced from array</span><span style="color:var(--text-dim)">Permanently gone when destroyed</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;padding:8px 16px;font-size:0.8rem"><span style="color:var(--text-mid)">Recruitment</span><span style="color:#fff;font-weight:600">Armada Phase UI</span><span style="color:var(--text-dim)">Logistics Hub required for Armada access</span></div>
+    </div>
+
+    <div class="section-label">§2.4.5 — Approach Phase Costs <span class="proto-badge">PROTOTYPE LOCKED</span></div>
+    <div class="section-heading" id="sec-ch2-3">Three Options at Every System — Confirmed Resource Costs</div>
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:24px">
+      <div style="display:grid;grid-template-columns:200px 100px 1fr;background:rgba(0,180,255,0.04);padding:8px 16px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--accent);letter-spacing:2px"><span>CHOICE</span><span>COST</span><span>DETAILS</span></div>
+      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 16px;border-bottom:1px solid var(--border);font-size:0.8rem;align-items:start">
+        <span style="color:var(--terran);font-weight:600">Espionage — Deep Recon</span>
+        <span style="color:#fff;font-weight:600;font-family:'JetBrains Mono',monospace">0 Intel</span>
+        <span style="color:var(--text-mid)">Hold 1 cycle. Auto Deep Recon reveals exact loadouts, commanders, victory conditions. Architect +2.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 16px;border-bottom:1px solid var(--border);font-size:0.8rem;align-items:start">
+        <span style="color:var(--terran);font-weight:600">Espionage + Sabotage</span>
+        <span style="color:#fff;font-weight:600;font-family:'JetBrains Mono',monospace">4 Intel</span>
+        <span style="color:var(--text-mid)">Deep Recon + optional Sabotage. Base sabotage success: 60%. Architect +2.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 16px;border-bottom:1px solid var(--border);font-size:0.8rem;align-items:start">
+        <span style="color:var(--accord);font-weight:600">Diplomacy — Ceasefire</span>
+        <span style="color:#fff;font-weight:600;font-family:'JetBrains Mono',monospace">3 Influence</span>
+        <span style="color:var(--text-mid)">Negotiate temporary ceasefire. Architect +1.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 16px;border-bottom:1px solid var(--border);font-size:0.8rem;align-items:start">
+        <span style="color:var(--accord);font-weight:600">Diplomacy — Trade Agreement</span>
+        <span style="color:#fff;font-weight:600;font-family:'JetBrains Mono',monospace">5 Influence</span>
+        <span style="color:var(--text-mid)">Establish trade route. Architect +1.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 16px;border-bottom:1px solid var(--border);font-size:0.8rem;align-items:start">
+        <span style="color:var(--vorax);font-weight:600">War (with Intel)</span>
+        <span style="color:#fff;font-weight:600;font-family:'JetBrains Mono',monospace">0 cost</span>
+        <span style="color:var(--text-mid)">Commit to assault after recon. Vanguard +1. Triggers space battle then ground invasion.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 16px;font-size:0.8rem;align-items:start">
+        <span style="color:var(--vorax);font-weight:600">War (Blind — no recon)</span>
+        <span style="color:#fff;font-weight:600;font-family:'JetBrains Mono',monospace">0 cost</span>
+        <span style="color:var(--text-mid)">Riskier but more decisive. Vanguard +2. Unknown enemy loadout.</span>
+      </div>
+    </div>
+
+    <div class="section-label">Defender Counts <span class="proto-badge">PROTOTYPE LOCKED</span></div>
+    <div class="section-heading" id="sec-ch2-4">Enemy Fleet Compositions by System Type</div>
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:24px">
+      <div style="display:grid;grid-template-columns:140px 1fr;background:rgba(0,180,255,0.04);padding:8px 16px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--accent);letter-spacing:2px"><span>SYSTEM TYPE</span><span>DEFENDING FLEET</span></div>
+      <div style="display:grid;grid-template-columns:140px 1fr;padding:8px 16px;border-bottom:1px solid var(--border);font-size:0.8rem"><span style="color:var(--text-mid)">Neutral</span><span style="color:#fff">Raider, Raider</span></div>
+      <div style="display:grid;grid-template-columns:140px 1fr;padding:8px 16px;border-bottom:1px solid var(--border);font-size:0.8rem"><span style="color:var(--text-mid)">AI Faction</span><span style="color:#fff">Raider, Raider, Gunship</span></div>
+      <div style="display:grid;grid-template-columns:140px 1fr;padding:8px 16px;font-size:0.8rem"><span style="color:var(--guardians)">Guardian (Nexus)</span><span style="color:#fff">Gunship, Gunship, Dreadnought</span></div>
+    </div>
+  </div><!-- /page-ch2 -->
+
+  <!-- ============================================================
+       PAGE: NARRATIVE ARC (Chapter 3)
+       ============================================================ -->

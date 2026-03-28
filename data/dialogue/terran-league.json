@@ -1,0 +1,132 @@
+[
+  {
+    "beat": "First Victory",
+    "trigger": "After the player wins their first territory battle",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "First blood. Ours and theirs. The cost was... acceptable. I need to stop thinking about whether 'acceptable' is the right word."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Territory secured. Resource yield projected at +3 Scrap per cycle. Recommend fortifying before expanding further."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "That's how it starts. One territory, then two, then the whole damn planet. Keep pushing, Commander."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "Note the garrison's surrender conditions. They broke at 40% casualties. Next time, apply pressure at 35% — they'll fold faster."
+      }
+    ]
+  },
+  {
+    "beat": "First Defeat",
+    "trigger": "After the player loses their first territory battle",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "We lost. They're gone — every soldier I sent in is dead or captured. The simulation says this is 'data.' It doesn't feel like data."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Tactical analysis indicates our equipment loadout was suboptimal for the terrain. Adjusting recommendations for future engagements."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "We'll take it back. With twice the force and none of the mercy. Losses are temporary. Cowardice is permanent."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "Study the defeat. Every failed assault teaches you what the enemy fears. They defended this territory because it matters to them — now you know WHERE to hurt them."
+      }
+    ]
+  },
+  {
+    "beat": "Vorax First Encounter",
+    "trigger": "First engagement with Vorax forces in battle",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "Contact with the Swarm. The briefings didn't prepare me. Nothing could prepare anyone for this. They don't stop. They don't retreat. They just... come."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "The Vorax are biomass-driven. They will not negotiate. Engagement protocol: energy weapons for maximum tissue disruption, area denial to funnel their advance, and NEVER engage in melee range."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "Ugly bastards. Lots of them. More where they came from. This is what I was built for, Commander — give me the front line."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "Target the Synapse creatures — the floating brain-masses coordinating the swarm. Kill them and the lesser organisms lose coherence. Surgical decapitation, not brute attrition."
+      }
+    ]
+  },
+  {
+    "beat": "Core Guardian First Contact",
+    "trigger": "Fleet first enters the Core Guardian exclusion zone",
+    "lines": [
+      {
+        "speaker": "BROADCAST",
+        "style": "normal",
+        "text": "YOU ARE APPROACHING THE EXCLUSION ZONE. TURN BACK. THIS IS YOUR FINAL WARNING."
+      },
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "The Silent Gods. I've read the old records — fragments, mostly myths. 'Do not approach the Core. Do not look upon the light. Do not presume to speak to those who were here before the stars were named.' I always thought it was superstition."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Energy signatures off the scale. Their defensive installations alone exceed our entire fleet's power output by a factor of twelve. I strongly recommend withdrawal and intelligence-gathering before any further approach."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "...Twelve to one? Commander, I've beaten bad odds before, but this isn't bad odds. This is a wall. We need to find a door — or build a bigger hammer."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "They're not attacking. Not yet. They're WARNING us. That means they have protocols. Protocols can be exploited. Let me work."
+      }
+    ]
+  },
+  {
+    "beat": "Final War Transition",
+    "trigger": "Awakening into the Final War (post-simulation-glitch cutscene)",
+    "lines": [
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Welcome back, Commander. The simulation is over. Current strategic situation: the Vorax have consumed 30% of the outer systems. The Scrap-Horde and Necro-Legion are engaged in a territorial war on the eastern flank. The Eternal Shards have retreated to their homeworld and sealed their borders. The Unity Accord is demanding tribute from every faction in exchange for railgun defense coverage. And the Core Guardians... haven't moved. Still sitting there. Waiting. The same message on repeat for the last thousand years: 'Turn back.' As if we have anywhere else to go."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "Commander. I won't lie to you — I liked you better in the simulation. You died cleaner there. Out here, when you die, it's going to be ugly, and it's going to be permanent. So don't die."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "The simulation taught you how to win wars. Reality will teach you what wars cost. Pay attention."
+      }
+    ]
+  }
+]

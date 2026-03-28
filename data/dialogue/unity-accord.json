@@ -1,0 +1,111 @@
+[
+  {
+    "beat": "First Victory",
+    "trigger": "After winning first territory battle as Unity Accord",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "ENGAGEMENT ANALYSIS: Territory secured. Tactical Link efficiency: 94.2% optimal. Enemy neutralized in 4 min 23 sec. Projected casualties: 2. Actual: 1. Variance: favorable. Note: surviving Strike-Troopers exhibit biometric readings consistent with 'relief.' This has no tactical value but does not impede efficiency. Filing under: ANOMALOUS — BIOLOGICAL BEHAVIOR."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Clean engagement. Tactical Link performed within parameters — once the first Mark established, elimination accelerated as modeled. Your processing speed shaved 12 seconds off the predicted timeline."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "Quick. Efficient. Cold. I don't like fighting alongside a machine — but I can't argue with the results."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "The enemy's morale broke before their formations did. They saw the coordinated accuracy and realized they couldn't hide, dodge, or survive in the open. Fear of precision is a powerful weapon."
+      }
+    ]
+  },
+  {
+    "beat": "First Defeat",
+    "trigger": "After losing first territory battle as Unity Accord",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "ENGAGEMENT ANALYSIS: Territory lost. Tactical Link efficiency: 12.4% optimal. CRITICAL FAILURE. Enemy employed close-quarters melee — Brutes reached firing line in 18 seconds, bypassing optimal engagement range. Pulse accuracy dropped to 23%. Melee capability: insufficient. Loss: 4 units. Note: destroyed units' biometric signatures cached in tactical memory. I can identify each by unique physiological data. This serves no operational purpose. I am unable to delete it."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Close-quarters failure. Our doctrine assumes maintaining distance. Invest in area-denial — Photon Grenades, emplacements — to create standoff zones preventing melee closure."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "They got inside your guard. Up close, fancy targeting computers don't mean a thing when there's a Brute's cleaver in your chest. You need a melee contingency."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "Four soldiers. Names, caste designations, service records in your files. You know exactly who you lost. That's the cost of a mind that forgets nothing. Use it."
+      }
+    ]
+  },
+  {
+    "beat": "Vorax First Encounter",
+    "trigger": "First Vorax engagement as Unity Accord",
+    "lines": [
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "ENGAGEMENT ANALYSIS: First Vorax contact. Numerical superiority significant. Tactical Link degraded to 67% — simultaneous Marked targets exceeded bandwidth. When every target is Marked, no target is prioritized. Precision doctrine is challenged by an enemy that is precision-PROOF. They have no critical assets. No formations. They are a wave. Our doctrine targets points. A wave has no points."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Swarm density overwhelms target prioritization. Switch to area-denial: Nova Charges, Photon Grenades, heavy railgun saturation to thin the swarm before it reaches melee range."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "Sometimes the answer isn't the smart solution. Sometimes it's MORE GUNS. Bring Hammerheads. Bring Broadsides. Put a wall of tungsten between us and them."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "The Synapse creatures coordinate the swarm. Your Tactical Link identifies high-value targets — the Synapse creatures ARE the targets. Mark them. Kill them. Let the swarm dissolve into mindless rage. THEN your precision matters."
+      }
+    ]
+  },
+  {
+    "beat": "Core Guardian First Contact",
+    "trigger": "Fleet enters Core Guardian exclusion zone as Unity Accord",
+    "lines": [
+      {
+        "speaker": "BROADCAST",
+        "style": "normal",
+        "text": "YOU ARE APPROACHING THE EXCLUSION ZONE. TURN BACK. THIS IS YOUR FINAL WARNING."
+      },
+      {
+        "speaker": "Commander",
+        "style": "italic",
+        "text": "THREAT ANALYSIS: Guardian energy signatures exceed sensor maximum. Recalibrating. Failed — readings are beyond any calibrated scale. Their technology operates on principles my architecture was not designed to model. Our primary weapons — pulse rifles, plasma cannons, ion accelerators — deliver energy damage. Guardians ABSORB energy. Our entire combat doctrine is counterproductive. We need kinetic weapons. The tools we use least. A fundamental doctrinal crisis."
+      },
+      {
+        "speaker": "Valerius",
+        "style": "normal",
+        "text": "Plasma weapons heal Guardians. Our entire doctrine is built around plasma. Transitioning to kinetic requires retooling, retraining, and accepting a 20% ranged damage reduction. Painful but necessary."
+      },
+      {
+        "speaker": "Krell",
+        "style": "normal",
+        "text": "Your lasers heal them. Your plasma feeds them. Your targeting computers mark targets that get STRONGER when you shoot them. For the first time, your doctrine is WRONG. Welcome to the real war."
+      },
+      {
+        "speaker": "Vane",
+        "style": "normal",
+        "text": "The Guardians are energy beings bound by ancient directives. You are a machine intelligence bound by modern parameters. More alike than either would admit. Perhaps that similarity is the path to negotiation rather than war."
+      }
+    ]
+  }
+]

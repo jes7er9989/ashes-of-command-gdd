@@ -1,0 +1,130 @@
+[
+  {
+    "name": "M7 Assault Rifle",
+    "slot": "[W]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "proto": true,
+    "effect": "Reliable, versatile, standard-issue. Baseline weapon — every Terran soldier can field-strip one blindfolded. Starting equipped on all 6 Shock-Marines.",
+    "statBlock": "Baseline all stats"
+  },
+  {
+    "name": "Breacher Shotgun",
+    "slot": "[W]",
+    "rarity": "Uncommon",
+    "rarityColor": "#44ff88",
+    "proto": true,
+    "effect": "Close-range devastation. +15% damage, −20% range. Forces enemies to commit to short-range engagements.",
+    "statBlock": "+15% dmg · −20% range"
+  },
+  {
+    "name": "Plasma Pistol",
+    "slot": "[W]",
+    "rarity": "Uncommon",
+    "rarityColor": "#44ff88",
+    "proto": true,
+    "effect": "High energy, rapid discharge. +10% damage, +5% attack speed. Lightweight sidearm that exceeds its class.",
+    "statBlock": "+10% dmg · +5% atk spd"
+  },
+  {
+    "name": "Standard Composite",
+    "slot": "[A]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "proto": true,
+    "effect": "Mass-produced armor plating. Baseline protection — ships standard on all Terran infantry. Starting equipped on all 6 Shock-Marines.",
+    "statBlock": "Baseline all stats"
+  },
+  {
+    "name": "Reactive Plating",
+    "slot": "[A]",
+    "rarity": "Uncommon",
+    "rarityColor": "#44ff88",
+    "proto": true,
+    "effect": "Explosive micro-charges on impact face detonate incoming projectiles. +20% HP. Starting inventory: 1 loose unit (unequipped).",
+    "statBlock": "+20% HP"
+  },
+  {
+    "name": "Fortress Plate",
+    "slot": "[A]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "proto": true,
+    "effect": "Full-body reinforced ceramite shell. Walking bunker. +40% HP, −15% movement speed. Accept the trade.",
+    "statBlock": "+40% HP · −15% move spd"
+  },
+  {
+    "name": "Frag Grenade Pack",
+    "slot": "[G]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "proto": true,
+    "effect": "AOE fragmentation grenades. Unlocks aoe:true flag on attacks. Slot locked at Rookie — available after first Veteran promotion.",
+    "statBlock": "aoe:true · Veteran unlock"
+  },
+  {
+    "name": "Repair Kit",
+    "slot": "[G]",
+    "rarity": "Uncommon",
+    "rarityColor": "#44ff88",
+    "proto": true,
+    "effect": "Battlefield emergency auto-repair module. +2% HP/sec passive regeneration. Stacks with Field Repairs passive (triggers at different thresholds).",
+    "statBlock": "+2% HP/sec"
+  },
+  {
+    "name": "'Thumper' Grenade Launcher",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "AOE explosive, destroys cover. 15m blast radius. Forces enemies out of defensive positions."
+  },
+  {
+    "name": "Magnetic Accelerator (Vehicle)",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Hyper-velocity slugs that penetrate multiple targets in a line. The Terran answer to railguns. Unlocked via Branch 4 T4."
+  },
+  {
+    "name": "Spinal MAC Gun (Ship)",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Massive forward-only single-shot damage. Snaps capital ships in half. 3-second power diversion to all systems."
+  },
+  {
+    "name": "Repair Drone Beacon",
+    "slot": "[G]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Immediately calls a Field Repair drone to the equipped unit, bypassing normal prioritization queue."
+  },
+  {
+    "name": "Depleted Uranium Rounds",
+    "slot": "[AM]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "+30% damage vs all targets. Irradiates the hit zone. Premium ammo — expensive but devastating. Unlocked via Branch 1 T3."
+  },
+  {
+    "name": "Hybrid Rounds",
+    "slot": "[AM]",
+    "rarity": "Legendary",
+    "rarityColor": "#ffaa22",
+    "effect": "Effective vs BOTH Vorax AND Core Guardians. +15% damage against both existential threats. Limited production: 1 set per 5 cycles per factory."
+  },
+  {
+    "name": "TL-99 Marksman Rifle",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Semi-auto gauss precision rifle. Integrated targeting scope. +20% accuracy, +15% range. Standard issue for forward observers and fire support teams."
+  },
+  {
+    "name": "Command Uplink",
+    "slot": "[S]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Doubles Commander aura range. Critical for large-scale engagements where coverage over extended frontlines matters."
+  }
+]

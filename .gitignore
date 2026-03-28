@@ -1,0 +1,20 @@
+# Reference files (original monolith + rules — not needed for deployment)
+reference/
+
+# Build/utility scripts (not needed for deployment)
+extract-data.js
+extract-chapters.js
+fix-encoding.js
+generate-icons.js
+
+# Planning docs
+inventory.md
+gdd-pwa-migration-plan.md
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

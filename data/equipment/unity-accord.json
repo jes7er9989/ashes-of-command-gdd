@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Pulse Rifle",
+    "slot": "[W]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "effect": "3-round burst, high accuracy, standard issue. The baseline of Accord precision doctrine."
+  },
+  {
+    "name": "Rail Rifle",
+    "slot": "[W]",
+    "rarity": "Uncommon",
+    "rarityColor": "#44cc66",
+    "effect": "Mach 8 tungsten penetrator sniper. Anti-Guardian kinetic round — bypasses energy absorption."
+  },
+  {
+    "name": "Ion Accelerator",
+    "slot": "[W]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Disables all vehicle systems for 3 seconds per hit. No kill power — pure disruption."
+  },
+  {
+    "name": "Shield Generator",
+    "slot": "[A]",
+    "rarity": "Uncommon",
+    "rarityColor": "#44cc66",
+    "effect": "Rechargeable energy shield absorbs 80 damage before collapsing. Recharges between engagements."
+  },
+  {
+    "name": "Stealth Coating",
+    "slot": "[A]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Unit becomes invisible when stationary. Effective for ambush, sniping, and forward observation."
+  },
+  {
+    "name": "Marker Light",
+    "slot": "[G]",
+    "rarity": "Common",
+    "rarityColor": "#aaa",
+    "effect": "+15% additional accuracy bonus on any designated target. Stacks with Tactical Link Mark."
+  },
+  {
+    "name": "Tactical Network Hub",
+    "slot": "[G]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Mark bonus +50% effectiveness for all Accord units within 30m of the bearer."
+  },
+  {
+    "name": "Solid-State Tungsten",
+    "slot": "[AM]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "+20% damage vs Core Guardians. Physical kinetic round — bypasses energy field absorption."
+  },
+  {
+    "name": "Seeker Rounds",
+    "slot": "[AM]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "Projectiles track and curve toward Marked targets. +30% accuracy against any Marked unit."
+  },
+  {
+    "name": "Predictive Targeting AI",
+    "slot": "[S]",
+    "rarity": "Rare",
+    "rarityColor": "#4488ff",
+    "effect": "First shot against any new target +50% accuracy. Eliminates Tactical Link's cold-contact weakness."
+  }
+]
