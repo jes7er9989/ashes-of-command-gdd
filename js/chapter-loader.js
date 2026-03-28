@@ -102,7 +102,7 @@ const ChapterLoader = {
       }
     }
 
-    // Inject HTML with fade-in wrapper + back-to-dashboard button at bottom (centered, stylized)
+    // Inject HTML with fade-in wrapper + back-to-dashboard button at top AND bottom
     const dashBtn = `
       <div class="back-to-dashboard-wrap">
         <button class="back-to-dashboard" onclick="location.hash='#dashboard'">
@@ -111,7 +111,7 @@ const ChapterLoader = {
           <span class="dash-btn-icon">◆</span>
         </button>
       </div>`;
-    this.contentArea.innerHTML = `<div class="fade-in">${html}</div>${dashBtn}`;
+    this.contentArea.innerHTML = `${dashBtn}<div class="fade-in">${html}</div>${dashBtn}`;
 
     // Scroll to anchor if this was an alias, otherwise scroll to top
     if (alias && alias.anchor) {

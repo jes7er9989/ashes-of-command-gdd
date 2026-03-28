@@ -1559,29 +1559,104 @@ html {
   opacity: 1;
 }
 
-/* ── Audio Toggle Button ─────────────────────────────────── */
-.audio-toggle {
+/* ── Audio Controls Container ────────────────────────────── */
+.audio-controls {
   position: fixed;
   bottom: 24px;
   right: 68px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.audio-toggle {
   width: 36px;
   height: 36px;
   background: var(--bg-panel);
   border: 1px solid var(--border);
   border-radius: 4px;
   color: var(--text-dim);
-  font-size: 0.85rem;
+  font-size: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all var(--transition);
-  z-index: 50;
 }
 
 .audio-toggle:hover {
   color: var(--accent);
   border-color: var(--accent);
+}
+
+.audio-controls.active .audio-toggle {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(0,180,255,0.3);
+}
+
+/* ── Audio Panel (sliders) ──────────────────────────────── */
+.audio-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 160px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+.audio-controls.active .audio-panel {
+  display: flex;
+}
+
+.audio-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.audio-slider-row label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  width: 40px;
+  text-align: right;
+}
+
+.audio-slider-row input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.audio-slider-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 6px rgba(0,180,255,0.4);
+}
+
+.audio-slider-row input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 6px rgba(0,180,255,0.4);
 }
 
 /* ── Back to Top Button ─────────────────────────────────── */

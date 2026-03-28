@@ -90,11 +90,27 @@
   </div>
 
   <!-- ══════════════ AUDIO CONTROLS ══════════════
-       Small speaker icon in bottom-right. Click to toggle audio.
-       Auto-muted on load - user must opt in.                      -->
-  <button class="audio-toggle" id="audio-toggle" aria-label="Toggle audio" title="Toggle ambient audio">
-    <span id="audio-icon">🔇</span>
-  </button>
+       Speaker icon in bottom-right expands to a panel with
+       MUSIC / SFX / AMBI sliders. Auto-muted on load.            -->
+  <div class="audio-controls" id="audio-controls">
+    <button class="audio-toggle" id="audio-toggle" aria-label="Toggle audio" title="Toggle ambient audio">
+      <span id="audio-icon">&#x1F507;</span>
+    </button>
+    <div class="audio-panel" id="audio-panel">
+      <div class="audio-slider-row">
+        <label>MUSIC</label>
+        <input type="range" id="audio-music" min="0" max="100" value="50">
+      </div>
+      <div class="audio-slider-row">
+        <label>SFX</label>
+        <input type="range" id="audio-sfx" min="0" max="100" value="70">
+      </div>
+      <div class="audio-slider-row">
+        <label>AMBI</label>
+        <input type="range" id="audio-ambi" min="0" max="100" value="40">
+      </div>
+    </div>
+  </div>
 
   <!-- ══════════════ BACK TO TOP ══════════════
        Floating button in the bottom-right corner. Hidden until
@@ -191,13 +207,30 @@
         // Audio engine - auto-muted, user clicks speaker icon to enable
         const audioBtn = document.getElementById('audio-toggle');
         const audioIcon = document.getElementById('audio-icon');
+        const audioPanel = document.getElementById('audio-panel');
+        const audioControls = document.getElementById('audio-controls');
         let audioPlaying = false;
+        let audioInited = false;
         if (audioBtn && typeof AudioEngine !== 'undefined') {
           audioBtn.addEventListener('click', () => {
-            AudioEngine.init();
+            if (!audioInited) { AudioEngine.init(); audioInited = true; }
             AudioEngine.toggle();
             audioPlaying = !audioPlaying;
-            audioIcon.textContent = audioPlaying ? '🔊' : '🔇';
+            audioIcon.innerHTML = audioPlaying ? '&#x1F50A;' : '&#x1F507;';
+            if (audioControls) audioControls.classList.toggle('active', audioPlaying);
+          });
+          // Wire up volume sliders
+          const musicSlider = document.getElementById('audio-music');
+          const sfxSlider = document.getElementById('audio-sfx');
+          const ambiSlider = document.getElementById('audio-ambi');
+          if (musicSlider) musicSlider.addEventListener('input', (e) => {
+            if (audioInited) AudioEngine.setMusicVol(e.target.value / 100);
+          });
+          if (sfxSlider) sfxSlider.addEventListener('input', (e) => {
+            if (audioInited) AudioEngine.setSfxVol(e.target.value / 100);
+          });
+          if (ambiSlider) ambiSlider.addEventListener('input', (e) => {
+            if (audioInited) AudioEngine.setVolume(e.target.value / 100);
           });
         }
 
