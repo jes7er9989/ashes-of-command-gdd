@@ -842,6 +842,7 @@ body.sidebar-collapsed .main-content {
   height: 500px;
   border-radius: 50%;
   overflow: hidden;
+  clip-path: circle(50% at 50% 50%);
   background: radial-gradient(ellipse at center, rgba(10,12,18,1) 0%, rgba(7,8,12,1) 100%);
 }
 
@@ -3943,11 +3944,10 @@ body.crt-active {
 }
 
 #content-area .fade-in {
-  max-width: 960px;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
   padding: 48px 40px;
-  padding: 0 16px;
 }
 
 /* ── 15b. Section Labels — Monospace Pre-Heading ──────── */
