@@ -162,7 +162,14 @@ const Nav = {
    * Listen for hash changes to trigger page navigation.
    */
   bindRouting() {
-    window.addEventListener('hashchange', () => this.onHashChange());
+    window.addEventListener('hashchange', () => {
+      // Play click sound on chapter navigation if audio is active
+      var ab = document.getElementById('audio-toggle');
+      if (ab && ab.getAttribute('data-on') === '1' && typeof AudioEngine !== 'undefined') {
+        try { AudioEngine.playClick(); } catch(e) {}
+      }
+      this.onHashChange();
+    });
   },
 
   /* ── Routing ─────────────────────────────────────────── */

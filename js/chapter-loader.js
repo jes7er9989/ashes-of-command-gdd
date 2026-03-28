@@ -138,6 +138,11 @@ const ChapterLoader = {
     const factionAudio = this.FACTION_MAP[chapterId];
     if (factionAudio && typeof AudioEngine !== 'undefined') {
       AudioEngine.setFaction(factionAudio.name);
+      // Play faction entrance sting if audio is on
+      var ab = document.getElementById('audio-toggle');
+      if (ab && ab.getAttribute('data-on') === '1') {
+        try { AudioEngine.playAction('factionEnter'); } catch(e) {}
+      }
     }
 
     // For faction chapters, load and render all faction data

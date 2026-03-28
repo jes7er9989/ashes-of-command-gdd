@@ -45,6 +45,7 @@ const AudioEngine = (() => {
   let reverbSend   = null;
   let stereoWider  = null;
   let bgNodes      = [];
+  let _bgTimers    = [];
   let currentFaction = null;
   let isPlaying    = false;
 
@@ -565,6 +566,8 @@ const AudioEngine = (() => {
   // texture + slow rhythmic pulse — all routed to bgGain
   // ═══════════════════════════════════════════════════════
   function stopBg() {
+    _bgTimers.forEach(function(tid) { clearInterval(tid); });
+    _bgTimers = [];
     bgNodes.forEach(function(n) {
       try { n.stop && n.stop(); } catch(e) {}
       try { n.disconnect(); } catch(e) {}
@@ -599,6 +602,28 @@ const AudioEngine = (() => {
     var f = ctx.createBiquadFilter();
     f.type = type; f.frequency.value = freq; f.Q.value = q || 1;
     return f;
+  }
+
+  // ── Chord progression: smoothly cycle oscillator frequencies ──
+  // Eliminates monotone drone by evolving harmony over time
+  function _evolve(oscs, progressions, intervalSec) {
+    var step = 0;
+    var tid = setInterval(function() {
+      if (!ctx) { clearInterval(tid); return; }
+      step = (step + 1) % progressions.length;
+      var chord = progressions[step];
+      var now = ctx.currentTime;
+      oscs.forEach(function(o, i) {
+        if (o && o.frequency && chord[i] !== undefined) {
+          o.frequency.setTargetAtTime(chord[i], now, 1.8);
+        }
+        // Subtle detune drift for organic movement
+        if (o && o.detune) {
+          o.detune.setTargetAtTime((Math.random() - 0.5) * 14, now, 2.0);
+        }
+      });
+    }, intervalSec * 1000);
+    _bgTimers.push(tid);
   }
 
   function startBg(factionKey) {
@@ -641,11 +666,21 @@ const AudioEngine = (() => {
       shimmer.connect(shimLp); out(shimLp, 0.10, 3.5);
       start(shimmer);
 
+      // Chord progression: Am → D → E → C (military power cycle)
+      _evolve([base, amOsc, shimmer], [
+        [55,    55,    220],       // A — tonic
+        [73.42, 73.42, 293.66],    // D — subdominant
+        [82.41, 82.41, 329.63],    // E — dominant
+        [65.41, 65.41, 261.63],    // C — mediant
+      ], 6);
+
     } else if (factionKey === 'shards') {
       // SHARDS: Shimmering crystalline pads — bell-like tones, slow filter sweep
       var freqs = [110, 165, 220, 330, 440];
+      var shardOscs = [];
       freqs.forEach(function(f, i) {
         var o = _osc('sine', f);
+        shardOscs.push(o);
         var lp = _bqf('lowpass', 1200 + i * 200, 0.8);
         var lfoF = _lfo(0.04 + i * 0.015, 30 + i * 10, lp.frequency);
         o.connect(lp);
@@ -656,10 +691,20 @@ const AudioEngine = (() => {
       var masterLFO = _osc('sine', 0.07);
       masterLFO.start(now); nodes.push(masterLFO);
 
+      // Chord progression: ethereal suspended movement
+      _evolve(shardOscs, [
+        [110,   165,   220,    330,    440],       // A harmonics
+        [123.47,185,   246.94, 370,    493.88],    // B — lifted
+        [130.81,196,   261.63, 392,    523.25],    // C — bright
+        [116.54,174.61,233.08, 349.23, 466.16],    // Bb — warmth
+      ], 8);
+
     } else if (factionKey === 'horde') {
       // HORDE: Grinding chaotic low-end — multiple detuned distorted saws, noise hits
+      var hordeOscs = [];
       [38, 41, 45].forEach(function(freq, i) {
         var o = _osc('sawtooth', freq);
+        hordeOscs.push(o);
         var lp = _bqf('lowpass', 160, 2.5);
         var clip = _makeClip(60 + i * 20);
         o.connect(clip); clip.connect(lp);
@@ -678,11 +723,22 @@ const AudioEngine = (() => {
       rMod.connect(rLp); out(rLp, 0.35, 2.5);
       start(rPulse); start(rBase);
 
+      // Chord progression: aggressive tritone shifts, chaotic
+      _evolve([hordeOscs[0], hordeOscs[1], hordeOscs[2], rBase], [
+        [38,   41,   45,   42],    // Root grind
+        [42,   46,   51,   46],    // Shift up — tension
+        [34,   37,   41,   38],    // Drop — crushing weight
+        [41,   48,   54,   50],    // Wide dissonance
+        [36,   40,   44,   40],    // Reset approach
+      ], 5);
+
     } else if (factionKey === 'necro') {
       // NECRO: Cold digital minor — slow minor chord in triangle waves, glitchy artifacts
       var minorChord = [65, 77.78, 97.5]; // D-minor flavour
+      var necroOscs = [];
       minorChord.forEach(function(f, i) {
         var o = _osc('triangle', f);
+        necroOscs.push(o);
         var lp = _bqf('lowpass', 300 + i * 80, 1.2);
         var lfoT = _lfo(0.08 + i * 0.03, 1.5, o.frequency);
         o.connect(lp); out(lp, 0.20 - i * 0.04, 3.0);
@@ -700,11 +756,21 @@ const AudioEngine = (() => {
       glitch.connect(gLp); out(gLp, 0.06, 4.0);
       glitch.start(now); nodes.push(glitch);
 
+      // Chord progression: cold minor descent, mechanical dread
+      _evolve(necroOscs, [
+        [65,    77.78, 97.5],      // Dm — root
+        [58.27, 69.30, 87.31],     // Bbm — flatted
+        [55,    65.41, 82.41],     // Am — descending
+        [61.74, 73.42, 92.50],     // Bm — tension
+      ], 7);
+
     } else if (factionKey === 'accord') {
       // ACCORD: Clean harmonic precision — pure sine harmonics, low tremolo
       var accord_freqs = [82.5, 123.75, 165, 206.25]; // clean tempered
+      var accordOscs = [];
       accord_freqs.forEach(function(f, i) {
         var o = _osc('sine', f);
+        accordOscs.push(o);
         var lfoTrem = _lfo(0.20 + i * 0.05, 0.8, ctx.createGain().gain);
         var g = ctx.createGain(); g.gain.value = 0.18 - i * 0.03;
         o.connect(g); g.connect(bgGain);
@@ -714,11 +780,21 @@ const AudioEngine = (() => {
         o.connect(gainNode); nodes.push(gainNode);
       });
 
+      // Chord progression: bright diplomatic clarity
+      _evolve(accordOscs, [
+        [82.5,  123.75, 165,    206.25],   // E — tonic
+        [87.31, 130.81, 174.61, 220],      // F — warmth
+        [98,    146.83, 196,    246.94],    // G — lift
+        [110,   164.81, 220,    277.18],    // A — resolve
+      ], 6);
+
     } else if (factionKey === 'vorax') {
       // VORAX: Bio-organic chittering — noise textures, slowly evolving filter sweeps
       var vFreqs = [35, 52, 78];
+      var voraxOscs = [];
       vFreqs.forEach(function(f, i) {
         var o = _osc('sawtooth', f);
+        voraxOscs.push(o);
         var hp = _bqf('highpass', 30 + i * 15, 0.8);
         var lp = _bqf('lowpass',  130 + i * 30, 1.5);
         var clip = _makeClip(40 + i * 15);
@@ -741,25 +817,46 @@ const AudioEngine = (() => {
       vNoise.connect(vBp); out(vBp, 0.08, 3.5);
       vNoise.start(now); start(vLfoN); nodes.push(vNoise);
 
+      // Chord progression: alien asymmetric crawl
+      _evolve(voraxOscs, [
+        [35,   52,   78],      // Root — familiar
+        [38,   57,   85],      // Rise — unsettling
+        [32,   48,   72],      // Drop — predatory
+        [40,   60,   90],      // Surge — aggression
+        [33,   55,   82],      // Asymmetric return
+      ], 5);
+
     } else if (factionKey === 'guardians') {
       // GUARDIANS: Deep cosmic resonance — bell drones, slow harmonic evolution
       var gFreqs = [36.5, 73, 109.5, 146]; // D-based harmonics, cosmic low
+      var guardOscs = [];
       gFreqs.forEach(function(f, i) {
         var o = _osc('sine', f);
+        guardOscs.push(o);
         var lp = _bqf('lowpass', 500 + i * 150, 0.7);
         var lfoG = _lfo(0.03 + i * 0.01, 0.4 + i * 0.2, o.frequency);
         o.connect(lp); out(lp, 0.15 - i * 0.025, 3.0 + i * 0.5);
         start(o); start(lfoG);
       });
       // Shimmer reverb layer — high sine drones
+      var guardShimOscs = [];
       var shimFreqs = [587, 880, 1174];
       shimFreqs.forEach(function(f, i) {
         var o = _osc('sine', f);
+        guardShimOscs.push(o);
         var g = ctx.createGain(); g.gain.value = 0;
         g.gain.linearRampToValueAtTime(0.028 - i * 0.006, ctx.currentTime + 4.0 + i);
         o.connect(g); g.connect(bgGain);
         start(o); nodes.push(g);
       });
+
+      // Chord progression: ancient cosmic cycles, open fifths
+      _evolve(guardOscs.concat(guardShimOscs), [
+        [36.5,  73,    109.5,  146,   587,    880,    1174],     // D — ancient root
+        [41,    82,    123,    164,   659.25, 987.77, 1318.51],  // E — ascension
+        [43.65, 87.31, 130.81, 174.61,698.46,1046.5, 1396.91],  // F — solemnity
+        [48.99, 98,    146.83, 196,   784,    1174.66,1567.98],  // G — cosmic resolve
+      ], 8);
     }
 
     bgNodes = nodes;

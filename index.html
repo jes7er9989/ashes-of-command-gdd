@@ -238,6 +238,7 @@
             AudioEngine.toggle();
             audioPlaying = !audioPlaying;
             audioIcon.innerHTML = audioPlaying ? '&#x1F50A;' : '&#x1F507;';
+            audioBtn.setAttribute('data-on', audioPlaying ? '1' : '0');
             if (audioControls) audioControls.classList.toggle('active', audioPlaying);
           });
           // Wire up volume sliders
@@ -252,6 +253,30 @@
           });
           if (ambiSlider) ambiSlider.addEventListener('input', (e) => {
             if (audioInited) AudioEngine.setVolume(e.target.value / 100);
+          });
+        }
+
+        // ── UI Sound Delegation ─────────────────────────────────
+        // Hover sounds on sidebar nav links (event delegation for dynamic content)
+        const navContainer = document.getElementById('nav-container');
+        if (navContainer) {
+          navContainer.addEventListener('mouseenter', (e) => {
+            const link = e.target.closest('.nav-chapter');
+            if (link && audioInited && audioPlaying) {
+              try { AudioEngine.playHover(); } catch(ex) {}
+            }
+          }, true); // capture phase for mouseenter delegation
+        }
+
+        // Click sounds on buttons and interactive elements in main content
+        const contentArea = document.getElementById('content-area');
+        if (contentArea) {
+          contentArea.addEventListener('click', (e) => {
+            if (!audioInited || !audioPlaying) return;
+            const btn = e.target.closest('button, .back-to-dashboard, .nav-part-header');
+            if (btn) {
+              try { AudioEngine.playClick(); } catch(ex) {}
+            }
           });
         }
 
