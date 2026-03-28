@@ -3275,3 +3275,500 @@ body.crt-active {
     font-size: 0.55rem;
   }
 }
+
+
+/* ═══════════════════════════════════════════════════════════
+   15. CHAPTER CONTENT STYLING — Visual polish for chapter pages
+   ═══════════════════════════════════════════════════════════
+   Targets elements inside #content-area to style the chapter
+   reading experience without modifying chapter HTML files.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 15a. Content Wrapper — Constrain & Center ────────── */
+
+#content-area .fade-in {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 16px;
+}
+
+/* ── 15b. Section Labels — Monospace Pre-Heading ──────── */
+
+#content-area .section-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.7;
+  margin-bottom: 6px;
+  margin-top: 48px;
+  text-align: center;
+}
+
+/* ── 15c. Section Headings — Orbitron Glow ────────────── */
+
+#content-area .section-heading {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-hi);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+  text-shadow: 0 0 14px rgba(0,180,255,0.25);
+}
+
+/* ── 15d. Paragraphs — Readable Body Text ─────────────── */
+
+#content-area p {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: var(--text-mid);
+  margin-bottom: 20px;
+  max-width: 800px;
+}
+
+#content-area .body-text {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--text-body);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+/* ── 15e. Cards & Panels Inside Chapters ──────────────── */
+
+#content-area .card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hi);
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+#content-area .card:hover {
+  border-color: rgba(0,180,255,0.2);
+  background: var(--bg-hover);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,180,255,0.06);
+}
+
+/* ── 15f. Dividers — Gradient Line ────────────────────── */
+
+#content-area .divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-hi), transparent);
+  margin: 48px 0;
+  border: none;
+}
+
+/* ── 15g. Bold/Strong Text — High Contrast ────────────── */
+
+#content-area strong {
+  color: var(--text-hi);
+  font-weight: 600;
+}
+
+/* ── 15h. Links Inside Chapters ───────────────────────── */
+
+#content-area a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+#content-area a:hover {
+  color: var(--text-hi);
+  text-decoration: underline;
+  text-shadow: 0 0 8px rgba(0,180,255,0.3);
+}
+
+/* ── 15i. Lists — Accent Bullets & Spacing ────────────── */
+
+#content-area ul,
+#content-area ol {
+  margin: 16px 0 20px 24px;
+  max-width: 800px;
+}
+
+#content-area ul li,
+#content-area ol li {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text-mid);
+  margin-bottom: 6px;
+  padding-left: 4px;
+}
+
+#content-area ul li::marker {
+  color: var(--accent);
+}
+
+#content-area ol li::marker {
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+}
+
+/* ── 15j. Tables — Dark Header, Alternating Rows ─────── */
+
+#content-area table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 0.82rem;
+  border: 1px solid var(--border-hi);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#content-area table thead tr,
+#content-area table tr:first-child {
+  background: rgba(0,180,255,0.06);
+}
+
+#content-area table th {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-hi);
+}
+
+#content-area table td {
+  padding: 8px 14px;
+  color: var(--text-mid);
+  border-bottom: 1px solid var(--border);
+  line-height: 1.55;
+}
+
+#content-area table tbody tr:nth-child(even) {
+  background: rgba(0,180,255,0.02);
+}
+
+#content-area table tbody tr:hover {
+  background: rgba(0,180,255,0.05);
+}
+
+/* ── 15k. Blockquotes — Accent Border, Dim Background ── */
+
+#content-area blockquote {
+  border-left: 3px solid var(--accent);
+  background: rgba(0,180,255,0.03);
+  padding: 16px 20px;
+  margin: 20px 0;
+  border-radius: 0 4px 4px 0;
+  font-style: italic;
+  color: var(--text-mid);
+  line-height: 1.75;
+}
+
+#content-area blockquote p {
+  margin-bottom: 0;
+}
+
+/* ── 15l. Code & Pre Blocks — Monospace Terminal ──────── */
+
+#content-area code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82em;
+  background: rgba(0,180,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 2px 6px;
+  color: var(--accent);
+}
+
+#content-area pre {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hi);
+  border-radius: 4px;
+  padding: 16px 20px;
+  margin: 16px 0 24px;
+  overflow-x: auto;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+
+#content-area pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ── 15m. Headings Inside Chapters ────────────────────── */
+
+#content-area h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-hi);
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 14px rgba(0,180,255,0.2);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-top: 48px;
+  margin-bottom: 24px;
+}
+
+#content-area h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-hi);
+  letter-spacing: 0.06em;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+#content-area h4 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+/* ── 15n. Quote Blocks Inside Chapters ────────────────── */
+
+#content-area .quote-block {
+  border-left: 3px solid var(--accent);
+  background: rgba(0,180,255,0.03);
+  border-radius: 0 4px 4px 0;
+  padding: 16px 24px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+/* ── 15o. Accordion / Expandable Sections ─────────────── */
+
+#content-area [onclick] {
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+#content-area [onclick]:hover {
+  background: var(--bg-hover);
+}
+
+/* ── 15p. Data Grids — Inline Grid Layouts ────────────── */
+
+#content-area [style*="display:grid"],
+#content-area [style*="display: grid"] {
+  gap: 12px;
+}
+
+/* Style grid rows used as data tables (with border styling) */
+#content-area [style*="grid-template-columns"] > div {
+  transition: background 0.2s ease;
+}
+
+/* ── 15q. Proto Badge — Status Tag ────────────────────── */
+
+.proto-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.5rem;
+  color: var(--accent);
+  background: rgba(0,180,255,0.08);
+  border: 1px solid rgba(0,180,255,0.2);
+  padding: 2px 6px;
+  border-radius: 2px;
+  letter-spacing: 0.1em;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* ── 15r. Page Title & Subtitle in Chapters ───────────── */
+
+#content-area .page-title {
+  text-shadow: 0 0 20px rgba(0,180,255,0.2);
+}
+
+#content-area .page-subtitle {
+  margin-bottom: 4px;
+}
+
+/* ── 15s. General Polish — Transitions & Spacing ──────── */
+
+#content-area .page {
+  padding-bottom: 48px;
+}
+
+#content-area .page > .card,
+#content-area .page > [style*="display:grid"],
+#content-area .page > [style*="display: grid"] {
+  margin-bottom: 24px;
+}
+
+/* Smooth transitions on all interactive chapter elements */
+#content-area .card,
+#content-area .section-label,
+#content-area .section-heading,
+#content-area .divider,
+#content-area a,
+#content-area strong {
+  transition: all 0.25s ease;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   16. FACTION-SPECIFIC CHAPTER THEMING
+   ═══════════════════════════════════════════════════════════
+   When a faction chapter is active, body receives a faction
+   class (e.g. faction-terran). Override --accent and apply
+   faction-colored glows to chapter elements.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Faction Accent Overrides ── */
+body.faction-terran    { --accent: #00b4ff; }
+body.faction-shards    { --accent: #00ffee; }
+body.faction-horde     { --accent: #ff6622; }
+body.faction-necro     { --accent: #44ff66; }
+body.faction-accord    { --accent: #ffaa22; }
+body.faction-vorax     { --accent: #ff2266; }
+body.faction-guardians { --accent: #cc44ff; }
+
+/* ── Section Heading Glow — Faction Color ── */
+body.faction-terran    #content-area .section-heading { text-shadow: 0 0 14px rgba(0,180,255,0.3); }
+body.faction-shards    #content-area .section-heading { text-shadow: 0 0 14px rgba(0,255,238,0.3); }
+body.faction-horde     #content-area .section-heading { text-shadow: 0 0 14px rgba(255,102,34,0.3); }
+body.faction-necro     #content-area .section-heading { text-shadow: 0 0 14px rgba(68,255,102,0.3); }
+body.faction-accord    #content-area .section-heading { text-shadow: 0 0 14px rgba(255,170,34,0.3); }
+body.faction-vorax     #content-area .section-heading { text-shadow: 0 0 14px rgba(255,34,102,0.3); }
+body.faction-guardians #content-area .section-heading { text-shadow: 0 0 14px rgba(204,68,255,0.3); }
+
+/* ── Card Borders — Faction Color on Hover ── */
+body.faction-terran    #content-area .card:hover { border-color: rgba(0,180,255,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,180,255,0.08); }
+body.faction-shards    #content-area .card:hover { border-color: rgba(0,255,238,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,255,238,0.08); }
+body.faction-horde     #content-area .card:hover { border-color: rgba(255,102,34,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,102,34,0.08); }
+body.faction-necro     #content-area .card:hover { border-color: rgba(68,255,102,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(68,255,102,0.08); }
+body.faction-accord    #content-area .card:hover { border-color: rgba(255,170,34,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,170,34,0.08); }
+body.faction-vorax     #content-area .card:hover { border-color: rgba(255,34,102,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,34,102,0.08); }
+body.faction-guardians #content-area .card:hover { border-color: rgba(204,68,255,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(204,68,255,0.08); }
+
+/* ── Links — Faction Color ── */
+body[class*="faction-"] #content-area a {
+  color: var(--accent);
+}
+
+body[class*="faction-"] #content-area a:hover {
+  color: var(--text-hi);
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+/* ── Section Label — Faction Color ── */
+body[class*="faction-"] #content-area .section-label {
+  color: var(--accent);
+}
+
+/* ── Blockquote & Quote Block — Faction Border ── */
+body[class*="faction-"] #content-area blockquote {
+  border-left-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 3%, transparent);
+}
+
+/* ── Table Header — Faction Tint ── */
+body[class*="faction-"] #content-area table thead tr,
+body[class*="faction-"] #content-area table tr:first-child {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+body[class*="faction-"] #content-area table th {
+  color: var(--accent);
+}
+
+/* ── Code — Faction Accent ── */
+body[class*="faction-"] #content-area code {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+/* ── Proto Badge — Faction Color ── */
+body[class*="faction-"] .proto-badge {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+
+/* ── 16b. Chapter Content Responsive ──────────────────── */
+
+@media (max-width: 768px) {
+  #content-area .fade-in {
+    padding: 0 8px;
+  }
+
+  #content-area .section-heading {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+
+  #content-area .section-label {
+    margin-top: 32px;
+  }
+
+  #content-area h2 {
+    font-size: 1.05rem;
+    margin-top: 32px;
+  }
+
+  #content-area h3 {
+    font-size: 0.88rem;
+    margin-top: 24px;
+  }
+
+  #content-area pre {
+    padding: 12px 14px;
+    font-size: 0.75rem;
+  }
+
+  #content-area table {
+    font-size: 0.75rem;
+  }
+
+  #content-area table th,
+  #content-area table td {
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  #content-area .fade-in {
+    padding: 0 4px;
+  }
+
+  #content-area .section-heading {
+    font-size: 0.72rem;
+  }
+
+  #content-area .card {
+    padding: 14px;
+  }
+
+  #content-area .divider {
+    margin: 32px 0;
+  }
+}
