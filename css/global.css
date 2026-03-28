@@ -3934,10 +3934,12 @@ body.crt-active {
 /* ── 15a. Content Wrapper — Constrain & Center ────────── */
 
 #content-area > .fade-in {
-  background: var(--bg-panel);
+  background: rgba(12,14,20,0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(0,180,255,0.08);
   border-radius: 8px;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(0,180,255,0.05);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(0,180,255,0.05);
 }
 
 #content-area .fade-in {
