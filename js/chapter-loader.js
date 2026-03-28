@@ -195,20 +195,54 @@ const ChapterLoader = {
   },
 
   /**
-   * Add a faction-specific class to <body> so CSS can theme
-   * the page (e.g. accent-color overrides). Removes any
-   * previously applied faction class first.
-   * @param {string} chapterId - Chapter ID
+   * Chapter-to-part background mapping for non-faction chapters.
+   * Keys are chapter IDs, values are #procedural-bg CSS classes.
    */
+  PART_BG_MAP: {
+    ch1: 'bg-foundation', ch2: 'bg-foundation', ch3: 'bg-foundation', ch4: 'bg-foundation',
+    ch12: 'bg-galactic', ch13: 'bg-galactic', ch14: 'bg-galactic', ch15: 'bg-galactic', ch16: 'bg-galactic',
+    ch17: 'bg-combat', ch18: 'bg-combat', ch19: 'bg-combat', ch20: 'bg-combat',
+    ch21: 'bg-combat', ch22: 'bg-combat', ch23: 'bg-combat',
+    ch24: 'bg-strategy', ch25: 'bg-strategy', ch26: 'bg-strategy', ch27: 'bg-strategy',
+    ch28: 'bg-strategy', ch29: 'bg-strategy', ch30: 'bg-strategy', ch31: 'bg-strategy',
+    ch32: 'bg-finalwar', ch33: 'bg-finalwar', ch34: 'bg-finalwar',
+    ch35: 'bg-presentation', ch36: 'bg-presentation', ch37: 'bg-presentation',
+    appendices: 'bg-appendix',
+    appA: 'bg-appendix', appB: 'bg-appendix', appC: 'bg-appendix',
+    appD: 'bg-appendix', appE: 'bg-appendix', appF: 'bg-appendix',
+  },
+
+  /** All procedural-bg CSS classes that can be applied */
+  ALL_BG_CLASSES: [
+    'bg-terran', 'bg-shards', 'bg-horde', 'bg-necro', 'bg-accord', 'bg-vorax', 'bg-guardians',
+    'bg-foundation', 'bg-galactic', 'bg-combat', 'bg-strategy', 'bg-finalwar', 'bg-presentation', 'bg-appendix', 'bg-cosmic'
+  ],
+
   applyFactionClass(chapterId) {
+    // Remove all faction classes from body
     document.body.classList.remove(
       'faction-terran', 'faction-shards', 'faction-horde',
-      'faction-necro', 'faction-accord', 'faction-vorax', 'faction-guardians'
+      'faction-necro', 'faction-accord', 'faction-vorax', 'faction-guardians',
+      'faction-bg-terran', 'faction-bg-shards', 'faction-bg-horde',
+      'faction-bg-necro', 'faction-bg-accord', 'faction-bg-vorax', 'faction-bg-guardians'
     );
+
+    // Get #procedural-bg element
+    const procBg = document.getElementById('procedural-bg');
+    if (procBg) {
+      this.ALL_BG_CLASSES.forEach(cls => procBg.classList.remove(cls));
+    }
 
     const faction = this.FACTION_MAP[chapterId];
     if (faction) {
+      // Faction chapter — apply both class patterns for CSS compatibility
       document.body.classList.add(`faction-${faction.name}`);
+      document.body.classList.add(`faction-bg-${faction.name}`);
+      if (procBg) procBg.classList.add(`bg-${faction.name}`);
+    } else {
+      // Non-faction chapter — apply part-specific background
+      const partBg = this.PART_BG_MAP[chapterId];
+      if (procBg && partBg) procBg.classList.add(partBg);
     }
   },
 
