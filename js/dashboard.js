@@ -365,9 +365,9 @@ const Dashboard = {
             <div class="galaxy-arms">
               <div class="galaxy-stars" style="box-shadow:${armShadows.join(',')}"></div>
               <div class="galaxy-fill-stars" style="box-shadow:${fillShadows.join(',')}"></div>
+              <div class="galaxy-core"></div>
+              ${homeworlds}
             </div>
-            <div class="galaxy-core"></div>
-            ${homeworlds}
           </div>
         </div>
         <div class="divider"></div>
