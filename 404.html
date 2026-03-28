@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Signal Lost | Ashes of Command</title>
+  <meta name="theme-color" content="#07080c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #07080c;
+      color: #c8d0e0;
+      text-align: center;
+      overflow: hidden;
+    }
+    .error-container {
+      max-width: 520px;
+      padding: 2rem;
+    }
+    .error-code {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 6rem;
+      font-weight: 900;
+      color: #00b4ff;
+      line-height: 1;
+      text-shadow: 0 0 30px rgba(0, 180, 255, 0.4);
+      margin-bottom: 0.5rem;
+    }
+    .error-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ff4466;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .error-message {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      color: #6a7a8a;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .return-link {
+      display: inline-block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #00b4ff;
+      border: 1px solid rgba(0, 180, 255, 0.3);
+      padding: 12px 28px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .return-link:hover {
+      background: rgba(0, 180, 255, 0.1);
+      border-color: #00b4ff;
+      box-shadow: 0 0 20px rgba(0, 180, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <div class="error-code">404</div>
+    <div class="error-title">Signal Lost</div>
+    <div class="error-message">
+      Coordinates not found in the galactic database.<br>
+      The sector you requested has either been consumed by the Vorax<br>
+      or was never charted by Terran Command.
+    </div>
+    <a href="/" class="return-link">Return to Command Dashboard</a>
+  </div>
+</body>
+</html>
