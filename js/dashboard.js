@@ -28,7 +28,7 @@
    buildGameDescription()         | Full title + elevator pitch paragraph
    buildStrategistQuote()         | "Master the Crucible..." quote
    buildByTheNumbers()            | Project Scope — 6 stat cards
-   buildGalaxyOverview(factions)  | SVG spiral galaxy with faction dots
+   buildGalaxyOverview(factions)  | CSS-only galaxy with faction dots
    buildCoreLoop()                | Five-Phase gameplay cards
    buildRogueLiteFlow()           | Rogue-lite loop flow text
    buildFactionHeader()           | "THE SEVEN FACTIONS" section header
@@ -272,134 +272,106 @@ const Dashboard = {
    * @returns {string} HTML string
    */
   buildGalaxyOverview(factions) {
-    /* Build spiral arm paths — four arms, each a quadratic Bezier spiral */
-    const spiralArms = this._buildSpiralArms();
+    const size = 500;
+    const cx = size / 2;
+    const cy = size / 2;
 
-    /* Build faction homeworld dots with system counts */
-    const homeworldDots = factions.map(f => {
+    /* ── Generate spiral arm stars ──
+       4 arms × 80 stars each = 320 stars along logarithmic spirals.
+       Each star gets pseudo-random wobble, varying size and brightness
+       to create an organic, dense galaxy arm appearance.              */
+    const armShadows = [];
+    const numArms = 4;
+    const starsPerArm = 80;
+
+    for (let arm = 0; arm < numArms; arm++) {
+      const baseAngle = (arm * Math.PI * 2) / numArms;
+      for (let i = 0; i < starsPerArm; i++) {
+        const t = i / starsPerArm;
+        const angle = baseAngle + t * Math.PI * 2.5;
+        const radius = 15 + t * 210;
+        /* Pseudo-random wobble for organic arm width */
+        const wobbleX = Math.sin(arm * 50 + i * 7.3) * (4 + t * 14);
+        const wobbleY = Math.cos(arm * 50 + i * 11.1) * (4 + t * 14);
+        /* Secondary scatter — wider spread along outer arms */
+        const scatterX = Math.sin(arm * 23 + i * 3.7) * (2 + t * 8);
+        const scatterY = Math.cos(arm * 23 + i * 5.3) * (2 + t * 8);
+        const x = cx + Math.cos(angle) * radius + wobbleX + scatterX;
+        const y = cy + Math.sin(angle) * radius + wobbleY + scatterY;
+
+        /* Varying brightness: brighter near core, dimmer at edges */
+        const baseBright = t < 0.3 ? 0.6 : (t < 0.6 ? 0.45 : 0.3);
+        const brightness = baseBright + (Math.sin(i * 3.7) * 0.5 + 0.5) * 0.4;
+        /* Varying size: larger near core */
+        const starSize = t < 0.25 ? 1.5 : (t < 0.5 ? 1.2 : (t < 0.75 ? 1 : 0.8));
+        /* Blue-white color variation along arms */
+        const r = 180 + Math.floor((Math.sin(arm * 20 + i * 2.1) * 0.5 + 0.5) * 75);
+        const g = 220 + Math.floor((Math.sin(arm * 20 + i * 3.3) * 0.5 + 0.5) * 35);
+
+        armShadows.push(
+          `${x.toFixed(0)}px ${y.toFixed(0)}px 0 ${starSize}px rgba(${r},${g},255,${brightness.toFixed(2)})`
+        );
+      }
+    }
+
+    /* ── Generate scattered background fill stars ──
+       120 stars using golden-angle distribution for uniform circular spread.
+       These fill the gaps between arms with dim ambient stars.         */
+    const fillShadows = [];
+    const fillCount = 120;
+    for (let i = 0; i < fillCount; i++) {
+      /* Golden angle distribution for even scatter within a circle */
+      const goldenAngle = i * 2.39996323;
+      const offsetAngle = Math.sin(i * 7.1) * 0.5;
+      const angle = goldenAngle + offsetAngle;
+      const maxR = 230;
+      const r = Math.sqrt((i + 0.5) / fillCount) * maxR;
+      const x = cx + Math.cos(angle) * r;
+      const y = cy + Math.sin(angle) * r;
+      const brightness = 0.12 + (Math.sin(i * 5.3) * 0.5 + 0.5) * 0.2;
+      const sz = 0.4 + (Math.sin(i * 3.1) * 0.5 + 0.5) * 0.6;
+      fillShadows.push(
+        `${x.toFixed(0)}px ${y.toFixed(0)}px 0 ${sz.toFixed(1)}px rgba(200,220,255,${brightness.toFixed(2)})`
+      );
+    }
+
+    /* ── Build faction homeworld HTML ──
+       Each homeworld is an absolutely positioned div with glowing dot,
+       expanding ping ring, label, and system count.
+       Positions scaled from 600-space (original SVG) to 500-space.    */
+    const homeworlds = factions.map(f => {
       const pos = this.HOMEWORLD_POSITIONS[f.key];
       if (!pos) return '';
+      const x = ((pos.x / 600) * size).toFixed(0);
+      const y = ((pos.y / 600) * size).toFixed(0);
       const systemCount = this.TERRITORY_COUNTS[f.key] || 0;
       return `
-        <g class="galaxy-homeworld" data-faction="${f.key}" data-chapter="${f.chapterId}"
-           onclick="location.hash='#${f.chapterId}'" style="cursor:pointer">
-          <circle cx="${pos.x}" cy="${pos.y}" r="16" fill="${f.color}" opacity="0.08"
-                  class="homeworld-glow-outer"/>
-          <circle cx="${pos.x}" cy="${pos.y}" r="10" fill="${f.color}" opacity="0.15"
-                  class="homeworld-glow-mid"/>
-          <circle cx="${pos.x}" cy="${pos.y}" r="5" fill="${f.color}" opacity="0.9"
-                  class="homeworld-dot"/>
-          <circle cx="${pos.x}" cy="${pos.y}" r="5" fill="none" stroke="${f.color}"
-                  stroke-width="1.5" opacity="0.6" class="homeworld-ping"/>
-          <text x="${pos.x}" y="${pos.y - 18}" text-anchor="middle"
-                class="homeworld-label" fill="${f.color}" font-size="10"
-                font-family="Orbitron, sans-serif" letter-spacing="0.08em"
-                opacity="0">${f.name.toUpperCase()}</text>
-          <text x="${pos.x}" y="${pos.y + 22}" text-anchor="middle"
-                fill="${f.color}" font-size="8" opacity="0.5"
-                font-family="JetBrains Mono, monospace">${systemCount} systems</text>
-        </g>`;
+        <div class="galaxy-homeworld" style="left:${x}px;top:${y}px;--hw-color:${f.color}"
+             onclick="location.hash='#${f.chapterId}'" data-faction="${f.key}">
+          <div class="homeworld-ring"></div>
+          <div class="homeworld-dot"></div>
+          <div class="homeworld-label">${f.name.toUpperCase()}</div>
+          <div class="homeworld-systems">${systemCount} systems</div>
+        </div>`;
     }).join('');
-
-    /* Build the central nebula glow */
-    const nebulaGlow = `
-      <defs>
-        <radialGradient id="galaxy-core-glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="rgba(204,68,255,0.25)"/>
-          <stop offset="30%" stop-color="rgba(0,180,255,0.08)"/>
-          <stop offset="70%" stop-color="rgba(0,180,255,0.02)"/>
-          <stop offset="100%" stop-color="transparent"/>
-        </radialGradient>
-        <radialGradient id="galaxy-arm-glow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="rgba(0,180,255,0.12)"/>
-          <stop offset="100%" stop-color="transparent"/>
-        </radialGradient>
-        <filter id="galaxy-blur">
-          <feGaussianBlur stdDeviation="3"/>
-        </filter>
-      </defs>
-      <ellipse cx="300" cy="300" rx="280" ry="280" fill="url(#galaxy-core-glow)"/>`;
 
     return `
       <section class="galaxy-section">
         <div class="section-label">Galactic Overview</div>
         <div class="section-heading">Territory Control Map</div>
         <div class="galaxy-map-container">
-          <svg class="galaxy-svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-            ${nebulaGlow}
-            <g class="galaxy-rotation">
-              ${spiralArms}
-              <!-- Galactic core marker -->
-              <circle cx="300" cy="300" r="8" fill="rgba(204,68,255,0.4)"/>
-              <circle cx="300" cy="300" r="3" fill="rgba(255,255,255,0.7)"/>
-            </g>
-            ${homeworldDots}
-          </svg>
+          <div class="galaxy-map">
+            <div class="galaxy-nebula"></div>
+            <div class="galaxy-arms">
+              <div class="galaxy-stars" style="box-shadow:${armShadows.join(',')}"></div>
+              <div class="galaxy-fill-stars" style="box-shadow:${fillShadows.join(',')}"></div>
+            </div>
+            <div class="galaxy-core"></div>
+            ${homeworlds}
+          </div>
         </div>
         <div class="divider"></div>
       </section>`;
-  },
-
-  /**
-   * Generate SVG path elements for four spiral arms.
-   * Uses parametric spiral equations to create organic galaxy arms.
-   * @returns {string} SVG path elements
-   * @private
-   */
-  _buildSpiralArms() {
-    const arms = [];
-    const numArms = 4;
-    const cx = 300;
-    const cy = 300;
-
-    for (let arm = 0; arm < numArms; arm++) {
-      /* Each arm starts at a different angle (90° apart) */
-      const baseAngle = (arm * Math.PI * 2) / numArms;
-      let pathData = '';
-
-      /* Trace 60 points along each spiral arm */
-      for (let i = 0; i <= 60; i++) {
-        const t = i / 60;
-        /* Logarithmic spiral: r increases with angle */
-        const angle = baseAngle + t * Math.PI * 2.5;
-        const radius = 20 + t * 250;
-        /* Add slight wobble for organic feel */
-        const wobble = Math.sin(t * Math.PI * 8) * (5 + t * 10);
-        const x = cx + Math.cos(angle) * (radius + wobble);
-        const y = cy + Math.sin(angle) * (radius + wobble);
-
-        if (i === 0) {
-          pathData += `M ${x.toFixed(1)} ${y.toFixed(1)}`;
-        } else {
-          pathData += ` L ${x.toFixed(1)} ${y.toFixed(1)}`;
-        }
-      }
-
-      /* Main arm stroke — wide, semi-transparent */
-      arms.push(`<path d="${pathData}" fill="none" stroke="rgba(0,180,255,0.06)"
-        stroke-width="18" stroke-linecap="round" filter="url(#galaxy-blur)"/>`);
-
-      /* Inner bright core of the arm */
-      arms.push(`<path d="${pathData}" fill="none" stroke="rgba(0,180,255,0.12)"
-        stroke-width="4" stroke-linecap="round"/>`);
-
-      /* Scattered star clusters along the arm (every 8th point) */
-      for (let i = 8; i <= 60; i += 8) {
-        const t = i / 60;
-        const angle = baseAngle + t * Math.PI * 2.5;
-        const radius = 20 + t * 250;
-        const x = cx + Math.cos(angle) * radius;
-        const y = cy + Math.sin(angle) * radius;
-        /* Pseudo-random offset for natural cluster scatter */
-        const ox = Math.sin(arm * 100 + i * 7.3) * 15;
-        const oy = Math.cos(arm * 100 + i * 11.1) * 15;
-        const brightness = 0.15 + Math.random() * 0.2;
-        arms.push(`<circle cx="${(x + ox).toFixed(1)}" cy="${(y + oy).toFixed(1)}"
-          r="1.2" fill="rgba(180,220,255,${brightness.toFixed(2)})"/>`);
-      }
-    }
-
-    return arms.join('\n');
   },
 
   /* ── Core Loop ─────────────────────────────────────────── */
@@ -457,9 +429,9 @@ const Dashboard = {
     return `
       <section class="dashboard-section">
         <div class="card" style="padding:16px 24px;text-align:center;margin-bottom:32px;background:rgba(0,180,255,0.06);border:1px solid rgba(0,180,255,0.2);border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,0.3)">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:3px;color:var(--accent);text-shadow:0 0 20px rgba(0,180,255,0.3)">ROGUE-LITE LOOP</span>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:2px;color:var(--text-hi);margin-top:8px">MAP \u2192 ARMADA \u2192 APPROACH \u2192 SPACE \u2192 GROUND \u2192 REPEAT</div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:2px;color:var(--text-dim);margin-top:6px">VICTORY OR DEATH \u2192 NEW SIMULATION RUN</div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;letter-spacing:3px;color:var(--accent);text-shadow:0 0 20px rgba(0,180,255,0.3)">ROGUE-LITE LOOP</span>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1rem;letter-spacing:2px;color:var(--text-hi);margin-top:8px">MAP \u2192 ARMADA \u2192 APPROACH \u2192 SPACE \u2192 GROUND \u2192 REPEAT</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:2px;color:var(--text-dim);margin-top:6px">VICTORY OR DEATH \u2192 NEW SIMULATION RUN</div>
         </div>
         <div class="divider"></div>
       </section>`;
@@ -642,8 +614,8 @@ const Dashboard = {
         <div class="section-heading">8 Parts \u00B7 46 Chapters \u00B7 13 Appendices (incl. Appendix L &amp; M)</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;">
           <div class="card">
-            <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">FACTIONS &amp; UNITS</div>
-            <div style="font-size:0.8rem;color:var(--text-mid);line-height:1.6">
+            <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">FACTIONS &amp; UNITS</div>
+            <div style="font-size:0.85rem;color:var(--text-mid);line-height:1.6">
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>7 complete faction bibles with lore, gameplay, awakening scripts</div>
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>105 units with physical + narrative descriptions</div>
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>208 equipment items \u2014 8 MVP items with confirmed prototype stats</div>
@@ -652,8 +624,8 @@ const Dashboard = {
             </div>
           </div>
           <div class="card">
-            <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">SYSTEMS &amp; MECHANICS</div>
-            <div style="font-size:0.8rem;color:var(--text-mid);line-height:1.6">
+            <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">SYSTEMS &amp; MECHANICS</div>
+            <div style="font-size:0.85rem;color:var(--text-mid);line-height:1.6">
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>5-phase gameplay loop fully specified</div>
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>Auto-battle engine with AI role system (Aggressor/Flanker/Brawler)</div>
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>MVP ship stats locked: Interceptor / Frigate / Destroyer (Terran); Raider / Gunship / Dreadnought (Horde)</div>
@@ -662,8 +634,8 @@ const Dashboard = {
             </div>
           </div>
           <div class="card">
-            <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">GALAXY &amp; WORLD</div>
-            <div style="font-size:0.8rem;color:var(--text-mid);line-height:1.6">
+            <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">GALAXY &amp; WORLD</div>
+            <div style="font-size:0.85rem;color:var(--text-mid);line-height:1.6">
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>Procedural galaxy generation \u2014 \u00A712.11 Galactic Core Layout with faction homeworlds &amp; custom difficulty</div>
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>12 planet types with variable territory counts (3\u201322)</div>
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>5 static hazards + 5 dynamic events + Ion Storms</div>
@@ -672,8 +644,8 @@ const Dashboard = {
             </div>
           </div>
           <div class="card">
-            <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">NARRATIVE &amp; META</div>
-            <div style="font-size:0.8rem;color:var(--text-mid);line-height:1.6">
+            <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">NARRATIVE &amp; META</div>
+            <div style="font-size:0.85rem;color:var(--text-mid);line-height:1.6">
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>4-act story with simulation-to-reality twist</div>
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>4 endings + secret Unifier ending</div>
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>3-layer meta-progression \u2014 localStorage key 'aoc_archive', SD award rates locked</div>
@@ -697,11 +669,11 @@ const Dashboard = {
         <div class="section-label">What Makes It Unique</div>
         <div class="section-heading">Five Differentiators</div>
         <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:32px;">
-          <div class="card card-accent" style="border-left-color:var(--terran)"><strong style="color:#fff">1. The Auto-Battle General Fantasy.</strong> <span style="color:var(--text-mid)">You prepared the army, chose equipment, set the formation, positioned the deployment \u2014 now watch, intervene with CP abilities at critical moments, and commit reserves when the line breaks. You are the general at the holographic map, not the soldier in the trench.</span></div>
-          <div class="card card-accent" style="border-left-color:var(--shards)"><strong style="color:#fff">2. Units That Become People.</strong> <span style="color:var(--text-mid)">Continuous promotion from anonymous Rookie to autonomous General who commands entire sectors, develops personality traits, forms rivalries, and can defect with their entire fleet if mistreated. Kill-count thresholds: Veteran=3, Elite=8, Commander=15, General=25.</span></div>
-          <div class="card card-accent" style="border-left-color:var(--horde)"><strong style="color:#fff">3. Procedural Destiny.</strong> <span style="color:var(--text-mid)">Cross-run behavioral profile GENERATES the endgame galaxy. An aggressive player wakes to a militarized galaxy. A diplomatic player wakes to trade routes and alliances. The simulation shaped the reality you must survive.</span></div>
-          <div class="card card-accent" style="border-left-color:var(--necro)"><strong style="color:#fff">4. The Dual-Threat Weapon Asymmetry.</strong> <span style="color:var(--text-mid)">Energy weapons work on Vorax but HEAL Core Guardians. Kinetic weapons work on Guardians but are overwhelmed by Vorax numbers. Maintain two armies, re-equip constantly, or pursue rare hybrid weapons.</span></div>
-          <div class="card card-accent" style="border-left-color:var(--guardians)"><strong style="color:#fff">5. Volatile Death Chain Reactions.</strong> <span style="color:var(--text-mid)">Every Guardian that dies EXPLODES. Chain reactions cascade. The optimal strategy (spread forces) is the OPPOSITE of normal combat (concentrate force). The endgame forces players to rethink everything.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--terran)"><strong style="color:#fff;font-size:1rem">1. The Auto-Battle General Fantasy.</strong> <span style="color:var(--text-mid);font-size:0.9rem">You prepared the army, chose equipment, set the formation, positioned the deployment \u2014 now watch, intervene with CP abilities at critical moments, and commit reserves when the line breaks. You are the general at the holographic map, not the soldier in the trench.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--shards)"><strong style="color:#fff;font-size:1rem">2. Units That Become People.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Continuous promotion from anonymous Rookie to autonomous General who commands entire sectors, develops personality traits, forms rivalries, and can defect with their entire fleet if mistreated. Kill-count thresholds: Veteran=3, Elite=8, Commander=15, General=25.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--horde)"><strong style="color:#fff;font-size:1rem">3. Procedural Destiny.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Cross-run behavioral profile GENERATES the endgame galaxy. An aggressive player wakes to a militarized galaxy. A diplomatic player wakes to trade routes and alliances. The simulation shaped the reality you must survive.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--necro)"><strong style="color:#fff;font-size:1rem">4. The Dual-Threat Weapon Asymmetry.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Energy weapons work on Vorax but HEAL Core Guardians. Kinetic weapons work on Guardians but are overwhelmed by Vorax numbers. Maintain two armies, re-equip constantly, or pursue rare hybrid weapons.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--guardians)"><strong style="color:#fff;font-size:1rem">5. Volatile Death Chain Reactions.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Every Guardian that dies EXPLODES. Chain reactions cascade. The optimal strategy (spread forces) is the OPPOSITE of normal combat (concentrate force). The endgame forces players to rethink everything.</span></div>
         </div>
         <div class="divider"></div>
       </section>`;
@@ -752,8 +724,8 @@ const Dashboard = {
           <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--text-dim);letter-spacing:3px;text-transform:uppercase">
             Ashes of Command: The Reclamation \u2014 Complete Master GDD v5.9.1
           </div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:rgba(255,255,255,0.08);letter-spacing:2px;margin-top:4px">
-            46 Chapters \u00B7 8 Parts \u00B7 13 Appendices (incl. Appendix L &amp; M) \u00B7 143 Resolved Decisions \u00B7 15 Prototype Rulings
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);letter-spacing:2px;margin-top:4px">
+            <span style="color:var(--accent)">46</span> Chapters \u00B7 <span style="color:var(--accent)">8</span> Parts \u00B7 <span style="color:var(--accent)">13</span> Appendices (incl. Appendix L &amp; M) \u00B7 <span style="color:var(--accent)">143</span> Resolved Decisions \u00B7 <span style="color:var(--accent)">15</span> Prototype Rulings
           </div>
         </div>
         <blockquote class="footer-quote">

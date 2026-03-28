@@ -542,6 +542,31 @@ body.sidebar-collapsed .main-content {
     radial-gradient(1px 1px at 35% 88%, rgba(255,255,255,0.5), transparent),
     radial-gradient(1px 1px at 50% 95%, rgba(255,255,255,0.4), transparent),
     radial-gradient(1px 1px at 68% 92%, rgba(255,255,255,0.6), transparent),
+    /* Layer 1b — extra tiny stars for density */
+    radial-gradient(1px 1px at 3% 5%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 17% 22%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 32% 4%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 44% 28%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1px 1px at 58% 14%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 73% 48%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 88% 32%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 96% 58%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 7% 68%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1px 1px at 21% 44%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 36% 56%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 51% 78%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 66% 34%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 81% 72%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 94% 18%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 12% 82%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 27% 96%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 42% 48%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 57% 86%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1px 1px at 72% 6%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 84% 92%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 2% 38%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 46% 16%, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 63% 62%, rgba(255,255,255,0.35), transparent),
     /* Layer 2 — medium stars (medium speed) */
     radial-gradient(1.5px 1.5px at 8% 28%, rgba(180,220,255,0.7), transparent),
     radial-gradient(1.5px 1.5px at 22% 12%, rgba(180,220,255,0.5), transparent),
@@ -553,6 +578,17 @@ body.sidebar-collapsed .main-content {
     radial-gradient(1.5px 1.5px at 18% 75%, rgba(180,220,255,0.5), transparent),
     radial-gradient(1.5px 1.5px at 45% 82%, rgba(180,220,255,0.6), transparent),
     radial-gradient(1.5px 1.5px at 75% 88%, rgba(180,220,255,0.7), transparent),
+    /* Layer 2b — extra medium stars for density */
+    radial-gradient(1.5px 1.5px at 4% 48%, rgba(180,220,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 15% 8%, rgba(180,220,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 28% 62%, rgba(180,220,255,0.45), transparent),
+    radial-gradient(1.5px 1.5px at 42% 35%, rgba(180,220,255,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 56% 72%, rgba(180,220,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 72% 15%, rgba(180,220,255,0.6), transparent),
+    radial-gradient(1.5px 1.5px at 86% 68%, rgba(180,220,255,0.45), transparent),
+    radial-gradient(1.5px 1.5px at 98% 42%, rgba(180,220,255,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 33% 92%, rgba(180,220,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 60% 5%, rgba(180,220,255,0.6), transparent),
     /* Layer 3 — bright nearby stars (fast twinkle) */
     radial-gradient(2px 2px at 12% 45%, rgba(0,180,255,0.8), transparent),
     radial-gradient(2px 2px at 33% 25%, rgba(0,255,238,0.6), transparent),
@@ -560,8 +596,85 @@ body.sidebar-collapsed .main-content {
     radial-gradient(2px 2px at 77% 15%, rgba(204,68,255,0.6), transparent),
     radial-gradient(2px 2px at 90% 45%, rgba(0,180,255,0.7), transparent),
     radial-gradient(2px 2px at 20% 85%, rgba(255,102,34,0.5), transparent),
-    radial-gradient(2px 2px at 65% 55%, rgba(68,255,102,0.4), transparent);
+    radial-gradient(2px 2px at 65% 55%, rgba(68,255,102,0.4), transparent),
+    /* Layer 3b — extra bright accent stars */
+    radial-gradient(2px 2px at 5% 32%, rgba(0,180,255,0.65), transparent),
+    radial-gradient(2px 2px at 28% 58%, rgba(204,68,255,0.5), transparent),
+    radial-gradient(2px 2px at 47% 12%, rgba(0,255,238,0.55), transparent),
+    radial-gradient(2px 2px at 82% 78%, rgba(255,170,34,0.45), transparent),
+    radial-gradient(2px 2px at 95% 22%, rgba(68,255,102,0.5), transparent),
+    radial-gradient(2.5px 2.5px at 40% 90%, rgba(0,180,255,0.6), transparent),
+    radial-gradient(2.5px 2.5px at 70% 40%, rgba(255,34,102,0.4), transparent),
+    radial-gradient(2.5px 2.5px at 16% 68%, rgba(0,255,238,0.5), transparent);
   animation: starfieldDrift 120s linear infinite;
+}
+
+/* Extra star density layer — box-shadow technique for many small stars */
+.hero-starfield::before {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: 0;
+  left: 0;
+  box-shadow:
+    45px 23px 0 0.5px rgba(255,255,255,0.4),
+    178px 67px 0 0.5px rgba(255,255,255,0.3),
+    312px 145px 0 0.5px rgba(255,255,255,0.5),
+    456px 34px 0 0.5px rgba(255,255,255,0.35),
+    589px 189px 0 0.5px rgba(255,255,255,0.3),
+    723px 78px 0 0.5px rgba(255,255,255,0.6),
+    867px 234px 0 0.5px rgba(255,255,255,0.4),
+    1012px 56px 0 0.5px rgba(255,255,255,0.5),
+    1156px 167px 0 0.5px rgba(255,255,255,0.3),
+    1289px 89px 0 0.5px rgba(255,255,255,0.45),
+    1423px 223px 0 0.5px rgba(255,255,255,0.5),
+    1567px 45px 0 0.5px rgba(255,255,255,0.3),
+    1701px 178px 0 0.5px rgba(255,255,255,0.6),
+    1845px 112px 0 0.5px rgba(255,255,255,0.4),
+    67px 312px 0 0.5px rgba(255,255,255,0.5),
+    201px 389px 0 0.5px rgba(255,255,255,0.3),
+    345px 456px 0 0.5px rgba(255,255,255,0.4),
+    489px 334px 0 0.5px rgba(255,255,255,0.6),
+    634px 478px 0 0.5px rgba(255,255,255,0.3),
+    778px 367px 0 0.5px rgba(255,255,255,0.5),
+    923px 445px 0 0.5px rgba(255,255,255,0.4),
+    1067px 389px 0 0.5px rgba(255,255,255,0.35),
+    1201px 456px 0 0.5px rgba(255,255,255,0.5),
+    1345px 334px 0 0.5px rgba(255,255,255,0.6),
+    1489px 478px 0 0.5px rgba(255,255,255,0.3),
+    1634px 367px 0 0.5px rgba(255,255,255,0.4),
+    1778px 423px 0 0.5px rgba(255,255,255,0.5),
+    1912px 345px 0 0.5px rgba(255,255,255,0.3),
+    89px 567px 0 0.5px rgba(255,255,255,0.45),
+    223px 634px 0 0.5px rgba(255,255,255,0.6),
+    367px 589px 0 0.5px rgba(255,255,255,0.3),
+    512px 678px 0 0.5px rgba(255,255,255,0.5),
+    656px 612px 0 0.5px rgba(255,255,255,0.4),
+    801px 567px 0 0.5px rgba(255,255,255,0.35),
+    945px 689px 0 0.5px rgba(255,255,255,0.5),
+    1089px 623px 0 0.5px rgba(255,255,255,0.4),
+    1234px 712px 0 0.5px rgba(255,255,255,0.6),
+    1378px 589px 0 0.5px rgba(255,255,255,0.3),
+    1523px 667px 0 0.5px rgba(255,255,255,0.5),
+    1667px 612px 0 0.5px rgba(255,255,255,0.4),
+    134px 756px 0 0.5px rgba(255,255,255,0.35),
+    278px 812px 0 0.5px rgba(255,255,255,0.5),
+    423px 778px 0 0.5px rgba(255,255,255,0.4),
+    567px 845px 0 0.5px rgba(255,255,255,0.6),
+    712px 789px 0 0.5px rgba(255,255,255,0.3),
+    856px 856px 0 0.5px rgba(255,255,255,0.45),
+    1001px 812px 0 0.5px rgba(255,255,255,0.5),
+    1145px 878px 0 0.5px rgba(255,255,255,0.35),
+    1290px 823px 0 0.5px rgba(255,255,255,0.4),
+    1434px 889px 0 0.5px rgba(255,255,255,0.6);
+  animation: starfieldTwinkle 6s ease-in-out infinite alternate;
+}
+
+/* Twinkle effect for the box-shadow star layer */
+@keyframes starfieldTwinkle {
+  0%   { opacity: 0.7; }
+  100% { opacity: 1; }
 }
 
 @keyframes starfieldDrift {
@@ -683,7 +796,7 @@ body.sidebar-collapsed .main-content {
 }
 
 .hero-scroll-arrow {
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   color: var(--accent);
   animation: scrollBounce 2s ease-in-out infinite;
 }
@@ -695,13 +808,13 @@ body.sidebar-collapsed .main-content {
 
 .hero-scroll-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.55rem;
-  color: var(--text-dim);
+  font-size: 0.65rem;
+  color: var(--text-mid);
   letter-spacing: 0.15em;
 }
 
 
-/* ── 7b. Galactic Overview — SVG Spiral Galaxy ─────────── */
+/* ── 7b. Galactic Overview — CSS-Only Animated Galaxy ──── */
 
 .galaxy-section {
   margin: 0;
@@ -721,52 +834,169 @@ body.sidebar-collapsed .main-content {
   padding: 20px 0;
 }
 
-.galaxy-svg {
-  width: 100%;
-  max-width: 560px;
-  height: auto;
+/* Main galaxy disc — contains all layers */
+.galaxy-map {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, rgba(10,12,18,1) 0%, rgba(7,8,12,1) 100%);
 }
 
-/* Slow rotation of the spiral arms */
-.galaxy-rotation {
-  transform-origin: 300px 300px;
-  animation: galaxySpin 180s linear infinite;
+/* Nebula clouds — subtle colored radial gradients */
+.galaxy-nebula {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 35% 30%, rgba(0,180,255,0.07) 0%, transparent 45%),
+    radial-gradient(ellipse at 65% 70%, rgba(204,68,255,0.05) 0%, transparent 45%),
+    radial-gradient(ellipse at 25% 65%, rgba(0,255,238,0.035) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 35%, rgba(255,170,34,0.03) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(0,100,200,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-@keyframes galaxySpin {
+/* Rotating wrapper — holds all spiral arm & fill stars */
+.galaxy-arms {
+  position: absolute;
+  inset: 0;
+  animation: galaxyRotate 60s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes galaxyRotate {
   0%   { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* ── Homeworld Dots — Pulse and label hover ── */
-
-.galaxy-homeworld .homeworld-glow-outer {
-  animation: homeworldPulse 3s ease-in-out infinite alternate;
+/* Star elements — 1px dot positioned at origin, box-shadow creates visible stars */
+.galaxy-stars,
+.galaxy-fill-stars {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: 0;
+  left: 0;
+  background: transparent;
+  border-radius: 50%;
 }
 
-.galaxy-homeworld .homeworld-ping {
-  animation: homeworldPing 3s ease-out infinite;
+/* Galactic core — bright white center fading to blue */
+.galaxy-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle,
+      rgba(255,255,255,0.95) 0%,
+      rgba(220,235,255,0.7) 15%,
+      rgba(0,180,255,0.4) 35%,
+      rgba(204,68,255,0.15) 55%,
+      transparent 75%);
+  box-shadow:
+    0 0 30px 8px rgba(255,255,255,0.15),
+    0 0 60px 20px rgba(0,180,255,0.2),
+    0 0 100px 40px rgba(204,68,255,0.08);
+  z-index: 2;
+  pointer-events: none;
 }
 
-@keyframes homeworldPulse {
-  0%   { r: 14; opacity: 0.05; }
-  100% { r: 20; opacity: 0.12; }
+/* Faction homeworld markers — absolute positioned, do NOT rotate */
+.galaxy-homeworld {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@keyframes homeworldPing {
-  0%   { r: 5; opacity: 0.6; stroke-width: 1.5; }
-  100% { r: 18; opacity: 0; stroke-width: 0.5; }
+.galaxy-homeworld .homeworld-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--hw-color);
+  box-shadow:
+    0 0 6px var(--hw-color),
+    0 0 16px var(--hw-color),
+    0 0 30px color-mix(in srgb, var(--hw-color) 40%, transparent);
+  animation: hwPulse 3s ease-in-out infinite alternate;
 }
 
-/* Show faction name on hover */
-.galaxy-homeworld:hover .homeworld-label {
-  opacity: 1;
+/* Pulsing glow ring behind each homeworld dot */
+.galaxy-homeworld .homeworld-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--hw-color);
+  opacity: 0;
+  animation: hwRingPing 3s ease-out infinite;
+}
+
+@keyframes hwPulse {
+  0%   { box-shadow: 0 0 6px var(--hw-color), 0 0 16px var(--hw-color); }
+  100% { box-shadow: 0 0 10px var(--hw-color), 0 0 24px var(--hw-color), 0 0 40px color-mix(in srgb, var(--hw-color) 30%, transparent); }
+}
+
+@keyframes hwRingPing {
+  0%   { width: 10px; height: 10px; opacity: 0.6; }
+  100% { width: 36px; height: 36px; opacity: 0; }
+}
+
+/* Homeworld faction label — visible on hover */
+.galaxy-homeworld .homeworld-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: var(--hw-color);
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 6px;
+  opacity: 0;
   transition: opacity 0.2s ease;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+}
+
+/* System count below label */
+.galaxy-homeworld .homeworld-systems {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.45rem;
+  color: var(--hw-color);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  margin-top: 2px;
+}
+
+.galaxy-homeworld:hover .homeworld-label,
+.galaxy-homeworld:hover .homeworld-systems {
+  opacity: 0.8;
 }
 
 .galaxy-homeworld:hover .homeworld-dot {
-  r: 7;
-  transition: r 0.2s ease;
+  transform: scale(1.3);
+  transition: transform 0.2s ease;
+}
+
+/* Responsive: shrink galaxy on smaller screens */
+@media (max-width: 600px) {
+  .galaxy-map {
+    width: 340px;
+    height: 340px;
+  }
 }
 
 
@@ -790,11 +1020,13 @@ body.sidebar-collapsed .main-content {
 }
 
 .faction-card {
-  background: var(--bg-card);
+  background: rgba(12,14,20,0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255,255,255,0.08);
   border-left: 3px solid var(--faction-color, var(--accent));
   border-radius: 4px;
-  padding: 20px;
+  padding: 24px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
@@ -851,7 +1083,7 @@ body.sidebar-collapsed .main-content {
 
 .faction-card .faction-name {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--faction-color, var(--text-hi));
   margin-bottom: 2px;
@@ -917,7 +1149,7 @@ body.sidebar-collapsed .main-content {
   flex-wrap: wrap;
   margin: 0;
   padding: 14px 20px;
-  background: var(--bg-card);
+  background: rgba(12,14,20,0.8);
   border: 1px solid var(--border);
   border-radius: 4px;
 }
@@ -1001,7 +1233,7 @@ body.sidebar-collapsed .main-content {
 
 .footer-quote-text {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-style: italic;
   color: var(--text-mid);
   line-height: 1.8;
@@ -1136,13 +1368,13 @@ html {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 6px;
-  text-shadow: 0 0 20px rgba(0,180,255,0.15);
+  text-shadow: 0 0 24px rgba(0,180,255,0.3), 0 0 60px rgba(0,180,255,0.1);
 }
 
 .page-subtitle {
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.7rem;
-  color: var(--text-dim);
+  color: var(--text-mid);
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
@@ -1168,7 +1400,7 @@ html {
 }
 
 .stat-block {
-  background: rgba(0,180,255,0.06);
+  background: rgba(12,14,20,0.75);
   border: 1px solid rgba(0,180,255,0.12);
   border-radius: 4px;
   padding: 24px 16px;
@@ -1197,13 +1429,13 @@ html {
 
 .stat-block .stat-value {
   font-family: 'Orbitron', sans-serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
   line-height: 1;
   margin-bottom: 8px;
   width: auto;
   text-align: center;
-  text-shadow: 0 0 16px currentColor, 0 0 40px currentColor;
+  text-shadow: 0 0 20px currentColor, 0 0 50px currentColor, 0 0 80px currentColor;
 }
 
 .stat-block .stat-label {
@@ -1240,11 +1472,11 @@ html {
 .phase-block {
   flex: 1;
   min-width: 180px;
-  padding: 22px 18px 18px;
+  padding: 26px 20px 22px;
   border-radius: 6px;
   border: 1px solid rgba(0,180,255,0.15);
   border-top: 3px solid rgba(0,180,255,0.4);
-  background: var(--bg-card);
+  background: rgba(12,14,20,0.7);
   position: relative;
   transition: all 0.3s ease;
   scroll-snap-align: start;
@@ -1275,7 +1507,7 @@ html {
 
 .phase-name {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-hi);
   letter-spacing: 0.08em;
@@ -1284,7 +1516,7 @@ html {
 
 .phase-desc {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--text-mid);
   line-height: 1.6;
 }
@@ -1310,11 +1542,11 @@ html {
 }
 
 .system-card {
-  background: var(--bg-card);
+  background: rgba(12,14,20,0.7);
   border: 1px solid rgba(0,180,255,0.15);
   border-left: 4px solid rgba(0,180,255,0.45);
   border-radius: 6px;
-  padding: 20px;
+  padding: 24px;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
@@ -1333,7 +1565,7 @@ html {
 
 .system-card-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #fff;
   letter-spacing: 0.06em;
@@ -1342,7 +1574,7 @@ html {
 
 .system-card-desc {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--text-mid);
   line-height: 1.6;
 }
@@ -1354,7 +1586,7 @@ html {
   padding: 20px 24px;
   line-height: 1.7;
   font-size: 0.9rem;
-  background: var(--bg-card);
+  background: rgba(12,14,20,0.75);
   border: 1px solid rgba(0,180,255,0.12);
   border-left: 4px solid var(--accent);
   border-radius: 6px;
@@ -1371,17 +1603,19 @@ html {
 }
 
 .card-accent:nth-child(odd) {
-  background: rgba(0,180,255,0.04);
+  background: rgba(12,14,20,0.75);
 }
 
 .card-accent:nth-child(even) {
-  background: var(--bg-card);
+  background: rgba(12,14,20,0.7);
 }
 
 /* ── 7l-b. Document Structure Cards ─────────────────────── */
 
 .dashboard-section .card {
-  background: var(--bg-card);
+  background: rgba(12,14,20,0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(0,180,255,0.12);
   border-radius: 6px;
   padding: 24px;
@@ -1394,6 +1628,141 @@ html {
   background: var(--bg-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 20px rgba(0,180,255,0.12);
+}
+
+
+/* ── 7l-c. Dashboard Page Background — Rich Starfield ──── */
+
+/* Deep-space starfield behind entire dashboard via pseudo-elements.
+   Three layers for depth: tiny distant, medium, bright colored.
+   Uses box-shadow technique for high star density.                 */
+#dashboard-view {
+  position: relative;
+}
+
+#dashboard-view::before,
+#dashboard-view::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Layer 1 — tiny distant white stars + medium blue-white stars */
+#dashboard-view::before {
+  box-shadow:
+    32px 45px 0 0.5px rgba(255,255,255,0.3),
+    145px 89px 0 0.5px rgba(255,255,255,0.4),
+    267px 23px 0 0.5px rgba(255,255,255,0.25),
+    389px 134px 0 0.5px rgba(255,255,255,0.35),
+    512px 67px 0 0.5px rgba(255,255,255,0.4),
+    634px 178px 0 0.5px rgba(255,255,255,0.3),
+    756px 45px 0 0.5px rgba(255,255,255,0.45),
+    878px 112px 0 0.5px rgba(255,255,255,0.3),
+    1001px 189px 0 0.5px rgba(255,255,255,0.4),
+    1123px 34px 0 0.5px rgba(255,255,255,0.25),
+    1245px 156px 0 0.5px rgba(255,255,255,0.35),
+    1367px 78px 0 0.5px rgba(255,255,255,0.4),
+    1489px 145px 0 0.5px rgba(255,255,255,0.3),
+    67px 267px 0 0.5px rgba(255,255,255,0.35),
+    189px 312px 0 0.5px rgba(255,255,255,0.4),
+    312px 234px 0 0.5px rgba(255,255,255,0.3),
+    434px 356px 0 0.5px rgba(255,255,255,0.45),
+    556px 278px 0 0.5px rgba(255,255,255,0.3),
+    678px 389px 0 0.5px rgba(255,255,255,0.4),
+    801px 312px 0 0.5px rgba(255,255,255,0.25),
+    923px 356px 0 0.5px rgba(255,255,255,0.35),
+    1045px 289px 0 0.5px rgba(255,255,255,0.4),
+    1167px 378px 0 0.5px rgba(255,255,255,0.3),
+    1289px 267px 0 0.5px rgba(255,255,255,0.45),
+    1412px 345px 0 0.5px rgba(255,255,255,0.3),
+    89px 456px 0 0.5px rgba(255,255,255,0.35),
+    212px 512px 0 0.5px rgba(255,255,255,0.4),
+    334px 478px 0 0.5px rgba(255,255,255,0.3),
+    456px 534px 0 0.5px rgba(255,255,255,0.45),
+    578px 489px 0 0.5px rgba(255,255,255,0.25),
+    701px 556px 0 0.5px rgba(255,255,255,0.4),
+    823px 512px 0 0.5px rgba(255,255,255,0.3),
+    945px 567px 0 0.5px rgba(255,255,255,0.35),
+    1067px 489px 0 0.5px rgba(255,255,255,0.4),
+    1189px 534px 0 0.5px rgba(255,255,255,0.3),
+    1312px 478px 0 0.5px rgba(255,255,255,0.45),
+    1434px 556px 0 0.5px rgba(255,255,255,0.3),
+    45px 634px 0 0.5px rgba(255,255,255,0.35),
+    167px 689px 0 0.5px rgba(255,255,255,0.4),
+    289px 645px 0 0.5px rgba(255,255,255,0.25),
+    412px 712px 0 0.5px rgba(255,255,255,0.35),
+    534px 667px 0 0.5px rgba(255,255,255,0.4),
+    656px 723px 0 0.5px rgba(255,255,255,0.3),
+    778px 678px 0 0.5px rgba(255,255,255,0.45),
+    901px 734px 0 0.5px rgba(255,255,255,0.3),
+    1023px 689px 0 0.5px rgba(255,255,255,0.35),
+    1145px 745px 0 0.5px rgba(255,255,255,0.4),
+    1267px 678px 0 0.5px rgba(255,255,255,0.3),
+    1389px 712px 0 0.5px rgba(255,255,255,0.45),
+    112px 812px 0 0.5px rgba(255,255,255,0.3),
+    234px 867px 0 0.5px rgba(255,255,255,0.4),
+    356px 823px 0 0.5px rgba(255,255,255,0.35),
+    478px 878px 0 0.5px rgba(255,255,255,0.25),
+    601px 845px 0 0.5px rgba(255,255,255,0.4),
+    723px 889px 0 0.5px rgba(255,255,255,0.35),
+    845px 834px 0 0.5px rgba(255,255,255,0.3),
+    967px 878px 0 0.5px rgba(255,255,255,0.45),
+    1089px 845px 0 0.5px rgba(255,255,255,0.3),
+    1212px 889px 0 0.5px rgba(255,255,255,0.35),
+    /* Medium blue-white stars */
+    123px 156px 0 1px rgba(180,220,255,0.35),
+    356px 89px 0 1px rgba(180,220,255,0.4),
+    589px 234px 0 1px rgba(180,220,255,0.3),
+    823px 167px 0 1px rgba(180,220,255,0.45),
+    1056px 312px 0 1px rgba(180,220,255,0.35),
+    1289px 189px 0 1px rgba(180,220,255,0.4),
+    245px 445px 0 1px rgba(180,220,255,0.3),
+    478px 389px 0 1px rgba(180,220,255,0.45),
+    712px 512px 0 1px rgba(180,220,255,0.35),
+    945px 445px 0 1px rgba(180,220,255,0.4),
+    1178px 567px 0 1px rgba(180,220,255,0.3),
+    1412px 489px 0 1px rgba(180,220,255,0.45),
+    167px 678px 0 1px rgba(180,220,255,0.35),
+    401px 734px 0 1px rgba(180,220,255,0.4),
+    634px 612px 0 1px rgba(180,220,255,0.3),
+    867px 756px 0 1px rgba(180,220,255,0.45),
+    1100px 689px 0 1px rgba(180,220,255,0.35),
+    1334px 812px 0 1px rgba(180,220,255,0.4);
+  animation: dashStarsTwinkle 8s ease-in-out infinite alternate;
+}
+
+/* Layer 2 — bright colored accent stars */
+#dashboard-view::after {
+  box-shadow:
+    267px 134px 0 1.5px rgba(0,180,255,0.3),
+    534px 356px 0 1.5px rgba(0,255,238,0.25),
+    801px 178px 0 1.5px rgba(204,68,255,0.25),
+    1068px 423px 0 1.5px rgba(255,170,34,0.2),
+    1335px 145px 0 1.5px rgba(0,180,255,0.3),
+    434px 645px 0 1.5px rgba(68,255,102,0.2),
+    867px 567px 0 1.5px rgba(204,68,255,0.2),
+    1300px 712px 0 1.5px rgba(0,255,238,0.25),
+    178px 823px 0 1.5px rgba(255,34,102,0.2),
+    645px 189px 0 1.5px rgba(255,170,34,0.25),
+    1100px 89px 0 1.5px rgba(0,180,255,0.3),
+    312px 512px 0 1.5px rgba(0,255,238,0.2);
+  animation: dashStarsTwinkle 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes dashStarsTwinkle {
+  0%   { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* Ensure all dashboard content stacks above the starfield */
+#dashboard-view > * {
+  position: relative;
+  z-index: 1;
 }
 
 
