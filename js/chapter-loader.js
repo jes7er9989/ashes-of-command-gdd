@@ -134,6 +134,12 @@ const ChapterLoader = {
     // Apply faction-specific body class (changes accent colors)
     this.applyFactionClass(chapterId);
 
+    // Switch audio engine faction theme if audio is active
+    const factionAudio = this.FACTION_MAP[chapterId];
+    if (factionAudio && typeof AudioEngine !== 'undefined') {
+      AudioEngine.setFaction(factionAudio.name);
+    }
+
     // For faction chapters, load and render all faction data
     const faction = this.FACTION_MAP[chapterId];
     if (faction) {

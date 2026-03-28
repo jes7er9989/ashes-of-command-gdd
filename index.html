@@ -213,7 +213,11 @@
         let audioInited = false;
         if (audioBtn && typeof AudioEngine !== 'undefined') {
           audioBtn.addEventListener('click', () => {
-            if (!audioInited) { AudioEngine.init(); audioInited = true; }
+            if (!audioInited) {
+              AudioEngine.init();
+              AudioEngine.setFaction('terran');
+              audioInited = true;
+            }
             AudioEngine.toggle();
             audioPlaying = !audioPlaying;
             audioIcon.innerHTML = audioPlaying ? '&#x1F50A;' : '&#x1F507;';
