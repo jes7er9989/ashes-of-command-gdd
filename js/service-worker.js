@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v17';
+const CACHE_NAME = 'aoc-gdd-v18';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -25,6 +25,9 @@ const PRECACHE_URLS = [
   '/data/nav/nav-data.json',
   '/data/factions/factions.json',
 ];
+
+// Files that should always try network first (CSS, JS, HTML)
+const NETWORK_FIRST_EXT = ['.css', '.js', '.html'];
 
 
 // ───────────────────────────────────────────
@@ -79,11 +82,26 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Cache-first for everything else (HTML, CSS, JS, images)
+  // Network-first for CSS, JS, HTML — ensures updates always show
+  if (NETWORK_FIRST_EXT.some(ext => url.pathname.endsWith(ext))) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          if (response.ok && url.origin === self.location.origin) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Cache-first for everything else (images, fonts, icons)
   event.respondWith(
     caches.match(event.request)
       .then(cached => cached || fetch(event.request).then(response => {
-        // Only cache same-origin successful responses
         if (response.ok && url.origin === self.location.origin) {
           const clone = response.clone();
           caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));

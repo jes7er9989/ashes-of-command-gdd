@@ -403,6 +403,11 @@ body.sidebar-collapsed .main-content {
   min-height: 100vh;
   padding: 24px 32px 60px;
   transition: margin-left 0.3s ease;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0,180,255,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(0,180,255,0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 80%, rgba(204,68,255,0.015) 0%, transparent 50%),
+    var(--bg-base);
 }
 
 
@@ -3286,10 +3291,18 @@ body.crt-active {
 
 /* ── 15a. Content Wrapper — Constrain & Center ────────── */
 
+#content-area > .fade-in {
+  background: var(--bg-panel);
+  border: 1px solid rgba(0,180,255,0.08);
+  border-radius: 8px;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(0,180,255,0.05);
+}
+
 #content-area .fade-in {
-  max-width: 900px;
+  max-width: 960px;
   margin-left: auto;
   margin-right: auto;
+  padding: 48px 40px;
   padding: 0 16px;
 }
 
