@@ -105,6 +105,7 @@
 html {
   scrollbar-color: var(--border-hi) var(--bg-base);
   scrollbar-width: thin;
+  overflow-x: hidden;
 }
 
 /* ── Body ── */
@@ -525,6 +526,7 @@ body.sidebar-collapsed .main-content {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
   background:
     /* Layer 1 — tiny distant stars (slow) */
     radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6), transparent),
@@ -3944,7 +3946,7 @@ body.crt-active {
 }
 
 #content-area .fade-in {
-  max-width: 1400px;
+  max-width: calc(100% - 32px);
   margin-left: auto;
   margin-right: auto;
   padding: 48px 40px;
