@@ -698,7 +698,15 @@ body.sidebar-collapsed .main-content {
 /* ── 7b. Galactic Overview — SVG Spiral Galaxy ─────────── */
 
 .galaxy-section {
-  margin: 40px 0;
+  margin: 0;
+  padding: 48px 24px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(0,180,255,0.04) 0%, rgba(204,68,255,0.02) 40%, transparent 70%);
+  border-top: 1px solid rgba(0,180,255,0.08);
+  border-bottom: 1px solid rgba(0,180,255,0.08);
 }
 
 .galaxy-map-container {
@@ -759,7 +767,12 @@ body.sidebar-collapsed .main-content {
 /* ── 7c. Enhanced Faction Cards ────────────────────────── */
 
 .faction-section {
-  margin: 40px 0;
+  margin: 0;
+  padding: 48px 24px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 1px solid rgba(0,180,255,0.08);
 }
 
 /* 2-column desktop, 1-column mobile */
@@ -772,7 +785,8 @@ body.sidebar-collapsed .main-content {
 
 .faction-card {
   background: var(--bg-card);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-left: 3px solid var(--faction-color, var(--accent));
   border-radius: 4px;
   padding: 20px;
   position: relative;
@@ -797,7 +811,7 @@ body.sidebar-collapsed .main-content {
     0 0 20px color-mix(in srgb, var(--faction-color, var(--accent)) 20%, transparent),
     0 0 50px color-mix(in srgb, var(--faction-color, var(--accent)) 8%, transparent),
     inset 0 0 30px color-mix(in srgb, var(--faction-color, var(--accent)) 3%, transparent);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
 }
 
 /* ── Faction Card Header — Emblem + Titles ── */
@@ -881,7 +895,13 @@ body.sidebar-collapsed .main-content {
 /* ── 7d. Command-Console Statistics Banner ─────────────── */
 
 .stats-section {
-  margin: 40px 0;
+  margin: 0;
+  padding: 48px 24px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-top: 1px solid rgba(0,180,255,0.08);
 }
 
 .summary-bar {
@@ -953,8 +973,13 @@ body.sidebar-collapsed .main-content {
 /* ── 7e. Footer Lore Quote ─────────────────────────────── */
 
 .footer-quote-section {
-  margin: 48px 0 24px;
-  padding: 0 20px;
+  margin: 0;
+  padding: 48px 24px 24px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-top: 1px solid rgba(0,180,255,0.08);
 }
 
 .footer-quote-divider {
@@ -996,7 +1021,20 @@ html {
 
 /* ── Dashboard Section — consistent vertical rhythm ── */
 .dashboard-section {
-  padding: 48px 0 0;
+  padding: 48px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  border-top: 1px solid rgba(0,180,255,0.08);
+}
+
+/* Alternating subtle backgrounds for visual separation */
+.dashboard-section:nth-child(odd) {
+  background: rgba(0,180,255,0.02);
+}
+
+.dashboard-section:nth-child(even) {
+  background: rgba(0,180,255,0.04);
 }
 
 /* ── Section Label — small uppercase pre-heading ── */
@@ -1008,12 +1046,13 @@ html {
   color: var(--accent);
   opacity: 0.6;
   margin-bottom: 6px;
+  text-align: center;
 }
 
 /* ── Section Heading — enhanced Orbitron heading with dim divider ── */
 .section-heading {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text-hi);
   letter-spacing: 0.14em;
@@ -1021,6 +1060,8 @@ html {
   margin-bottom: 24px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border);
+  text-align: center;
+  text-shadow: 0 0 12px rgba(0,180,255,0.2);
 }
 
 /* ── Divider — gradient horizontal rule between sections ── */
@@ -1106,6 +1147,8 @@ html {
   color: var(--text-body);
   line-height: 1.85;
   max-width: 720px;
+  margin: 0 auto;
+  text-align: left;
 }
 
 
@@ -1119,10 +1162,10 @@ html {
 }
 
 .stat-block {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: rgba(0,180,255,0.06);
+  border: 1px solid rgba(0,180,255,0.12);
   border-radius: 4px;
-  padding: 20px 16px;
+  padding: 24px 16px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1141,19 +1184,20 @@ html {
 }
 
 .stat-block:hover {
-  border-color: var(--border-hi);
-  box-shadow: 0 0 20px rgba(0,180,255,0.06), inset 0 0 20px rgba(0,180,255,0.02);
+  border-color: rgba(0,180,255,0.3);
+  box-shadow: 0 0 24px rgba(0,180,255,0.12), inset 0 0 20px rgba(0,180,255,0.04);
+  transform: translateY(-3px);
 }
 
 .stat-block .stat-value {
   font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 800;
   line-height: 1;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   width: auto;
   text-align: center;
-  text-shadow: 0 0 12px currentColor;
+  text-shadow: 0 0 16px currentColor, 0 0 40px currentColor;
 }
 
 .stat-block .stat-label {
@@ -1192,7 +1236,8 @@ html {
   min-width: 180px;
   padding: 20px 16px 16px;
   border-radius: 4px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--bg-card);
   position: relative;
   transition: all 0.3s ease;
   scroll-snap-align: start;
@@ -1206,15 +1251,19 @@ html {
 
 .phase-num {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.55rem;
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   margin-bottom: 8px;
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba(0,180,255,0.08);
+  border-radius: 2px;
 }
 
 .phase-name {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-hi);
   letter-spacing: 0.08em;
@@ -1223,9 +1272,9 @@ html {
 
 .phase-desc {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-mid);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .phase-arrow {
@@ -1249,13 +1298,14 @@ html {
 }
 
 .system-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-left: 3px solid rgba(0,180,255,0.25);
+  background: rgba(0,180,255,0.04);
+  border: 1px solid rgba(0,180,255,0.1);
+  border-left: 3px solid rgba(0,180,255,0.35);
   border-radius: 4px;
-  padding: 16px;
+  padding: 18px;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-align: left;
 }
 
 .system-card:hover {
@@ -1279,9 +1329,9 @@ html {
 
 .system-card-desc {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.78rem;
-  color: var(--text-dim);
-  line-height: 1.4;
+  font-size: 0.8rem;
+  color: var(--text-mid);
+  line-height: 1.5;
 }
 
 
@@ -1289,13 +1339,24 @@ html {
 
 .card-accent {
   border-left: 3px solid var(--accent);
-  padding: 16px 20px;
-  line-height: 1.6;
-  font-size: 0.88rem;
+  padding: 18px 22px;
+  line-height: 1.7;
+  font-size: 0.9rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-left: 3px solid var(--accent);
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.card-accent:hover {
+  border-left-color: var(--text-hi);
+  background: var(--bg-hover);
+  transform: translateY(-1px);
 }
 
 .card-accent:nth-child(odd) {
-  background: rgba(255,255,255,0.01);
+  background: rgba(0,180,255,0.03);
 }
 
 .card-accent:nth-child(even) {
@@ -1353,13 +1414,13 @@ html {
   }
 
   .stat-block .stat-value {
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
 }
 
 @media (max-width: 480px) {
   .stat-block .stat-value {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
 
   .page-title {
