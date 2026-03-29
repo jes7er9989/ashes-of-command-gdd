@@ -4159,16 +4159,10 @@ body.crt-active {
 }
 
 #content-area .fade-in {
-  max-width: calc(100% - 48px);
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: 48px 48px;
-}
-
-#content-area .fade-in .page {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* Constrain body text for readability, let cards/tables go full width */
@@ -4443,8 +4437,8 @@ body.crt-active {
   background: rgba(0,180,255,0.03);
   border-radius: 0 4px 4px 0;
   padding: 16px 24px;
-  margin: 20px 0;
-  text-align: left;
+  margin: 20px auto;
+  text-align: center;
 }
 
 /* â”€â”€ 15o. Accordion / Expandable Sections â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
