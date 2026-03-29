@@ -324,17 +324,44 @@
     })();
   </script>
 
-  <!-- High Visibility Toggle -->
-  <button id="high-vis-toggle" title="Toggle high visibility mode" aria-label="Toggle high visibility mode">&#9788;</button>
+  <!-- Display Controls (top-right) -->
+  <div id="display-controls">
+    <button id="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">
+      <span id="theme-icon">&#9790;</span>
+    </button>
+    <div id="brightness-control">
+      <span class="brightness-icon">&#9788;</span>
+      <input type="range" id="brightness-slider" min="80" max="160" value="100" step="5">
+    </div>
+  </div>
   <script>
     (() => {
-      const btn = document.getElementById('high-vis-toggle');
-      const KEY = 'aoc-high-vis';
-      // Restore saved preference
-      if (localStorage.getItem(KEY) === '1') document.body.classList.add('high-vis');
-      btn.addEventListener('click', () => {
-        document.body.classList.toggle('high-vis');
-        localStorage.setItem(KEY, document.body.classList.contains('high-vis') ? '1' : '0');
+      /* ── Theme Toggle (Dark/Light) ──────────────── */
+      const themeBtn = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const THEME_KEY = 'aoc-theme';
+      const saved = localStorage.getItem(THEME_KEY);
+      if (saved === 'light') { document.body.classList.add('light-mode'); themeIcon.innerHTML = '&#9728;'; }
+
+      themeBtn.addEventListener('click', () => {
+        const isLight = document.body.classList.toggle('light-mode');
+        themeIcon.innerHTML = isLight ? '&#9728;' : '&#9790;';
+        localStorage.setItem(THEME_KEY, isLight ? 'light' : 'dark');
+      });
+
+      /* ── Brightness Slider ──────────────────────── */
+      const slider = document.getElementById('brightness-slider');
+      const BRIGHT_KEY = 'aoc-brightness';
+      const savedBright = localStorage.getItem(BRIGHT_KEY);
+      if (savedBright) {
+        slider.value = savedBright;
+        document.documentElement.style.filter = 'brightness(' + (savedBright / 100) + ')';
+      }
+
+      slider.addEventListener('input', () => {
+        const v = slider.value;
+        document.documentElement.style.filter = 'brightness(' + (v / 100) + ')';
+        localStorage.setItem(BRIGHT_KEY, v);
       });
     })();
   </script>
