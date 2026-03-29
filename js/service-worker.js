@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v49';
+const CACHE_NAME = 'aoc-gdd-v50';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -24,7 +24,7 @@ const PRECACHE_URLS = [
   '/js/dev-mode.js',
   '/js/canvas-galaxy.js',
   '/js/solar-system.js',
-
+  '/js/data-worker.js',
   '/js/content-renderers.js',
   '/js/chapter-index.js',
   '/js/glossary.js',

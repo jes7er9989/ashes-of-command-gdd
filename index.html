@@ -220,6 +220,7 @@
      */
     (async function boot() {
       try {
+        DataLoader.init();
         ChapterLoader.init();
         await Nav.init();
         Search.init();
