@@ -4159,10 +4159,16 @@ body.crt-active {
 }
 
 #content-area .fade-in {
-  max-width: 100%;
+  max-width: calc(100% - 48px);
   margin-left: auto;
   margin-right: auto;
   padding: 48px 48px;
+}
+
+#content-area .fade-in .page {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Constrain body text for readability, let cards/tables go full width */
