@@ -1062,7 +1062,6 @@ body.sidebar-collapsed .main-content {
     0 0 20px color-mix(in srgb, var(--faction-color, var(--accent)) 20%, transparent),
     0 0 50px color-mix(in srgb, var(--faction-color, var(--accent)) 8%, transparent),
     inset 0 0 30px color-mix(in srgb, var(--faction-color, var(--accent)) 3%, transparent);
-  transform: translateY(-2px) scale(1.02);
 }
 
 /* ── Faction Card Header — Emblem + Titles ── */
@@ -1437,7 +1436,6 @@ html {
 .stat-block:hover {
   border-color: rgba(0,180,255,0.3);
   box-shadow: 0 0 24px rgba(0,180,255,0.12), inset 0 0 20px rgba(0,180,255,0.04);
-  transform: translateY(-3px);
 }
 
 .stat-block .stat-value {
@@ -1501,7 +1499,6 @@ html {
   border-color: rgba(0,180,255,0.3);
   border-top-color: var(--accent);
   box-shadow: 0 4px 24px rgba(0,180,255,0.15);
-  transform: translateY(-3px);
 }
 
 .phase-num {
@@ -1573,7 +1570,6 @@ html {
   box-shadow:
     0 4px 24px rgba(0,180,255,0.15),
     inset 0 0 20px rgba(0,180,255,0.03);
-  transform: translateY(-3px);
 }
 
 .system-card-title {
@@ -1611,7 +1607,6 @@ html {
 .card-accent:hover {
   border-left-color: var(--text-hi);
   background: var(--bg-hover);
-  transform: translateY(-2px);
   box-shadow: 0 4px 20px rgba(0,180,255,0.15);
 }
 
@@ -1639,7 +1634,6 @@ html {
 .dashboard-section .card:hover {
   border-color: rgba(0,180,255,0.25);
   background: var(--bg-hover);
-  transform: translateY(-2px);
   box-shadow: 0 4px 20px rgba(0,180,255,0.12);
 }
 
