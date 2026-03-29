@@ -115,9 +115,9 @@ const Dashboard = {
         this.buildGameDescription() +
         this.buildStrategistQuote() +
         this.buildByTheNumbers() +
-        this.buildGalaxyOverview(factions) +
-        this.buildSolarSystem() +
-        this.buildTerritoryMap() +
+        this.buildCanvasGalaxyContainer() +
+        this.buildCanvasSolarContainer() +
+        this.buildCanvasTerritoryContainer() +
         this.buildCoreLoop() +
         this.buildRogueLiteFlow() +
         this.buildFactionHeader() +
@@ -128,11 +128,12 @@ const Dashboard = {
         this.buildSummary() +
         this.buildFooterQuote();
 
-      /* Start interactive behaviors after DOM is ready */
+      /* Start interactive behaviors + canvas renderers after DOM is ready */
       requestAnimationFrame(() => {
         this.initLoreQuoteCycler();
         this.initScrollIndicator();
         this.initParallax();
+        this._initCanvasRenderers();
       });
     } catch (e) {
       view.innerHTML = `<p style="color:var(--vorax)">Error loading dashboard: ${e.message}</p>`;
@@ -1381,5 +1382,72 @@ const Dashboard = {
     window.addEventListener('scroll', updateParallax, { passive: true });
     /* Initial position */
     updateParallax();
+  },
+
+  /* ═══════════════════════════════════════════════════════════
+     CANVAS RENDERER CONTAINERS + INITIALIZATION
+     ═══════════════════════════════════════════════════════════ */
+
+  /** Container for Canvas galaxy map */
+  buildCanvasGalaxyContainer() {
+    return `
+      <section class="galaxy-section">
+        <div class="section-label">Galactic Overview</div>
+        <div class="section-heading">Galactic Map</div>
+        <div id="canvas-galaxy-mount" style="display:flex;justify-content:center;padding:20px 0;min-height:900px"></div>
+        <div class="divider"></div>
+      </section>`;
+  },
+
+  /** Container for Three.js solar system */
+  buildCanvasSolarContainer() {
+    return `
+      <section class="galaxy-section">
+        <div class="section-label">Star System View</div>
+        <div class="section-heading">Sol System \u2014 Terran Home</div>
+        <div id="canvas-solar-mount" style="display:flex;justify-content:center;padding:20px 0;min-height:500px"></div>
+        <div class="divider"></div>
+      </section>`;
+  },
+
+  /** Container for Canvas territory map */
+  buildCanvasTerritoryContainer() {
+    return `
+      <section class="galaxy-section">
+        <div class="section-label">Ground Control Map</div>
+        <div class="section-heading">Terra \u2014 Capital World Territory Control</div>
+        <div id="canvas-territory-mount" style="display:flex;justify-content:center;padding:20px 0;min-height:700px"></div>
+        <div class="divider"></div>
+      </section>`;
+  },
+
+  /** Initialize all Canvas/WebGL renderers after DOM mount */
+  _initCanvasRenderers() {
+    /* ── Galaxy (Canvas 2D) ── */
+    const galaxyMount = document.getElementById('canvas-galaxy-mount');
+    if (galaxyMount && typeof GalaxyRenderer !== 'undefined') {
+      try {
+        this._galaxyRenderer = new GalaxyRenderer(galaxyMount);
+        this._galaxyRenderer.start();
+      } catch (e) { console.warn('[Dashboard] Galaxy renderer failed:', e); }
+    }
+
+    /* ── Solar System (Three.js) ── */
+    const solarMount = document.getElementById('canvas-solar-mount');
+    if (solarMount && typeof SolarSystemRenderer !== 'undefined') {
+      try {
+        this._solarRenderer = new SolarSystemRenderer(solarMount);
+        this._solarRenderer.start();
+      } catch (e) { console.warn('[Dashboard] Solar system renderer failed:', e); }
+    }
+
+    /* ── Territory Map (Canvas 2D) ── */
+    const territoryMount = document.getElementById('canvas-territory-mount');
+    if (territoryMount && typeof TerritoryRenderer !== 'undefined') {
+      try {
+        this._territoryRenderer = new TerritoryRenderer(territoryMount);
+        this._territoryRenderer.start();
+      } catch (e) { console.warn('[Dashboard] Territory renderer failed:', e); }
+    }
   }
 };
