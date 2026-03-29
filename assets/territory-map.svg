@@ -1,0 +1,802 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- TERRA — CAPITAL WORLD: Territory Map                       -->
+  <!-- Hand-crafted SVG strategy map                              -->
+  <!-- 16 territories across 3 continents                         -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+
+  <defs>
+    <!-- ─────────────────────────────────── -->
+    <!-- FONTS                               -->
+    <!-- ─────────────────────────────────── -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;display=swap');
+      .territory-label { font-family: 'Orbitron', 'Consolas', monospace; fill: #ffffff; font-size: 11px; font-weight: 700; text-anchor: middle; letter-spacing: 0.5px; paint-order: stroke; stroke: rgba(0,0,0,0.7); stroke-width: 2.5px; stroke-linejoin: round; }
+      .territory-label-small { font-family: 'Orbitron', 'Consolas', monospace; fill: rgba(255,255,255,0.5); font-size: 8px; font-weight: 400; text-anchor: middle; }
+      .hq-label { font-family: 'Orbitron', 'Consolas', monospace; fill: #ffd700; font-size: 14px; font-weight: 900; text-anchor: middle; letter-spacing: 1px; paint-order: stroke; stroke: rgba(0,0,0,0.8); stroke-width: 3px; stroke-linejoin: round; }
+      .map-title { font-family: 'Orbitron', 'Consolas', monospace; fill: rgba(255,255,255,0.6); font-size: 22px; font-weight: 900; text-anchor: end; letter-spacing: 4px; }
+      .map-subtitle { font-family: 'Orbitron', 'Consolas', monospace; fill: rgba(255,255,255,0.3); font-size: 10px; font-weight: 400; text-anchor: end; letter-spacing: 2px; }
+      .sea-lane-label { font-family: 'Orbitron', 'Consolas', monospace; fill: rgba(120,180,220,0.5); font-size: 7px; font-weight: 400; letter-spacing: 2px; }
+      .compass-label { font-family: 'Orbitron', 'Consolas', monospace; fill: rgba(255,255,255,0.6); font-size: 9px; font-weight: 700; text-anchor: middle; }
+      .scale-label { font-family: 'Orbitron', 'Consolas', monospace; fill: rgba(255,255,255,0.4); font-size: 7px; font-weight: 400; text-anchor: middle; }
+    </style>
+
+    <!-- ─────────────────────────────────── -->
+    <!-- OCEAN GRADIENTS                     -->
+    <!-- ─────────────────────────────────── -->
+    <radialGradient id="tm-ocean-depth" cx="50%" cy="45%" r="65%" fx="48%" fy="42%">
+      <stop offset="0%" stop-color="#0a1a2e"/>
+      <stop offset="40%" stop-color="#081525"/>
+      <stop offset="75%" stop-color="#06101a"/>
+      <stop offset="100%" stop-color="#030a12"/>
+    </radialGradient>
+
+    <radialGradient id="tm-ocean-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(20,60,100,0.15)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+
+    <!-- ─────────────────────────────────── -->
+    <!-- WAVE PATTERN                        -->
+    <!-- ─────────────────────────────────── -->
+    <pattern id="tm-wave-pattern" x="0" y="0" width="120" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0 20 Q15 10 30 20 Q45 30 60 20 Q75 10 90 20 Q105 30 120 20" fill="none" stroke="rgba(30,70,110,0.08)" stroke-width="0.8"/>
+      <path d="M0 30 Q15 20 30 30 Q45 40 60 30 Q75 20 90 30 Q105 40 120 30" fill="none" stroke="rgba(30,70,110,0.05)" stroke-width="0.5"/>
+      <path d="M0 10 Q15 0 30 10 Q45 20 60 10 Q75 0 90 10 Q105 20 120 10" fill="none" stroke="rgba(30,70,110,0.06)" stroke-width="0.6"/>
+    </pattern>
+
+    <!-- ─────────────────────────────────── -->
+    <!-- TERRAIN PATTERNS                    -->
+    <!-- ─────────────────────────────────── -->
+
+    <!-- Forest stipple pattern -->
+    <pattern id="tm-forest-tex" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#1a5c1a"/>
+      <circle cx="3" cy="3" r="1.8" fill="#146014" opacity="0.7"/>
+      <circle cx="9" cy="9" r="2" fill="#1e6e1e" opacity="0.5"/>
+      <circle cx="6" cy="1" r="1.2" fill="#125212" opacity="0.6"/>
+      <circle cx="1" cy="8" r="1.5" fill="#1e6e1e" opacity="0.4"/>
+      <circle cx="10" cy="4" r="1" fill="#125212" opacity="0.5"/>
+      <path d="M3 5 L4 3 L5 5 Z" fill="#0e4a0e" opacity="0.3"/>
+      <path d="M8 11 L9 9 L10 11 Z" fill="#0e4a0e" opacity="0.3"/>
+      <path d="M7 6 L8 4 L9 6 Z" fill="#0e4a0e" opacity="0.25"/>
+    </pattern>
+
+    <!-- Tundra sparse dot texture -->
+    <pattern id="tm-tundra-tex" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="#b8c4d0"/>
+      <circle cx="4" cy="4" r="0.8" fill="#a0adb8" opacity="0.6"/>
+      <circle cx="12" cy="12" r="0.6" fill="#c8d2dc" opacity="0.5"/>
+      <circle cx="8" cy="2" r="0.5" fill="#9aa8b4" opacity="0.4"/>
+      <circle cx="14" cy="7" r="0.7" fill="#a8b6c2" opacity="0.5"/>
+      <circle cx="2" cy="11" r="0.4" fill="#b0bcc8" opacity="0.3"/>
+      <circle cx="10" cy="6" r="0.5" fill="#c0ccd6" opacity="0.4"/>
+    </pattern>
+
+    <!-- Desert dune texture -->
+    <pattern id="tm-desert-tex" x="0" y="0" width="20" height="10" patternUnits="userSpaceOnUse">
+      <rect width="20" height="10" fill="#d4a854"/>
+      <line x1="0" y1="3" x2="20" y2="3" stroke="#c89c48" stroke-width="0.5" opacity="0.5"/>
+      <line x1="0" y1="7" x2="20" y2="7" stroke="#c89c48" stroke-width="0.4" opacity="0.4"/>
+      <line x1="2" y1="5" x2="18" y2="5" stroke="#caA050" stroke-width="0.3" opacity="0.3"/>
+      <line x1="0" y1="1" x2="15" y2="1" stroke="#c09040" stroke-width="0.3" opacity="0.25"/>
+      <line x1="5" y1="9" x2="20" y2="9" stroke="#c09040" stroke-width="0.3" opacity="0.2"/>
+    </pattern>
+
+    <!-- Jungle dense dot texture -->
+    <pattern id="tm-jungle-tex" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="#0d6b3e"/>
+      <circle cx="2" cy="2" r="1.5" fill="#0a5a32" opacity="0.7"/>
+      <circle cx="7" cy="7" r="1.8" fill="#0e7844" opacity="0.5"/>
+      <circle cx="5" cy="3" r="1.2" fill="#08502c" opacity="0.6"/>
+      <circle cx="1" cy="7" r="1.0" fill="#0b6236" opacity="0.5"/>
+      <circle cx="8" cy="1" r="1.3" fill="#0a5830" opacity="0.6"/>
+      <circle cx="4" cy="8" r="0.9" fill="#0c6c3a" opacity="0.4"/>
+      <circle cx="9" cy="4" r="1.1" fill="#09543a" opacity="0.5"/>
+      <path d="M3 5 L4 3.5 L5 5 Z" fill="#064824" opacity="0.3"/>
+      <path d="M7 9 L8 7.5 L9 9 Z" fill="#064824" opacity="0.25"/>
+    </pattern>
+
+    <!-- Mountain texture -->
+    <pattern id="tm-mountain-tex" x="0" y="0" width="18" height="14" patternUnits="userSpaceOnUse">
+      <rect width="18" height="14" fill="#6b5b4a"/>
+      <path d="M3 14 L6 6 L9 14 Z" fill="#5a4c3c" opacity="0.6"/>
+      <path d="M10 14 L14 4 L18 14 Z" fill="#7a6a58" opacity="0.5"/>
+      <path d="M0 14 L2 8 L4 14 Z" fill="#5e5040" opacity="0.4"/>
+      <path d="M6 7 L7 5 L8 7" fill="#d0d0d0" opacity="0.3" stroke="none"/>
+      <path d="M14 5 L15 3 L16 5" fill="#e0e0e0" opacity="0.25" stroke="none"/>
+    </pattern>
+
+    <!-- Grassland gentle stipple -->
+    <pattern id="tm-grassland-tex" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+      <rect width="14" height="14" fill="#8ab648"/>
+      <circle cx="3" cy="5" r="0.7" fill="#7ea840" opacity="0.5"/>
+      <circle cx="10" cy="3" r="0.5" fill="#96c250" opacity="0.4"/>
+      <circle cx="7" cy="10" r="0.6" fill="#7ea040" opacity="0.45"/>
+      <circle cx="12" cy="12" r="0.4" fill="#90be4c" opacity="0.35"/>
+      <circle cx="1" cy="12" r="0.5" fill="#82ae44" opacity="0.4"/>
+      <line x1="5" y1="7" x2="6" y2="6" stroke="#72a038" stroke-width="0.3" opacity="0.3"/>
+      <line x1="11" y1="8" x2="12" y2="7" stroke="#72a038" stroke-width="0.3" opacity="0.25"/>
+    </pattern>
+
+    <!-- Volcanic texture -->
+    <pattern id="tm-volcanic-tex" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <rect width="16" height="16" fill="#4a2020"/>
+      <path d="M2 16 L5 8 L8 16 Z" fill="#3a1818" opacity="0.5"/>
+      <path d="M9 16 L12 6 L15 16 Z" fill="#401c1c" opacity="0.4"/>
+      <line x1="4" y1="10" x2="6" y2="12" stroke="#c04020" stroke-width="0.6" opacity="0.5"/>
+      <line x1="11" y1="8" x2="13" y2="11" stroke="#d05030" stroke-width="0.5" opacity="0.4"/>
+      <line x1="7" y1="13" x2="9" y2="15" stroke="#b03818" stroke-width="0.4" opacity="0.35"/>
+      <circle cx="5" cy="9" r="0.8" fill="#e06030" opacity="0.3"/>
+      <circle cx="12" cy="7" r="0.6" fill="#d04828" opacity="0.25"/>
+    </pattern>
+
+    <!-- Plains texture -->
+    <pattern id="tm-plains-tex" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+      <rect width="14" height="14" fill="#5a9e3a"/>
+      <circle cx="4" cy="4" r="0.6" fill="#509236" opacity="0.4"/>
+      <circle cx="11" cy="10" r="0.5" fill="#64a840" opacity="0.35"/>
+      <circle cx="7" cy="7" r="0.4" fill="#4e8e34" opacity="0.3"/>
+      <circle cx="2" cy="11" r="0.5" fill="#589a38" opacity="0.3"/>
+    </pattern>
+
+    <!-- Tropical island texture -->
+    <pattern id="tm-tropical-tex" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#2aaa4a"/>
+      <circle cx="3" cy="3" r="1.4" fill="#22964a" opacity="0.6"/>
+      <circle cx="9" cy="8" r="1.6" fill="#30b850" opacity="0.5"/>
+      <circle cx="6" cy="6" r="1.0" fill="#1e8e3e" opacity="0.5"/>
+      <circle cx="1" cy="10" r="0.8" fill="#28a048" opacity="0.4"/>
+      <circle cx="10" cy="2" r="1.2" fill="#24984a" opacity="0.5"/>
+    </pattern>
+
+    <!-- Beach fringe -->
+    <pattern id="tm-beach-tex" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#e8d5a8"/>
+      <circle cx="2" cy="3" r="0.4" fill="#d8c898" opacity="0.5"/>
+      <circle cx="6" cy="6" r="0.3" fill="#ddd0a0" opacity="0.4"/>
+    </pattern>
+
+    <!-- ─────────────────────────────────── -->
+    <!-- TERRAIN GRADIENTS                   -->
+    <!-- ─────────────────────────────────── -->
+
+    <!-- Northern continent tundra-to-forest gradient -->
+    <linearGradient id="tm-north-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b8c4d0"/>
+      <stop offset="35%" stop-color="#a0b0b8"/>
+      <stop offset="65%" stop-color="#3a8a3a"/>
+      <stop offset="100%" stop-color="#5a9e3a"/>
+    </linearGradient>
+
+    <!-- Eastern desert gradient -->
+    <linearGradient id="tm-east-desert-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8ab648"/>
+      <stop offset="30%" stop-color="#c4a04a"/>
+      <stop offset="70%" stop-color="#d4a854"/>
+      <stop offset="100%" stop-color="#0d6b3e"/>
+    </linearGradient>
+
+    <!-- Coastline glow -->
+    <filter id="tm-coast-glow" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Territory hover glow -->
+    <filter id="tm-territory-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#ffffff" flood-opacity="0.15" result="color"/>
+      <feComposite in="color" in2="blur" operator="in" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Vignette filter for map edges -->
+    <radialGradient id="tm-vignette" cx="50%" cy="50%" r="55%">
+      <stop offset="60%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.5)"/>
+    </radialGradient>
+
+    <!-- ─────────────────────────────────── -->
+    <!-- SEA ROUTE MARKERS                   -->
+    <!-- ─────────────────────────────────── -->
+    <marker id="tm-arrow" viewBox="0 0 10 6" refX="10" refY="3" markerWidth="8" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0 0 L10 3 L0 6 Z" fill="rgba(120,180,220,0.5)"/>
+    </marker>
+
+    <!-- ─────────────────────────────────── -->
+    <!-- HQ STAR MARKER                      -->
+    <!-- ─────────────────────────────────── -->
+    <polygon id="tm-star" points="0,-8 2.3,-2.6 8.5,-2.6 3.7,1.5 5.5,7.8 0,4 -5.5,7.8 -3.7,1.5 -8.5,-2.6 -2.3,-2.6" fill="#ffd700" stroke="#ffa000" stroke-width="0.8"/>
+
+    <!-- ─────────────────────────────────── -->
+    <!-- CLIPPING PATHS FOR CONTINENTS       -->
+    <!-- ─────────────────────────────────── -->
+
+    <!-- Northern Continent outline -->
+    <clipPath id="tm-clip-north">
+      <path d="M130 85 L145 72 L170 78 L195 60 L220 55 L248 48 L275 52 L305 44 L330 50 L355 56 L378 48 L405 55 L430 50 L458 58 L480 52 L505 48 L530 55 L555 60 L575 54 L600 62 L625 58 L648 52 L670 60 L695 55 L718 65 L740 58 L755 68 L770 75 L778 90 L785 105 L780 125 L775 140 L782 160 L790 175 L785 195 L778 210 L770 228 L758 245 L745 260 L730 272 L712 282 L698 290 L680 298 L658 308 L640 318 L620 325 L598 330 L575 338 L555 345 L538 350 L520 355 L505 358 L488 362 L470 365 L452 362 L435 358 L418 350 L400 342 L382 335 L365 340 L348 348 L330 352 L312 355 L295 358 L275 362 L258 368 L240 372 L220 375 L198 370 L180 362 L165 350 L152 335 L140 318 L132 298 L125 278 L118 255 L115 232 L112 210 L115 188 L118 165 L120 145 L125 122 L128 105 Z"/>
+    </clipPath>
+
+    <!-- Eastern Continent outline -->
+    <clipPath id="tm-clip-east">
+      <path d="M935 120 L958 112 L982 118 L1008 108 L1035 115 L1060 110 L1088 118 L1112 112 L1138 120 L1162 115 L1188 108 L1212 118 L1238 112 L1262 125 L1285 120 L1308 128 L1332 122 L1355 118 L1378 128 L1398 135 L1418 142 L1435 155 L1448 170 L1460 188 L1468 205 L1475 225 L1480 245 L1485 268 L1488 290 L1490 315 L1488 340 L1492 358 L1498 375 L1502 392 L1498 410 L1490 428 L1482 445 L1470 460 L1455 475 L1442 488 L1428 498 L1412 508 L1398 515 L1382 525 L1365 535 L1348 542 L1330 548 L1310 555 L1292 558 L1272 565 L1252 570 L1235 575 L1215 578 L1195 582 L1175 585 L1155 580 L1138 572 L1120 565 L1102 558 L1085 548 L1068 538 L1052 528 L1038 515 L1025 502 L1012 488 L1000 472 L988 458 L978 442 L968 425 L958 408 L950 392 L942 375 L935 358 L930 340 L925 322 L920 305 L918 285 L920 265 L918 245 L920 225 L922 205 L925 185 L928 165 L932 145 Z"/>
+    </clipPath>
+
+    <!-- Southern Archipelago — Island 1 (Western Fortifications) -->
+    <clipPath id="tm-clip-island1">
+      <path d="M175 610 L198 598 L222 605 L248 595 L272 602 L292 612 L305 625 L312 642 L308 660 L298 678 L285 692 L268 702 L248 708 L228 705 L210 695 L195 682 L182 665 L175 645 L172 628 Z"/>
+    </clipPath>
+
+    <!-- Island 2 (Supply Depot) -->
+    <clipPath id="tm-clip-island2">
+      <path d="M330 635 L352 622 L378 628 L402 618 L425 625 L445 638 L458 655 L462 675 L455 695 L442 712 L425 725 L405 732 L382 728 L362 718 L345 705 L335 688 L328 668 L325 650 Z"/>
+    </clipPath>
+
+    <!-- Island 3 (Southern Bastion) -->
+    <clipPath id="tm-clip-island3">
+      <path d="M475 595 L498 582 L525 588 L548 578 L572 585 L598 592 L618 602 L635 618 L645 638 L648 660 L642 682 L630 700 L612 715 L592 725 L568 732 L545 728 L522 720 L502 708 L485 692 L475 672 L468 650 L465 628 L468 610 Z"/>
+    </clipPath>
+
+    <!-- Island 4 (Spaceport Alpha) -->
+    <clipPath id="tm-clip-island4">
+      <path d="M500 752 L522 740 L548 745 L572 738 L595 748 L612 762 L622 780 L625 800 L618 818 L605 832 L585 842 L562 845 L540 838 L520 825 L508 808 L498 788 L495 768 Z"/>
+    </clipPath>
+
+    <!-- Island 5 (Underground Network) -->
+    <clipPath id="tm-clip-island5">
+      <path d="M665 655 L688 642 L712 648 L732 658 L748 672 L755 690 L752 710 L740 728 L722 740 L700 745 L678 738 L660 725 L650 708 L648 688 L652 670 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LAYER 1: OCEAN BACKGROUND                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect width="1600" height="900" fill="url(#tm-ocean-depth)"/>
+  <rect width="1600" height="900" fill="url(#tm-ocean-glow)"/>
+  <rect width="1600" height="900" fill="url(#tm-wave-pattern)"/>
+
+  <!-- Ocean island dots scattered -->
+  <g opacity="0.4">
+    <!-- Scattered small islands in the ocean -->
+    <ellipse cx="855" cy="180" rx="4" ry="3" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="862" cy="175" rx="2.5" ry="2" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="870" cy="450" rx="5" ry="3.5" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="878" cy="446" rx="3" ry="2" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="100" cy="480" rx="3.5" ry="2.5" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="830" cy="720" rx="4" ry="2.5" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="838" cy="715" rx="2" ry="1.5" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="1350" cy="680" rx="5" ry="3" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="1358" cy="674" rx="2.5" ry="2" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="80" cy="200" rx="3" ry="2" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="1520" cy="800" rx="3.5" ry="2.5" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="890" cy="85" rx="2.5" ry="1.8" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="1480" cy="650" rx="4" ry="2.8" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="50" cy="750" rx="3" ry="2.2" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="820" cy="560" rx="3.5" ry="2" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="1550" cy="150" rx="2.5" ry="1.8" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="400" cy="480" rx="4" ry="2.5" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="750" cy="500" rx="3" ry="2" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="900" cy="780" rx="4.5" ry="3" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+    <ellipse cx="1100" cy="680" rx="3" ry="2" fill="#1a3a28" stroke="#0e2a1e" stroke-width="0.5"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LAYER 2: NORTHERN CONTINENT                                -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <g id="tm-northern-continent">
+    <!-- Full continent base shape with coastline shadow -->
+    <path d="M130 85 L145 72 L170 78 L195 60 L220 55 L248 48 L275 52 L305 44 L330 50 L355 56 L378 48 L405 55 L430 50 L458 58 L480 52 L505 48 L530 55 L555 60 L575 54 L600 62 L625 58 L648 52 L670 60 L695 55 L718 65 L740 58 L755 68 L770 75 L778 90 L785 105 L780 125 L775 140 L782 160 L790 175 L785 195 L778 210 L770 228 L758 245 L745 260 L730 272 L712 282 L698 290 L680 298 L658 308 L640 318 L620 325 L598 330 L575 338 L555 345 L538 350 L520 355 L505 358 L488 362 L470 365 L452 362 L435 358 L418 350 L400 342 L382 335 L365 340 L348 348 L330 352 L312 355 L295 358 L275 362 L258 368 L240 372 L220 375 L198 370 L180 362 L165 350 L152 335 L140 318 L132 298 L125 278 L118 255 L115 232 L112 210 L115 188 L118 165 L120 145 L125 122 L128 105 Z"
+      fill="#06101a" opacity="0.5" transform="translate(3,3)"/>
+
+    <!-- Beach/coast fringe -->
+    <path d="M130 85 L145 72 L170 78 L195 60 L220 55 L248 48 L275 52 L305 44 L330 50 L355 56 L378 48 L405 55 L430 50 L458 58 L480 52 L505 48 L530 55 L555 60 L575 54 L600 62 L625 58 L648 52 L670 60 L695 55 L718 65 L740 58 L755 68 L770 75 L778 90 L785 105 L780 125 L775 140 L782 160 L790 175 L785 195 L778 210 L770 228 L758 245 L745 260 L730 272 L712 282 L698 290 L680 298 L658 308 L640 318 L620 325 L598 330 L575 338 L555 345 L538 350 L520 355 L505 358 L488 362 L470 365 L452 362 L435 358 L418 350 L400 342 L382 335 L365 340 L348 348 L330 352 L312 355 L295 358 L275 362 L258 368 L240 372 L220 375 L198 370 L180 362 L165 350 L152 335 L140 318 L132 298 L125 278 L118 255 L115 232 L112 210 L115 188 L118 165 L120 145 L125 122 L128 105 Z"
+      fill="url(#tm-beach-tex)" stroke="none"/>
+
+    <!-- ── Territory: Northern Garrison (tundra, top-left) ── -->
+    <path d="M130 85 L145 72 L170 78 L195 60 L220 55 L248 48 L275 52 L305 44 L330 50 L355 56 L378 48 L405 55 L430 50 L435 65 L430 85 L425 105 L418 125 L412 145 L408 165 L405 180 L398 195 L390 210 L380 225 L370 240 L360 255 L348 268 L335 275 L320 280 L305 282 L288 278 L275 272 L260 265 L248 258 L238 248 L228 238 L218 225 L210 210 L202 195 L195 178 L188 160 L182 142 L175 125 L168 108 L158 98 L145 92 Z"
+      fill="url(#tm-tundra-tex)"/>
+    <!-- Tundra snow patches -->
+    <g clip-path="url(#tm-clip-north)" opacity="0.3">
+      <ellipse cx="250" cy="80" rx="30" ry="12" fill="#dce4ea"/>
+      <ellipse cx="340" cy="70" rx="25" ry="10" fill="#d0d8e2"/>
+      <ellipse cx="180" cy="100" rx="20" ry="8" fill="#dce4ea"/>
+    </g>
+    <!-- Faction overlay: Controlled (blue) -->
+    <path d="M130 85 L145 72 L170 78 L195 60 L220 55 L248 48 L275 52 L305 44 L330 50 L355 56 L378 48 L405 55 L430 50 L435 65 L430 85 L425 105 L418 125 L412 145 L408 165 L405 180 L398 195 L390 210 L380 225 L370 240 L360 255 L348 268 L335 275 L320 280 L305 282 L288 278 L275 272 L260 265 L248 258 L238 248 L228 238 L218 225 L210 210 L202 195 L195 178 L188 160 L182 142 L175 125 L168 108 L158 98 L145 92 Z"
+      fill="rgba(0,140,255,0.15)"/>
+
+    <!-- ── Territory: Comm Array (forest, top-center) ── -->
+    <path d="M430 50 L458 58 L480 52 L505 48 L530 55 L555 60 L575 54 L600 62 L605 78 L600 98 L592 118 L585 138 L580 158 L578 178 L575 195 L570 210 L562 225 L552 238 L540 248 L525 255 L510 260 L495 262 L478 258 L462 252 L448 245 L435 235 L422 225 L412 212 L405 195 L405 180 L408 165 L412 145 L418 125 L425 105 L430 85 L435 65 Z"
+      fill="url(#tm-forest-tex)"/>
+    <!-- Faction overlay: Controlled (blue) -->
+    <path d="M430 50 L458 58 L480 52 L505 48 L530 55 L555 60 L575 54 L600 62 L605 78 L600 98 L592 118 L585 138 L580 158 L578 178 L575 195 L570 210 L562 225 L552 238 L540 248 L525 255 L510 260 L495 262 L478 258 L462 252 L448 245 L435 235 L422 225 L412 212 L405 195 L405 180 L408 165 L412 145 L418 125 L425 105 L430 85 L435 65 Z"
+      fill="rgba(0,140,255,0.15)"/>
+
+    <!-- ── Territory: Shield Generator (plains, center-south) ── -->
+    <path d="M305 282 L320 280 L335 275 L348 268 L360 255 L370 240 L380 225 L390 210 L405 195 L405 180 L412 212 L422 225 L435 235 L448 245 L462 252 L478 258 L488 268 L488 282 L485 298 L478 312 L470 325 L460 338 L452 348 L452 362 L435 358 L418 350 L400 342 L382 335 L365 340 L348 348 L330 352 L312 355 L295 358 L275 362 L258 368 L240 372 L220 375 L198 370 L180 362 L175 348 L185 332 L198 318 L212 305 L228 295 L248 288 L268 285 L288 282 Z"
+      fill="url(#tm-plains-tex)"/>
+    <!-- Faction overlay: Controlled (blue) -->
+    <path d="M305 282 L320 280 L335 275 L348 268 L360 255 L370 240 L380 225 L390 210 L405 195 L405 180 L412 212 L422 225 L435 235 L448 245 L462 252 L478 258 L488 268 L488 282 L485 298 L478 312 L470 325 L460 338 L452 348 L452 362 L435 358 L418 350 L400 342 L382 335 L365 340 L348 348 L330 352 L312 355 L295 358 L275 362 L258 368 L240 372 L220 375 L198 370 L180 362 L175 348 L185 332 L198 318 L212 305 L228 295 L248 288 L268 285 L288 282 Z"
+      fill="rgba(0,140,255,0.15)"/>
+
+    <!-- ── Territory: Mountain Pass (mountain, center — CONTESTED) ── -->
+    <path d="M478 258 L495 262 L510 260 L525 255 L540 248 L552 238 L562 225 L570 210 L575 195 L578 210 L575 228 L568 248 L558 265 L548 280 L538 292 L525 302 L510 310 L498 318 L488 328 L488 338 L488 348 L488 362 L470 365 L452 362 L452 348 L460 338 L470 325 L478 312 L485 298 L488 282 L488 268 Z"
+      fill="url(#tm-mountain-tex)"/>
+    <!-- Contested overlay (red) -->
+    <path d="M478 258 L495 262 L510 260 L525 255 L540 248 L552 238 L562 225 L570 210 L575 195 L578 210 L575 228 L568 248 L558 265 L548 280 L538 292 L525 302 L510 310 L498 318 L488 328 L488 338 L488 348 L488 362 L470 365 L452 362 L452 348 L460 338 L470 325 L478 312 L485 298 L488 282 L488 268 Z"
+      fill="rgba(200,50,50,0.18)"/>
+
+    <!-- ── Territory: Orbital Defense HQ (forest+grassland, right side) ── -->
+    <path d="M600 62 L625 58 L648 52 L670 60 L695 55 L718 65 L740 58 L755 68 L770 75 L778 90 L785 105 L780 125 L775 140 L782 160 L790 175 L785 195 L778 210 L770 228 L758 245 L745 260 L730 272 L712 282 L698 290 L680 298 L658 308 L640 318 L620 325 L598 330 L575 338 L555 345 L538 350 L520 355 L505 358 L488 362 L488 348 L488 338 L488 328 L498 318 L510 310 L525 302 L538 292 L548 280 L558 265 L568 248 L575 228 L578 210 L575 195 L578 178 L580 158 L585 138 L592 118 L600 98 L605 78 Z"
+      fill="url(#tm-forest-tex)"/>
+    <!-- Grassland patches in the south of this territory -->
+    <g clip-path="url(#tm-clip-north)">
+      <ellipse cx="680" cy="280" rx="45" ry="25" fill="url(#tm-grassland-tex)" opacity="0.6"/>
+      <ellipse cx="620" cy="310" rx="35" ry="18" fill="url(#tm-grassland-tex)" opacity="0.5"/>
+    </g>
+    <!-- Faction overlay: Controlled (blue) -->
+    <path d="M600 62 L625 58 L648 52 L670 60 L695 55 L718 65 L740 58 L755 68 L770 75 L778 90 L785 105 L780 125 L775 140 L782 160 L790 175 L785 195 L778 210 L770 228 L758 245 L745 260 L730 272 L712 282 L698 290 L680 298 L658 308 L640 318 L620 325 L598 330 L575 338 L555 345 L538 350 L520 355 L505 358 L488 362 L488 348 L488 338 L488 328 L498 318 L510 310 L525 302 L538 292 L548 280 L558 265 L568 248 L575 228 L578 210 L575 195 L578 178 L580 158 L585 138 L592 118 L600 98 L605 78 Z"
+      fill="rgba(0,140,255,0.15)"/>
+
+    <!-- Northern Continent Coastline -->
+    <path d="M130 85 L145 72 L170 78 L195 60 L220 55 L248 48 L275 52 L305 44 L330 50 L355 56 L378 48 L405 55 L430 50 L458 58 L480 52 L505 48 L530 55 L555 60 L575 54 L600 62 L625 58 L648 52 L670 60 L695 55 L718 65 L740 58 L755 68 L770 75 L778 90 L785 105 L780 125 L775 140 L782 160 L790 175 L785 195 L778 210 L770 228 L758 245 L745 260 L730 272 L712 282 L698 290 L680 298 L658 308 L640 318 L620 325 L598 330 L575 338 L555 345 L538 350 L520 355 L505 358 L488 362 L470 365 L452 362 L435 358 L418 350 L400 342 L382 335 L365 340 L348 348 L330 352 L312 355 L295 358 L275 362 L258 368 L240 372 L220 375 L198 370 L180 362 L165 350 L152 335 L140 318 L132 298 L125 278 L118 255 L115 232 L112 210 L115 188 L118 165 L120 145 L125 122 L128 105 Z"
+      fill="none" stroke="rgba(160,200,220,0.5)" stroke-width="3" stroke-linejoin="round"/>
+
+    <!-- Internal territory borders (dashed) -->
+    <!-- Border: Northern Garrison / Comm Array -->
+    <path d="M430 50 L435 65 L430 85 L425 105 L418 125 L412 145 L408 165 L405 180 L405 195"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+    <!-- Border: Northern Garrison / Shield Generator -->
+    <path d="M405 195 L390 210 L380 225 L370 240 L360 255 L348 268 L335 275 L320 280 L305 282"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+    <!-- Border: Comm Array / Mountain Pass -->
+    <path d="M575 195 L570 210 L562 225 L552 238 L540 248 L525 255 L510 260 L495 262 L478 258"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+    <!-- Border: Shield Generator / Mountain Pass -->
+    <path d="M405 195 L412 212 L422 225 L435 235 L448 245 L462 252 L478 258 L488 268 L488 282 L485 298 L478 312 L470 325 L460 338 L452 348 L452 362"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+    <!-- Border: Mountain Pass / Orbital Defense HQ -->
+    <path d="M575 195 L578 210 L575 228 L568 248 L558 265 L548 280 L538 292 L525 302 L510 310 L498 318 L488 328 L488 348 L488 362"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+    <!-- Border: Comm Array / Orbital Defense HQ -->
+    <path d="M600 62 L605 78 L600 98 L592 118 L585 138 L580 158 L578 178 L575 195"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+
+    <!-- ── Mountain Range along Mountain Pass ── -->
+    <g opacity="0.7">
+      <!-- Row of mountain peaks -->
+      <path d="M488 270 L494 252 L500 270 Z" fill="#8a7a68" stroke="#6b5b4a" stroke-width="0.8"/>
+      <path d="M498 268 L505 248 L512 268 Z" fill="#7a6a58" stroke="#6b5b4a" stroke-width="0.8"/>
+      <path d="M510 264 L518 242 L526 264 Z" fill="#8a7a68" stroke="#6b5b4a" stroke-width="0.8"/>
+      <path d="M523 258 L530 238 L537 258 Z" fill="#7a6a58" stroke="#6b5b4a" stroke-width="0.8"/>
+      <path d="M534 252 L542 230 L550 252 Z" fill="#8a7a68" stroke="#6b5b4a" stroke-width="0.8"/>
+      <path d="M546 245 L554 222 L562 245 Z" fill="#7a6a58" stroke="#6b5b4a" stroke-width="0.8"/>
+      <path d="M558 238 L565 218 L572 238 Z" fill="#8a7a68" stroke="#6b5b4a" stroke-width="0.8"/>
+      <!-- Snow caps -->
+      <path d="M494 252 L497 258 L491 258 Z" fill="#e8e8e8" opacity="0.6"/>
+      <path d="M518 242 L522 249 L514 249 Z" fill="#e8e8e8" opacity="0.6"/>
+      <path d="M542 230 L546 238 L538 238 Z" fill="#e8e8e8" opacity="0.6"/>
+      <path d="M565 218 L569 226 L561 226 Z" fill="#e8e8e8" opacity="0.6"/>
+      <!-- Secondary smaller peaks -->
+      <path d="M482 278 L486 268 L490 278 Z" fill="#6b5b4a" opacity="0.5"/>
+      <path d="M540 255 L544 245 L548 255 Z" fill="#6b5b4a" opacity="0.5"/>
+      <path d="M570 235 L574 225 L578 235 Z" fill="#6b5b4a" opacity="0.5"/>
+    </g>
+
+    <!-- ── Rivers ── -->
+    <g fill="none" stroke="rgba(60,130,180,0.5)" stroke-width="1.5" stroke-linecap="round">
+      <!-- River from mountains flowing west through Shield Generator to coast -->
+      <path d="M488 280 Q470 290 450 300 Q430 315 410 330 Q395 340 382 335"/>
+      <!-- River from mountains flowing east through Orbital Defense -->
+      <path d="M555 260 Q580 275 610 290 Q640 305 665 310 Q685 305 698 290"/>
+      <!-- Small river in Northern Garrison -->
+      <path d="M280 120 Q260 150 250 180 Q240 210 230 240"/>
+    </g>
+
+    <!-- ── Lakes ── -->
+    <ellipse cx="320" cy="230" rx="12" ry="8" fill="rgba(40,100,150,0.5)" stroke="rgba(60,130,180,0.4)" stroke-width="1"/>
+    <ellipse cx="640" cy="180" rx="10" ry="7" fill="rgba(40,100,150,0.5)" stroke="rgba(60,130,180,0.4)" stroke-width="1"/>
+
+    <!-- ── Territory Labels: Northern Continent ── -->
+    <text x="280" y="165" class="territory-label">NORTHERN GARRISON</text>
+    <text x="280" y="178" class="territory-label-small">&#9881; &#9881; &#9733;</text>
+
+    <text x="510" y="155" class="territory-label">COMM ARRAY</text>
+    <text x="510" y="168" class="territory-label-small">&#9881; &#9733; &#9733;</text>
+
+    <text x="370" y="320" class="territory-label">SHIELD GENERATOR</text>
+    <text x="370" y="333" class="territory-label-small">&#9881; &#9881; &#9881;</text>
+
+    <text x="530" y="305" class="territory-label" fill="rgba(255,180,180,1)">MOUNTAIN PASS</text>
+    <text x="530" y="318" class="territory-label-small" fill="rgba(255,150,150,0.6)">&#9876; CONTESTED &#9876;</text>
+
+    <text x="690" y="180" class="territory-label">ORBITAL DEFENSE HQ</text>
+    <text x="690" y="193" class="territory-label-small">&#9881; &#9733; &#9733; &#9733;</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LAYER 3: EASTERN CONTINENT                                 -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <g id="tm-eastern-continent">
+    <!-- Drop shadow -->
+    <path d="M935 120 L958 112 L982 118 L1008 108 L1035 115 L1060 110 L1088 118 L1112 112 L1138 120 L1162 115 L1188 108 L1212 118 L1238 112 L1262 125 L1285 120 L1308 128 L1332 122 L1355 118 L1378 128 L1398 135 L1418 142 L1435 155 L1448 170 L1460 188 L1468 205 L1475 225 L1480 245 L1485 268 L1488 290 L1490 315 L1488 340 L1492 358 L1498 375 L1502 392 L1498 410 L1490 428 L1482 445 L1470 460 L1455 475 L1442 488 L1428 498 L1412 508 L1398 515 L1382 525 L1365 535 L1348 542 L1330 548 L1310 555 L1292 558 L1272 565 L1252 570 L1235 575 L1215 578 L1195 582 L1175 585 L1155 580 L1138 572 L1120 565 L1102 558 L1085 548 L1068 538 L1052 528 L1038 515 L1025 502 L1012 488 L1000 472 L988 458 L978 442 L968 425 L958 408 L950 392 L942 375 L935 358 L930 340 L925 322 L920 305 L918 285 L920 265 L918 245 L920 225 L922 205 L925 185 L928 165 L932 145 Z"
+      fill="#06101a" opacity="0.5" transform="translate(3,3)"/>
+
+    <!-- Beach fringe -->
+    <path d="M935 120 L958 112 L982 118 L1008 108 L1035 115 L1060 110 L1088 118 L1112 112 L1138 120 L1162 115 L1188 108 L1212 118 L1238 112 L1262 125 L1285 120 L1308 128 L1332 122 L1355 118 L1378 128 L1398 135 L1418 142 L1435 155 L1448 170 L1460 188 L1468 205 L1475 225 L1480 245 L1485 268 L1488 290 L1490 315 L1488 340 L1492 358 L1498 375 L1502 392 L1498 410 L1490 428 L1482 445 L1470 460 L1455 475 L1442 488 L1428 498 L1412 508 L1398 515 L1382 525 L1365 535 L1348 542 L1330 548 L1310 555 L1292 558 L1272 565 L1252 570 L1235 575 L1215 578 L1195 582 L1175 585 L1155 580 L1138 572 L1120 565 L1102 558 L1085 548 L1068 538 L1052 528 L1038 515 L1025 502 L1012 488 L1000 472 L988 458 L978 442 L968 425 L958 408 L950 392 L942 375 L935 358 L930 340 L925 322 L920 305 L918 285 L920 265 L918 245 L920 225 L922 205 L925 185 L928 165 L932 145 Z"
+      fill="url(#tm-beach-tex)"/>
+
+    <!-- ── Territory: Civilian Sector (grassland, north) ── -->
+    <path d="M935 120 L958 112 L982 118 L1008 108 L1035 115 L1060 110 L1088 118 L1112 112 L1138 120 L1148 140 L1145 165 L1138 188 L1130 210 L1120 230 L1108 248 L1095 262 L1080 272 L1065 280 L1048 285 L1030 288 L1012 285 L995 278 L980 268 L968 255 L958 240 L950 222 L942 205 L938 185 L935 165 L932 145 Z"
+      fill="url(#tm-grassland-tex)"/>
+    <!-- Faction overlay: Controlled (blue) -->
+    <path d="M935 120 L958 112 L982 118 L1008 108 L1035 115 L1060 110 L1088 118 L1112 112 L1138 120 L1148 140 L1145 165 L1138 188 L1130 210 L1120 230 L1108 248 L1095 262 L1080 272 L1065 280 L1048 285 L1030 288 L1012 285 L995 278 L980 268 L968 255 L958 240 L950 222 L942 205 L938 185 L935 165 L932 145 Z"
+      fill="rgba(0,140,255,0.15)"/>
+
+    <!-- ── Territory: Research Complex (grassland/forest, north-east) ── -->
+    <path d="M1138 120 L1162 115 L1188 108 L1212 118 L1238 112 L1262 125 L1285 120 L1308 128 L1318 145 L1310 168 L1298 190 L1285 210 L1270 228 L1255 242 L1238 255 L1220 265 L1202 272 L1185 278 L1168 280 L1150 278 L1132 272 L1118 262 L1108 248 L1120 230 L1130 210 L1138 188 L1145 165 L1148 140 Z"
+      fill="url(#tm-grassland-tex)"/>
+    <!-- Forest patches -->
+    <g clip-path="url(#tm-clip-east)">
+      <ellipse cx="1220" cy="200" rx="35" ry="20" fill="url(#tm-forest-tex)" opacity="0.5"/>
+      <ellipse cx="1170" cy="230" rx="25" ry="15" fill="url(#tm-forest-tex)" opacity="0.4"/>
+    </g>
+    <!-- Faction overlay: Controlled (blue) -->
+    <path d="M1138 120 L1162 115 L1188 108 L1212 118 L1238 112 L1262 125 L1285 120 L1308 128 L1318 145 L1310 168 L1298 190 L1285 210 L1270 228 L1255 242 L1238 255 L1220 265 L1202 272 L1185 278 L1168 280 L1150 278 L1132 272 L1118 262 L1108 248 L1120 230 L1130 210 L1138 188 L1145 165 L1148 140 Z"
+      fill="rgba(0,140,255,0.15)"/>
+
+    <!-- ── Territory: Power Grid Hub (desert, center) ── -->
+    <path d="M1048 285 L1065 280 L1080 272 L1095 262 L1108 248 L1118 262 L1132 272 L1150 278 L1168 280 L1185 278 L1195 290 L1200 308 L1202 328 L1198 348 L1192 368 L1182 385 L1170 398 L1155 408 L1138 415 L1120 418 L1102 415 L1085 408 L1070 398 L1058 385 L1048 368 L1040 350 L1035 332 L1032 312 L1035 295 Z"
+      fill="url(#tm-desert-tex)"/>
+    <!-- Faction overlay: Controlled (blue) -->
+    <path d="M1048 285 L1065 280 L1080 272 L1095 262 L1108 248 L1118 262 L1132 272 L1150 278 L1168 280 L1185 278 L1195 290 L1200 308 L1202 328 L1198 348 L1192 368 L1182 385 L1170 398 L1155 408 L1138 415 L1120 418 L1102 415 L1085 408 L1070 398 L1058 385 L1048 368 L1040 350 L1035 332 L1032 312 L1035 295 Z"
+      fill="rgba(0,140,255,0.15)"/>
+
+    <!-- ── Territory: Central Command (desert/plains, center — HQ) ── -->
+    <path d="M1185 278 L1202 272 L1220 265 L1238 255 L1255 242 L1270 228 L1285 210 L1298 190 L1310 168 L1318 145 L1308 128 L1332 122 L1355 118 L1378 128 L1398 135 L1418 142 L1435 155 L1440 172 L1432 195 L1420 218 L1405 240 L1388 258 L1370 272 L1350 285 L1332 295 L1312 305 L1292 312 L1272 318 L1252 322 L1232 325 L1215 322 L1200 315 L1195 305 L1195 290 Z"
+      fill="url(#tm-desert-tex)"/>
+    <!-- Plains patches -->
+    <g clip-path="url(#tm-clip-east)">
+      <ellipse cx="1350" cy="215" rx="40" ry="22" fill="url(#tm-plains-tex)" opacity="0.4"/>
+    </g>
+    <!-- Faction overlay: Controlled (blue) — brighter for HQ -->
+    <path d="M1185 278 L1202 272 L1220 265 L1238 255 L1255 242 L1270 228 L1285 210 L1298 190 L1310 168 L1318 145 L1308 128 L1332 122 L1355 118 L1378 128 L1398 135 L1418 142 L1435 155 L1440 172 L1432 195 L1420 218 L1405 240 L1388 258 L1370 272 L1350 285 L1332 295 L1312 305 L1292 312 L1272 318 L1252 322 L1232 325 L1215 322 L1200 315 L1195 305 L1195 290 Z"
+      fill="rgba(0,140,255,0.22)"/>
+
+    <!-- ── Territory: Industrial District (volcanic, east) ── -->
+    <path d="M1435 155 L1448 170 L1460 188 L1468 205 L1475 225 L1480 245 L1485 268 L1488 290 L1490 315 L1488 340 L1492 358 L1498 375 L1502 392 L1498 410 L1490 428 L1478 418 L1462 405 L1448 390 L1435 375 L1422 358 L1412 340 L1402 322 L1395 305 L1388 288 L1380 270 L1375 252 L1378 235 L1385 218 L1398 200 L1412 182 L1425 168 Z"
+      fill="url(#tm-volcanic-tex)"/>
+    <!-- Faction overlay: Controlled (blue) -->
+    <path d="M1435 155 L1448 170 L1460 188 L1468 205 L1475 225 L1480 245 L1485 268 L1488 290 L1490 315 L1488 340 L1492 358 L1498 375 L1502 392 L1498 410 L1490 428 L1478 418 L1462 405 L1448 390 L1435 375 L1422 358 L1412 340 L1402 322 L1395 305 L1388 288 L1380 270 L1375 252 L1378 235 L1385 218 L1398 200 L1412 182 L1425 168 Z"
+      fill="rgba(0,140,255,0.15)"/>
+
+    <!-- Volcanic mountain peaks in Industrial District -->
+    <g opacity="0.8">
+      <path d="M1455 220 L1465 190 L1475 220 Z" fill="#5a2828" stroke="#4a2020" stroke-width="1"/>
+      <path d="M1470 250 L1478 225 L1486 250 Z" fill="#5a2828" stroke="#4a2020" stroke-width="1"/>
+      <path d="M1480 290 L1488 268 L1496 290 Z" fill="#5a2828" stroke="#4a2020" stroke-width="1"/>
+      <!-- Lava glow at peaks -->
+      <circle cx="1465" cy="195" r="3" fill="#ff4400" opacity="0.5"/>
+      <circle cx="1478" cy="230" r="2.5" fill="#ff4400" opacity="0.4"/>
+      <circle cx="1488" cy="272" r="2" fill="#ff4400" opacity="0.35"/>
+    </g>
+
+    <!-- ── Territory: Harbor District (jungle, south) ── -->
+    <path d="M1012 285 L1030 288 L1048 285 L1035 295 L1032 312 L1035 332 L1040 350 L1048 368 L1058 385 L1070 398 L1085 408 L1102 415 L1120 418 L1138 415 L1155 408 L1170 398 L1182 385 L1192 368 L1198 348 L1202 328 L1200 308 L1195 290 L1195 305 L1200 315 L1215 322 L1232 325 L1252 322 L1272 318 L1292 312 L1312 305 L1332 295 L1350 285 L1370 272 L1388 258 L1380 270 L1375 252 L1378 235 L1385 218 L1398 200 L1412 182 L1425 168 L1435 155 L1435 375 L1422 358 L1412 340 L1402 322 L1395 305 L1388 288 L1380 270 L1388 258 L1405 240 L1420 218 L1432 195 L1440 172 L1435 155 L1435 375 L1448 390 L1462 405 L1478 418 L1490 428 L1482 445 L1470 460 L1455 475 L1442 488 L1428 498 L1412 508 L1398 515 L1382 525 L1365 535 L1348 542 L1330 548 L1310 555 L1292 558 L1272 565 L1252 570 L1235 575 L1215 578 L1195 582 L1175 585 L1155 580 L1138 572 L1120 565 L1102 558 L1085 548 L1068 538 L1052 528 L1038 515 L1025 502 L1012 488 L1000 472 L988 458 L978 442 L968 425 L958 408 L950 392 L942 375 L935 358 L930 340 L925 322 L920 305 L918 285 L920 265 L918 245 L920 225 L930 240 L942 255 L955 268 L968 278 L980 285 L995 288 Z"
+      fill="url(#tm-jungle-tex)"/>
+    <!-- Faction overlay: Controlled (blue) -->
+    <path d="M920 305 L918 285 L920 265 L918 245 L920 225 L930 240 L942 255 L955 268 L968 278 L980 285 L995 288 L1012 285 L1035 295 L1032 312 L1035 332 L1040 350 L1048 368 L1058 385 L1070 398 L1085 408 L1102 415 L1120 418 L1102 435 L1080 448 L1058 458 L1038 465 L1018 470 L1000 472 L988 458 L978 442 L968 425 L958 408 L950 392 L942 375 L935 358 L930 340 L925 322 Z"
+      fill="rgba(0,140,255,0.15)"/>
+
+    <!-- Eastern Continent Coastline -->
+    <path d="M935 120 L958 112 L982 118 L1008 108 L1035 115 L1060 110 L1088 118 L1112 112 L1138 120 L1162 115 L1188 108 L1212 118 L1238 112 L1262 125 L1285 120 L1308 128 L1332 122 L1355 118 L1378 128 L1398 135 L1418 142 L1435 155 L1448 170 L1460 188 L1468 205 L1475 225 L1480 245 L1485 268 L1488 290 L1490 315 L1488 340 L1492 358 L1498 375 L1502 392 L1498 410 L1490 428 L1482 445 L1470 460 L1455 475 L1442 488 L1428 498 L1412 508 L1398 515 L1382 525 L1365 535 L1348 542 L1330 548 L1310 555 L1292 558 L1272 565 L1252 570 L1235 575 L1215 578 L1195 582 L1175 585 L1155 580 L1138 572 L1120 565 L1102 558 L1085 548 L1068 538 L1052 528 L1038 515 L1025 502 L1012 488 L1000 472 L988 458 L978 442 L968 425 L958 408 L950 392 L942 375 L935 358 L930 340 L925 322 L920 305 L918 285 L920 265 L918 245 L920 225 L922 205 L925 185 L928 165 L932 145 Z"
+      fill="none" stroke="rgba(160,200,220,0.5)" stroke-width="3" stroke-linejoin="round"/>
+
+    <!-- Internal territory borders -->
+    <!-- Civilian Sector / Research Complex border -->
+    <path d="M1138 120 L1148 140 L1145 165 L1138 188 L1130 210 L1120 230 L1108 248"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+    <!-- Civilian Sector / Power Grid Hub border -->
+    <path d="M1048 285 L1035 295 L1032 312 L1035 332 L1040 350 L1048 368"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+    <!-- Research Complex / Central Command border -->
+    <path d="M1308 128 L1318 145 L1310 168 L1298 190 L1285 210 L1270 228 L1255 242 L1238 255 L1220 265 L1202 272 L1185 278"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+    <!-- Power Grid Hub / Central Command border -->
+    <path d="M1185 278 L1195 290 L1195 305 L1200 315 L1215 322 L1232 325 L1252 322 L1272 318 L1292 312 L1312 305 L1332 295 L1350 285"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+    <!-- Power Grid Hub / Harbor District border -->
+    <path d="M1108 248 L1095 262 L1080 272 L1065 280 L1048 285"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+    <!-- Central Command / Industrial District border -->
+    <path d="M1435 155 L1425 168 L1412 182 L1398 200 L1385 218 L1378 235 L1375 252 L1380 270 L1388 258"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+    <!-- Industrial District / Harbor District south border -->
+    <path d="M1490 428 L1478 418 L1462 405 L1448 390 L1435 375 L1422 358 L1412 340 L1402 322"
+      fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="8,4"/>
+
+    <!-- Eastern continent rivers -->
+    <g fill="none" stroke="rgba(60,130,180,0.5)" stroke-width="1.5" stroke-linecap="round">
+      <!-- River through Civilian Sector -->
+      <path d="M1050 130 Q1040 160 1020 200 Q1000 240 980 270"/>
+      <!-- River through Power Grid Hub -->
+      <path d="M1150 280 Q1130 310 1110 340 Q1090 370 1070 398"/>
+      <!-- River in jungle -->
+      <path d="M1250 450 Q1220 475 1190 500 Q1160 530 1140 560"/>
+    </g>
+
+    <!-- Lakes -->
+    <ellipse cx="1100" cy="340" rx="14" ry="9" fill="rgba(40,100,150,0.5)" stroke="rgba(60,130,180,0.4)" stroke-width="1"/>
+    <ellipse cx="1020" cy="200" rx="8" ry="6" fill="rgba(40,100,150,0.5)" stroke="rgba(60,130,180,0.4)" stroke-width="1"/>
+
+    <!-- ── Territory Labels: Eastern Continent ── -->
+    <text x="1040" y="195" class="territory-label">CIVILIAN SECTOR</text>
+    <text x="1040" y="208" class="territory-label-small">&#9881; &#9733;</text>
+
+    <text x="1225" y="195" class="territory-label">RESEARCH COMPLEX</text>
+    <text x="1225" y="208" class="territory-label-small">&#9881; &#9881; &#9733; &#9733;</text>
+
+    <text x="1115" y="350" class="territory-label">POWER GRID HUB</text>
+    <text x="1115" y="363" class="territory-label-small">&#9881; &#9881; &#9881; &#9733;</text>
+
+    <!-- Central Command HQ — special styling -->
+    <g transform="translate(1305, 235)">
+      <use href="#tm-star" x="0" y="-18" opacity="0.9"/>
+      <text x="0" y="0" class="hq-label">CENTRAL COMMAND</text>
+      <text x="0" y="15" class="territory-label-small" fill="rgba(255,215,0,0.6)">&#9733; HEADQUARTERS &#9733;</text>
+    </g>
+    <!-- Glowing border around Central Command -->
+    <path d="M1185 278 L1202 272 L1220 265 L1238 255 L1255 242 L1270 228 L1285 210 L1298 190 L1310 168 L1318 145 L1308 128 L1332 122 L1355 118 L1378 128 L1398 135 L1418 142 L1435 155 L1440 172 L1432 195 L1420 218 L1405 240 L1388 258 L1370 272 L1350 285 L1332 295 L1312 305 L1292 312 L1272 318 L1252 322 L1232 325 L1215 322 L1200 315 L1195 305 L1195 290 Z"
+      fill="none" stroke="rgba(255,215,0,0.4)" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <text x="1460" y="305" class="territory-label">INDUSTRIAL</text>
+    <text x="1460" y="318" class="territory-label">DISTRICT</text>
+    <text x="1460" y="331" class="territory-label-small">&#9881; &#9881; &#9881; &#9881;</text>
+
+    <text x="1100" y="490" class="territory-label">HARBOR DISTRICT</text>
+    <text x="1100" y="503" class="territory-label-small">&#9881; &#9733;</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LAYER 4: SOUTHERN ARCHIPELAGO                              -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <g id="tm-southern-archipelago">
+
+    <!-- ── Island 1: Western Fortifications (NEUTRAL) ── -->
+    <path d="M175 610 L198 598 L222 605 L248 595 L272 602 L292 612 L305 625 L312 642 L308 660 L298 678 L285 692 L268 702 L248 708 L228 705 L210 695 L195 682 L182 665 L175 645 L172 628 Z"
+      fill="#06101a" opacity="0.4" transform="translate(3,3)"/>
+    <path d="M175 610 L198 598 L222 605 L248 595 L272 602 L292 612 L305 625 L312 642 L308 660 L298 678 L285 692 L268 702 L248 708 L228 705 L210 695 L195 682 L182 665 L175 645 L172 628 Z"
+      fill="url(#tm-beach-tex)"/>
+    <path d="M180 615 L200 605 L222 610 L245 602 L268 608 L285 618 L298 630 L302 645 L300 660 L292 675 L280 688 L265 698 L248 702 L230 700 L215 690 L202 678 L190 660 L182 642 L178 628 Z"
+      fill="url(#tm-tropical-tex)"/>
+    <!-- Neutral overlay (grey) -->
+    <path d="M175 610 L198 598 L222 605 L248 595 L272 602 L292 612 L305 625 L312 642 L308 660 L298 678 L285 692 L268 702 L248 708 L228 705 L210 695 L195 682 L182 665 L175 645 L172 628 Z"
+      fill="rgba(150,150,150,0.12)"/>
+    <path d="M175 610 L198 598 L222 605 L248 595 L272 602 L292 612 L305 625 L312 642 L308 660 L298 678 L285 692 L268 702 L248 708 L228 705 L210 695 L195 682 L182 665 L175 645 L172 628 Z"
+      fill="none" stroke="rgba(160,200,220,0.5)" stroke-width="3" stroke-linejoin="round"/>
+    <text x="242" y="650" class="territory-label">WESTERN</text>
+    <text x="242" y="663" class="territory-label">FORTIFICATIONS</text>
+    <text x="242" y="676" class="territory-label-small" fill="rgba(180,180,180,0.5)">&#9648; NEUTRAL</text>
+
+    <!-- ── Island 2: Supply Depot (NEUTRAL) ── -->
+    <path d="M330 635 L352 622 L378 628 L402 618 L425 625 L445 638 L458 655 L462 675 L455 695 L442 712 L425 725 L405 732 L382 728 L362 718 L345 705 L335 688 L328 668 L325 650 Z"
+      fill="#06101a" opacity="0.4" transform="translate(3,3)"/>
+    <path d="M330 635 L352 622 L378 628 L402 618 L425 625 L445 638 L458 655 L462 675 L455 695 L442 712 L425 725 L405 732 L382 728 L362 718 L345 705 L335 688 L328 668 L325 650 Z"
+      fill="url(#tm-beach-tex)"/>
+    <path d="M335 640 L355 628 L378 634 L400 625 L420 632 L438 642 L450 658 L454 672 L450 690 L438 705 L422 718 L405 725 L385 722 L368 712 L352 700 L342 685 L335 665 L330 650 Z"
+      fill="url(#tm-tropical-tex)"/>
+    <!-- Neutral overlay -->
+    <path d="M330 635 L352 622 L378 628 L402 618 L425 625 L445 638 L458 655 L462 675 L455 695 L442 712 L425 725 L405 732 L382 728 L362 718 L345 705 L335 688 L328 668 L325 650 Z"
+      fill="rgba(150,150,150,0.12)"/>
+    <path d="M330 635 L352 622 L378 628 L402 618 L425 625 L445 638 L458 655 L462 675 L455 695 L442 712 L425 725 L405 732 L382 728 L362 718 L345 705 L335 688 L328 668 L325 650 Z"
+      fill="none" stroke="rgba(160,200,220,0.5)" stroke-width="3" stroke-linejoin="round"/>
+    <text x="392" y="672" class="territory-label">SUPPLY DEPOT</text>
+    <text x="392" y="685" class="territory-label-small" fill="rgba(180,180,180,0.5)">&#9648; NEUTRAL</text>
+
+    <!-- ── Island 3: Southern Bastion (CONTESTED — volcanic island) ── -->
+    <path d="M475 595 L498 582 L525 588 L548 578 L572 585 L598 592 L618 602 L635 618 L645 638 L648 660 L642 682 L630 700 L612 715 L592 725 L568 732 L545 728 L522 720 L502 708 L485 692 L475 672 L468 650 L465 628 L468 610 Z"
+      fill="#06101a" opacity="0.4" transform="translate(3,3)"/>
+    <path d="M475 595 L498 582 L525 588 L548 578 L572 585 L598 592 L618 602 L635 618 L645 638 L648 660 L642 682 L630 700 L612 715 L592 725 L568 732 L545 728 L522 720 L502 708 L485 692 L475 672 L468 650 L465 628 L468 610 Z"
+      fill="url(#tm-beach-tex)"/>
+    <path d="M480 600 L500 588 L525 594 L548 585 L570 592 L595 598 L612 608 L628 622 L638 640 L640 658 L636 678 L625 695 L608 710 L588 720 L565 725 L545 722 L525 715 L508 702 L492 688 L480 668 L475 648 L472 628 L475 612 Z"
+      fill="url(#tm-tropical-tex)"/>
+    <!-- Volcanic peak area -->
+    <g clip-path="url(#tm-clip-island3)">
+      <ellipse cx="570" cy="645" rx="30" ry="25" fill="url(#tm-volcanic-tex)" opacity="0.7"/>
+      <!-- Volcanic peaks -->
+      <path d="M560 655 L568 630 L576 655 Z" fill="#5a2828" stroke="#4a2020" stroke-width="0.8" opacity="0.8"/>
+      <path d="M575 650 L582 628 L589 650 Z" fill="#4a2020" stroke="#3a1818" stroke-width="0.8" opacity="0.7"/>
+      <circle cx="568" cy="633" r="2.5" fill="#ff4400" opacity="0.5"/>
+      <circle cx="582" cy="632" r="2" fill="#ff4400" opacity="0.4"/>
+    </g>
+    <!-- Contested overlay (red) -->
+    <path d="M475 595 L498 582 L525 588 L548 578 L572 585 L598 592 L618 602 L635 618 L645 638 L648 660 L642 682 L630 700 L612 715 L592 725 L568 732 L545 728 L522 720 L502 708 L485 692 L475 672 L468 650 L465 628 L468 610 Z"
+      fill="rgba(200,50,50,0.18)"/>
+    <path d="M475 595 L498 582 L525 588 L548 578 L572 585 L598 592 L618 602 L635 618 L645 638 L648 660 L642 682 L630 700 L612 715 L592 725 L568 732 L545 728 L522 720 L502 708 L485 692 L475 672 L468 650 L465 628 L468 610 Z"
+      fill="none" stroke="rgba(160,200,220,0.5)" stroke-width="3" stroke-linejoin="round"/>
+    <text x="558" y="665" class="territory-label" fill="rgba(255,180,180,1)">SOUTHERN BASTION</text>
+    <text x="558" y="678" class="territory-label-small" fill="rgba(255,150,150,0.6)">&#9876; CONTESTED &#9876;</text>
+
+    <!-- ── Island 4: Spaceport Alpha (controlled) ── -->
+    <path d="M500 752 L522 740 L548 745 L572 738 L595 748 L612 762 L622 780 L625 800 L618 818 L605 832 L585 842 L562 845 L540 838 L520 825 L508 808 L498 788 L495 768 Z"
+      fill="#06101a" opacity="0.4" transform="translate(3,3)"/>
+    <path d="M500 752 L522 740 L548 745 L572 738 L595 748 L612 762 L622 780 L625 800 L618 818 L605 832 L585 842 L562 845 L540 838 L520 825 L508 808 L498 788 L495 768 Z"
+      fill="url(#tm-beach-tex)"/>
+    <path d="M505 756 L524 746 L548 750 L570 744 L590 752 L605 765 L615 780 L618 798 L612 814 L600 828 L582 838 L562 840 L542 834 L525 822 L514 805 L505 788 L500 770 Z"
+      fill="url(#tm-tropical-tex)"/>
+    <!-- Faction overlay: Controlled (blue) -->
+    <path d="M500 752 L522 740 L548 745 L572 738 L595 748 L612 762 L622 780 L625 800 L618 818 L605 832 L585 842 L562 845 L540 838 L520 825 L508 808 L498 788 L495 768 Z"
+      fill="rgba(0,140,255,0.15)"/>
+    <path d="M500 752 L522 740 L548 745 L572 738 L595 748 L612 762 L622 780 L625 800 L618 818 L605 832 L585 842 L562 845 L540 838 L520 825 L508 808 L498 788 L495 768 Z"
+      fill="none" stroke="rgba(160,200,220,0.5)" stroke-width="3" stroke-linejoin="round"/>
+    <!-- Spaceport runway markings -->
+    <g opacity="0.4">
+      <line x1="530" y1="790" x2="590" y2="790" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="6,3"/>
+      <line x1="535" y1="785" x2="585" y2="785" stroke="#ffffff" stroke-width="0.8" stroke-dasharray="4,2"/>
+      <rect x="555" y="775" width="8" height="12" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+    </g>
+    <text x="560" y="793" class="territory-label">SPACEPORT ALPHA</text>
+    <text x="560" y="806" class="territory-label-small">&#9881; &#9733; &#9733; &#9733;</text>
+
+    <!-- ── Island 5: Underground Network (NEUTRAL) ── -->
+    <path d="M665 655 L688 642 L712 648 L732 658 L748 672 L755 690 L752 710 L740 728 L722 740 L700 745 L678 738 L660 725 L650 708 L648 688 L652 670 Z"
+      fill="#06101a" opacity="0.4" transform="translate(3,3)"/>
+    <path d="M665 655 L688 642 L712 648 L732 658 L748 672 L755 690 L752 710 L740 728 L722 740 L700 745 L678 738 L660 725 L650 708 L648 688 L652 670 Z"
+      fill="url(#tm-beach-tex)"/>
+    <path d="M670 660 L690 648 L712 654 L728 662 L742 675 L748 690 L746 708 L735 722 L720 735 L700 740 L682 734 L665 722 L656 705 L654 688 L658 672 Z"
+      fill="url(#tm-tropical-tex)"/>
+    <!-- Cave/tunnel markings -->
+    <g opacity="0.5">
+      <ellipse cx="700" cy="690" rx="8" ry="5" fill="#2a3a2a" stroke="#1a2a1a" stroke-width="0.8"/>
+      <ellipse cx="685" cy="705" rx="6" ry="4" fill="#2a3a2a" stroke="#1a2a1a" stroke-width="0.8"/>
+      <ellipse cx="715" cy="710" rx="5" ry="3.5" fill="#2a3a2a" stroke="#1a2a1a" stroke-width="0.8"/>
+    </g>
+    <!-- Neutral overlay -->
+    <path d="M665 655 L688 642 L712 648 L732 658 L748 672 L755 690 L752 710 L740 728 L722 740 L700 745 L678 738 L660 725 L650 708 L648 688 L652 670 Z"
+      fill="rgba(150,150,150,0.12)"/>
+    <path d="M665 655 L688 642 L712 648 L732 658 L748 672 L755 690 L752 710 L740 728 L722 740 L700 745 L678 738 L660 725 L650 708 L648 688 L652 670 Z"
+      fill="none" stroke="rgba(160,200,220,0.5)" stroke-width="3" stroke-linejoin="round"/>
+    <text x="700" y="692" class="territory-label">UNDERGROUND</text>
+    <text x="700" y="705" class="territory-label">NETWORK</text>
+    <text x="700" y="718" class="territory-label-small" fill="rgba(180,180,180,0.5)">&#9648; NEUTRAL</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LAYER 5: SEA ROUTES                                        -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <g id="tm-sea-routes">
+    <!-- Route 1: Northern Continent → Eastern Continent (upper) -->
+    <path d="M790 175 Q840 160 870 180 Q900 200 935 190"
+      fill="none" stroke="rgba(120,180,220,0.35)" stroke-width="1.5" stroke-dasharray="10,5"
+      marker-end="url(#tm-arrow)"/>
+    <text transform="translate(860,170) rotate(-8)">
+      <tspan class="sea-lane-label">SEA LANE</tspan>
+    </text>
+
+    <!-- Route 2: Northern Continent → Eastern Continent (lower) -->
+    <path d="M700 310 Q780 360 830 400 Q880 430 920 380"
+      fill="none" stroke="rgba(120,180,220,0.35)" stroke-width="1.5" stroke-dasharray="10,5"
+      marker-end="url(#tm-arrow)"/>
+    <text transform="translate(800,395) rotate(15)">
+      <tspan class="sea-lane-label">SEA LANE</tspan>
+    </text>
+
+    <!-- Route 3: Northern Continent → Southern Archipelago -->
+    <path d="M350 372 Q340 430 320 490 Q300 540 280 585"
+      fill="none" stroke="rgba(120,180,220,0.35)" stroke-width="1.5" stroke-dasharray="10,5"
+      marker-end="url(#tm-arrow)"/>
+    <text transform="translate(305,490) rotate(80)">
+      <tspan class="sea-lane-label">SEA LANE</tspan>
+    </text>
+
+    <!-- Route 4: Southern Archipelago → Eastern Continent -->
+    <path d="M755 690 Q810 660 860 620 Q910 570 945 530"
+      fill="none" stroke="rgba(120,180,220,0.35)" stroke-width="1.5" stroke-dasharray="10,5"
+      marker-end="url(#tm-arrow)"/>
+    <text transform="translate(845,620) rotate(-40)">
+      <tspan class="sea-lane-label">SEA LANE</tspan>
+    </text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LAYER 6: COMPASS ROSE                                      -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <g id="tm-compass" transform="translate(1420, 780)">
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="35" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="32" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+
+    <!-- Cardinal points (main arrows) -->
+    <!-- North -->
+    <path d="M0 -30 L4 -10 L0 -15 L-4 -10 Z" fill="rgba(255,215,0,0.7)" stroke="rgba(255,215,0,0.3)" stroke-width="0.5"/>
+    <!-- South -->
+    <path d="M0 30 L4 10 L0 15 L-4 10 Z" fill="rgba(255,255,255,0.4)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+    <!-- East -->
+    <path d="M30 0 L10 4 L15 0 L10 -4 Z" fill="rgba(255,255,255,0.4)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+    <!-- West -->
+    <path d="M-30 0 L-10 4 L-15 0 L-10 -4 Z" fill="rgba(255,255,255,0.4)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+
+    <!-- Intercardinal points (thin lines) -->
+    <line x1="18" y1="-18" x2="8" y2="-8" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    <line x1="18" y1="18" x2="8" y2="8" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    <line x1="-18" y1="-18" x2="-8" y2="-8" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    <line x1="-18" y1="18" x2="-8" y2="8" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+    <!-- Center dot -->
+    <circle cx="0" cy="0" r="3" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+
+    <!-- Cardinal labels -->
+    <text x="0" y="-38" class="compass-label" fill="rgba(255,215,0,0.7)">N</text>
+    <text x="0" y="46" class="compass-label">S</text>
+    <text x="42" y="4" class="compass-label">E</text>
+    <text x="-42" y="4" class="compass-label">W</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LAYER 7: SCALE BAR                                         -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <g id="tm-scale" transform="translate(1350, 850)">
+    <line x1="0" y1="0" x2="100" y2="0" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+    <line x1="0" y1="-4" x2="0" y2="4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+    <line x1="25" y1="-3" x2="25" y2="3" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <line x1="50" y1="-4" x2="50" y2="4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+    <line x1="75" y1="-3" x2="75" y2="3" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <line x1="100" y1="-4" x2="100" y2="4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+    <text x="0" y="14" class="scale-label">0</text>
+    <text x="50" y="14" class="scale-label">500</text>
+    <text x="100" y="14" class="scale-label">1000 km</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LAYER 8: MAP TITLE                                         -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <g id="tm-title">
+    <text x="1570" y="40" class="map-title">TERRA</text>
+    <line x1="1460" y1="48" x2="1570" y2="48" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    <text x="1570" y="62" class="map-subtitle">CAPITAL WORLD</text>
+    <text x="1570" y="78" class="map-subtitle" fill="rgba(255,255,255,0.15)" font-size="7" letter-spacing="1.5">STRATEGIC COMMAND OVERLAY — SECTOR VII</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- LAYER 9: VIGNETTE OVERLAY                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect width="1600" height="900" fill="url(#tm-vignette)" pointer-events="none"/>
+
+  <!-- Thin border frame -->
+  <rect x="8" y="8" width="1584" height="884" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <rect x="12" y="12" width="1576" height="876" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+
+  <!-- Grid overlay for military aesthetic (very subtle) -->
+  <g opacity="0.03">
+    <line x1="0" y1="100" x2="1600" y2="100" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="0" y1="200" x2="1600" y2="200" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="1600" y2="300" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="0" y1="400" x2="1600" y2="400" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="0" y1="500" x2="1600" y2="500" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="0" y1="600" x2="1600" y2="600" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="0" y1="700" x2="1600" y2="700" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="0" y1="800" x2="1600" y2="800" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="100" y1="0" x2="100" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="200" y1="0" x2="200" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="300" y1="0" x2="300" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="400" y1="0" x2="400" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="500" y1="0" x2="500" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="600" y1="0" x2="600" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="700" y1="0" x2="700" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="800" y1="0" x2="800" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="900" y1="0" x2="900" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="1000" y1="0" x2="1000" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="1100" y1="0" x2="1100" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="1200" y1="0" x2="1200" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="1300" y1="0" x2="1300" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="1400" y1="0" x2="1400" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+    <line x1="1500" y1="0" x2="1500" y2="900" stroke="#ffffff" stroke-width="0.5"/>
+  </g>
+</svg>

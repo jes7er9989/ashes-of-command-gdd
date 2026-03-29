@@ -1410,13 +1410,18 @@ const Dashboard = {
       </section>`;
   },
 
-  /** Container for Canvas territory map */
+  /** Container for SVG territory map (hand-crafted asset) */
   buildCanvasTerritoryContainer() {
     return `
       <section class="galaxy-section">
         <div class="section-label">Ground Control Map</div>
         <div class="section-heading">Terra \u2014 Capital World Territory Control</div>
-        <div id="canvas-territory-mount" style="display:flex;justify-content:center;padding:20px 0;min-height:700px"></div>
+        <div id="canvas-territory-mount" style="display:flex;justify-content:center;padding:20px 0">
+          <object data="assets/territory-map.svg" type="image/svg+xml"
+                  style="width:100%;max-width:1600px;border-radius:8px;border:1px solid rgba(0,180,255,0.1);box-shadow:0 4px 30px rgba(0,0,0,0.5)"
+                  aria-label="Terra Capital World Territory Control Map">
+          </object>
+        </div>
         <div class="divider"></div>
       </section>`;
   },
@@ -1441,13 +1446,7 @@ const Dashboard = {
       } catch (e) { console.warn('[Dashboard] Solar system renderer failed:', e); }
     }
 
-    /* ── Territory Map (Canvas 2D) ── */
-    const territoryMount = document.getElementById('canvas-territory-mount');
-    if (territoryMount && typeof TerritoryRenderer !== 'undefined') {
-      try {
-        this._territoryRenderer = new TerritoryRenderer(territoryMount);
-        this._territoryRenderer.start();
-      } catch (e) { console.warn('[Dashboard] Territory renderer failed:', e); }
-    }
+    /* ── Territory Map — uses hand-crafted SVG asset (assets/territory-map.svg) ──
+       No Canvas renderer needed; loaded via <object> tag in buildCanvasTerritoryContainer() */
   }
 };
