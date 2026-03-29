@@ -290,35 +290,77 @@ const Dashboard = {
         <div class="section-label">Core Loop</div>
         <div class="section-heading">Five-Phase Gameplay</div>
         <div class="phase-loop">
-          <div class="phase-block" style="background:linear-gradient(180deg,rgba(0,180,255,0.06),transparent);border-top:2px solid rgba(0,180,255,0.5)">
+
+          <div class="phase-block" style="background:linear-gradient(180deg,rgba(0,180,255,0.08),transparent);border-top:2px solid rgba(0,180,255,0.5)">
             <div class="phase-num" style="color:var(--terran)">PHASE 1</div>
             <div class="phase-name">MAP</div>
-            <div class="phase-desc">Galaxy overview. Move fleets. Manage economy. Build infrastructure.</div>
-            <span class="phase-arrow">›</span>
+            <div class="phase-tagline">The Game's Home State</div>
+            <div class="phase-desc">Macro strategy layer. Build infrastructure, expand territory, manage resources, and move fleets across the galaxy. Paradox-style pause with 4 speed settings.</div>
+            <div class="phase-details">
+              <div class="phase-detail-item"><span class="phase-detail-label">Turns</span><span class="phase-detail-value">Simultaneous — all factions act at once</span></div>
+              <div class="phase-detail-item"><span class="phase-detail-label">Bottleneck</span><span class="phase-detail-value">General count limits concurrent operations</span></div>
+              <div class="phase-detail-item"><span class="phase-detail-label">Speed</span><span class="phase-detail-value">1\u00D7, 2\u00D7, 4\u00D7, Pause</span></div>
+            </div>
+            <a href="#ch2" class="phase-link">Ch. 2 \u2014 Five-Phase Loop \u203A</a>
+            <span class="phase-arrow">\u203A</span>
           </div>
-          <div class="phase-block" style="background:linear-gradient(180deg,rgba(0,255,238,0.06),transparent);border-top:2px solid rgba(0,255,238,0.5)">
+
+          <div class="phase-block" style="background:linear-gradient(180deg,rgba(0,255,238,0.08),transparent);border-top:2px solid rgba(0,255,238,0.5)">
             <div class="phase-num" style="color:var(--shards)">PHASE 2</div>
             <div class="phase-name">ARMADA</div>
-            <div class="phase-desc">Compose armies. Equip units. Select commanders. MVP: 2 Frigates starting fleet.</div>
-            <span class="phase-arrow">›</span>
+            <div class="phase-tagline">Fleet Logistics Sub-Mode</div>
+            <div class="phase-desc">Assemble your invasion force. Load troops, customize equipment loadouts, and assign commanders. Overlays directly on the Map Phase UI.</div>
+            <div class="phase-details">
+              <div class="phase-detail-item"><span class="phase-detail-label">Starting Fleet</span><span class="phase-detail-value">2\u00D7 Frigates (MVP, persistent full run)</span></div>
+              <div class="phase-detail-item"><span class="phase-detail-label">Ship Death</span><span class="phase-detail-value">Permanent \u2014 spliced from array, gone forever</span></div>
+              <div class="phase-detail-item"><span class="phase-detail-label">HP Restore</span><span class="phase-detail-value">NO \u2014 HP not restored between battles</span></div>
+              <div class="phase-detail-item"><span class="phase-detail-label">Requires</span><span class="phase-detail-value">Logistics Hub for Armada access</span></div>
+            </div>
+            <a href="#ch20" class="phase-link">Ch. 20 \u2014 Equipment System \u203A</a>
+            <span class="phase-arrow">\u203A</span>
           </div>
-          <div class="phase-block" style="background:linear-gradient(180deg,rgba(255,170,34,0.06),transparent);border-top:2px solid rgba(255,170,34,0.5)">
+
+          <div class="phase-block" style="background:linear-gradient(180deg,rgba(255,170,34,0.08),transparent);border-top:2px solid rgba(255,170,34,0.5)">
             <div class="phase-num" style="color:var(--accord)">PHASE 3</div>
             <div class="phase-name">APPROACH</div>
-            <div class="phase-desc">Choose: War, Diplomacy, or Espionage. Starting CP pool: 3.</div>
-            <span class="phase-arrow">›</span>
+            <div class="phase-tagline">The Decision Point</div>
+            <div class="phase-desc">Fleet arrives at target system. Choose your strategy: Espionage (gather intel), Diplomacy (negotiate), or War (direct assault). Every choice has resource costs and trade-offs.</div>
+            <div class="phase-details">
+              <div class="phase-detail-item"><span class="phase-detail-label">Espionage</span><span class="phase-detail-value">Deep Recon (free) or + Sabotage (4 Intel, 60% success)</span></div>
+              <div class="phase-detail-item"><span class="phase-detail-label">Diplomacy</span><span class="phase-detail-value">Ceasefire (3 Influence) or Trade (5 Influence)</span></div>
+              <div class="phase-detail-item"><span class="phase-detail-label">War</span><span class="phase-detail-value">With Intel (Vanguard +1) or Blind (Vanguard +2, risky)</span></div>
+            </div>
+            <a href="#ch24" class="phase-link">Ch. 24 \u2014 Espionage & Intelligence \u203A</a>
+            <span class="phase-arrow">\u203A</span>
           </div>
-          <div class="phase-block" style="background:linear-gradient(180deg,rgba(255,102,34,0.06),transparent);border-top:2px solid rgba(255,102,34,0.5)">
+
+          <div class="phase-block" style="background:linear-gradient(180deg,rgba(255,102,34,0.08),transparent);border-top:2px solid rgba(255,102,34,0.5)">
             <div class="phase-num" style="color:var(--horde)">PHASE 4</div>
-            <div class="phase-name">SPACE</div>
-            <div class="phase-desc">Fleet formations. Auto-battle with CP abilities. Outcome modifies ground combat.</div>
-            <span class="phase-arrow">›</span>
+            <div class="phase-name">SPACE COMBAT</div>
+            <div class="phase-tagline">Auto-Battle in the Void</div>
+            <div class="phase-desc">Fleet formations engage in automated space combat. Spend Command Points on tactical abilities. Outcome directly modifies the ground invasion that follows.</div>
+            <div class="phase-details">
+              <div class="phase-detail-item"><span class="phase-detail-label">Engine</span><span class="phase-detail-value">Auto-battle with CP ability interjections</span></div>
+              <div class="phase-detail-item"><span class="phase-detail-label">Duration</span><span class="phase-detail-value">5\u201325 minutes per battle</span></div>
+              <div class="phase-detail-item"><span class="phase-detail-label">Defenders</span><span class="phase-detail-value">Neutral: 2 Raiders | AI: 2R+1G | Guardian: 2G+1D</span></div>
+            </div>
+            <a href="#ch18" class="phase-link">Ch. 18 \u2014 Space Combat \u203A</a>
+            <span class="phase-arrow">\u203A</span>
           </div>
-          <div class="phase-block" style="background:linear-gradient(180deg,rgba(255,34,102,0.06),transparent);border-top:2px solid rgba(255,34,102,0.5)">
+
+          <div class="phase-block" style="background:linear-gradient(180deg,rgba(255,34,102,0.08),transparent);border-top:2px solid rgba(255,34,102,0.5)">
             <div class="phase-num" style="color:var(--vorax)">PHASE 5</div>
-            <div class="phase-name">GROUND</div>
-            <div class="phase-desc">Territory conquest. Cover system. Deployment. Reserves. 6 default units per side.</div>
+            <div class="phase-name">GROUND COMBAT</div>
+            <div class="phase-tagline">Territory Conquest</div>
+            <div class="phase-desc">Boots on the ground. Deploy units with cover systems, manage reserves, and conquer territory zones. Space combat outcome modifies starting conditions.</div>
+            <div class="phase-details">
+              <div class="phase-detail-item"><span class="phase-detail-label">Default Units</span><span class="phase-detail-value">6 per side</span></div>
+              <div class="phase-detail-item"><span class="phase-detail-label">Systems</span><span class="phase-detail-value">Cover, Deployment, Reserves, Garrison</span></div>
+              <div class="phase-detail-item"><span class="phase-detail-label">Resolution</span><span class="phase-detail-value">Territory changes, casualties tallied, XP awarded</span></div>
+            </div>
+            <a href="#ch19" class="phase-link">Ch. 19 \u2014 Ground Combat \u203A</a>
           </div>
+
         </div>
       </section>`;
   },

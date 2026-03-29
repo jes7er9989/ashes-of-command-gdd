@@ -1839,6 +1839,66 @@ html {
   font-size: 0.9rem;
   color: var(--text-mid);
   line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.phase-tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.phase-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 4px;
+  border-left: 2px solid rgba(255,255,255,0.06);
+}
+
+.phase-detail-item {
+  display: flex;
+  gap: 8px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.phase-detail-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  min-width: 80px;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+  padding-top: 1px;
+}
+
+.phase-detail-value {
+  color: var(--text-mid);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+}
+
+.phase-link {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 1px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.phase-link:hover {
+  opacity: 1;
+  text-decoration: underline;
 }
 
 .phase-arrow {
