@@ -59,9 +59,9 @@
   --border-hi: rgba(255,255,255,0.12);
 
   /* Text luminance scale (dim â†’ bright) */
-  --text-dim: #556677;
-  --text-mid: #8899aa;
-  --text-body: #bcc4d0;
+  --text-dim: #778899;
+  --text-mid: #95a5b5;
+  --text-body: #c0c8d4;
   --text-hi: #e4e8f0;
 
   /* Primary UI accent (Terran blue) */
@@ -212,7 +212,7 @@ a:hover {
   font-size: 0.55rem;
   color: var(--accent);
   letter-spacing: 0.25em;
-  opacity: 0.6;
+  opacity: 0.8;
   margin-top: -2px;
 }
 
@@ -962,19 +962,20 @@ body.sidebar-collapsed .main-content {
 
 .hero-lore-text {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-style: italic;
-  color: var(--text-body);
+  color: #d0d6e0;
   line-height: 1.6;
   text-align: center;
-  text-shadow: 0 0 20px rgba(0,180,255,0.15);
+  text-shadow: 0 0 24px rgba(200,220,255,0.2), 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .hero-lore-source {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--text-mid);
-  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: #a0aabb;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 12px rgba(200,220,255,0.12);
 }
 
 /* â”€â”€ Scroll Indicator â€” Bouncing arrow at bottom of hero â”€â”€ */
@@ -1561,7 +1562,7 @@ body.sidebar-collapsed .main-content {
   font-family: 'Rajdhani', sans-serif;
   font-size: 0.95rem;
   font-style: italic;
-  color: var(--text-mid);
+  color: var(--text-body);
   line-height: 1.8;
   max-width: 640px;
   margin: 0 auto 12px;
@@ -1571,7 +1572,7 @@ body.sidebar-collapsed .main-content {
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.65rem;
   font-style: normal;
-  color: var(--text-dim);
+  color: var(--text-mid);
   letter-spacing: 0.1em;
 }
 
@@ -1608,7 +1609,7 @@ html {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent);
-  opacity: 0.6;
+  opacity: 0.8;
   margin-bottom: 6px;
   text-align: center;
 }
@@ -1665,15 +1666,16 @@ html {
   font-family: 'Rajdhani', sans-serif;
   font-size: 1.05rem;
   font-style: italic;
-  color: var(--text-mid);
+  color: var(--text-body);
   line-height: 1.8;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
 .quote-attr {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.62rem;
   letter-spacing: 0.2em;
-  color: var(--text-dim);
+  color: var(--text-mid);
   margin-top: 12px;
   text-transform: uppercase;
 }
@@ -1896,7 +1898,7 @@ html {
   color: var(--accent);
   text-decoration: none;
   letter-spacing: 1px;
-  opacity: 0.6;
+  opacity: 0.8;
   transition: opacity 0.2s;
 }
 
@@ -4426,7 +4428,7 @@ body.crt-active {
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent);
-  opacity: 0.7;
+  opacity: 0.85;
   margin-bottom: 6px;
   margin-top: 48px;
   text-align: center;
@@ -4454,7 +4456,7 @@ body.crt-active {
   font-family: 'Rajdhani', sans-serif;
   font-size: 0.92rem;
   line-height: 1.85;
-  color: var(--text-mid);
+  color: var(--text-body);
   margin-bottom: 20px;
   max-width: 800px;
 }
