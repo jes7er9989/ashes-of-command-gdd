@@ -2099,14 +2099,21 @@ html {
   padding: 10px 16px;
   cursor: pointer;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 4px;
   transition: background var(--transition);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 
 .search-result-item:hover,
 .search-result-item.selected {
   background: var(--bg-hover);
+}
+
+.search-result-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .search-result-item .result-type {
@@ -2118,19 +2125,61 @@ html {
   padding: 2px 6px;
   border-radius: 2px;
   text-transform: uppercase;
-  min-width: 48px;
+  min-width: 52px;
   text-align: center;
+  flex-shrink: 0;
 }
+
+.result-type-chapter { color: var(--accent) !important; }
+.result-type-faction { color: inherit; }
+.result-type-unit { color: #ffaa22 !important; }
+.result-type-equip { color: #44ff66 !important; }
 
 .search-result-item .result-text {
   font-size: 0.85rem;
   color: var(--text-body);
 }
 
-.search-result-item .result-text mark {
+.search-result-item mark {
   background: none;
   color: var(--accent);
   font-weight: 600;
+}
+
+.search-snippet {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+  padding-left: 62px;
+  max-height: 2.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-synonym-badge {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.05);
+  padding: 1px 6px;
+  border-radius: 8px;
+  font-style: italic;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.search-part {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  padding-left: 62px;
+  opacity: 0.6;
+}
+
+.search-hint {
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-style: italic;
 }
 
 .search-empty {

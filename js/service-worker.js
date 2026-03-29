@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v52';
+const CACHE_NAME = 'aoc-gdd-v53';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -31,6 +31,8 @@ const PRECACHE_URLS = [
   '/js/audio-engine.js',
   '/data/nav/nav-data.json',
   '/data/factions/factions.json',
+  '/data/search-index.json',
+  '/data/search-synonyms.json',
 ];
 
 // Files that should always try network first (CSS, JS, HTML)
