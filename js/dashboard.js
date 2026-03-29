@@ -272,7 +272,7 @@ const Dashboard = {
    * @returns {string} HTML string
    */
   buildGalaxyOverview(factions) {
-    const size = 500;
+    const size = 900;
     const cx = size / 2;
     const cy = size / 2;
 
