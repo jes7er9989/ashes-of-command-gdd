@@ -38,6 +38,8 @@
 
 const SOLAR_RENDERER_WIDTH = 800;
 const SOLAR_RENDERER_HEIGHT = 500;
+const SOLAR_RENDERER_MOBILE_HEIGHT = 300;
+const SOLAR_RESIZE_DEBOUNCE_MS = 250;
 const SOLAR_STARFIELD_COUNT = 500;
 const SOLAR_STARFIELD_RADIUS = 120;
 const SOLAR_ASTEROID_COUNT = 200;
@@ -88,6 +90,10 @@ class SolarSystemRenderer {
     this.hoveredPlanet = null;
     this.raycaster = new THREE.Raycaster();
     this.mouse = new THREE.Vector2();
+    this._resizeTimer = null;
+    this._isMobile = window.innerWidth < 768;
+    this._prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._lastFrameTime = 0;
 
     // Camera spherical coordinates
     this.cameraTheta = SOLAR_CAMERA_INITIAL_THETA;
@@ -105,6 +111,10 @@ class SolarSystemRenderer {
     this._setupRaycaster();
     this._initMouseControls();
     this._updateCameraPosition();
+
+    // Bind resize handler
+    this._boundResize = this._onResize.bind(this);
+    window.addEventListener('resize', this._boundResize);
   }
 
   // ───────────────────────────────────────────
@@ -118,21 +128,72 @@ class SolarSystemRenderer {
   _initScene() {
     this.scene = new THREE.Scene();
 
+    var w = this._getRendererWidth();
+    var h = this._getRendererHeight();
+
     this.camera = new THREE.PerspectiveCamera(
       50,                                                   // FOV
-      SOLAR_RENDERER_WIDTH / SOLAR_RENDERER_HEIGHT,         // aspect
+      w / h,                                                // aspect
       0.1,                                                  // near
       500                                                   // far
     );
 
+    var maxDpr = this._isMobile ? 1.5 : 2;
     this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    this.renderer.setSize(SOLAR_RENDERER_WIDTH, SOLAR_RENDERER_HEIGHT);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.setSize(w, h);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDpr));
+
+    // Responsive canvas styling
+    this.renderer.domElement.style.width = '100%';
+    this.renderer.domElement.style.maxWidth = SOLAR_RENDERER_WIDTH + 'px';
+    this.renderer.domElement.style.height = 'auto';
+
     this.container.appendChild(this.renderer.domElement);
 
     // Subtle ambient so the dark side of planets isn't pure black
     const ambient = new THREE.AmbientLight(0x222233, 0.4);
     this.scene.add(ambient);
+  }
+
+  /**
+   * Returns the appropriate renderer width based on container/viewport.
+   * @returns {number}
+   */
+  _getRendererWidth() {
+    var containerW = this.container ? this.container.clientWidth : window.innerWidth;
+    return Math.min(containerW, SOLAR_RENDERER_WIDTH);
+  }
+
+  /**
+   * Returns the appropriate renderer height based on mobile breakpoint.
+   * @returns {number}
+   */
+  _getRendererHeight() {
+    if (this._isMobile) return SOLAR_RENDERER_MOBILE_HEIGHT;
+    var w = this._getRendererWidth();
+    return Math.round(w * (SOLAR_RENDERER_HEIGHT / SOLAR_RENDERER_WIDTH));
+  }
+
+  /**
+   * Debounced resize handler — updates renderer size and camera aspect.
+   */
+  _onResize() {
+    clearTimeout(this._resizeTimer);
+    this._resizeTimer = setTimeout(function() {
+      this._isMobile = window.innerWidth < 768;
+      var w = this._getRendererWidth();
+      var h = this._getRendererHeight();
+      var maxDpr = this._isMobile ? 1.5 : 2;
+
+      this.renderer.setSize(w, h);
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxDpr));
+      this.renderer.domElement.style.width = '100%';
+      this.renderer.domElement.style.maxWidth = SOLAR_RENDERER_WIDTH + 'px';
+      this.renderer.domElement.style.height = 'auto';
+
+      this.camera.aspect = w / h;
+      this.camera.updateProjectionMatrix();
+    }.bind(this), SOLAR_RESIZE_DEBOUNCE_MS);
   }
 
   // ───────────────────────────────────────────
@@ -572,6 +633,13 @@ class SolarSystemRenderer {
   _animate() {
     this.animationId = requestAnimationFrame(this._animate.bind(this));
 
+    /* Reduced motion: throttle to ~15fps */
+    if (this._prefersReducedMotion) {
+      var now = performance.now();
+      if (now - this._lastFrameTime < 66) return;
+      this._lastFrameTime = now;
+    }
+
     var elapsed = this.clock.getElapsedTime();
     var delta = this.clock.getDelta();
 
@@ -668,6 +736,10 @@ class SolarSystemRenderer {
       cancelAnimationFrame(this.animationId);
       this.animationId = null;
     }
+
+    // Remove resize listener
+    clearTimeout(this._resizeTimer);
+    window.removeEventListener('resize', this._boundResize);
 
     // Remove event listeners from canvas
     var canvas = this.renderer.domElement;

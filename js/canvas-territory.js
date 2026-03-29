@@ -55,6 +55,7 @@ const RIPPLE_FREQUENCY = 0.04;      /* water ripple spatial freq */
 const RIPPLE_SPEED = 1.2;           /* water ripple temporal speed */
 const TOOLTIP_PAD = 10;             /* px padding inside tooltip box */
 const FLASH_DURATION = 400;         /* ms for click-flash animation */
+const TERRITORY_RESIZE_DEBOUNCE = 250; /* ms debounce for resize events */
 
 /* Status fill colors: [r, g, b, baseAlpha] */
 const STATUS_FILLS = {
@@ -248,12 +249,19 @@ function TerritoryRenderer(container) {
   /* ── Pre-generate terrain noise textures (offscreen canvases) ── */
   this.noiseCanvases = this._buildNoiseTextures();
 
+  /* ── Reduced motion detection ── */
+  this._prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  this._lastFrameTime = 0;
+
   /* ── Bind event handlers ── */
   this._boundMouseMove = this._onMouseMove.bind(this);
   this._boundClick = this._onClick.bind(this);
   this._boundTick = this._tick.bind(this);
+  this._resizeTimer = null;
+  this._boundResize = this._onResize.bind(this);
   this.canvas.addEventListener('mousemove', this._boundMouseMove);
   this.canvas.addEventListener('click', this._boundClick);
+  window.addEventListener('resize', this._boundResize);
 }
 
 
@@ -300,6 +308,26 @@ TerritoryRenderer.prototype._buildNoiseTextures = function() {
 
 
 // ───────────────────────────────────────────
+// SECTION: Resize Handler
+// ───────────────────────────────────────────
+
+/* Debounced resize — the canvas internal resolution stays fixed (1200×700)
+ * but CSS width:100% handles visual scaling. This just triggers a redraw
+ * so the canvas doesn't show stale content during orientation changes. */
+TerritoryRenderer.prototype._onResize = function() {
+  var self = this;
+  clearTimeout(this._resizeTimer);
+  this._resizeTimer = setTimeout(function() {
+    /* Canvas resolution is fixed; CSS handles scaling.
+     * Force one redraw on next tick to update any layout-dependent rendering. */
+    if (self.running && self.ctx) {
+      self._tick(performance.now());
+    }
+  }, TERRITORY_RESIZE_DEBOUNCE);
+};
+
+
+// ───────────────────────────────────────────
 // SECTION: Start / Stop
 // ───────────────────────────────────────────
 
@@ -328,6 +356,15 @@ TerritoryRenderer.prototype.stop = function() {
  * Draws all layers in back-to-front order. */
 TerritoryRenderer.prototype._tick = function(timestamp) {
   if (!this.running) return;  /* stopped — exit cleanly */
+
+  /* Reduced motion: throttle to ~15fps */
+  if (this._prefersReducedMotion) {
+    if (timestamp - this._lastFrameTime < 66) {
+      this.animId = requestAnimationFrame(this._boundTick);
+      return;
+    }
+    this._lastFrameTime = timestamp;
+  }
 
   var ctx = this.ctx;
   var time = timestamp / 1000; /* seconds since page load */
@@ -904,6 +941,8 @@ TerritoryRenderer.prototype._onClick = function(e) {
 /* Full teardown — stop animation, remove listeners, detach canvas */
 TerritoryRenderer.prototype.destroy = function() {
   this.stop();
+  clearTimeout(this._resizeTimer);
+  window.removeEventListener('resize', this._boundResize);
   this.canvas.removeEventListener('mousemove', this._boundMouseMove);
   this.canvas.removeEventListener('click', this._boundClick);
   if (this.canvas.parentNode) {

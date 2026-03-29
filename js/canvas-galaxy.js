@@ -53,10 +53,13 @@ class GalaxyRenderer {
   /* ── Constants ──────────────────────────────────────────── */
 
   static SIZE = 900;                           /* Canvas width & height in px             */
+  static SIZE_MOBILE = 400;                    /* Canvas size on mobile (<768px)          */
   static CENTER = 450;                         /* Center coordinate (SIZE / 2)            */
   static NUM_ARMS = 4;                         /* Spiral arm count                        */
   static STARS_PER_ARM = 1000;                 /* Stars generated per arm                 */
+  static STARS_PER_ARM_MOBILE = 375;           /* Reduced stars per arm on mobile         */
   static HALO_STARS = 1000;                    /* Background halo stars                   */
+  static HALO_STARS_MOBILE = 250;              /* Reduced halo stars on mobile            */
   static ROTATION_PERIOD = 90;                 /* Seconds per full revolution             */
   static NEBULA_COUNT = 10;                    /* Number of nebula patches                */
   static COMET_COUNT = 5;                      /* Number of active comets                 */
@@ -64,6 +67,7 @@ class GalaxyRenderer {
   static DUST_LANE_COUNT = 8;                  /* Number of dark dust arcs                */
   static CORE_RADIUS = 80;                     /* Galactic core glow radius in px         */
   static HOMEWORLD_SCALE = 900 / 600;          /* Scale factor: 600-space → 900-space     */
+  static RESIZE_DEBOUNCE_MS = 250;             /* Debounce delay for window resize        */
   static CLICK_RADIUS = 20;                    /* Hit-test radius for homeworld clicks    */
 
   /* Star color palette — [r, g, b] */
@@ -120,6 +124,10 @@ class GalaxyRenderer {
     this.lastTimestamp = 0;
     this.elapsedTime = 0;
     this.hoveredHomeworld = null;
+    this._resizeTimer = null;
+    this._isMobile = window.innerWidth < 768;
+    this._prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._lastFrameTime = 0;
 
     /* Seed counter for deterministic pseudo-random generation */
     this._seed = 42;
@@ -161,8 +169,10 @@ class GalaxyRenderer {
     /* ── Bind event listeners ── */
     this._boundMouseMove = this._handleMouseMove.bind(this);
     this._boundClick = this._handleClick.bind(this);
+    this._boundResize = this._handleResize.bind(this);
     this.canvas.addEventListener('mousemove', this._boundMouseMove);
     this.canvas.addEventListener('click', this._boundClick);
+    window.addEventListener('resize', this._boundResize);
   }
 
   /* ── Canvas Setup ───────────────────────────────────────── */
@@ -172,12 +182,16 @@ class GalaxyRenderer {
    * Uses a 2x backing store for retina sharpness if devicePixelRatio > 1.
    */
   _initCanvas() {
-    const S = GalaxyRenderer.SIZE;
+    const S = this._isMobile ? GalaxyRenderer.SIZE_MOBILE : GalaxyRenderer.SIZE;
+    this._currentSize = S;
+    this._currentCenter = S / 2;
     this.canvas = document.createElement('canvas');
     this.canvas.width = S;
     this.canvas.height = S;
     this.canvas.style.width = S + 'px';
     this.canvas.style.height = S + 'px';
+    this.canvas.style.maxWidth = '100%';
+    this.canvas.style.height = 'auto';
     this.canvas.style.display = 'block';
     this.canvas.style.margin = '0 auto';
     this.canvas.style.borderRadius = '50%';
@@ -223,11 +237,13 @@ class GalaxyRenderer {
    * Stars are stored in canvas-center-relative coordinates (before rotation).
    */
   _generateStars() {
-    const CX = GalaxyRenderer.CENTER;
-    const CY = GalaxyRenderer.CENTER;
+    const CX = this._currentCenter;
+    const CY = this._currentCenter;
+    const S = this._currentSize;
     const ARMS = GalaxyRenderer.NUM_ARMS;
-    const PER_ARM = GalaxyRenderer.STARS_PER_ARM;
+    const PER_ARM = this._isMobile ? GalaxyRenderer.STARS_PER_ARM_MOBILE : GalaxyRenderer.STARS_PER_ARM;
     const COLORS = GalaxyRenderer.STAR_COLORS;
+    const scale = S / GalaxyRenderer.SIZE;
 
     /* ── Spiral arm stars ── */
     for (let arm = 0; arm < ARMS; arm++) {
@@ -238,10 +254,10 @@ class GalaxyRenderer {
 
         /* Logarithmic spiral: r = a * e^(b*theta) */
         const theta = baseAngle + t * Math.PI * 2.8;
-        const radius = 12 + t * 340;
+        const radius = (12 + t * 340) * scale;
 
         /* Gaussian scatter for arm width — wider at outer edges */
-        const armWidth = 6 + t * 45;
+        const armWidth = (6 + t * 45) * scale;
         const scatterX = this._gaussRandom() * armWidth;
         const scatterY = this._gaussRandom() * armWidth;
 
@@ -272,11 +288,11 @@ class GalaxyRenderer {
     }
 
     /* ── Galactic halo — scattered background stars ── */
-    const HALO = GalaxyRenderer.HALO_STARS;
+    const HALO = this._isMobile ? GalaxyRenderer.HALO_STARS_MOBILE : GalaxyRenderer.HALO_STARS;
     for (let i = 0; i < HALO; i++) {
       /* Uniform distribution across the full canvas */
-      const x = this._seededRandom() * GalaxyRenderer.SIZE;
-      const y = this._seededRandom() * GalaxyRenderer.SIZE;
+      const x = this._seededRandom() * S;
+      const y = this._seededRandom() * S;
 
       /* Fainter and smaller than arm stars */
       const brightness = 0.08 + this._seededRandom() * 0.25;
@@ -300,8 +316,9 @@ class GalaxyRenderer {
    * Each nebula: { x, y, radiusX, radiusY, rotation, color, opacity }
    */
   _generateNebulae() {
-    const CX = GalaxyRenderer.CENTER;
-    const CY = GalaxyRenderer.CENTER;
+    const CX = this._currentCenter;
+    const CY = this._currentCenter;
+    const scale = this._currentSize / GalaxyRenderer.SIZE;
     const COLORS = GalaxyRenderer.NEBULA_COLORS;
     const COUNT = GalaxyRenderer.NEBULA_COUNT;
 
@@ -311,13 +328,13 @@ class GalaxyRenderer {
       const baseAngle = (arm * Math.PI * 2) / GalaxyRenderer.NUM_ARMS;
       const t = 0.2 + (i / COUNT) * 0.6;
       const theta = baseAngle + t * Math.PI * 2.8;
-      const radius = 12 + t * 340;
+      const radius = (12 + t * 340) * scale;
 
-      const x = CX + Math.cos(theta) * radius + (this._seededRandom() - 0.5) * 60;
-      const y = CY + Math.sin(theta) * radius + (this._seededRandom() - 0.5) * 60;
+      const x = CX + Math.cos(theta) * radius + (this._seededRandom() - 0.5) * 60 * scale;
+      const y = CY + Math.sin(theta) * radius + (this._seededRandom() - 0.5) * 60 * scale;
 
-      const radiusX = 60 + this._seededRandom() * 100;
-      const radiusY = 30 + this._seededRandom() * 50;
+      const radiusX = (60 + this._seededRandom() * 100) * scale;
+      const radiusY = (30 + this._seededRandom() * 50) * scale;
       const rotation = this._seededRandom() * Math.PI * 2;
       const color = COLORS[i % COLORS.length];
       const opacity = 0.04 + this._seededRandom() * 0.06;
@@ -331,7 +348,7 @@ class GalaxyRenderer {
    * Each comet: { x, y, vx, vy, tailLength, brightness, hue }
    */
   _generateComets() {
-    const S = GalaxyRenderer.SIZE;
+    const S = this._currentSize;
     const COUNT = GalaxyRenderer.COMET_COUNT;
 
     for (let i = 0; i < COUNT; i++) {
@@ -344,8 +361,8 @@ class GalaxyRenderer {
       else { x = -20; y = this._seededRandom() * S; }                     /* left   */
 
       /* Velocity aimed roughly toward center with some spread */
-      const toCenterX = GalaxyRenderer.CENTER - x;
-      const toCenterY = GalaxyRenderer.CENTER - y;
+      const toCenterX = this._currentCenter - x;
+      const toCenterY = this._currentCenter - y;
       const dist = Math.sqrt(toCenterX * toCenterX + toCenterY * toCenterY);
       const speed = 40 + this._seededRandom() * 80;
       const spreadAngle = (this._seededRandom() - 0.5) * 1.2;
@@ -367,8 +384,9 @@ class GalaxyRenderer {
    * Each: { angle, orbitRadius, orbitCenterX, orbitCenterY, speed, size, r, g, b }
    */
   _generateRoguePlanets() {
-    const CX = GalaxyRenderer.CENTER;
-    const CY = GalaxyRenderer.CENTER;
+    const CX = this._currentCenter;
+    const CY = this._currentCenter;
+    const scale = this._currentSize / GalaxyRenderer.SIZE;
     const COUNT = GalaxyRenderer.ROGUE_COUNT;
 
     /* Muted, dark colors for rogue planets */
@@ -383,10 +401,10 @@ class GalaxyRenderer {
 
     for (let i = 0; i < COUNT; i++) {
       const angle = this._seededRandom() * Math.PI * 2;
-      const orbitRadius = 80 + this._seededRandom() * 250;
+      const orbitRadius = (80 + this._seededRandom() * 250) * scale;
       /* Offset orbit centers from galaxy center for elliptical paths */
-      const orbitCenterX = CX + (this._seededRandom() - 0.5) * 100;
-      const orbitCenterY = CY + (this._seededRandom() - 0.5) * 100;
+      const orbitCenterX = CX + (this._seededRandom() - 0.5) * 100 * scale;
+      const orbitCenterY = CY + (this._seededRandom() - 0.5) * 100 * scale;
       /* Speed: one orbit every 30–90 seconds */
       const speed = (Math.PI * 2) / (30 + this._seededRandom() * 60);
       const size = 3 + this._seededRandom() * 2;
@@ -405,8 +423,9 @@ class GalaxyRenderer {
    * Each: { x, y, radiusX, radiusY, rotation, opacity }
    */
   _generateDustLanes() {
-    const CX = GalaxyRenderer.CENTER;
-    const CY = GalaxyRenderer.CENTER;
+    const CX = this._currentCenter;
+    const CY = this._currentCenter;
+    const scale = this._currentSize / GalaxyRenderer.SIZE;
     const COUNT = GalaxyRenderer.DUST_LANE_COUNT;
 
     for (let i = 0; i < COUNT; i++) {
@@ -414,12 +433,12 @@ class GalaxyRenderer {
       const armSpacing = (Math.PI * 2) / GalaxyRenderer.NUM_ARMS;
       const baseAngle = (i / COUNT) * Math.PI * 2 + armSpacing * 0.5;
       const t = 0.25 + (i / COUNT) * 0.5;
-      const radius = 50 + t * 250;
+      const radius = (50 + t * 250) * scale;
 
       const x = CX + Math.cos(baseAngle) * radius;
       const y = CY + Math.sin(baseAngle) * radius;
-      const radiusX = 80 + this._seededRandom() * 80;
-      const radiusY = 15 + this._seededRandom() * 20;
+      const radiusX = (80 + this._seededRandom() * 80) * scale;
+      const radiusY = (15 + this._seededRandom() * 20) * scale;
       const rotation = baseAngle + (this._seededRandom() - 0.5) * 0.5;
       const opacity = 0.15 + this._seededRandom() * 0.15;
 
@@ -433,7 +452,7 @@ class GalaxyRenderer {
    * @param {Array|null} factions - Faction objects, or null for defaults
    */
   _loadHomeworlds(factions) {
-    const SCALE = GalaxyRenderer.HOMEWORLD_SCALE;
+    const SCALE = this._currentSize / 600;
     const defaults = GalaxyRenderer.FACTION_DEFAULTS;
     const keys = Object.keys(this.homeworldPositions);
 
@@ -492,6 +511,15 @@ class GalaxyRenderer {
   _tick(timestamp) {
     if (!this.running) return;  /* Stopped between frames — bail */
 
+    /* Reduced motion: throttle to ~15fps */
+    if (this._prefersReducedMotion) {
+      if (timestamp - this._lastFrameTime < 66) {
+        this.rafId = requestAnimationFrame(this._tick.bind(this));
+        return;
+      }
+      this._lastFrameTime = timestamp;
+    }
+
     const dt = Math.min((timestamp - this.lastTimestamp) / 1000, 0.1);
     this.lastTimestamp = timestamp;
     this.elapsedTime += dt;
@@ -520,7 +548,7 @@ class GalaxyRenderer {
    */
   _clear() {
     const ctx = this.ctx;
-    const S = GalaxyRenderer.SIZE;
+    const S = this._currentSize;
     ctx.fillStyle = '#05070d';
     ctx.fillRect(0, 0, S, S);
   }
@@ -532,8 +560,8 @@ class GalaxyRenderer {
    */
   _drawDustLanes(rotation) {
     const ctx = this.ctx;
-    const CX = GalaxyRenderer.CENTER;
-    const CY = GalaxyRenderer.CENTER;
+    const CX = this._currentCenter;
+    const CY = this._currentCenter;
 
     for (const d of this.dustLanes) {
       /* Rotate dust lane center around galaxy center */
@@ -613,7 +641,7 @@ class GalaxyRenderer {
       const [rx, ry] = this._rotatePoint(s.x, s.y, rotation);
 
       /* Skip stars that rotated off-canvas for performance */
-      if (rx < -5 || rx > GalaxyRenderer.SIZE + 5 || ry < -5 || ry > GalaxyRenderer.SIZE + 5) continue;
+      if (rx < -5 || rx > this._currentSize + 5 || ry < -5 || ry > this._currentSize + 5) continue;
 
       const twinkle = 0.7 + 0.3 * Math.sin(time * s.twinkleSpeed + s.twinklePhase);
       const alpha = Math.min(1, s.brightness * twinkle);
@@ -632,9 +660,9 @@ class GalaxyRenderer {
    */
   _drawCore(time) {
     const ctx = this.ctx;
-    const CX = GalaxyRenderer.CENTER;
-    const CY = GalaxyRenderer.CENTER;
-    const R = GalaxyRenderer.CORE_RADIUS;
+    const CX = this._currentCenter;
+    const CY = this._currentCenter;
+    const R = GalaxyRenderer.CORE_RADIUS * (this._currentSize / GalaxyRenderer.SIZE);
 
     /* Pulse: subtle breathing between 0.85 and 1.0 */
     const pulse = 0.92 + 0.08 * Math.sin(time * 0.8);
@@ -715,7 +743,7 @@ class GalaxyRenderer {
    */
   _drawComets(dt) {
     const ctx = this.ctx;
-    const S = GalaxyRenderer.SIZE;
+    const S = this._currentSize;
     const MARGIN = 80;
 
     for (const c of this.comets) {
@@ -733,7 +761,7 @@ class GalaxyRenderer {
         else { c.x = -20; c.y = Math.random() * S; }
 
         /* Aim roughly toward center */
-        const toCenterAngle = Math.atan2(GalaxyRenderer.CENTER - c.y, GalaxyRenderer.CENTER - c.x);
+        const toCenterAngle = Math.atan2(this._currentCenter - c.y, this._currentCenter - c.x);
         const spread = (Math.random() - 0.5) * 1.2;
         const speed = 40 + Math.random() * 80;
         c.vx = Math.cos(toCenterAngle + spread) * speed;
@@ -915,8 +943,8 @@ class GalaxyRenderer {
    */
   _canvasCoords(e) {
     const rect = this.canvas.getBoundingClientRect();
-    const scaleX = GalaxyRenderer.SIZE / rect.width;
-    const scaleY = GalaxyRenderer.SIZE / rect.height;
+    const scaleX = this._currentSize / rect.width;
+    const scaleY = this._currentSize / rect.height;
     return {
       cx: (e.clientX - rect.left) * scaleX,
       cy: (e.clientY - rect.top) * scaleY,
@@ -982,8 +1010,8 @@ class GalaxyRenderer {
    * @returns {[number, number]} Rotated [x, y]
    */
   _rotatePoint(x, y, angle) {
-    const CX = GalaxyRenderer.CENTER;
-    const CY = GalaxyRenderer.CENTER;
+    const CX = this._currentCenter;
+    const CY = this._currentCenter;
     const dx = x - CX;
     const dy = y - CY;
     const cos = Math.cos(angle);
@@ -995,11 +1023,63 @@ class GalaxyRenderer {
   }
 
   /**
+   * Debounced resize handler. Rebuilds the galaxy at the appropriate
+   * size when crossing the mobile/desktop breakpoint.
+   */
+  _handleResize() {
+    clearTimeout(this._resizeTimer);
+    this._resizeTimer = setTimeout(() => {
+      const wasMobile = this._isMobile;
+      this._isMobile = window.innerWidth < 768;
+
+      /* Only rebuild if we crossed the breakpoint */
+      if (wasMobile !== this._isMobile) {
+        const wasRunning = this.running;
+        this.stop();
+
+        /* Remove old canvas */
+        if (this.canvas && this.canvas.parentNode) {
+          this.canvas.removeEventListener('mousemove', this._boundMouseMove);
+          this.canvas.removeEventListener('click', this._boundClick);
+          this.canvas.parentNode.removeChild(this.canvas);
+        }
+
+        /* Reset seed and data arrays for deterministic rebuild */
+        this._seed = 42;
+        this.armStars = [];
+        this.haloStars = [];
+        this.nebulae = [];
+        this.comets = [];
+        this.roguePlanets = [];
+        this.dustLanes = [];
+        this.homeworlds = [];
+
+        /* Rebuild canvas and all visual data */
+        this._initCanvas();
+        this._generateStars();
+        this._generateNebulae();
+        this._generateComets();
+        this._generateRoguePlanets();
+        this._generateDustLanes();
+        this._loadHomeworlds(null);
+
+        /* Re-bind canvas events */
+        this.canvas.addEventListener('mousemove', this._boundMouseMove);
+        this.canvas.addEventListener('click', this._boundClick);
+
+        if (wasRunning) this.start();
+      }
+    }, GalaxyRenderer.RESIZE_DEBOUNCE_MS);
+  }
+
+  /**
    * Tear down the renderer — stop animation, remove canvas, unbind events.
    * Call this before discarding the renderer to prevent memory leaks.
    */
   destroy() {
     this.stop();
+    clearTimeout(this._resizeTimer);
+    window.removeEventListener('resize', this._boundResize);
     if (this.canvas) {
       this.canvas.removeEventListener('mousemove', this._boundMouseMove);
       this.canvas.removeEventListener('click', this._boundClick);

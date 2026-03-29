@@ -38,6 +38,8 @@ const Nav = {
     this.bindToggle();
     this.bindHamburger();
     this.bindRouting();
+    this.bindTouchGestures();
+    this.bindBackToTop();
 
     // Navigate to current hash or default to dashboard
     this.onHashChange();
@@ -130,8 +132,8 @@ const Nav = {
   },
 
   /**
-   * Mobile hamburger menu: toggles sidebar visibility and the
-   * dark overlay behind it. Also auto-closes on chapter click.
+   * Mobile hamburger menu: toggles sidebar visibility, dark overlay,
+   * body scroll lock. Auto-closes on chapter click and hashchange.
    */
   bindHamburger() {
     const btn = document.getElementById('hamburger');
@@ -139,21 +141,50 @@ const Nav = {
     const overlay = document.getElementById('mobile-overlay');
     if (!btn || !sidebar) return;
 
+    this._savedScrollY = 0;
+
+    this._openSidebar = () => {
+      if (sidebar.classList.contains('mobile-open')) return;
+      this._savedScrollY = window.scrollY;
+      btn.classList.add('open');
+      sidebar.classList.add('mobile-open');
+      if (overlay) overlay.classList.add('active');
+      document.body.classList.add('sidebar-open');
+      document.body.style.top = `-${this._savedScrollY}px`;
+    };
+
+    this._closeSidebar = () => {
+      if (!sidebar.classList.contains('mobile-open')) return;
+      btn.classList.remove('open');
+      sidebar.classList.remove('mobile-open');
+      if (overlay) overlay.classList.remove('active');
+      document.body.classList.remove('sidebar-open');
+      document.body.style.top = '';
+      window.scrollTo(0, this._savedScrollY);
+    };
+
     const toggle = () => {
-      btn.classList.toggle('open');
-      sidebar.classList.toggle('mobile-open');
-      overlay.classList.toggle('active');
+      if (sidebar.classList.contains('mobile-open')) {
+        this._closeSidebar();
+      } else {
+        this._openSidebar();
+      }
     };
 
     btn.addEventListener('click', toggle);
-    if (overlay) overlay.addEventListener('click', toggle);
+    if (overlay) overlay.addEventListener('click', () => this._closeSidebar());
 
     // Auto-close sidebar when a chapter link is tapped on mobile
     this.container.addEventListener('click', (e) => {
       if (e.target.closest('.nav-chapter') && window.innerWidth <= 768) {
-        btn.classList.remove('open');
-        sidebar.classList.remove('mobile-open');
-        overlay.classList.remove('active');
+        this._closeSidebar();
+      }
+    });
+
+    // Close sidebar on hashchange (e.g. back/forward navigation)
+    window.addEventListener('hashchange', () => {
+      if (window.innerWidth <= 768) {
+        this._closeSidebar();
       }
     });
   },
@@ -241,5 +272,89 @@ const Nav = {
       }
     }
     return null;
+  },
+
+  /* ── Touch Gestures ────────────────────────────────────── */
+
+  /**
+   * Swipe-right from left edge opens sidebar; swipe-left on
+   * sidebar closes it. Only active at <=768px.
+   */
+  bindTouchGestures() {
+    let startX = 0;
+    let startY = 0;
+    let tracking = false;
+    const EDGE_ZONE = 30;
+    const THRESHOLD = 50;
+    const sidebar = document.querySelector('.sidebar');
+    if (!sidebar) return;
+
+    document.addEventListener('touchstart', (e) => {
+      if (window.innerWidth > 768) return;
+      const touch = e.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+
+      // Track if starting from left edge OR on the open sidebar
+      tracking = startX <= EDGE_ZONE || sidebar.classList.contains('mobile-open');
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+      // Prevent scrolling while sidebar is open
+      if (sidebar.classList.contains('mobile-open') &&
+          !sidebar.contains(e.target)) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    document.addEventListener('touchend', (e) => {
+      if (!tracking || window.innerWidth > 768) return;
+      tracking = false;
+
+      const touch = e.changedTouches[0];
+      const dx = touch.clientX - startX;
+      const dy = touch.clientY - startY;
+
+      // Ignore if vertical swipe is dominant
+      if (Math.abs(dy) > Math.abs(dx)) return;
+
+      if (dx > THRESHOLD && !sidebar.classList.contains('mobile-open') && startX <= EDGE_ZONE) {
+        // Swipe right from left edge → open
+        this._openSidebar();
+      } else if (dx < -THRESHOLD && sidebar.classList.contains('mobile-open')) {
+        // Swipe left → close
+        this._closeSidebar();
+      }
+    }, { passive: true });
+  },
+
+  /* ── Back to Top Button ────────────────────────────────── */
+
+  /**
+   * Show/hide the back-to-top button based on scroll position.
+   * Smooth-scrolls to top on tap. Active on all viewports.
+   */
+  bindBackToTop() {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+
+    const main = document.getElementById('main-content');
+    const scrollTarget = main || window;
+    const getScrollTop = () => main ? main.scrollTop : window.scrollY;
+
+    const update = () => {
+      btn.classList.toggle('visible', getScrollTop() > 300);
+    };
+
+    (main || window).addEventListener('scroll', update, { passive: true });
+    update();
+
+    btn.addEventListener('click', () => {
+      if (main) {
+        main.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
   }
 };

@@ -181,7 +181,7 @@ a:hover {
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  z-index: 100;
+  z-index: 1000;
   transition: transform 0.3s ease;
 }
 
@@ -2550,7 +2550,7 @@ html {
   border: 1px solid var(--border);
   border-radius: 4px;
   cursor: pointer;
-  z-index: 200;
+  z-index: 1001;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -2584,7 +2584,7 @@ html {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.6);
-  z-index: 99;
+  z-index: 999;
 }
 
 .mobile-overlay.active {
@@ -4006,13 +4006,32 @@ body.crt-active {
     min-width: 180px;
   }
 
-  /* Back to top: 44px touch target */
+  /* Audio sliders: wider touch targets on mobile */
+  .audio-slider-row input[type="range"] {
+    height: 8px;
+  }
+
+  .audio-slider-row input[type="range"]::-webkit-slider-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  .audio-slider-row input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Back to top: 48px circle with accent border */
   .back-to-top {
-    width: 44px;
-    height: 44px;
-    bottom: 16px;
-    right: 16px;
-    font-size: 1rem;
+    width: 48px;
+    height: 48px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1.1rem;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: rgba(7, 8, 12, 0.85);
+    z-index: 999;
   }
 
   /* Back to dashboard: full-width on mobile */
@@ -4053,6 +4072,19 @@ body.crt-active {
 
   /* Faction cards: single column (already done), ensure touch target */
   .faction-card {
+    padding: 16px;
+    min-height: 48px;
+  }
+
+  /* System cards: ensure touch target */
+  .system-card {
+    padding: 16px;
+    min-height: 48px;
+  }
+
+  /* Phase cards: ensure touch target */
+  .phase-block {
+    min-height: 48px;
     padding: 16px;
   }
 
@@ -4801,5 +4833,350 @@ body[class*="faction-"] .proto-badge {
 
   #content-area .divider {
     margin: 32px 0;
+  }
+}
+
+/* ── Body scroll lock when mobile sidebar is open ── */
+body.sidebar-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   19. MOBILE-FIRST RESPONSIVE OVERHAUL — Part B
+   ═══════════════════════════════════════════════════════════
+   Content layout, tables, canvas, typography, performance.
+   Added: 2026-03-28                                          */
+
+
+/* ── 19a. Scroll & Overscroll Behavior ────────────────────── */
+
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+.main-content {
+  overscroll-behavior: contain;
+}
+
+
+/* ── 19b. Fluid Typography (clamp) ────────────────────────── */
+
+.page-title {
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+}
+
+.page-subtitle {
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+}
+
+.section-heading {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+}
+
+.section-label {
+  font-size: clamp(0.55rem, 1.5vw, 0.65rem);
+}
+
+.system-card,
+.phase-desc,
+.faction-card,
+.stat-block,
+.card {
+  font-size: clamp(0.8rem, 2.2vw, 1rem);
+}
+
+
+/* ── 19c. Image & SVG Overflow Prevention ─────────────────── */
+
+img,
+svg,
+object,
+embed {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ── 19d. Performance — GPU Hints & Containment ───────────── */
+
+.sidebar {
+  will-change: transform;
+}
+
+.faction-grid,
+.systems-grid,
+.stats-grid,
+.phase-loop {
+  contain: layout;
+}
+
+
+/* ── 19e. Safe Area (notch) Support ───────────────────────── */
+
+.hamburger {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+
+.back-to-top {
+  padding-right: env(safe-area-inset-right, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.sidebar {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+
+
+/* ── 19f. Scrollable Container Momentum ───────────────────── */
+
+.phase-loop,
+.page table,
+.body-text table,
+[id^="page-"] table {
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   19g. TABLET BREAKPOINT (max-width: 1024px)
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .faction-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   19h. MOBILE BREAKPOINT (max-width: 768px)
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* ── Card padding & gap reductions ── */
+  .card,
+  .system-card,
+  .stat-block {
+    padding: 12px;
+  }
+
+  .faction-card {
+    padding: 12px;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .faction-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .systems-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .stats-grid {
+    gap: 10px;
+  }
+
+  /* ── Dashboard section padding reduction ── */
+  .dashboard-section {
+    padding: 24px 8px;
+  }
+
+  /* ── Phase cards: single-column stack, hide arrows ── */
+  .phase-loop {
+    flex-direction: column;
+    overflow-x: visible;
+    gap: 10px;
+  }
+
+  .phase-block {
+    min-width: 0;
+    width: 100%;
+    flex: none;
+  }
+
+  .phase-arrow {
+    display: none;
+  }
+
+  /* ── Faction emblem: smaller on mobile ── */
+  .faction-emblem {
+    width: 36px;
+    height: 36px;
+  }
+
+  .faction-emblem svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* ── Quote blocks: tighter on mobile ── */
+  .quote-block {
+    padding: 14px 12px;
+  }
+
+  .quote-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* ── Table horizontal scroll wrappers ── */
+  .page table,
+  .body-text table,
+  [id^="page-"] table,
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+  }
+
+  /* ── Equipment grids: 2 columns on tablet-ish mobile ── */
+  .equipment-grid,
+  .icon-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  /* ── Tech tree grids: stack vertically ── */
+  .tech-tree-grid,
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Unit stat tables: horizontal scroll ── */
+  .unit-stats-table,
+  .stat-comparison {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ── Any grid data table: reduce columns ── */
+  .data-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ── Accordion touch targets ── */
+  .accordion-header,
+  .expandable-header,
+  [data-toggle],
+  details > summary {
+    min-height: 44px;
+    padding: 12px 16px;
+    cursor: pointer;
+  }
+
+  /* ── Canvas galaxy: max-width containment ── */
+  .galaxy-map canvas {
+    max-width: 100%;
+    height: auto !important;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   19i. SMALL PHONE BREAKPOINT (max-width: 480px)
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+
+  /* ── Systems grid: single column ── */
+  .systems-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  /* ── Stats grid: single column ── */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  /* ── Cards: full width, minimal margins ── */
+  .card,
+  .system-card,
+  .stat-block,
+  .phase-block {
+    padding: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
+  .faction-card {
+    padding: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
+  /* ── Equipment grids: single column on tiny screens ── */
+  .equipment-grid,
+  .icon-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Equipment icon grid: flexible columns ── */
+  .equipment-icons,
+  .item-icon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+    gap: 6px;
+  }
+
+  /* ── Dashboard section: minimal padding ── */
+  .dashboard-section {
+    padding: 16px 4px;
+  }
+
+  /* ── Quote block: minimal ── */
+  .quote-block {
+    padding: 10px 8px;
+  }
+
+  .quote-text {
+    font-size: 0.85rem;
+  }
+
+  /* ── Phase block: tighter ── */
+  .phase-block {
+    min-width: 0;
+    padding: 10px;
+  }
+
+  .phase-name {
+    font-size: 1rem;
+  }
+
+  .phase-desc {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   19j. PREFERS-REDUCED-MOTION
+   ═══════════════════════════════════════════════════════════
+   Disable all CSS animations and transitions for users
+   who prefer reduced motion. Canvas renderers handle
+   their own throttling in JS.                                */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }
