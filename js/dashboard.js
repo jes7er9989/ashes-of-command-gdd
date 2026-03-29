@@ -277,21 +277,90 @@ const Dashboard = {
      Removed: commit DEADCODE_CLEANUP
      â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-  /* â”€â”€ Faction Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── Core Loop (Five Phases) ─────────────────────────── */
 
   /**
-   * Build the responsive grid of enhanced faction cards with emblems.
-   * @param {Array} factions - Array of faction objects from factions.json
-   * @param {Object} emblems - Faction key â†’ SVG emblem string map
+   * Build the Five-Phase Core Loop gameplay cards.
+   * Each phase shows name, description, and faction-colored accent.
    * @returns {string} HTML string
    */
+  buildCoreLoop() {
+    return `
+      <section class="dashboard-section">
+        <div class="section-label">Core Loop</div>
+        <div class="section-heading">Five-Phase Gameplay</div>
+        <div class="phase-loop">
+          <div class="phase-block" style="background:linear-gradient(180deg,rgba(0,180,255,0.06),transparent);border-top:2px solid rgba(0,180,255,0.5)">
+            <div class="phase-num" style="color:var(--terran)">PHASE 1</div>
+            <div class="phase-name">MAP</div>
+            <div class="phase-desc">Galaxy overview. Move fleets. Manage economy. Build infrastructure.</div>
+            <span class="phase-arrow">›</span>
+          </div>
+          <div class="phase-block" style="background:linear-gradient(180deg,rgba(0,255,238,0.06),transparent);border-top:2px solid rgba(0,255,238,0.5)">
+            <div class="phase-num" style="color:var(--shards)">PHASE 2</div>
+            <div class="phase-name">ARMADA</div>
+            <div class="phase-desc">Compose armies. Equip units. Select commanders. MVP: 2 Frigates starting fleet.</div>
+            <span class="phase-arrow">›</span>
+          </div>
+          <div class="phase-block" style="background:linear-gradient(180deg,rgba(255,170,34,0.06),transparent);border-top:2px solid rgba(255,170,34,0.5)">
+            <div class="phase-num" style="color:var(--accord)">PHASE 3</div>
+            <div class="phase-name">APPROACH</div>
+            <div class="phase-desc">Choose: War, Diplomacy, or Espionage. Starting CP pool: 3.</div>
+            <span class="phase-arrow">›</span>
+          </div>
+          <div class="phase-block" style="background:linear-gradient(180deg,rgba(255,102,34,0.06),transparent);border-top:2px solid rgba(255,102,34,0.5)">
+            <div class="phase-num" style="color:var(--horde)">PHASE 4</div>
+            <div class="phase-name">SPACE</div>
+            <div class="phase-desc">Fleet formations. Auto-battle with CP abilities. Outcome modifies ground combat.</div>
+            <span class="phase-arrow">›</span>
+          </div>
+          <div class="phase-block" style="background:linear-gradient(180deg,rgba(255,34,102,0.06),transparent);border-top:2px solid rgba(255,34,102,0.5)">
+            <div class="phase-num" style="color:var(--vorax)">PHASE 5</div>
+            <div class="phase-name">GROUND</div>
+            <div class="phase-desc">Territory conquest. Cover system. Deployment. Reserves. 6 default units per side.</div>
+          </div>
+        </div>
+      </section>`;
+  },
 
-  /* â”€â”€ Faction Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  /* ── Rogue-Lite Flow ───────────────────────────────────── */
+
+  /**
+   * Build the rogue-lite loop flow text banner.
+   * @returns {string} HTML string
+   */
+  buildRogueLiteFlow() {
+    return `
+      <section class="dashboard-section">
+        <div class="card" style="padding:16px 24px;text-align:center;margin-bottom:32px;background:rgba(0,180,255,0.06);border:1px solid rgba(0,180,255,0.2);border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,0.3)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;letter-spacing:3px;color:var(--accent);text-shadow:0 0 20px rgba(0,180,255,0.3)">ROGUE-LITE LOOP</span>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1rem;letter-spacing:2px;color:var(--text-hi);margin-top:8px">MAP → ARMADA → APPROACH → SPACE → GROUND → REPEAT</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:2px;color:var(--text-dim);margin-top:6px">VICTORY OR DEATH → NEW SIMULATION RUN</div>
+        </div>
+        <div class="divider"></div>
+      </section>`;
+  },
+
+  /* ── Faction Header ────────────────────────────────────── */
+
+  /**
+   * Build the "THE SEVEN FACTIONS" section header.
+   * @returns {string} HTML string
+   */
+  buildFactionHeader() {
+    return `
+      <section class="dashboard-section">
+        <div class="section-label">The Seven Factions</div>
+        <div class="section-heading">Every Faction Plays Differently</div>
+      </section>`;
+  },
+
+  /* ── Faction Grid ────────────────────────────────────── */
 
   /**
    * Build the responsive grid of enhanced faction cards with emblems.
    * @param {Array} factions - Array of faction objects from factions.json
-   * @param {Object} emblems - Faction key â†’ SVG emblem string map
+   * @param {Object} emblems - Faction key → SVG emblem string map
    * @returns {string} HTML string
    */
   buildFactionGrid(factions, emblems) {
