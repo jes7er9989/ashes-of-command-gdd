@@ -215,15 +215,8 @@ const FactionCursor = (() => {
   let listening = false;
 
   function init() {
-    if (glow) return;
-    glow = document.createElement('div');
-    glow.id = 'faction-cursor-glow';
-    document.body.appendChild(glow);
-
-    if (!listening) {
-      document.addEventListener('mousemove', _onMove);
-      listening = true;
-    }
+    // Cursor glow disabled by Thomas's request (2026-03-29)
+    return;
   }
 
   function destroy() {
