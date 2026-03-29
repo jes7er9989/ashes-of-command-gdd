@@ -280,13 +280,21 @@ const Dashboard = {
     const cx = size / 2;
     const cy = size / 2;
 
-    /* ── Generate spiral arm stars ──
-       4 arms × 80 stars each = 320 stars along logarithmic spirals.
-       Each star gets pseudo-random wobble, varying size and brightness
-       to create an organic, dense galaxy arm appearance.              */
+    /* ── Generate spiral arm stars (DOUBLED density) ──
+       4 arms × 160 stars each = 640 stars along logarithmic spirals.
+       Multi-color: white, blue-white, yellow, orange-red for realism. */
     const armShadows = [];
     const numArms = 4;
-    const starsPerArm = 80;
+    const starsPerArm = 160;
+
+    /* Star color palette: [r, g, b] bases for variety */
+    const starColors = [
+      [220, 235, 255],  /* blue-white */
+      [255, 255, 240],  /* warm white */
+      [255, 240, 200],  /* yellow */
+      [255, 200, 160],  /* orange */
+      [255, 170, 140],  /* orange-red */
+    ];
 
     for (let arm = 0; arm < numArms; arm++) {
       const baseAngle = (arm * Math.PI * 2) / numArms;
@@ -295,36 +303,38 @@ const Dashboard = {
         const angle = baseAngle + t * Math.PI * 2.5;
         const radius = 15 + t * 210;
         /* Pseudo-random wobble for organic arm width */
-        const wobbleX = Math.sin(arm * 50 + i * 7.3) * (4 + t * 14);
-        const wobbleY = Math.cos(arm * 50 + i * 11.1) * (4 + t * 14);
+        const wobbleX = Math.sin(arm * 50 + i * 7.3) * (4 + t * 16);
+        const wobbleY = Math.cos(arm * 50 + i * 11.1) * (4 + t * 16);
         /* Secondary scatter — wider spread along outer arms */
-        const scatterX = Math.sin(arm * 23 + i * 3.7) * (2 + t * 8);
-        const scatterY = Math.cos(arm * 23 + i * 5.3) * (2 + t * 8);
+        const scatterX = Math.sin(arm * 23 + i * 3.7) * (2 + t * 10);
+        const scatterY = Math.cos(arm * 23 + i * 5.3) * (2 + t * 10);
         const x = cx + Math.cos(angle) * radius + wobbleX + scatterX;
         const y = cy + Math.sin(angle) * radius + wobbleY + scatterY;
 
         /* Varying brightness: brighter near core, dimmer at edges */
-        const baseBright = t < 0.3 ? 0.6 : (t < 0.6 ? 0.45 : 0.3);
+        const baseBright = t < 0.3 ? 0.65 : (t < 0.6 ? 0.5 : 0.32);
         const brightness = baseBright + (Math.sin(i * 3.7) * 0.5 + 0.5) * 0.4;
         /* Varying size: larger near core */
-        const starSize = t < 0.25 ? 1.5 : (t < 0.5 ? 1.2 : (t < 0.75 ? 1 : 0.8));
-        /* Blue-white color variation along arms */
-        const r = 180 + Math.floor((Math.sin(arm * 20 + i * 2.1) * 0.5 + 0.5) * 75);
-        const g = 220 + Math.floor((Math.sin(arm * 20 + i * 3.3) * 0.5 + 0.5) * 35);
+        const starSize = t < 0.25 ? 1.6 : (t < 0.5 ? 1.3 : (t < 0.75 ? 1.0 : 0.7));
+        /* Pick star color based on pseudo-random index */
+        const colorIdx = Math.abs(Math.floor(Math.sin(arm * 31 + i * 4.7) * 100)) % starColors.length;
+        const sc = starColors[colorIdx];
+        /* Slight per-star color wobble for natural variation */
+        const cr = Math.min(255, sc[0] + Math.floor(Math.sin(i * 2.1) * 20));
+        const cg = Math.min(255, sc[1] + Math.floor(Math.sin(i * 3.3) * 15));
+        const cb = Math.min(255, sc[2] + Math.floor(Math.sin(i * 1.7) * 10));
 
         armShadows.push(
-          `${x.toFixed(0)}px ${y.toFixed(0)}px 0 ${starSize}px rgba(${r},${g},255,${brightness.toFixed(2)})`
+          `${x.toFixed(0)}px ${y.toFixed(0)}px 0 ${starSize}px rgba(${cr},${cg},${cb},${brightness.toFixed(2)})`
         );
       }
     }
 
     /* ── Generate scattered background fill stars ──
-       120 stars using golden-angle distribution for uniform circular spread.
-       These fill the gaps between arms with dim ambient stars.         */
+       180 stars (up from 120) using golden-angle distribution.        */
     const fillShadows = [];
-    const fillCount = 120;
+    const fillCount = 180;
     for (let i = 0; i < fillCount; i++) {
-      /* Golden angle distribution for even scatter within a circle */
       const goldenAngle = i * 2.39996323;
       const offsetAngle = Math.sin(i * 7.1) * 0.5;
       const angle = goldenAngle + offsetAngle;
@@ -332,17 +342,115 @@ const Dashboard = {
       const r = Math.sqrt((i + 0.5) / fillCount) * maxR;
       const x = cx + Math.cos(angle) * r;
       const y = cy + Math.sin(angle) * r;
-      const brightness = 0.12 + (Math.sin(i * 5.3) * 0.5 + 0.5) * 0.2;
-      const sz = 0.4 + (Math.sin(i * 3.1) * 0.5 + 0.5) * 0.6;
+      const brightness = 0.12 + (Math.sin(i * 5.3) * 0.5 + 0.5) * 0.22;
+      const sz = 0.4 + (Math.sin(i * 3.1) * 0.5 + 0.5) * 0.7;
+      /* Mix in warm/cool colors for fill stars too */
+      const fci = Math.abs(Math.floor(Math.sin(i * 6.7) * 100)) % starColors.length;
+      const fc = starColors[fci];
       fillShadows.push(
-        `${x.toFixed(0)}px ${y.toFixed(0)}px 0 ${sz.toFixed(1)}px rgba(200,220,255,${brightness.toFixed(2)})`
+        `${x.toFixed(0)}px ${y.toFixed(0)}px 0 ${sz.toFixed(1)}px rgba(${fc[0]},${fc[1]},${fc[2]},${brightness.toFixed(2)})`
       );
     }
+
+    /* ── Galactic halo — faint dim stars beyond main disc ──
+       60 stars scattered in the outer ring (radius 220-320px).        */
+    const haloShadows = [];
+    const haloCount = 60;
+    for (let i = 0; i < haloCount; i++) {
+      const angle = (i / haloCount) * Math.PI * 2 + Math.sin(i * 3.3) * 0.8;
+      const radius = 220 + Math.sin(i * 7.7) * 40 + Math.cos(i * 4.1) * 50;
+      const x = cx + Math.cos(angle) * radius;
+      const y = cy + Math.sin(angle) * radius;
+      const brightness = 0.06 + (Math.sin(i * 2.9) * 0.5 + 0.5) * 0.1;
+      const sz = 0.3 + (Math.sin(i * 5.1) * 0.5 + 0.5) * 0.5;
+      haloShadows.push(
+        `${x.toFixed(0)}px ${y.toFixed(0)}px 0 ${sz.toFixed(1)}px rgba(200,210,230,${brightness.toFixed(2)})`
+      );
+    }
+
+    /* ── Nebula cloud divs — 10 elongated ellipses along spiral arms ──
+       Each positioned and rotated to follow the spiral arm curves.
+       Colors: blues, purples, teals at low opacity.                   */
+    const nebulaData = [
+      { x: 30, y: 25, w: 180, h: 60,  rot: -35, color: '0,140,255',   op: 0.08 },
+      { x: 55, y: 60, w: 200, h: 70,  rot: 25,  color: '160,60,255',  op: 0.06 },
+      { x: 15, y: 55, w: 160, h: 55,  rot: -60, color: '0,200,180',   op: 0.07 },
+      { x: 65, y: 30, w: 190, h: 65,  rot: 50,  color: '0,100,220',   op: 0.09 },
+      { x: 40, y: 70, w: 170, h: 50,  rot: -15, color: '120,40,220',  op: 0.06 },
+      { x: 75, y: 55, w: 150, h: 55,  rot: 70,  color: '0,180,200',   op: 0.08 },
+      { x: 20, y: 40, w: 200, h: 80,  rot: -45, color: '80,120,255',  op: 0.10 },
+      { x: 60, y: 45, w: 180, h: 60,  rot: 35,  color: '140,0,200',   op: 0.05 },
+      { x: 35, y: 75, w: 140, h: 50,  rot: -70, color: '0,160,255',   op: 0.07 },
+      { x: 80, y: 20, w: 160, h: 55,  rot: 15,  color: '60,200,200',  op: 0.06 },
+    ];
+    const nebulaDivs = nebulaData.map(n => `
+      <div class="galaxy-nebula-cloud" style="
+        left:${n.x}%; top:${n.y}%;
+        width:${n.w}px; height:${n.h}px;
+        background:radial-gradient(ellipse, rgba(${n.color},${n.op}) 0%, rgba(${n.color},${n.op * 0.3}) 40%, transparent 70%);
+        transform:translate(-50%,-50%) rotate(${n.rot}deg);
+      "></div>`).join('');
+
+    /* ── Dust lane divs — dark bands between spiral arms ──
+       6 dark gradient strips creating contrast.                       */
+    const dustData = [
+      { x: 38, y: 32, w: 220, h: 40, rot: -30 },
+      { x: 62, y: 65, w: 200, h: 35, rot: 30  },
+      { x: 25, y: 60, w: 180, h: 30, rot: -55 },
+      { x: 70, y: 38, w: 190, h: 35, rot: 55  },
+      { x: 50, y: 50, w: 160, h: 30, rot: 0   },
+      { x: 45, y: 22, w: 170, h: 32, rot: -20 },
+    ];
+    const dustDivs = dustData.map(d => `
+      <div class="galaxy-dust-lane" style="
+        left:${d.x}%; top:${d.y}%;
+        width:${d.w}px; height:${d.h}px;
+        transform:translate(-50%,-50%) rotate(${d.rot}deg);
+      "></div>`).join('');
+
+    /* ── Comet divs — 6 animated streaks across the galaxy ──
+       Each comet has a bright head and gradient tail, animated
+       along a diagonal path over 8-15 seconds.                       */
+    const cometData = [
+      { delay: 0,   dur: 10, angle: 25,  startX: -5,  startY: 20, endX: 105, endY: 60  },
+      { delay: 3,   dur: 12, angle: -15, startX: 110, startY: 30, endX: -10, endY: 55  },
+      { delay: 6,   dur: 9,  angle: 35,  startX: -5,  startY: 50, endX: 105, endY: 80  },
+      { delay: 1.5, dur: 14, angle: -25, startX: 105, startY: 70, endX: -5,  endY: 35  },
+      { delay: 8,   dur: 11, angle: 10,  startX: -5,  startY: 75, endX: 105, endY: 45  },
+      { delay: 4.5, dur: 8,  angle: -40, startX: 80,  startY: -5, endX: 20,  endY: 105 },
+    ];
+    const cometDivs = cometData.map((c, idx) => `
+      <div class="galaxy-comet" style="
+        --comet-start-x:${c.startX}%;
+        --comet-start-y:${c.startY}%;
+        --comet-end-x:${c.endX}%;
+        --comet-end-y:${c.endY}%;
+        --comet-angle:${c.angle}deg;
+        animation:cometFly ${c.dur}s linear ${c.delay}s infinite;
+      "></div>`).join('');
+
+    /* ── Rogue planets — 5 slowly drifting larger dots ──
+       Muted colors (dark red, brown, grey), 3-5px, 30-90s orbits.   */
+    const rogueData = [
+      { x: 25, y: 35, size: 4, color: '#6b3030', dur: 45, dx: 120, dy: 80  },
+      { x: 70, y: 25, size: 3, color: '#5a4a32', dur: 60, dx: -90, dy: 110 },
+      { x: 60, y: 72, size: 5, color: '#4a4a4a', dur: 35, dx: 80,  dy: -70 },
+      { x: 18, y: 65, size: 3, color: '#7a3535', dur: 75, dx: 100, dy: -60 },
+      { x: 80, y: 55, size: 4, color: '#5c5040', dur: 50, dx: -70, dy: 90  },
+    ];
+    const rogueDivs = rogueData.map((rp, idx) => `
+      <div class="galaxy-rogue-planet" style="
+        left:${rp.x}%; top:${rp.y}%;
+        width:${rp.size}px; height:${rp.size}px;
+        background:radial-gradient(circle, ${rp.color} 30%, transparent 80%);
+        --rogue-dx:${rp.dx}px; --rogue-dy:${rp.dy}px;
+        animation:rogueDrift ${rp.dur}s ease-in-out infinite alternate;
+      "></div>`).join('');
 
     /* ── Build faction homeworld HTML ──
        Each homeworld is an absolutely positioned div with glowing dot,
        expanding ping ring, label, and system count.
-       Positions scaled from 600-space (original SVG) to 500-space.    */
+       Positions scaled from 600-space (original SVG) to 900-space.   */
     const homeworlds = factions.map(f => {
       const pos = this.HOMEWORLD_POSITIONS[f.key];
       if (!pos) return '';
@@ -365,13 +473,24 @@ const Dashboard = {
         <div class="section-heading">Galactic Map</div>
         <div class="galaxy-map-container">
           <div class="galaxy-map">
+            <!-- Nebula cloud layer — colored gas along spiral arms -->
             <div class="galaxy-nebula"></div>
+            ${nebulaDivs}
+            <!-- Dust lane layer — dark contrast bands -->
+            ${dustDivs}
+            <!-- Galactic halo — faint outer stars beyond the disc -->
+            <div class="galaxy-halo" style="box-shadow:${haloShadows.join(',')}"></div>
+            <!-- Rotating arm layer: stars, core, homeworlds -->
             <div class="galaxy-arms">
               <div class="galaxy-stars" style="box-shadow:${armShadows.join(',')}"></div>
               <div class="galaxy-fill-stars" style="box-shadow:${fillShadows.join(',')}"></div>
               <div class="galaxy-core"></div>
               ${homeworlds}
             </div>
+            <!-- Comet layer — streaking animated comets -->
+            ${cometDivs}
+            <!-- Rogue planet layer — slowly drifting objects -->
+            ${rogueDivs}
           </div>
         </div>
         <div class="divider"></div>
@@ -387,45 +506,158 @@ const Dashboard = {
    * @returns {string} HTML string
    */
   buildSolarSystem() {
-    /* Planet data: name, orbit radius (px), size (px), color, period (s), startAngle (deg) */
+    /* ── Planet data with SVG visual definitions ──
+       Each planet gets an inline SVG with radial gradients for 3D sphere shading.
+       Sizes reflect real relative differences (scaled for readability).          */
     const planets = [
-      { name: 'Mercury',  orbit: 60,  size: 4,  color: '#b0a090',         period: 15, start: 42  },
-      { name: 'Venus',    orbit: 90,  size: 6,  color: '#e8c87a',         period: 20, start: 137 },
-      { name: 'Terra',    orbit: 125, size: 8,  color: 'var(--terran)',    period: 26, start: 255 },
-      { name: 'Mars',     orbit: 160, size: 5,  color: '#c85a3a',         period: 32, start: 18  },
-      { name: 'Jupiter',  orbit: 205, size: 8,  color: '#c8a86e',         period: 42, start: 190 },
-      { name: 'Saturn',   orbit: 245, size: 7,  color: '#d4c48c',         period: 52, start: 310 },
-      { name: 'Neptune',  orbit: 280, size: 5,  color: '#4488cc',         period: 60, start: 88  }
+      { name: 'Mercury',  orbit: 70,  size: 8,  period: 15, start: 42,
+        /* Small grey world with subtle crater shading */
+        svgGrad: `<radialGradient id="sol-grad-mercury" cx="35%" cy="35%">
+          <stop offset="0%" stop-color="#c8c0b8"/><stop offset="50%" stop-color="#a09890"/>
+          <stop offset="80%" stop-color="#706860"/><stop offset="100%" stop-color="#504840"/>
+        </radialGradient>`,
+        glow: 'none' },
+      { name: 'Venus',    orbit: 105, size: 12, period: 20, start: 137,
+        /* Pale yellow-white with hazy atmosphere */
+        svgGrad: `<radialGradient id="sol-grad-venus" cx="40%" cy="35%">
+          <stop offset="0%" stop-color="#f0e8d0"/><stop offset="40%" stop-color="#e8d8b0"/>
+          <stop offset="75%" stop-color="#c8b888"/><stop offset="100%" stop-color="#a09068"/>
+        </radialGradient>`,
+        glow: '0 0 6px rgba(232,200,120,0.3)' },
+      { name: 'Terra',    orbit: 145, size: 14, period: 26, start: 255,
+        /* Blue-green with cloud wisps, Terran blue glow ring */
+        svgGrad: `<radialGradient id="sol-grad-terra" cx="38%" cy="32%">
+          <stop offset="0%" stop-color="#90d8f0"/><stop offset="25%" stop-color="#40a0d0"/>
+          <stop offset="55%" stop-color="#2080a0"/><stop offset="80%" stop-color="#185868"/>
+          <stop offset="100%" stop-color="#0c3040"/>
+        </radialGradient>`,
+        glow: '0 0 6px var(--terran),0 0 14px var(--terran),0 0 28px rgba(0,180,255,0.4)',
+        /* Cloud wisps as a semi-transparent white arc */
+        extra: `<ellipse cx="55%" cy="40%" rx="5" ry="2.5" fill="rgba(255,255,255,0.35)" transform="rotate(-20,7,7)"/>
+                <ellipse cx="35%" cy="60%" rx="4" ry="2" fill="rgba(255,255,255,0.25)" transform="rotate(15,7,7)"/>` },
+      { name: 'Mars',     orbit: 185, size: 10, period: 32, start: 18,
+        /* Rust red-orange */
+        svgGrad: `<radialGradient id="sol-grad-mars" cx="38%" cy="35%">
+          <stop offset="0%" stop-color="#e8a080"/><stop offset="40%" stop-color="#c86040"/>
+          <stop offset="75%" stop-color="#a04020"/><stop offset="100%" stop-color="#602010"/>
+        </radialGradient>`,
+        glow: '0 0 4px rgba(200,90,58,0.4)' },
+      { name: 'Jupiter',  orbit: 240, size: 22, period: 42, start: 190,
+        /* Banded orange/brown/white stripes via multiple gradient stops */
+        svgGrad: `<radialGradient id="sol-grad-jupiter-sphere" cx="38%" cy="30%">
+          <stop offset="0%" stop-color="#e8d0a0"/><stop offset="60%" stop-color="#c8a060"/>
+          <stop offset="100%" stop-color="#6a4820"/>
+        </radialGradient>
+        <linearGradient id="sol-grad-jupiter-bands" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(200,160,100,0.0)"/>
+          <stop offset="15%" stop-color="rgba(180,120,60,0.4)"/>
+          <stop offset="25%" stop-color="rgba(220,200,160,0.3)"/>
+          <stop offset="35%" stop-color="rgba(160,100,40,0.5)"/>
+          <stop offset="45%" stop-color="rgba(240,220,180,0.25)"/>
+          <stop offset="55%" stop-color="rgba(180,110,50,0.45)"/>
+          <stop offset="65%" stop-color="rgba(210,180,140,0.3)"/>
+          <stop offset="75%" stop-color="rgba(150,90,30,0.5)"/>
+          <stop offset="85%" stop-color="rgba(200,170,120,0.2)"/>
+          <stop offset="100%" stop-color="rgba(120,70,20,0.0)"/>
+        </linearGradient>`,
+        glow: '0 0 6px rgba(200,160,100,0.35)',
+        useBands: true },
+      { name: 'Saturn',   orbit: 295, size: 20, period: 52, start: 310,
+        /* Pale gold with ring system */
+        svgGrad: `<radialGradient id="sol-grad-saturn" cx="38%" cy="35%">
+          <stop offset="0%" stop-color="#f0e8c8"/><stop offset="40%" stop-color="#d8c890"/>
+          <stop offset="75%" stop-color="#b0a060"/><stop offset="100%" stop-color="#786830"/>
+        </radialGradient>`,
+        glow: '0 0 5px rgba(212,196,140,0.35)',
+        hasRings: true },
+      { name: 'Neptune',  orbit: 355, size: 14, period: 60, start: 88,
+        /* Deep blue with faint atmospheric wisps */
+        svgGrad: `<radialGradient id="sol-grad-neptune" cx="38%" cy="32%">
+          <stop offset="0%" stop-color="#80b8e8"/><stop offset="35%" stop-color="#4080c0"/>
+          <stop offset="70%" stop-color="#204880"/><stop offset="100%" stop-color="#102040"/>
+        </radialGradient>`,
+        glow: '0 0 5px rgba(68,136,204,0.4)',
+        extra: `<ellipse cx="55%" cy="45%" rx="4.5" ry="1.5" fill="rgba(160,200,240,0.2)" transform="rotate(-10,7,7)"/>` }
     ];
 
-    /* Build orbit rings (dashed circles) and planet elements */
+    /* ── Build orbit rings (dashed circles with faint glow) ── */
     const orbitRings = planets.map(p => `
       <div class="sol-orbit-ring" style="
-        width:${p.orbit * 2}px;
-        height:${p.orbit * 2}px;
-        top:50%; left:50%;
-        transform:translate(-50%,-50%);
+        width:${p.orbit * 2}px; height:${p.orbit * 2}px;
+        top:50%; left:50%; transform:translate(-50%,-50%);
       "></div>
     `).join('');
 
+    /* ── Asteroid belt — ring of tiny dots between Mars (185) and Jupiter (240) ──
+       50 tiny dots scattered along radius ~210px.                                  */
+    const asteroidDots = [];
+    const asteroidCount = 50;
+    for (let i = 0; i < asteroidCount; i++) {
+      const angle = (i / asteroidCount) * 360 + Math.sin(i * 5.7) * 8;
+      const radius = 208 + Math.sin(i * 3.3) * 6 + Math.cos(i * 7.1) * 4;
+      const sz = 1 + Math.sin(i * 2.1) * 0.5;
+      const opacity = 0.25 + Math.sin(i * 4.7) * 0.15;
+      asteroidDots.push(`
+        <div class="sol-asteroid" style="
+          width:${sz.toFixed(1)}px; height:${sz.toFixed(1)}px;
+          top:50%; left:50%;
+          transform:translate(-50%,-50%) rotate(${angle.toFixed(0)}deg) translateY(-${radius.toFixed(0)}px);
+          opacity:${opacity.toFixed(2)};
+        "></div>`);
+    }
+
+    /* ── Build SVG planet elements ── */
     const planetEls = planets.map(p => {
       const isTerra = p.name === 'Terra';
       const terraClass = isTerra ? ' sol-terra' : '';
       const labelClass = isTerra ? ' sol-label-terra' : '';
+      const half = p.size / 2;
+
+      /* SVG viewBox sized to the planet */
+      let svgContent = `<defs>${p.svgGrad}</defs>`;
+      const gradId = p.name === 'Jupiter' ? 'sol-grad-jupiter-sphere' : `sol-grad-${p.name.toLowerCase()}`;
+
+      /* Main sphere */
+      svgContent += `<circle cx="${half}" cy="${half}" r="${half}" fill="url(#${gradId})"/>`;
+
+      /* Jupiter banding overlay */
+      if (p.useBands) {
+        svgContent += `<circle cx="${half}" cy="${half}" r="${half}" fill="url(#sol-grad-jupiter-bands)"/>`;
+      }
+
+      /* Saturn rings — a rotated ellipse */
+      let ringsHtml = '';
+      if (p.hasRings) {
+        const ringW = p.size * 1.8;
+        const ringH = p.size * 0.5;
+        ringsHtml = `<div class="sol-saturn-ring" style="
+          width:${ringW}px; height:${ringH}px;
+          top:50%; left:50%;
+          transform:translate(-50%,-50%) rotateX(65deg);
+        "></div>`;
+      }
+
+      /* Extra features (cloud wisps, atmospheric features) */
+      if (p.extra) {
+        svgContent += p.extra;
+      }
+
       return `
         <div class="sol-orbit-arm${terraClass}" style="
-          width:${p.orbit * 2}px;
-          height:${p.orbit * 2}px;
+          width:${p.orbit * 2}px; height:${p.orbit * 2}px;
           top:50%; left:50%;
           transform:translate(-50%,-50%) rotate(${p.start}deg);
           animation:solOrbit ${p.period}s linear infinite;
         ">
-          <div class="sol-planet${terraClass}" style="
-            width:${p.size}px;
-            height:${p.size}px;
-            background:${p.color};
-            ${isTerra ? 'box-shadow:0 0 6px var(--terran),0 0 14px var(--terran),0 0 28px rgba(0,180,255,0.4);' : `box-shadow:0 0 4px ${p.color};`}
+          <div class="sol-planet-wrap${terraClass}" style="
+            width:${p.size}px; height:${p.size}px;
+            ${p.glow !== 'none' ? `box-shadow:${p.glow};` : ''}
           ">
+            ${ringsHtml}
+            <svg class="sol-planet-svg" viewBox="0 0 ${p.size} ${p.size}"
+                 width="${p.size}" height="${p.size}">
+              ${svgContent}
+            </svg>
             <div class="sol-planet-label${labelClass}" style="
               ${isTerra ? 'color:var(--terran);font-weight:700;font-size:0.55rem;' : ''}
             ">${p.name.toUpperCase()}</div>
@@ -433,15 +665,44 @@ const Dashboard = {
         </div>`;
     }).join('');
 
+    /* ── Starfield background — 80 tiny dim stars behind the system ── */
+    const starfieldDots = [];
+    for (let i = 0; i < 80; i++) {
+      const x = (Math.sin(i * 7.3 + 1.2) * 0.5 + 0.5) * 100;
+      const y = (Math.cos(i * 5.1 + 3.4) * 0.5 + 0.5) * 100;
+      const sz = 0.5 + (Math.sin(i * 3.7) * 0.5 + 0.5) * 1.0;
+      const opacity = 0.1 + (Math.sin(i * 4.3) * 0.5 + 0.5) * 0.15;
+      starfieldDots.push(`
+        <div class="sol-bg-star" style="
+          left:${x.toFixed(1)}%; top:${y.toFixed(1)}%;
+          width:${sz.toFixed(1)}px; height:${sz.toFixed(1)}px;
+          opacity:${opacity.toFixed(2)};
+        "></div>`);
+    }
+
     return `
       <section class="galaxy-section">
         <div class="section-label">Star System View</div>
         <div class="section-heading">Sol System \u2014 Terran Home</div>
         <div class="sol-system-container">
           <div class="sol-system">
+            <!-- Starfield background -->
+            ${starfieldDots.join('')}
+            <!-- Orbit rings -->
             ${orbitRings}
-            <div class="sol-star"></div>
+            <!-- Asteroid belt between Mars and Jupiter -->
+            <div class="sol-asteroid-belt">
+              ${asteroidDots.join('')}
+            </div>
+            <!-- Central star Sol — with corona rays -->
+            <div class="sol-star">
+              <div class="sol-corona-ray sol-corona-1"></div>
+              <div class="sol-corona-ray sol-corona-2"></div>
+              <div class="sol-corona-ray sol-corona-3"></div>
+              <div class="sol-corona-ray sol-corona-4"></div>
+            </div>
             <div class="sol-star-label">SOL</div>
+            <!-- Planets with SVG sphere visuals -->
             ${planetEls}
           </div>
         </div>
