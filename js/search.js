@@ -81,11 +81,7 @@ const Search = {
 
   bindKeys() {
     document.addEventListener('keydown', (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        this.open();
-        return;
-      }
+      // Ctrl+K now handled by Nav.bindSearch() — focuses sidebar search
       if (!this.isOpen()) return;
 
       if (e.key === 'Escape') { e.preventDefault(); this.close(); }

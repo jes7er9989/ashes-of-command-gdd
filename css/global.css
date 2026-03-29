@@ -229,17 +229,32 @@ a:hover {
 
 /* â”€â”€ Sidebar Filter â”€â”€
    Quick-filter input that narrows the chapter nav tree.         */
-.sidebar-filter {
-  padding: 10px 16px;
+/* ── Sidebar Search Box ────────────────────────────────── */
+.sidebar-search {
+  padding: 10px 16px 8px;
   border-bottom: 1px solid var(--border);
 }
 
-.sidebar-filter input {
+.sidebar-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-search-icon {
+  position: absolute;
+  left: 8px;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  pointer-events: none;
+}
+
+.sidebar-search-wrap input {
   width: 100%;
   background: var(--bg-base);
   border: 1px solid var(--border);
   border-radius: 3px;
-  padding: 6px 10px;
+  padding: 7px 48px 7px 28px;
   font-family: 'Rajdhani', sans-serif;
   font-size: 0.8rem;
   color: var(--text-body);
@@ -247,12 +262,163 @@ a:hover {
   transition: border-color var(--transition);
 }
 
-.sidebar-filter input::placeholder {
+.sidebar-search-wrap input::placeholder {
   color: var(--text-dim);
 }
 
-.sidebar-filter input:focus {
+.sidebar-search-wrap input:focus {
   border-color: var(--accent);
+}
+
+.sidebar-search-shortcut {
+  position: absolute;
+  right: 8px;
+  font-size: 0.55rem;
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.04);
+  padding: 2px 5px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* ── Sidebar Filter Button + Dropdown ─────────────────── */
+.sidebar-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 6px;
+  padding: 5px 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--text-dim);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.7rem;
+  transition: all var(--transition);
+}
+
+.sidebar-filter-btn:hover {
+  background: rgba(255,255,255,0.06);
+  color: var(--text-mid);
+}
+
+.sidebar-filter-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-icon { font-size: 0.65rem; }
+.filter-label { flex: 1; text-align: left; }
+.filter-chevron {
+  font-size: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-filter-btn.open .filter-chevron {
+  transform: rotate(180deg);
+}
+
+.sidebar-filter-dropdown {
+  display: none;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 4px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.sidebar-filter-dropdown.open {
+  display: flex;
+}
+
+.filter-option {
+  padding: 5px 10px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.7rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-option:hover {
+  background: var(--bg-hover);
+  color: var(--text-hi);
+}
+
+.filter-option.active {
+  color: var(--accent);
+  background: rgba(0, 180, 255, 0.06);
+}
+
+/* ── Sidebar Search Results (inline) ──────────────────── */
+.sidebar-search-results {
+  padding: 4px 0;
+}
+
+.sidebar-search-result {
+  display: block;
+  padding: 6px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: all var(--transition);
+}
+
+.sidebar-search-result:hover {
+  background: var(--bg-hover);
+  border-left-color: var(--text-dim);
+}
+
+.sidebar-search-result-title {
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  line-height: 1.3;
+}
+
+.sidebar-search-result mark {
+  background: none;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.sidebar-search-result-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.sidebar-search-result-type {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.45rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.04);
+  padding: 1px 4px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.sidebar-search-result-snippet {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  line-height: 1.3;
+  max-height: 2.6em;
+  overflow: hidden;
+}
+
+.sidebar-search-result-part {
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  opacity: 0.6;
 }
 
 

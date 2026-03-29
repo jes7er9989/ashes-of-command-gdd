@@ -17,9 +17,25 @@
    ═══════════════════════════════════════════════════════════ */
 
 const Nav = {
-  container: null,     // #nav-container element
-  filterInput: null,   // #nav-filter input element
-  navData: null,       // Parsed nav-data.json (array of parts)
+  container: null,       // #nav-container element
+  searchInput: null,     // #nav-search input element
+  filterBtn: null,       // #sidebar-filter-btn button
+  filterDropdown: null,  // #sidebar-filter-dropdown container
+  navData: null,         // Parsed nav-data.json (array of parts)
+  activeCategory: 'all', // Current category filter
+
+  /* ── Chapter → Category mapping ──────────────────────── */
+  CATEGORIES: {
+    lore:         ['ch1','ch2','ch3','ch4'],
+    factions:     ['ch5','ch6','ch7','ch8','ch9','ch10','ch11'],
+    maps:         ['ch12','ch13','ch14','ch15','ch16'],
+    combat:       ['ch17','ch18','ch19','ch19b','ch20','ch21','ch22','ch23'],
+    strategy:     ['ch24','ch25','ch26','ch27','ch28','ch29','ch30','ch31'],
+    endgame:      ['ch32','ch33','ch34','ch35','ch36'],
+    presentation: ['ch37','ch38','ch39','ch40','ch42','ch43-ai'],
+    business:     ['ch43','ch44','ch45','ch46'],
+    reference:    ['appA','appB','appC','appD','appE','appF','appL','appM','suppG','suppH','suppI','suppJ','suppK']
+  },
 
   /* ── Initialization ──────────────────────────────────── */
 
@@ -30,11 +46,14 @@ const Nav = {
    */
   async init() {
     this.container = document.getElementById('nav-container');
-    this.filterInput = document.getElementById('nav-filter');
+    this.searchInput = document.getElementById('nav-search');
+    this.filterBtn = document.getElementById('sidebar-filter-btn');
+    this.filterDropdown = document.getElementById('sidebar-filter-dropdown');
     this.navData = await DataLoader.loadNavData();
 
     this.render();
-    this.bindFilter();
+    this.bindSearch();
+    this.bindCategoryFilter();
     this.bindToggle();
     this.bindHamburger();
     this.bindRouting();
@@ -52,65 +71,28 @@ const Nav = {
    * Parts with no matching chapters are hidden during filtering.
    * @param {string} [filter=''] - Text to filter chapters by title/number
    */
-  render(filter = '') {
-    const lc = filter.toLowerCase();
-
-    /* ── No filter: render full nav tree ───────────────── */
-    if (!lc) {
-      let html = '';
-      for (const part of this.navData) {
-        html += `<div class="nav-part">`;
-        html += `<div class="nav-part-header" data-part="${part.part}">
-          <span>${part.part}</span>
-          <span class="chevron">▼</span>
-        </div>`;
-        html += `<div class="nav-part-chapters">`;
-        for (const ch of part.chapters) {
-          const colorStyle = ch.color ? `style="--ch-color:${ch.color}"` : '';
-          html += `<a class="nav-chapter" href="#${ch.id}" data-id="${ch.id}" ${colorStyle}>
-            <span class="ch-num">${ch.num}</span>${ch.title}
-          </a>`;
-        }
-        html += `</div></div>`;
-      }
-      this.container.innerHTML = html;
-      this.bindPartHeaders();
-      this.highlightActive();
-      return;
-    }
-
-    /* ── Filtered: use intelligent search ──────────────── */
-    const scored = this._scoreChapters(lc);
-
-    if (scored.length === 0) {
-      this.container.innerHTML = `<div class="nav-empty">No matches for "${filter}"</div>`;
-      return;
-    }
-
-    // Group scored results back into their parts, preserving score order
-    const partMap = new Map();
-    for (const part of this.navData) {
-      partMap.set(part.part, { part: part.part, chapters: [] });
-    }
-    for (const item of scored) {
-      const group = partMap.get(item.part);
-      if (group) group.chapters.push(item);
-    }
+  render() {
+    const cat = this.activeCategory;
+    const catIds = (cat !== 'all' && this.CATEGORIES[cat]) ? new Set(this.CATEGORIES[cat]) : null;
 
     let html = '';
-    for (const [, group] of partMap) {
-      if (group.chapters.length === 0) continue;
+    for (const part of this.navData) {
+      const chapters = catIds
+        ? part.chapters.filter(ch => catIds.has(ch.id))
+        : part.chapters;
+
+      if (chapters.length === 0) continue;
+
       html += `<div class="nav-part">`;
-      html += `<div class="nav-part-header" data-part="${group.part}">
-        <span>${group.part}</span>
+      html += `<div class="nav-part-header" data-part="${part.part}">
+        <span>${part.part}</span>
         <span class="chevron">▼</span>
       </div>`;
       html += `<div class="nav-part-chapters">`;
-      for (const ch of group.chapters) {
+      for (const ch of chapters) {
         const colorStyle = ch.color ? `style="--ch-color:${ch.color}"` : '';
-        const synHint = ch.synonymHint ? `<span class="nav-syn-hint">via ${ch.synonymHint}</span>` : '';
         html += `<a class="nav-chapter" href="#${ch.id}" data-id="${ch.id}" ${colorStyle}>
-          <span class="ch-num">${ch.num}</span>${ch.title}${synHint}
+          <span class="ch-num">${ch.num}</span>${ch.title}
         </a>`;
       }
       html += `</div></div>`;
@@ -231,17 +213,157 @@ const Nav = {
   },
 
   /**
-   * Debounced input handler for the sidebar filter box.
-   * Re-renders the nav tree after 150ms of inactivity.
+   * Debounced input handler for the sidebar search box.
+   * Shows inline search results when typing, restores nav tree when cleared.
    */
-  bindFilter() {
-    if (!this.filterInput) return;
+  bindSearch() {
+    if (!this.searchInput) return;
     let timeout;
-    this.filterInput.addEventListener('input', () => {
+    this.searchInput.addEventListener('input', () => {
       clearTimeout(timeout);
       timeout = setTimeout(() => {
-        this.render(this.filterInput.value.trim());
+        const q = this.searchInput.value.trim();
+        if (q) {
+          this._showSearchResults(q);
+        } else {
+          this.render(); // restore nav tree with current category filter
+        }
       }, 150);
+    });
+
+    // Ctrl+K also focuses this input
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        this.searchInput.focus();
+        this.searchInput.select();
+      }
+    });
+  },
+
+  /**
+   * Show scored search results inline in the nav container.
+   * Uses the same search engine as the Ctrl+K overlay.
+   */
+  _showSearchResults(query) {
+    const scored = this._scoreChapters(query.toLowerCase());
+
+    if (scored.length === 0) {
+      this.container.innerHTML = `<div class="nav-empty">No results for "${query}"</div>`;
+      return;
+    }
+
+    const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+
+    // Get snippets from search index if available
+    const indexMap = new Map();
+    if (Search._index) {
+      for (const entry of Search._index) {
+        indexMap.set(entry.id, entry);
+      }
+    }
+
+    let html = '<div class="sidebar-search-results">';
+    const shown = scored.slice(0, 25);
+
+    for (const item of shown) {
+      const entry = indexMap.get(item.id);
+      let snippet = '';
+      if (entry && entry.content) {
+        const contentLc = entry.content.toLowerCase();
+        const terms = [query.toLowerCase()];
+        if (item.synonymHint) terms.push(item.synonymHint);
+
+        for (const term of terms) {
+          const idx = contentLc.indexOf(term);
+          if (idx !== -1) {
+            const start = Math.max(0, idx - 40);
+            const end = Math.min(entry.content.length, idx + term.length + 80);
+            snippet = (start > 0 ? '...' : '') +
+              entry.content.substring(start, end).replace(/\s+/g, ' ') +
+              (end < entry.content.length ? '...' : '');
+            break;
+          }
+        }
+      }
+
+      const title = `${item.num} — ${item.title}`;
+      const synBadge = item.synonymHint
+        ? `<span class="nav-syn-hint">via ${item.synonymHint}</span>`
+        : '';
+      const snippetHtml = snippet
+        ? `<div class="sidebar-search-result-snippet">${snippet.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(re, '<mark>$1</mark>')}</div>`
+        : '';
+
+      html += `<a class="sidebar-search-result" href="#${item.id}">
+        <div class="sidebar-search-result-title">${title.replace(re, '<mark>$1</mark>')}${synBadge}</div>
+        ${snippetHtml}
+      </a>`;
+    }
+
+    if (scored.length > 25) {
+      html += `<div class="nav-empty">${scored.length - 25} more results...</div>`;
+    }
+
+    html += '</div>';
+    this.container.innerHTML = html;
+
+    // Click handlers — navigate and close search
+    this.container.querySelectorAll('.sidebar-search-result').forEach(el => {
+      el.addEventListener('click', () => {
+        this.searchInput.value = '';
+        // Restore nav tree after a short delay (let hash change fire first)
+        setTimeout(() => this.render(), 100);
+      });
+    });
+  },
+
+  /**
+   * Wire up the category filter button and dropdown.
+   */
+  bindCategoryFilter() {
+    if (!this.filterBtn || !this.filterDropdown) return;
+
+    // Toggle dropdown open/close
+    this.filterBtn.addEventListener('click', () => {
+      this.filterBtn.classList.toggle('open');
+      this.filterDropdown.classList.toggle('open');
+    });
+
+    // Category option clicks
+    this.filterDropdown.querySelectorAll('.filter-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.category;
+        this.activeCategory = cat;
+
+        // Update active state
+        this.filterDropdown.querySelectorAll('.filter-option').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Update button appearance
+        const label = this.filterBtn.querySelector('.filter-label');
+        if (cat === 'all') {
+          label.textContent = 'Filter by Category';
+          this.filterBtn.classList.remove('active');
+        } else {
+          label.textContent = btn.textContent;
+          this.filterBtn.classList.add('active');
+        }
+
+        // Close dropdown and re-render
+        this.filterBtn.classList.remove('open');
+        this.filterDropdown.classList.remove('open');
+        this.searchInput.value = '';
+        this.render();
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!this.filterBtn.contains(e.target) && !this.filterDropdown.contains(e.target)) {
+        this.filterBtn.classList.remove('open');
+        this.filterDropdown.classList.remove('open');
+      }
     });
   },
 

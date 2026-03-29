@@ -63,8 +63,29 @@
         <div class="sidebar-subtitle">Interactive GDD v5.9.1</div>
       </div>
 
-      <div class="sidebar-filter">
-        <input type="text" id="nav-filter" placeholder="Filter chapters…" autocomplete="off" spellcheck="false">
+      <div class="sidebar-search">
+        <div class="sidebar-search-wrap">
+          <span class="sidebar-search-icon">&#128269;</span>
+          <input type="text" id="nav-search" placeholder="Search..." autocomplete="off" spellcheck="false">
+          <span class="sidebar-search-shortcut">Ctrl+K</span>
+        </div>
+        <button class="sidebar-filter-btn" id="sidebar-filter-btn">
+          <span class="filter-icon">&#9776;</span>
+          <span class="filter-label">Filter by Category</span>
+          <span class="filter-chevron">&#9662;</span>
+        </button>
+        <div class="sidebar-filter-dropdown" id="sidebar-filter-dropdown">
+          <button class="filter-option active" data-category="all">All</button>
+          <button class="filter-option" data-category="lore">Lore &amp; Narrative</button>
+          <button class="filter-option" data-category="factions">Factions</button>
+          <button class="filter-option" data-category="maps">Maps &amp; Exploration</button>
+          <button class="filter-option" data-category="combat">Combat</button>
+          <button class="filter-option" data-category="strategy">Strategy &amp; Diplomacy</button>
+          <button class="filter-option" data-category="endgame">Endgame &amp; Meta</button>
+          <button class="filter-option" data-category="presentation">Presentation</button>
+          <button class="filter-option" data-category="business">Business</button>
+          <button class="filter-option" data-category="reference">Reference</button>
+        </div>
       </div>
 
       <nav class="sidebar-nav" id="nav-container">
