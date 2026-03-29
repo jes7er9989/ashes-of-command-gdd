@@ -59,10 +59,10 @@
   --border-hi: rgba(255,255,255,0.12);
 
   /* Text luminance scale (dim â†’ bright) */
-  --text-dim: #667788;
-  --text-mid: #99aabb;
-  --text-body: #c8ced8;
-  --text-hi: #e8ecf2;
+  --text-dim: #556677;
+  --text-mid: #8899aa;
+  --text-body: #bcc4d0;
+  --text-hi: #e4e8f0;
 
   /* Primary UI accent (Terran blue) */
   --accent: #00b4ff;
@@ -5249,16 +5249,16 @@ embed {
    ═══════════════════════════════════════════════════════════ */
 
 body.high-vis {
-  --bg-base: #0e1018;
-  --bg-panel: #141822;
-  --bg-card: #1a1e2a;
-  --bg-hover: #222836;
-  --text-dim: #8899aa;
-  --text-mid: #b0bcc8;
-  --text-body: #d8dde6;
-  --text-hi: #f0f2f6;
-  --border: rgba(255,255,255,0.12);
-  --border-hi: rgba(255,255,255,0.22);
+  --bg-base: #0a0c12;
+  --bg-panel: #10131a;
+  --bg-card: #151824;
+  --bg-hover: #1c2030;
+  --text-dim: #778899;
+  --text-mid: #a0b0c0;
+  --text-body: #d0d6e0;
+  --text-hi: #eef0f4;
+  --border: rgba(255,255,255,0.10);
+  --border-hi: rgba(255,255,255,0.18);
 }
 
 body.high-vis .body-text,
