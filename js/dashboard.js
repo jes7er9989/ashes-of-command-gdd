@@ -29,6 +29,8 @@
    buildStrategistQuote()         | "Master the Crucible..." quote
    buildByTheNumbers()            | Project Scope — 6 stat cards
    buildGalaxyOverview(factions)  | CSS-only galaxy with faction dots
+   buildSolarSystem()             | CSS-only animated Sol system with orbiting planets
+   buildTerritoryMap()            | CSS-only territory control map of Terra
    buildCoreLoop()                | Five-Phase gameplay cards
    buildRogueLiteFlow()           | Rogue-lite loop flow text
    buildFactionHeader()           | "THE SEVEN FACTIONS" section header
@@ -114,6 +116,8 @@ const Dashboard = {
         this.buildStrategistQuote() +
         this.buildByTheNumbers() +
         this.buildGalaxyOverview(factions) +
+        this.buildSolarSystem() +
+        this.buildTerritoryMap() +
         this.buildCoreLoop() +
         this.buildRogueLiteFlow() +
         this.buildFactionHeader() +
@@ -358,7 +362,7 @@ const Dashboard = {
     return `
       <section class="galaxy-section">
         <div class="section-label">Galactic Overview</div>
-        <div class="section-heading">Territory Control Map</div>
+        <div class="section-heading">Galactic Map</div>
         <div class="galaxy-map-container">
           <div class="galaxy-map">
             <div class="galaxy-nebula"></div>
@@ -368,6 +372,178 @@ const Dashboard = {
               <div class="galaxy-core"></div>
               ${homeworlds}
             </div>
+          </div>
+        </div>
+        <div class="divider"></div>
+      </section>`;
+  },
+
+  /* ── Solar System ─────────────────────────────────────── */
+
+  /**
+   * Build an animated CSS-only solar system showing Sol — the Terran
+   * League home system. 7 planets orbit a central star at varying speeds.
+   * Terra is highlighted with Terran blue glow and pulsing animation.
+   * @returns {string} HTML string
+   */
+  buildSolarSystem() {
+    /* Planet data: name, orbit radius (px), size (px), color, period (s), startAngle (deg) */
+    const planets = [
+      { name: 'Mercury',  orbit: 60,  size: 4,  color: '#b0a090',         period: 15, start: 42  },
+      { name: 'Venus',    orbit: 90,  size: 6,  color: '#e8c87a',         period: 20, start: 137 },
+      { name: 'Terra',    orbit: 125, size: 8,  color: 'var(--terran)',    period: 26, start: 255 },
+      { name: 'Mars',     orbit: 160, size: 5,  color: '#c85a3a',         period: 32, start: 18  },
+      { name: 'Jupiter',  orbit: 205, size: 8,  color: '#c8a86e',         period: 42, start: 190 },
+      { name: 'Saturn',   orbit: 245, size: 7,  color: '#d4c48c',         period: 52, start: 310 },
+      { name: 'Neptune',  orbit: 280, size: 5,  color: '#4488cc',         period: 60, start: 88  }
+    ];
+
+    /* Build orbit rings (dashed circles) and planet elements */
+    const orbitRings = planets.map(p => `
+      <div class="sol-orbit-ring" style="
+        width:${p.orbit * 2}px;
+        height:${p.orbit * 2}px;
+        top:50%; left:50%;
+        transform:translate(-50%,-50%);
+      "></div>
+    `).join('');
+
+    const planetEls = planets.map(p => {
+      const isTerra = p.name === 'Terra';
+      const terraClass = isTerra ? ' sol-terra' : '';
+      const labelClass = isTerra ? ' sol-label-terra' : '';
+      return `
+        <div class="sol-orbit-arm${terraClass}" style="
+          width:${p.orbit * 2}px;
+          height:${p.orbit * 2}px;
+          top:50%; left:50%;
+          transform:translate(-50%,-50%) rotate(${p.start}deg);
+          animation:solOrbit ${p.period}s linear infinite;
+        ">
+          <div class="sol-planet${terraClass}" style="
+            width:${p.size}px;
+            height:${p.size}px;
+            background:${p.color};
+            ${isTerra ? 'box-shadow:0 0 6px var(--terran),0 0 14px var(--terran),0 0 28px rgba(0,180,255,0.4);' : `box-shadow:0 0 4px ${p.color};`}
+          ">
+            <div class="sol-planet-label${labelClass}" style="
+              ${isTerra ? 'color:var(--terran);font-weight:700;font-size:0.55rem;' : ''}
+            ">${p.name.toUpperCase()}</div>
+          </div>
+        </div>`;
+    }).join('');
+
+    return `
+      <section class="galaxy-section">
+        <div class="section-label">Star System View</div>
+        <div class="section-heading">Sol System \u2014 Terran Home</div>
+        <div class="sol-system-container">
+          <div class="sol-system">
+            ${orbitRings}
+            <div class="sol-star"></div>
+            <div class="sol-star-label">SOL</div>
+            ${planetEls}
+          </div>
+        </div>
+        <div class="divider"></div>
+      </section>`;
+  },
+
+  /* ── Territory Map ───────────────────────────────────── */
+
+  /**
+   * Build a CSS-only Risk/Warhammer 40k style territory control map
+   * of Terra's surface, divided into 16 command territories.
+   * Color-coded by control status: Terran (controlled), neutral, contested.
+   * @returns {string} HTML string
+   */
+  buildTerritoryMap() {
+    /* Territory data: name, status (controlled/neutral/contested), resource icon, grid position */
+    const territories = [
+      { name: 'Central Command',       status: 'controlled', icon: '\u2605', row: 1, col: 2 },
+      { name: 'Industrial District',   status: 'controlled', icon: '\u2699', row: 1, col: 3 },
+      { name: 'Spaceport Alpha',       status: 'controlled', icon: '\u2605', row: 1, col: 4 },
+      { name: 'Northern Garrison',     status: 'controlled', icon: '\u26E8', row: 1, col: 5 },
+      { name: 'Civilian Sector',       status: 'neutral',    icon: '\u2605', row: 2, col: 1 },
+      { name: 'Power Grid Hub',        status: 'controlled', icon: '\u2699', row: 2, col: 2 },
+      { name: 'Shield Generator',      status: 'controlled', icon: '\u26E8', row: 2, col: 3 },
+      { name: 'Comm Array',            status: 'controlled', icon: '\u2699', row: 2, col: 4 },
+      { name: 'Southern Bastion',      status: 'contested',  icon: '\u26E8', row: 2, col: 5 },
+      { name: 'Orbital Defense HQ',    status: 'controlled', icon: '\u26E8', row: 2, col: 6 },
+      { name: 'Supply Depot',          status: 'controlled', icon: '\u2699', row: 3, col: 1 },
+      { name: 'Research Complex',      status: 'controlled', icon: '\u2605', row: 3, col: 2 },
+      { name: 'Harbor District',       status: 'neutral',    icon: '\u2699', row: 3, col: 3 },
+      { name: 'Mountain Pass',         status: 'contested',  icon: '\u26E8', row: 3, col: 4 },
+      { name: 'Underground Network',   status: 'controlled', icon: '\u2699', row: 3, col: 5 },
+      { name: 'Western Fortifications', status: 'neutral',   icon: '\u26E8', row: 3, col: 6 }
+    ];
+
+    /* Status colors and labels */
+    const statusStyles = {
+      controlled: { color: 'var(--terran)', bg: 'rgba(0,180,255,0.10)', border: 'rgba(0,180,255,0.35)', label: 'CONTROLLED' },
+      neutral:    { color: 'rgba(160,160,170,0.9)', bg: 'rgba(160,160,170,0.06)', border: 'rgba(160,160,170,0.25)', label: 'NEUTRAL' },
+      contested:  { color: '#ff6644', bg: 'rgba(255,102,68,0.08)', border: 'rgba(255,102,68,0.35)', label: 'CONTESTED' }
+    };
+
+    /* Connection lines between adjacent territories (SVG overlay) */
+    /* Grid layout: 6 columns × 3 rows, each cell ~140×100px */
+    const cellW = 140;
+    const cellH = 100;
+    const padX = 70;  /* half cell */
+    const padY = 50;  /* half cell */
+
+    /* Adjacency pairs — indices into territories array */
+    const connections = [
+      [0,1],[1,2],[2,3],     /* Row 1 */
+      [4,5],[5,6],[6,7],[7,8],[8,9], /* Row 2 */
+      [10,11],[11,12],[12,13],[13,14],[14,15], /* Row 3 */
+      [0,5],[1,6],[2,7],[3,8],   /* Row 1→2 verticals */
+      [4,10],[5,11],[6,12],[7,13],[8,14],[9,15], /* Row 2→3 verticals */
+      [0,4],[1,5],[2,6],[3,7],   /* Row 1→2 diagonals left */
+      [1,7],[2,8],[3,9]          /* Row 1→2 diagonals right */
+    ];
+
+    const svgW = cellW * 6;
+    const svgH = cellH * 3;
+
+    /* Compute center of each territory in SVG space */
+    const centers = territories.map(t => ({
+      x: (t.col - 1) * cellW + padX,
+      y: (t.row - 1) * cellH + padY
+    }));
+
+    const lines = connections.map(([a, b]) => {
+      if (!centers[a] || !centers[b]) return '';
+      return `<line x1="${centers[a].x}" y1="${centers[a].y}" x2="${centers[b].x}" y2="${centers[b].y}" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>`;
+    }).join('');
+
+    /* Build territory cards */
+    const territoryCards = territories.map(t => {
+      const s = statusStyles[t.status];
+      const contestedClass = t.status === 'contested' ? ' terr-contested' : '';
+      return `
+        <div class="terr-cell${contestedClass}" style="
+          grid-row:${t.row}; grid-column:${t.col};
+          background:${s.bg};
+          border-color:${s.border};
+          --terr-color:${s.color};
+        ">
+          <div class="terr-icon" style="color:${s.color}">${t.icon}</div>
+          <div class="terr-name">${t.name}</div>
+          <div class="terr-status" style="color:${s.color}">${s.label}</div>
+        </div>`;
+    }).join('');
+
+    return `
+      <section class="galaxy-section">
+        <div class="section-label">Ground Control Map</div>
+        <div class="section-heading">Terra \u2014 Capital World Territory Control</div>
+        <div class="terr-map-container">
+          <svg class="terr-connections" viewBox="0 0 ${svgW} ${svgH}" preserveAspectRatio="xMidYMid meet">
+            ${lines}
+          </svg>
+          <div class="terr-grid">
+            ${territoryCards}
           </div>
         </div>
         <div class="divider"></div>

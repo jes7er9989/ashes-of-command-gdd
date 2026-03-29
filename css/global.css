@@ -1013,6 +1013,242 @@ body.sidebar-collapsed .main-content {
 }
 
 
+/* ── 7b-1. Sol System ─────────────────────────────────── */
+
+.sol-system-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.sol-system {
+  position: relative;
+  width: 600px;
+  height: 600px;
+}
+
+/* Orbit rings — dashed circles */
+.sol-orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(255,255,255,0.08);
+  pointer-events: none;
+}
+
+/* Central star */
+.sol-star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,230,1) 0%, rgba(255,240,180,0.9) 30%, rgba(255,220,100,0.5) 60%, transparent 80%);
+  box-shadow:
+    0 0 20px 6px rgba(255,240,180,0.4),
+    0 0 50px 15px rgba(255,220,100,0.2),
+    0 0 80px 30px rgba(255,200,60,0.1);
+  z-index: 5;
+  animation: solStarPulse 4s ease-in-out infinite alternate;
+}
+
+.sol-star-label {
+  position: absolute;
+  top: calc(50% + 28px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: rgba(255,240,180,0.7);
+  letter-spacing: 3px;
+  z-index: 6;
+  pointer-events: none;
+}
+
+@keyframes solStarPulse {
+  0%   { box-shadow: 0 0 20px 6px rgba(255,240,180,0.4), 0 0 50px 15px rgba(255,220,100,0.2), 0 0 80px 30px rgba(255,200,60,0.1); }
+  100% { box-shadow: 0 0 28px 10px rgba(255,240,180,0.5), 0 0 60px 20px rgba(255,220,100,0.3), 0 0 100px 40px rgba(255,200,60,0.15); }
+}
+
+/* Orbit arm — rotating container that carries the planet */
+.sol-orbit-arm {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+@keyframes solOrbit {
+  0%   { transform: translate(-50%, -50%) rotate(var(--start, 0deg)); }
+  100% { transform: translate(-50%, -50%) rotate(calc(var(--start, 0deg) + 360deg)); }
+}
+
+/* Override animation to use inline start angle — keyframes use 0→360 */
+.sol-orbit-arm {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Planet dot — positioned at the top-center of the orbit arm */
+.sol-planet {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  z-index: 4;
+}
+
+/* Terra-specific glow and pulse */
+.sol-planet.sol-terra {
+  animation: solTerraPulse 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes solTerraPulse {
+  0%   { box-shadow: 0 0 6px var(--terran), 0 0 14px var(--terran), 0 0 28px rgba(0,180,255,0.4); }
+  100% { box-shadow: 0 0 10px var(--terran), 0 0 22px var(--terran), 0 0 40px rgba(0,180,255,0.6); }
+}
+
+/* Planet name label */
+.sol-planet-label {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.45rem;
+  color: rgba(200,210,220,0.6);
+  letter-spacing: 1px;
+  white-space: nowrap;
+  pointer-events: none;
+  /* Counter-rotate so labels stay readable */
+  animation: solLabelCounterRotate var(--period, 26s) linear infinite;
+}
+
+.sol-label-terra {
+  color: var(--terran) !important;
+  font-weight: 700;
+  font-size: 0.55rem !important;
+  text-shadow: 0 0 8px rgba(0,180,255,0.5);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .sol-system {
+    width: 340px;
+    height: 340px;
+    transform: scale(0.57);
+    transform-origin: top center;
+  }
+}
+
+
+/* ── 7b-2. Territory Control Map ──────────────────────── */
+
+.terr-map-container {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* SVG connection lines behind the grid */
+.terr-connections {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Territory grid */
+.terr-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 8px;
+  z-index: 1;
+}
+
+/* Individual territory cell */
+.terr-cell {
+  position: relative;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 10px 8px;
+  text-align: center;
+  background: rgba(0,180,255,0.06);
+  transition: border-color 0.3s, background 0.3s;
+  cursor: default;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.terr-cell:hover {
+  background: rgba(0,180,255,0.12);
+  border-color: rgba(0,180,255,0.5);
+}
+
+/* Contested territory — pulsing border */
+.terr-contested {
+  animation: terrContestedPulse 2s ease-in-out infinite;
+}
+
+@keyframes terrContestedPulse {
+  0%, 100% { border-color: rgba(255,102,68,0.35); box-shadow: none; }
+  50%      { border-color: rgba(255,102,68,0.7); box-shadow: 0 0 12px rgba(255,102,68,0.2), inset 0 0 12px rgba(255,102,68,0.05); }
+}
+
+/* Resource icon */
+.terr-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Territory name */
+.terr-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: rgba(230,235,240,0.9);
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+
+/* Status label */
+.terr-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.4rem;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .terr-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .terr-cell {
+    grid-row: auto !important;
+    grid-column: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .terr-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
 /* ── 7c. Enhanced Faction Cards ────────────────────────── */
 
 .faction-section {
