@@ -5333,97 +5333,143 @@ embed {
    LIGHT MODE
    ═══════════════════════════════════════════════════════════ */
 
+/* ── Light Mode ────────────────────────────────────────────
+   Not a full white mode — a softer, lifted version of the
+   dark theme. Dark blue-gray backgrounds instead of near-black.
+   Brighter text, bolder weights, more card transparency.
+   Works on ALL pages (dashboard + chapters + appendices).
+   ────────────────────────────────────────────────────────── */
+
 body.light-mode {
-  --bg-base: #e8eaef;
-  --bg-panel: #dfe2e8;
-  --bg-card: #f0f2f5;
-  --bg-hover: #d5d8e0;
-  --text-dim: #556070;
-  --text-mid: #3a4555;
-  --text-body: #1e2836;
-  --text-hi: #0c1420;
-  --border: rgba(0,0,0,0.08);
-  --border-hi: rgba(0,0,0,0.15);
-  --accent: #0080cc;
+  --bg-base: #1a1e2a;
+  --bg-panel: #1e2230;
+  --bg-card: rgba(30,36,50,0.6);
+  --bg-hover: #252a3a;
+  --text-dim: #8899aa;
+  --text-mid: #b0bcc8;
+  --text-body: #d8dee8;
+  --text-hi: #f0f2f6;
+  --border: rgba(255,255,255,0.08);
+  --border-hi: rgba(255,255,255,0.15);
+  --accent: #22aaff;
 }
 
 body.light-mode .sidebar {
-  background: #dfe2e8;
-  border-right-color: rgba(0,0,0,0.1);
+  background: #161a26;
+  border-right-color: rgba(255,255,255,0.06);
 }
 
 body.light-mode #display-controls {
-  background: rgba(232,234,239,0.9);
-  border-color: rgba(0,0,0,0.12);
+  background: rgba(26,30,42,0.9);
+  border-color: rgba(255,255,255,0.1);
 }
 
+/* Softer hero gradient — not harsh white */
 body.light-mode .hero-starfield {
-  background: linear-gradient(180deg, #c8ccd5 0%, #e0e3ea 40%, #e8eaef 100%);
+  background: linear-gradient(180deg, #141828 0%, #1a1e2a 50%, #1e2230 100%);
 }
 
 body.light-mode .hero-title {
-  text-shadow: 0 0 20px rgba(0,128,204,0.3);
+  text-shadow: 0 0 30px rgba(34,170,255,0.4);
 }
 
 body.light-mode .hero-lore-text {
-  color: #2a3545;
-  text-shadow: none;
+  color: #d0d8e4;
+  text-shadow: 0 0 20px rgba(34,170,255,0.15);
 }
 
 body.light-mode .hero-lore-source {
-  color: #4a5568;
-  text-shadow: none;
+  color: #90a0b0;
 }
 
+/* Sidebar nav — brighter text */
 body.light-mode .nav-chapter {
-  color: #3a4555;
+  color: #c0c8d4;
 }
 
 body.light-mode .nav-chapter:hover {
-  color: #0c1420;
-  background: rgba(0,0,0,0.04);
-  text-shadow: none;
+  color: #f0f2f6;
+  background: rgba(255,255,255,0.05);
 }
 
 body.light-mode .nav-chapter.active {
-  color: #0c1420;
-  background: rgba(0,128,204,0.08);
-  text-shadow: none;
+  color: #f0f2f6;
+  background: rgba(34,170,255,0.1);
 }
 
+body.light-mode .nav-part-header {
+  color: #90a0b0;
+}
+
+/* Cards — more transparent */
 body.light-mode .card {
-  background: #f0f2f5;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  background: rgba(30,36,50,0.5);
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+/* Content area overrides */
+body.light-mode #content-area {
+  background: #1a1e2a;
+}
+
+body.light-mode #content-area .card {
+  background: rgba(30,36,50,0.5);
 }
 
 body.light-mode .section-heading {
-  text-shadow: none;
+  text-shadow: 0 0 14px rgba(34,170,255,0.25);
 }
 
 body.light-mode .quote-text {
-  text-shadow: none;
+  color: #c8d0dc;
 }
 
-body.light-mode #brightness-slider {
-  background: rgba(0,0,0,0.12);
+/* Bold text for readability */
+body.light-mode .body-text,
+body.light-mode p,
+body.light-mode .card {
+  font-weight: 500;
 }
 
+body.light-mode .section-heading {
+  font-weight: 800;
+}
+
+body.light-mode .nav-chapter {
+  font-weight: 500;
+}
+
+/* Search and filter */
 body.light-mode .sidebar-search-wrap input {
-  background: #f0f2f5;
-  border-color: rgba(0,0,0,0.12);
-  color: #1e2836;
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.1);
+  color: #d8dee8;
 }
 
 body.light-mode .sidebar-filter-btn {
-  background: rgba(0,0,0,0.03);
-  border-color: rgba(0,0,0,0.1);
-  color: #3a4555;
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+  color: #90a0b0;
 }
 
 body.light-mode .filter-option:hover {
-  background: rgba(0,0,0,0.05);
+  background: rgba(255,255,255,0.06);
 }
 
 body.light-mode .filter-option.active {
-  background: rgba(0,128,204,0.08);
+  background: rgba(34,170,255,0.1);
+}
+
+body.light-mode #brightness-slider {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Dashboard sections */
+body.light-mode .dashboard-section:nth-child(odd) {
+  background: rgba(34,170,255,0.03);
+}
+
+body.light-mode .dashboard-section:nth-child(even) {
+  background: rgba(34,170,255,0.05);
 }
