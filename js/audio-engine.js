@@ -48,6 +48,8 @@ const AudioEngine = (() => {
   let _bgTimers    = [];
   let currentFaction = null;
   let isPlaying    = false;
+  let _hissGn      = null;
+  let _subGn       = null;
 
   // ═══════════════════════════════════════════════════════
   // INIT — signal chain:
@@ -149,22 +151,22 @@ const AudioEngine = (() => {
     const hissSrc = ctx.createBufferSource();
     hissSrc.buffer = hissBuf; hissSrc.loop = true;
     const hissHp = ctx.createBiquadFilter(); hissHp.type='highpass'; hissHp.frequency.value=3200;
-    const hissGn = ctx.createGain(); hissGn.gain.value = 0;
-    hissSrc.connect(hissHp); hissHp.connect(hissGn); hissGn.connect(bgGain);
+    _hissGn = ctx.createGain(); _hissGn.gain.value = 0;
+    hissSrc.connect(hissHp); hissHp.connect(_hissGn); _hissGn.connect(bgGain);
     hissSrc.start();
     // Fade in after a moment (respects mute state via bgGain)
-    hissGn.gain.setValueAtTime(0, ctx.currentTime);
-    hissGn.gain.linearRampToValueAtTime(0.55, ctx.currentTime + 3.0);
+    _hissGn.gain.setValueAtTime(0, ctx.currentTime);
+    _hissGn.gain.linearRampToValueAtTime(0.55, ctx.currentTime + 3.0);
 
     // ── A22: SUB RUMBLE DRONE ────────────────────────────────────
     // 22Hz sine — felt not heard, adds cinematic weight
     const subOsc = ctx.createOscillator(); subOsc.type='sine'; subOsc.frequency.value=22;
-    const subGn  = ctx.createGain(); subGn.gain.value=0;
+    _subGn  = ctx.createGain(); _subGn.gain.value=0;
     const subLp  = ctx.createBiquadFilter(); subLp.type='lowpass'; subLp.frequency.value=45;
-    subOsc.connect(subLp); subLp.connect(subGn); subGn.connect(bgGain);
+    subOsc.connect(subLp); subLp.connect(_subGn); _subGn.connect(bgGain);
     subOsc.start();
-    subGn.gain.setValueAtTime(0, ctx.currentTime);
-    subGn.gain.linearRampToValueAtTime(0.18, ctx.currentTime + 4.0);
+    _subGn.gain.setValueAtTime(0, ctx.currentTime);
+    _subGn.gain.linearRampToValueAtTime(0.18, ctx.currentTime + 4.0);
   }
 
   // ── Soft-clip waveshaper (overdrive) ────────────────────────
@@ -568,12 +570,25 @@ const AudioEngine = (() => {
   function stopBg() {
     _bgTimers.forEach(function(tid) { clearInterval(tid); });
     _bgTimers = [];
+    if (bgNodes.length > 0 && ctx && bgGain) {
+      // Quick fade out to avoid clicks/pops
+      var now = ctx.currentTime;
+      bgGain.gain.cancelScheduledValues(now);
+      bgGain.gain.setValueAtTime(bgGain.gain.value, now);
+      bgGain.gain.linearRampToValueAtTime(0, now + 0.05);
+    }
     bgNodes.forEach(function(n) {
       try { n.stop && n.stop(); } catch(e) {}
       try { n.disconnect(); } catch(e) {}
     });
     bgNodes = [];
     isPlaying = false;
+    // Restore bgGain volume after cleanup
+    if (bgGain) {
+      setTimeout(function() {
+        if (bgGain) bgGain.gain.setValueAtTime(getMusicVol(), ctx.currentTime);
+      }, 60);
+    }
   }
 
   function _bgGain(vol, fadeIn) {
@@ -629,7 +644,36 @@ const AudioEngine = (() => {
   function startBg(factionKey) {
     if (!ctx) init();
     if (currentFaction === factionKey && isPlaying) return;
-    stopBg();
+
+    // Smooth crossfade if already playing a different faction
+    if (isPlaying && bgNodes.length > 0) {
+      var now = ctx.currentTime;
+      var fadeOut = 0.6;
+      // Fade out current bgGain
+      bgGain.gain.cancelScheduledValues(now);
+      bgGain.gain.setValueAtTime(bgGain.gain.value, now);
+      bgGain.gain.linearRampToValueAtTime(0, now + fadeOut);
+
+      var oldNodes = bgNodes;
+      var oldTimers = _bgTimers;
+      bgNodes = [];
+      _bgTimers = [];
+
+      setTimeout(function() {
+        oldTimers.forEach(function(tid) { clearInterval(tid); });
+        oldNodes.forEach(function(n) {
+          try { n.stop && n.stop(); } catch(e) {}
+          try { n.disconnect(); } catch(e) {}
+        });
+        // Restore bgGain for new faction
+        bgGain.gain.cancelScheduledValues(ctx.currentTime);
+        bgGain.gain.setValueAtTime(0, ctx.currentTime);
+        bgGain.gain.linearRampToValueAtTime(getMusicVol(), ctx.currentTime + 1.0);
+      }, fadeOut * 1000);
+    } else {
+      stopBg();
+    }
+
     currentFaction = factionKey;
     isPlaying = true;
 
@@ -890,8 +934,27 @@ const AudioEngine = (() => {
     var ab=document.getElementById('audio-toggle');
     if(!ab||ab.getAttribute('data-on')!=='1')return;
     if(isPlaying||_catNodes.length){
-      bgGain.gain.setTargetAtTime(0,ctx.currentTime,0.22);
-      setTimeout(function(){stopBg();stopCategoryBg();_startCat(key);bgGain.gain.setValueAtTime(0,ctx.currentTime);bgGain.gain.setTargetAtTime(getMusicVol(),ctx.currentTime,0.5);},650);
+      var now = ctx.currentTime;
+      var fadeOut = 0.8;  // seconds to fade old audio out
+      var fadeIn  = 1.2;  // seconds to fade new audio in
+      var overlap = 0.3;  // start new audio before old fully fades
+      var targetVol = getMusicVol();
+
+      // Fade out current audio smoothly
+      bgGain.gain.cancelScheduledValues(now);
+      bgGain.gain.setValueAtTime(bgGain.gain.value, now);
+      bgGain.gain.linearRampToValueAtTime(0, now + fadeOut);
+
+      // After partial fadeout, stop old nodes and start new ones
+      setTimeout(function(){
+        stopBg();
+        stopCategoryBg();
+        // Reset bgGain for fade-in
+        bgGain.gain.cancelScheduledValues(ctx.currentTime);
+        bgGain.gain.setValueAtTime(0, ctx.currentTime);
+        bgGain.gain.linearRampToValueAtTime(targetVol, ctx.currentTime + fadeIn);
+        _startCat(key);
+      }, (fadeOut - overlap) * 1000);
     } else { _startCat(key); }
   }
 
