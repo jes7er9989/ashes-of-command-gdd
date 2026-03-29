@@ -175,7 +175,7 @@ const Dashboard = {
   buildEpigraph() {
     return `
       <section class="dashboard-section">
-        <div class="quote-block" style="margin:32px 0;text-align:center">
+        <div class="quote-block" style="margin:32px auto;text-align:center">
           <div class="quote-text" style="font-style:italic;font-size:1rem;color:var(--text-mid);line-height:1.8">\u201CThe species that cannot share power will not survive to exercise it. Unity is not compromise \u2014 it is multiplication.\u201D</div>
           <div class="quote-attr" style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--text-dim)">THE COVENANT TEXT \u2014 UNITY ACCORD FOUNDING PRINCIPLES</div>
         </div>
