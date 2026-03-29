@@ -641,7 +641,6 @@ class SolarSystemRenderer {
     }
 
     var elapsed = this.clock.getElapsedTime();
-    var delta = this.clock.getDelta();
 
     // --- Sol pulse: scale oscillates between 1.0 and 1.05 ---
     var pulseT = (Math.sin((elapsed / SOLAR_SOL_PULSE_PERIOD) * Math.PI * 2) + 1) / 2;

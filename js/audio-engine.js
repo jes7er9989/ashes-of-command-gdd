@@ -887,7 +887,7 @@ const AudioEngine = (() => {
 
   function crossfadeToCategory(key){
     if(!ctx)init();
-    var ab=document.getElementById('audio-mute-btn');
+    var ab=document.getElementById('audio-toggle');
     if(!ab||ab.getAttribute('data-on')!=='1')return;
     if(isPlaying||_catNodes.length){
       bgGain.gain.setTargetAtTime(0,ctx.currentTime,0.22);

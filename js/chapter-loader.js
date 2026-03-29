@@ -134,6 +134,11 @@ const ChapterLoader = {
     // Apply faction-specific body class (changes accent colors)
     this.applyFactionClass(chapterId);
 
+    // Sync visual subsystems (ambient particles, cursor, badge, audio)
+    if (typeof FactionBgSwitcher !== 'undefined') {
+      FactionBgSwitcher.apply(chapterId);
+    }
+
     // Switch audio engine faction theme if audio is active
     const factionAudio = this.FACTION_MAP[chapterId];
     if (factionAudio && typeof AudioEngine !== 'undefined') {

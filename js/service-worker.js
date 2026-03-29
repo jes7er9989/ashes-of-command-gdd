@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v43';
+const CACHE_NAME = 'aoc-gdd-v44';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -25,6 +25,10 @@ const PRECACHE_URLS = [
   '/js/canvas-galaxy.js',
   '/js/solar-system.js',
   '/js/canvas-territory.js',
+  '/js/content-renderers.js',
+  '/js/chapter-index.js',
+  '/js/glossary.js',
+  '/js/audio-engine.js',
   '/data/nav/nav-data.json',
   '/data/factions/factions.json',
 ];

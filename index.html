@@ -286,14 +286,7 @@
           });
         }
 
-        // Show the back-to-top button after scrolling 300px
-        const btt = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-          btt.classList.toggle('visible', window.scrollY > 300);
-        });
-        btt.addEventListener('click', () => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        // Back-to-top button handled by Nav.bindBackToTop()
 
         // Register service worker for offline caching
         if ('serviceWorker' in navigator) {

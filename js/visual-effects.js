@@ -90,7 +90,7 @@ const FactionBgSwitcher = (() => {
       if (typeof AudioEngine !== 'undefined') {
         AudioEngine.setFaction(faction);
         // Auto-play ambient if audio is already on
-        const audioBtn = document.getElementById('audio-mute-btn');
+        const audioBtn = document.getElementById('audio-toggle');
         if (audioBtn && audioBtn.getAttribute('data-on') === '1') {
           AudioEngine.startBg(faction);
         }

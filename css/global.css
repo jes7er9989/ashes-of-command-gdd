@@ -1,40 +1,40 @@
-/* ═══════════════════════════════════════════════════════════
-   GLOBAL STYLESHEET — Ashes of Command Interactive GDD v5.9.1
-   ───────────────────────────────────────────────────────────
+﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   GLOBAL STYLESHEET â€” Ashes of Command Interactive GDD v5.9.1
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    Dark sci-fi command-console theme for the interactive
    Game Design Document browser. All visual styling lives here;
    no component-level CSS files exist.
 
    Sections:
-     1. Imports & Variables   – Fonts, faction colors, spacing tokens
-     2. Reset & Base          – Box-model reset, scrollbars, body
-     3. Typography            – Headings, code, links
-     4. Layout                – App shell, sidebar, main content
-     5. Navigation            – Sidebar nav tree, chapter links
-     6. Cards & Components    – Generic cards, faction cards, stat bars
-     7. Dashboard             – Landing-page header & summary bar
-     8. Search Overlay        – Ctrl+K command-palette search
-     9. Back to Top           – Floating scroll-to-top button
-    10. Hamburger / Mobile    – Mobile nav toggle & responsive rules
-    11. Utility Classes       – Shared helpers, animations, scanline FX
+     1. Imports & Variables   â€“ Fonts, faction colors, spacing tokens
+     2. Reset & Base          â€“ Box-model reset, scrollbars, body
+     3. Typography            â€“ Headings, code, links
+     4. Layout                â€“ App shell, sidebar, main content
+     5. Navigation            â€“ Sidebar nav tree, chapter links
+     6. Cards & Components    â€“ Generic cards, faction cards, stat bars
+     7. Dashboard             â€“ Landing-page header & summary bar
+     8. Search Overlay        â€“ Ctrl+K command-palette search
+     9. Back to Top           â€“ Floating scroll-to-top button
+    10. Hamburger / Mobile    â€“ Mobile nav toggle & responsive rules
+    11. Utility Classes       â€“ Shared helpers, animations, scanline FX
 
    Dependencies: Google Fonts (Rajdhani, Orbitron, JetBrains Mono,
                  Share Tech Mono) loaded via @import below.
-   ═══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    1. IMPORTS & VARIABLES
-   ═══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Font Import ──
-   Rajdhani     → body text
-   Orbitron     → headings, UI labels
-   JetBrains    → code, stats, monospace data
-   Share Tech   → decorative mono (version tags, footers)       */
+/* â”€â”€ Font Import â”€â”€
+   Rajdhani     â†’ body text
+   Orbitron     â†’ headings, UI labels
+   JetBrains    â†’ code, stats, monospace data
+   Share Tech   â†’ decorative mono (version tags, footers)       */
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
 
-/* ── CSS Custom Properties ──
+/* â”€â”€ CSS Custom Properties â”€â”€
    Faction colors map 1-to-1 with the seven playable factions.
    Background scale goes from darkest (base) to lightest (hover).
    Text scale goes from dimmest (dim) to brightest (hi).          */
@@ -48,7 +48,7 @@
   --vorax: #ff2266;
   --guardians: #cc44ff;
 
-  /* Background scale (dark → light) */
+  /* Background scale (dark â†’ light) */
   --bg-base: #07080c;
   --bg-panel: #0c0e14;
   --bg-card: #10131b;
@@ -58,7 +58,7 @@
   --border: rgba(255,255,255,0.05);
   --border-hi: rgba(255,255,255,0.12);
 
-  /* Text luminance scale (dim → bright) */
+  /* Text luminance scale (dim â†’ bright) */
   --text-dim: #445566;
   --text-mid: #778899;
   --text-body: #b8beca;
@@ -73,18 +73,18 @@
 }
 
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    2. RESET & BASE
-   ═══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Box-Model Reset ── */
+/* â”€â”€ Box-Model Reset â”€â”€ */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ── Custom Scrollbar ──
+/* â”€â”€ Custom Scrollbar â”€â”€
    Thin, dark scrollbar that blends with the console theme.
    Webkit rules for Chrome/Edge, standard props for Firefox.    */
 ::-webkit-scrollbar {
@@ -108,7 +108,7 @@ html {
   overflow-x: hidden;
 }
 
-/* ── Body ── */
+/* â”€â”€ Body â”€â”€ */
 html, body {
   height: 100%;
 }
@@ -125,9 +125,9 @@ body {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    3. TYPOGRAPHY
-   ═══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Orbitron', sans-serif;
@@ -159,16 +159,16 @@ a:hover {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   4. LAYOUT — App shell: sidebar + main content flex pair
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   4. LAYOUT â€” App shell: sidebar + main content flex pair
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 .app-layout {
   display: flex;
   min-height: 100vh;
 }
 
-/* ── Sidebar ──
+/* â”€â”€ Sidebar â”€â”€
    Fixed-position left panel. On mobile, slides off-screen via
    transform and is toggled by the hamburger button.             */
 .sidebar {
@@ -216,7 +216,7 @@ a:hover {
   margin-top: -2px;
 }
 
-/* ── Dashboard "The Reclamation" subtitle ── */
+/* â”€â”€ Dashboard "The Reclamation" subtitle â”€â”€ */
 .subtitle-reclamation {
   font-family: 'Orbitron', monospace;
   font-size: 1.1rem;
@@ -227,7 +227,7 @@ a:hover {
   margin-bottom: 8px;
 }
 
-/* ── Sidebar Filter ──
+/* â”€â”€ Sidebar Filter â”€â”€
    Quick-filter input that narrows the chapter nav tree.         */
 .sidebar-filter {
   padding: 10px 16px;
@@ -256,18 +256,18 @@ a:hover {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   5. NAVIGATION — Sidebar chapter tree
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   5. NAVIGATION â€” Sidebar chapter tree
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Nav Container ── */
+/* â”€â”€ Nav Container â”€â”€ */
 .sidebar-nav {
   flex: 1;
   overflow-y: auto;
   padding: 8px 0;
 }
 
-/* ── Part Group ──
+/* â”€â”€ Part Group â”€â”€
    Each "Part" is a collapsible group of chapters.               */
 .nav-part {
   margin-bottom: 2px;
@@ -303,7 +303,7 @@ a:hover {
   transform: rotate(-90deg);
 }
 
-/* ── Chapter List (collapsible) ── */
+/* â”€â”€ Chapter List (collapsible) â”€â”€ */
 .nav-part-chapters {
   overflow: hidden;
   transition: max-height 0.3s ease;
@@ -313,7 +313,7 @@ a:hover {
   max-height: 0 !important;
 }
 
-/* ── Individual Chapter Link ── */
+/* â”€â”€ Individual Chapter Link â”€â”€ */
 .nav-chapter {
   position: relative;
   display: block;
@@ -349,7 +349,7 @@ a:hover {
   display: inline-block;
 }
 
-/* ── Sidebar Footer ── */
+/* â”€â”€ Sidebar Footer â”€â”€ */
 .sidebar-footer {
   padding: 12px 16px;
   border-top: 1px solid var(--border);
@@ -359,7 +359,7 @@ a:hover {
   line-height: 1.6;
 }
 
-/* ── Sidebar Collapse Toggle ──
+/* â”€â”€ Sidebar Collapse Toggle â”€â”€
    Desktop-only button that slides the sidebar off-screen.       */
 .sidebar-toggle {
   position: fixed;
@@ -397,7 +397,7 @@ body.sidebar-collapsed .main-content {
   margin-left: 0;
 }
 
-/* ── Main Content Area ──
+/* â”€â”€ Main Content Area â”€â”€
    Offset by sidebar width on desktop; fills remaining space.    */
 .main-content {
   margin-left: var(--sidebar-w);
@@ -414,11 +414,11 @@ body.sidebar-collapsed .main-content {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    6. CARDS & COMPONENTS
-   ═══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Generic Card ── */
+/* â”€â”€ Generic Card â”€â”€ */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -432,12 +432,12 @@ body.sidebar-collapsed .main-content {
   background: var(--bg-hover);
 }
 
-/* ── Faction Cards ──
-   Moved to Section 7 (Dashboard) — see .faction-grid,
+/* â”€â”€ Faction Cards â”€â”€
+   Moved to Section 7 (Dashboard) â€” see .faction-grid,
    .faction-card and related rules in the Dashboard section.
    Kept here as section marker only.                              */
 
-/* ── Stat Bars ──
+/* â”€â”€ Stat Bars â”€â”€
    Horizontal progress bars showing early/mid/late power curves. */
 .stat-bars {
   display: flex;
@@ -482,7 +482,7 @@ body.sidebar-collapsed .main-content {
   text-align: right;
 }
 
-/* ── NPC Badge ──
+/* â”€â”€ NPC Badge â”€â”€
    Corner tag on non-playable factions (e.g. Core Guardians).   */
 .npc-badge {
   position: absolute;
@@ -500,11 +500,11 @@ body.sidebar-collapsed .main-content {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   7. DASHBOARD — Cinematic Hero Landing Page
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   7. DASHBOARD â€” Cinematic Hero Landing Page
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── 7a. Hero Section — Full-Viewport Starfield ────────── */
+/* â”€â”€ 7a. Hero Section â€” Full-Viewport Starfield â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .hero-section {
   position: relative;
@@ -518,9 +518,9 @@ body.sidebar-collapsed .main-content {
   padding: 60px 32px 40px;
 }
 
-/* CSS-only starfield — three layers of radial-gradient dots
+/* CSS-only starfield â€” three layers of radial-gradient dots
    at different sizes and animation speeds for depth parallax.
-   No canvas, no JS — pure CSS animation.                       */
+   No canvas, no JS â€” pure CSS animation.                       */
 .hero-starfield {
   position: absolute;
   inset: 0;
@@ -529,7 +529,7 @@ body.sidebar-collapsed .main-content {
   overflow: hidden;
   clip-path: inset(0);
   background:
-    /* Layer 1 — tiny distant stars (slow) */
+    /* Layer 1 â€” tiny distant stars (slow) */
     radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6), transparent),
     radial-gradient(1px 1px at 25% 35%, rgba(255,255,255,0.5), transparent),
     radial-gradient(1px 1px at 40% 8%, rgba(255,255,255,0.4), transparent),
@@ -546,7 +546,7 @@ body.sidebar-collapsed .main-content {
     radial-gradient(1px 1px at 35% 88%, rgba(255,255,255,0.5), transparent),
     radial-gradient(1px 1px at 50% 95%, rgba(255,255,255,0.4), transparent),
     radial-gradient(1px 1px at 68% 92%, rgba(255,255,255,0.6), transparent),
-    /* Layer 1b — extra tiny stars for density */
+    /* Layer 1b â€” extra tiny stars for density */
     radial-gradient(1px 1px at 3% 5%, rgba(255,255,255,0.35), transparent),
     radial-gradient(1px 1px at 17% 22%, rgba(255,255,255,0.5), transparent),
     radial-gradient(1px 1px at 32% 4%, rgba(255,255,255,0.4), transparent),
@@ -571,7 +571,7 @@ body.sidebar-collapsed .main-content {
     radial-gradient(1px 1px at 2% 38%, rgba(255,255,255,0.5), transparent),
     radial-gradient(1px 1px at 46% 16%, rgba(255,255,255,0.45), transparent),
     radial-gradient(1px 1px at 63% 62%, rgba(255,255,255,0.35), transparent),
-    /* Layer 2 — medium stars (medium speed) */
+    /* Layer 2 â€” medium stars (medium speed) */
     radial-gradient(1.5px 1.5px at 8% 28%, rgba(180,220,255,0.7), transparent),
     radial-gradient(1.5px 1.5px at 22% 12%, rgba(180,220,255,0.5), transparent),
     radial-gradient(1.5px 1.5px at 38% 52%, rgba(180,220,255,0.6), transparent),
@@ -582,7 +582,7 @@ body.sidebar-collapsed .main-content {
     radial-gradient(1.5px 1.5px at 18% 75%, rgba(180,220,255,0.5), transparent),
     radial-gradient(1.5px 1.5px at 45% 82%, rgba(180,220,255,0.6), transparent),
     radial-gradient(1.5px 1.5px at 75% 88%, rgba(180,220,255,0.7), transparent),
-    /* Layer 2b — extra medium stars for density */
+    /* Layer 2b â€” extra medium stars for density */
     radial-gradient(1.5px 1.5px at 4% 48%, rgba(180,220,255,0.5), transparent),
     radial-gradient(1.5px 1.5px at 15% 8%, rgba(180,220,255,0.6), transparent),
     radial-gradient(1.5px 1.5px at 28% 62%, rgba(180,220,255,0.45), transparent),
@@ -593,7 +593,7 @@ body.sidebar-collapsed .main-content {
     radial-gradient(1.5px 1.5px at 98% 42%, rgba(180,220,255,0.7), transparent),
     radial-gradient(1.5px 1.5px at 33% 92%, rgba(180,220,255,0.5), transparent),
     radial-gradient(1.5px 1.5px at 60% 5%, rgba(180,220,255,0.6), transparent),
-    /* Layer 3 — bright nearby stars (fast twinkle) */
+    /* Layer 3 â€” bright nearby stars (fast twinkle) */
     radial-gradient(2px 2px at 12% 45%, rgba(0,180,255,0.8), transparent),
     radial-gradient(2px 2px at 33% 25%, rgba(0,255,238,0.6), transparent),
     radial-gradient(2px 2px at 58% 70%, rgba(255,170,34,0.5), transparent),
@@ -601,7 +601,7 @@ body.sidebar-collapsed .main-content {
     radial-gradient(2px 2px at 90% 45%, rgba(0,180,255,0.7), transparent),
     radial-gradient(2px 2px at 20% 85%, rgba(255,102,34,0.5), transparent),
     radial-gradient(2px 2px at 65% 55%, rgba(68,255,102,0.4), transparent),
-    /* Layer 3b — extra bright accent stars */
+    /* Layer 3b â€” extra bright accent stars */
     radial-gradient(2px 2px at 5% 32%, rgba(0,180,255,0.65), transparent),
     radial-gradient(2px 2px at 28% 58%, rgba(204,68,255,0.5), transparent),
     radial-gradient(2px 2px at 47% 12%, rgba(0,255,238,0.55), transparent),
@@ -613,7 +613,7 @@ body.sidebar-collapsed .main-content {
   animation: starfieldDrift 120s linear infinite;
 }
 
-/* Extra star density layer — box-shadow technique for many small stars */
+/* Extra star density layer â€” box-shadow technique for many small stars */
 .hero-starfield::before {
   content: '';
   position: absolute;
@@ -686,7 +686,7 @@ body.sidebar-collapsed .main-content {
   100% { transform: translateY(-20px); }
 }
 
-/* ── Hero Content ── */
+/* â”€â”€ Hero Content â”€â”€ */
 .hero-content {
   position: relative;
   z-index: 1;
@@ -699,7 +699,7 @@ body.sidebar-collapsed .main-content {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Hero Title — Main game title with animated glow ── */
+/* â”€â”€ Hero Title â€” Main game title with animated glow â”€â”€ */
 .hero-title {
   font-family: 'Orbitron', sans-serif;
   font-size: 3rem;
@@ -729,7 +729,7 @@ body.sidebar-collapsed .main-content {
   }
 }
 
-/* ── Hero Subtitle ── */
+/* â”€â”€ Hero Subtitle â”€â”€ */
 .hero-subtitle {
   font-family: 'Orbitron', monospace;
   font-size: 1.2rem;
@@ -739,7 +739,7 @@ body.sidebar-collapsed .main-content {
   margin-bottom: 8px;
 }
 
-/* ── Hero Version Tag ── */
+/* â”€â”€ Hero Version Tag â”€â”€ */
 .hero-version {
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.7rem;
@@ -748,7 +748,7 @@ body.sidebar-collapsed .main-content {
   margin-bottom: 32px;
 }
 
-/* ── Hero Lore Quote — Cycles with fade animation ── */
+/* â”€â”€ Hero Lore Quote â€” Cycles with fade animation â”€â”€ */
 .hero-lore-quote {
   display: flex;
   flex-direction: column;
@@ -779,7 +779,7 @@ body.sidebar-collapsed .main-content {
   letter-spacing: 0.08em;
 }
 
-/* ── Scroll Indicator — Bouncing arrow at bottom of hero ── */
+/* â”€â”€ Scroll Indicator â€” Bouncing arrow at bottom of hero â”€â”€ */
 .hero-scroll-indicator {
   position: absolute;
   bottom: 30px;
@@ -818,7 +818,7 @@ body.sidebar-collapsed .main-content {
 }
 
 
-/* ── 7b. Galactic Overview — CSS-Only Animated Galaxy ──── */
+/* â”€â”€ 7b. Galactic Overview â€” CSS-Only Animated Galaxy â”€â”€â”€â”€ */
 
 .galaxy-section {
   margin: 0;
@@ -838,7 +838,7 @@ body.sidebar-collapsed .main-content {
   padding: 20px 0;
 }
 
-/* Main galaxy disc — contains all layers */
+/* Main galaxy disc â€” contains all layers */
 .galaxy-map {
   position: relative;
   width: min(900px, 80vw);
@@ -849,7 +849,7 @@ body.sidebar-collapsed .main-content {
   background: radial-gradient(ellipse at center, rgba(10,12,18,1) 0%, rgba(7,8,12,1) 100%);
 }
 
-/* Base nebula background — large ambient colored washes */
+/* Base nebula background â€” large ambient colored washes */
 .galaxy-nebula {
   position: absolute;
   inset: 0;
@@ -864,7 +864,7 @@ body.sidebar-collapsed .main-content {
   z-index: 0;
 }
 
-/* Individual nebula cloud divs — elongated ellipses along spiral arms */
+/* Individual nebula cloud divs â€” elongated ellipses along spiral arms */
 .galaxy-nebula-cloud {
   position: absolute;
   border-radius: 50%;
@@ -873,7 +873,7 @@ body.sidebar-collapsed .main-content {
   filter: blur(8px);
 }
 
-/* Dust lanes — dark bands between spiral arms for contrast */
+/* Dust lanes â€” dark bands between spiral arms for contrast */
 .galaxy-dust-lane {
   position: absolute;
   border-radius: 50%;
@@ -882,7 +882,7 @@ body.sidebar-collapsed .main-content {
   z-index: 0;
 }
 
-/* Galactic halo — dim scattered stars beyond the main disc */
+/* Galactic halo â€” dim scattered stars beyond the main disc */
 .galaxy-halo {
   position: absolute;
   width: 1px;
@@ -895,7 +895,7 @@ body.sidebar-collapsed .main-content {
   z-index: 0;
 }
 
-/* Rotating wrapper — holds all spiral arm & fill stars */
+/* Rotating wrapper â€” holds all spiral arm & fill stars */
 .galaxy-arms {
   position: absolute;
   inset: 0;
@@ -909,7 +909,7 @@ body.sidebar-collapsed .main-content {
   100% { transform: rotate(360deg); }
 }
 
-/* Star elements — 1px dot positioned at origin, box-shadow creates visible stars */
+/* Star elements â€” 1px dot positioned at origin, box-shadow creates visible stars */
 .galaxy-stars,
 .galaxy-fill-stars {
   position: absolute;
@@ -921,7 +921,7 @@ body.sidebar-collapsed .main-content {
   border-radius: 50%;
 }
 
-/* Galactic core — intense bright white center with blue halo, pulsing */
+/* Galactic core â€” intense bright white center with blue halo, pulsing */
 .galaxy-core {
   position: absolute;
   top: 50%;
@@ -966,7 +966,7 @@ body.sidebar-collapsed .main-content {
   }
 }
 
-/* Faction homeworld markers — absolute positioned, do NOT rotate */
+/* Faction homeworld markers â€” absolute positioned, do NOT rotate */
 .galaxy-homeworld {
   position: absolute;
   z-index: 3;
@@ -1020,7 +1020,7 @@ body.sidebar-collapsed .main-content {
   100% { width: 36px; height: 36px; opacity: 0; }
 }
 
-/* Homeworld faction label — visible on hover */
+/* Homeworld faction label â€” visible on hover */
 .galaxy-homeworld .homeworld-label {
   font-family: 'Orbitron', sans-serif;
   font-size: 0.5rem;
@@ -1056,7 +1056,7 @@ body.sidebar-collapsed .main-content {
   transition: transform 0.2s ease;
 }
 
-/* ── Comet streaks — bright head with gradient tail ── */
+/* â”€â”€ Comet streaks â€” bright head with gradient tail â”€â”€ */
 .galaxy-comet {
   position: absolute;
   width: 3px;
@@ -1067,7 +1067,7 @@ body.sidebar-collapsed .main-content {
   z-index: 5;
   pointer-events: none;
   opacity: 0;
-  /* Tail — a linear gradient pseudo-element trailing behind */
+  /* Tail â€” a linear gradient pseudo-element trailing behind */
 }
 .galaxy-comet::after {
   content: '';
@@ -1088,7 +1088,7 @@ body.sidebar-collapsed .main-content {
   100% { left: var(--comet-end-x); top: var(--comet-end-y); opacity: 0; }
 }
 
-/* ── Rogue planets — slowly drifting muted dots ── */
+/* â”€â”€ Rogue planets â€” slowly drifting muted dots â”€â”€ */
 .galaxy-rogue-planet {
   position: absolute;
   border-radius: 50%;
@@ -1111,219 +1111,24 @@ body.sidebar-collapsed .main-content {
 }
 
 
-/* ── 7b-1. Sol System (Enhanced with SVG planets) ───── */
+/* â”€â”€ 7b-1. Sol System â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Old CSS-based sol system styles removed.
+   Solar system now rendered by Three.js: js/solar-system.js
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-.sol-system-container {
-  display: flex;
-  justify-content: center;
-  padding: 20px 0;
-}
-
-.sol-system {
-  position: relative;
-  width: 800px;
-  height: 800px;
-  overflow: hidden;
-}
-
-/* ── Starfield background dots ── */
-.sol-bg-star {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(200,210,230,0.8);
-  pointer-events: none;
-}
-
-/* Orbit rings — dashed circles with subtle glow */
-.sol-orbit-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px dashed rgba(255,255,255,0.08);
-  pointer-events: none;
-}
-
-/* ── Central star Sol — 60px with intense glow ── */
-.sol-star {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: radial-gradient(circle,
-    rgba(255,255,240,1) 0%,
-    rgba(255,250,220,0.95) 20%,
-    rgba(255,240,180,0.8) 40%,
-    rgba(255,220,100,0.4) 65%,
-    transparent 85%);
-  box-shadow:
-    0 0 25px 8px rgba(255,245,200,0.5),
-    0 0 60px 20px rgba(255,220,100,0.3),
-    0 0 100px 40px rgba(255,200,60,0.15);
-  z-index: 5;
-  animation: solStarPulse 4s ease-in-out infinite alternate;
-}
-
-/* Corona rays — 4 thin lines extending at 45-degree angles */
-.sol-corona-ray {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80px;
-  height: 1px;
-  background: linear-gradient(to right, rgba(255,240,180,0.5), rgba(255,220,100,0.15), transparent);
-  transform-origin: 0% 50%;
-  pointer-events: none;
-}
-.sol-corona-1 { transform: rotate(45deg); }
-.sol-corona-2 { transform: rotate(135deg); }
-.sol-corona-3 { transform: rotate(225deg); }
-.sol-corona-4 { transform: rotate(315deg); }
-
-.sol-star-label {
-  position: absolute;
-  top: calc(50% + 38px);
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.5rem;
-  font-weight: 700;
-  color: rgba(255,240,180,0.7);
-  letter-spacing: 3px;
-  z-index: 6;
-  pointer-events: none;
-}
-
-@keyframes solStarPulse {
-  0% {
-    box-shadow:
-      0 0 25px 8px rgba(255,245,200,0.5),
-      0 0 60px 20px rgba(255,220,100,0.3),
-      0 0 100px 40px rgba(255,200,60,0.15);
-  }
-  100% {
-    box-shadow:
-      0 0 35px 12px rgba(255,245,200,0.6),
-      0 0 75px 28px rgba(255,220,100,0.4),
-      0 0 120px 50px rgba(255,200,60,0.2);
-  }
-}
-
-/* ── Orbit arm — rotating container that carries the planet ── */
-.sol-orbit-arm {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-@keyframes solOrbit {
-  0%   { transform: translate(-50%, -50%) rotate(var(--start, 0deg)); }
-  100% { transform: translate(-50%, -50%) rotate(calc(var(--start, 0deg) + 360deg)); }
-}
-
-/* ── Planet wrap — positioned at top-center of orbit arm ── */
-.sol-planet-wrap {
-  position: absolute;
-  top: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  z-index: 4;
-}
-
-/* SVG planet visual — crisp rendering */
-.sol-planet-svg {
-  display: block;
-  border-radius: 50%;
-  overflow: visible;
-}
-
-/* Terra-specific glow pulse */
-.sol-planet-wrap.sol-terra {
-  animation: solTerraPulse 2.5s ease-in-out infinite alternate;
-}
-
-@keyframes solTerraPulse {
-  0%   { box-shadow: 0 0 6px var(--terran), 0 0 14px var(--terran), 0 0 28px rgba(0,180,255,0.4); }
-  100% { box-shadow: 0 0 10px var(--terran), 0 0 22px var(--terran), 0 0 40px rgba(0,180,255,0.6); }
-}
-
-/* ── Saturn ring — rotated ellipse around the planet ── */
-.sol-saturn-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid rgba(210,195,150,0.4);
-  box-shadow: 0 0 3px rgba(210,195,150,0.2);
-  pointer-events: none;
-  z-index: 3;
-}
-
-/* ── Asteroid belt container ── */
-.sol-asteroid-belt {
-  position: absolute;
-  inset: 0;
-  animation: solOrbit 90s linear infinite;
-}
-
-/* Individual asteroid dots */
-.sol-asteroid {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(180,170,150,0.7);
-  pointer-events: none;
-}
-
-/* ── Planet name labels — always visible below each planet ── */
-.sol-planet-label {
-  position: absolute;
-  top: calc(100% + 5px);
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.45rem;
-  color: rgba(200,210,220,0.6);
-  letter-spacing: 1px;
-  white-space: nowrap;
-  pointer-events: none;
-  /* Counter-rotate so labels stay readable */
-  animation: solLabelCounterRotate var(--period, 26s) linear infinite;
-}
-
-.sol-label-terra {
-  color: var(--terran) !important;
-  font-weight: 700;
-  font-size: 0.55rem !important;
-  text-shadow: 0 0 8px rgba(0,180,255,0.5);
-}
-
-/* Counter-rotate labels so they stay readable while orbit arm spins */
-@keyframes solLabelCounterRotate {
-  0%   { transform: translateX(-50%) rotate(0deg); }
-  100% { transform: translateX(-50%) rotate(-360deg); }
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .sol-system {
-    width: 400px;
-    height: 400px;
-    transform: scale(0.5);
-    transform-origin: top center;
-  }
-}
+/* (placeholder to preserve section numbering) */
+.sol-system-legacy-removed {
+  display: none;
 
 
-/* ── 7b-2. Territory Control Map ─────────────────────────
+/* â”€â”€ 7b-2. Territory Control Map â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    Old CSS-based territory map styles removed.
    Territory map is now an SVG asset: assets/territory-map.svg
    loaded via <object> tag in dashboard.js
-   ─────────────────────────────────────────────────────── */
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 
-/* ── 7c. Enhanced Faction Cards ────────────────────────── */
+/* â”€â”€ 7c. Enhanced Faction Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .faction-section {
   margin: 0;
@@ -1374,7 +1179,7 @@ body.sidebar-collapsed .main-content {
     inset 0 0 30px color-mix(in srgb, var(--faction-color, var(--accent)) 3%, transparent);
 }
 
-/* ── Faction Card Header — Emblem + Titles ── */
+/* â”€â”€ Faction Card Header â€” Emblem + Titles â”€â”€ */
 .faction-card-header {
   display: flex;
   align-items: center;
@@ -1452,7 +1257,7 @@ body.sidebar-collapsed .main-content {
 }
 
 
-/* ── 7d. Command-Console Statistics Banner ─────────────── */
+/* â”€â”€ 7d. Command-Console Statistics Banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .stats-section {
   margin: 0;
@@ -1476,7 +1281,7 @@ body.sidebar-collapsed .main-content {
   border-radius: 4px;
 }
 
-/* Console readout enhancement — monospace aesthetic with scan line */
+/* Console readout enhancement â€” monospace aesthetic with scan line */
 .console-readout {
   position: relative;
   overflow: hidden;
@@ -1530,7 +1335,7 @@ body.sidebar-collapsed .main-content {
 }
 
 
-/* ── 7e. Footer Lore Quote ─────────────────────────────── */
+/* â”€â”€ 7e. Footer Lore Quote â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .footer-quote-section {
   margin: 0;
@@ -1572,14 +1377,14 @@ body.sidebar-collapsed .main-content {
 }
 
 
-/* ── 7f. Dashboard Section Spacing & Shared Elements ───── */
+/* â”€â”€ 7f. Dashboard Section Spacing & Shared Elements â”€â”€â”€â”€â”€ */
 
-/* ── Smooth scroll behavior ── */
+/* â”€â”€ Smooth scroll behavior â”€â”€ */
 html {
   scroll-behavior: smooth;
 }
 
-/* ── Dashboard Section — consistent vertical rhythm ── */
+/* â”€â”€ Dashboard Section â€” consistent vertical rhythm â”€â”€ */
 .dashboard-section {
   padding: 48px 24px;
   max-width: 100%;
@@ -1597,7 +1402,7 @@ html {
   background: rgba(0,180,255,0.04);
 }
 
-/* ── Section Label — small uppercase pre-heading ── */
+/* â”€â”€ Section Label â€” small uppercase pre-heading â”€â”€ */
 .section-label {
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.6rem;
@@ -1609,7 +1414,7 @@ html {
   text-align: center;
 }
 
-/* ── Section Heading — enhanced Orbitron heading with dim divider ── */
+/* â”€â”€ Section Heading â€” enhanced Orbitron heading with dim divider â”€â”€ */
 .section-heading {
   font-family: 'Orbitron', sans-serif;
   font-size: 1rem;
@@ -1624,7 +1429,7 @@ html {
   text-shadow: 0 0 12px rgba(0,180,255,0.2);
 }
 
-/* ── Divider — gradient horizontal rule between sections ── */
+/* â”€â”€ Divider â€” gradient horizontal rule between sections â”€â”€ */
 .divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--border-hi), transparent);
@@ -1632,7 +1437,7 @@ html {
 }
 
 
-/* ── 7g. Epigraph & Quotes ──────────────────────────────── */
+/* â”€â”€ 7g. Epigraph & Quotes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .quote-block {
   text-align: center;
@@ -1675,7 +1480,7 @@ html {
 }
 
 
-/* ── 7h. Game Description — Title & Elevator Pitch ──────── */
+/* â”€â”€ 7h. Game Description â€” Title & Elevator Pitch â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .page-title-wrap {
   text-align: center;
@@ -1712,7 +1517,7 @@ html {
 }
 
 
-/* ── 7i. By The Numbers — Stat Cards Grid ───────────────── */
+/* â”€â”€ 7i. By The Numbers â€” Stat Cards Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .stats-grid {
   display: grid;
@@ -1778,7 +1583,7 @@ html {
 }
 
 
-/* ── 7j. Core Loop — Phase Cards ────────────────────────── */
+/* â”€â”€ 7j. Core Loop â€” Phase Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .phase-loop {
   display: flex;
@@ -1912,7 +1717,7 @@ html {
 }
 
 
-/* ── 7k. Game Systems — Navigation Grid ─────────────────── */
+/* â”€â”€ 7k. Game Systems â€” Navigation Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .systems-grid {
   display: grid;
@@ -1959,7 +1764,7 @@ html {
 }
 
 
-/* ── 7l. Differentiator Cards — Accent Left Border ──────── */
+/* â”€â”€ 7l. Differentiator Cards â€” Accent Left Border â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .card-accent {
   padding: 20px 24px;
@@ -1988,7 +1793,7 @@ html {
   background: rgba(12,14,20,0.7);
 }
 
-/* ── 7l-b. Document Structure Cards ─────────────────────── */
+/* â”€â”€ 7l-b. Document Structure Cards â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .dashboard-section .card {
   background: rgba(12,14,20,0.75);
@@ -2008,7 +1813,7 @@ html {
 }
 
 
-/* ── 7l-c. Dashboard Page Background — Rich Starfield ──── */
+/* â”€â”€ 7l-c. Dashboard Page Background â€” Rich Starfield â”€â”€â”€â”€ */
 
 /* Deep-space starfield behind entire dashboard via pseudo-elements.
    Three layers for depth: tiny distant, medium, bright colored.
@@ -2029,7 +1834,7 @@ html {
   z-index: 0;
 }
 
-/* Layer 1 — tiny distant white stars + medium blue-white stars */
+/* Layer 1 â€” tiny distant white stars + medium blue-white stars */
 #dashboard-view::before {
   box-shadow:
     32px 45px 0 0.5px rgba(255,255,255,0.3),
@@ -2113,7 +1918,7 @@ html {
   animation: dashStarsTwinkle 8s ease-in-out infinite alternate;
 }
 
-/* Layer 2 — bright colored accent stars */
+/* Layer 2 â€” bright colored accent stars */
 #dashboard-view::after {
   box-shadow:
     267px 134px 0 1.5px rgba(0,180,255,0.3),
@@ -2143,7 +1948,7 @@ html {
 }
 
 
-/* ── 7m. Dashboard Responsive Overrides ─────────────────── */
+/* â”€â”€ 7m. Dashboard Responsive Overrides â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 @media (max-width: 1024px) {
   .stats-grid {
@@ -2208,11 +2013,11 @@ html {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   8. SEARCH OVERLAY — Ctrl+K command-palette search
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   8. SEARCH OVERLAY â€” Ctrl+K command-palette search
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Backdrop ──
+/* â”€â”€ Backdrop â”€â”€
    Full-screen dark overlay; starts hidden (opacity 0, no pointer
    events) and activates when .active is added by Search.open(). */
 .search-overlay {
@@ -2220,7 +2025,7 @@ html {
   inset: 0;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(4px);
-  z-index: 1000;
+  z-index: 1100;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -2235,7 +2040,7 @@ html {
   pointer-events: all;
 }
 
-/* ── Search Box ── */
+/* â”€â”€ Search Box â”€â”€ */
 .search-box {
   width: 560px;
   max-width: 90vw;
@@ -2246,7 +2051,7 @@ html {
   box-shadow: 0 8px 32px rgba(0,0,0,0.5);
 }
 
-/* ── Search Input Row ── */
+/* â”€â”€ Search Input Row â”€â”€ */
 .search-input-wrap {
   display: flex;
   align-items: center;
@@ -2283,7 +2088,7 @@ html {
   border-radius: 2px;
 }
 
-/* ── Search Results List ── */
+/* â”€â”€ Search Results List â”€â”€ */
 .search-results {
   max-height: 400px;
   overflow-y: auto;
@@ -2335,11 +2140,11 @@ html {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   9. BACK TO TOP — Floating scroll-to-top button
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   9. BACK TO TOP â€” Floating scroll-to-top button
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Back to Dashboard Button ────────────────────────────── */
+/* â”€â”€ Back to Dashboard Button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .back-to-dashboard-wrap {
   display: flex;
   justify-content: center;
@@ -2399,7 +2204,7 @@ html {
   opacity: 1;
 }
 
-/* ── Audio Controls Container ────────────────────────────── */
+/* â”€â”€ Audio Controls Container â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .audio-controls {
   position: fixed;
   bottom: 24px;
@@ -2437,7 +2242,7 @@ html {
   box-shadow: 0 0 8px rgba(0,180,255,0.3);
 }
 
-/* ── Audio Panel (sliders) ──────────────────────────────── */
+/* â”€â”€ Audio Panel (sliders) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .audio-panel {
   background: var(--bg-panel);
   border: 1px solid var(--border);
@@ -2499,7 +2304,7 @@ html {
   box-shadow: 0 0 6px rgba(0,180,255,0.4);
 }
 
-/* ── Back to Top Button ─────────────────────────────────── */
+/* â”€â”€ Back to Top Button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .back-to-top {
   position: fixed;
   bottom: 24px;
@@ -2532,12 +2337,12 @@ html {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   10. HAMBURGER / MOBILE — Mobile nav toggle & responsive
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   10. HAMBURGER / MOBILE â€” Mobile nav toggle & responsive
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Hamburger Button ──
-   Hidden on desktop; shown at ≤768px. Three <span> bars
+/* â”€â”€ Hamburger Button â”€â”€
+   Hidden on desktop; shown at â‰¤768px. Three <span> bars
    animate into an X when .open is toggled.                      */
 .hamburger {
   display: none;
@@ -2577,7 +2382,7 @@ html {
   transform: rotate(-45deg) translate(4px, -4px);
 }
 
-/* ── Mobile Overlay ──
+/* â”€â”€ Mobile Overlay â”€â”€
    Dark scrim behind the sidebar when open on mobile.            */
 .mobile-overlay {
   display: none;
@@ -2591,7 +2396,7 @@ html {
   display: block;
 }
 
-/* ── Responsive Breakpoints ── */
+/* â”€â”€ Responsive Breakpoints â”€â”€ */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
@@ -2633,7 +2438,7 @@ html {
     gap: 12px;
   }
 
-  /* Hero responsive — smaller title, tighter spacing */
+  /* Hero responsive â€” smaller title, tighter spacing */
   .hero-section {
     min-height: 85vh;
     margin: -16px -16px 0;
@@ -2658,12 +2463,12 @@ html {
     font-size: 0.6rem;
   }
 
-  /* Galaxy map — constrain on mobile */
+  /* Galaxy map â€” constrain on mobile */
   .galaxy-svg {
     max-width: 340px;
   }
 
-  /* Faction cards — single column */
+  /* Faction cards â€” single column */
   .faction-card-header {
     gap: 10px;
   }
@@ -2704,15 +2509,15 @@ html {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   11. UTILITY CLASSES — Shared helpers & animations
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   11. UTILITY CLASSES â€” Shared helpers & animations
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Section Heading ──
+/* â”€â”€ Section Heading â”€â”€
    Moved to Section 7f (Dashboard shared elements).
    See .section-heading in the Dashboard block.                  */
 
-/* ── Animations ── */
+/* â”€â”€ Animations â”€â”€ */
 .fade-in {
   animation: fadeIn 0.3s ease forwards;
 }
@@ -2722,7 +2527,7 @@ html {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Scanline Effect ──
+/* â”€â”€ Scanline Effect â”€â”€
    Subtle CRT-style horizontal lines overlaid on an element.
    Used on the dashboard header for atmosphere.                  */
 .scanline {
@@ -2744,11 +2549,11 @@ html {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   12. DEVELOPER MODE — Toast, edit bar, priming/unlock glow
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   12. DEVELOPER MODE â€” Toast, edit bar, priming/unlock glow
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Dev Mode Toast Notification ──
+/* â”€â”€ Dev Mode Toast Notification â”€â”€
    Fixed bar that slides down from the top when dev mode unlocks.
    Hidden by default; .show triggers the slide-in animation.       */
 #dev-mode-toast {
@@ -2776,7 +2581,7 @@ html {
   opacity: 1;
 }
 
-/* ── Toast Badge (SYS label) ── */
+/* â”€â”€ Toast Badge (SYS label) â”€â”€ */
 .toast-badge {
   display: inline-block;
   background: var(--accent);
@@ -2791,7 +2596,7 @@ html {
   vertical-align: middle;
 }
 
-/* ── Sidebar Title — Priming Glow ──
+/* â”€â”€ Sidebar Title â€” Priming Glow â”€â”€
    Pulsing glow while the user is clicking toward the 10-click
    threshold. Removed if the timer expires or unlock triggers.     */
 .sidebar-title.dev-priming {
@@ -2803,13 +2608,13 @@ html {
   to   { text-shadow: 0 0 12px rgba(0,180,255,0.7), 0 0 24px rgba(0,180,255,0.3); }
 }
 
-/* ── Sidebar Title — Unlocked Glow ──
+/* â”€â”€ Sidebar Title â€” Unlocked Glow â”€â”€
    Permanent subtle glow after dev mode is activated.              */
 .sidebar-title.dev-unlocked {
   text-shadow: 0 0 8px rgba(0,180,255,0.5), 0 0 20px rgba(0,180,255,0.2);
 }
 
-/* ── Hidden Chapters (ch44–ch46) ──
+/* â”€â”€ Hidden Chapters (ch44â€“ch46) â”€â”€
    Dev-only chapters are hidden by default in the nav.
    Revealed when body.dev-mode-active is present.                  */
 .nav-chapter[data-id="ch44"],
@@ -2824,7 +2629,7 @@ body.dev-mode-active .nav-chapter[data-id="ch46"] {
   display: block;
 }
 
-/* ── Edit Bar ──
+/* â”€â”€ Edit Bar â”€â”€
    Fixed bottom toolbar shown only in dev mode + edit active.
    Houses the edit toggle, field counter, and export button.       */
 #edit-bar {
@@ -2853,7 +2658,7 @@ body.dev-mode-active .nav-chapter[data-id="ch46"] {
   pointer-events: all;
 }
 
-/* ── Edit Bar Buttons ── */
+/* â”€â”€ Edit Bar Buttons â”€â”€ */
 #edit-toggle,
 #export-btn {
   font-family: 'Orbitron', sans-serif;
@@ -2882,7 +2687,7 @@ body.dev-mode-active .nav-chapter[data-id="ch46"] {
   border-color: var(--accent);
 }
 
-/* ── Edit Count Label ── */
+/* â”€â”€ Edit Count Label â”€â”€ */
 #edit-count {
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.65rem;
@@ -2890,7 +2695,7 @@ body.dev-mode-active .nav-chapter[data-id="ch46"] {
   letter-spacing: 0.05em;
 }
 
-/* ── Editable Field Highlight ──
+/* â”€â”€ Editable Field Highlight â”€â”€
    When edit mode is active, editable elements get a subtle
    left-border indicator and highlight on focus.                   */
 body.edit-mode [data-editable] {
@@ -2911,14 +2716,14 @@ body.edit-mode [data-editable]:hover {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   13. VISUAL EFFECTS — Faction backgrounds, particles, CRT
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   13. VISUAL EFFECTS â€” Faction backgrounds, particles, CRT
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Procedural Background Layer ──
+/* â”€â”€ Procedural Background Layer â”€â”€
    Full-page fixed div behind all content. Faction classes
    apply multi-layer radial gradient washes keyed to faction colors.
-   Ported from monolith GDD v5.9.1 — gradients are carefully tuned. */
+   Ported from monolith GDD v5.9.1 â€” gradients are carefully tuned. */
 #procedural-bg {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
@@ -2984,7 +2789,7 @@ body.edit-mode [data-editable]:hover {
     #04030a;
 }
 
-/* ── Non-Faction Part Backgrounds ── */
+/* â”€â”€ Non-Faction Part Backgrounds â”€â”€ */
 #procedural-bg.bg-cosmic {
   background: radial-gradient(ellipse at 50% 30%,rgba(20,30,80,.95) 0%,transparent 65%),
     radial-gradient(ellipse at 80% 80%,rgba(10,0,40,.6) 0%,transparent 45%),#04050f;
@@ -3026,10 +2831,10 @@ body.edit-mode [data-editable]:hover {
     repeating-linear-gradient(90deg,transparent,transparent 72px,rgba(0,180,60,.02) 72px,rgba(0,180,60,.02) 73px),#010603;
 }
 
-/* ── Body Faction Background Classes ──
+/* â”€â”€ Body Faction Background Classes â”€â”€
    Applied to <body> for faction-specific accents on sidebar,
    nav, search, scrollbar, cards, headings, quotes, power bars.
-   Ported from monolith GDD v5.9.1 — full premium visual system. */
+   Ported from monolith GDD v5.9.1 â€” full premium visual system. */
 body.faction-bg-terran    { --faction-active: var(--terran); }
 body.faction-bg-shards    { --faction-active: var(--shards); }
 body.faction-bg-horde     { --faction-active: var(--horde); }
@@ -3038,7 +2843,7 @@ body.faction-bg-accord    { --faction-active: var(--accord); }
 body.faction-bg-vorax     { --faction-active: var(--vorax); }
 body.faction-bg-guardians { --faction-active: var(--guardians); }
 
-/* ── Main-Content Faction Backgrounds ── */
+/* â”€â”€ Main-Content Faction Backgrounds â”€â”€ */
 .faction-bg-terran .main-content {
   background: radial-gradient(ellipse at 20% 30%, rgba(0,180,255,0.04) 0%, transparent 60%),
     repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0,180,255,0.02) 40px, rgba(0,180,255,0.02) 41px),
@@ -3075,7 +2880,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
     repeating-linear-gradient(90deg, transparent, transparent 70px, rgba(204,68,255,0.012) 70px, rgba(204,68,255,0.012) 71px);
 }
 
-/* ── Sidebar Faction Glow ── */
+/* â”€â”€ Sidebar Faction Glow â”€â”€ */
 .faction-bg-terran    .sidebar { box-shadow: inset -1px 0 0 rgba(0,180,255,.15), 3px 0 20px rgba(0,180,255,.07); }
 .faction-bg-shards    .sidebar { box-shadow: inset -1px 0 0 rgba(0,255,238,.15), 3px 0 20px rgba(0,255,238,.07); }
 .faction-bg-horde     .sidebar { box-shadow: inset -1px 0 0 rgba(255,102,34,.15),3px 0 20px rgba(255,102,34,.07); }
@@ -3084,7 +2889,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .sidebar { box-shadow: inset -1px 0 0 rgba(255,34,102,.15), 3px 0 20px rgba(255,34,102,.07); }
 .faction-bg-guardians .sidebar { box-shadow: inset -1px 0 0 rgba(204,68,255,.15),3px 0 20px rgba(204,68,255,.07); }
 
-/* ── Sidebar Title Faction Glow ── */
+/* â”€â”€ Sidebar Title Faction Glow â”€â”€ */
 .faction-bg-terran    .sidebar-title { color: var(--terran); text-shadow: 0 0 12px var(--terran); }
 .faction-bg-shards    .sidebar-title { color: var(--shards); text-shadow: 0 0 12px var(--shards); }
 .faction-bg-horde     .sidebar-title { color: var(--horde);  text-shadow: 0 0 12px var(--horde); }
@@ -3093,7 +2898,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .sidebar-title { color: var(--vorax);  text-shadow: 0 0 12px var(--vorax); }
 .faction-bg-guardians .sidebar-title { color: var(--guardians); text-shadow: 0 0 12px var(--guardians); }
 
-/* ── Nav Active Items — Faction Color ── */
+/* â”€â”€ Nav Active Items â€” Faction Color â”€â”€ */
 .faction-bg-terran    .nav-chapter.active { color: var(--terran); border-left-color: var(--terran); background: rgba(0,180,255,.06); --fx-nav: var(--terran); }
 .faction-bg-shards    .nav-chapter.active { color: var(--shards); border-left-color: var(--shards); background: rgba(0,255,238,.06); --fx-nav: var(--shards); }
 .faction-bg-horde     .nav-chapter.active { color: var(--horde);  border-left-color: var(--horde);  background: rgba(255,102,34,.06); --fx-nav: var(--horde); }
@@ -3109,7 +2914,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .nav-chapter.active::before { --fx-nav: var(--vorax);  }
 .faction-bg-guardians .nav-chapter.active::before { --fx-nav: var(--guardians); }
 
-/* ── Search Box — Faction Tint ── */
+/* â”€â”€ Search Box â€” Faction Tint â”€â”€ */
 .faction-bg-terran    .search-box { border-color: var(--terran); box-shadow: 0 8px 48px rgba(0,180,255,.22), 0 0 0 1px rgba(0,180,255,.2); }
 .faction-bg-shards    .search-box { border-color: var(--shards); box-shadow: 0 8px 48px rgba(0,255,238,.22), 0 0 0 1px rgba(0,255,238,.2); }
 .faction-bg-horde     .search-box { border-color: var(--horde);  box-shadow: 0 8px 48px rgba(255,102,34,.22),0 0 0 1px rgba(255,102,34,.2); }
@@ -3118,7 +2923,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .search-box { border-color: var(--vorax);  box-shadow: 0 8px 48px rgba(255,34,102,.22), 0 0 0 1px rgba(255,34,102,.2); }
 .faction-bg-guardians .search-box { border-color: var(--guardians); box-shadow: 0 8px 48px rgba(204,68,255,.22),0 0 0 1px rgba(204,68,255,.2); }
 
-/* ── Scrollbar — Faction Color ── */
+/* â”€â”€ Scrollbar â€” Faction Color â”€â”€ */
 .faction-bg-terran    .main-content::-webkit-scrollbar-thumb { background: rgba(0,180,255,.28); }
 .faction-bg-shards    .main-content::-webkit-scrollbar-thumb { background: rgba(0,255,238,.28); }
 .faction-bg-horde     .main-content::-webkit-scrollbar-thumb { background: rgba(255,102,34,.28); }
@@ -3127,7 +2932,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .main-content::-webkit-scrollbar-thumb { background: rgba(255,34,102,.28); }
 .faction-bg-guardians .main-content::-webkit-scrollbar-thumb { background: rgba(204,68,255,.28); }
 
-/* ── Cards — Faction Color Variable ── */
+/* â”€â”€ Cards â€” Faction Color Variable â”€â”€ */
 .faction-bg-terran    .card { --fx: var(--terran); }
 .faction-bg-shards    .card { --fx: var(--shards); }
 .faction-bg-horde     .card { --fx: var(--horde); }
@@ -3136,7 +2941,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .card { --fx: var(--vorax); }
 .faction-bg-guardians .card { --fx: var(--guardians); }
 
-/* ── System Cards — Faction Color Variable ── */
+/* â”€â”€ System Cards â€” Faction Color Variable â”€â”€ */
 .faction-bg-terran    .system-card { --fx: var(--terran); }
 .faction-bg-shards    .system-card { --fx: var(--shards); }
 .faction-bg-horde     .system-card { --fx: var(--horde); }
@@ -3145,7 +2950,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .system-card { --fx: var(--vorax); }
 .faction-bg-guardians .system-card { --fx: var(--guardians); }
 
-/* ── Section Headings — Shimmer Pass ── */
+/* â”€â”€ Section Headings â€” Shimmer Pass â”€â”€ */
 .faction-bg-terran    .section-heading { background: linear-gradient(90deg,#fff 15%,var(--terran) 50%,#fff 85%) 0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
 .faction-bg-shards    .section-heading { background: linear-gradient(90deg,#fff 15%,var(--shards) 50%,#fff 85%) 0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
 .faction-bg-horde     .section-heading { background: linear-gradient(90deg,#fff 15%,var(--horde) 50%,#fff 85%)  0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
@@ -3154,7 +2959,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .section-heading { background: linear-gradient(90deg,#fff 15%,var(--vorax) 50%,#fff 85%)  0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
 .faction-bg-guardians .section-heading { background: linear-gradient(90deg,#fff 15%,var(--guardians) 50%,#fff 85%) 0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
 
-/* ── Quote Blocks — Faction Color ── */
+/* â”€â”€ Quote Blocks â€” Faction Color â”€â”€ */
 .faction-bg-terran    .quote-block { border-left-color: var(--terran); background: rgba(0,180,255,.025); }
 .faction-bg-shards    .quote-block { border-left-color: var(--shards); background: rgba(0,255,238,.025); }
 .faction-bg-horde     .quote-block { border-left-color: var(--horde);  background: rgba(255,102,34,.025); }
@@ -3163,7 +2968,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .quote-block { border-left-color: var(--vorax);  background: rgba(255,34,102,.025); }
 .faction-bg-guardians .quote-block { border-left-color: var(--guardians); background: rgba(204,68,255,.025); }
 
-/* ── Power Bars — Faction Color ── */
+/* â”€â”€ Power Bars â€” Faction Color â”€â”€ */
 .faction-bg-terran    .power-bar-fill { background: var(--terran) !important; box-shadow: 0 0 6px var(--terran); }
 .faction-bg-shards    .power-bar-fill { background: var(--shards) !important; box-shadow: 0 0 6px var(--shards); }
 .faction-bg-horde     .power-bar-fill { background: var(--horde)  !important; box-shadow: 0 0 6px var(--horde); }
@@ -3172,7 +2977,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .power-bar-fill { background: var(--vorax)  !important; box-shadow: 0 0 6px var(--vorax); }
 .faction-bg-guardians .power-bar-fill { background: var(--guardians) !important; box-shadow: 0 0 6px var(--guardians); }
 
-/* ── Page Title Wrap — Faction Underline ── */
+/* â”€â”€ Page Title Wrap â€” Faction Underline â”€â”€ */
 .faction-bg-terran    .page-title-wrap::after { --fx: var(--terran); }
 .faction-bg-shards    .page-title-wrap::after { --fx: var(--shards); }
 .faction-bg-horde     .page-title-wrap::after { --fx: var(--horde); }
@@ -3181,7 +2986,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .page-title-wrap::after { --fx: var(--vorax); }
 .faction-bg-guardians .page-title-wrap::after { --fx: var(--guardians); }
 
-/* ── Domain Tabs — Faction Color ── */
+/* â”€â”€ Domain Tabs â€” Faction Color â”€â”€ */
 .faction-bg-terran    .domain-tab { --fx: var(--terran); }
 .faction-bg-shards    .domain-tab { --fx: var(--shards); }
 .faction-bg-horde     .domain-tab { --fx: var(--horde); }
@@ -3190,7 +2995,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .domain-tab { --fx: var(--vorax); }
 .faction-bg-guardians .domain-tab { --fx: var(--guardians); }
 
-/* ── Data Rows — Faction Hover ── */
+/* â”€â”€ Data Rows â€” Faction Hover â”€â”€ */
 .faction-bg-terran    .data-row:hover { border-left-color: var(--terran); background: rgba(0,180,255,.04); }
 .faction-bg-shards    .data-row:hover { border-left-color: var(--shards); background: rgba(0,255,238,.04); }
 .faction-bg-horde     .data-row:hover { border-left-color: var(--horde);  background: rgba(255,102,34,.04); }
@@ -3199,7 +3004,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-vorax     .data-row:hover { border-left-color: var(--vorax);  background: rgba(255,34,102,.04); }
 .faction-bg-guardians .data-row:hover { border-left-color: var(--guardians); background: rgba(204,68,255,.04); }
 
-/* ── Back-to-Top Button — Faction Color ── */
+/* â”€â”€ Back-to-Top Button â€” Faction Color â”€â”€ */
 body[class*="faction-bg-"] .back-to-top {
   border-color: var(--faction-active);
   color: var(--faction-active);
@@ -3209,13 +3014,13 @@ body[class*="faction-bg-"] .back-to-top:hover {
   color: #000;
 }
 
-/* ── Category Body Classes (non-faction part tinting) ── */
+/* â”€â”€ Category Body Classes (non-faction part tinting) â”€â”€ */
 .page-bg-cosmic,.page-bg-foundation { --fc:#4488ff; }
 .page-bg-galactic { --fc:#9944ff; }
 .page-bg-combat   { --fc:#ff4422; }
 .page-bg-strategy { --fc:#00ccaa; }
 
-/* ── Nav Chapter Active Glow Bar ── */
+/* â”€â”€ Nav Chapter Active Glow Bar â”€â”€ */
 .nav-chapter.active::before {
   content: '';
   position: absolute;
@@ -3226,11 +3031,11 @@ body[class*="faction-bg-"] .back-to-top:hover {
   animation: p7-pulse-glow 2.8s ease-in-out infinite;
 }
 
-/* ── Keyframes for Faction Visual System ── */
+/* â”€â”€ Keyframes for Faction Visual System â”€â”€ */
 @keyframes p7-shimmer { 0%{background-position:-300% center} 100%{background-position:300% center} }
 @keyframes p7-pulse-glow {0%,100%{box-shadow:0 0 4px var(--fx,var(--accent))}50%{box-shadow:0 0 14px var(--fx,var(--accent)),0 0 28px color-mix(in srgb,var(--fx,var(--accent)) 40%,transparent)}}
 
-/* ── Ambient Particles Container ──
+/* â”€â”€ Ambient Particles Container â”€â”€
    Full-viewport container for floating particle elements.
    Individual .ambient-particle divs are spawned by JS.            */
 #ambient-particles {
@@ -3260,7 +3065,7 @@ body[class*="faction-bg-"] .back-to-top:hover {
   }
 }
 
-/* ── Faction Cursor Glow ──
+/* â”€â”€ Faction Cursor Glow â”€â”€
    Soft radial glow that follows the mouse cursor.
    Color set inline by JS based on active faction.                 */
 #faction-cursor-glow {
@@ -3276,7 +3081,7 @@ body[class*="faction-bg-"] .back-to-top:hover {
   transition: background 0.6s ease;
 }
 
-/* ── Faction Flag Badge ──
+/* â”€â”€ Faction Flag Badge â”€â”€
    Fixed-position faction glyph in the bottom-left corner.
    Displays the current faction's Unicode symbol.                  */
 #faction-flag-badge {
@@ -3296,7 +3101,7 @@ body[class*="faction-bg-"] .back-to-top:hover {
   transition: color 0.4s ease, text-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-/* ── Lore Quote Rotator ──
+/* â”€â”€ Lore Quote Rotator â”€â”€
    Positioned in the sidebar footer or a dedicated slot.
    Fades between faction-themed lore quotes on a timer.            */
 #lore-quote-rotator {
@@ -3319,9 +3124,9 @@ body[class*="faction-bg-"] .back-to-top:hover {
   letter-spacing: 0.08em;
 }
 
-/* ── Scanline Overlay ──
+/* â”€â”€ Scanline Overlay â”€â”€
    Full-page repeating horizontal lines for CRT atmosphere.
-   Very low opacity — visible but not distracting.                 */
+   Very low opacity â€” visible but not distracting.                 */
 #scanline-overlay {
   position: fixed;
   inset: 0;
@@ -3336,7 +3141,7 @@ body[class*="faction-bg-"] .back-to-top:hover {
   );
 }
 
-/* ── CRT Overlay ──
+/* â”€â”€ CRT Overlay â”€â”€
    Vignette + subtle curve effect for a monitor look.
    Hidden by default; .active class enables it.                    */
 #crt-overlay {
@@ -3360,7 +3165,7 @@ body.crt-active {
   text-shadow: 0 0 1px rgba(0,180,255,0.08);
 }
 
-/* ── Holo-Tilt Card Transition ──
+/* â”€â”€ Holo-Tilt Card Transition â”€â”€
    Smooth transform transitions for the JS-driven tilt effect.
    The transform itself is applied inline by HoloTilt._onMove().  */
 .card,
@@ -3369,11 +3174,11 @@ body.crt-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   14. CHAPTER INDEX — Full document index overlay
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   14. CHAPTER INDEX â€” Full document index overlay
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Index Toggle Button (sidebar) ──
+/* â”€â”€ Index Toggle Button (sidebar) â”€â”€
    Compact button placed above the filter input.               */
 .chapter-index-toggle {
   display: flex;
@@ -3405,7 +3210,7 @@ body.crt-active {
   font-size: 0.75rem;
 }
 
-/* ── Index Overlay ──
+/* â”€â”€ Index Overlay â”€â”€
    Full-screen dark backdrop with centered scrollable panel.
    Hidden by default; .active shows it.                        */
 .chapter-index-overlay {
@@ -3428,7 +3233,7 @@ body.crt-active {
   pointer-events: all;
 }
 
-/* ── Index Panel ──
+/* â”€â”€ Index Panel â”€â”€
    Contained card within the overlay.                          */
 .chapter-index-panel {
   width: 640px;
@@ -3443,7 +3248,7 @@ body.crt-active {
   overflow: hidden;
 }
 
-/* ── Panel Header ── */
+/* â”€â”€ Panel Header â”€â”€ */
 .chapter-index-header {
   display: flex;
   align-items: center;
@@ -3481,7 +3286,7 @@ body.crt-active {
   border-color: var(--accent);
 }
 
-/* ── Panel Search ── */
+/* â”€â”€ Panel Search â”€â”€ */
 .chapter-index-search {
   padding: 10px 18px;
   border-bottom: 1px solid var(--border);
@@ -3508,14 +3313,14 @@ body.crt-active {
   border-color: var(--accent);
 }
 
-/* ── Chapter Tree Container ── */
+/* â”€â”€ Chapter Tree Container â”€â”€ */
 .chapter-index-tree {
   flex: 1;
   overflow-y: auto;
   padding: 8px 0;
 }
 
-/* ── Part Header ── */
+/* â”€â”€ Part Header â”€â”€ */
 .ci-part {
   margin-bottom: 2px;
 }
@@ -3565,7 +3370,7 @@ body.crt-active {
   flex-shrink: 0;
 }
 
-/* ── Chapter List (collapsible) ── */
+/* â”€â”€ Chapter List (collapsible) â”€â”€ */
 .ci-chapters {
   overflow: hidden;
   transition: max-height 0.3s ease;
@@ -3576,7 +3381,7 @@ body.crt-active {
   max-height: 0 !important;
 }
 
-/* ── Individual Chapter Link ── */
+/* â”€â”€ Individual Chapter Link â”€â”€ */
 .ci-chapter {
   display: flex;
   align-items: center;
@@ -3621,7 +3426,7 @@ body.crt-active {
   color: var(--text-hi);
 }
 
-/* ── Empty State ── */
+/* â”€â”€ Empty State â”€â”€ */
 .ci-empty {
   padding: 24px 18px;
   text-align: center;
@@ -3629,7 +3434,7 @@ body.crt-active {
   color: var(--text-dim);
 }
 
-/* ── Mobile adjustments ── */
+/* â”€â”€ Mobile adjustments â”€â”€ */
 @media (max-width: 768px) {
   .chapter-index-panel {
     width: 96vw;
@@ -3642,11 +3447,11 @@ body.crt-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   15. GLOSSARY — Auto-linked term tooltips
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   15. GLOSSARY â€” Auto-linked term tooltips
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Glossary Term (inline) ──
+/* â”€â”€ Glossary Term (inline) â”€â”€
    Dotted underline and help cursor indicate a defined term.
    Hover shows a tooltip with the definition.                  */
 .glossary-term {
@@ -3661,7 +3466,7 @@ body.crt-active {
   color: var(--text-hi);
 }
 
-/* ── Glossary Tooltip ──
+/* â”€â”€ Glossary Tooltip â”€â”€
    CSS-only tooltip via ::after using the data-definition attr.
    Appears above the term on hover with a subtle fade-in.       */
 .glossary-term::after {
@@ -3693,7 +3498,7 @@ body.crt-active {
   opacity: 1;
 }
 
-/* ── Tooltip Arrow ──
+/* â”€â”€ Tooltip Arrow â”€â”€
    Small triangle pointing down toward the term.               */
 .glossary-term::before {
   content: '';
@@ -3713,7 +3518,7 @@ body.crt-active {
   opacity: 1;
 }
 
-/* ── Mobile: position tooltip differently to avoid overflow ── */
+/* â”€â”€ Mobile: position tooltip differently to avoid overflow â”€â”€ */
 @media (max-width: 768px) {
   .glossary-term::after {
     left: 0;
@@ -3728,18 +3533,18 @@ body.crt-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   16. PLANET CARDS — Expandable planet type rows
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   16. PLANET CARDS â€” Expandable planet type rows
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Planet Row ──
+/* â”€â”€ Planet Row â”€â”€
    Expandable row in the planet type catalog table.
    Header is always visible; detail panel toggles open/closed. */
 .planet-row:last-child {
   border-bottom: none !important;
 }
 
-/* ── Planet Detail (collapsed by default) ── */
+/* â”€â”€ Planet Detail (collapsed by default) â”€â”€ */
 .planet-detail {
   max-height: 0;
   overflow: hidden;
@@ -3759,7 +3564,7 @@ body.crt-active {
   background: rgba(0, 180, 255, 0.015);
 }
 
-/* ── Planet SVG Artwork ── */
+/* â”€â”€ Planet SVG Artwork â”€â”€ */
 .planet-svg-wrap {
   border: 1px solid var(--border);
   border-radius: 4px;
@@ -3773,7 +3578,7 @@ body.crt-active {
   height: auto;
 }
 
-/* ── Planet Detail Text ── */
+/* â”€â”€ Planet Detail Text â”€â”€ */
 .planet-detail-text {
   display: flex;
   flex-direction: column;
@@ -3798,7 +3603,7 @@ body.crt-active {
   color: var(--text-mid);
 }
 
-/* ── Territory Bar Chart ── */
+/* â”€â”€ Territory Bar Chart â”€â”€ */
 .territory-bar-row {
   display: grid;
   grid-template-columns: 120px 1fr 60px;
@@ -3834,7 +3639,7 @@ body.crt-active {
   color: var(--text-dim);
 }
 
-/* ── Mobile: stack planet detail vertically ── */
+/* â”€â”€ Mobile: stack planet detail vertically â”€â”€ */
 @media (max-width: 768px) {
   .planet-detail-inner {
     grid-template-columns: 1fr;
@@ -3850,11 +3655,11 @@ body.crt-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   17. FORMATION CARDS — Fleet formation display
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   17. FORMATION CARDS â€” Fleet formation display
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Formation Grid ──
+/* â”€â”€ Formation Grid â”€â”€
    Responsive grid for formation cards. Dark sci-fi style
    with accent-colored borders and inline SVG diagrams.      */
 .formation-grid {
@@ -3876,7 +3681,7 @@ body.crt-active {
   box-shadow: 0 0 12px rgba(0, 180, 255, 0.08);
 }
 
-/* ── Formation Diagram ── */
+/* â”€â”€ Formation Diagram â”€â”€ */
 .formation-diagram {
   width: 100%;
   height: 60px;
@@ -3894,7 +3699,7 @@ body.crt-active {
   height: 60px;
 }
 
-/* ── Formation Text ── */
+/* â”€â”€ Formation Text â”€â”€ */
 .formation-name {
   font-family: 'Orbitron', sans-serif;
   font-size: 0.72rem;
@@ -3944,7 +3749,7 @@ body.crt-active {
   border: 1px solid rgba(255, 34, 102, 0.25);
 }
 
-/* ── Mobile: single-column formations ── */
+/* â”€â”€ Mobile: single-column formations â”€â”€ */
 @media (max-width: 768px) {
   .formation-grid {
     grid-template-columns: 1fr;
@@ -3952,13 +3757,13 @@ body.crt-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   18. MOBILE OPTIMIZATION — Touch targets, font scaling,
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   18. MOBILE OPTIMIZATION â€” Touch targets, font scaling,
        layout fixes for phones and small tablets
-   ═══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── 18a. Touch-Friendly Targets ──
-   All interactive elements meet the 44×44px minimum tap target
+/* â”€â”€ 18a. Touch-Friendly Targets â”€â”€
+   All interactive elements meet the 44Ã—44px minimum tap target
    per WCAG / Apple HIG guidelines.                              */
 @media (max-width: 768px) {
 
@@ -3987,13 +3792,13 @@ body.crt-active {
     min-height: 44px;
   }
 
-  /* Hamburger: ensure 44×44 minimum */
+  /* Hamburger: ensure 44Ã—44 minimum */
   .hamburger {
     width: 44px;
     height: 44px;
   }
 
-  /* Sidebar toggle (desktop only — hidden on mobile, but defensive) */
+  /* Sidebar toggle (desktop only â€” hidden on mobile, but defensive) */
   .sidebar-toggle {
     width: 44px;
     height: 44px;
@@ -4117,7 +3922,7 @@ body.crt-active {
 
   /* System cards: already 1-col at 768px via earlier rule */
 
-  /* Remove hover-only effects on mobile — use active states */
+  /* Remove hover-only effects on mobile â€” use active states */
   .card:hover,
   .faction-card:hover,
   .system-card:hover,
@@ -4228,7 +4033,7 @@ body.crt-active {
   }
 }
 
-/* ── 18b. Tablet Breakpoint (≤1024px) ──
+/* â”€â”€ 18b. Tablet Breakpoint (â‰¤1024px) â”€â”€
    Two-column stat cards on tablets.                              */
 @media (max-width: 1024px) and (min-width: 769px) {
   .stats-grid {
@@ -4236,7 +4041,7 @@ body.crt-active {
   }
 }
 
-/* ── 18c. Small Phone Breakpoint (≤480px) ──
+/* â”€â”€ 18c. Small Phone Breakpoint (â‰¤480px) â”€â”€
    Extra-tight layouts for iPhone SE (375px) and similar.         */
 @media (max-width: 480px) {
 
@@ -4334,14 +4139,14 @@ body.crt-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   15. CHAPTER CONTENT STYLING — Visual polish for chapter pages
-   ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   15. CHAPTER CONTENT STYLING â€” Visual polish for chapter pages
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Targets elements inside #content-area to style the chapter
    reading experience without modifying chapter HTML files.
-   ═══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── 15a. Content Wrapper — Constrain & Center ────────── */
+/* â”€â”€ 15a. Content Wrapper â€” Constrain & Center â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area > .fade-in {
   background: rgba(12,14,20,0.55);
@@ -4365,7 +4170,7 @@ body.crt-active {
   max-width: 900px;
 }
 
-/* ── 15b. Section Labels — Monospace Pre-Heading ──────── */
+/* â”€â”€ 15b. Section Labels â€” Monospace Pre-Heading â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area .section-label {
   font-family: 'Share Tech Mono', monospace;
@@ -4379,7 +4184,7 @@ body.crt-active {
   text-align: center;
 }
 
-/* ── 15c. Section Headings — Orbitron Glow ────────────── */
+/* â”€â”€ 15c. Section Headings â€” Orbitron Glow â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area .section-heading {
   font-family: 'Orbitron', sans-serif;
@@ -4395,7 +4200,7 @@ body.crt-active {
   text-shadow: 0 0 14px rgba(0,180,255,0.25);
 }
 
-/* ── 15d. Paragraphs — Readable Body Text ─────────────── */
+/* â”€â”€ 15d. Paragraphs â€” Readable Body Text â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area p {
   font-family: 'Rajdhani', sans-serif;
@@ -4416,7 +4221,7 @@ body.crt-active {
   text-align: left;
 }
 
-/* ── 15e. Cards & Panels Inside Chapters ──────────────── */
+/* â”€â”€ 15e. Cards & Panels Inside Chapters â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area .card {
   background: var(--bg-card);
@@ -4434,7 +4239,7 @@ body.crt-active {
   box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,180,255,0.06);
 }
 
-/* ── 15f. Dividers — Gradient Line ────────────────────── */
+/* â”€â”€ 15f. Dividers â€” Gradient Line â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area .divider {
   height: 1px;
@@ -4443,14 +4248,14 @@ body.crt-active {
   border: none;
 }
 
-/* ── 15g. Bold/Strong Text — High Contrast ────────────── */
+/* â”€â”€ 15g. Bold/Strong Text â€” High Contrast â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area strong {
   color: var(--text-hi);
   font-weight: 600;
 }
 
-/* ── 15h. Links Inside Chapters ───────────────────────── */
+/* â”€â”€ 15h. Links Inside Chapters â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area a {
   color: var(--accent);
@@ -4464,7 +4269,7 @@ body.crt-active {
   text-shadow: 0 0 8px rgba(0,180,255,0.3);
 }
 
-/* ── 15i. Lists — Accent Bullets & Spacing ────────────── */
+/* â”€â”€ 15i. Lists â€” Accent Bullets & Spacing â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area ul,
 #content-area ol {
@@ -4492,7 +4297,7 @@ body.crt-active {
   font-size: 0.8rem;
 }
 
-/* ── 15j. Tables — Dark Header, Alternating Rows ─────── */
+/* â”€â”€ 15j. Tables â€” Dark Header, Alternating Rows â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area table {
   width: 100%;
@@ -4536,7 +4341,7 @@ body.crt-active {
   background: rgba(0,180,255,0.05);
 }
 
-/* ── 15k. Blockquotes — Accent Border, Dim Background ── */
+/* â”€â”€ 15k. Blockquotes â€” Accent Border, Dim Background â”€â”€ */
 
 #content-area blockquote {
   border-left: 3px solid var(--accent);
@@ -4553,7 +4358,7 @@ body.crt-active {
   margin-bottom: 0;
 }
 
-/* ── 15l. Code & Pre Blocks — Monospace Terminal ──────── */
+/* â”€â”€ 15l. Code & Pre Blocks â€” Monospace Terminal â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area code {
   font-family: 'JetBrains Mono', monospace;
@@ -4586,7 +4391,7 @@ body.crt-active {
   color: inherit;
 }
 
-/* ── 15m. Headings Inside Chapters ────────────────────── */
+/* â”€â”€ 15m. Headings Inside Chapters â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area h2 {
   font-family: 'Orbitron', sans-serif;
@@ -4623,7 +4428,7 @@ body.crt-active {
   margin-bottom: 12px;
 }
 
-/* ── 15n. Quote Blocks Inside Chapters ────────────────── */
+/* â”€â”€ 15n. Quote Blocks Inside Chapters â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Left-border quote style for chapter pages only (not dashboard) */
 #content-area .fade-in:not(#dashboard-view) .quote-block {
@@ -4635,7 +4440,7 @@ body.crt-active {
   text-align: left;
 }
 
-/* ── 15o. Accordion / Expandable Sections ─────────────── */
+/* â”€â”€ 15o. Accordion / Expandable Sections â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area [onclick] {
   cursor: pointer;
@@ -4646,7 +4451,7 @@ body.crt-active {
   background: var(--bg-hover);
 }
 
-/* ── 15p. Data Grids — Inline Grid Layouts ────────────── */
+/* â”€â”€ 15p. Data Grids â€” Inline Grid Layouts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area [style*="display:grid"],
 #content-area [style*="display: grid"] {
@@ -4658,7 +4463,7 @@ body.crt-active {
   transition: background 0.2s ease;
 }
 
-/* ── 15q. Proto Badge — Status Tag ────────────────────── */
+/* â”€â”€ 15q. Proto Badge â€” Status Tag â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .proto-badge {
   font-family: 'JetBrains Mono', monospace;
@@ -4673,7 +4478,7 @@ body.crt-active {
   vertical-align: middle;
 }
 
-/* ── 15r. Page Title & Subtitle in Chapters ───────────── */
+/* â”€â”€ 15r. Page Title & Subtitle in Chapters â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area .page-title {
   text-shadow: 0 0 20px rgba(0,180,255,0.2);
@@ -4683,7 +4488,7 @@ body.crt-active {
   margin-bottom: 4px;
 }
 
-/* ── 15s. General Polish — Transitions & Spacing ──────── */
+/* â”€â”€ 15s. General Polish â€” Transitions & Spacing â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 #content-area .page {
   padding-bottom: 48px;
@@ -4706,15 +4511,15 @@ body.crt-active {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    16. FACTION-SPECIFIC CHAPTER THEMING
-   ═══════════════════════════════════════════════════════════
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    When a faction chapter is active, body receives a faction
    class (e.g. faction-terran). Override --accent and apply
    faction-colored glows to chapter elements.
-   ═══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Faction Accent Overrides ── */
+/* â”€â”€ Faction Accent Overrides â”€â”€ */
 body.faction-terran    { --accent: #00b4ff; }
 body.faction-shards    { --accent: #00ffee; }
 body.faction-horde     { --accent: #ff6622; }
@@ -4723,7 +4528,7 @@ body.faction-accord    { --accent: #ffaa22; }
 body.faction-vorax     { --accent: #ff2266; }
 body.faction-guardians { --accent: #cc44ff; }
 
-/* ── Section Heading Glow — Faction Color ── */
+/* â”€â”€ Section Heading Glow â€” Faction Color â”€â”€ */
 body.faction-terran    #content-area .section-heading { text-shadow: 0 0 14px rgba(0,180,255,0.3); }
 body.faction-shards    #content-area .section-heading { text-shadow: 0 0 14px rgba(0,255,238,0.3); }
 body.faction-horde     #content-area .section-heading { text-shadow: 0 0 14px rgba(255,102,34,0.3); }
@@ -4732,7 +4537,7 @@ body.faction-accord    #content-area .section-heading { text-shadow: 0 0 14px rg
 body.faction-vorax     #content-area .section-heading { text-shadow: 0 0 14px rgba(255,34,102,0.3); }
 body.faction-guardians #content-area .section-heading { text-shadow: 0 0 14px rgba(204,68,255,0.3); }
 
-/* ── Card Borders — Faction Color on Hover ── */
+/* â”€â”€ Card Borders â€” Faction Color on Hover â”€â”€ */
 body.faction-terran    #content-area .card:hover { border-color: rgba(0,180,255,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,180,255,0.08); }
 body.faction-shards    #content-area .card:hover { border-color: rgba(0,255,238,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,255,238,0.08); }
 body.faction-horde     #content-area .card:hover { border-color: rgba(255,102,34,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,102,34,0.08); }
@@ -4741,7 +4546,7 @@ body.faction-accord    #content-area .card:hover { border-color: rgba(255,170,34
 body.faction-vorax     #content-area .card:hover { border-color: rgba(255,34,102,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,34,102,0.08); }
 body.faction-guardians #content-area .card:hover { border-color: rgba(204,68,255,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(204,68,255,0.08); }
 
-/* ── Links — Faction Color ── */
+/* â”€â”€ Links â€” Faction Color â”€â”€ */
 body[class*="faction-"] #content-area a {
   color: var(--accent);
 }
@@ -4751,18 +4556,18 @@ body[class*="faction-"] #content-area a:hover {
   text-shadow: 0 0 8px color-mix(in srgb, var(--accent) 40%, transparent);
 }
 
-/* ── Section Label — Faction Color ── */
+/* â”€â”€ Section Label â€” Faction Color â”€â”€ */
 body[class*="faction-"] #content-area .section-label {
   color: var(--accent);
 }
 
-/* ── Blockquote & Quote Block — Faction Border ── */
+/* â”€â”€ Blockquote & Quote Block â€” Faction Border â”€â”€ */
 body[class*="faction-"] #content-area blockquote {
   border-left-color: var(--accent);
   background: color-mix(in srgb, var(--accent) 3%, transparent);
 }
 
-/* ── Table Header — Faction Tint ── */
+/* â”€â”€ Table Header â€” Faction Tint â”€â”€ */
 body[class*="faction-"] #content-area table thead tr,
 body[class*="faction-"] #content-area table tr:first-child {
   background: color-mix(in srgb, var(--accent) 6%, transparent);
@@ -4772,14 +4577,14 @@ body[class*="faction-"] #content-area table th {
   color: var(--accent);
 }
 
-/* ── Code — Faction Accent ── */
+/* â”€â”€ Code â€” Faction Accent â”€â”€ */
 body[class*="faction-"] #content-area code {
   color: var(--accent);
   background: color-mix(in srgb, var(--accent) 6%, transparent);
   border-color: color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
-/* ── Proto Badge — Faction Color ── */
+/* â”€â”€ Proto Badge â€” Faction Color â”€â”€ */
 body[class*="faction-"] .proto-badge {
   color: var(--accent);
   background: color-mix(in srgb, var(--accent) 8%, transparent);
@@ -4787,7 +4592,7 @@ body[class*="faction-"] .proto-badge {
 }
 
 
-/* ── 16b. Chapter Content Responsive ──────────────────── */
+/* â”€â”€ 16b. Chapter Content Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 @media (max-width: 768px) {
   #content-area .fade-in {
@@ -4846,7 +4651,7 @@ body[class*="faction-"] .proto-badge {
   }
 }
 
-/* ── Body scroll lock when mobile sidebar is open ── */
+/* â”€â”€ Body scroll lock when mobile sidebar is open â”€â”€ */
 body.sidebar-open {
   overflow: hidden;
   position: fixed;
@@ -4854,14 +4659,14 @@ body.sidebar-open {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   19. MOBILE-FIRST RESPONSIVE OVERHAUL — Part B
-   ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   19. MOBILE-FIRST RESPONSIVE OVERHAUL â€” Part B
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Content layout, tables, canvas, typography, performance.
    Added: 2026-03-28                                          */
 
 
-/* ── 19a. Scroll & Overscroll Behavior ────────────────────── */
+/* â”€â”€ 19a. Scroll & Overscroll Behavior â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 html {
   -webkit-overflow-scrolling: touch;
@@ -4872,7 +4677,7 @@ html {
 }
 
 
-/* ── 19b. Fluid Typography (clamp) ────────────────────────── */
+/* â”€â”€ 19b. Fluid Typography (clamp) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .page-title {
   font-size: clamp(1.4rem, 4vw, 2.2rem);
@@ -4899,7 +4704,7 @@ html {
 }
 
 
-/* ── 19c. Image & SVG Overflow Prevention ─────────────────── */
+/* â”€â”€ 19c. Image & SVG Overflow Prevention â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 img,
 svg,
@@ -4910,7 +4715,7 @@ embed {
 }
 
 
-/* ── 19d. Performance — GPU Hints & Containment ───────────── */
+/* â”€â”€ 19d. Performance â€” GPU Hints & Containment â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .sidebar {
   will-change: transform;
@@ -4924,7 +4729,7 @@ embed {
 }
 
 
-/* ── 19e. Safe Area (notch) Support ───────────────────────── */
+/* â”€â”€ 19e. Safe Area (notch) Support â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .hamburger {
   padding-left: env(safe-area-inset-left, 0px);
@@ -4940,7 +4745,7 @@ embed {
 }
 
 
-/* ── 19f. Scrollable Container Momentum ───────────────────── */
+/* â”€â”€ 19f. Scrollable Container Momentum â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .phase-loop,
 .page table,
@@ -4950,9 +4755,9 @@ embed {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    19g. TABLET BREAKPOINT (max-width: 1024px)
-   ═══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 @media (max-width: 1024px) {
   .faction-grid {
@@ -4961,13 +4766,13 @@ embed {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    19h. MOBILE BREAKPOINT (max-width: 768px)
-   ═══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 @media (max-width: 768px) {
 
-  /* ── Card padding & gap reductions ── */
+  /* â”€â”€ Card padding & gap reductions â”€â”€ */
   .card,
   .system-card,
   .stat-block {
@@ -4994,12 +4799,12 @@ embed {
     gap: 10px;
   }
 
-  /* ── Dashboard section padding reduction ── */
+  /* â”€â”€ Dashboard section padding reduction â”€â”€ */
   .dashboard-section {
     padding: 24px 8px;
   }
 
-  /* ── Phase cards: single-column stack, hide arrows ── */
+  /* â”€â”€ Phase cards: single-column stack, hide arrows â”€â”€ */
   .phase-loop {
     flex-direction: column;
     overflow-x: visible;
@@ -5016,7 +4821,7 @@ embed {
     display: none;
   }
 
-  /* ── Faction emblem: smaller on mobile ── */
+  /* â”€â”€ Faction emblem: smaller on mobile â”€â”€ */
   .faction-emblem {
     width: 36px;
     height: 36px;
@@ -5027,7 +4832,7 @@ embed {
     height: 36px;
   }
 
-  /* ── Quote blocks: tighter on mobile ── */
+  /* â”€â”€ Quote blocks: tighter on mobile â”€â”€ */
   .quote-block {
     padding: 14px 12px;
   }
@@ -5037,7 +4842,7 @@ embed {
     line-height: 1.6;
   }
 
-  /* ── Table horizontal scroll wrappers ── */
+  /* â”€â”€ Table horizontal scroll wrappers â”€â”€ */
   .page table,
   .body-text table,
   [id^="page-"] table,
@@ -5048,20 +4853,20 @@ embed {
     max-width: 100%;
   }
 
-  /* ── Equipment grids: 2 columns on tablet-ish mobile ── */
+  /* â”€â”€ Equipment grids: 2 columns on tablet-ish mobile â”€â”€ */
   .equipment-grid,
   .icon-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
   }
 
-  /* ── Tech tree grids: stack vertically ── */
+  /* â”€â”€ Tech tree grids: stack vertically â”€â”€ */
   .tech-tree-grid,
   .tech-grid {
     grid-template-columns: 1fr;
   }
 
-  /* ── Unit stat tables: horizontal scroll ── */
+  /* â”€â”€ Unit stat tables: horizontal scroll â”€â”€ */
   .unit-stats-table,
   .stat-comparison {
     display: block;
@@ -5069,12 +4874,12 @@ embed {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* ── Any grid data table: reduce columns ── */
+  /* â”€â”€ Any grid data table: reduce columns â”€â”€ */
   .data-grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  /* ── Accordion touch targets ── */
+  /* â”€â”€ Accordion touch targets â”€â”€ */
   .accordion-header,
   .expandable-header,
   [data-toggle],
@@ -5084,7 +4889,7 @@ embed {
     cursor: pointer;
   }
 
-  /* ── Canvas galaxy: max-width containment ── */
+  /* â”€â”€ Canvas galaxy: max-width containment â”€â”€ */
   .galaxy-map canvas {
     max-width: 100%;
     height: auto !important;
@@ -5092,25 +4897,25 @@ embed {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    19i. SMALL PHONE BREAKPOINT (max-width: 480px)
-   ═══════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 @media (max-width: 480px) {
 
-  /* ── Systems grid: single column ── */
+  /* â”€â”€ Systems grid: single column â”€â”€ */
   .systems-grid {
     grid-template-columns: 1fr;
     gap: 8px;
   }
 
-  /* ── Stats grid: single column ── */
+  /* â”€â”€ Stats grid: single column â”€â”€ */
   .stats-grid {
     grid-template-columns: 1fr;
     gap: 8px;
   }
 
-  /* ── Cards: full width, minimal margins ── */
+  /* â”€â”€ Cards: full width, minimal margins â”€â”€ */
   .card,
   .system-card,
   .stat-block,
@@ -5126,25 +4931,25 @@ embed {
     margin-right: 4px;
   }
 
-  /* ── Equipment grids: single column on tiny screens ── */
+  /* â”€â”€ Equipment grids: single column on tiny screens â”€â”€ */
   .equipment-grid,
   .icon-grid {
     grid-template-columns: 1fr;
   }
 
-  /* ── Equipment icon grid: flexible columns ── */
+  /* â”€â”€ Equipment icon grid: flexible columns â”€â”€ */
   .equipment-icons,
   .item-icon-grid {
     grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
     gap: 6px;
   }
 
-  /* ── Dashboard section: minimal padding ── */
+  /* â”€â”€ Dashboard section: minimal padding â”€â”€ */
   .dashboard-section {
     padding: 16px 4px;
   }
 
-  /* ── Quote block: minimal ── */
+  /* â”€â”€ Quote block: minimal â”€â”€ */
   .quote-block {
     padding: 10px 8px;
   }
@@ -5153,7 +4958,7 @@ embed {
     font-size: 0.85rem;
   }
 
-  /* ── Phase block: tighter ── */
+  /* â”€â”€ Phase block: tighter â”€â”€ */
   .phase-block {
     min-width: 0;
     padding: 10px;
@@ -5169,9 +4974,9 @@ embed {
 }
 
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    19j. PREFERS-REDUCED-MOTION
-   ═══════════════════════════════════════════════════════════
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    Disable all CSS animations and transitions for users
    who prefer reduced motion. Canvas renderers handle
    their own throttling in JS.                                */
