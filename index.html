@@ -288,16 +288,8 @@
 
         // Back-to-top button handled by Nav.bindBackToTop()
 
-        // ONE-TIME cache nuke (v44 recovery) — unregister stale SW, clear all caches, then re-register
+        // Register service worker for offline caching
         if ('serviceWorker' in navigator) {
-          const regs = await navigator.serviceWorker.getRegistrations();
-          for (const r of regs) { await r.unregister(); }
-          const cacheNames = await caches.keys();
-          for (const c of cacheNames) { await caches.delete(c); }
-          if (regs.length > 0 || cacheNames.length > 0) {
-            console.log('%c[SW] Nuked ' + regs.length + ' workers + ' + cacheNames.length + ' caches. Reloading clean.', 'color:#ff6622;font-family:monospace');
-          }
-          // Re-register the current service worker
           navigator.serviceWorker.register('js/service-worker.js')
             .then(reg => console.log('%c[SW] Registered (scope: ' + reg.scope + ')', 'color:#44ff66;font-family:monospace'))
             .catch(err => console.warn('[SW] Registration failed:', err));
