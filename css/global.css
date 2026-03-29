@@ -1144,107 +1144,129 @@ body.sidebar-collapsed .main-content {
 }
 
 
-/* ── 7b-2. Territory Control Map ──────────────────────── */
+/* ── 7b-2. Territory Control Map (SVG) ──────────────────── */
 
-.terr-map-container {
+.terr-map-wrapper {
   position: relative;
-  max-width: 860px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px 0;
 }
 
-/* SVG connection lines behind the grid */
-.terr-connections {
-  position: absolute;
-  top: 20px;
-  left: 0;
+.terr-svg-map {
   width: 100%;
-  height: calc(100% - 40px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Territory grid */
-.terr-grid {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(3, auto);
-  gap: 8px;
-  z-index: 1;
-}
-
-/* Individual territory cell */
-.terr-cell {
-  position: relative;
-  border: 1px solid;
+  height: auto;
+  display: block;
   border-radius: 6px;
-  padding: 10px 8px;
-  text-align: center;
-  background: rgba(0,180,255,0.06);
-  transition: border-color 0.3s, background 0.3s;
+  background: rgba(8, 10, 18, 0.6);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Territory polygons — base */
+.terr-poly {
+  transition: fill 0.25s, stroke-width 0.25s, filter 0.25s;
   cursor: default;
-  min-height: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
 }
 
-.terr-cell:hover {
-  background: rgba(0,180,255,0.12);
-  border-color: rgba(0,180,255,0.5);
+/* Controlled (Terran) */
+.terr-poly-controlled {
+  fill: rgba(0,180,255,0.25);
+  stroke: #00b4ff;
+  stroke-width: 1.5;
+}
+.terr-poly-controlled:hover {
+  fill: rgba(0,180,255,0.4);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 8px rgba(0,180,255,0.5));
 }
 
-/* Contested territory — pulsing border */
-.terr-contested {
-  animation: terrContestedPulse 2s ease-in-out infinite;
+/* Neutral */
+.terr-poly-neutral {
+  fill: rgba(100,100,120,0.2);
+  stroke: #555;
+  stroke-width: 1.5;
+}
+.terr-poly-neutral:hover {
+  fill: rgba(100,100,120,0.35);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 6px rgba(150,150,160,0.3));
 }
 
-@keyframes terrContestedPulse {
-  0%, 100% { border-color: rgba(255,102,68,0.35); box-shadow: none; }
-  50%      { border-color: rgba(255,102,68,0.7); box-shadow: 0 0 12px rgba(255,102,68,0.2), inset 0 0 12px rgba(255,102,68,0.05); }
+/* Contested — pulsing red border */
+.terr-poly-contested {
+  fill: rgba(255,60,60,0.2);
+  stroke: #ff3c3c;
+  stroke-width: 1.5;
+  animation: terrPolyPulse 2s ease-in-out infinite;
+}
+.terr-poly-contested:hover {
+  fill: rgba(255,60,60,0.35);
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 8px rgba(255,60,60,0.5));
 }
 
-/* Resource icon */
-.terr-icon {
-  font-size: 1rem;
-  line-height: 1;
+@keyframes terrPolyPulse {
+  0%, 100% { stroke: rgba(255,60,60,0.5); stroke-width: 1.5; }
+  50%      { stroke: rgba(255,60,60,1); stroke-width: 2.5; }
 }
 
-/* Territory name */
-.terr-name {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.5rem;
-  font-weight: 600;
-  color: rgba(230,235,240,0.9);
-  letter-spacing: 1px;
-  line-height: 1.3;
+/* Territory label — icon */
+.terr-label-icon {
+  font-size: 11px;
+  pointer-events: none;
 }
 
-/* Status label */
-.terr-status {
+/* Territory label — name text */
+.terr-label-name {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.4rem;
-  letter-spacing: 2px;
-  opacity: 0.7;
+  font-size: 8.5px;
+  fill: rgba(230,235,240,0.9);
+  pointer-events: none;
+  letter-spacing: 0.5px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .terr-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .terr-cell {
-    grid-row: auto !important;
-    grid-column: auto !important;
-  }
+/* Connection routes (dashed lines between territories) */
+.terr-route {
+  stroke: rgba(255,255,255,0.08);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
 }
 
+/* Legend */
+.terr-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(200,205,215,0.7);
+}
+
+.terr-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terr-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* Scanline overlay */
+.terr-scanline-overlay {
+  pointer-events: none;
+}
+
+/* Responsive legend */
 @media (max-width: 480px) {
-  .terr-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .terr-legend {
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.55rem;
   }
 }
 
