@@ -1417,7 +1417,7 @@ const Dashboard = {
         <div class="section-label">Ground Control Map</div>
         <div class="section-heading">Terra \u2014 Capital World Territory Control</div>
         <div id="canvas-territory-mount" style="display:flex;justify-content:center;padding:20px 0">
-          <object data="assets/territory-map.svg" type="image/svg+xml"
+          <object data="assets/territory-map.svg?v=6" type="image/svg+xml"
                   style="width:100%;max-width:1600px;border-radius:8px;border:1px solid rgba(0,180,255,0.1);box-shadow:0 4px 30px rgba(0,0,0,0.5)"
                   aria-label="Terra Capital World Territory Control Map">
           </object>
