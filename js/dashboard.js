@@ -719,92 +719,84 @@ const Dashboard = {
    * @returns {string} HTML string
    */
   buildTerritoryMap() {
-    /* ── Shared vertex grid (4×4 tessellation, 1000×600 viewBox) ──
-     * Points are slightly offset from a perfect grid for organic feel,
-     * but adjacent territories share exact edge vertices = zero gaps.
-     *
-     * Row 0 (y≈0):   r0c0(0,0)     r0c1(250,0)     r0c2(500,0)     r0c3(750,0)     r0c4(1000,0)
-     * Row 1 (y≈150): r1c0(0,150)   r1c1(230,140)   r1c2(480,160)   r1c3(720,145)   r1c4(1000,150)
-     * Row 2 (y≈300): r2c0(0,300)   r2c1(240,290)   r2c2(490,310)   r2c3(730,300)   r2c4(1000,300)
-     * Row 3 (y≈450): r3c0(0,450)   r3c1(235,445)   r3c2(485,460)   r3c3(725,450)   r3c4(1000,450)
-     * Row 4 (y=600): r4c0(0,600)   r4c1(250,600)   r4c2(500,600)   r4c3(750,600)   r4c4(1000,600)
-     */
+    /* ── Risk-style territory map: 3 continents + islands ──
+     * Uses SVG <path> with bezier curves for organic coastlines.
+     * Internal borders are straighter. Continents float on dark ocean.
+     * ViewBox: 1200 × 700                                              */
 
-    /* ── 16 territories: 4×4 grid, clockwise vertex winding ── */
     const territories = [
-      /* === ROW 0 (Northern Front) === */
+      /* ═══ NORTHERN CONTINENT (top-left, 5 territories) ═══ */
       { name: 'Northern Garrison', status: 'controlled', icon: '\u26E8',
-        points: '0,0 250,0 230,140 0,150',
-        cx: 120, cy: 73 },
+        d: 'M80,60 C95,45 140,30 200,35 L260,42 C275,44 285,50 290,60 L295,110 C290,130 275,145 255,150 L200,165 C160,170 120,160 95,145 C75,130 65,110 70,90 Z',
+        cx: 180, cy: 100 },
       { name: 'Comm Array', status: 'controlled', icon: '\u2699',
-        points: '250,0 500,0 480,160 230,140',
-        cx: 365, cy: 75 },
+        d: 'M260,42 L340,30 C370,28 405,35 430,50 L445,65 C455,80 450,100 440,115 L420,140 C400,158 370,165 340,162 L295,155 L295,110 C290,80 280,60 290,60 L295,55 Z',
+        cx: 360, cy: 95 },
       { name: 'Shield Generator', status: 'controlled', icon: '\u26E8',
-        points: '500,0 750,0 720,145 480,160',
-        cx: 613, cy: 76 },
+        d: 'M430,50 C460,35 500,30 530,40 C555,48 570,65 560,90 L548,130 C540,155 520,170 495,175 L440,170 L420,140 C435,120 445,100 445,80 Z',
+        cx: 490, cy: 105 },
       { name: 'Mountain Pass', status: 'contested', icon: '\u2694',
-        points: '750,0 1000,0 1000,150 720,145',
-        cx: 868, cy: 74 },
-
-      /* === ROW 1 (Central Theatre) === */
-      { name: 'Western Fortifications', status: 'neutral', icon: '\u26E8',
-        points: '0,150 230,140 240,290 0,300',
-        cx: 118, cy: 220 },
-      { name: 'Spaceport Alpha', status: 'controlled', icon: '\u2605',
-        points: '230,140 480,160 490,310 240,290',
-        cx: 360, cy: 225 },
-      { name: 'Central Command', status: 'controlled', icon: '\u2605', hq: true,
-        points: '480,160 720,145 730,300 490,310',
-        cx: 605, cy: 229 },
+        d: 'M295,155 L340,162 C370,165 400,158 420,140 L440,170 L495,175 C510,180 515,200 505,220 L480,250 C460,270 430,275 400,270 L340,255 C310,248 285,232 270,210 L255,180 C250,168 252,158 255,150 Z',
+        cx: 380, cy: 210 },
       { name: 'Orbital Defense HQ', status: 'controlled', icon: '\u26E8',
-        points: '720,145 1000,150 1000,300 730,300',
-        cx: 863, cy: 224 },
+        d: 'M80,165 C100,160 140,165 180,170 L200,165 L255,150 C252,158 250,168 255,180 L270,210 C260,235 240,250 215,255 L160,260 C120,258 90,240 75,215 C62,195 65,175 80,165 Z',
+        cx: 170, cy: 210 },
 
-      /* === ROW 2 (Southern Operations) === */
-      { name: 'Supply Depot', status: 'neutral', icon: '\u2699',
-        points: '0,300 240,290 235,445 0,450',
-        cx: 119, cy: 371 },
-      { name: 'Southern Bastion', status: 'contested', icon: '\u2694',
-        points: '240,290 490,310 485,460 235,445',
-        cx: 363, cy: 376 },
-      { name: 'Harbor District', status: 'controlled', icon: '\u2693',
-        points: '490,310 730,300 725,450 485,460',
-        cx: 608, cy: 380 },
+      /* ═══ EASTERN CONTINENT (right, 6 territories) ═══ */
+      { name: 'Central Command', status: 'controlled', icon: '\u2605', hq: true,
+        d: 'M720,120 C750,105 790,100 830,110 C860,118 880,140 875,170 L865,220 C860,250 840,270 810,280 L750,290 C720,292 695,280 680,260 L670,220 C665,190 680,160 700,140 Z',
+        cx: 775, cy: 195 },
       { name: 'Industrial District', status: 'controlled', icon: '\u2699',
-        points: '730,300 1000,300 1000,450 725,450',
-        cx: 864, cy: 375 },
-
-      /* === ROW 3 (Underground / Rear Echelon) === */
-      { name: 'Underground Network', status: 'neutral', icon: '\u26CF',
-        points: '0,450 235,445 250,600 0,600',
-        cx: 121, cy: 524 },
-      { name: 'Civilian Sector', status: 'controlled', icon: '\u2302',
-        points: '235,445 485,460 500,600 250,600',
-        cx: 368, cy: 526 },
-      { name: 'Research Complex', status: 'controlled', icon: '\u2697',
-        points: '485,460 725,450 750,600 500,600',
-        cx: 615, cy: 528 },
+        d: 'M830,60 C865,50 900,55 930,70 C955,82 970,105 965,135 L955,175 C948,200 930,215 905,220 L875,225 L875,170 C880,140 860,118 830,110 C810,104 790,100 780,105 L790,80 C800,65 815,58 830,60 Z',
+        cx: 890, cy: 140 },
       { name: 'Power Grid Hub', status: 'controlled', icon: '\u26A1',
-        points: '725,450 1000,450 1000,600 750,600',
-        cx: 869, cy: 525 }
+        d: 'M955,175 C960,200 965,230 955,260 C945,285 925,305 900,315 L860,325 C835,330 815,322 800,305 L810,280 C840,270 860,250 865,220 L875,225 L905,220 C930,215 948,200 955,175 Z',
+        cx: 895, cy: 265 },
+      { name: 'Research Complex', status: 'controlled', icon: '\u2697',
+        d: 'M800,305 C815,322 835,330 860,325 L900,315 C910,340 905,370 890,395 C870,420 840,435 810,430 L770,420 C745,412 730,395 725,370 L730,340 C740,320 760,308 780,305 Z',
+        cx: 815, cy: 370 },
+      { name: 'Civilian Sector', status: 'controlled', icon: '\u2302',
+        d: 'M680,260 C695,280 720,292 750,290 L810,280 L800,305 C780,308 760,320 740,340 L730,340 L690,345 C660,342 640,325 635,300 C630,280 645,265 665,260 Z',
+        cx: 720, cy: 300 },
+      { name: 'Harbor District', status: 'controlled', icon: '\u2693',
+        d: 'M635,300 C640,325 660,342 690,345 L730,340 L725,370 C730,395 720,415 700,430 C675,448 645,450 620,440 L590,420 C570,405 565,380 575,355 C585,330 605,310 635,300 Z',
+        cx: 660, cy: 375 },
+
+      /* ═══ SOUTHERN ISLANDS (bottom, 5 territories) ═══ */
+      { name: 'Spaceport Alpha', status: 'controlled', icon: '\u2605',
+        d: 'M180,420 C210,405 250,400 290,410 C325,418 350,440 345,470 L335,510 C325,535 300,550 270,548 L220,540 C190,535 170,515 165,490 C160,465 165,440 180,420 Z',
+        cx: 255, cy: 475 },
+      { name: 'Southern Bastion', status: 'contested', icon: '\u2694',
+        d: 'M380,450 C405,438 435,435 465,445 C490,453 505,475 500,500 L492,535 C485,558 465,570 440,568 L395,560 C370,555 352,538 350,515 C348,490 358,465 380,450 Z',
+        cx: 430, cy: 505 },
+      { name: 'Western Fortifications', status: 'neutral', icon: '\u26E8',
+        d: 'M50,480 C70,468 95,465 120,472 C142,478 155,498 150,520 C145,540 130,555 110,558 L80,555 C58,550 42,535 40,515 C38,498 42,488 50,480 Z',
+        cx: 95, cy: 515 },
+      { name: 'Supply Depot', status: 'neutral', icon: '\u2699',
+        d: 'M180,570 C200,560 225,558 248,565 C268,572 280,590 275,610 C270,628 255,640 235,642 L205,638 C185,632 172,618 170,600 C168,585 172,575 180,570 Z',
+        cx: 222, cy: 600 },
+      { name: 'Underground Network', status: 'neutral', icon: '\u26CF',
+        d: 'M470,590 C495,580 525,578 550,585 C575,592 595,610 590,635 C585,655 565,668 540,670 L505,668 C480,664 462,648 458,628 C454,608 458,598 470,590 Z',
+        cx: 525, cy: 625 }
     ];
 
-    /* ── Adjacency connections (horizontal + vertical neighbors) ── */
-    const connections = [
-      /* Row 0 horizontal */
-      [0,1], [1,2], [2,3],
-      /* Row 1 horizontal */
-      [4,5], [5,6], [6,7],
-      /* Row 2 horizontal */
-      [8,9], [9,10], [10,11],
-      /* Row 3 horizontal */
-      [12,13], [13,14], [14,15],
-      /* Row 0 → Row 1 vertical */
-      [0,4], [1,5], [2,6], [3,7],
-      /* Row 1 → Row 2 vertical */
-      [4,8], [5,9], [6,10], [7,11],
-      /* Row 2 → Row 3 vertical */
-      [8,12], [9,13], [10,14], [11,15]
+    /* ── Adjacency connections ── */
+    const landRoutes = [
+      /* Northern continent internal */
+      [0,1], [1,2], [0,4], [1,3], [2,3], [3,4],
+      /* Eastern continent internal */
+      [5,6], [5,9], [5,10], [6,7], [7,8], [8,9], [9,10], [10,8],
+      /* Southern islands internal */
+      [11,12]
+    ];
+    /* Sea routes between continents (dashed) */
+    const seaRoutes = [
+      [3,5],   /* Mountain Pass → Central Command */
+      [4,10],  /* Orbital Defense → Harbor District */
+      [4,11],  /* Orbital Defense → Spaceport Alpha */
+      [12,8],  /* Southern Bastion → Research Complex */
+      [14,11], /* Western Fort → Spaceport */
+      [15,12]  /* Underground → Southern Bastion */
     ];
 
     /* ── Status visual styles ── */
@@ -814,31 +806,46 @@ const Dashboard = {
       contested:  '#ff3c3c'
     };
 
-    /* ── SVG Defs: grid dot pattern, scanline pattern ── */
+    /* ── SVG Defs: ocean gradient, grid dots, scanlines, glow filters ── */
     const defs = `<defs>
-          <pattern id="tcm-grid-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-            <circle cx="10" cy="10" r="0.6" fill="rgba(255,255,255,0.07)"/>
+          <radialGradient id="tcm-ocean-grad" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="rgba(0,40,80,0.3)"/>
+            <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+          </radialGradient>
+          <pattern id="tcm-grid-dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+            <circle cx="12" cy="12" r="0.5" fill="rgba(100,150,255,0.08)"/>
           </pattern>
           <pattern id="tcm-scanlines" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
-            <line x1="0" y1="0" x2="4" y2="0" stroke="rgba(0,0,0,0.05)" stroke-width="1"/>
+            <line x1="0" y1="0" x2="4" y2="0" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>
           </pattern>
           <filter id="tcm-hq-glow">
-            <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#00b4ff" flood-opacity="0.7"/>
+            <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#00b4ff" flood-opacity="0.8"/>
+          </filter>
+          <filter id="tcm-continent-glow">
+            <feGaussianBlur stdDeviation="12" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
         </defs>`;
 
-    /* ── Grid dot background ── */
-    const gridBg = '<rect width="1000" height="600" fill="url(#tcm-grid-dots)"/>';
+    /* ── Ocean background ── */
+    const ocean = `<rect width="1200" height="700" fill="#040810"/>
+          <rect width="1200" height="700" fill="url(#tcm-ocean-grad)" opacity="0.4"/>
+          <rect width="1200" height="700" fill="url(#tcm-grid-dots)"/>`;
 
-    /* ── Connection routes (dashed lines between adjacent territory centers) ── */
-    const routes = connections.map(([a, b]) =>
-      `<line x1="${territories[a].cx}" y1="${territories[a].cy}" x2="${territories[b].cx}" y2="${territories[b].cy}" class="terr-route"/>`
+    /* ── Land routes (solid dim lines between adjacent territory centers) ── */
+    const landLines = landRoutes.map(([a, b]) =>
+      `<line x1="${territories[a].cx}" y1="${territories[a].cy}" x2="${territories[b].cx}" y2="${territories[b].cy}" class="terr-route terr-land-route"/>`
     ).join('\n            ');
 
-    /* ── Territory polygons ── */
+    /* ── Sea routes (dashed lines crossing ocean between continents) ── */
+    const seaLines = seaRoutes.map(([a, b]) =>
+      `<line x1="${territories[a].cx}" y1="${territories[a].cy}" x2="${territories[b].cx}" y2="${territories[b].cy}" class="terr-route terr-sea-route"/>`
+    ).join('\n            ');
+
+    /* ── Territory paths ── */
     const polys = territories.map(t => {
       const cls = `terr-poly terr-poly-${t.status}${t.hq ? ' terr-poly-hq' : ''}`;
-      return `<polygon class="${cls}" points="${t.points}"/>`;
+      return `<path class="${cls}" d="${t.d}"/>`;
     }).join('\n            ');
 
     /* ── HQ star marker for Central Command ── */
@@ -862,7 +869,7 @@ const Dashboard = {
     }).join('\n            ');
 
     /* ── Scanline overlay for military feel ── */
-    const scanlines = '<rect width="1000" height="600" fill="url(#tcm-scanlines)" class="terr-scanline-overlay"/>';
+    const scanlines = '<rect width="1200" height="700" fill="url(#tcm-scanlines)" class="terr-scanline-overlay"/>';
 
     /* ── Legend HTML ── */
     const legend = `<div class="terr-legend">
@@ -900,11 +907,12 @@ const Dashboard = {
         <div class="section-label">Ground Control Map</div>
         <div class="section-heading">Terra \u2014 Capital World Territory Control</div>
         <div class="terr-map-wrapper">
-          <svg class="terr-svg-map" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
+          <svg class="terr-svg-map" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid meet">
             ${defs}
-            ${gridBg}
+            ${ocean}
             <g class="terr-routes-group">
-              ${routes}
+              ${seaLines}
+              ${landLines}
             </g>
             <g class="terr-regions-group">
               ${polys}

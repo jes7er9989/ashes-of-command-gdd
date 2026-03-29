@@ -1419,9 +1419,17 @@ body.sidebar-collapsed .main-content {
 
 /* Connection routes (dashed lines between territories) */
 .terr-route {
-  stroke: rgba(255,255,255,0.08);
   stroke-width: 1;
-  stroke-dasharray: 4 4;
+}
+.terr-land-route {
+  stroke: rgba(255,255,255,0.1);
+  stroke-dasharray: none;
+}
+.terr-sea-route {
+  stroke: rgba(100,180,255,0.15);
+  stroke-width: 1.5;
+  stroke-dasharray: 8 6;
+  stroke-linecap: round;
 }
 
 /* Legend */
