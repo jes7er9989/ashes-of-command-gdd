@@ -510,7 +510,8 @@ const VisualEffects = (() => {
     ScanlineOverlay.init();
     CRTEffect.init();
     LoreQuoteRotator.init();
-    HoloTilt.init();
+    // HoloTilt disabled — Thomas prefers cards that don't pitch around
+    // HoloTilt.init();
 
     console.log('%c[VFX] Visual effects online.', 'color:#cc44ff;font-family:monospace');
   }
