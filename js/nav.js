@@ -54,35 +54,161 @@ const Nav = {
    */
   render(filter = '') {
     const lc = filter.toLowerCase();
-    let html = '';
 
+    /* ── No filter: render full nav tree ───────────────── */
+    if (!lc) {
+      let html = '';
+      for (const part of this.navData) {
+        html += `<div class="nav-part">`;
+        html += `<div class="nav-part-header" data-part="${part.part}">
+          <span>${part.part}</span>
+          <span class="chevron">▼</span>
+        </div>`;
+        html += `<div class="nav-part-chapters">`;
+        for (const ch of part.chapters) {
+          const colorStyle = ch.color ? `style="--ch-color:${ch.color}"` : '';
+          html += `<a class="nav-chapter" href="#${ch.id}" data-id="${ch.id}" ${colorStyle}>
+            <span class="ch-num">${ch.num}</span>${ch.title}
+          </a>`;
+        }
+        html += `</div></div>`;
+      }
+      this.container.innerHTML = html;
+      this.bindPartHeaders();
+      this.highlightActive();
+      return;
+    }
+
+    /* ── Filtered: use intelligent search ──────────────── */
+    const scored = this._scoreChapters(lc);
+
+    if (scored.length === 0) {
+      this.container.innerHTML = `<div class="nav-empty">No matches for "${filter}"</div>`;
+      return;
+    }
+
+    // Group scored results back into their parts, preserving score order
+    const partMap = new Map();
     for (const part of this.navData) {
-      const chapters = part.chapters.filter(ch =>
-        !lc || ch.title.toLowerCase().includes(lc) || ch.num.toLowerCase().includes(lc)
-      );
+      partMap.set(part.part, { part: part.part, chapters: [] });
+    }
+    for (const item of scored) {
+      const group = partMap.get(item.part);
+      if (group) group.chapters.push(item);
+    }
 
-      if (lc && chapters.length === 0) continue;
-
+    let html = '';
+    for (const [, group] of partMap) {
+      if (group.chapters.length === 0) continue;
       html += `<div class="nav-part">`;
-      html += `<div class="nav-part-header" data-part="${part.part}">
-        <span>${part.part}</span>
+      html += `<div class="nav-part-header" data-part="${group.part}">
+        <span>${group.part}</span>
         <span class="chevron">▼</span>
       </div>`;
       html += `<div class="nav-part-chapters">`;
-
-      for (const ch of chapters) {
+      for (const ch of group.chapters) {
         const colorStyle = ch.color ? `style="--ch-color:${ch.color}"` : '';
+        const synHint = ch.synonymHint ? `<span class="nav-syn-hint">via ${ch.synonymHint}</span>` : '';
         html += `<a class="nav-chapter" href="#${ch.id}" data-id="${ch.id}" ${colorStyle}>
-          <span class="ch-num">${ch.num}</span>${ch.title}
+          <span class="ch-num">${ch.num}</span>${ch.title}${synHint}
         </a>`;
       }
-
       html += `</div></div>`;
     }
 
     this.container.innerHTML = html;
     this.bindPartHeaders();
     this.highlightActive();
+  },
+
+  /**
+   * Score all chapters against a search query using the search index.
+   * Falls back to simple title/number matching if index isn't loaded.
+   * @param {string} query - Lowercase search query
+   * @returns {Array} Scored chapter objects sorted by relevance
+   */
+  _scoreChapters(query) {
+    const index = Search._index;
+    const synonyms = Search._synonyms;
+
+    /* ── Fallback: simple title match if index not ready ── */
+    if (!index) {
+      const results = [];
+      for (const part of this.navData) {
+        for (const ch of part.chapters) {
+          if (ch.title.toLowerCase().includes(query) || ch.num.toLowerCase().includes(query)) {
+            results.push({ ...ch, part: part.part, score: 1 });
+          }
+        }
+      }
+      return results;
+    }
+
+    /* ── Expand query with synonyms ────────────────────── */
+    const expanded = [];
+    if (synonyms) {
+      const words = query.split(/\s+/);
+      for (const w of words) {
+        if (synonyms[w]) expanded.push(...synonyms[w].map(s => s.toLowerCase()));
+      }
+      if (synonyms[query]) expanded.push(...synonyms[query].map(s => s.toLowerCase()));
+    }
+    const allTerms = [query, ...new Set(expanded)];
+
+    /* ── Score each indexed chapter ────────────────────── */
+    const scored = [];
+    for (const entry of index) {
+      let bestScore = 0;
+      let synonymHint = null;
+
+      for (const term of allTerms) {
+        const isSyn = term !== query;
+        const mult = isSyn ? 0.7 : 1.0;
+        let s = 0;
+
+        // Title
+        if (entry.title.toLowerCase().includes(term)) s += 100 * mult;
+        if (entry.pageTitle && entry.pageTitle.toLowerCase().includes(term)) s += 80 * mult;
+        // Subtitle
+        if (entry.subtitle && entry.subtitle.toLowerCase().includes(term)) s += 60 * mult;
+        // Section headings
+        if (entry.sections) {
+          let hits = 0;
+          for (const sec of entry.sections) { if (sec.toLowerCase().includes(term)) hits++; }
+          if (hits) s += 40 * Math.min(hits, 3) * mult;
+        }
+        // Content
+        if (entry.content && entry.content.toLowerCase().includes(term)) {
+          s += 10 * mult;
+        }
+
+        if (s > bestScore) {
+          bestScore = s;
+          synonymHint = isSyn ? term : null;
+        }
+      }
+
+      if (bestScore > 0) {
+        // Find the nav chapter metadata
+        let navCh = null;
+        let partName = '';
+        for (const part of this.navData) {
+          const found = part.chapters.find(c => c.id === entry.id);
+          if (found) { navCh = found; partName = part.part; break; }
+        }
+        if (navCh) {
+          scored.push({
+            ...navCh,
+            part: partName,
+            score: bestScore,
+            synonymHint
+          });
+        }
+      }
+    }
+
+    scored.sort((a, b) => b.score - a.score);
+    return scored;
   },
 
   /* ── Event Binding ───────────────────────────────────── */

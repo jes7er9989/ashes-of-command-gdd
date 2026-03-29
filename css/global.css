@@ -340,6 +340,26 @@ a:hover {
   font-weight: 600;
 }
 
+.nav-syn-hint {
+  display: inline-block;
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.04);
+  padding: 1px 5px;
+  border-radius: 6px;
+  margin-left: 6px;
+  font-style: italic;
+  vertical-align: middle;
+}
+
+.nav-empty {
+  padding: 16px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
 .nav-chapter .ch-num {
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.65rem;
