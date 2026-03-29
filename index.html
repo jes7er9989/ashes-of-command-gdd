@@ -323,5 +323,20 @@
       }
     })();
   </script>
+
+  <!-- High Visibility Toggle -->
+  <button id="high-vis-toggle" title="Toggle high visibility mode" aria-label="Toggle high visibility mode">&#9788;</button>
+  <script>
+    (() => {
+      const btn = document.getElementById('high-vis-toggle');
+      const KEY = 'aoc-high-vis';
+      // Restore saved preference
+      if (localStorage.getItem(KEY) === '1') document.body.classList.add('high-vis');
+      btn.addEventListener('click', () => {
+        document.body.classList.toggle('high-vis');
+        localStorage.setItem(KEY, document.body.classList.contains('high-vis') ? '1' : '0');
+      });
+    })();
+  </script>
 </body>
 </html>

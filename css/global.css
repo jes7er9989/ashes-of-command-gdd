@@ -59,10 +59,10 @@
   --border-hi: rgba(255,255,255,0.12);
 
   /* Text luminance scale (dim â†’ bright) */
-  --text-dim: #445566;
-  --text-mid: #778899;
-  --text-body: #b8beca;
-  --text-hi: #e0e4ec;
+  --text-dim: #667788;
+  --text-mid: #99aabb;
+  --text-body: #c8ced8;
+  --text-hi: #e8ecf2;
 
   /* Primary UI accent (Terran blue) */
   --accent: #00b4ff;
@@ -5230,4 +5230,74 @@ embed {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HIGH VISIBILITY MODE
+   ───────────────────────────────────────────────────────────
+   Activated by .high-vis on <body>. Designed for bright
+   light / outdoor mobile reading. Bumps all text contrast,
+   lightens backgrounds, and increases font weight.
+   ═══════════════════════════════════════════════════════════ */
+
+body.high-vis {
+  --bg-base: #0e1018;
+  --bg-panel: #141822;
+  --bg-card: #1a1e2a;
+  --bg-hover: #222836;
+  --text-dim: #8899aa;
+  --text-mid: #b0bcc8;
+  --text-body: #d8dde6;
+  --text-hi: #f0f2f6;
+  --border: rgba(255,255,255,0.12);
+  --border-hi: rgba(255,255,255,0.22);
+}
+
+body.high-vis .body-text,
+body.high-vis .card {
+  font-weight: 500;
+}
+
+body.high-vis .nav-chapter,
+body.high-vis .sidebar-search-result-snippet,
+body.high-vis .search-snippet {
+  font-weight: 500;
+}
+
+body.high-vis .section-heading {
+  font-weight: 700;
+}
+
+/* High-vis toggle button (fixed bottom-right) */
+#high-vis-toggle {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 900;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+#high-vis-toggle:hover {
+  opacity: 1;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+body.high-vis #high-vis-toggle {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  opacity: 1;
 }
