@@ -719,94 +719,95 @@ const Dashboard = {
    * @returns {string} HTML string
    */
   buildTerritoryMap() {
-    /* ── Territory data: 16 territories with irregular polygon shapes ──
-     * Layout: Northern continent (4), Central strip (4), Southern continent (4),
-     * plus 4 island/outlier territories. Each territory has organic polygon points
-     * on a 1000×600 SVG viewBox, a center point (cx,cy) for label placement,
-     * a control status, and a resource icon. */
+    /* ── Shared vertex grid (4×4 tessellation, 1000×600 viewBox) ──
+     * Points are slightly offset from a perfect grid for organic feel,
+     * but adjacent territories share exact edge vertices = zero gaps.
+     *
+     * Row 0 (y≈0):   r0c0(0,0)     r0c1(250,0)     r0c2(500,0)     r0c3(750,0)     r0c4(1000,0)
+     * Row 1 (y≈150): r1c0(0,150)   r1c1(230,140)   r1c2(480,160)   r1c3(720,145)   r1c4(1000,150)
+     * Row 2 (y≈300): r2c0(0,300)   r2c1(240,290)   r2c2(490,310)   r2c3(730,300)   r2c4(1000,300)
+     * Row 3 (y≈450): r3c0(0,450)   r3c1(235,445)   r3c2(485,460)   r3c3(725,450)   r3c4(1000,450)
+     * Row 4 (y=600): r4c0(0,600)   r4c1(250,600)   r4c2(500,600)   r4c3(750,600)   r4c4(1000,600)
+     */
+
+    /* ── 16 territories: 4×4 grid, clockwise vertex winding ── */
     const territories = [
-      /* === NORTHERN CONTINENT === */
+      /* === ROW 0 (Northern Front) === */
       { name: 'Northern Garrison', status: 'controlled', icon: '\u26E8',
-        points: '55,15 105,9 155,8 210,12 258,22 290,35 310,50 305,75 300,100 308,132 315,158 298,180 282,198 258,212 232,220 200,218 170,216 145,210 118,202 98,192 78,178 62,160 52,140 45,115 42,92 44,68 48,45',
-        cx: 178, cy: 115 },
+        points: '0,0 250,0 230,140 0,150',
+        cx: 120, cy: 73 },
       { name: 'Comm Array', status: 'controlled', icon: '\u2699',
-        points: '318,48 350,32 382,20 415,12 445,8 475,10 505,18 530,28 542,50 548,78 540,108 535,132 538,158 540,178 528,195 510,208 488,214 462,212 438,210 415,208 392,205 370,198 352,192 340,182 328,170 322,158 315,138 310,118 308,100',
-        cx: 428, cy: 112 },
+        points: '250,0 500,0 480,160 230,140',
+        cx: 365, cy: 75 },
       { name: 'Shield Generator', status: 'controlled', icon: '\u26E8',
-        points: '538,25 568,16 600,12 632,14 660,16 690,22 718,32 745,42 755,65 758,92 752,122 748,148 740,172 732,195 720,210 700,220 678,224 658,222 635,218 612,216 595,212 572,208 555,198 548,188 542,172 540,152 538,132 542,108 548,82 552,55',
-        cx: 645, cy: 118 },
-      { name: 'Mountain Pass', status: 'contested', icon: '\u26E8',
-        points: '752,38 780,30 808,25 835,28 858,36 878,48 892,65 900,88 898,112 895,138 890,158 882,178 875,198 865,212 850,224 832,232 815,234 795,228 778,222 765,218 750,210 740,200 735,188 738,172 742,158 748,140 752,120 758,100 762,78 758,58',
-        cx: 822, cy: 130 },
+        points: '500,0 750,0 720,145 480,160',
+        cx: 613, cy: 76 },
+      { name: 'Mountain Pass', status: 'contested', icon: '\u2694',
+        points: '750,0 1000,0 1000,150 720,145',
+        cx: 868, cy: 74 },
 
-      /* === ISLAND: Orbital Defense HQ (top-right) === */
-      { name: 'Orbital Defense HQ', status: 'controlled', icon: '\u26E8',
-        points: '925,35 945,30 962,32 978,42 988,58 992,78 990,100 985,118 978,132 968,142 955,150 940,152 928,145 920,135 916,118 914,100 916,80 918,62 920,48',
-        cx: 955, cy: 92 },
-
-      /* === ISLAND: Western Fortifications (far-left) === */
+      /* === ROW 1 (Central Theatre) === */
       { name: 'Western Fortifications', status: 'neutral', icon: '\u26E8',
-        points: '22,258 42,250 62,246 82,248 102,255 118,262 130,275 135,292 134,312 132,332 128,352 122,368 115,380 105,390 90,395 72,392 58,388 42,380 30,368 22,352 16,335 14,318 15,300 18,280',
-        cx: 75, cy: 320 },
-
-      /* === CENTRAL STRIP === */
+        points: '0,150 230,140 240,290 0,300',
+        cx: 118, cy: 220 },
       { name: 'Spaceport Alpha', status: 'controlled', icon: '\u2605',
-        points: '152,218 172,220 195,222 218,224 242,218 262,210 282,204 305,196 325,192 340,194 346,210 348,232 350,255 354,278 356,300 354,322 350,345 345,362 338,378 325,392 310,402 290,405 268,402 248,400 228,395 208,390 190,384 175,378 158,368 142,355 132,340 125,322 118,302 115,282 118,265 122,248 132,234',
-        cx: 238, cy: 305 },
-      { name: 'Central Command', status: 'controlled', icon: '\u2605',
-        points: '348,195 375,202 400,208 425,212 452,215 478,216 505,214 528,208 548,200 572,208 595,215 618,210 635,206 648,215 652,235 654,258 656,282 658,305 658,328 655,352 650,372 645,390 638,405 625,416 610,422 588,426 565,430 542,430 520,428 498,426 475,424 452,422 430,420 410,416 395,410 382,402 368,392 358,378 352,362 350,340 352,318 354,298 355,278 354,258 352,238 350,218',
-        cx: 502, cy: 312 },
+        points: '230,140 480,160 490,310 240,290',
+        cx: 360, cy: 225 },
+      { name: 'Central Command', status: 'controlled', icon: '\u2605', hq: true,
+        points: '480,160 720,145 730,300 490,310',
+        cx: 605, cy: 229 },
+      { name: 'Orbital Defense HQ', status: 'controlled', icon: '\u26E8',
+        points: '720,145 1000,150 1000,300 730,300',
+        cx: 863, cy: 224 },
+
+      /* === ROW 2 (Southern Operations) === */
+      { name: 'Supply Depot', status: 'neutral', icon: '\u2699',
+        points: '0,300 240,290 235,445 0,450',
+        cx: 119, cy: 371 },
+      { name: 'Southern Bastion', status: 'contested', icon: '\u2694',
+        points: '240,290 490,310 485,460 235,445',
+        cx: 363, cy: 376 },
+      { name: 'Harbor District', status: 'controlled', icon: '\u2693',
+        points: '490,310 730,300 725,450 485,460',
+        cx: 608, cy: 380 },
       { name: 'Industrial District', status: 'controlled', icon: '\u2699',
-        points: '640,210 660,208 682,208 705,210 725,214 745,220 765,228 785,236 805,242 825,250 842,258 855,270 860,288 862,308 862,328 858,348 852,368 845,385 835,400 822,410 808,418 790,422 770,424 750,422 732,420 715,418 700,415 685,410 670,402 660,392 652,378 648,362 646,342 648,322 650,302 652,280 655,262 656,242 648,225',
-        cx: 752, cy: 315 },
-      { name: 'Power Grid Hub', status: 'controlled', icon: '\u2699',
-        points: '862,258 878,252 895,248 912,250 930,255 948,262 962,272 975,285 982,302 985,322 984,342 982,360 975,378 968,392 958,402 945,410 930,415 915,416 900,414 886,410 875,404 865,395 858,382 856,365 858,348 862,328 864,308 865,288 864,270',
-        cx: 922, cy: 332 },
+        points: '730,300 1000,300 1000,450 725,450',
+        cx: 864, cy: 375 },
 
-      /* === ISLAND: Supply Depot (bottom-left) === */
-      { name: 'Supply Depot', status: 'controlled', icon: '\u2699',
-        points: '28,458 48,452 68,448 88,448 108,452 128,458 142,468 150,482 155,498 154,515 148,532 140,545 128,555 115,562 100,566 82,564 65,560 50,552 38,542 28,530 20,515 16,498 18,480 22,468',
-        cx: 88, cy: 505 },
-
-      /* === SOUTHERN CONTINENT === */
-      { name: 'Southern Bastion', status: 'contested', icon: '\u26E8',
-        points: '172,390 195,394 220,398 245,402 270,405 295,408 318,410 342,412 365,413 385,415 392,430 395,448 395,468 392,488 388,508 382,528 375,542 365,555 350,565 332,572 312,576 290,578 268,575 248,572 230,568 212,562 198,555 185,545 175,535 168,522 158,508 152,492 150,475 148,460 152,442 158,425 165,410',
-        cx: 275, cy: 485 },
-      { name: 'Harbor District', status: 'neutral', icon: '\u2699',
-        points: '398,415 418,418 440,420 462,422 485,425 508,428 530,428 552,426 575,422 595,420 610,422 614,438 615,458 614,478 610,498 605,518 598,538 590,552 578,564 565,572 548,578 528,582 508,582 488,580 468,576 448,572 432,566 418,558 408,548 400,535 394,520 390,502 388,485 390,468 392,452 394,435',
-        cx: 502, cy: 498 },
-      { name: 'Civilian Sector', status: 'neutral', icon: '\u2605',
-        points: '618,422 638,420 660,418 682,418 702,420 722,424 742,428 758,434 772,442 785,452 795,465 800,480 802,498 800,515 795,532 788,545 778,555 765,565 750,572 732,577 712,578 692,576 672,572 655,566 640,558 628,548 620,535 615,520 612,502 614,485 616,468 618,452 618,438',
-        cx: 710, cy: 496 },
-      { name: 'Research Complex', status: 'controlled', icon: '\u2605',
-        points: '802,415 820,410 838,408 855,410 872,414 888,420 902,428 915,440 925,454 932,470 934,488 932,508 928,525 920,540 910,552 898,560 882,568 865,572 848,572 832,568 818,562 806,552 798,540 792,525 786,510 782,495 782,478 785,462 790,448 795,435',
-        cx: 858, cy: 490 },
-
-      /* === ISLAND: Underground Network (bottom-right) === */
-      { name: 'Underground Network', status: 'controlled', icon: '\u2699',
-        points: '930,462 948,456 965,455 978,462 988,475 992,492 994,510 992,528 986,545 978,558 968,568 955,575 942,572 932,565 925,552 920,538 918,520 920,502 922,485 925,472',
-        cx: 958, cy: 516 }
+      /* === ROW 3 (Underground / Rear Echelon) === */
+      { name: 'Underground Network', status: 'neutral', icon: '\u26CF',
+        points: '0,450 235,445 250,600 0,600',
+        cx: 121, cy: 524 },
+      { name: 'Civilian Sector', status: 'controlled', icon: '\u2302',
+        points: '235,445 485,460 500,600 250,600',
+        cx: 368, cy: 526 },
+      { name: 'Research Complex', status: 'controlled', icon: '\u2697',
+        points: '485,460 725,450 750,600 500,600',
+        cx: 615, cy: 528 },
+      { name: 'Power Grid Hub', status: 'controlled', icon: '\u26A1',
+        points: '725,450 1000,450 1000,600 750,600',
+        cx: 869, cy: 525 }
     ];
 
-    /* ── Adjacency connections between territories ── */
+    /* ── Adjacency connections (horizontal + vertical neighbors) ── */
     const connections = [
-      [0,1], [1,2], [2,3],                         /* North continent internal */
-      [0,6], [1,7], [2,7], [2,8], [3,8],           /* North → Central */
-      [5,6],                                         /* Western Fort → Spaceport */
-      [6,7], [7,8], [8,9],                          /* Central strip internal */
-      [6,11], [7,12], [8,13], [9,14],               /* Central → South */
-      [10,11],                                       /* Supply Depot → Southern Bastion */
-      [11,12], [12,13], [13,14],                     /* South continent internal */
-      [14,15],                                       /* Research → Underground */
-      [3,4]                                          /* Mountain Pass → Orbital Defense */
+      /* Row 0 horizontal */
+      [0,1], [1,2], [2,3],
+      /* Row 1 horizontal */
+      [4,5], [5,6], [6,7],
+      /* Row 2 horizontal */
+      [8,9], [9,10], [10,11],
+      /* Row 3 horizontal */
+      [12,13], [13,14], [14,15],
+      /* Row 0 → Row 1 vertical */
+      [0,4], [1,5], [2,6], [3,7],
+      /* Row 1 → Row 2 vertical */
+      [4,8], [5,9], [6,10], [7,11],
+      /* Row 2 → Row 3 vertical */
+      [8,12], [9,13], [10,14], [11,15]
     ];
 
     /* ── Status visual styles ── */
-    const statusFill = {
-      controlled: 'rgba(0,180,255,0.25)',   /* Terran blue */
-      neutral:    'rgba(100,100,120,0.2)',   /* Grey */
-      contested:  'rgba(255,60,60,0.2)'      /* Red */
-    };
     const statusStroke = {
       controlled: '#00b4ff',
       neutral:    '#555',
@@ -821,6 +822,9 @@ const Dashboard = {
           <pattern id="tcm-scanlines" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
             <line x1="0" y1="0" x2="4" y2="0" stroke="rgba(0,0,0,0.05)" stroke-width="1"/>
           </pattern>
+          <filter id="tcm-hq-glow">
+            <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#00b4ff" flood-opacity="0.7"/>
+          </filter>
         </defs>`;
 
     /* ── Grid dot background ── */
@@ -832,9 +836,14 @@ const Dashboard = {
     ).join('\n            ');
 
     /* ── Territory polygons ── */
-    const polys = territories.map(t =>
-      `<polygon class="terr-poly terr-poly-${t.status}" points="${t.points}"/>`
-    ).join('\n            ');
+    const polys = territories.map(t => {
+      const cls = `terr-poly terr-poly-${t.status}${t.hq ? ' terr-poly-hq' : ''}`;
+      return `<polygon class="${cls}" points="${t.points}"/>`;
+    }).join('\n            ');
+
+    /* ── HQ star marker for Central Command ── */
+    const hqTerritory = territories.find(t => t.hq);
+    const hqMarker = `<polygon class="terr-hq-star" points="${starPoints(hqTerritory.cx, hqTerritory.cy - 30, 12, 5, 5)}" fill="#00e5ff" stroke="#fff" stroke-width="1"/>`;
 
     /* ── Territory labels (icon + two-line name centered in each polygon) ── */
     const labels = territories.map(t => {
@@ -842,8 +851,9 @@ const Dashboard = {
       const line1 = t.name.substring(0, spaceIdx);
       const line2 = t.name.substring(spaceIdx + 1);
       const fill = statusStroke[t.status];
+      const yOff = t.hq ? -20 : -15;
       return `<g>
-              <text x="${t.cx}" y="${t.cy - 15}" text-anchor="middle" class="terr-label-icon" fill="${fill}">${t.icon}</text>
+              <text x="${t.cx}" y="${t.cy + yOff}" text-anchor="middle" class="terr-label-icon" fill="${fill}">${t.icon}</text>
               <text x="${t.cx}" y="${t.cy + 1}" text-anchor="middle" class="terr-label-name">
                 <tspan x="${t.cx}" dy="0">${line1}</tspan>
                 <tspan x="${t.cx}" dy="12">${line2}</tspan>
@@ -868,7 +878,22 @@ const Dashboard = {
             <span class="terr-legend-swatch" style="background:rgba(255,60,60,0.3);border:1px solid #ff3c3c;"></span>
             <span>Contested</span>
           </div>
+          <div class="terr-legend-item">
+            <span class="terr-legend-swatch" style="background:rgba(0,229,255,0.5);border:2px solid #00e5ff;"></span>
+            <span>HQ</span>
+          </div>
         </div>`;
+
+    /* ── Helper: generate 5-pointed star polygon points ── */
+    function starPoints(cx, cy, outerR, innerR, numPoints) {
+      const pts = [];
+      for (let i = 0; i < numPoints * 2; i++) {
+        const angle = (Math.PI / numPoints) * i - Math.PI / 2;
+        const r = i % 2 === 0 ? outerR : innerR;
+        pts.push(`${Math.round(cx + r * Math.cos(angle))},${Math.round(cy + r * Math.sin(angle))}`);
+      }
+      return pts.join(' ');
+    }
 
     return `
       <section class="galaxy-section">
@@ -883,6 +908,9 @@ const Dashboard = {
             </g>
             <g class="terr-regions-group">
               ${polys}
+            </g>
+            <g class="terr-hq-marker-group">
+              ${hqMarker}
             </g>
             <g class="terr-labels-group">
               ${labels}

@@ -1336,6 +1336,7 @@ body.sidebar-collapsed .main-content {
 
 /* Territory polygons — base */
 .terr-poly {
+  stroke-linejoin: bevel;
   transition: fill 0.25s, stroke-width 0.25s, filter 0.25s;
   cursor: default;
 }
@@ -1344,11 +1345,11 @@ body.sidebar-collapsed .main-content {
 .terr-poly-controlled {
   fill: rgba(0,180,255,0.25);
   stroke: #00b4ff;
-  stroke-width: 1.5;
+  stroke-width: 2;
 }
 .terr-poly-controlled:hover {
   fill: rgba(0,180,255,0.4);
-  stroke-width: 2.5;
+  stroke-width: 3;
   filter: drop-shadow(0 0 8px rgba(0,180,255,0.5));
 }
 
@@ -1356,11 +1357,11 @@ body.sidebar-collapsed .main-content {
 .terr-poly-neutral {
   fill: rgba(100,100,120,0.2);
   stroke: #555;
-  stroke-width: 1.5;
+  stroke-width: 2;
 }
 .terr-poly-neutral:hover {
   fill: rgba(100,100,120,0.35);
-  stroke-width: 2;
+  stroke-width: 3;
   filter: drop-shadow(0 0 6px rgba(150,150,160,0.3));
 }
 
@@ -1368,18 +1369,37 @@ body.sidebar-collapsed .main-content {
 .terr-poly-contested {
   fill: rgba(255,60,60,0.2);
   stroke: #ff3c3c;
-  stroke-width: 1.5;
+  stroke-width: 2;
   animation: terrPolyPulse 2s ease-in-out infinite;
 }
 .terr-poly-contested:hover {
   fill: rgba(255,60,60,0.35);
-  stroke-width: 2.5;
+  stroke-width: 3;
   filter: drop-shadow(0 0 8px rgba(255,60,60,0.5));
 }
 
+/* HQ territory — brighter fill, thicker border, glow */
+.terr-poly-hq {
+  fill: rgba(0,229,255,0.35);
+  stroke: #00e5ff;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 6px rgba(0,229,255,0.4));
+}
+.terr-poly-hq:hover {
+  fill: rgba(0,229,255,0.5);
+  stroke-width: 4;
+  filter: drop-shadow(0 0 12px rgba(0,229,255,0.6));
+}
+
+/* HQ star marker */
+.terr-hq-star {
+  pointer-events: none;
+  filter: drop-shadow(0 0 4px rgba(0,229,255,0.8));
+}
+
 @keyframes terrPolyPulse {
-  0%, 100% { stroke: rgba(255,60,60,0.5); stroke-width: 1.5; }
-  50%      { stroke: rgba(255,60,60,1); stroke-width: 2.5; }
+  0%, 100% { stroke: rgba(255,60,60,0.5); stroke-width: 2; }
+  50%      { stroke: rgba(255,60,60,1); stroke-width: 3; }
 }
 
 /* Territory label — icon */
