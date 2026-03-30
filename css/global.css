@@ -3904,10 +3904,11 @@ body.crt-active {
 .planet-svg-wrap {
   width: 400px;
   height: 400px;
-  border: none;
-  border-radius: 0;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
   overflow: hidden;
   background: #02030a;
+  box-shadow: 0 0 20px rgba(0,100,200,0.08), inset 0 0 30px rgba(0,0,0,0.4);
 }
 
 .planet-svg-wrap canvas {
@@ -3989,19 +3990,40 @@ body.crt-active {
 @media (max-width: 768px) {
   .planet-detail-inner {
     grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 12px;
+    gap: 10px;
+    padding: 10px;
   }
+
+  /* Planet details collapsed by default on mobile — JS skips auto-open */
 
   .planet-svg-wrap {
     width: 100%;
     max-width: 280px;
     height: 280px;
     margin: 0 auto;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
   }
 
   .planet-row-header {
     font-size: 0.82rem !important;
+  }
+
+  /* Tap-to-expand indicator on planet rows */
+  .planet-row {
+    position: relative;
+  }
+
+  .planet-row-header::after {
+    content: ' ▼';
+    color: var(--text-dim);
+    opacity: 0.4;
+    font-size: 0.6rem;
+  }
+
+  .planet-detail-open + .planet-row-header::after,
+  .planet-row:has(.planet-detail-open) .planet-row-header::after {
+    content: ' ▲';
   }
 
   .territory-bar-row {

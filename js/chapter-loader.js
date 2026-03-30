@@ -326,8 +326,6 @@ const ChapterLoader = {
       // Only wrap if it has pixel-based columns (not 1fr-only grids)
       if (!/grid-template-columns[^;]*\d+px/.test(style)) return;
       if (el.parentNode.classList.contains('table-scroll-wrap')) return;
-      // Don't wrap planet rows or dashboard elements
-      if (el.classList.contains('planet-row-header')) return;
       var wrapper = document.createElement('div');
       wrapper.className = 'table-scroll-wrap';
       wrapper.style.cssText = 'overflow-x:auto;-webkit-overflow-scrolling:touch;margin:4px 0;max-width:100%';

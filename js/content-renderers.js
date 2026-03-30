@@ -93,7 +93,7 @@ const ContentRenderers = {
           <span style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.encounter}<span class="ph-tag">PH</span></span>
           <span style="color:var(--text-dim)">${terrainShort}</span>
         </div>
-        <div id="${id}" class="planet-detail planet-detail-open">
+        <div id="${id}" class="planet-detail${window.innerWidth > 768 ? ' planet-detail-open' : ''}">
           <div class="planet-detail-inner">
             <div class="planet-svg-wrap" data-planet-type="${planet.name}"></div>
             <div class="planet-detail-text">
