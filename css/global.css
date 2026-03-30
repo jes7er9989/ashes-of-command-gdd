@@ -104,29 +104,42 @@
 
 html {
   overflow-x: hidden;
-}
-
-/* Thin scrollbar styling — use webkit pseudos to avoid gutter reservation */
-::-webkit-scrollbar {
-  width: 8px;
   background: var(--bg-base);
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--border-hi);
-  border-radius: 4px;
+/* Hide body scrollbar — page scrolls via html, body must not show its own */
+body::-webkit-scrollbar {
+  display: none;
+}
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-::-webkit-scrollbar-track {
+/* Scrollbar styling for actual scrollable sub-containers */
+.sidebar-nav::-webkit-scrollbar,
+.search-results::-webkit-scrollbar {
+  width: 6px;
   background: var(--bg-base);
 }
 
-/* Firefox thin scrollbar */
-@supports (scrollbar-width: thin) {
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--border-hi) var(--bg-base);
-  }
+.sidebar-nav::-webkit-scrollbar-thumb,
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+  border-radius: 3px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track,
+.search-results::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+/* Firefox thin scrollbar — only on elements that actually scroll */
+.sidebar-nav,
+.search-results,
+#content-area {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-hi) var(--bg-base);
 }
 
 /* â”€â”€ Body â”€â”€ */
@@ -1610,11 +1623,11 @@ html {
 
 /* â”€â”€ Dashboard Section â€” consistent vertical rhythm â”€â”€ */
 .dashboard-section {
-  padding: 48px 24px;
-  max-width: 100%;
-  margin: 0 auto;
+  padding: 48px 32px;
+  margin: 0 -32px;
   text-align: center;
   border-top: 1px solid rgba(0,180,255,0.08);
+  box-sizing: border-box;
 }
 
 /* Alternating subtle backgrounds for visual separation */
@@ -2705,7 +2718,6 @@ html {
     width: 100%;
     box-sizing: border-box;
     background: var(--bg-base);
-    overflow-x: clip;
   }
 
   .faction-grid {
@@ -4299,8 +4311,9 @@ body.crt-active {
   }
 
   .dashboard-section {
-    max-width: 100vw;
-    overflow-x: hidden;
+    margin: 0 -16px;
+    padding: 48px 16px;
+    max-width: none;
     box-sizing: border-box;
   }
 
@@ -4362,6 +4375,11 @@ body.crt-active {
   .hero-section {
     margin: -12px -10px 0;
     padding: 36px 12px 24px;
+  }
+
+  .dashboard-section {
+    margin: 0 -10px;
+    padding: 32px 10px;
   }
 
   /* Phase cards: narrower for small screens */
@@ -4439,7 +4457,8 @@ body.crt-active {
 
 /* â”€â”€ 15a. Content Wrapper â€” Constrain & Center â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
-#content-area > .fade-in {
+/* Chapter pages get the frosted card treatment */
+#content-area > .fade-in:not(#dashboard-view) {
   background: rgba(12,14,20,0.55);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -4448,11 +4467,22 @@ body.crt-active {
   box-shadow: 0 4px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(0,180,255,0.05);
 }
 
-#content-area .fade-in {
+#content-area .fade-in:not(#dashboard-view) {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   padding: 48px 48px;
+}
+
+/* Dashboard is full-bleed — no card, no padding */
+#dashboard-view {
+  padding: 0 !important;
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 /* Constrain body text for readability, let cards/tables go full width */
