@@ -193,6 +193,7 @@ const Dashboard = {
             <button class="hero-cta-btn hero-cta-primary" onclick="document.getElementById('dashboard-view').querySelector('.dashboard-section').scrollIntoView({behavior:'smooth'})">Explore the GDD</button>
             <button class="hero-cta-btn hero-cta-secondary" onclick="document.querySelector('.faction-section').scrollIntoView({behavior:'smooth'})">Meet the Factions</button>
             <button class="hero-cta-btn hero-cta-secondary" onclick="document.getElementById('canvas-galaxy-mount').scrollIntoView({behavior:'smooth'})">View the Galaxy</button>
+            <button class="hero-cta-btn hero-cta-install" id="pwa-install-btn" style="display:none" onclick="window._pwaInstallPrompt && window._pwaInstallPrompt.prompt()">Install App</button>
           </div>
         </div>
         <div class="hero-scroll-indicator" id="hero-scroll-indicator">

@@ -312,6 +312,26 @@
 
         // Back-to-top button handled by Nav.bindBackToTop()
 
+        // PWA Install prompt — capture the event, show install button
+        window.addEventListener('beforeinstallprompt', function(e) {
+          e.preventDefault();
+          window._pwaInstallPrompt = e;
+          var btn = document.getElementById('pwa-install-btn');
+          if (btn) btn.style.display = '';
+          // Hide button after install
+          e.userChoice.then(function() {
+            window._pwaInstallPrompt = null;
+            if (btn) btn.style.display = 'none';
+          });
+        });
+
+        // Hide install button if already installed
+        window.addEventListener('appinstalled', function() {
+          window._pwaInstallPrompt = null;
+          var btn = document.getElementById('pwa-install-btn');
+          if (btn) btn.style.display = 'none';
+        });
+
         // Register service worker for offline caching
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.register('js/service-worker.js')

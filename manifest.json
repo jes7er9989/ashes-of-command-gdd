@@ -1,21 +1,28 @@
 {
   "name": "Ashes of Command: The Reclamation — Game Design Document",
   "short_name": "AoC GDD",
-  "description": "Interactive GDD for Ashes of Command: The Reclamation",
+  "description": "Interactive GDD for Ashes of Command: The Reclamation. 7 factions, 105 units, 208 equipment. Complete game design document.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#07080c",
   "theme_color": "#07080c",
+  "categories": ["games", "entertainment"],
   "icons": [
     {
       "src": "assets/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "assets/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
 }

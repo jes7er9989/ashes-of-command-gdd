@@ -1180,6 +1180,20 @@ body.sidebar-collapsed .main-content {
   transform: translateY(-2px);
 }
 
+.hero-cta-install {
+  background: rgba(0,224,112,0.12);
+  color: #00e070;
+  border-color: rgba(0,224,112,0.4);
+  box-shadow: 0 0 20px rgba(0,224,112,0.1), inset 0 0 20px rgba(0,224,112,0.05);
+}
+
+.hero-cta-install:hover {
+  background: rgba(0,224,112,0.22);
+  border-color: rgba(0,224,112,0.7);
+  box-shadow: 0 0 30px rgba(0,224,112,0.2), inset 0 0 30px rgba(0,224,112,0.1);
+  transform: translateY(-2px);
+}
+
 
 /* ── Epigraph Section ── Rotating multi-faction thematic quotes */
 .epigraph-section .epigraph-context,
