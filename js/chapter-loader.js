@@ -123,9 +123,13 @@ const ChapterLoader = {
         }
       });
     } else {
+      // Force all scrollable containers to top
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
       const main = document.getElementById('main-content');
       if (main) main.scrollTop = 0;
-      window.scrollTo({ top: 0 });
+      if (this.contentArea) this.contentArea.scrollTop = 0;
     }
 
     // Update document title from nav metadata

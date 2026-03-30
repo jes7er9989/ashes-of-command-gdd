@@ -493,6 +493,14 @@ const Nav = {
     const content = document.getElementById('content-area');
     if (!content) return;
 
+    // Always scroll to top on any navigation
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    const main = document.getElementById('main-content');
+    if (main) main.scrollTop = 0;
+    content.scrollTop = 0;
+
     if (hash === 'dashboard' || hash === '') {
       // Reset title and remove any faction body class
       document.title = 'Ashes of Command: The Reclamation — Interactive GDD';
