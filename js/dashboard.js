@@ -151,7 +151,6 @@ const Dashboard = {
       /* Start interactive behaviors + canvas renderers after DOM is ready */
       requestAnimationFrame(() => {
         this.initLoreQuoteCycler();
-        this.initEpigraphQuoteCycler();
         this.initPrologueQuoteCycler();
         this.initScrollIndicator();
         this.initParallax();
@@ -224,17 +223,8 @@ const Dashboard = {
   _epigraphQuoteIndex: 0,
   _epigraphQuoteTimer: null,
 
-  buildEpigraph() {
-    const q = this.EPIGRAPH_QUOTES[0];
-    return `
-      <section class="dashboard-section epigraph-section">
-        <div class="epigraph-context">The Aethyn are gone. They spanned thousands of galaxies, connected worlds through intergalactic warp lanes, and existed as one psychic mind. The Vorax came. The warp lanes were cut. The Reclamation Engine fired. Five civilizations rose from the wreckage, none remembering what came before. This is the galaxy you inherit.</div>
-        <div class="epigraph-quote-block" id="epigraph-quote-block">
-          <div class="epigraph-quote-text" id="epigraph-quote-text">\u201C${q.text}\u201D</div>
-          <div class="epigraph-quote-source" id="epigraph-quote-source">\u2014 ${q.source}</div>
-        </div>
-      </section>`;
-  },
+  /* Epigraph removed — redundant with State of the Galaxy prologue */
+  buildEpigraph() { return ''; },
 
   /* â"€â"€ Game Description â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 
