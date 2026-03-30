@@ -57,34 +57,43 @@ const ContentRenderers = {
     }
     container.innerHTML = html;
 
-    /* Lazy-load Three.js planet renderers via IntersectionObserver.
-       Only creates WebGL contexts for visible planets, disposes when
-       off-screen. Prevents hitting mobile WebGL context limits. */
-    if (typeof PlanetRenderer !== 'undefined' && typeof IntersectionObserver !== 'undefined') {
-      const planetObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          const wrap = entry.target;
-          const type = wrap.getAttribute('data-planet-type');
-          if (!type) return;
+    /* Initialize Three.js planet renderers.
+       Desktop: create all immediately — always visible and animated.
+       Mobile: lazy-load via IntersectionObserver to stay within WebGL context limits. */
+    if (typeof PlanetRenderer !== 'undefined') {
+      const isMobile = window.innerWidth <= 768;
 
-          if (entry.isIntersecting) {
-            /* Create renderer if not already active */
-            if (!wrap._planetInstance) {
-              wrap._planetInstance = PlanetRenderer.create(wrap, type);
+      if (isMobile && typeof IntersectionObserver !== 'undefined') {
+        /* Mobile: lazy-load, dispose off-screen to free WebGL contexts */
+        const planetObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            const wrap = entry.target;
+            const type = wrap.getAttribute('data-planet-type');
+            if (!type) return;
+
+            if (entry.isIntersecting) {
+              if (!wrap._planetInstance) {
+                wrap._planetInstance = PlanetRenderer.create(wrap, type);
+              }
+            } else {
+              if (wrap._planetInstance) {
+                wrap._planetInstance.dispose();
+                wrap._planetInstance = null;
+              }
             }
-          } else {
-            /* Dispose when scrolled away to free WebGL context */
-            if (wrap._planetInstance) {
-              wrap._planetInstance.dispose();
-              wrap._planetInstance = null;
-            }
-          }
+          });
+        }, { rootMargin: '200px 0px' });
+
+        container.querySelectorAll('.planet-svg-wrap[data-planet-type]').forEach(function(wrap) {
+          planetObserver.observe(wrap);
         });
-      }, { rootMargin: '200px 0px' }); /* Pre-load 200px before visible */
-
-      container.querySelectorAll('.planet-svg-wrap[data-planet-type]').forEach(function(wrap) {
-        planetObserver.observe(wrap);
-      });
+      } else {
+        /* Desktop: create all renderers immediately */
+        container.querySelectorAll('.planet-svg-wrap[data-planet-type]').forEach(function(wrap) {
+          const type = wrap.getAttribute('data-planet-type');
+          if (type) PlanetRenderer.create(wrap, type);
+        });
+      }
     }
   },
 
