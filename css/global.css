@@ -3996,6 +3996,20 @@ body.crt-active {
 
   /* Planet details collapsed by default on mobile — JS skips auto-open */
 
+  /* Hide stat/terrain columns on mobile — only show planet name */
+  .planet-col-stats,
+  .planet-col-terrain {
+    display: none !important;
+  }
+
+  /* Override inline grid to single column on mobile */
+  .planet-row-header,
+  .planet-table-header {
+    grid-template-columns: 1fr !important;
+    font-size: 0.92rem !important;
+    padding: 14px 16px !important;
+  }
+
   .planet-svg-wrap {
     width: 100%;
     max-width: 280px;
@@ -4003,27 +4017,6 @@ body.crt-active {
     margin: 0 auto;
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 4px;
-  }
-
-  .planet-row-header {
-    font-size: 0.82rem !important;
-  }
-
-  /* Tap-to-expand indicator on planet rows */
-  .planet-row {
-    position: relative;
-  }
-
-  .planet-row-header::after {
-    content: ' ▼';
-    color: var(--text-dim);
-    opacity: 0.4;
-    font-size: 0.6rem;
-  }
-
-  .planet-detail-open + .planet-row-header::after,
-  .planet-row:has(.planet-detail-open) .planet-row-header::after {
-    content: ' ▲';
   }
 
   .territory-bar-row {
