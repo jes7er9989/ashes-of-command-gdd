@@ -9,22 +9,22 @@
     <div class="section-heading" id="sec-ch17-0">Preparation → Observation → Intervention</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px">
       <div class="card" style="border-top:2px solid var(--terran)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--terran);letter-spacing:2px;margin-bottom:8px">PRE-BATTLE (80%)</div>
-        <div style="font-size:0.78rem;color:var(--text-mid);line-height:1.55">Equipment loadouts. Army composition. Deployment positioning (ground) or formation selection (space). A well-prepared army wins before the first shot.</div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:var(--terran);letter-spacing:2px;margin-bottom:8px">PRE-BATTLE (80%)</div>
+        <div style="font-size:0.98rem;color:var(--text-mid);line-height:1.55">Equipment loadouts. Army composition. Deployment positioning (ground) or formation selection (space). A well-prepared army wins before the first shot.</div>
       </div>
       <div class="card" style="border-top:2px solid var(--accord)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--accord);letter-spacing:2px;margin-bottom:8px">REAL-TIME INTERVENTION</div>
-        <div style="font-size:0.78rem;color:var(--text-mid);line-height:1.55">CP abilities: orbital strikes, shield projections, reinforcement drops, retreat orders. Pauses battle when activated. The commander's surgical tools.</div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:var(--accord);letter-spacing:2px;margin-bottom:8px">REAL-TIME INTERVENTION</div>
+        <div style="font-size:0.98rem;color:var(--text-mid);line-height:1.55">CP abilities: orbital strikes, shield projections, reinforcement drops, retreat orders. Pauses battle when activated. The commander's surgical tools.</div>
       </div>
       <div class="card" style="border-top:2px solid var(--shards)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--shards);letter-spacing:2px;margin-bottom:8px">STRATEGIC OBSERVATION</div>
-        <div style="font-size:0.78rem;color:var(--text-mid);line-height:1.55">Which units underperform. Which compositions are problematic. Which terrain is underutilized. Feeds into replay coaching for General-led battles.</div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:var(--shards);letter-spacing:2px;margin-bottom:8px">STRATEGIC OBSERVATION</div>
+        <div style="font-size:0.98rem;color:var(--text-mid);line-height:1.55">Which units underperform. Which compositions are problematic. Which terrain is underutilized. Feeds into replay coaching for General-led battles.</div>
       </div>
     </div>
 
     <div class="card" style="margin-bottom:16px">
-      <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:2px;margin-bottom:10px">ENGINE ARCHITECTURE — SIMULTANEOUS SYSTEMS</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:0.78rem;color:var(--text-mid);line-height:1.55">
+      <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:var(--accent);letter-spacing:2px;margin-bottom:10px">ENGINE ARCHITECTURE — SIMULTANEOUS SYSTEMS</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:0.98rem;color:var(--text-mid);line-height:1.55">
         <div><strong style="color:var(--text-hi)">Pathfinding:</strong> Navigate terrain, avoid obstacles, seek optimal positions based on AI behavior.</div>
         <div><strong style="color:var(--text-hi)">Targeting:</strong> Priority rules — nearest, weakest, highest threat, commander designation.</div>
         <div><strong style="color:var(--text-hi)">Combat Resolution:</strong> Fire rate → accuracy roll (range, cover, Marks, Phase Blink) → damage (weapon type, armor, resistances).</div>
@@ -40,22 +40,22 @@
     <div class="section-label">§17.5 — AI Role System <span class="proto-badge">PROTOTYPE LOCKED</span></div>
     <div class="section-heading" id="sec-ch17-1">Three Roles · Spawn Index · Reactive Repositioning</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
-      <div style="display:grid;grid-template-columns:120px 120px 140px 80px 1fr;background:rgba(0,180,255,0.04);padding:8px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.52rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase"><span>Role</span><span>Spawn Index</span><span>Movement</span><span>Reposition</span><span>Priority Target</span></div>
-      <div style="display:grid;grid-template-columns:120px 120px 140px 80px 1fr;padding:9px 12px;border-bottom:1px solid var(--border);font-size:0.78rem;align-items:start">
+      <div style="display:grid;grid-template-columns:120px 120px 140px 80px 1fr;background:rgba(0,180,255,0.04);padding:8px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase"><span>Role</span><span>Spawn Index</span><span>Movement</span><span>Reposition</span><span>Priority Target</span></div>
+      <div style="display:grid;grid-template-columns:120px 120px 140px 80px 1fr;padding:9px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;align-items:start">
         <span style="color:var(--vorax);font-weight:600">Aggressor</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--text-mid)">0, 3</span>
         <span style="color:var(--text-mid)">Straight advance toward enemy line</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--text-dim)">200 ms</span>
         <span style="color:var(--text-dim)">Nearest enemy unit</span>
       </div>
-      <div style="display:grid;grid-template-columns:120px 120px 140px 80px 1fr;padding:9px 12px;border-bottom:1px solid var(--border);font-size:0.78rem;align-items:start">
+      <div style="display:grid;grid-template-columns:120px 120px 140px 80px 1fr;padding:9px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;align-items:start">
         <span style="color:var(--shards);font-weight:600">Flanker</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--text-mid)">1, 4</span>
         <span style="color:var(--text-mid)">Angled wide curve toward enemy flank</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--text-dim)">350 ms</span>
         <span style="color:var(--text-dim)">Lowest-HP enemy within 400 px</span>
       </div>
-      <div style="display:grid;grid-template-columns:120px 120px 140px 80px 1fr;padding:9px 12px;font-size:0.78rem;align-items:start">
+      <div style="display:grid;grid-template-columns:120px 120px 140px 80px 1fr;padding:9px 12px;font-size:0.98rem;align-items:start">
         <span style="color:var(--terran);font-weight:600">Brawler</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--text-mid)">2, 5</span>
         <span style="color:var(--text-mid)">Slower advance, holds short-range fire position</span>
@@ -64,7 +64,7 @@
       </div>
     </div>
     <div class="card" style="margin-bottom:24px;border-left:3px solid var(--accent)">
-      <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.6">Reactive repositioning is <strong style="color:var(--text-hi)">staggered</strong> to avoid simultaneous movement spikes: Aggressor fires at 200 ms, Flanker at 350 ms, Brawler at 500 ms after a reposition trigger. Default 6 units per side — spawn indices 0–5 map to Role assignments above.</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">Reactive repositioning is <strong style="color:var(--text-hi)">staggered</strong> to avoid simultaneous movement spikes: Aggressor fires at 200 ms, Flanker at 350 ms, Brawler at 500 ms after a reposition trigger. Default 6 units per side — spawn indices 0–5 map to Role assignments above.</div>
     </div>
 
     <div class="divider"></div>
@@ -73,13 +73,13 @@
     <div class="section-label">Battle Scale &amp; Duration</div>
     <div class="section-heading" id="sec-ch17-2">5 Minutes (Skirmish) to 25 Minutes (Core Guardian Assault)</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:24px">
-      <div style="display:grid;grid-template-columns:200px 120px 120px;background:rgba(0,180,255,0.04);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--accent);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>ENGAGEMENT TYPE</span><span>UNITS PER SIDE</span><span>DURATION (1×)</span></div>
-      <div style="display:grid;grid-template-columns:200px 120px 120px;padding:6px 12px;font-size:0.78rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Minor Skirmish</span><span>5-10</span><span>5-6 min</span></div>
-      <div style="display:grid;grid-template-columns:200px 120px 120px;padding:6px 12px;font-size:0.78rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Standard Assault</span><span>15-25</span><span>7-10 min</span></div>
-      <div style="display:grid;grid-template-columns:200px 120px 120px;padding:6px 12px;font-size:0.78rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Major Offensive</span><span>30-50</span><span>10-15 min</span></div>
-      <div style="display:grid;grid-template-columns:200px 120px 120px;padding:6px 12px;font-size:0.78rem;color:var(--text-hi);border-bottom:1px solid var(--border)"><span>Capital World Siege</span><span>50-80+</span><span>15-20 min</span></div>
-      <div style="display:grid;grid-template-columns:200px 120px 120px;padding:6px 12px;font-size:0.78rem;color:var(--guardians);border-bottom:1px solid var(--border)"><span>Core Guardian Assault</span><span>Var vs 20-40</span><span>15-25 min</span></div>
-      <div style="display:grid;grid-template-columns:200px 120px 120px;padding:6px 12px;font-size:0.78rem;color:var(--vorax)"><span>Vorax Tendril Defense</span><span>15-30 vs 60-100+</span><span>10-15 min</span></div>
+      <div style="display:grid;grid-template-columns:200px 120px 120px;background:rgba(0,180,255,0.04);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>ENGAGEMENT TYPE</span><span>UNITS PER SIDE</span><span>DURATION (1×)</span></div>
+      <div style="display:grid;grid-template-columns:200px 120px 120px;padding:6px 12px;font-size:0.98rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Minor Skirmish</span><span>5-10</span><span>5-6 min</span></div>
+      <div style="display:grid;grid-template-columns:200px 120px 120px;padding:6px 12px;font-size:0.98rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Standard Assault</span><span>15-25</span><span>7-10 min</span></div>
+      <div style="display:grid;grid-template-columns:200px 120px 120px;padding:6px 12px;font-size:0.98rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Major Offensive</span><span>30-50</span><span>10-15 min</span></div>
+      <div style="display:grid;grid-template-columns:200px 120px 120px;padding:6px 12px;font-size:0.98rem;color:var(--text-hi);border-bottom:1px solid var(--border)"><span>Capital World Siege</span><span>50-80+</span><span>15-20 min</span></div>
+      <div style="display:grid;grid-template-columns:200px 120px 120px;padding:6px 12px;font-size:0.98rem;color:var(--guardians);border-bottom:1px solid var(--border)"><span>Core Guardian Assault</span><span>Var vs 20-40</span><span>15-25 min</span></div>
+      <div style="display:grid;grid-template-columns:200px 120px 120px;padding:6px 12px;font-size:0.98rem;color:var(--vorax)"><span>Vorax Tendril Defense</span><span>15-30 vs 60-100+</span><span>10-15 min</span></div>
     </div>
 
     <div class="divider"></div>
@@ -89,8 +89,8 @@
     <div class="section-heading" id="sec-ch17-3">Cover · Elevation · Garrison</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
       <div class="card" style="border-top:2px solid var(--necro)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--necro);letter-spacing:2px;margin-bottom:8px">COVER SYSTEM</div>
-        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--necro);letter-spacing:2px;margin-bottom:8px">COVER SYSTEM</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Light Cover:</strong> -15% damage (vegetation, debris, low walls)</div>
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Heavy Cover:</strong> -30% damage (buildings, thick walls, wrecks)</div>
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Garrison:</strong> -40% damage + suppression immune (interior)</div>
@@ -98,8 +98,8 @@
         </div>
       </div>
       <div class="card" style="border-top:2px solid var(--shards)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--shards);letter-spacing:2px;margin-bottom:8px">ELEVATION</div>
-        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--shards);letter-spacing:2px;margin-bottom:8px">ELEVATION</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">+1 Tier:</strong> +10% acc · +5% range · +5% dmg</div>
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">+2 Tier:</strong> +15% acc · +10% range · +10% dmg</div>
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">+3 Tier:</strong> +20% acc · +15% range · +15% dmg</div>
@@ -107,8 +107,8 @@
         </div>
       </div>
       <div class="card" style="border-top:2px solid var(--horde)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">GARRISON</div>
-        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">GARRISON</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">-40% damage</strong> + suppression immune</div>
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Fire from windows</strong> with normal accuracy</div>
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Cannot move</strong> until voluntary exit</div>

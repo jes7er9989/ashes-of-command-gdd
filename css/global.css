@@ -229,7 +229,7 @@ a:hover {
 
 .sidebar-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.93rem;
   font-weight: 700;
   color: var(--accent);
   letter-spacing: 0.12em;
@@ -238,7 +238,7 @@ a:hover {
 
 .sidebar-subtitle {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.88rem;
   color: var(--text-dim);
   margin-top: 2px;
   letter-spacing: 0.06em;
@@ -246,7 +246,7 @@ a:hover {
 
 .sidebar-subtitle-sm {
   font-family: 'Orbitron', monospace;
-  font-size: 0.55rem;
+  font-size: 0.78rem;
   color: var(--accent);
   letter-spacing: 0.25em;
   opacity: 0.8;
@@ -281,7 +281,7 @@ a:hover {
 .sidebar-search-icon {
   position: absolute;
   left: 8px;
-  font-size: 0.7rem;
+  font-size: 0.92rem;
   color: var(--text-dim);
   pointer-events: none;
 }
@@ -293,7 +293,7 @@ a:hover {
   border-radius: 3px;
   padding: 7px 48px 7px 28px;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   color: var(--text-body);
   outline: none;
   transition: border-color var(--transition);
@@ -310,7 +310,7 @@ a:hover {
 .sidebar-search-shortcut {
   position: absolute;
   right: 8px;
-  font-size: 0.55rem;
+  font-size: 0.78rem;
   font-family: 'Share Tech Mono', monospace;
   color: var(--text-dim);
   background: rgba(255,255,255,0.04);
@@ -333,7 +333,7 @@ a:hover {
   cursor: pointer;
   color: var(--text-dim);
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.92rem;
   transition: all var(--transition);
 }
 
@@ -347,10 +347,10 @@ a:hover {
   color: var(--accent);
 }
 
-.filter-icon { font-size: 0.65rem; }
+.filter-icon { font-size: 0.88rem; }
 .filter-label { flex: 1; text-align: left; }
 .filter-chevron {
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   transition: transform 0.2s ease;
 }
 
@@ -379,7 +379,7 @@ a:hover {
   border: none;
   color: var(--text-dim);
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.92rem;
   text-align: left;
   cursor: pointer;
   transition: all var(--transition);
@@ -415,7 +415,7 @@ a:hover {
 }
 
 .sidebar-search-result-title {
-  font-size: 0.78rem;
+  font-size: 0.98rem;
   color: var(--text-mid);
   line-height: 1.3;
 }
@@ -435,7 +435,7 @@ a:hover {
 
 .sidebar-search-result-type {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.45rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-dim);
   background: rgba(255,255,255,0.04);
@@ -445,7 +445,7 @@ a:hover {
 }
 
 .sidebar-search-result-snippet {
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--text-dim);
   line-height: 1.3;
   max-height: 2.6em;
@@ -453,7 +453,7 @@ a:hover {
 }
 
 .sidebar-search-result-part {
-  font-size: 0.55rem;
+  font-size: 0.78rem;
   color: var(--text-dim);
   opacity: 0.6;
 }
@@ -482,7 +482,7 @@ a:hover {
   justify-content: space-between;
   padding: 8px 16px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-mid);
   letter-spacing: 0.1em;
@@ -498,7 +498,7 @@ a:hover {
 }
 
 .nav-part-header .chevron {
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   transition: transform 0.2s ease;
   color: var(--text-dim);
 }
@@ -522,7 +522,7 @@ a:hover {
   position: relative;
   display: block;
   padding: 5px 16px 5px 20px;
-  font-size: 0.78rem;
+  font-size: 0.98rem;
   color: #c0c8d4;
   cursor: pointer;
   border-left: 2px solid transparent;
@@ -549,7 +549,7 @@ a:hover {
 
 .nav-syn-hint {
   display: inline-block;
-  font-size: 0.55rem;
+  font-size: 0.78rem;
   color: var(--text-dim);
   background: rgba(255,255,255,0.04);
   padding: 1px 5px;
@@ -562,14 +562,14 @@ a:hover {
 .nav-empty {
   padding: 16px;
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
   font-style: italic;
 }
 
 .nav-chapter .ch-num {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.88rem;
   color: var(--text-mid);
   margin-right: 6px;
   min-width: 22px;
@@ -581,7 +581,7 @@ a:hover {
   padding: 12px 16px;
   border-top: 1px solid var(--border);
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--text-dim);
   line-height: 1.6;
 }
@@ -598,7 +598,7 @@ a:hover {
   border: 1px solid var(--border);
   border-radius: 4px;
   color: var(--text-dim);
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -680,7 +680,7 @@ body.sidebar-collapsed .main-content {
 
 .stat-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--text-dim);
   width: 36px;
   text-transform: uppercase;
@@ -703,7 +703,7 @@ body.sidebar-collapsed .main-content {
 
 .stat-value {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--text-mid);
   width: 24px;
   text-align: right;
@@ -716,7 +716,7 @@ body.sidebar-collapsed .main-content {
   top: 12px;
   right: 12px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--vorax);
   background: rgba(255, 34, 102, 0.1);
@@ -976,7 +976,7 @@ body.sidebar-collapsed .main-content {
 /* â”€â”€ Hero Version Tag â”€â”€ */
 .hero-version {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.92rem;
   color: var(--text-mid);
   letter-spacing: 0.1em;
   margin-bottom: 32px;
@@ -1009,7 +1009,7 @@ body.sidebar-collapsed .main-content {
 
 .hero-lore-source {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   color: #a0aabb;
   letter-spacing: 0.1em;
   text-shadow: 0 0 12px rgba(200,220,255,0.12);
@@ -1048,7 +1048,7 @@ body.sidebar-collapsed .main-content {
 
 .hero-scroll-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.88rem;
   color: var(--text-mid);
   letter-spacing: 0.15em;
 }
@@ -1259,7 +1259,7 @@ body.sidebar-collapsed .main-content {
 /* Homeworld faction label â€” visible on hover */
 .galaxy-homeworld .homeworld-label {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--hw-color);
   white-space: nowrap;
@@ -1274,7 +1274,7 @@ body.sidebar-collapsed .main-content {
 /* System count below label */
 .galaxy-homeworld .homeworld-systems {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.45rem;
+  font-size: 0.75rem;
   color: var(--hw-color);
   opacity: 0.5;
   transition: opacity 0.2s ease;
@@ -1455,13 +1455,13 @@ body.sidebar-collapsed .main-content {
 
 .faction-card .faction-subtitle {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.88rem;
   color: var(--text-dim);
   letter-spacing: 0.05em;
 }
 
 .faction-card .faction-desc {
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   color: var(--text-mid);
   line-height: 1.5;
   margin-bottom: 14px;
@@ -1469,7 +1469,7 @@ body.sidebar-collapsed .main-content {
 
 .faction-card .faction-mechanic {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.92rem;
   color: var(--faction-color, var(--accent));
   background: color-mix(in srgb, var(--faction-color, var(--accent)) 8%, transparent);
   padding: 3px 8px;
@@ -1482,7 +1482,7 @@ body.sidebar-collapsed .main-content {
   display: flex;
   gap: 12px;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--text-dim);
   margin-bottom: 12px;
 }
@@ -1565,7 +1565,7 @@ body.sidebar-collapsed .main-content {
 
 .summary-stat .label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -1607,7 +1607,7 @@ body.sidebar-collapsed .main-content {
 
 .footer-quote-source {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.88rem;
   font-style: normal;
   color: var(--text-mid);
   letter-spacing: 0.1em;
@@ -1642,7 +1642,7 @@ html {
 /* â”€â”€ Section Label â€” small uppercase pre-heading â”€â”€ */
 .section-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent);
@@ -1710,7 +1710,7 @@ html {
 
 .quote-attr {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.62rem;
+  font-size: 0.88rem;
   letter-spacing: 0.2em;
   color: var(--text-mid);
   margin-top: 12px;
@@ -1738,7 +1738,7 @@ html {
 
 .page-subtitle {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.92rem;
   color: var(--text-mid);
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -1804,7 +1804,7 @@ html {
 
 .stat-block .stat-label {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.65rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text-hi);
   letter-spacing: 0.1em;
@@ -1815,7 +1815,7 @@ html {
 
 .stat-sub {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--text-dim);
   letter-spacing: 0.05em;
 }
@@ -1856,7 +1856,7 @@ html {
 
 .phase-num {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   margin-bottom: 10px;
@@ -1879,7 +1879,7 @@ html {
 
 .phase-desc {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.98rem;
   color: var(--text-mid);
   line-height: 1.6;
   margin-bottom: 12px;
@@ -1887,7 +1887,7 @@ html {
 
 .phase-tagline {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.88rem;
   letter-spacing: 2px;
   color: var(--text-dim);
   margin-bottom: 8px;
@@ -1908,13 +1908,13 @@ html {
 .phase-detail-item {
   display: flex;
   gap: 8px;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   line-height: 1.4;
 }
 
 .phase-detail-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--text-dim);
   min-width: 80px;
   flex-shrink: 0;
@@ -1925,13 +1925,13 @@ html {
 .phase-detail-value {
   color: var(--text-mid);
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
 }
 
 .phase-link {
   display: inline-block;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--accent);
   text-decoration: none;
   letter-spacing: 1px;
@@ -1987,7 +1987,7 @@ html {
 
 .system-card-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.93rem;
   font-weight: 600;
   color: #fff;
   letter-spacing: 0.06em;
@@ -1996,7 +1996,7 @@ html {
 
 .system-card-desc {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.93rem;
   color: var(--text-mid);
   line-height: 1.6;
 }
@@ -2007,7 +2007,7 @@ html {
 .card-accent {
   padding: 20px 24px;
   line-height: 1.7;
-  font-size: 0.9rem;
+  font-size: 0.98rem;
   background: rgba(12,14,20,0.75);
   border: 1px solid rgba(0,180,255,0.12);
   border-left: 4px solid var(--accent);
@@ -2300,7 +2300,7 @@ html {
 
 .search-input-wrap .search-icon {
   color: var(--text-dim);
-  font-size: 0.9rem;
+  font-size: 0.98rem;
 }
 
 .search-input-wrap input {
@@ -2319,7 +2319,7 @@ html {
 
 .search-input-wrap .search-hint {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--text-dim);
   background: var(--bg-base);
   padding: 2px 6px;
@@ -2355,7 +2355,7 @@ html {
 
 .search-result-item .result-type {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--text-dim);
   background: var(--bg-base);
@@ -2373,7 +2373,7 @@ html {
 .result-type-equip { color: #44ff66 !important; }
 
 .search-result-item .result-text {
-  font-size: 0.85rem;
+  font-size: 0.93rem;
   color: var(--text-body);
 }
 
@@ -2384,7 +2384,7 @@ html {
 }
 
 .search-snippet {
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
   line-height: 1.4;
   padding-left: 62px;
@@ -2394,7 +2394,7 @@ html {
 }
 
 .search-synonym-badge {
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--text-dim);
   background: rgba(255,255,255,0.05);
   padding: 1px 6px;
@@ -2405,7 +2405,7 @@ html {
 }
 
 .search-part {
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--text-dim);
   padding-left: 62px;
   opacity: 0.6;
@@ -2414,7 +2414,7 @@ html {
 .search-hint {
   padding: 24px 16px;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   color: var(--text-dim);
   font-style: italic;
 }
@@ -2422,7 +2422,7 @@ html {
 .search-empty {
   padding: 24px 16px;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   color: var(--text-dim);
 }
 
@@ -2447,7 +2447,7 @@ html {
   border-radius: 4px;
   color: var(--accent);
   font-family: 'Orbitron', monospace;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   padding: 14px 32px;
@@ -2483,7 +2483,7 @@ html {
 }
 
 .dash-btn-icon {
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   opacity: 0.5;
 }
 
@@ -2554,7 +2554,7 @@ html {
 
 .audio-slider-row label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.88rem;
   color: var(--text-dim);
   letter-spacing: 0.08em;
   width: 40px;
@@ -2602,7 +2602,7 @@ html {
   border: 1px solid var(--border);
   border-radius: 4px;
   color: var(--text-dim);
-  font-size: 0.85rem;
+  font-size: 0.93rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -2741,16 +2741,16 @@ html {
   }
 
   .hero-subtitle {
-    font-size: 0.8rem;
+    font-size: 0.88rem;
     letter-spacing: 0.2em;
   }
 
   .hero-lore-text {
-    font-size: 0.85rem;
+    font-size: 0.93rem;
   }
 
   .hero-version {
-    font-size: 0.6rem;
+    font-size: 0.82rem;
   }
 
   /* Galaxy map â€” constrain on mobile */
@@ -2785,7 +2785,7 @@ html {
   }
 
   .summary-stat .num {
-    font-size: 0.9rem;
+    font-size: 0.98rem;
   }
 
   .hero-title {
@@ -2793,7 +2793,7 @@ html {
   }
 
   .hero-subtitle {
-    font-size: 0.7rem;
+    font-size: 0.92rem;
     letter-spacing: 0.15em;
   }
 }
@@ -2856,7 +2856,7 @@ html {
   border-bottom: 1px solid var(--accent);
   color: var(--accent);
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   letter-spacing: 0.1em;
   text-align: center;
   z-index: 9999;
@@ -2877,7 +2877,7 @@ html {
   background: var(--accent);
   color: var(--bg-base);
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.55rem;
+  font-size: 0.78rem;
   font-weight: 700;
   padding: 2px 6px;
   border-radius: 2px;
@@ -2952,7 +2952,7 @@ body.dev-mode-active .nav-chapter[data-id="ch46"] {
 #edit-toggle,
 #export-btn {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2980,7 +2980,7 @@ body.dev-mode-active .nav-chapter[data-id="ch46"] {
 /* â”€â”€ Edit Count Label â”€â”€ */
 #edit-count {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.88rem;
   color: var(--text-dim);
   letter-spacing: 0.05em;
 }
@@ -3396,7 +3396,7 @@ body[class*="faction-bg-"] .back-to-top:hover {
    Fades between faction-themed lore quotes on a timer.            */
 #lore-quote-rotator {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   font-style: italic;
   color: var(--text-mid);
   text-align: center;
@@ -3408,7 +3408,7 @@ body[class*="faction-bg-"] .back-to-top:hover {
 
 .lore-quote-faction {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   font-style: normal;
   color: var(--text-dim);
   letter-spacing: 0.08em;
@@ -3482,7 +3482,7 @@ body.crt-active {
   border: 1px solid var(--border);
   border-radius: 3px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-dim);
   letter-spacing: 0.1em;
@@ -3497,7 +3497,7 @@ body.crt-active {
 }
 
 .chapter-index-toggle-icon {
-  font-size: 0.75rem;
+  font-size: 0.95rem;
 }
 
 /* â”€â”€ Index Overlay â”€â”€
@@ -3549,7 +3549,7 @@ body.crt-active {
 
 .chapter-index-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--accent);
   letter-spacing: 0.12em;
@@ -3589,7 +3589,7 @@ body.crt-active {
   border-radius: 3px;
   padding: 7px 12px;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.93rem;
   color: var(--text-body);
   outline: none;
   transition: border-color var(--transition);
@@ -3630,7 +3630,7 @@ body.crt-active {
 }
 
 .ci-chevron {
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   color: var(--text-dim);
   transition: transform 0.2s ease;
   flex-shrink: 0;
@@ -3642,7 +3642,7 @@ body.crt-active {
 
 .ci-part-label {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-dim);
   letter-spacing: 0.1em;
@@ -3652,7 +3652,7 @@ body.crt-active {
 
 .ci-part-count {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.55rem;
+  font-size: 0.78rem;
   color: var(--text-dim);
   background: var(--bg-base);
   padding: 1px 6px;
@@ -3695,14 +3695,14 @@ body.crt-active {
 
 .ci-num {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   color: var(--text-dim);
   min-width: 24px;
   flex-shrink: 0;
 }
 
 .ci-title {
-  font-size: 0.78rem;
+  font-size: 0.98rem;
   color: var(--text-mid);
   line-height: 1.4;
 }
@@ -3720,7 +3720,7 @@ body.crt-active {
 .ci-empty {
   padding: 24px 18px;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   color: var(--text-dim);
 }
 
@@ -3772,7 +3772,7 @@ body.crt-active {
   border: 1px solid var(--border-hi);
   border-radius: 4px;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   font-weight: 400;
   color: var(--text-body);
   line-height: 1.5;
@@ -3881,7 +3881,7 @@ body.crt-active {
 
 .planet-detail-label {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.55rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -3889,7 +3889,7 @@ body.crt-active {
 }
 
 .planet-detail-body {
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   color: var(--text-mid);
 }
 
@@ -3904,7 +3904,7 @@ body.crt-active {
 
 .territory-bar-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
+  font-size: 0.92rem;
   font-weight: 600;
   text-align: right;
 }
@@ -3925,7 +3925,7 @@ body.crt-active {
 
 .territory-bar-value {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.88rem;
   color: var(--text-dim);
 }
 
@@ -3992,7 +3992,7 @@ body.crt-active {
 /* â”€â”€ Formation Text â”€â”€ */
 .formation-name {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--accent);
   letter-spacing: 0.1em;
@@ -4001,7 +4001,7 @@ body.crt-active {
 }
 
 .formation-desc {
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   color: var(--text-mid);
   line-height: 1.55;
   margin-bottom: 10px;
@@ -4011,14 +4011,14 @@ body.crt-active {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  font-size: 0.7rem;
+  font-size: 0.92rem;
   color: var(--text-dim);
   line-height: 1.4;
 }
 
 .formation-tag {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   padding: 1px 5px;
@@ -4148,7 +4148,7 @@ body.crt-active {
     width: 100%;
     justify-content: center;
     padding: 14px 20px;
-    font-size: 0.75rem;
+    font-size: 0.95rem;
   }
 
   /* Search: full-width overlay on mobile */
@@ -4413,7 +4413,7 @@ body.crt-active {
   }
 
   .territory-bar-label {
-    font-size: 0.6rem;
+    font-size: 0.82rem;
   }
 
   /* Summary bar: stack on very small screens */
@@ -4438,12 +4438,12 @@ body.crt-active {
 
   /* Section heading: smaller on phones */
   .section-heading {
-    font-size: 0.75rem;
+    font-size: 0.95rem;
     letter-spacing: 0.08em;
   }
 
   .section-label {
-    font-size: 0.55rem;
+    font-size: 0.78rem;
   }
 }
 
@@ -4495,7 +4495,7 @@ body.crt-active {
 
 #content-area .section-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.82rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent);
@@ -4525,7 +4525,7 @@ body.crt-active {
 
 #content-area p {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.92rem;
+  font-size: 1rem;
   line-height: 1.85;
   color: var(--text-body);
   margin-bottom: 20px;
@@ -4601,7 +4601,7 @@ body.crt-active {
 #content-area ul li,
 #content-area ol li {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.98rem;
   line-height: 1.75;
   color: var(--text-mid);
   margin-bottom: 6px;
@@ -4615,7 +4615,7 @@ body.crt-active {
 #content-area ol li::marker {
   color: var(--accent);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
 }
 
 /* â”€â”€ 15j. Tables â€” Dark Header, Alternating Rows â”€â”€â”€â”€â”€â”€â”€ */
@@ -4637,7 +4637,7 @@ body.crt-active {
 
 #content-area table th {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--accent);
   letter-spacing: 0.1em;
@@ -4699,7 +4699,7 @@ body.crt-active {
 
 #content-area pre {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   background: var(--bg-panel);
   border: 1px solid var(--border-hi);
   border-radius: 4px;
@@ -4746,7 +4746,7 @@ body.crt-active {
 
 #content-area h4 {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.98rem;
   font-weight: 700;
   color: var(--text-mid);
   text-transform: uppercase;
@@ -4794,7 +4794,7 @@ body.crt-active {
 
 .proto-badge {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   color: var(--accent);
   background: rgba(0,180,255,0.08);
   border: 1px solid rgba(0,180,255,0.2);
@@ -4927,7 +4927,7 @@ body[class*="faction-"] .proto-badge {
   }
 
   #content-area .section-heading {
-    font-size: 0.85rem;
+    font-size: 0.93rem;
     letter-spacing: 0.08em;
   }
 
@@ -4941,17 +4941,17 @@ body[class*="faction-"] .proto-badge {
   }
 
   #content-area h3 {
-    font-size: 0.88rem;
+    font-size: 0.96rem;
     margin-top: 24px;
   }
 
   #content-area pre {
     padding: 12px 14px;
-    font-size: 0.75rem;
+    font-size: 0.95rem;
   }
 
   #content-area table {
-    font-size: 0.75rem;
+    font-size: 0.95rem;
   }
 
   #content-area table th,
@@ -4966,7 +4966,7 @@ body[class*="faction-"] .proto-badge {
   }
 
   #content-area .section-heading {
-    font-size: 0.72rem;
+    font-size: 0.95rem;
   }
 
   #content-area .card {
@@ -5165,7 +5165,7 @@ embed {
   }
 
   .quote-text {
-    font-size: 0.9rem;
+    font-size: 0.98rem;
     line-height: 1.6;
   }
 
@@ -5282,7 +5282,7 @@ embed {
   }
 
   .quote-text {
-    font-size: 0.85rem;
+    font-size: 0.93rem;
   }
 
   /* â”€â”€ Phase block: tighter â”€â”€ */
@@ -5296,7 +5296,7 @@ embed {
   }
 
   .phase-desc {
-    font-size: 0.8rem;
+    font-size: 0.88rem;
   }
 }
 
@@ -5373,7 +5373,7 @@ embed {
 }
 
 .brightness-icon {
-  font-size: 0.85rem;
+  font-size: 0.93rem;
   color: var(--text-dim);
 }
 

@@ -10,14 +10,14 @@
     <div class="section-heading" id="sec-ch33-0">In-Run · Archive · Account</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px">
       <div class="card" style="border-top:3px solid var(--terran)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--terran);margin-bottom:6px">LAYER 1: IN-RUN</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);margin-bottom:8px">RESETS EACH SIMULATION RUN</div>
-        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Territory control, resources, unit veterancy, equipment inventory, research progress, faction relationships, Commander rank. The standard strategy game loop — build, fight, grow, potentially lose everything.</div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.92rem;color:var(--terran);margin-bottom:6px">LAYER 1: IN-RUN</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-dim);margin-bottom:8px">RESETS EACH SIMULATION RUN</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Territory control, resources, unit veterancy, equipment inventory, research progress, faction relationships, Commander rank. The standard strategy game loop — build, fight, grow, potentially lose everything.</div>
       </div>
       <div class="card" style="border-top:3px solid var(--accord)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accord);margin-bottom:6px">LAYER 2: THE ARCHIVE</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);margin-bottom:8px">PERSISTS ACROSS SIMULATION RUNS</div>
-        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">
+        <div style="font-family:'Orbitron',monospace;font-size:0.92rem;color:var(--accord);margin-bottom:6px">LAYER 2: THE ARCHIVE</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-dim);margin-bottom:8px">PERSISTS ACROSS SIMULATION RUNS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">
           <div style="margin-bottom:3px"><strong style="color:var(--text-hi)">Simulation Data (SD):</strong> Meta-currency earned from completed runs</div>
           <div style="margin-bottom:3px"><strong style="color:var(--text-hi)">Blueprint Unlocks:</strong> Researched Common/Uncommon equipment permanently available</div>
           <div style="margin-bottom:3px"><strong style="color:var(--text-hi)">Starting Bonuses:</strong> +5⚙ Scrap, +1 Rookie per SD upgrade (stacking)</div>
@@ -26,9 +26,9 @@
         </div>
       </div>
       <div class="card" style="border-top:3px solid var(--guardians)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--guardians);margin-bottom:6px">LAYER 3: ACCOUNT</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);margin-bottom:8px">PERSISTS ACROSS ENTIRE CAMPAIGNS</div>
-        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">
+        <div style="font-family:'Orbitron',monospace;font-size:0.92rem;color:var(--guardians);margin-bottom:6px">LAYER 3: ACCOUNT</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-dim);margin-bottom:8px">PERSISTS ACROSS ENTIRE CAMPAIGNS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">
           <div style="margin-bottom:3px"><strong style="color:var(--text-hi)">Meta Modifiers:</strong> +2% XP, +1⚙ Scrap per completed campaign (stacking, uncapped)</div>
           <div style="margin-bottom:3px"><strong style="color:var(--text-hi)">Commander Titles:</strong> "The Unifier," "The Conqueror," "The Survivor," faction-specific</div>
           <div style="margin-bottom:3px"><strong style="color:var(--text-hi)">Legacy Bonuses:</strong> +2% per faction per campaign (max +10% per faction)</div>
@@ -44,23 +44,23 @@
     <div class="section-label">Simulation Data (SD) Awards <span class="proto-badge">PROTOTYPE LOCKED</span></div>
     <div class="section-heading" id="sec-ch33-1">localStorage key: 'aoc_archive'</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
-      <div style="display:grid;grid-template-columns:200px 100px 1fr;background:rgba(0,180,255,0.04);padding:7px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.52rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase"><span>Condition</span><span>SD Award</span><span>Notes</span></div>
-      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 12px;border-bottom:1px solid var(--border);font-size:0.78rem;align-items:start">
+      <div style="display:grid;grid-template-columns:200px 100px 1fr;background:rgba(0,180,255,0.04);padding:7px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase"><span>Condition</span><span>SD Award</span><span>Notes</span></div>
+      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;align-items:start">
         <span style="color:var(--text-mid)">Per battle won (any outcome)</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--text-hi)">+1 SD</span>
         <span style="color:var(--text-dim)">Awarded on defeat — run ends with battle count preserved</span>
       </div>
-      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 12px;border-bottom:1px solid var(--border);font-size:0.78rem;align-items:start;background:rgba(0,180,255,0.02)">
+      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;align-items:start;background:rgba(0,180,255,0.02)">
         <span style="color:var(--text-mid)">Per battle won (victory run)</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--necro)">+2 SD</span>
         <span style="color:var(--text-dim)">Victory run = reached Nexus + win condition met</span>
       </div>
-      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 12px;border-bottom:1px solid var(--border);font-size:0.78rem;align-items:start">
+      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;align-items:start">
         <span style="color:var(--text-mid)">Campaign victory bonus</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--necro)">+5 SD</span>
         <span style="color:var(--text-dim)">One-time bonus on completing the Final War</span>
       </div>
-      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 12px;font-size:0.78rem;align-items:start">
+      <div style="display:grid;grid-template-columns:200px 100px 1fr;padding:8px 12px;font-size:0.98rem;align-items:start">
         <span style="color:var(--text-mid)">Decant counter increment</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--text-dim)">On defeat only</span>
         <span style="color:var(--text-dim)">Narrative counter tracking how many times the Commander has "woken up." Does not increment on victory.</span>
@@ -73,22 +73,22 @@
     <div class="section-heading" id="sec-ch33-2">500–800 Entries · Three Voices · Persistent Across All Campaigns</div>
     <div class="body-text" style="margin-bottom:12px">A LIVING DOCUMENT. Personal record of everything discovered, fought, survived. Fills as you play. Three voices: Commander Notes (subjective, sometimes wrong), AI Data Entries (clinical, precise), Advisor Commentary (marginal notes per doctrine).</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
-      <div style="display:grid;grid-template-columns:160px 1fr 1fr;background:rgba(0,180,255,0.04);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--accent);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>CATEGORY</span><span>CONTENT</span><span>UNLOCK TRIGGER</span></div>
-      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Faction Profiles</span><span>Visual, lore, doctrine, known commanders</span><span>First contact</span></div>
-      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid);border-bottom:1px solid var(--border);background:rgba(0,180,255,0.01)"><span>Unit Blueprints</span><span>Stats, counters, combat footage</span><span>1 encounter (partial), 3+ (full) · +5% dmg vs known</span></div>
-      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Planet Registry</span><span>Biome, traits, resources, territories</span><span>Visit (partial), control (full)</span></div>
-      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid);border-bottom:1px solid var(--border);background:rgba(0,180,255,0.01)"><span>Commander Dossiers</span><span>Name, trait, record, loyalty history</span><span>Promote to Elite or encounter named enemy</span></div>
-      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Lore Fragments</span><span>Galactic history, Nexus secrets</span><span>Discovery, Ruins, Guardian research ops</span></div>
-      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid);border-bottom:1px solid var(--border);background:rgba(0,180,255,0.01)"><span>Technology Archive</span><span>Researched equipment, tech tree visualization</span><span>Unlock research nodes</span></div>
-      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Battle Records</span><span>After-action reports, replays, MVP, casualties</span><span>Every completed battle</span></div>
-      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid);border-bottom:1px solid var(--border);background:rgba(0,180,255,0.01)"><span>Diplomatic Ledger</span><span>Treaties, betrayals, reputation log</span><span>Every diplomatic action</span></div>
-      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.72rem;color:var(--text-mid)"><span>Anomaly Log</span><span>Phenomena, hazards, wormholes</span><span>Explore hazard zones</span></div>
+      <div style="display:grid;grid-template-columns:160px 1fr 1fr;background:rgba(0,180,255,0.04);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>CATEGORY</span><span>CONTENT</span><span>UNLOCK TRIGGER</span></div>
+      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.95rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Faction Profiles</span><span>Visual, lore, doctrine, known commanders</span><span>First contact</span></div>
+      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.95rem;color:var(--text-mid);border-bottom:1px solid var(--border);background:rgba(0,180,255,0.01)"><span>Unit Blueprints</span><span>Stats, counters, combat footage</span><span>1 encounter (partial), 3+ (full) · +5% dmg vs known</span></div>
+      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.95rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Planet Registry</span><span>Biome, traits, resources, territories</span><span>Visit (partial), control (full)</span></div>
+      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.95rem;color:var(--text-mid);border-bottom:1px solid var(--border);background:rgba(0,180,255,0.01)"><span>Commander Dossiers</span><span>Name, trait, record, loyalty history</span><span>Promote to Elite or encounter named enemy</span></div>
+      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.95rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Lore Fragments</span><span>Galactic history, Nexus secrets</span><span>Discovery, Ruins, Guardian research ops</span></div>
+      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.95rem;color:var(--text-mid);border-bottom:1px solid var(--border);background:rgba(0,180,255,0.01)"><span>Technology Archive</span><span>Researched equipment, tech tree visualization</span><span>Unlock research nodes</span></div>
+      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.95rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span>Battle Records</span><span>After-action reports, replays, MVP, casualties</span><span>Every completed battle</span></div>
+      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.95rem;color:var(--text-mid);border-bottom:1px solid var(--border);background:rgba(0,180,255,0.01)"><span>Diplomatic Ledger</span><span>Treaties, betrayals, reputation log</span><span>Every diplomatic action</span></div>
+      <div style="display:grid;grid-template-columns:160px 1fr 1fr;padding:5px 12px;font-size:0.95rem;color:var(--text-mid)"><span>Anomaly Log</span><span>Phenomena, hazards, wormholes</span><span>Explore hazard zones</span></div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px">
-      <div class="card" style="text-align:center;padding:10px"><div style="font-family:'Orbitron',monospace;font-size:0.8rem;color:var(--text-dim)">25%</div><div style="font-size:0.65rem;color:var(--text-dim)">Cosmetic UI border</div></div>
-      <div class="card" style="text-align:center;padding:10px"><div style="font-family:'Orbitron',monospace;font-size:0.8rem;color:var(--terran)">50%</div><div style="font-size:0.65rem;color:var(--text-mid)">+3% dmg vs known units</div></div>
-      <div class="card" style="text-align:center;padding:10px"><div style="font-family:'Orbitron',monospace;font-size:0.8rem;color:var(--accord)">75%</div><div style="font-size:0.65rem;color:var(--text-mid)">Hidden Strategist lore unlocked</div></div>
-      <div class="card" style="text-align:center;padding:10px"><div style="font-family:'Orbitron',monospace;font-size:0.8rem;color:var(--necro)">100%</div><div style="font-size:0.65rem;color:var(--text-hi)">Unifier ending without full lore requirement</div></div>
+      <div class="card" style="text-align:center;padding:10px"><div style="font-family:'Orbitron',monospace;font-size:0.86rem;color:var(--text-dim)">25%</div><div style="font-size:0.9rem;color:var(--text-dim)">Cosmetic UI border</div></div>
+      <div class="card" style="text-align:center;padding:10px"><div style="font-family:'Orbitron',monospace;font-size:0.86rem;color:var(--terran)">50%</div><div style="font-size:0.9rem;color:var(--text-mid)">+3% dmg vs known units</div></div>
+      <div class="card" style="text-align:center;padding:10px"><div style="font-family:'Orbitron',monospace;font-size:0.86rem;color:var(--accord)">75%</div><div style="font-size:0.9rem;color:var(--text-mid)">Hidden Strategist lore unlocked</div></div>
+      <div class="card" style="text-align:center;padding:10px"><div style="font-family:'Orbitron',monospace;font-size:0.86rem;color:var(--necro)">100%</div><div style="font-size:0.9rem;color:var(--text-hi)">Unifier ending without full lore requirement</div></div>
     </div>
 
     <div class="divider"></div>
@@ -97,22 +97,22 @@
     <div class="section-heading" id="sec-ch33-3">The Galactic Emperor Shift — General Autonomous Command</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
       <div class="card" style="border-left:3px solid var(--accord)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--accord);letter-spacing:2px;margin-bottom:8px">SECTOR ASSIGNMENT</div>
-        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">General governs 2-4 systems. Controls ALL military operations within. Standing orders modified by personality. Auto-resolves battles — player receives tiered After-Action Reports (summary → detail → full replay).</div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:var(--accord);letter-spacing:2px;margin-bottom:8px">SECTOR ASSIGNMENT</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">General governs 2-4 systems. Controls ALL military operations within. Standing orders modified by personality. Auto-resolves battles — player receives tiered After-Action Reports (summary → detail → full replay).</div>
       </div>
       <div class="card" style="border-left:3px solid var(--shards)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--shards);letter-spacing:2px;margin-bottom:8px">FLEET ASSIGNMENT</div>
-        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">General commands a mobile Armada. Moves and fights independently on the galactic map. Personality modifies order interpretation: Aggressive on DEFEND = counter-offensive. Reckless on ESCORT = may abandon convoy to chase targets.</div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:var(--shards);letter-spacing:2px;margin-bottom:8px">FLEET ASSIGNMENT</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">General commands a mobile Armada. Moves and fights independently on the galactic map. Personality modifies order interpretation: Aggressive on DEFEND = counter-offensive. Reckless on ESCORT = may abandon convoy to chase targets.</div>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
       <div class="card" style="border-left:3px solid var(--terran)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--terran);letter-spacing:2px;margin-bottom:8px">REPLAY COACHING (Max 5 Tags)</div>
-        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Review General's auto-resolved battle replays. Tag up to 5 non-conflicting priority instructions: FLANK MORE · HOLD POSITION · PROTECT TRANSPORTS · FOCUS HVTs · CONSERVE FORCES · USE COVER · PRESS ADVANTAGE · RETREAT EARLIER. Tags modify General AI for future engagements.</div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:var(--terran);letter-spacing:2px;margin-bottom:8px">REPLAY COACHING (Max 5 Tags)</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Review General's auto-resolved battle replays. Tag up to 5 non-conflicting priority instructions: FLANK MORE · HOLD POSITION · PROTECT TRANSPORTS · FOCUS HVTs · CONSERVE FORCES · USE COVER · PRESS ADVANTAGE · RETREAT EARLIER. Tags modify General AI for future engagements.</div>
       </div>
       <div class="card" style="border-left:3px solid var(--vorax)">
-        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">CATASTROPHIC OVERRIDE</div>
-        <div style="font-size:0.75rem;color:var(--text-mid);line-height:1.55">Generals handle their own problems UNLESS catastrophic: losing entire sector, Vorax breakthrough, loyalty crisis. Catastrophic events trigger notification but do NOT pull the player from current activity. General handles immediate response while player finishes.</div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">CATASTROPHIC OVERRIDE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Generals handle their own problems UNLESS catastrophic: losing entire sector, Vorax breakthrough, loyalty crisis. Catastrophic events trigger notification but do NOT pull the player from current activity. General handles immediate response while player finishes.</div>
       </div>
     </div>
   </div><!-- /page-ch33 -->
