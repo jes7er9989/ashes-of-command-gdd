@@ -4488,7 +4488,7 @@ body.crt-active {
 /* Constrain body text for readability, let cards/tables go full width */
 #content-area p,
 #content-area .body-text {
-  max-width: 900px;
+  max-width: 100%;
 }
 
 /* â”€â”€ 15b. Section Labels â€” Monospace Pre-Heading â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -4529,14 +4529,14 @@ body.crt-active {
   line-height: 1.85;
   color: var(--text-body);
   margin-bottom: 20px;
-  max-width: 800px;
+  max-width: 100%;
 }
 
 #content-area .body-text {
   font-size: 0.95rem;
   line-height: 1.85;
   color: var(--text-body);
-  max-width: 800px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
@@ -4595,7 +4595,7 @@ body.crt-active {
 #content-area ul,
 #content-area ol {
   margin: 16px 0 20px 24px;
-  max-width: 800px;
+  max-width: 100%;
 }
 
 #content-area ul li,
