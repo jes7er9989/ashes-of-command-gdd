@@ -59,33 +59,42 @@ const ContentRenderers = {
 
     /* Initialize Three.js planet renderers.
        Desktop: create all immediately — always visible and animated.
-       Mobile: lazy-load via IntersectionObserver to stay within WebGL context limits. */
+       Mobile: create on-demand when planet detail is expanded via tap,
+       dispose when collapsed, to stay within WebGL context limits. */
     if (typeof PlanetRenderer !== 'undefined') {
       const isMobile = window.innerWidth <= 768;
 
-      if (isMobile && typeof IntersectionObserver !== 'undefined') {
-        /* Mobile: lazy-load, dispose off-screen to free WebGL contexts */
-        const planetObserver = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            const wrap = entry.target;
+      if (isMobile) {
+        /* Mobile: create renderer when detail expands, dispose when collapsed.
+           Uses MutationObserver on each planet-detail to watch for class changes. */
+        container.querySelectorAll('.planet-detail').forEach(function(detail) {
+          const wrap = detail.querySelector('.planet-svg-wrap[data-planet-type]');
+          if (!wrap) return;
+
+          function syncRenderer() {
             const type = wrap.getAttribute('data-planet-type');
             if (!type) return;
+            const isOpen = detail.classList.contains('planet-detail-open');
 
-            if (entry.isIntersecting) {
-              if (!wrap._planetInstance) {
-                wrap._planetInstance = PlanetRenderer.create(wrap, type);
-              }
-            } else {
-              if (wrap._planetInstance) {
-                wrap._planetInstance.dispose();
-                wrap._planetInstance = null;
-              }
+            if (isOpen && !wrap._planetInstance) {
+              /* Small delay to let max-height transition start so container has dimensions */
+              setTimeout(function() {
+                if (!wrap._planetInstance) {
+                  wrap._planetInstance = PlanetRenderer.create(wrap, type);
+                }
+              }, 50);
+            } else if (!isOpen && wrap._planetInstance) {
+              wrap._planetInstance.dispose();
+              wrap._planetInstance = null;
             }
-          });
-        }, { rootMargin: '200px 0px' });
+          }
 
-        container.querySelectorAll('.planet-svg-wrap[data-planet-type]').forEach(function(wrap) {
-          planetObserver.observe(wrap);
+          /* Watch for class changes (planet-detail-open toggle) */
+          const mo = new MutationObserver(function() { syncRenderer(); });
+          mo.observe(detail, { attributes: true, attributeFilter: ['class'] });
+
+          /* If already open on load (shouldn't happen on mobile, but just in case) */
+          syncRenderer();
         });
       } else {
         /* Desktop: create all renderers immediately */
