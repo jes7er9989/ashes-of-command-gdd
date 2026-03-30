@@ -166,6 +166,8 @@ a:hover {
 .app-layout {
   display: flex;
   min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* â”€â”€ Sidebar â”€â”€
