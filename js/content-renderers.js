@@ -78,14 +78,14 @@ const ContentRenderers = {
 
     return `
       <div class="planet-row" style="border-bottom:1px solid var(--border)">
-        <div class="planet-row-header" onclick="document.getElementById('${id}').classList.toggle('planet-detail-open')" style="display:grid;grid-template-columns:150px 80px 140px 80px 1fr;padding:8px 12px;font-size:0.78rem;cursor:pointer;transition:background 0.15s ease;align-items:start" onmouseenter="this.style.background='rgba(255,255,255,0.02)'" onmouseleave="this.style.background='transparent'">
+        <div class="planet-row-header" onclick="document.getElementById('${id}').classList.toggle('planet-detail-open')" style="display:grid;grid-template-columns:160px 90px 150px 90px 1fr;padding:12px 16px;font-size:0.95rem;cursor:pointer;transition:background 0.15s ease;align-items:start" onmouseenter="this.style.background='rgba(255,255,255,0.02)'" onmouseleave="this.style.background='transparent'">
           <span style="color:${planet.color};font-weight:600">${planet.name}</span>
           <span style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.territories}</span>
           <span style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.yield}</span>
           <span style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.encounter}</span>
           <span style="color:var(--text-dim)">${terrainShort}</span>
         </div>
-        <div id="${id}" class="planet-detail">
+        <div id="${id}" class="planet-detail planet-detail-open">
           <div class="planet-detail-inner">
             ${svg ? `<div class="planet-svg-wrap">${svg}</div>` : ''}
             <div class="planet-detail-text">

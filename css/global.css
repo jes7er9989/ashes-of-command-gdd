@@ -3842,14 +3842,14 @@ body.crt-active {
 }
 
 .planet-detail.planet-detail-open {
-  max-height: 600px;
+  max-height: 900px;
 }
 
 .planet-detail-inner {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 16px;
-  padding: 12px 14px 18px;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  padding: 20px 20px 24px;
   border-top: 1px solid var(--border);
   background: rgba(0, 180, 255, 0.015);
 }
@@ -3872,25 +3872,26 @@ body.crt-active {
 .planet-detail-text {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
 }
 
 .planet-detail-section {
-  line-height: 1.55;
+  line-height: 1.7;
 }
 
 .planet-detail-label {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 3px;
+  margin-bottom: 6px;
 }
 
 .planet-detail-body {
-  font-size: 0.95rem;
-  color: var(--text-mid);
+  font-size: 1rem;
+  color: var(--text-body);
+  line-height: 1.7;
 }
 
 /* â”€â”€ Territory Bar Chart â”€â”€ */

@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v76';
+const CACHE_NAME = 'aoc-gdd-v77';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
