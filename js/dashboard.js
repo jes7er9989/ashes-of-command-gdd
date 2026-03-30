@@ -180,7 +180,7 @@ const Dashboard = {
           </div>
           <div class="hero-tagline-expanded">
             <p class="hero-pitch">You are a weapon \u2014 a freshly decanted clone created by a fallen civilization to win a war that already destroyed them once. Prove your genius across simulated galactic campaigns. When the simulation judges you ready, wake into a real galaxy being devoured from the outside and guarded at its core by gods who will destroy anyone who approaches.</p>
-            <p class="hero-pitch-sub">7 factions. 105 units. 208 equipment items. One galaxy. No second chances.</p>
+            <p class="hero-pitch-sub">7 factions. One galaxy. No second chances.</p>
           </div>
           <div class="hero-version">INTERACTIVE GAME DESIGN DOCUMENT v5.9.1</div>
           <div class="hero-lore-quote" id="hero-lore-quote">
