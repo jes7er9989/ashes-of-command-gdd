@@ -60,11 +60,25 @@ const ContentRenderers = {
     }
     container.innerHTML = html;
 
-    /* Initialize Three.js planet renderers if available */
+    /* Initialize Three.js planet renderers if available, with SVG fallback */
     if (typeof PlanetRenderer !== 'undefined') {
       container.querySelectorAll('.planet-svg-wrap[data-planet-type]').forEach(function(wrap) {
         const type = wrap.getAttribute('data-planet-type');
-        if (type) PlanetRenderer.create(wrap, type);
+        if (type) {
+          const result = PlanetRenderer.create(wrap, type);
+          /* If WebGL failed, inject SVG fallback */
+          if (!result && planetSvgs[type]) {
+            wrap.innerHTML = planetSvgs[type];
+          }
+        }
+      });
+    } else {
+      /* No Three.js at all — use SVG for every planet */
+      container.querySelectorAll('.planet-svg-wrap[data-planet-type]').forEach(function(wrap) {
+        const type = wrap.getAttribute('data-planet-type');
+        if (type && planetSvgs[type]) {
+          wrap.innerHTML = planetSvgs[type];
+        }
       });
     }
   },

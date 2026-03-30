@@ -607,10 +607,24 @@ window.PlanetRenderer = (function () {
   return {
     create: function (container, type) {
       if (typeof THREE === 'undefined') { console.warn('PlanetRenderer: Three.js not loaded'); return null; }
-      const planet = new Planet(container, type);
-      instances.push(planet);
-      startLoop();
-      return planet;
+      try {
+        const planet = new Planet(container, type);
+        /* Verify WebGL context was actually created */
+        if (!planet.renderer || !planet.renderer.getContext()) {
+          throw new Error('WebGL context unavailable');
+        }
+        instances.push(planet);
+        startLoop();
+        return planet;
+      } catch (e) {
+        console.warn('PlanetRenderer: WebGL failed for ' + type + ', falling back to SVG', e);
+        /* Clean up any partial renderer */
+        var canvas = container.querySelector('canvas');
+        if (canvas) canvas.remove();
+        /* Signal caller to use SVG fallback */
+        container.classList.add('planet-webgl-failed');
+        return null;
+      }
     },
     disposeAll: function () {
       for (let i = 0; i < instances.length; i++) instances[i].dispose();
