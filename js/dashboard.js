@@ -152,6 +152,7 @@ const Dashboard = {
       requestAnimationFrame(() => {
         this.initLoreQuoteCycler();
         this.initPrologueQuoteCycler();
+        this.initCountUpAnimation();
         this.initScrollIndicator();
         this.initParallax();
         this._initCanvasRenderers();
@@ -293,41 +294,106 @@ const Dashboard = {
    */
   buildByTheNumbers() {
     return `
-      <section class="dashboard-section">
+      <section class="dashboard-section by-the-numbers-section" id="by-the-numbers">
         <div class="section-label">Project Scope</div>
         <div class="section-heading">By the Numbers</div>
-        <div class="stats-grid">
-          <div class="stat-block">
-            <div class="stat-value" style="color:var(--terran)">7</div>
+
+        <div class="btn-category-label" style="color:var(--terran)">Factions & Units</div>
+        <div class="stats-grid stats-grid-4">
+          <a class="stat-block stat-link" href="#ch5" onclick="event.preventDefault();Nav.go('ch5')">
+            <div class="stat-value btn-countup" data-target="7" style="color:var(--terran)">0</div>
             <div class="stat-label">Factions</div>
-            <div class="stat-sub">5 playable + 2 NPC</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-value" style="color:var(--shards)">105</div>
+            <div class="stat-desc">5 playable civilizations with unique mechanics, units, and tech trees \u2014 plus 2 NPC factions that act as the galaxy\u2019s existential threats. Each faction plays fundamentally differently.</div>
+          </a>
+          <a class="stat-block stat-link" href="#appA" onclick="event.preventDefault();Nav.go('appA')">
+            <div class="stat-value btn-countup" data-target="105" style="color:var(--terran)">0</div>
             <div class="stat-label">Units</div>
-            <div class="stat-sub">15 per faction</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-value" style="color:var(--horde)">208</div>
+            <div class="stat-desc">15 per faction \u2014 from expendable infantry to devastating capital ships. Each earns names, traits, and rivalries through combat. Lose a veteran and you feel it.</div>
+          </a>
+          <a class="stat-block stat-link" href="#ch20" onclick="event.preventDefault();Nav.go('ch20')">
+            <div class="stat-value btn-countup" data-target="208" style="color:var(--terran)">0</div>
             <div class="stat-label">Equipment</div>
-            <div class="stat-sub">4 rarity tiers</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-value" style="color:var(--accord)">124</div>
-            <div class="stat-label">Tech Nodes</div>
-            <div class="stat-sub">20 per playable \u00B7 12 per NPC</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-value" style="color:var(--necro)">12</div>
-            <div class="stat-label">Planet Types</div>
-            <div class="stat-sub">Procedurally generated</div>
-          </div>
-          <div class="stat-block">
-            <div class="stat-value" style="color:var(--guardians)">143</div>
-            <div class="stat-label">Decisions</div>
-            <div class="stat-sub">128 + 15 Prototype Rulings</div>
-          </div>
+            <div class="stat-desc">4 rarity tiers across weapons, armor, and utility slots. Every piece changes how a unit fights. Mix loadouts to build squads that counter specific threats.</div>
+          </a>
+          <a class="stat-block stat-link" href="#ch22" onclick="event.preventDefault();Nav.go('ch22')">
+            <div class="stat-value btn-countup" data-target="5" style="color:var(--terran)">0</div>
+            <div class="stat-label">Commander Types</div>
+            <div class="stat-desc">Biological Clone, Psychic Echo, Forged Construct, Reactivated Core, or Military AI. Your origin changes how you experience the galaxy, artifacts, and advisors.</div>
+          </a>
         </div>
+
+        <div class="btn-category-label" style="color:var(--shards)">Combat & Systems</div>
+        <div class="stats-grid stats-grid-4">
+          <a class="stat-block stat-link" href="#ch2" onclick="event.preventDefault();Nav.go('ch2')">
+            <div class="stat-value btn-countup" data-target="5" style="color:var(--shards)">0</div>
+            <div class="stat-label">Gameplay Phases</div>
+            <div class="stat-desc">Map, Armada, Approach, Space Combat, Ground Combat. Every turn cycles through all five. Decisions in early phases cascade into later ones. 80% strategy, 20% intervention.</div>
+          </a>
+          <a class="stat-block stat-link" href="#ch21" onclick="event.preventDefault();Nav.go('ch21')">
+            <div class="stat-value btn-countup" data-target="14" style="color:var(--shards)">0</div>
+            <div class="stat-label">CP Abilities</div>
+            <div class="stat-desc">Command Point abilities are your direct intervention in auto-battles. Orbital strikes, emergency retreats, rally cries \u2014 spend CP wisely because you never have enough.</div>
+          </a>
+          <a class="stat-block stat-link" href="#ch17" onclick="event.preventDefault();Nav.go('ch17')">
+            <div class="stat-value btn-countup" data-target="5" style="color:var(--shards)">0</div>
+            <div class="stat-label">Fleet Formations</div>
+            <div class="stat-desc">Pre-battle fleet arrangements that define engagement doctrine. Choose how your forces deploy before the first shot is fired. Formation beats composition in the right matchup.</div>
+          </a>
+          <a class="stat-block stat-link" href="#suppG" onclick="event.preventDefault();Nav.go('suppG')">
+            <div class="stat-value btn-countup" data-target="124" style="color:var(--shards)">0</div>
+            <div class="stat-label">Tech Nodes</div>
+            <div class="stat-desc">20 nodes per playable faction, 12 per NPC. Branching research trees that unlock units, abilities, and equipment. You can\u2019t research everything in one run \u2014 choose your path.</div>
+          </a>
+        </div>
+
+        <div class="btn-category-label" style="color:var(--horde)">Galaxy & World</div>
+        <div class="stats-grid stats-grid-4">
+          <a class="stat-block stat-link" href="#ch13" onclick="event.preventDefault();Nav.go('ch13')">
+            <div class="stat-value btn-countup" data-target="12" style="color:var(--horde)">0</div>
+            <div class="stat-label">Planet Types</div>
+            <div class="stat-desc">Procedurally generated worlds from volcanic hellscapes to frozen tundra. Each type has unique terrain, combat modifiers, resource yields, and narrative flavor. No two galaxies are the same.</div>
+          </a>
+          <a class="stat-block stat-link" href="#ch16" onclick="event.preventDefault();Nav.go('ch16')">
+            <div class="stat-value btn-countup" data-target="140" style="color:var(--horde)">0</div>
+            <div class="stat-label">Buildings</div>
+            <div class="stat-desc">20 structures per faction. Barracks, research labs, orbital defenses, resource extractors. What you build determines what you can field. Infrastructure wins wars.</div>
+          </a>
+          <a class="stat-block stat-link" href="#ch3" onclick="event.preventDefault();Nav.go('ch3')">
+            <div class="stat-value btn-countup" data-target="7" style="color:var(--horde)">0</div>
+            <div class="stat-label">Galactic Eras</div>
+            <div class="stat-desc">From the Aethyn\u2019s Harmony through the Fracture, the Silence, and the Vorax Return. Seven epochs of history that shaped the galaxy you inherit. Each era left scars.</div>
+          </a>
+          <a class="stat-block stat-link" href="#ch36" onclick="event.preventDefault();Nav.go('ch36')">
+            <div class="stat-value btn-countup" data-target="4" style="color:var(--horde)">0</div>
+            <div class="stat-label">Difficulty Tiers</div>
+            <div class="stat-desc">Story, Standard, Hardcore, and fully Custom. From infinite simulation runs with no permadeath to 5-run ironman with 150% AI aggression. The Crucible adapts to your tolerance for pain.</div>
+          </a>
+        </div>
+
+        <div class="btn-category-label" style="color:var(--guardians)">Narrative & Meta</div>
+        <div class="stats-grid stats-grid-4">
+          <a class="stat-block stat-link" href="#ch25" onclick="event.preventDefault();Nav.go('ch25')">
+            <div class="stat-value btn-countup" data-target="5" style="color:var(--guardians)">0</div>
+            <div class="stat-label">Endings</div>
+            <div class="stat-desc">Architect, Vanguard, Tyrant, Pyrrhic Victory, and the secret Unifier path. Your alignment across every decision determines which galaxy you leave behind. None are simple.</div>
+          </a>
+          <a class="stat-block stat-link" href="#ch23" onclick="event.preventDefault();Nav.go('ch23')">
+            <div class="stat-value btn-countup" data-target="3" style="color:var(--guardians)">0</div>
+            <div class="stat-label">Advisors per Faction</div>
+            <div class="stat-desc">Three named advisors with competing agendas. They start as helpful voices in the simulation \u2014 then you discover they\u2019re real people with faces, histories, and stakes in the outcome.</div>
+          </a>
+          <a class="stat-block stat-link" href="#ch46" onclick="event.preventDefault();Nav.go('ch46')">
+            <div class="stat-value btn-countup" data-target="143" style="color:var(--guardians)">0</div>
+            <div class="stat-label">Design Decisions</div>
+            <div class="stat-desc">128 locked decisions plus 15 prototype rulings. Every major design choice documented, debated, and locked. This GDD doesn\u2019t hand-wave \u2014 it commits.</div>
+          </a>
+          <a class="stat-block stat-link" href="#ch1" onclick="event.preventDefault();Nav.go('ch1')">
+            <div class="stat-value btn-countup" data-target="60" style="color:var(--guardians)">0</div>
+            <div class="stat-label">GDD Chapters</div>
+            <div class="stat-desc">The complete game design document \u2014 every system, every faction, every mechanic documented in full. No summaries. No hand-waving. This is the whole blueprint.</div>
+          </a>
+        </div>
+
         <div class="divider"></div>
       </section>`;
   },
@@ -827,6 +893,38 @@ const Dashboard = {
         if (b) b.classList.remove('epigraph-quote-fading');
       }, 500);
     }, 7000);
+  },
+
+  /**
+   * Animate stat numbers counting up from 0 when scrolled into view.
+   * Uses IntersectionObserver for trigger, easeOutExpo for smooth decel.
+   */
+  initCountUpAnimation() {
+    const counters = document.querySelectorAll('.btn-countup');
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !entry.target._counted) {
+          entry.target._counted = true;
+          const target = parseInt(entry.target.getAttribute('data-target'), 10);
+          const duration = Math.min(1500, Math.max(600, target * 10));
+          const start = performance.now();
+
+          function step(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            /* easeOutExpo */
+            const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            entry.target.textContent = Math.round(ease * target);
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    counters.forEach(function(el) { observer.observe(el); });
   },
 
   /**

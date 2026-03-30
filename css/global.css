@@ -2075,8 +2075,50 @@ html {
   letter-spacing: 0.05em;
 }
 
+/* ── By The Numbers — 4-column grid with categories ── */
+.stats-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
 
-/* â"€â"€ 7j. Core Loop â€" Phase Cards â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+.btn-category-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  margin-top: 8px;
+  padding-left: 4px;
+}
+
+.stat-desc {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.stat-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+}
+
+.stat-link:hover .stat-value {
+  transform: scale(1.08);
+  transition: transform 0.2s ease;
+}
+
+.by-the-numbers-section .stat-block .stat-value {
+  font-size: 2.4rem;
+}
+
+
+/* ── 7j. Core Loop — Phase Cards ────────────────────────────── */
 
 .phase-loop {
   display: flex;
@@ -2445,6 +2487,10 @@ html {
 
 @media (max-width: 1024px) {
   .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
 
