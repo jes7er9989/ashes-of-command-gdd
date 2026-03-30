@@ -113,6 +113,9 @@ const ChapterLoader = {
       </div>`;
     this.contentArea.innerHTML = `${dashBtn}<div class="fade-in">${html}</div>${dashBtn}`;
 
+    /* Wrap tables and fixed-column grids in scroll containers for mobile */
+    this._wrapOverflowElements();
+
     // Scroll to anchor if this was an alias, otherwise scroll to top
     if (alias && alias.anchor) {
       requestAnimationFrame(() => {
@@ -293,5 +296,42 @@ const ChapterLoader = {
 
     // Register global filter/sort functions that chapter HTML onclick handlers call
     FactionRenderer.registerFilterFunctions(units, prefix, color, sprites);
+  },
+
+  /* ── Mobile Overflow Wrappers ────────────────────────── */
+
+  /**
+   * Wrap tables and fixed-column grids in horizontally scrollable
+   * containers so they don't break layout on narrow viewports.
+   * Only runs when viewport is <= 768px.
+   */
+  _wrapOverflowElements() {
+    if (window.innerWidth > 768) return;
+    if (!this.contentArea) return;
+
+    // Wrap <table> elements
+    this.contentArea.querySelectorAll('table').forEach(function(table) {
+      if (table.parentNode.classList.contains('table-scroll-wrap')) return;
+      var wrapper = document.createElement('div');
+      wrapper.className = 'table-scroll-wrap';
+      wrapper.style.cssText = 'overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;max-width:100%';
+      table.parentNode.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
+    });
+
+    // Wrap inline-styled grid divs with fixed-pixel columns (e.g. "200px 60px 90px")
+    this.contentArea.querySelectorAll('[style*="grid-template-columns"]').forEach(function(el) {
+      var style = el.getAttribute('style') || '';
+      // Only wrap if it has pixel-based columns (not 1fr-only grids)
+      if (!/grid-template-columns[^;]*\d+px/.test(style)) return;
+      if (el.parentNode.classList.contains('table-scroll-wrap')) return;
+      // Don't wrap planet rows or dashboard elements
+      if (el.classList.contains('planet-row-header')) return;
+      var wrapper = document.createElement('div');
+      wrapper.className = 'table-scroll-wrap';
+      wrapper.style.cssText = 'overflow-x:auto;-webkit-overflow-scrolling:touch;margin:4px 0;max-width:100%';
+      el.parentNode.insertBefore(wrapper, el);
+      wrapper.appendChild(el);
+    });
   }
 };
