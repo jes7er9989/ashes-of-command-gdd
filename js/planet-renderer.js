@@ -83,17 +83,22 @@ window.PlanetRenderer = (function () {
       fn.call(this);
     }
 
-    /* ── Utility: create sphere with glow ── */
+    /* ── Utility: create sphere with optional texture ── */
     _sphere(radius, color, opts) {
       const geo = new THREE.SphereGeometry(radius, 64, 64);
-      const mat = new THREE.MeshPhongMaterial({
-        color: color,
+      const matOpts = {
         shininess: opts.shininess || 15,
         emissive: opts.emissive || 0x000000,
         emissiveIntensity: opts.emissiveIntensity || 0,
         transparent: opts.transparent || false,
         opacity: opts.opacity || 1.0,
-      });
+      };
+      if (opts.map) {
+        matOpts.map = opts.map;
+      } else {
+        matOpts.color = color;
+      }
+      const mat = new THREE.MeshPhongMaterial(matOpts);
       const mesh = new THREE.Mesh(geo, mat);
       this.scene.add(mesh);
       return mesh;
@@ -113,14 +118,20 @@ window.PlanetRenderer = (function () {
       return mesh;
     }
 
-    _cloudLayer(radius, opacity, speed) {
+    _cloudLayer(radius, opacity, speed, texture) {
       const geo = new THREE.SphereGeometry(radius, 48, 48);
-      const mat = new THREE.MeshPhongMaterial({
-        color: 0xffffff,
+      const matOpts = {
         transparent: true,
         opacity: opacity || 0.2,
         depthWrite: false,
-      });
+      };
+      if (texture) {
+        matOpts.map = texture;
+        matOpts.alphaMap = texture;
+      } else {
+        matOpts.color = 0xffffff;
+      }
+      const mat = new THREE.MeshPhongMaterial(matOpts);
       const mesh = new THREE.Mesh(geo, mat);
       mesh.userData.rotSpeed = speed || 0.003;
       this.scene.add(mesh);
@@ -170,7 +181,8 @@ window.PlanetRenderer = (function () {
 
     _capitalWorld() {
       this._starfield();
-      this.planet = this._sphere(1, 0x887050, { shininess: 20, emissive: 0x221100, emissiveIntensity: 0.15 });
+      const tex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.capitalWorld() : null;
+      this.planet = this._sphere(1, 0x887050, { shininess: 20, emissive: 0x221100, emissiveIntensity: 0.15, map: tex });
 
       /* City lights on night side — emissive spots */
       const cityGeo = new THREE.SphereGeometry(1.005, 64, 64);
@@ -205,39 +217,21 @@ window.PlanetRenderer = (function () {
 
     _terrestrial() {
       this._starfield();
-      this.planet = this._sphere(1, 0x2266aa, { shininess: 30 });
-
-      /* Continent patches — use a second sphere with vertex displacement illusion */
-      const landGeo = new THREE.SphereGeometry(1.003, 64, 64);
-      const landMat = new THREE.MeshPhongMaterial({
-        color: 0x5a8a3a,
-        transparent: true,
-        opacity: 0.55,
-        depthWrite: false,
-      });
-      this.land = new THREE.Mesh(landGeo, landMat);
-      this.scene.add(this.land);
+      const tex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.terrestrial() : null;
+      this.planet = this._sphere(1, 0x2266aa, { shininess: 30, map: tex });
 
       this._atmosphere(1.08, 0x4488cc, 0.15);
-      this.clouds = this._cloudLayer(1.025, 0.22, 0.003);
-      this.clouds2 = this._cloudLayer(1.035, 0.12, -0.002);
-
-      /* Ice caps */
-      const capGeo = new THREE.SphereGeometry(1.004, 32, 8, 0, Math.PI * 2, 0, 0.3);
-      const capMat = new THREE.MeshPhongMaterial({ color: 0xe8f0ff, transparent: true, opacity: 0.5, depthWrite: false });
-      const northCap = new THREE.Mesh(capGeo, capMat);
-      this.scene.add(northCap);
-      const southCapGeo = new THREE.SphereGeometry(1.004, 32, 8, 0, Math.PI * 2, 2.9, 0.3);
-      const southCap = new THREE.Mesh(southCapGeo, capMat.clone());
-      this.scene.add(southCap);
+      const cloudTex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.clouds() : null;
+      this.clouds = this._cloudLayer(1.025, 0.35, 0.003, cloudTex);
+      this.clouds2 = this._cloudLayer(1.04, 0.2, -0.002, cloudTex);
 
       this.planet.userData.rotSpeed = 0.003;
-      this.land.userData.rotSpeed = 0.003;
     }
 
     _volcanic() {
       this._starfield();
-      this.planet = this._sphere(1, 0x2a1208, { shininess: 8, emissive: 0x331100, emissiveIntensity: 0.25 });
+      const tex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.volcanic() : null;
+      this.planet = this._sphere(1, 0x2a1208, { shininess: 8, emissive: 0x331100, emissiveIntensity: 0.25, map: tex });
 
       /* Lava glow layer */
       const lavaGeo = new THREE.SphereGeometry(1.004, 64, 64);
@@ -273,8 +267,8 @@ window.PlanetRenderer = (function () {
       this._atmosphere(1.08, 0xff4400, 0.08);
 
       /* Ash clouds */
-      this.ashClouds = this._cloudLayer(1.03, 0.10, 0.001);
-      this.ashClouds.material.color.set(0x3a1808);
+      const ashTex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.ashClouds() : null;
+      this.ashClouds = this._cloudLayer(1.03, 0.25, 0.001, ashTex);
 
       this.planet.userData.rotSpeed = 0.0025;
       this.lavaLayer.userData.rotSpeed = 0.0025;
@@ -282,7 +276,8 @@ window.PlanetRenderer = (function () {
 
     _ocean() {
       this._starfield();
-      this.planet = this._sphere(1, 0x1155aa, { shininess: 50 });
+      const tex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.ocean() : null;
+      this.planet = this._sphere(1, 0x1155aa, { shininess: 50, map: tex });
 
       /* Deep ocean variation */
       const deepGeo = new THREE.SphereGeometry(1.002, 48, 48);
@@ -307,8 +302,9 @@ window.PlanetRenderer = (function () {
       this._atmosphere(1.08, 0x4488cc, 0.18);
 
       /* Thick cloud cover */
-      this.clouds = this._cloudLayer(1.025, 0.28, 0.004);
-      this.clouds2 = this._cloudLayer(1.04, 0.15, -0.003);
+      const cloudTex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.clouds() : null;
+      this.clouds = this._cloudLayer(1.025, 0.35, 0.004, cloudTex);
+      this.clouds2 = this._cloudLayer(1.04, 0.2, -0.003, cloudTex);
 
       /* Polar ice */
       const capGeo = new THREE.SphereGeometry(1.004, 32, 8, 0, Math.PI * 2, 0, 0.25);
@@ -321,7 +317,8 @@ window.PlanetRenderer = (function () {
 
     _jungle() {
       this._starfield();
-      this.planet = this._sphere(1, 0x144016, { shininess: 12, emissive: 0x001a04, emissiveIntensity: 0.1 });
+      const tex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.jungle() : null;
+      this.planet = this._sphere(1, 0x144016, { shininess: 12, emissive: 0x001a04, emissiveIntensity: 0.1, map: tex });
 
       /* Lighter canopy highlights */
       const hiGeo = new THREE.SphereGeometry(1.003, 48, 48);
@@ -335,9 +332,10 @@ window.PlanetRenderer = (function () {
       this._atmosphere(1.08, 0x22aa44, 0.10);
 
       /* Very thick tropical clouds */
-      this.clouds = this._cloudLayer(1.02, 0.30, 0.0035);
-      this.clouds2 = this._cloudLayer(1.035, 0.18, -0.002);
-      this.clouds3 = this._cloudLayer(1.05, 0.10, 0.0015);
+      const cloudTex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.clouds() : null;
+      this.clouds = this._cloudLayer(1.02, 0.35, 0.0035, cloudTex);
+      this.clouds2 = this._cloudLayer(1.035, 0.22, -0.002, cloudTex);
+      this.clouds3 = this._cloudLayer(1.05, 0.12, 0.0015, cloudTex);
 
       /* Bioluminescence — faint glow points on night side */
       this.bioLights = [];
@@ -359,7 +357,8 @@ window.PlanetRenderer = (function () {
 
     _desert() {
       this._starfield();
-      this.planet = this._sphere(1, 0xb08030, { shininess: 25 });
+      const tex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.desert() : null;
+      this.planet = this._sphere(1, 0xb08030, { shininess: 25, map: tex });
 
       /* Darker mesa regions */
       const mesaGeo = new THREE.SphereGeometry(1.003, 48, 48);
@@ -384,7 +383,8 @@ window.PlanetRenderer = (function () {
 
     _iceWorld() {
       this._starfield();
-      this.planet = this._sphere(1, 0x90c0e8, { shininess: 60 });
+      const tex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.iceWorld() : null;
+      this.planet = this._sphere(1, 0x90c0e8, { shininess: 60, map: tex });
 
       /* Glacier ridges — slightly brighter overlay */
       const iceGeo = new THREE.SphereGeometry(1.003, 48, 48);
@@ -419,7 +419,8 @@ window.PlanetRenderer = (function () {
 
     _ancientRuins() {
       this._starfield();
-      this.planet = this._sphere(1, 0x3a2818, { shininess: 10, emissive: 0x110820, emissiveIntensity: 0.15 });
+      const tex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.ancientRuins() : null;
+      this.planet = this._sphere(1, 0x3a2818, { shininess: 10, emissive: 0x110820, emissiveIntensity: 0.15, map: tex });
 
       this._atmosphere(1.08, 0x9977dd, 0.10);
 
@@ -454,8 +455,9 @@ window.PlanetRenderer = (function () {
     _gasGiant() {
       this._starfield();
 
-      /* Gas giant — large sphere with banded appearance */
-      this.planet = this._sphere(1, 0xb88838, { shininess: 20 });
+      /* Gas giant — large sphere with banded texture */
+      const tex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.gasGiant() : null;
+      this.planet = this._sphere(1, 0xb88838, { shininess: 20, map: tex });
 
       /* Band layers — multiple overlapping transparent spheres at slight offsets */
       const bandColors = [0xc89840, 0x8a5c28, 0xd4a850, 0x9a6c30, 0xc8a040, 0x7a5020];
@@ -503,7 +505,8 @@ window.PlanetRenderer = (function () {
       parent.position.set(4, -2, -6);
       this.scene.add(parent);
 
-      this.planet = this._sphere(1, 0x888078, { shininess: 8 });
+      const tex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.moon() : null;
+      this.planet = this._sphere(1, 0x888078, { shininess: 8, map: tex });
 
       /* Crater geometry — darker spots with rim highlights */
       const craterPos = [
@@ -600,7 +603,8 @@ window.PlanetRenderer = (function () {
 
     _deadWorld() {
       this._starfield();
-      this.planet = this._sphere(1, 0x484038, { shininess: 5, emissive: 0x080604, emissiveIntensity: 0.05 });
+      const tex = typeof PlanetTextures !== 'undefined' ? PlanetTextures.deadWorld() : null;
+      this.planet = this._sphere(1, 0x484038, { shininess: 5, emissive: 0x080604, emissiveIntensity: 0.05, map: tex });
 
       /* Impact scars */
       const scarPos = [
