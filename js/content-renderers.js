@@ -88,9 +88,9 @@ const ContentRenderers = {
       <div class="planet-row" style="border-bottom:1px solid var(--border)">
         <div class="planet-row-header" onclick="document.getElementById('${id}').classList.toggle('planet-detail-open')" style="display:grid;grid-template-columns:160px 90px 150px 90px 1fr;padding:12px 16px;font-size:0.95rem;cursor:pointer;transition:background 0.15s ease;align-items:start" onmouseenter="this.style.background='rgba(255,255,255,0.02)'" onmouseleave="this.style.background='transparent'">
           <span style="color:${planet.color};font-weight:600">${planet.name}</span>
-          <span style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.territories}</span>
-          <span style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.yield}</span>
-          <span style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.encounter}</span>
+          <span style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.territories}<span class="ph-tag">PH</span></span>
+          <span style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.yield}<span class="ph-tag">PH</span></span>
+          <span style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.encounter}<span class="ph-tag">PH</span></span>
           <span style="color:var(--text-dim)">${terrainShort}</span>
         </div>
         <div id="${id}" class="planet-detail planet-detail-open">
@@ -165,7 +165,7 @@ const ContentRenderers = {
         <div class="territory-bar-track">
           <div class="territory-bar-fill" style="width:${widthPct}%;background:${planet.color}"></div>
         </div>
-        <span class="territory-bar-value">${planet.territories}</span>
+        <span class="territory-bar-value">${planet.territories}<span class="ph-tag">PH</span></span>
       </div>`;
   },
 

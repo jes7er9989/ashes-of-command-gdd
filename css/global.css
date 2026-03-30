@@ -3854,6 +3854,26 @@ body.crt-active {
   background: rgba(0, 180, 255, 0.015);
 }
 
+/* -- Placeholder Stat Tag -- */
+.ph-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 2px;
+  padding: 0px 3px;
+  margin-left: 3px;
+  vertical-align: middle;
+  line-height: 1.4;
+  opacity: 0.7;
+  user-select: none;
+  pointer-events: none;
+}
+
 /* -- Planet 3D Artwork -- */
 .planet-svg-wrap {
   width: 400px;

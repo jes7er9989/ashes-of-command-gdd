@@ -143,28 +143,29 @@ const FactionRenderer = {
           <div style="flex:1;height:6px;background:rgba(255,255,255,0.05);border-radius:1px;overflow:hidden">
             <div style="width:${pct}%;height:100%;background:${color};border-radius:1px;transition:width 0.3s"></div>
           </div>
-          <span style="width:32px;font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-mid);text-align:right">${v}</span>
+          <span style="width:32px;font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-mid);text-align:right">${v}<span class="ph-tag">PH</span></span>
         </div>`;
     }).join('');
 
     // ── Secondary stats (badges) ──
     const extras = [];
-    if (s.shield) extras.push(`Shield: ${s.shield}`);
+    const PH = '<span class="ph-tag">PH</span>';
+    if (s.shield) extras.push(`Shield: ${s.shield}${PH}`);
     if (s.dmgType) extras.push(`Dmg: ${s.dmgType}`);
     if (s.armorType) extras.push(`Armor: ${s.armorType}`);
-    if (s.critChance) extras.push(`Crit: ${Math.round(s.critChance * 100)}%`);
-    if (s.evasion) extras.push(`Evasion: ${Math.round(s.evasion * 100)}%`);
-    if (s.accuracy) extras.push(`Acc: ${Math.round(s.accuracy * 100)}%`);
-    if (s.morale) extras.push(`Morale: ${s.morale}`);
+    if (s.critChance) extras.push(`Crit: ${Math.round(s.critChance * 100)}%${PH}`);
+    if (s.evasion) extras.push(`Evasion: ${Math.round(s.evasion * 100)}%${PH}`);
+    if (s.accuracy) extras.push(`Acc: ${Math.round(s.accuracy * 100)}%${PH}`);
+    if (s.morale) extras.push(`Morale: ${s.morale}${PH}`);
     const extrasHtml = extras.length
       ? `<div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">${extras.map(e => `<span style="padding:2px 6px;border:1px solid var(--border);border-radius:1px">${e}</span>`).join('')}</div>`
       : '';
 
     // ── Production cost ──
     const costs = [];
-    if (s.scrapCost) costs.push(`${s.scrapCost}⚙`);
-    if (s.buildCycles) costs.push(`${s.buildCycles} cycles`);
-    if (s.supplyCost) costs.push(`${s.supplyCost} supply`);
+    if (s.scrapCost) costs.push(`${s.scrapCost}⚙${PH}`);
+    if (s.buildCycles) costs.push(`${s.buildCycles} cycles${PH}`);
+    if (s.supplyCost) costs.push(`${s.supplyCost} supply${PH}`);
     const costHtml = costs.length
       ? `<div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:${color};margin-top:6px">Cost: ${costs.join(' · ')}</div>`
       : '';
@@ -241,7 +242,7 @@ const FactionRenderer = {
         <span style="color:var(--text-hi)">${item.name}</span>
         <span style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--text-dim)">${item.slot || ''}</span>
         <span style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;${rarityStyle}">${item.rarity || ''}</span>
-        <span style="font-size:0.68rem">${item.effect || ''}</span>
+        <span style="font-size:0.68rem">${item.effect ? item.effect + '<span class="ph-tag">PH</span>' : ''}</span>
       </div>`;
   },
 
@@ -273,8 +274,8 @@ const FactionRenderer = {
         <div style="flex-shrink:0;width:32px;height:32px;border:1px solid ${color};border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:0.55rem;color:${color};background:rgba(${this._hexToRgb(color)},0.06)">${n.tier}</div>
         <div style="flex:1;min-width:0">
           <div style="font-size:0.75rem;color:var(--text-hi);margin-bottom:2px">${n.name}</div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);margin-bottom:4px">${n.cost || ''}</div>
-          <div style="font-size:0.7rem;color:var(--text-mid);line-height:1.5">${n.effect || ''}</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);margin-bottom:4px">${n.cost ? n.cost + ' <span class="ph-tag">PH</span>' : ''}</div>
+          <div style="font-size:0.7rem;color:var(--text-mid);line-height:1.5">${n.effect ? n.effect + ' <span class="ph-tag">PH</span>' : ''}</div>
           ${n.notes ? `<div style="font-size:0.65rem;color:var(--text-dim);font-style:italic;margin-top:3px">${n.notes}</div>` : ''}
         </div>
       </div>`).join('');
