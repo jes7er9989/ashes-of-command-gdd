@@ -782,7 +782,7 @@ const Dashboard = {
       <section class="galaxy-section">
         <div class="section-label">Galactic Overview</div>
         <div class="section-heading">Galactic Map</div>
-        <div id="canvas-galaxy-mount" style="display:flex;justify-content:center;padding:20px 0;min-height:900px"></div>
+        <div id="canvas-galaxy-mount" style="display:flex;justify-content:center;padding:20px 0;min-height:min(900px,100vw)"></div>
         <div class="divider"></div>
       </section>`;
   },

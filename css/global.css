@@ -2678,6 +2678,8 @@ html {
     margin-left: 0 !important;
     padding: 16px;
     padding-top: 56px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .faction-grid {
@@ -4260,11 +4262,24 @@ body.crt-active {
   html, body {
     overflow-x: hidden;
     max-width: 100vw;
+    width: 100%;
   }
 
   .main-content {
     max-width: 100vw;
     overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .dashboard-section {
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  .hero-starfield {
+    max-width: 100vw;
   }
 
   /* Faction flag badge: reposition on mobile */
