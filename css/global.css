@@ -4165,8 +4165,18 @@ body.crt-active {
   }
 }
 
-/* -- Planet expand hint (mobile only) -- */
+/* -- Planet expand hint -- */
 .planet-expand-hint {
+  display: inline;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-left: 6px;
+  opacity: 0.7;
+}
+
+/* Hide hint when expanded */
+.planet-row:has(.planet-detail-open) .planet-expand-hint {
   display: none;
 }
 

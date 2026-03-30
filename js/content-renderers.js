@@ -57,52 +57,37 @@ const ContentRenderers = {
     }
     container.innerHTML = html;
 
-    /* Initialize Three.js planet renderers.
-       Desktop: create all immediately — always visible and animated.
-       Mobile: create on-demand when planet detail is expanded via tap,
-       dispose when collapsed, to stay within WebGL context limits. */
+    /* Initialize Three.js planet renderers on-demand.
+       All platforms: planets start collapsed. Renderer created when
+       detail is expanded, disposed when collapsed. Uses MutationObserver
+       to watch for planet-detail-open class toggle. */
     if (typeof PlanetRenderer !== 'undefined') {
-      const isMobile = window.innerWidth <= 768;
+      container.querySelectorAll('.planet-detail').forEach(function(detail) {
+        const wrap = detail.querySelector('.planet-svg-wrap[data-planet-type]');
+        if (!wrap) return;
 
-      if (isMobile) {
-        /* Mobile: create renderer when detail expands, dispose when collapsed.
-           Uses MutationObserver on each planet-detail to watch for class changes. */
-        container.querySelectorAll('.planet-detail').forEach(function(detail) {
-          const wrap = detail.querySelector('.planet-svg-wrap[data-planet-type]');
-          if (!wrap) return;
-
-          function syncRenderer() {
-            const type = wrap.getAttribute('data-planet-type');
-            if (!type) return;
-            const isOpen = detail.classList.contains('planet-detail-open');
-
-            if (isOpen && !wrap._planetInstance) {
-              /* Small delay to let max-height transition start so container has dimensions */
-              setTimeout(function() {
-                if (!wrap._planetInstance) {
-                  wrap._planetInstance = PlanetRenderer.create(wrap, type);
-                }
-              }, 50);
-            } else if (!isOpen && wrap._planetInstance) {
-              wrap._planetInstance.dispose();
-              wrap._planetInstance = null;
-            }
-          }
-
-          /* Watch for class changes (planet-detail-open toggle) */
-          const mo = new MutationObserver(function() { syncRenderer(); });
-          mo.observe(detail, { attributes: true, attributeFilter: ['class'] });
-
-          /* If already open on load (shouldn't happen on mobile, but just in case) */
-          syncRenderer();
-        });
-      } else {
-        /* Desktop: create all renderers immediately */
-        container.querySelectorAll('.planet-svg-wrap[data-planet-type]').forEach(function(wrap) {
+        function syncRenderer() {
           const type = wrap.getAttribute('data-planet-type');
-          if (type) PlanetRenderer.create(wrap, type);
-        });
-      }
+          if (!type) return;
+          const isOpen = detail.classList.contains('planet-detail-open');
+
+          if (isOpen && !wrap._planetInstance) {
+            /* Small delay to let max-height transition start so container has dimensions */
+            setTimeout(function() {
+              if (!wrap._planetInstance) {
+                wrap._planetInstance = PlanetRenderer.create(wrap, type);
+              }
+            }, 50);
+          } else if (!isOpen && wrap._planetInstance) {
+            wrap._planetInstance.dispose();
+            wrap._planetInstance = null;
+          }
+        }
+
+        /* Watch for class changes (planet-detail-open toggle) */
+        const mo = new MutationObserver(function() { syncRenderer(); });
+        mo.observe(detail, { attributes: true, attributeFilter: ['class'] });
+      });
     }
   },
 
@@ -124,13 +109,13 @@ const ContentRenderers = {
     return `
       <div class="planet-row" style="border-bottom:1px solid var(--border)">
         <div class="planet-row-header" onclick="document.getElementById('${id}').classList.toggle('planet-detail-open')" style="display:grid;grid-template-columns:160px 90px 150px 90px 1fr;padding:12px 16px;font-size:0.95rem;cursor:pointer;transition:background 0.15s ease;align-items:start" onmouseenter="this.style.background='rgba(255,255,255,0.02)'" onmouseleave="this.style.background='transparent'">
-          <span style="color:${planet.color};font-weight:600">${planet.name}<span class="planet-expand-hint"> &mdash; tap to expand &#9662;</span></span>
+          <span style="color:${planet.color};font-weight:600">${planet.name}<span class="planet-expand-hint"> &mdash; click to expand &#9662;</span></span>
           <span class="planet-col-stats" style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.territories}<span class="ph-tag">PH</span></span>
           <span class="planet-col-stats" style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.yield}<span class="ph-tag">PH</span></span>
           <span class="planet-col-stats" style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.encounter}<span class="ph-tag">PH</span></span>
           <span class="planet-col-terrain" style="color:var(--text-dim)">${terrainShort}</span>
         </div>
-        <div id="${id}" class="planet-detail${window.innerWidth > 768 ? ' planet-detail-open' : ''}">
+        <div id="${id}" class="planet-detail">
           <div class="planet-detail-inner">
             <div class="planet-svg-wrap" data-planet-type="${planet.name}"></div>
             <div class="planet-detail-text">
