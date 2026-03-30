@@ -2682,6 +2682,8 @@ html {
     padding-top: 56px;
     width: 100%;
     box-sizing: border-box;
+    background: var(--bg-base);
+    overflow-x: clip;
   }
 
   .faction-grid {
