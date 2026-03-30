@@ -151,7 +151,7 @@ body {
   line-height: 1.6;
   color: var(--text-body);
   background: var(--bg-base);
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
@@ -200,7 +200,7 @@ a:hover {
   min-height: 100vh;
   width: 100vw;
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* â"€â"€ Sidebar â"€â"€
@@ -630,7 +630,7 @@ body.sidebar-collapsed .main-content {
   min-height: 100vh;
   padding: 24px 32px 60px;
   transition: margin-left 0.3s ease;
-  overflow-x: hidden;
+  overflow-x: clip;
   background:
     radial-gradient(ellipse at 20% 50%, rgba(0,180,255,0.03) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(0,180,255,0.02) 0%, transparent 40%),
