@@ -1191,10 +1191,14 @@ body.sidebar-collapsed .main-content {
 /* ── Epigraph Section ── Rotating multi-faction thematic quotes */
 .epigraph-section {
   max-width: 700px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   padding-top: 16px;
   padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .epigraph-context {
