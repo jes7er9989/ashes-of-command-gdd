@@ -53,14 +53,34 @@ const Dashboard = {
      Rotating quotes from across the Ashes of Command universe.
      Each cycles in the hero section beneath the title.            */
   LORE_QUOTES: [
+    /* ── Terran League ── */
     { text: 'The galaxy burns, but we do not break.', source: 'Terran League Field Command' },
+    { text: 'We were given a broken world and told to hold it. We held it.', source: 'General Valerius, Terran League' },
+    { text: 'Logistics wins wars. Heroes just get the credit.', source: 'Terran League Officer\'s Manual' },
+    /* ── Eternal Shards ── */
     { text: 'We were ancient when your species learned to walk upright.', source: 'Aethyn Archivist' },
+    { text: 'To preserve what remains, we must become what we feared.', source: 'Council of Resonances' },
+    { text: 'Every crystal that shatters was once a mind that dreamed.', source: 'Eternal Shards Elegy' },
+    /* ── Scrap-Horde ── */
     { text: 'Everything dies. Everything gets salvaged.', source: 'Scrap-Horde Philosophy' },
+    { text: 'Your trash is our throne. Your dead are our arsenal.', source: 'Horde Warcaller' },
+    /* ── Necro-Legion ── */
     { text: 'We have already won. You simply haven\'t died yet.', source: 'Necro-Legion Broadcast' },
+    { text: 'Patience is not a virtue. It is inevitability.', source: 'Necro-Legion Strategic Archives' },
+    { text: 'We remember everything. We forget nothing. We forgive less.', source: 'Reactivated Core Designation 0001' },
+    /* ── Unity Accord ── */
     { text: 'One target. One moment. Seven guns.', source: 'Unity Accord Combat Doctrine' },
+    { text: 'Unity is not compromise. It is multiplication.', source: 'The Covenant Text' },
+    /* ── Vorax ── */
     { text: 'We do not negotiate. We consume. We evolve. We hunger.', source: 'Vorax Intercept' },
+    { text: 'They adapted to our weapons in three engagements. We ran out of weapons in five.', source: 'Terran After-Action Report' },
+    /* ── Core Guardians ── */
     { text: 'They were made to guard the Reclamation Engine. They will not yield.', source: 'Alliance Intelligence Report' },
-    { text: 'The Crucible does not forgive. It does not forget. It teaches.', source: 'The Original Strategist' }
+    { text: 'Energy heals them. Kinetics merely anger them. Prayer does nothing.', source: 'First Contact Survivor' },
+    /* ── The Crucible / Meta ── */
+    { text: 'The Crucible does not forgive. It does not forget. It teaches.', source: 'The Original Strategist' },
+    { text: 'You are a weapon. The simulation decides when you are sharp enough.', source: 'Crucible Activation Protocol' },
+    { text: 'The simulation shaped the galaxy you must survive. Your choices built your prison.', source: 'Procedural Destiny Codex' }
   ],
 
   /* â"€â"€ Quote Cycling State â"€â"€ */
@@ -151,17 +171,30 @@ const Dashboard = {
     return `
       <section class="hero-section" id="hero-section">
         <div class="hero-starfield"></div>
+        <div class="hero-nebula"></div>
         <div class="hero-content">
           <h1 class="hero-title">ASHES OF COMMAND</h1>
           <div class="hero-subtitle">THE RECLAMATION</div>
+          <div class="hero-tagline">
+            <span class="hero-tagline-text">4X Grand Strategy meets Auto-Battler. Rogue-Lite Progression. Deep Narrative.</span>
+          </div>
+          <div class="hero-tagline-expanded">
+            <p class="hero-pitch">You are a weapon \u2014 a freshly decanted clone created by a fallen civilization to win a war that already destroyed them once. Prove your genius across simulated galactic campaigns. When the simulation judges you ready, wake into a real galaxy being devoured from the outside and guarded at its core by gods who will destroy anyone who approaches.</p>
+            <p class="hero-pitch-sub">7 factions. 105 units. 208 equipment items. One galaxy. No second chances.</p>
+          </div>
           <div class="hero-version">INTERACTIVE GAME DESIGN DOCUMENT v5.9.1</div>
           <div class="hero-lore-quote" id="hero-lore-quote">
             <span class="hero-lore-text" id="hero-lore-text">"${this.LORE_QUOTES[0].text}"</span>
             <span class="hero-lore-source" id="hero-lore-source">\u2014 ${this.LORE_QUOTES[0].source}</span>
           </div>
+          <div class="hero-cta-row">
+            <button class="hero-cta-btn hero-cta-primary" onclick="document.getElementById('dashboard-view').querySelector('.dashboard-section').scrollIntoView({behavior:'smooth'})">Explore the GDD</button>
+            <button class="hero-cta-btn hero-cta-secondary" onclick="document.querySelector('.faction-section').scrollIntoView({behavior:'smooth'})">Meet the Factions</button>
+            <button class="hero-cta-btn hero-cta-secondary" onclick="document.getElementById('canvas-galaxy-mount').scrollIntoView({behavior:'smooth'})">View the Galaxy</button>
+          </div>
         </div>
         <div class="hero-scroll-indicator" id="hero-scroll-indicator">
-          <div class="hero-scroll-arrow">â-¼</div>
+          <div class="hero-scroll-arrow">\u25BC</div>
           <div class="hero-scroll-label">SCROLL TO EXPLORE</div>
         </div>
       </section>`;
