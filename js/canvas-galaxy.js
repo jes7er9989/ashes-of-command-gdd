@@ -188,10 +188,9 @@ class GalaxyRenderer {
     this.canvas = document.createElement('canvas');
     this.canvas.width = S;
     this.canvas.height = S;
-    this.canvas.style.width = S + 'px';
-    this.canvas.style.height = S + 'px';
-    this.canvas.style.maxWidth = '100%';
-    this.canvas.style.height = 'auto';
+    this.canvas.style.width = '100%';
+    this.canvas.style.maxWidth = S + 'px';
+    this.canvas.style.aspectRatio = '1';
     this.canvas.style.display = 'block';
     this.canvas.style.margin = '0 auto';
     this.canvas.style.borderRadius = '50%';
