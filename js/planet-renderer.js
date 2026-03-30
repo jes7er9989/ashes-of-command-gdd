@@ -29,18 +29,38 @@ window.PlanetRenderer = (function () {
       this.type = type;
       this.meshes = []; // all rotating meshes {mesh, speed}
 
-      const size = container.clientWidth || 400;
-      const h = container.clientHeight || size;
+      // Use explicit container dimensions; fall back to 400 if not laid out yet
+      let size = container.clientWidth || 400;
+      let h = container.clientHeight || size;
+      // On mobile, container may be small — floor at 200
+      if (size < 200) size = 200;
+      if (h < 200) h = size;
 
       this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
       this.renderer.setSize(size, h);
-      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
       this.renderer.setClearColor(0x000000, 0);
       container.appendChild(this.renderer.domElement);
 
       this.scene = new THREE.Scene();
       this.camera = new THREE.PerspectiveCamera(40, size / h, 0.1, 100);
       this.camera.position.z = 3.2;
+
+      // ResizeObserver for responsive layout
+      if (typeof ResizeObserver !== 'undefined') {
+        this._resizeObs = new ResizeObserver(function(entries) {
+          for (var e of entries) {
+            var w = e.contentRect.width;
+            var newH = e.contentRect.height;
+            if (w > 50 && newH > 50) {
+              this.renderer.setSize(w, newH);
+              this.camera.aspect = w / newH;
+              this.camera.updateProjectionMatrix();
+            }
+          }
+        }.bind(this));
+        this._resizeObs.observe(container);
+      }
 
       /* Lighting */
       const sun = new THREE.DirectionalLight(0xffffff, 1.3);
@@ -576,6 +596,7 @@ window.PlanetRenderer = (function () {
     }
 
     dispose() {
+      if (this._resizeObs) this._resizeObs.disconnect();
       this.renderer.dispose();
       if (this.renderer.domElement.parentNode) {
         this.renderer.domElement.parentNode.removeChild(this.renderer.domElement);
