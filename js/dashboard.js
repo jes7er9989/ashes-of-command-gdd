@@ -151,6 +151,7 @@ const Dashboard = {
       /* Start interactive behaviors + canvas renderers after DOM is ready */
       requestAnimationFrame(() => {
         this.initLoreQuoteCycler();
+        this.initEpigraphQuoteCycler();
         this.initPrologueQuoteCycler();
         this.initScrollIndicator();
         this.initParallax();
@@ -207,8 +208,31 @@ const Dashboard = {
    * Build the epigraph quote â€" Unity Accord founding principles.
    * @returns {string} HTML string
    */
-  /* Epigraph removed — absorbed into State of the Galaxy prologue */
-  buildEpigraph() { return ''; },
+  /* ── Epigraph ── Rotating multi-faction thematic quotes with context */
+
+  EPIGRAPH_QUOTES: [
+    { text: 'The species that cannot share power will not survive to exercise it. Unity is not compromise \u2014 it is multiplication.', source: 'The Covenant Text \u2014 Unity Accord Founding Principles' },
+    { text: 'We built the Crucible to forge a weapon. We built the Engine to wield it. We did not live to see either used.', source: 'Final Aethyn Transmission' },
+    { text: 'Five civilizations claw at each other over the bones of a sixth, while a seventh devours them all from the rim.', source: 'Anonymous Intelligence Briefing' },
+    { text: 'The Reclamation Engine sleeps at the galactic core. The Guardians do not sleep. The Vorax do not stop. Time is the enemy we all share.', source: 'Council of Resonances, Emergency Session' },
+    { text: 'In the Crucible, death is a lesson. In the real galaxy, death is permanent. The simulation does not tell you when the lessons end.', source: 'Crucible Operations Manual, Final Page' },
+    { text: 'We did not inherit this galaxy. We woke up in its wreckage and were told to fix it.', source: 'General Valerius, Address to the Terran Senate' }
+  ],
+
+  _epigraphQuoteIndex: 0,
+  _epigraphQuoteTimer: null,
+
+  buildEpigraph() {
+    const q = this.EPIGRAPH_QUOTES[0];
+    return `
+      <section class="dashboard-section epigraph-section">
+        <div class="epigraph-context">The Aethyn are gone. Their empire spanned a thousand star systems. Their civil war left nothing but ruins, relics, and five civilizations fighting over the wreckage. This is the galaxy you inherit.</div>
+        <div class="epigraph-quote-block" id="epigraph-quote-block">
+          <div class="epigraph-quote-text" id="epigraph-quote-text">\u201C${q.text}\u201D</div>
+          <div class="epigraph-quote-source" id="epigraph-quote-source">\u2014 ${q.source}</div>
+        </div>
+      </section>`;
+  },
 
   /* â"€â"€ Game Description â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 
@@ -258,8 +282,16 @@ const Dashboard = {
    * Build the strategist quote block.
    * @returns {string} HTML string
    */
-  /* Strategist Quote removed — already in Hero section */
-  buildStrategistQuote() { return ''; },
+  buildStrategistQuote() {
+    return `
+      <section class="dashboard-section">
+        <div class="quote-block">
+          <div class="quote-text">\u201CMaster the Crucible. Learn what I could not teach myself. And when the simulation tells you you\u2019re ready\u2026 reunite our people. Whatever it costs.\u201D</div>
+          <div class="quote-attr">\u2014 THE ORIGINAL STRATEGIST</div>
+        </div>
+        <div class="divider"></div>
+      </section>`;
+  },
 
   /* â"€â"€ By The Numbers â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 
@@ -769,6 +801,40 @@ const Dashboard = {
         if (currentQuote) currentQuote.classList.remove('quote-fading');
       }, 500);
     }, 6000);
+  },
+
+  /**
+   * Start the epigraph quote cycling animation.
+   * Fades out, swaps text, fades back in every 7 seconds.
+   * @returns {void}
+   */
+  initEpigraphQuoteCycler() {
+    if (this._epigraphQuoteTimer) clearInterval(this._epigraphQuoteTimer);
+
+    const textEl = document.getElementById('epigraph-quote-text');
+    const sourceEl = document.getElementById('epigraph-quote-source');
+    if (!textEl || !sourceEl) return;
+
+    this._epigraphQuoteIndex = 0;
+
+    this._epigraphQuoteTimer = setInterval(() => {
+      const block = document.getElementById('epigraph-quote-block');
+      if (!block) { clearInterval(this._epigraphQuoteTimer); return; }
+
+      block.classList.add('epigraph-quote-fading');
+
+      setTimeout(() => {
+        this._epigraphQuoteIndex = (this._epigraphQuoteIndex + 1) % this.EPIGRAPH_QUOTES.length;
+        const q = this.EPIGRAPH_QUOTES[this._epigraphQuoteIndex];
+        const t = document.getElementById('epigraph-quote-text');
+        const s = document.getElementById('epigraph-quote-source');
+        if (t) t.textContent = `\u201C${q.text}\u201D`;
+        if (s) s.textContent = `\u2014 ${q.source}`;
+
+        const b = document.getElementById('epigraph-quote-block');
+        if (b) b.classList.remove('epigraph-quote-fading');
+      }, 500);
+    }, 7000);
   },
 
   /**
