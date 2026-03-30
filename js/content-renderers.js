@@ -59,6 +59,20 @@ const ContentRenderers = {
       html += this._renderPlanetRow(planets[i], planetSvgs[planets[i].name] || '', i);
     }
     container.innerHTML = html;
+
+    /* Re-parse SVGs so <animate>/<animateTransform> elements activate.
+       innerHTML inserts SVG as inert HTML; re-injecting via DOMParser
+       creates proper SVG namespace nodes with active SMIL animations. */
+    container.querySelectorAll('.planet-svg-wrap').forEach(function(wrap) {
+      const svgEl = wrap.querySelector('svg');
+      if (!svgEl) return;
+      const markup = svgEl.outerHTML;
+      const doc = new DOMParser().parseFromString(markup, 'image/svg+xml');
+      const parsed = doc.documentElement;
+      if (parsed && parsed.tagName === 'svg') {
+        wrap.replaceChild(document.importNode(parsed, true), svgEl);
+      }
+    });
   },
 
   /**
