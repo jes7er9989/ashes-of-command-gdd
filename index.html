@@ -317,20 +317,44 @@
           e.preventDefault();
           window._pwaInstallPrompt = e;
           var btn = document.getElementById('pwa-install-btn');
-          if (btn) btn.style.display = '';
-          // Hide button after install
-          e.userChoice.then(function() {
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = 'Install App';
+          }
+          // Reset after user choice
+          e.userChoice.then(function(choice) {
             window._pwaInstallPrompt = null;
-            if (btn) btn.style.display = 'none';
+            var btn = document.getElementById('pwa-install-btn');
+            if (btn) {
+              if (choice.outcome === 'accepted') {
+                btn.disabled = true;
+                btn.textContent = 'Installed';
+              } else {
+                btn.disabled = true;
+                btn.textContent = 'Install App';
+              }
+            }
           });
         });
 
-        // Hide install button if already installed
+        // Mark as installed
         window.addEventListener('appinstalled', function() {
           window._pwaInstallPrompt = null;
           var btn = document.getElementById('pwa-install-btn');
-          if (btn) btn.style.display = 'none';
+          if (btn) {
+            btn.disabled = true;
+            btn.textContent = 'Installed';
+          }
         });
+
+        // Check if already running as installed PWA
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+          var btn = document.getElementById('pwa-install-btn');
+          if (btn) {
+            btn.disabled = true;
+            btn.textContent = 'Installed';
+          }
+        }
 
         // Register service worker for offline caching
         if ('serviceWorker' in navigator) {
