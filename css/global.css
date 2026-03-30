@@ -103,13 +103,14 @@
 }
 
 html {
-  overflow-x: hidden;
   background: var(--bg-base);
 }
 
-/* Hide body scrollbar - page scrolls via html, body must not show its own */
+/* Hide page scrollbar while keeping scroll functional.
+   Uses width:0 instead of display:none — more reliable in Chromium. */
 body::-webkit-scrollbar {
-  display: none;
+  width: 0;
+  height: 0;
 }
 body {
   -ms-overflow-style: none;
@@ -143,13 +144,6 @@ body {
 }
 
 /* â"€â"€ Body â"€â"€ */
-html {
-  height: 100%;
-}
-body {
-  min-height: 100%;
-}
-
 body {
   font-family: 'Rajdhani', sans-serif;
   font-size: 18px;
@@ -159,6 +153,7 @@ body {
   background: var(--bg-base);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 
