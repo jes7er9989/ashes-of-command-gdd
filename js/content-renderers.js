@@ -43,12 +43,9 @@ const ContentRenderers = {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    let planets, planetSvgs;
+    let planets;
     try {
-      [planets, planetSvgs] = await Promise.all([
-        DataLoader.load('data/planets/planets.json'),
-        DataLoader.load('data/planets/planet-svg.json').catch(() => ({}))
-      ]);
+      planets = await DataLoader.load('data/planets/planets.json');
     } catch (e) {
       container.innerHTML = '<div style="padding:12px;color:var(--text-dim)">Failed to load planet data.</div>';
       return;
@@ -56,29 +53,37 @@ const ContentRenderers = {
 
     let html = '';
     for (let i = 0; i < planets.length; i++) {
-      html += this._renderPlanetRow(planets[i], planetSvgs[planets[i].name] || '', i);
+      html += this._renderPlanetRow(planets[i], '', i);
     }
     container.innerHTML = html;
 
-    /* Initialize Three.js planet renderers if available, with SVG fallback */
-    if (typeof PlanetRenderer !== 'undefined') {
-      container.querySelectorAll('.planet-svg-wrap[data-planet-type]').forEach(function(wrap) {
-        const type = wrap.getAttribute('data-planet-type');
-        if (type) {
-          const result = PlanetRenderer.create(wrap, type);
-          /* If WebGL failed, inject SVG fallback */
-          if (!result && planetSvgs[type]) {
-            wrap.innerHTML = planetSvgs[type];
+    /* Lazy-load Three.js planet renderers via IntersectionObserver.
+       Only creates WebGL contexts for visible planets, disposes when
+       off-screen. Prevents hitting mobile WebGL context limits. */
+    if (typeof PlanetRenderer !== 'undefined' && typeof IntersectionObserver !== 'undefined') {
+      const planetObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          const wrap = entry.target;
+          const type = wrap.getAttribute('data-planet-type');
+          if (!type) return;
+
+          if (entry.isIntersecting) {
+            /* Create renderer if not already active */
+            if (!wrap._planetInstance) {
+              wrap._planetInstance = PlanetRenderer.create(wrap, type);
+            }
+          } else {
+            /* Dispose when scrolled away to free WebGL context */
+            if (wrap._planetInstance) {
+              wrap._planetInstance.dispose();
+              wrap._planetInstance = null;
+            }
           }
-        }
-      });
-    } else {
-      /* No Three.js at all — use SVG for every planet */
+        });
+      }, { rootMargin: '200px 0px' }); /* Pre-load 200px before visible */
+
       container.querySelectorAll('.planet-svg-wrap[data-planet-type]').forEach(function(wrap) {
-        const type = wrap.getAttribute('data-planet-type');
-        if (type && planetSvgs[type]) {
-          wrap.innerHTML = planetSvgs[type];
-        }
+        planetObserver.observe(wrap);
       });
     }
   },

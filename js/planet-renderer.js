@@ -597,10 +597,24 @@ window.PlanetRenderer = (function () {
 
     dispose() {
       if (this._resizeObs) this._resizeObs.disconnect();
+      /* Remove from global instances array */
+      const idx = instances.indexOf(this);
+      if (idx !== -1) instances.splice(idx, 1);
+      /* Dispose Three.js resources */
+      this.scene.traverse(function(obj) {
+        if (obj.geometry) obj.geometry.dispose();
+        if (obj.material) {
+          if (obj.material.map) obj.material.map.dispose();
+          if (obj.material.emissiveMap) obj.material.emissiveMap.dispose();
+          obj.material.dispose();
+        }
+      });
       this.renderer.dispose();
       if (this.renderer.domElement.parentNode) {
         this.renderer.domElement.parentNode.removeChild(this.renderer.domElement);
       }
+      /* Stop animation loop if no instances remain */
+      if (instances.length === 0) animating = false;
     }
   }
 
@@ -617,12 +631,10 @@ window.PlanetRenderer = (function () {
         startLoop();
         return planet;
       } catch (e) {
-        console.warn('PlanetRenderer: WebGL failed for ' + type + ', falling back to SVG', e);
+        console.warn('PlanetRenderer: WebGL failed for ' + type, e);
         /* Clean up any partial renderer */
         var canvas = container.querySelector('canvas');
         if (canvas) canvas.remove();
-        /* Signal caller to use SVG fallback */
-        container.classList.add('planet-webgl-failed');
         return null;
       }
     },
