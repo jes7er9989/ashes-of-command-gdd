@@ -1188,6 +1188,62 @@ body.sidebar-collapsed .main-content {
 }
 
 
+/* ── Prologue Section ── State of the Galaxy narrative intro */
+.prologue-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.prologue-body {
+  margin-bottom: 28px;
+}
+
+.prologue-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text-mid);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+
+.prologue-text strong {
+  font-weight: 600;
+  color: var(--text-hi);
+}
+
+.prologue-quote-block {
+  text-align: center;
+  padding: 20px 24px;
+  margin: 8px 0 24px;
+  border-left: 2px solid rgba(0,180,255,0.3);
+  border-right: 2px solid rgba(0,180,255,0.3);
+  background: rgba(0,180,255,0.03);
+  border-radius: 4px;
+  transition: opacity 0.5s ease;
+}
+
+.prologue-quote-block.prologue-quote-fading {
+  opacity: 0;
+}
+
+.prologue-quote-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: #d0d6e0;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.prologue-quote-source {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.12em;
+}
+
+
 /* ── 7b. Galactic Overview — CSS-Only Animated Galaxy ──── */
 
 .galaxy-section {

@@ -24,9 +24,9 @@
    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    render(container)              | Main entry â€" builds full dashboard
    buildHero()                    | Full-viewport hero with starfield
-   buildEpigraph()                | Unity Accord founding principles quote
-   buildGameDescription()         | Full title + elevator pitch paragraph
-   buildStrategistQuote()         | "Master the Crucible..." quote
+   buildEpigraph()                | Removed — absorbed into prologue
+   buildGameDescription()         | State of the Galaxy prologue + rotating quotes
+   buildStrategistQuote()         | Removed — already in Hero
    buildByTheNumbers()            | Project Scope â€" 6 stat cards
    buildCanvasGalaxyContainer()   | Mount for Canvas 2D galaxy (canvas-galaxy.js)
    buildCanvasSolarContainer()    | Mount for Three.js solar system (solar-system.js)
@@ -151,6 +151,7 @@ const Dashboard = {
       /* Start interactive behaviors + canvas renderers after DOM is ready */
       requestAnimationFrame(() => {
         this.initLoreQuoteCycler();
+        this.initPrologueQuoteCycler();
         this.initScrollIndicator();
         this.initParallax();
         this._initCanvasRenderers();
@@ -206,15 +207,8 @@ const Dashboard = {
    * Build the epigraph quote â€" Unity Accord founding principles.
    * @returns {string} HTML string
    */
-  buildEpigraph() {
-    return `
-      <section class="dashboard-section">
-        <div class="quote-block" style="margin:32px auto;text-align:center">
-          <div class="quote-text" style="font-style:italic;font-size:1rem;color:var(--text-mid);line-height:1.8">\u201CThe species that cannot share power will not survive to exercise it. Unity is not compromise \u2014 it is multiplication.\u201D</div>
-          <div class="quote-attr" style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:2px;color:var(--text-dim)">THE COVENANT TEXT \u2014 UNITY ACCORD FOUNDING PRINCIPLES</div>
-        </div>
-      </section>`;
-  },
+  /* Epigraph removed — absorbed into State of the Galaxy prologue */
+  buildEpigraph() { return ''; },
 
   /* â"€â"€ Game Description â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 
@@ -222,16 +216,39 @@ const Dashboard = {
    * Build the document header with full title and elevator pitch.
    * @returns {string} HTML string
    */
+  /* ── State of the Galaxy Prologue ──
+     Replaces the old Game Description and Epigraph sections.
+     Provides narrative world-setting with rotating thematic quotes. */
+
+  PROLOGUE_QUOTES: [
+    { text: 'The species that cannot share power will not survive to exercise it. Unity is not compromise \u2014 it is multiplication.', source: 'The Covenant Text \u2014 Unity Accord Founding Principles' },
+    { text: 'The Aethyn built the Crucible to forge a weapon worthy of the Reclamation. Then they died before they could use it.', source: 'Terran League Historical Archives' },
+    { text: 'Five civilizations claw at each other over the bones of a sixth, while a seventh devours them all from the rim.', source: 'Anonymous Intelligence Briefing' },
+    { text: 'We did not inherit this galaxy. We woke up in its wreckage and were told to fix it.', source: 'General Valerius, Address to the Terran Senate' },
+    { text: 'The Reclamation Engine sleeps at the galactic core. The Guardians do not sleep. The Vorax do not stop. Time is the enemy we all share.', source: 'Council of Resonances, Emergency Session' },
+    { text: 'In the Crucible, death is a lesson. In the real galaxy, death is permanent. The simulation does not tell you when the lessons end.', source: 'Crucible Operations Manual, Final Page' }
+  ],
+
+  _prologueQuoteIndex: 0,
+  _prologueQuoteTimer: null,
+
   buildGameDescription() {
+    const q = this.PROLOGUE_QUOTES[0];
     return `
-      <section class="dashboard-section">
-        <div class="page-title-wrap">
-          <div class="page-title">ASHES OF COMMAND: THE RECLAMATION</div>
-          <div class="page-subtitle">Complete Master Game Design Document \u2014 Interactive Reference v5.9.1</div>
+      <section class="dashboard-section prologue-section">
+        <div class="section-label">The State of the Galaxy</div>
+        <div class="section-heading">A Civilization in Ruins. A War on Two Fronts.</div>
+        <div class="prologue-body">
+          <p class="prologue-text">Ten thousand years ago, the Aethyn \u2014 the galaxy\u2019s most advanced civilization \u2014 shattered themselves in a civil war that scarred entire star systems. In their final act, they built two things: a weapon called the <strong>Reclamation Engine</strong>, capable of reuniting or destroying what remained, and the <strong>Crucible</strong>, a simulation designed to forge a mind sharp enough to wield it.</p>
+          <p class="prologue-text">Five successor civilizations rose from the wreckage. The <strong style="color:var(--terran)">Terran League</strong> fights to hold the line with grit and logistics. The <strong style="color:var(--shards)">Eternal Shards</strong> preserve what\u2019s left of Aethyn knowledge before it dies with them. The <strong style="color:var(--horde)">Scrap-Horde</strong> builds empires from garbage and corpses. The <strong style="color:var(--necro)">Necro-Legion</strong> waits with geological patience, their machine-minds calculating inevitability. The <strong style="color:var(--accord)">Unity Accord</strong> believes cooperation is the only weapon that scales.</p>
+          <p class="prologue-text">They are not alone. From beyond the galactic rim, the <strong style="color:var(--vorax)">Vorax</strong> consume civilizations and evolve their technology into new biological weapons. At the galactic core, the <strong style="color:var(--guardians)">Core Guardians</strong> \u2014 ancient AI constructs left by the Aethyn \u2014 guard the Reclamation Engine with lethal force and will destroy anyone who approaches, ally or enemy.</p>
+          <p class="prologue-text">You are the Crucible\u2019s latest creation. Prove yourself in simulation. Wake into reality. Unite or conquer what remains. The galaxy will not wait.</p>
         </div>
-        <div class="body-text" style="margin-bottom:24px;">
-          A 4X grand strategy auto-battler with rogue-lite progression and deep narrative. You are a weapon \u2014 a freshly decanted clone or something stranger \u2014 created by a fallen civilization to win a war that already destroyed them once. Prove your genius across simulated galactic campaigns. When the simulation judges you ready, wake into a real galaxy being devoured from the outside by an adaptive alien swarm and guarded at its core by ancient energy gods who will destroy anyone who approaches.
+        <div class="prologue-quote-block" id="prologue-quote-block">
+          <div class="prologue-quote-text" id="prologue-quote-text">\u201C${q.text}\u201D</div>
+          <div class="prologue-quote-source" id="prologue-quote-source">\u2014 ${q.source}</div>
         </div>
+        <div class="divider"></div>
       </section>`;
   },
 
@@ -241,16 +258,8 @@ const Dashboard = {
    * Build the strategist quote block.
    * @returns {string} HTML string
    */
-  buildStrategistQuote() {
-    return `
-      <section class="dashboard-section">
-        <div class="quote-block">
-          <div class="quote-text">\u201CMaster the Crucible. Learn what I could not teach myself. And when the simulation tells you you\u2019re ready\u2026 reunite our people. Whatever it costs.\u201D</div>
-          <div class="quote-attr">\u2014 THE ORIGINAL STRATEGIST</div>
-        </div>
-        <div class="divider"></div>
-      </section>`;
-  },
+  /* Strategist Quote removed — already in Hero section */
+  buildStrategistQuote() { return ''; },
 
   /* â"€â"€ By The Numbers â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 
@@ -760,6 +769,40 @@ const Dashboard = {
         if (currentQuote) currentQuote.classList.remove('quote-fading');
       }, 500);
     }, 6000);
+  },
+
+  /**
+   * Start the prologue quote cycling animation.
+   * Fades out, swaps text, fades back in every 8 seconds.
+   * @returns {void}
+   */
+  initPrologueQuoteCycler() {
+    if (this._prologueQuoteTimer) clearInterval(this._prologueQuoteTimer);
+
+    const textEl = document.getElementById('prologue-quote-text');
+    const sourceEl = document.getElementById('prologue-quote-source');
+    if (!textEl || !sourceEl) return;
+
+    this._prologueQuoteIndex = 0;
+
+    this._prologueQuoteTimer = setInterval(() => {
+      const block = document.getElementById('prologue-quote-block');
+      if (!block) { clearInterval(this._prologueQuoteTimer); return; }
+
+      block.classList.add('prologue-quote-fading');
+
+      setTimeout(() => {
+        this._prologueQuoteIndex = (this._prologueQuoteIndex + 1) % this.PROLOGUE_QUOTES.length;
+        const q = this.PROLOGUE_QUOTES[this._prologueQuoteIndex];
+        const t = document.getElementById('prologue-quote-text');
+        const s = document.getElementById('prologue-quote-source');
+        if (t) t.textContent = `\u201C${q.text}\u201D`;
+        if (s) s.textContent = `\u2014 ${q.source}`;
+
+        const b = document.getElementById('prologue-quote-block');
+        if (b) b.classList.remove('prologue-quote-fading');
+      }, 500);
+    }, 8000);
   },
 
   /**
