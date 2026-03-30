@@ -3998,14 +3998,7 @@ body.crt-active {
   }
 
   .planet-row-header {
-    grid-template-columns: 1fr 60px !important;
     font-size: 0.82rem !important;
-  }
-
-  .planet-row-header > span:nth-child(3),
-  .planet-row-header > span:nth-child(4),
-  .planet-row-header > span:nth-child(5) {
-    display: none;
   }
 
   .territory-bar-row {

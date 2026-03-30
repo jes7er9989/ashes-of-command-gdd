@@ -113,9 +113,6 @@ const ChapterLoader = {
       </div>`;
     this.contentArea.innerHTML = `${dashBtn}<div class="fade-in">${html}</div>${dashBtn}`;
 
-    /* Wrap tables and fixed-column grids in scroll containers for mobile */
-    this._wrapOverflowElements();
-
     // Scroll to anchor if this was an alias, otherwise scroll to top
     if (alias && alias.anchor) {
       requestAnimationFrame(() => {
@@ -188,6 +185,10 @@ const ChapterLoader = {
     if (typeof Glossary !== 'undefined') {
       Glossary.init(this.contentArea);
     }
+
+    /* Wrap tables and fixed-column grids in scroll containers for mobile.
+       Runs AFTER all dynamic content (factions, planets, formations) renders. */
+    this._wrapOverflowElements();
   },
 
   /* ── Title & Theming ─────────────────────────────────── */
