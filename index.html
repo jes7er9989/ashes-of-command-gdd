@@ -312,10 +312,13 @@
 
         // Back-to-top button handled by Nav.bindBackToTop()
 
-        // PWA Install prompt — capture the event, show install button
+        // PWA Install prompt — capture the event, enable install button when available
         window.addEventListener('beforeinstallprompt', function(e) {
           e.preventDefault();
           window._pwaInstallPrompt = e;
+          window._pwaInstallReady = true;
+          /* Button may not exist yet if dashboard hasn't rendered — that's OK,
+             dashboard.js checks window._pwaInstallReady on render */
           var btn = document.getElementById('pwa-install-btn');
           if (btn) {
             btn.disabled = false;

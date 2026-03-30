@@ -156,6 +156,7 @@ const Dashboard = {
         this.initScrollIndicator();
         this.initParallax();
         this._initCanvasRenderers();
+        this._syncInstallButton();
       });
     } catch (e) {
       view.innerHTML = `<p style="color:var(--vorax)">Error loading dashboard: ${e.message}</p>`;
@@ -913,6 +914,23 @@ const Dashboard = {
     window.addEventListener('scroll', updateParallax, { passive: true });
     /* Initial position */
     updateParallax();
+  },
+
+  /**
+   * Sync the PWA install button state after dashboard renders.
+   * The beforeinstallprompt event may have fired before the button existed.
+   */
+  _syncInstallButton() {
+    const btn = document.getElementById('pwa-install-btn');
+    if (!btn) return;
+
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      btn.disabled = true;
+      btn.textContent = 'Installed';
+    } else if (window._pwaInstallReady && window._pwaInstallPrompt) {
+      btn.disabled = false;
+      btn.textContent = 'Install App';
+    }
   },
 
   /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
