@@ -1189,16 +1189,11 @@ body.sidebar-collapsed .main-content {
 
 
 /* ── Epigraph Section ── Rotating multi-faction thematic quotes */
-.epigraph-section {
+.epigraph-section .epigraph-context,
+.epigraph-section .epigraph-quote-block {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
-  padding-top: 16px;
-  padding-bottom: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .epigraph-context {
@@ -1241,9 +1236,11 @@ body.sidebar-collapsed .main-content {
 
 
 /* ── Prologue Section ── State of the Galaxy narrative intro */
-.prologue-section {
+.prologue-section .prologue-body,
+.prologue-section .prologue-quote-block {
   max-width: 800px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .prologue-body {
