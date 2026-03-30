@@ -60,19 +60,13 @@ const ContentRenderers = {
     }
     container.innerHTML = html;
 
-    /* Re-parse SVGs so <animate>/<animateTransform> elements activate.
-       innerHTML inserts SVG as inert HTML; re-injecting via DOMParser
-       creates proper SVG namespace nodes with active SMIL animations. */
-    container.querySelectorAll('.planet-svg-wrap').forEach(function(wrap) {
-      const svgEl = wrap.querySelector('svg');
-      if (!svgEl) return;
-      const markup = svgEl.outerHTML;
-      const doc = new DOMParser().parseFromString(markup, 'image/svg+xml');
-      const parsed = doc.documentElement;
-      if (parsed && parsed.tagName === 'svg') {
-        wrap.replaceChild(document.importNode(parsed, true), svgEl);
-      }
-    });
+    /* Initialize Three.js planet renderers if available */
+    if (typeof PlanetRenderer !== 'undefined') {
+      container.querySelectorAll('.planet-svg-wrap[data-planet-type]').forEach(function(wrap) {
+        const type = wrap.getAttribute('data-planet-type');
+        if (type) PlanetRenderer.create(wrap, type);
+      });
+    }
   },
 
   /**
@@ -101,7 +95,7 @@ const ContentRenderers = {
         </div>
         <div id="${id}" class="planet-detail planet-detail-open">
           <div class="planet-detail-inner">
-            ${svg ? `<div class="planet-svg-wrap">${svg}</div>` : ''}
+            <div class="planet-svg-wrap" data-planet-type="${planet.name}"></div>
             <div class="planet-detail-text">
               <div class="planet-detail-section">
                 <div class="planet-detail-label" style="color:${planet.color}">TERRAIN</div>
