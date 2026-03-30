@@ -3836,13 +3836,16 @@ body.crt-active {
 
 /* â"€â"€ Planet Detail (collapsed by default) â"€â"€ */
 .planet-detail {
-  max-height: 0;
   overflow: hidden;
   transition: max-height 0.35s ease;
 }
 
+.planet-detail:not(.planet-detail-open) {
+  max-height: 0;
+}
+
 .planet-detail.planet-detail-open {
-  max-height: 2000px;
+  max-height: none;
 }
 
 .planet-detail-inner {
@@ -5041,13 +5044,24 @@ body[class*="faction-"] .proto-badge {
   }
 
   .table-scroll-wrap table {
-    min-width: 400px;
+    min-width: 600px;
   }
 
   /* Stat placeholder banner — compact on mobile */
   .stat-placeholder-banner {
     font-size: 0.65rem;
     padding: 8px 10px;
+  }
+
+  /* Stack multi-column fr grids in chapter content on mobile */
+  #content-area [style*="grid-template-columns:1fr 1fr 1fr"],
+  #content-area [style*="grid-template-columns: 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  #content-area [style*="grid-template-columns:1fr 1fr;"],
+  #content-area [style*="grid-template-columns: 1fr 1fr;"] {
+    grid-template-columns: 1fr !important;
   }
 }
 
