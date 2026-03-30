@@ -212,11 +212,11 @@ const Dashboard = {
 
   EPIGRAPH_QUOTES: [
     { text: 'The species that cannot share power will not survive to exercise it. Unity is not compromise \u2014 it is multiplication.', source: 'The Covenant Text \u2014 Unity Accord Founding Principles' },
-    { text: 'We built the Crucible to forge a weapon. We built the Engine to wield it. We did not live to see either used.', source: 'Final Aethyn Transmission' },
-    { text: 'Five civilizations claw at each other over the bones of a sixth, while a seventh devours them all from the rim.', source: 'Anonymous Intelligence Briefing' },
-    { text: 'The Reclamation Engine sleeps at the galactic core. The Guardians do not sleep. The Vorax do not stop. Time is the enemy we all share.', source: 'Council of Resonances, Emergency Session' },
-    { text: 'In the Crucible, death is a lesson. In the real galaxy, death is permanent. The simulation does not tell you when the lessons end.', source: 'Crucible Operations Manual, Final Page' },
-    { text: 'We did not inherit this galaxy. We woke up in its wreckage and were told to fix it.', source: 'General Valerius, Address to the Terran Senate' }
+    { text: 'A wave of energy blasted from the Core \u2014 ripping apart everything at the molecular level. One wave. One moment. Everything changed.', source: 'The Fracture \u2014 Ch. 3' },
+    { text: 'They adapted to our weapons in three engagements. We ran out of weapons in five.', source: 'Terran After-Action Report \u2014 Vorax Contact' },
+    { text: 'Every faction believes they are indigenous to their homeworld. The truth rewriting identity is the moment the player realizes these warring peoples are family.', source: 'The Buried Truth \u2014 Ch. 3' },
+    { text: 'Death resets in-run progress. Blueprints, resources, lore persist across runs through the Archive. Veteran players always feel experience translating into power.', source: 'Rogue-Lite Meta-Progression \u2014 Ch. 1' },
+    { text: 'Hour 1 \u2014 Captain. Hour 10 \u2014 Admiral. Hour 20 \u2014 Emperor. The emotional arc: learning, mastery, delegation, trust, consequence.', source: 'The Experience Statement \u2014 Ch. 1' }
   ],
 
   _epigraphQuoteIndex: 0,
@@ -226,7 +226,7 @@ const Dashboard = {
     const q = this.EPIGRAPH_QUOTES[0];
     return `
       <section class="dashboard-section epigraph-section">
-        <div class="epigraph-context">The Aethyn are gone. Their empire spanned a thousand star systems. Their civil war left nothing but ruins, relics, and five civilizations fighting over the wreckage. This is the galaxy you inherit.</div>
+        <div class="epigraph-context">The Aethyn are gone. They manufactured galaxies, connected thousands of worlds through warp lanes, and existed as one psychic mind. The Vorax came. The warp lanes were cut. The Reclamation Engine fired. Five civilizations rose from the wreckage, none remembering what came before. This is the galaxy you inherit.</div>
         <div class="epigraph-quote-block" id="epigraph-quote-block">
           <div class="epigraph-quote-text" id="epigraph-quote-text">\u201C${q.text}\u201D</div>
           <div class="epigraph-quote-source" id="epigraph-quote-source">\u2014 ${q.source}</div>
@@ -245,12 +245,12 @@ const Dashboard = {
      Provides narrative world-setting with rotating thematic quotes. */
 
   PROLOGUE_QUOTES: [
-    { text: 'The species that cannot share power will not survive to exercise it. Unity is not compromise \u2014 it is multiplication.', source: 'The Covenant Text \u2014 Unity Accord Founding Principles' },
-    { text: 'The Aethyn built the Crucible to forge a weapon worthy of the Reclamation. Then they died before they could use it.', source: 'Terran League Historical Archives' },
-    { text: 'Five civilizations claw at each other over the bones of a sixth, while a seventh devours them all from the rim.', source: 'Anonymous Intelligence Briefing' },
+    { text: 'The entire species chose. All castes. All minds. Billions voting yes to their own destruction. The last act of unity was choosing to end unity.', source: 'The Fracture \u2014 Historical Record' },
+    { text: 'They targeted this galaxy and cut the warp lanes. No reinforcements. No escape. No contact with the thousands of other galaxies the Aethyn had once called home.', source: 'The Vorax Crisis \u2014 Ch. 3' },
     { text: 'We did not inherit this galaxy. We woke up in its wreckage and were told to fix it.', source: 'General Valerius, Address to the Terran Senate' },
+    { text: 'No faction knows they share a common ancestor. The truth is completely buried \u2014 not hidden, not suppressed, simply gone.', source: 'The Buried Truth \u2014 Ch. 3' },
     { text: 'The Reclamation Engine sleeps at the galactic core. The Guardians do not sleep. The Vorax do not stop. Time is the enemy we all share.', source: 'Council of Resonances, Emergency Session' },
-    { text: 'In the Crucible, death is a lesson. In the real galaxy, death is permanent. The simulation does not tell you when the lessons end.', source: 'Crucible Operations Manual, Final Page' }
+    { text: 'Your simulated victories shaped the galaxy you now face. An aggressive player wakes to a militarized galaxy. A diplomatic player wakes to trade routes and alliances.', source: 'Procedural Destiny \u2014 Ch. 3' }
   ],
 
   _prologueQuoteIndex: 0,
@@ -263,10 +263,10 @@ const Dashboard = {
         <div class="section-label">The State of the Galaxy</div>
         <div class="section-heading">A Civilization in Ruins. A War on Two Fronts.</div>
         <div class="prologue-body">
-          <p class="prologue-text">Ten thousand years ago, the Aethyn \u2014 the galaxy\u2019s most advanced civilization \u2014 shattered themselves in a civil war that scarred entire star systems. In their final act, they built two things: a weapon called the <strong>Reclamation Engine</strong>, capable of reuniting or destroying what remained, and the <strong>Crucible</strong>, a simulation designed to forge a mind sharp enough to wield it.</p>
-          <p class="prologue-text">Five successor civilizations rose from the wreckage. The <strong style="color:var(--terran)">Terran League</strong> fights to hold the line with grit and logistics. The <strong style="color:var(--shards)">Eternal Shards</strong> preserve what\u2019s left of Aethyn knowledge before it dies with them. The <strong style="color:var(--horde)">Scrap-Horde</strong> builds empires from garbage and corpses. The <strong style="color:var(--necro)">Necro-Legion</strong> waits with geological patience, their machine-minds calculating inevitability. The <strong style="color:var(--accord)">Unity Accord</strong> believes cooperation is the only weapon that scales.</p>
-          <p class="prologue-text">They are not alone. From beyond the galactic rim, the <strong style="color:var(--vorax)">Vorax</strong> consume civilizations and evolve their technology into new biological weapons. At the galactic core, the <strong style="color:var(--guardians)">Core Guardians</strong> \u2014 ancient AI constructs left by the Aethyn \u2014 guard the Reclamation Engine with lethal force and will destroy anyone who approaches, ally or enemy.</p>
-          <p class="prologue-text">You are the Crucible\u2019s latest creation. Prove yourself in simulation. Wake into reality. Unite or conquer what remains. The galaxy will not wait.</p>
+          <p class="prologue-text">Tens of thousands of years ago, the <strong style="color:var(--guardians)">Aethyn</strong> \u2014 a psychically unified species that manufactured entire galaxies \u2014 were besieged by the <strong style="color:var(--vorax)">Vorax</strong>, extragalactic predators drawn by their psychic signal. The Vorax cut the warp lanes, sealing the galaxy. After centuries of losing war, the entire species voted to activate the <strong>Reclamation Engine</strong> \u2014 a weapon that shattered the Aethyn into scattered seeds across the galaxy and purged the Vorax completely. One wave. One moment. Everything changed.</p>
+          <p class="prologue-text">Five civilizations rose from the wreckage, each believing they are indigenous to their homeworld. The <strong style="color:var(--terran)">Terran League</strong> \u2014 Engineer Caste descendants who got almost nothing and rebuilt through sheer stubborn refusal to stay broken. The <strong style="color:var(--shards)">Eternal Shards</strong> \u2014 Scholar Caste descendants who retained the strongest psychic connection to the old resonance, now a dying species fighting extinction. The <strong style="color:var(--horde)">Scrap-Horde</strong> \u2014 Warrior Caste descendants dumped in hostile space, surviving through aggression and an instinct for violence that runs deeper than memory. The <strong style="color:var(--necro)">Necro-Legion</strong> \u2014 not from any specific caste, but adopted by intact Aethyn AI infrastructure that recognized descendant DNA and began rebuilding. The <strong style="color:var(--accord)">Unity Accord</strong> \u2014 Shepherd Caste descendants whose instinct for unity persisted even when the memory of unity did not.</p>
+          <p class="prologue-text">Now the <strong style="color:var(--vorax)">Vorax have returned</strong> at the galactic rim \u2014 consuming civilizations and evolving their technology into new biological weapons. At the galactic core, the <strong style="color:var(--guardians)">Core Guardians</strong> \u2014 sentient AI constructs left by the Aethyn \u2014 guard the Reclamation Engine with lethal force. Energy weapons heal them. Their deaths chain-react into cascading explosions. They will destroy anyone who approaches.</p>
+          <p class="prologue-text">You are a weapon \u2014 a freshly decanted clone, or something stranger \u2014 created to win a war that already destroyed a civilization once. Prove your genius in simulation. When judged ready, wake into the real galaxy. Your simulated victories shaped the galaxy you now face. If you die here, it is permanent.</p>
         </div>
         <div class="prologue-quote-block" id="prologue-quote-block">
           <div class="prologue-quote-text" id="prologue-quote-text">\u201C${q.text}\u201D</div>
