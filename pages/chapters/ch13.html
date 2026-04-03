@@ -2,9 +2,9 @@
   <div class="page" id="page-ch13">
     <div class="page-title-wrap">
 <div class="page-title">PLANETARY BODIES &amp; BIOMES</div>
-    <div class="page-subtitle">12 Planet Types · Variable Territories · Traits — Chapter 13</div>
+    <div class="page-subtitle">17 Planet Types &middot; 5 Megastructures &middot; Variable Territories &middot; Weather &middot; Scanning &mdash; Chapter 13</div>
 </div>
-    <div class="body-text" style="margin-bottom:24px">Every planet in the galaxy is assigned one of 12 types that determines visual appearance, terrain palette for ground battles, territory count, base resource yield, and planetary trait probabilities. Planet types are assigned during galaxy generation based on host star type with random variation.</div>
+    <div class="body-text" style="margin-bottom:24px">Every planet in the galaxy is assigned one of 17 types &mdash; 12 standard worlds and 5 rare megastructures &mdash; that determines visual appearance, terrain palette for ground battles, territory count, base resource yield, environmental hazards, and planetary trait probabilities. Planet types are assigned during galaxy generation based on host star type with weighted random variation. A global weather system affects all planet types, and a tiered scanning mechanic reveals planetary details before committing ground forces.</div>
 
     <div class="section-label">Planet Type Catalog</div>
     <div class="section-heading" id="sec-ch13-0">12 Planet Types</div>
@@ -20,6 +20,112 @@
     <div class="card" style="margin-bottom:24px;padding:10px 18px">
       <div style="font-size:0.98rem;color:var(--text-dim);margin-bottom:8px">Moon (3 territories) = 15-minute skirmish · Capital World (22 territories) = multi-session campaign</div>
       <div id="territory-bars"></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-label">Standard Worlds &mdash; Detailed Profiles</div>
+    <div class="section-heading" id="sec-ch13-planets">12 Standard Planet Types</div>
+
+    <!-- CAPITAL WORLD -->
+    <div class="card" style="border-left:3px solid var(--terran);margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:1rem;color:var(--terran);letter-spacing:2px;margin-bottom:4px">CAPITAL WORLD</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-dim);margin-bottom:12px">8&ndash;22 Territories &middot; Fixed Per Faction &middot; Unique Terrain</div>
+
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65;margin-bottom:12px">
+        Dense urban sprawl dominates every Capital World &mdash; multi-story buildings provide garrison positions with interlocking fields of fire, wide avenues funnel vehicles into kill zones while offering assault corridors, elevated overpasses and mag-rail bridges create critical height advantage positions, and underground tunnel networks allow infantry flanking routes beneath the surface. Destructible environments are key: buildings collapse under sustained fire, creating rubble cover that reshapes the battlefield mid-engagement. Expect fortified government districts, industrial sectors with heavy machinery cover, civilian zones with narrow alleys, and orbital defense battery emplacements that can be captured and turned against attackers.
+      </div>
+
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65;margin-bottom:12px">
+        From orbit, a Capital World blazes with light &mdash; city grids cover 40%+ of the surface in geometric patterns of civilization. Orbital rings of defense platforms, shipyards, and commercial stations form a visible halo. The atmosphere carries a permanent industrial haze, punctuated by the glow of massive energy reactors. Approaching fleets see a world wrapped in the infrastructure of empire &mdash; comm-sat constellations, debris fields from centuries of orbital construction, and the ever-present patrol routes of defense flotillas.
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">STRATEGIC VALUE</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.55">
+            - Fixed territory count per faction (PH values pending balance)<br>
+            - Starting infrastructure scales with difficulty setting and faction choice<br>
+            - Defender&rsquo;s advantage: auto-militia, orbital defense batteries, morale bonus<br>
+            - Capital tag is permanent &mdash; losing it triggers empire-wide morale crisis<br>
+            - Recapture is a strategic priority, not optional
+          </div>
+        </div>
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">FACTION TERRAIN</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.55">
+            - Terran League: Urban/industrial sprawl, fortified government districts<br>
+            - Eternal Shards: Crystalline formations, resonance chambers<br>
+            - Scrap-Horde: Junkyard wastelands, forge complexes<br>
+            - The Revenant: Tomb-architecture corridors, sealed vaults<br>
+            - Unity Accord: Diplomatic compounds, interconnected biodomes
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:8px 12px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:4px">WEATHER EVENTS</div>
+          <div style="font-size:0.85rem;color:var(--text-mid)">Urban Firestorm &middot; Electromagnetic Pulse &middot; Industrial Meltdown</div>
+        </div>
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:8px 12px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:4px">SCAN DISCOVERIES</div>
+          <div style="font-size:0.85rem;color:var(--text-mid)">Hidden Bunker Network &middot; Classified Archives &middot; Emergency Cache</div>
+        </div>
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:8px 12px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:4px">REVENANT SLEEPERS</div>
+          <div style="font-size:0.85rem;color:var(--text-mid)">Rare &mdash; unlikely but possible beneath ancient foundations</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERRESTRIAL -->
+    <div class="card" style="border-left:3px solid var(--accord);margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:1rem;color:var(--accord);letter-spacing:2px;margin-bottom:4px">TERRESTRIAL</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-dim);margin-bottom:12px">10&ndash;14 Territories &middot; 40% Encounter Rate &middot; Subtypes: Temperate, Arid-Temperate, Tropical</div>
+
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65;margin-bottom:12px">
+        The most tactically balanced terrain in the galaxy &mdash; open grasslands provide clean sightlines for ranged engagements, scattered forests offer light cover and concealment for ambush tactics, river crossings create natural chokepoints that reward defensive positioning, and rolling hills provide moderate height advantage without the extreme verticality of mountain worlds. Mixed terrain forces diverse army compositions: pure infantry struggles in open fields, pure vehicles bog down in forests, and balanced forces dominate. Weather patterns shift between clear skies (favoring ranged), rain (reducing visibility), and fog banks (infantry ambush conditions).
+      </div>
+
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65;margin-bottom:12px">
+        Earth-like beauty from orbit &mdash; deep blue oceans covering 60&ndash;70% of the surface, green and brown continental landmasses with visible mountain ranges, white cloud formations tracking weather systems. These are the worlds every faction recognizes as &lsquo;home&rsquo; regardless of origin. Scattered city lights on the night side reveal moderate population density. Visible agricultural patterns on temperate continents.
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">STRATEGIC VALUE</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.55">
+            - 40% random encounter chance per cycle &mdash; the galaxy&rsquo;s most contested real estate<br>
+            - Balanced resource yield: universally valuable, no faction gains disproportionate advantage<br>
+            - Soft advantages for factions whose biology or technology suits temperate environments<br>
+            - Additional strategic upsides pending balance pass <span class="ph-tag">PH</span><br>
+            - The &lsquo;standard&rsquo; planet against which all other combat modifiers are measured
+          </div>
+        </div>
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">SUBTYPES</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.55">
+            - <strong style="color:var(--text-hi)">Temperate:</strong> Balanced biomes, moderate weather, classic mixed-terrain battlefields<br>
+            - <strong style="color:var(--text-hi)">Arid-Temperate:</strong> Drier climate, sparse vegetation, longer sightlines, more open terrain<br>
+            - <strong style="color:var(--text-hi)">Tropical:</strong> Dense coastal vegetation, frequent storms, humidity affects electronics and visibility
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:8px 12px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:4px">WEATHER EVENTS</div>
+          <div style="font-size:0.85rem;color:var(--text-mid)">Rainstorm &middot; Fog Bank &middot; Thunderstorm &middot; Seasonal Shift</div>
+        </div>
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:8px 12px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:4px">SCAN DISCOVERIES</div>
+          <div style="font-size:0.85rem;color:var(--text-mid)">Mineral Deposits &middot; Fertile Basin &middot; Collapsed Settlement</div>
+        </div>
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:8px 12px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:4px">REVENANT SLEEPERS</div>
+          <div style="font-size:0.85rem;color:var(--text-mid)">Rare &mdash; unlikely but possible in buried ruins</div>
+        </div>
+      </div>
     </div>
 
     <div class="divider"></div>
