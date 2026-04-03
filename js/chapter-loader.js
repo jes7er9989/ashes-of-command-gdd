@@ -55,7 +55,7 @@ const ChapterLoader = {
     ch8:  { prefix: 'necro',    dataKey: 'necro-legion',     color: '#44ff66', cssVar: '--necro',    name: 'necro' },
     ch9:  { prefix: 'accord',   dataKey: 'unity-accord',     color: '#ffaa22', cssVar: '--accord',   name: 'accord' },
     ch10: { prefix: 'vorax',    dataKey: 'vorax',            color: '#ff2266', cssVar: '--vorax',    name: 'vorax' },
-    ch11: { prefix: 'guardian',  dataKey: 'core-guardians',   color: '#cc44ff', cssVar: '--guardians', name: 'guardians' }
+    ch11: { prefix: 'guardian',  dataKey: 'core-guardians',   color: '#C0C0D0', cssVar: '--guardians', name: 'guardians' }
   },
 
   /* ── Initialization ──────────────────────────────────── */

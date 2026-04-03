@@ -44,7 +44,7 @@ const FACTION_COLORS = {
   necro:     { r: 68, g: 255, b: 102, hex: '#44ff66' },   // Green — reanimation glow
   accord:    { r: 255, g: 170, b: 34, hex: '#ffaa22' },   // Gold — diplomatic unity
   vorax:     { r: 255, g: 34, b: 102, hex: '#ff2266' },   // Red — biological threat
-  guardians: { r: 204, g: 68, b: 255, hex: '#cc44ff' },   // Purple — ancient protectors
+  guardians: { r: 192, g: 192, b: 208, hex: '#C0C0D0' },   // Purple — ancient protectors
 };
 
 
@@ -506,7 +506,7 @@ const VisualEffects = (() => {
     // HoloTilt disabled — Thomas prefers cards that don't pitch around
     // HoloTilt.init();
 
-    console.log('%c[VFX] Visual effects online.', 'color:#cc44ff;font-family:monospace');
+    console.log('%c[VFX] Visual effects online.', 'color:#C0C0D0;font-family:monospace');
   }
 
   function destroy() {

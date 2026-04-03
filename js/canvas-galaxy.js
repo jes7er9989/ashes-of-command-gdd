@@ -101,7 +101,7 @@ class GalaxyRenderer {
     necro:     { color: '#00e070', name: 'NECRO-LEGION',    chapterId: 'ch8'  },
     accord:    { color: '#ffaa22', name: 'UNITY ACCORD',    chapterId: 'ch9'  },
     vorax:     { color: '#ff2266', name: 'VORAX SWARM',     chapterId: 'ch10' },
-    guardians: { color: '#cc44ff', name: 'GUARDIANS',       chapterId: 'ch11' },
+    guardians: { color: '#C0C0D0', name: 'GUARDIANS',       chapterId: 'ch11' },
   };
 
   /* ── Constructor ────────────────────────────────────────── */

@@ -884,7 +884,7 @@ const AudioEngine = (() => {
       const buf = new Uint8Array(_anlz.frequencyBinCount);
       _anlz.getByteFrequencyData(buf);
       const step = Math.floor(_anlz.frequencyBinCount / 7);
-      const fmap = { terran: '#00b4ff', shards: '#00ffee', horde: '#ff6622', necro: '#44ff66', accord: '#ffaa22', vorax: '#ff2266', guardians: '#cc44ff' };
+      const fmap = { terran: '#00b4ff', shards: '#00ffee', horde: '#ff6622', necro: '#44ff66', accord: '#ffaa22', vorax: '#ff2266', guardians: '#C0C0D0' };
       const col = fmap[currentFaction] || '#4488ff';
       for (let i = 0; i < 7; i++) {
         let val = 0;
