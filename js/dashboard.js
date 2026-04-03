@@ -812,6 +812,7 @@ const Dashboard = {
           <div class="card card-accent" style="border-left-color:var(--shards)"><strong style="color:#fff;font-size:1rem">2. Units That Become People.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Continuous promotion from anonymous Rookie to autonomous General who commands entire sectors, develops personality traits, forms rivalries, and can defect with their entire fleet if mistreated. Kill-count thresholds: Veteran=3, Elite=8, Commander=15, General=25.</span></div>
           <div class="card card-accent" style="border-left-color:var(--horde)"><strong style="color:#fff;font-size:1rem">3. Procedural Destiny.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Cross-run behavioral profile GENERATES the endgame galaxy. An aggressive player wakes to a militarized galaxy. A diplomatic player wakes to trade routes and alliances. The simulation shaped the reality you must survive.</span></div>
           <div class="card card-accent" style="border-left-color:var(--necro)"><strong style="color:#fff;font-size:1rem">4. The Dual-Threat Weapon Asymmetry.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Energy weapons work on Vorax but HEAL Core Guardians. Kinetic weapons work on Guardians but are overwhelmed by Vorax numbers. Maintain two armies, re-equip constantly, or pursue rare hybrid weapons.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--guardians)"><strong style="color:#fff;font-size:1rem">5. The Galactic Compendium.</strong> <span style="color:var(--text-mid);font-size:0.9rem">A living document that fills as you play \u2014 500\u2013800 entries across three narrative voices: Commander Notes, AI Data Entries, and Advisor Commentary. It persists across all campaigns and becomes a personal record of everything discovered, fought, and survived.</span></div>
         </div>
         <div class="divider"></div>
       </section>`;
@@ -831,7 +832,11 @@ const Dashboard = {
       { num: '13', label: 'Appendices' },
       { num: '7', label: 'Factions' },
       { num: '105', label: 'Units' },
-      { num: '208', label: 'Equipment' }
+      { num: '208', label: 'Equipment' },
+      { num: '124', label: 'Tech Nodes' },
+      { num: '140', label: 'Buildings' },
+      { num: '12', label: 'Planet Types' },
+      { num: '5', label: 'Endings' }
     ];
     return `
       <section class="stats-section">
@@ -864,6 +869,9 @@ const Dashboard = {
           </div>
           <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);letter-spacing:2px;margin-top:4px">
             <span style="color:var(--accent)">46</span> Chapters \u00B7 <span style="color:var(--accent)">8</span> Parts \u00B7 <span style="color:var(--accent)">13</span> Appendices (incl. Appendix L &amp; M) \u00B7 <span style="color:var(--accent)">143</span> Resolved Decisions \u00B7 <span style="color:var(--accent)">15</span> Prototype Rulings
+          </div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:0.5rem;color:var(--text-dim);letter-spacing:2px;margin-top:4px">
+            Last Updated: April 2026
           </div>
         </div>
         <blockquote class="footer-quote">
