@@ -134,7 +134,6 @@ const Dashboard = {
         this.buildEpigraph() +
         this.buildGameDescription() +
         this.buildStrategistQuote() +
-        this.buildByTheNumbers() +
         this.buildCanvasGalaxyContainer() +
         this.buildCanvasSolarContainer() +
         this.buildCanvasTerritoryContainer() +
@@ -145,6 +144,7 @@ const Dashboard = {
         this.buildGameSystems() +
         this.buildDocumentStructure() +
         this.buildFiveDifferentiators() +
+        this.buildByTheNumbers() +
         this.buildSummary() +
         this.buildFooterQuote();
 
