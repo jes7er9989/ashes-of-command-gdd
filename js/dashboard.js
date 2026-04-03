@@ -132,6 +132,8 @@ const Dashboard = {
       view.innerHTML =
         this.buildHero() +
         this.buildEpigraph() +
+        this.buildGenreFusion() +
+        this.buildExperienceStatement() +
         this.buildGameDescription() +
         this.buildCanvasGalaxyContainer() +
         this.buildCanvasSolarContainer() +
@@ -143,6 +145,7 @@ const Dashboard = {
         this.buildGameSystems() +
         this.buildDocumentStructure() +
         this.buildFiveDifferentiators() +
+        this.buildVisualBenchmarks() +
         this.buildByTheNumbers() +
         this.buildSummary() +
         this.buildFooterQuote();
@@ -180,7 +183,7 @@ const Dashboard = {
             <span class="hero-tagline-text">4X Grand Strategy meets Auto-Battler. Rogue-Lite Progression. Deep Narrative.</span>
           </div>
           <div class="hero-tagline-expanded">
-            <p class="hero-pitch">You are a weapon \u2014 a freshly decanted clone created by a fallen civilization to win a war that already destroyed them once. Prove your genius across simulated galactic campaigns. When the simulation judges you ready, wake into a real galaxy being devoured from the outside and guarded at its core by gods who will destroy anyone who approaches.</p>
+            <p class="hero-pitch">You are a weapon of last resort. A freshly decanted clone \u2014 or something stranger \u2014 built from the ruins of an ancient, galaxy-spanning civilization. Your purpose is singular: win a war that already destroyed your creators eons ago. Prove your tactical genius across brutal, simulated campaigns. Learn the galaxy. Bleed in the simulations. And when you are finally ready\u2026 wake up. The real galaxy awaits. It is being devoured from the edges by an extragalactic swarm, and guarded at its center by ancient, deranged machines. The simulations shaped the battlefield you now face, but out here, there are no resets. Death is permanent. And the Vorax are already here.</p>
             <p class="hero-pitch-sub">7 factions. One galaxy. No second chances.</p>
           </div>
           <div class="hero-version">INTERACTIVE GAME DESIGN DOCUMENT v5.9.1</div>
@@ -222,10 +225,51 @@ const Dashboard = {
   _epigraphQuoteIndex: 0,
   _epigraphQuoteTimer: null,
 
-  /* Epigraph removed � redundant with State of the Galaxy prologue */
+  /* Epigraph removed \u2014 redundant with State of the Galaxy prologue */
   buildEpigraph() { return ''; },
 
-  /* �"��"� Game Description �"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"� */
+  /* -- Genre Fusion (4-Card Row) ----------------------------- */
+
+  /**
+   * Build the Genre Fusion section \u2014 4-card horizontal grid.
+   * @returns {string} HTML string
+   */
+  buildGenreFusion() {
+    return `
+      <section class="dashboard-section">
+        <div class="section-label">Genre Fusion</div>
+        <div class="section-heading">Four Genres. One Game.</div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:32px;">
+          <div class="card card-accent" style="border-left-color:var(--terran);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="location.hash='#ch1'"><strong style="color:#fff;font-size:1rem">4X Grand Strategy</strong><br><span style="color:var(--text-mid);font-size:0.9rem">The macro-war. Explore dead systems, expand supply chains, exploit Aethyn ruins, and exterminate rivals. You are an emperor managing a galaxy-spanning war machine across dozens of cycles.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--horde);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="location.hash='#ch17'"><strong style="color:#fff;font-size:1rem">RTS Auto-Battler</strong><br><span style="color:var(--text-mid);font-size:0.9rem">The micro-war. Strategic decisions are locked in before the drop pods hit. Once combat starts, you act as overwatch command \u2014 firing off CP abilities and calling reserves while your customized units execute the battle autonomously.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--necro);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="location.hash='#ch33'"><strong style="color:#fff;font-size:1rem">Rogue-Lite Meta-Progression</strong><br><span style="color:var(--text-mid);font-size:0.9rem">A fresh procedural galaxy per simulation. Death resets the map, but the Commander\u2019s mind remembers. The Archive preserves blueprints, lore, and persistent power upgrades across runs.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--shards);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="location.hash='#ch3'"><strong style="color:#fff;font-size:1rem">Deep Narrative Layers</strong><br><span style="color:var(--text-mid);font-size:0.9rem">You aren\u2019t a nameless cursor. You are a biological clone, a psychic echo, or a cold machine. Your choices have gravity, your advisors have faces and secrets, and the galaxy\u2019s history is a tragedy waiting to be uncovered.</span></div>
+        </div>
+        <div class="divider"></div>
+      </section>`;
+  },
+
+  /* -- Experience Statement ----------------------------------- */
+
+  /**
+   * Build the Experience Statement section \u2014 emotional progression arc.
+   * @returns {string} HTML string
+   */
+  buildExperienceStatement() {
+    return `
+      <section class="dashboard-section">
+        <div class="section-label">The Experience Statement</div>
+        <div class="section-heading">Learning \u2192 Mastery \u2192 Delegation \u2192 Cold Consequence</div>
+        <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:32px;">
+          <div class="card card-accent" style="border-left-color:var(--terran);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"><strong style="color:#fff;font-size:1rem">The Captain\u2019s Crucible</strong> <span style="color:var(--text-dim);font-size:0.85rem">(Early Game)</span><br><span style="color:var(--text-mid);font-size:0.9rem">You are in the dirt. Agonizing over individual squad loadouts. Micro-managing drop zones. Feeling the visceral sting when a single veteran unit gets cut down. Every laser blast matters, and every casualty is personal.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--shards);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"><strong style="color:#fff;font-size:1rem">The Admiral\u2019s Burden</strong> <span style="color:var(--text-dim);font-size:0.85rem">(Mid Game)</span><br><span style="color:var(--text-mid);font-size:0.9rem">The scope widens. You are balancing war across multiple simultaneous fronts and can no longer see every battle. You must trust autonomous Generals to hold the line, eventually making the agonizing choice to extract a high-level commander and let the grunts die just to save the campaign.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--vorax);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"><strong style="color:#fff;font-size:1rem">The Emperor\u2019s Calculus</strong> <span style="color:var(--text-dim);font-size:0.85rem">(Late Game)</span><br><span style="color:var(--text-mid);font-size:0.9rem">The cold math of survival. Sacrificing entire star systems to buy time. Manipulating rival factions into meat-grinder alliances to slow the Vorax. Watching the galactic map burn while assembling the final, desperate push to the Core.</span></div>
+        </div>
+        <div class="divider"></div>
+      </section>`;
+  },
+
+  /* \u2550\u2550\u2550 Game Description �"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"� */
 
   /**
    * Build the document header with full title and elevator pitch.
@@ -801,8 +845,8 @@ const Dashboard = {
         <div class="section-label">What Makes It Unique</div>
         <div class="section-heading">Five Differentiators</div>
         <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:32px;">
-          <div class="card card-accent" style="border-left-color:var(--terran);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="location.hash='#ch17'"><strong style="color:#fff;font-size:1rem">1. The Auto-Battle General Fantasy.</strong> <span style="color:var(--text-mid);font-size:0.9rem">You prepared the army, chose equipment, set the formation, positioned the deployment \u2014 now watch, intervene with CP abilities at critical moments, and commit reserves when the line breaks. You are the general at the holographic map, not the soldier in the trench.</span></div>
-          <div class="card card-accent" style="border-left-color:var(--shards);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="location.hash='#ch22'"><strong style="color:#fff;font-size:1rem">2. Units That Become People.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Continuous promotion from anonymous Rookie to autonomous General who commands entire sectors, develops personality traits, forms rivalries, and can defect with their entire fleet if mistreated. Kill-count thresholds: Veteran=3, Elite=8, Commander=15, General=25.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--terran);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="location.hash='#ch17'"><strong style="color:#fff;font-size:1rem">1. The Auto-Battle General Fantasy.</strong> <span style="color:var(--text-mid);font-size:0.9rem">The 80/20 split. 80% planning, 20% intervention. You prepared the army, chose equipment, set the formation, positioned the deployment \u2014 now watch, intervene with CP abilities at critical moments, and commit reserves when the line breaks. You are the general at the holographic map, not the soldier in the trench.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--shards);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="location.hash='#ch22'"><strong style="color:#fff;font-size:1rem">2. Units That Become People.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Units gain names, traits, and grudges. Generals develop personalities that alter their autonomous behavior. Continuous promotion from anonymous Rookie to autonomous General who commands entire sectors, develops personality traits, forms rivalries, and can defect with their entire fleet if mistreated. Kill-count thresholds: Veteran=3, Elite=8, Commander=15, General=25. When a veteran squad dies, it leaves a permanent hole in your strategy.</span></div>
           <div class="card card-accent" style="border-left-color:var(--horde);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="location.hash='#ch33'"><strong style="color:#fff;font-size:1rem">3. Procedural Destiny.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Cross-run behavioral profile GENERATES the endgame galaxy. An aggressive player wakes to a militarized galaxy. A diplomatic player wakes to trade routes and alliances. The simulation shaped the reality you must survive.</span></div>
           <div class="card card-accent" style="border-left-color:var(--necro);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="location.hash='#ch20'"><strong style="color:#fff;font-size:1rem">4. The Dual-Threat Weapon Asymmetry.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Energy weapons work on Vorax but HEAL Core Guardians. Kinetic weapons work on Guardians but are overwhelmed by Vorax numbers. Maintain two armies, re-equip constantly, or pursue rare hybrid weapons.</span></div>
           <div class="card card-accent" style="border-left-color:var(--guardians);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="location.hash='#ch33'"><strong style="color:#fff;font-size:1rem">5. The Galactic Compendium.</strong> <span style="color:var(--text-mid);font-size:0.9rem">A living document that fills as you play \u2014 500\u2013800 entries across three narrative voices: Commander Notes, AI Data Entries, and Advisor Commentary. It persists across all campaigns and becomes a personal record of everything discovered, fought, and survived.</span></div>
@@ -811,7 +855,29 @@ const Dashboard = {
       </section>`;
   },
 
-  /* �"��"� Summary Statistics �"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"� */
+  /* -- Visual & Tonal Benchmarks ----------------------------- */
+
+  /**
+   * Build the Visual & Tonal Benchmarks section \u2014 5 benchmark cards.
+   * @returns {string} HTML string
+   */
+  buildVisualBenchmarks() {
+    return `
+      <section class="dashboard-section">
+        <div class="section-label">Visual &amp; Tonal Benchmarks</div>
+        <div class="section-heading">Standing On the Shoulders of Giants</div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:32px;">
+          <div class="card card-accent" style="border-left-color:var(--terran);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"><strong style="color:#fff;font-size:1rem">StarCraft II</strong><br><span style="color:var(--text-mid);font-size:0.9rem">The benchmark for visual readability. Triple-redundant unit identification: faction color + unique silhouette + health bars.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--horde);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"><strong style="color:#fff;font-size:1rem">Dawn of War: Dark Crusade</strong><br><span style="color:var(--text-mid);font-size:0.9rem">Territory conquest. Every captured sector is a place with history and strategic weight, not just a hex on a board. The grim, heavy atmosphere of total war.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--shards);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"><strong style="color:#fff;font-size:1rem">Stellaris</strong><br><span style="color:var(--text-mid);font-size:0.9rem">Grand strategy at galactic scale. The model for 4X scope, procedural narratives, and faction asymmetry across hundreds of star systems.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--necro);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"><strong style="color:#fff;font-size:1rem">Command &amp; Conquer 3</strong><br><span style="color:var(--text-mid);font-size:0.9rem">Diegetic UI. The interface IS your military command console. Faction-specific UI skins with a clean, holographic projection aesthetic.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--vorax);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"><strong style="color:#fff;font-size:1rem">Warhammer 40K</strong><br><span style="color:var(--text-mid);font-size:0.9rem">Unmistakable faction identity. Every unit must be instantly recognizable from a black-and-white silhouette alone.</span></div>
+        </div>
+        <div class="divider"></div>
+      </section>`;
+  },
+
+  /* \u2550\u2550\u2550 Summary Statistics �"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"� */
 
   /**
    * Build the command-console statistics readout with scanning animation.
