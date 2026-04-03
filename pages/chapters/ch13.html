@@ -954,6 +954,137 @@
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;padding:6px 12px;font-size:0.98rem;color:var(--text-hi)"><span>3. Ecological Recovery</span><span>5⚙/cycle</span><span>10 cycles</span><span>100% yield, original trait restored</span></div>
       </div>
     </div>
+    <div class="divider"></div>
+
+    <div class="section-label">Planetary Weather System</div>
+    <div class="section-heading" id="sec-ch13-weather">Predictable from Orbit, Sudden on the Ground</div>
+    <div class="body-text" style="margin-bottom:24px">Every planet in the galaxy has active weather systems that affect ground combat. Weather is partially predictable &mdash; orbital scans before invasion reveal current conditions and short-term forecasts &mdash; but sudden shifts can occur mid-battle. Commanders must decide whether to wait for favorable conditions, attack during a storm for concealment, or accept the weather as another variable in an already complex equation. Weather events vary by planet type and affect visibility, movement, damage, equipment performance, and morale.</div>
+
+    <!-- Weather Visibility from Orbit -->
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">WEATHER INTEL &mdash; TWO-TIER SYSTEM</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">PRE-INVASION INTEL</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.55">Before committing ground forces, orbital scans show current weather and a 1-cycle forecast. Players can see &ldquo;Blizzard active on Ice World&rdquo; and choose to wait or attack.</div>
+        </div>
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">MID-COMBAT SHIFTS</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.55">Some weather events are sudden (sandstorms, eruptions). These trigger during ground combat with brief warning &mdash; visual cue, 10-second countdown.</div>
+        </div>
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">WEATHER CYCLING</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.55">Planets cycle through weather states over time. Long campaigns experience multiple weather shifts.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weather Effects Grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:10px">VISIBILITY &amp; MOVEMENT EFFECTS</div>
+        <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Fog/Mist:</strong> Reduces sightline range. Infantry stealth bonus. Ranged units penalized.</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Storms (Rain/Snow/Sand):</strong> Reduce visibility AND movement speed. Equipment degradation on prolonged exposure <span class="ph-tag">PH</span>.</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Clear Skies:</strong> Maximum sightlines. Ranged units and air support at full effectiveness.</div>
+          <div><strong style="color:var(--text-hi)">Blizzard/Whiteout:</strong> Near-zero visibility. Point-blank combat only. Movement severely restricted.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:10px">COMBAT &amp; EQUIPMENT EFFECTS</div>
+        <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Sandstorms:</strong> Reduce range, degrade shields, jam sensors. Provide concealment for repositioning.</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Heatwaves:</strong> Biological units take stamina debuffs. Mechanical units unaffected. Coolant systems stressed <span class="ph-tag">PH</span>.</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Electrical Storms:</strong> Disable or degrade electronic targeting systems. EMP-like effect on tech-heavy units.</div>
+          <div><strong style="color:var(--text-hi)">Tidal Events:</strong> Flood low-ground territories temporarily. Force units to high ground or take damage.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Planet-Specific Weather Reference -->
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:14px">WEATHER EVENTS BY PLANET TYPE</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#fff;font-weight:600">Capital World:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Urban Firestorm &middot; Electromagnetic Pulse &middot; Industrial Meltdown</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#4a8;font-weight:600">Terrestrial:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Rainstorm &middot; Fog Bank &middot; Thunderstorm &middot; Seasonal Shift</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#f64;font-weight:600">Volcanic:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Eruption &middot; Vent Burst &middot; Lava Flow Shift &middot; Ash Storm &middot; Seismic Tremor</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#48f;font-weight:600">Ocean/Archipelago:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Tropical Storm &middot; Tidal Surge &middot; Monsoon &middot; Rogue Wave</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#2a6;font-weight:600">Jungle:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Torrential Downpour &middot; Fog Bank &middot; Canopy Collapse &middot; Bioluminescent Bloom</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#da4;font-weight:600">Desert:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Sandstorm &middot; Heatwave &middot; Dust Devil &middot; Flash Flood</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#8cf;font-weight:600">Ice World:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Blizzard &middot; Ice Storm &middot; Aurora Flux &middot; Permafrost Quake</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#a8f;font-weight:600">Ancient Ruins:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Energy Surge &middot; System Reactivation &middot; Structural Collapse</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#fa8;font-weight:600">Gas Giant:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Atmospheric Storm &middot; Gravity Surge &middot; Radiation Burst &middot; Platform Stress Event</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#999;font-weight:600">Moon:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Meteor Shower &middot; Solar Flare &middot; Dust Storm</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#666;font-weight:600">Orbital Station:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Hull Breach &middot; Power Failure &middot; Decompression Event</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#555;font-weight:600">Dead World:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Radiation Spike &middot; Dust Storm &middot; Ground Collapse</span>
+        </div>
+        <div style="border-top:1px solid var(--border);margin:6px 0;padding-top:8px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:6px">MEGASTRUCTURES</div>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#ffaa22;font-weight:600">Ring World:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Biome Collapse &middot; Atmospheric Breach &middot; System Malfunction</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#ffaa22;font-weight:600">Dyson Sphere:</span>
+          <span style="font-size:0.88rem;color:var(--text-dim);font-style:italic">No ground weather &mdash; space-only structure</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#ffaa22;font-weight:600">Aethyn Nexus:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Psychic Resonance Pulse &middot; System Reboot Event &middot; Energy Field Fluctuation</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#AA77FF;font-weight:600">Worldship:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Hull Breach Event &middot; Power Fluctuation &middot; Automated Defense Activation</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#00ffee;font-weight:600">Warp Gate:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Warp Field Fluctuation &middot; Energy Surge &middot; Spatial Distortion</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weather + Scanning Interaction -->
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">WEATHER &amp; SCANNING INTERACTION</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Advanced scanning technology (see Scanning &amp; Discovery) can extend weather forecasts from 1 cycle to 3 cycles, giving commanders significantly more planning time. Tech-gated improvement &mdash; early game you get basic forecasts, late game you can predict weather patterns across an entire campaign.</div>
+    </div>
+
   </div><!-- /page-ch13 -->
 
   <!-- ============================================================
