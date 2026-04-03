@@ -96,7 +96,7 @@ const Glossary = {
       ['Nexus Primordial',    'The star system at the galactic center (sys-nexus) housing the Reclamation Engine \u2014 the campaign win objective'],
       ['Phase Blink',         'Eternal Shards auto-dodge \u2014 12% base chance to flicker out of reality, negating the hit'],
       ['Procedural Destiny',  'System where Commander Alignment shapes the Final War galaxy generation and ending outcomes'],
-      ['Reanimation',         'Necro-Legion ability \u2014 15% base chance destroyed units self-repair and return after 5s (upgradeable)'],
+      ['Reanimation',         'Revenant ability \u2014 15% base chance destroyed units self-repair and return after 5s (upgradeable)'],
       ['Scrap Stack',         'Scrap-Horde buff from any death within 150px \u2014 +3% armor +2% dmg per stack; cap 0.75; resets each battle'],
       ['Stat Application Order', 'base stats \u2192 equipment mods \u2192 supply penalty \u2192 space combat ground mod \u2192 rank mods (canonical, locked)'],
       ['Synapse',             'Vorax command organism \u2014 destroying all Synapses in range triggers Frenzy state in remaining units'],

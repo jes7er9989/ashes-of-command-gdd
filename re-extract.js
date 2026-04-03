@@ -14,7 +14,7 @@ const factions = [
   { varPrefix: 'TERRAN',    fileKey: 'terran-league' },
   { varPrefix: 'SHARDS',    fileKey: 'eternal-shards' },
   { varPrefix: 'HORDE',     fileKey: 'scrap-horde' },
-  { varPrefix: 'NECRO',     fileKey: 'necro-legion' },
+  { varPrefix: 'REVENANT',  fileKey: 'revenant' },
   { varPrefix: 'ACCORD',    fileKey: 'unity-accord' },
   { varPrefix: 'VORAX',     fileKey: 'vorax' },
   { varPrefix: 'GUARDIANS', fileKey: 'core-guardians' },

@@ -79,7 +79,7 @@
       "slot": "[W]",
       "rarity": "Uncommon",
       "rarityColor": "#44ff88",
-      "effect": "Shoots corrosive acid instead of fire. Rapidly degrades Scrap-Horde vehicles and Necro-Legion armor.",
+      "effect": "Shoots corrosive acid instead of fire. Rapidly degrades Scrap-Horde vehicles and The Revenant armor.",
       "stat": "Corrosive · Anti-vehicle"
     },
     {
@@ -285,7 +285,7 @@
       "slot": "[W]",
       "rarity": "Rare",
       "rarityColor": "#4488ff",
-      "effect": "Blankets the immediate battlefield in promethium fire. Exceptional at area denial and burning away Necro-Legion resurrections.",
+      "effect": "Blankets the immediate battlefield in promethium fire. Exceptional at area denial and burning away The Revenant resurrections.",
       "stat": "Area deny · Anti-resurrect"
     },
     {
@@ -3097,7 +3097,7 @@
       "slot": "[S]",
       "rarity": "Epic",
       "rarityColor": "#ff8800",
-      "effect": "Faction Synergy: Securing a kill grants a temporary damage boost to all adjacent Necro-Legion units.",
+      "effect": "Faction Synergy: Securing a kill grants a temporary damage boost to all adjacent The Revenant units.",
       "stat": "Kill→adj +dmg buff"
     }
   ],
@@ -3361,7 +3361,7 @@
       "slot": "[S]",
       "rarity": "Epic",
       "rarityColor": "#ff8800",
-      "effect": "Faction Synergy: +10% attack speed when flying adjacent to another Necro-Legion aircraft.",
+      "effect": "Faction Synergy: +10% attack speed when flying adjacent to another The Revenant aircraft.",
       "stat": "+10% ATK spd · Adj ally"
     }
   ],
@@ -3543,7 +3543,7 @@
       "slot": "[G]",
       "rarity": "Rare",
       "rarityColor": "#4488ff",
-      "effect": "Sends out a wave that heals all allied Necro-Legion ground units in the sector.",
+      "effect": "Sends out a wave that heals all allied The Revenant ground units in the sector.",
       "stat": "Sector heal · Ground"
     },
     {
@@ -3757,7 +3757,7 @@
       "slot": "[S]",
       "rarity": "Epic",
       "rarityColor": "#ff8800",
-      "effect": "Faction Synergy: +15% damage when attacking a target already engaged by another Necro-Legion ship.",
+      "effect": "Faction Synergy: +15% damage when attacking a target already engaged by another The Revenant ship.",
       "stat": "+15% · Shared target"
     }
   ],
@@ -3873,7 +3873,7 @@
       "slot": "[G]",
       "rarity": "Rare",
       "rarityColor": "#4488ff",
-      "effect": "Sends out a wave that heals all allied Necro-Legion ships in the sector.",
+      "effect": "Sends out a wave that heals all allied The Revenant ships in the sector.",
       "stat": "Sector heal · Fleet"
     },
     {

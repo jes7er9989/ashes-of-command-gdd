@@ -41,7 +41,7 @@ const FACTION_COLORS = {
   terran:    { r: 0, g: 180, b: 255, hex: '#00b4ff' },    // Blue — disciplined military
   shards:    { r: 0, g: 255, b: 238, hex: '#00ffee' },    // Cyan — crystalline energy
   horde:     { r: 255, g: 102, b: 34, hex: '#ff6622' },   // Orange — salvaged chaos
-  necro:     { r: 170, g: 119, b: 255, hex: '#AA77FF' },   // Purple — reanimation glow
+  revenant:     { r: 170, g: 119, b: 255, hex: '#AA77FF' },   // Purple — reanimation glow
   accord:    { r: 68, g: 255, b: 102, hex: '#44ff66' },   // Green — diplomatic unity
   vorax:     { r: 255, g: 34, b: 102, hex: '#ff2266' },   // Red — biological threat
   guardians: { r: 255, g: 170, b: 34, hex: '#ffaa22' },   // Gold — ancient protectors
@@ -55,7 +55,7 @@ const FACTION_COLORS = {
 const FactionBgSwitcher = (() => {
   // Maps faction-specific chapters to their faction key
   const chapterMap = {
-    ch5: 'terran', ch6: 'shards', ch7: 'horde', ch8: 'necro',
+    ch5: 'terran', ch6: 'shards', ch7: 'horde', ch8: 'revenant',
     ch9: 'accord', ch10: 'vorax', ch11: 'guardians'
   };
   let currentBg = null;
@@ -266,7 +266,7 @@ const FactionFlagBadge = (() => {
     terran:    '◆',   // Diamond — order and structure
     shards:    '◇',   // Open diamond — crystalline refraction
     horde:     '⬡',   // Hexagon — salvaged geometry
-    necro:     '△',   // Triangle — reanimation sigil
+    revenant:     '△',   // Triangle — reanimation sigil
     accord:    '○',   // Circle — unity, no edges
     vorax:     '✕',   // Cross — devouring reach
     guardians: '☆',   // Star — ancient cosmic light
@@ -318,14 +318,14 @@ const LoreQuoteRotator = (() => {
     { text: '"Command is the weight that breaks or forges."', faction: 'terran' },
     { text: '"The crystal remembers what the flesh forgets."', faction: 'shards' },
     { text: '"Rust is just another word for experience."', faction: 'horde' },
-    { text: '"Death is not the end — it is reassignment."', faction: 'necro' },
+    { text: '"Death is not the end — it is reassignment."', faction: 'revenant' },
     { text: '"Unity demands sacrifice. Sacrifice demands unity."', faction: 'accord' },
     { text: '"Consume. Adapt. Evolve. Repeat."', faction: 'vorax' },
     { text: '"We were ancient when the stars were young."', faction: 'guardians' },
     { text: '"Every war ends. The question is who remains."', faction: 'terran' },
     { text: '"Entropy is merely a design flaw."', faction: 'shards' },
     { text: '"Break it, weld it, break it better."', faction: 'horde' },
-    { text: '"Your dead serve a greater purpose now."', faction: 'necro' },
+    { text: '"Your dead serve a greater purpose now."', faction: 'revenant' },
     { text: '"Diplomacy is the art of letting others lose slowly."', faction: 'accord' },
     { text: '"Hunger is the only constant."', faction: 'vorax' },
     { text: '"Witness the patience of aeons."', faction: 'guardians' },

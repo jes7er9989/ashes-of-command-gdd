@@ -18,7 +18,7 @@
     "slot": "[W]",
     "rarity": "Rare",
     "rarityColor": "#4488ff",
-    "effect": "Low direct damage. Grants +15% damage aura to all Necro-Legion units within 25m. Command weapon."
+    "effect": "Low direct damage. Grants +15% damage aura to all Revenant units within 25m. Command weapon."
   },
   {
     "name": "Necrodermis Shell",
@@ -39,7 +39,7 @@
     "slot": "[G]",
     "rarity": "Rare",
     "rarityColor": "#4488ff",
-    "effect": "On death: all Necro units within 15m receive +25% Reanimation chance for 10 seconds."
+    "effect": "On death: all Revenant units within 15m receive +25% Reanimation chance for 10 seconds."
   },
   {
     "name": "Chronometron",

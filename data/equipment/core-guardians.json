@@ -18,7 +18,7 @@
     "slot": "[W]",
     "rarity": "Legendary",
     "rarityColor": "#ffaa22",
-    "effect": "Wide-cone energy burst. +50% damage against Necro-Legion and corrupted units. Standard damage against all others. Passes through cover."
+    "effect": "Wide-cone energy burst. +50% damage against Revenant and corrupted units. Standard damage against all others. Passes through cover."
   },
   {
     "name": "Resonance Field",

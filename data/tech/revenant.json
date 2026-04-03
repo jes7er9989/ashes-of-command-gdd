@@ -117,7 +117,7 @@
         "tier": "T4",
         "name": "Distributed Command Intelligence",
         "cost": "40⚙ / 8 cycles",
-        "effect": "All Necro Generals share intel galaxy-wide instantly (zero delay). General auto-resolve +20%. Multi-sector simultaneous offensives enabled.",
+        "effect": "All Revenant Generals share intel galaxy-wide instantly (zero delay). General auto-resolve +20%. Multi-sector simultaneous offensives enabled.",
         "notes": "CULMINATION — distributed machine intelligence across the entire command network"
       }
     ]
@@ -131,7 +131,7 @@
         "name": "Tomb-World Excavation",
         "cost": "8⚙ / 2 cycles",
         "effect": "Ancient Ruins planets yield +50% lore fragments. Research conducted on Ruins planets 20% faster.",
-        "notes": "Archaeological expertise — the Necro-Legion explores their own history"
+        "notes": "Archaeological expertise — The Revenant explores their own history"
       },
       {
         "tier": "T2a",

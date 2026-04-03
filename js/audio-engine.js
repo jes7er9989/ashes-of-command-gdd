@@ -431,7 +431,7 @@ const AudioEngine = (() => {
       }
     },
 
-    necro: {
+    revenant: {
       click() {
         _tone('triangle', 420, 58, 0.44, 0.24, 500, 'lowpass', true, -0.25);
         setTimeout(function() {
@@ -528,13 +528,13 @@ const AudioEngine = (() => {
 
       /* ── Accordion ───────────────────────────────────────── */
       case 'accordionOpen': {
-        const hz = { terran: 700, horde: 200, shards: 1400, necro: 280, accord: 880, vorax: 480, guardians: 370 };
+        const hz = { terran: 700, horde: 200, shards: 1400, revenant: 280, accord: 880, vorax: 480, guardians: 370 };
         const fq = hz[f] || 550;
         _tone('sine', fq * 0.65, fq, 0.24, 0.12, null, null, false, -0.1);
         break;
       }
       case 'accordionClose': {
-        const hz = { terran: 700, horde: 200, shards: 1400, necro: 280, accord: 880, vorax: 480, guardians: 370 };
+        const hz = { terran: 700, horde: 200, shards: 1400, revenant: 280, accord: 880, vorax: 480, guardians: 370 };
         const fq = hz[f] || 550;
         _tone('sine', fq, fq * 0.52, 0.20, 0.10, null, null, false, 0.1);
         break;
@@ -546,7 +546,7 @@ const AudioEngine = (() => {
           terran:    function() { _noise(0.26, 0.025, 700, 6, false, -0.2); setTimeout(function() { _tone('sawtooth', 1100, 700, 0.26, 0.07, 1200, 'lowpass', false, 0.2); }, 14); },
           horde:     function() { _grind(0.42, 0.06, 300, 70, 0.0); },
           shards:    function() { _bell(2637, [[0, 1.0], [+8, 0.5]], 0.22, 0.26, true, 0.3); },
-          necro:     function() { _tone('triangle', 260, 130, 0.30, 0.14, 400, 'lowpass', true, -0.15); },
+          revenant:     function() { _tone('triangle', 260, 130, 0.30, 0.14, 400, 'lowpass', true, -0.15); },
           accord:    function() { _tone('sine', 1047, 1319, 0.26, 0.09, null, null, false, 0.0); },
           vorax:     function() { _noise(0.38, 0.04, 600, 10, false, -0.2); setTimeout(function() { _noise(0.25, 0.04, 250, 7, false, 0.2); }, 18); },
           guardians: function() { _bell(349, [[0, 1.0], [+5, 0.5], [-5, 0.5]], 0.26, 0.36, true, 0.0); }
@@ -556,8 +556,8 @@ const AudioEngine = (() => {
       }
 
       case 'sort': {
-        const bases = { terran: 440, horde: 220, shards: 880, necro: 330, accord: 523, vorax: 370, guardians: 293 };
-        const waves = { terran: 'sawtooth', horde: 'square', shards: 'sine', necro: 'triangle', accord: 'sine', vorax: 'square', guardians: 'triangle' };
+        const bases = { terran: 440, horde: 220, shards: 880, revenant: 330, accord: 523, vorax: 370, guardians: 293 };
+        const waves = { terran: 'sawtooth', horde: 'square', shards: 'sine', revenant: 'triangle', accord: 'sine', vorax: 'square', guardians: 'triangle' };
         const b = bases[f] || 440;
         const w = waves[f] || 'sine';
         _arp([[b, 0], [b * 1.26, 0.055], [b * 1.587, 0.11]], 0.26, 0.10, w, (f === 'shards' || f === 'guardians'));
@@ -677,7 +677,7 @@ const AudioEngine = (() => {
               }, n[1]);
             });
           },
-          necro: function() {
+          revenant: function() {
             _bell(220, [[0, 1.0], [+4, 0.5]], 0.40, 0.58, true, -0.3);
             setTimeout(function() { _bell(165, [[0, 1.0]], 0.32, 0.52, true, 0.3); }, 125);
             setTimeout(function() { _tone('triangle', 110, 55, 0.34, 0.48, 250, 'lowpass', true, 0.0); }, 265);
@@ -834,7 +834,7 @@ const AudioEngine = (() => {
       if (f === 'terran') { _noise(0.26, 0.03, 600, 6, false, -0.2); setTimeout(function() { _tone('sawtooth', 700, 1050, 0.20, 0.09, 1200, 'lowpass', false, 0.2); }, 18); }
       else if (f === 'horde') { _grind(0.40, 0.08, 180, 80, -0.3); setTimeout(function() { _grind(0.26, 0.05, 400, 50, 0.3); }, 50); }
       else if (f === 'shards') { _bell(1319, [[0, 1.0], [8, 0.55]], 0.20, 0.28, true, 0.25); }
-      else if (f === 'necro') { _tone('triangle', 280, 420, 0.24, 0.12, 500, 'lowpass', true, -0.15); setTimeout(function() { _noise(0.10, 0.05, 1800, 8, false, 0.15); }, 40); }
+      else if (f === 'revenant') { _tone('triangle', 280, 420, 0.24, 0.12, 500, 'lowpass', true, -0.15); setTimeout(function() { _noise(0.10, 0.05, 1800, 8, false, 0.15); }, 40); }
       else if (f === 'accord') { _tone('sine', 880, 1047, 0.22, 0.10, null, null, false, -0.1); setTimeout(function() { _tone('sine', 1047, 1319, 0.14, 0.08, null, null, false, 0.1); }, 65); }
       else if (f === 'vorax') { _noise(0.32, 0.05, 500, 10, false, -0.2); setTimeout(function() { _noise(0.20, 0.04, 200, 6, false, 0.2); }, 30); }
       else if (f === 'guardians') { _bell(369, [[0, 1.0], [5, 0.55], [-4, 0.45]], 0.28, 0.45, true, 0.0); }
@@ -843,7 +843,7 @@ const AudioEngine = (() => {
       if (f === 'terran') { _tone('sawtooth', 1050, 700, 0.16, 0.09, 1200, 'lowpass', false, 0); }
       else if (f === 'horde') { _grind(0.30, 0.06, 180, 60, 0); }
       else if (f === 'shards') { _bell(1319, [[0, 1.0], [8, 0.4]], 0.14, 0.22, true, -0.2); }
-      else if (f === 'necro') { _tone('triangle', 420, 220, 0.18, 0.10, 400, 'lowpass', true, 0); }
+      else if (f === 'revenant') { _tone('triangle', 420, 220, 0.18, 0.10, 400, 'lowpass', true, 0); }
       else if (f === 'accord') { _tone('sine', 1047, 740, 0.16, 0.08, null, null, false, 0); }
       else if (f === 'vorax') { _noise(0.22, 0.04, 500, 8, false, 0); }
       else if (f === 'guardians') { _bell(293, [[0, 1.0], [-4, 0.4]], 0.22, 0.38, true, 0); }
@@ -890,7 +890,7 @@ const AudioEngine = (() => {
       const buf = new Uint8Array(_anlz.frequencyBinCount);
       _anlz.getByteFrequencyData(buf);
       const step = Math.floor(_anlz.frequencyBinCount / 7);
-      const fmap = { terran: '#00b4ff', shards: '#00ffee', horde: '#ff6622', necro: '#AA77FF', accord: '#44ff66', vorax: '#ff2266', guardians: '#ffaa22' };
+      const fmap = { terran: '#00b4ff', shards: '#00ffee', horde: '#ff6622', revenant: '#AA77FF', accord: '#44ff66', vorax: '#ff2266', guardians: '#ffaa22' };
       const col = fmap[currentFaction] || '#4488ff';
       for (let i = 0; i < 7; i++) {
         let val = 0;

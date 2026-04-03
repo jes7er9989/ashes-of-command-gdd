@@ -510,7 +510,7 @@ const Nav = {
       document.title = 'Ashes of Command: The Reclamation — Interactive GDD';
       document.body.classList.remove(
         'faction-terran', 'faction-shards', 'faction-horde',
-        'faction-necro', 'faction-accord', 'faction-vorax', 'faction-guardians'
+        'faction-revenant', 'faction-accord', 'faction-vorax', 'faction-guardians'
       );
       Dashboard.render(content);
     } else {

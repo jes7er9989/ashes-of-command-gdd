@@ -248,7 +248,7 @@ const DataLoader = {
     'terran-league',
     'eternal-shards',
     'scrap-horde',
-    'necro-legion',
+    'revenant',
     'unity-accord',
     'vorax',
     'core-guardians'

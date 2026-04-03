@@ -80,7 +80,7 @@
       }
     },
     "physical": "Standard Legionnaire chassis with a third optical sensor mounted on the forehead — a dimensional anchor targeting system. Primary weapon: Synaptic Disintegrator — fires a beam that directly disrupts the target's neural architecture, causing instant collapse of biological nervous systems. Against non-biological targets: standard gauss overcharge mode — a devastating single shot through armor at extreme range.",
-    "narrative": "The third sensor COUNTERS Phase Blink. A Phase Blinking Zealot is invisible to conventional targeting during the blink. The Death-Mark sees them anyway. This makes the Necro-Legion one of the Eternal Shards' most dangerous opponents — their primary defensive mechanic neutralized by a single sniper unit."
+    "narrative": "The third sensor COUNTERS Phase Blink. A Phase Blinking Zealot is invisible to conventional targeting during the blink. The Death-Mark sees them anyway. This makes The Revenant one of the Eternal Shards' most dangerous opponents — their primary defensive mechanic neutralized by a single sniper unit."
   },
   {
     "num": 3,
@@ -162,7 +162,7 @@
       }
     },
     "physical": "Ornate, regal chassis — taller and broader than a standard Legionnaire, with sculpted geometric patterns across the torso. Carved death-mask faceplate. Crown of green energy hovering above — a projection of enhanced command protocols. Staff of the Overlord: two-meter weapon topped with a glowing resurrection orb. Fights in melee with energy-wreathed blade tip while broadcasting enhanced Reanimation signals.",
-    "narrative": "Not just a combatant — a RALLYING POINT. Enhanced broadcast: all fallen Necro units within 25m have significantly increased Reanimation chance. Fighting near a Lord is fighting at 150% strength. The Lord's own Reanimation: 25% base. Priority target — but it keeps coming back. The psychological impact: the enemy finally kills the Lord, celebrates, turns away — and hears living metal reassembling behind them."
+    "narrative": "Not just a combatant — a RALLYING POINT. Enhanced broadcast: all fallen Revenant units within 25m have significantly increased Reanimation chance. Fighting near a Lord is fighting at 150% strength. The Lord's own Reanimation: 25% base. Priority target — but it keeps coming back. The psychological impact: the enemy finally kills the Lord, celebrates, turns away — and hears living metal reassembling behind them."
   },
   {
     "num": 5,
@@ -284,8 +284,8 @@
         "bioAcid": 0
       }
     },
-    "physical": "Flat angular craft emitting a dimensional displacement field — functionally invisible to sensors and visual detection. Drops Tesla Mines: self-contained gauss-field generators that embed in the ground and detonate within 5m proximity of any non-Necro unit. Cascade of electrical arcs chains between nearby targets.",
-    "narrative": "Seeds approach routes with linked electrical death. A single sortie turns a clear advance corridor into a gauntlet of invisible triggered charges. The enemy learns to advance slowly. The Necro-Legion uses that time."
+    "physical": "Flat angular craft emitting a dimensional displacement field — functionally invisible to sensors and visual detection. Drops Tesla Mines: self-contained gauss-field generators that embed in the ground and detonate within 5m proximity of any non-Revenant unit. Cascade of electrical arcs chains between nearby targets.",
+    "narrative": "Seeds approach routes with linked electrical death. A single sortie turns a clear advance corridor into a gauntlet of invisible triggered charges. The enemy learns to advance slowly. The Revenant uses that time."
   },
   {
     "num": 8,
@@ -366,8 +366,8 @@
         "bioAcid": 0
       }
     },
-    "physical": "Hovering sphere broadcasting an Entropic Field — localized accelerated molecular decay affecting all non-Necro units within 25m. Enemies inside the field: +20% damage taken from all sources. No offensive weapons. Purely debuff.",
-    "narrative": "Positioning above an enemy formation before the main engagement creates a devastating force multiplier: enemies take more damage, die faster, and Reanimation events accelerate the casualty differential. A debuff platform that makes every other Necro-Legion unit deadlier."
+    "physical": "Hovering sphere broadcasting an Entropic Field — localized accelerated molecular decay affecting all non-Revenant units within 25m. Enemies inside the field: +20% damage taken from all sources. No offensive weapons. Purely debuff.",
+    "narrative": "Positioning above an enemy formation before the main engagement creates a devastating force multiplier: enemies take more damage, die faster, and Reanimation events accelerate the casualty differential. A debuff platform that makes every other Revenant unit deadlier."
   },
   {
     "num": 10,
@@ -408,7 +408,7 @@
       }
     },
     "physical": "Destroyer-sized aerial warship on gravity-displacement projectors. Hull bristling with gauss batteries and Tesla arrays. A broadside suppresses entire sectors. Tesla arrays chain lightning across clustered formations. Also an aerial command platform — a Commander aboard projects enhanced Reanimation aura across all ground forces below.",
-    "narrative": "The ideal Necro-Legion command vehicle: protected, elevated, projecting Reanimation coverage across the widest possible ground area. Most effective with a Resurrection-Lord at the Commander slot — aura stacks."
+    "narrative": "The ideal Revenant command vehicle: protected, elevated, projecting Reanimation coverage across the widest possible ground area. Most effective with a Resurrection-Lord at the Commander slot — aura stacks."
   },
   {
     "num": 11,
@@ -449,7 +449,7 @@
       }
     },
     "physical": "Hundreds of tiny living-metal beetle-craft operating in coordinated swarm formation. Latch onto allied ships for molecular-level repairs during combat. Self-replicate from battlefield debris — the more ships are destroyed nearby, the more Scarabs exist. Prolonged battles see repair capacity INCREASE over time.",
-    "narrative": "The more death happens, the more healing exists. A fleet with Scarab-Swarms becomes harder to kill the longer the battle lasts. Enemies quickly learn that sustaining a Necro-Legion space engagement is strategically inadvisable — every minute makes them stronger."
+    "narrative": "The more death happens, the more healing exists. A fleet with Scarab-Swarms becomes harder to kill the longer the battle lasts. Enemies quickly learn that sustaining a Revenant space engagement is strategically inadvisable — every minute makes them stronger."
   },
   {
     "num": 12,
@@ -531,7 +531,7 @@
       }
     },
     "physical": "Large crescent-hulled capital ship with gauss battery banks along both flanks. Fights broadsides like a Terran Broadsword, but gauss weapons STRIP armor over time rather than punching through it. The beam always degrades target armor — after sustained bombardment, the heaviest plating becomes paper-thin. Living-metal hull plus Scarab escorts makes it extraordinarily difficult to permanently destroy.",
-    "narrative": "The patient killer. Doesn't need to penetrate armor — it erodes it, layer by layer, until there's nothing left. Two Entropy-Cruisers working the same target simultaneously will defeat any capital ship in the galaxy given enough time. Time is the Necro-Legion's weapon."
+    "narrative": "The patient killer. Doesn't need to penetrate armor — it erodes it, layer by layer, until there's nothing left. Two Entropy-Cruisers working the same target simultaneously will defeat any capital ship in the galaxy given enough time. Time is The Revenant's weapon."
   },
   {
     "num": 14,
@@ -571,8 +571,8 @@
         "bioAcid": 0.02
       }
     },
-    "physical": "Flat-decked vessel built around a large-scale Reanimation matrix and tractor beam arrays. Reconstructs destroyed Necro ships from recovered wreckage. 30–60 second rebuild time depending on ship class. The ship is physically rebuilt and relaunched into battle, resuming its previous position.",
-    "narrative": "THE highest-priority target when fighting Necro-Legion in space. Without it: losses are permanent. With it: functionally immortal. A fleet with a Resurrection-Barge fights at effectively double strength — every destroyed ship is a temporary inconvenience."
+    "physical": "Flat-decked vessel built around a large-scale Reanimation matrix and tractor beam arrays. Reconstructs destroyed Revenant ships from recovered wreckage. 30–60 second rebuild time depending on ship class. The ship is physically rebuilt and relaunched into battle, resuming its previous position.",
+    "narrative": "THE highest-priority target when fighting The Revenant in space. Without it: losses are permanent. With it: functionally immortal. A fleet with a Resurrection-Barge fights at effectively double strength — every destroyed ship is a temporary inconvenience."
   },
   {
     "num": 15,

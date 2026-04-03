@@ -52,7 +52,7 @@ const ChapterLoader = {
     ch5:  { prefix: 'terran',   dataKey: 'terran-league',    color: '#00b4ff', cssVar: '--terran',   name: 'terran' },
     ch6:  { prefix: 'shards',   dataKey: 'eternal-shards',   color: '#00ffee', cssVar: '--shards',   name: 'shards' },
     ch7:  { prefix: 'horde',    dataKey: 'scrap-horde',      color: '#ff6622', cssVar: '--horde',    name: 'horde' },
-    ch8:  { prefix: 'necro',    dataKey: 'necro-legion',     color: '#AA77FF', cssVar: '--necro',    name: 'necro' },
+    ch8:  { prefix: 'revenant', dataKey: 'revenant',          color: '#AA77FF', cssVar: '--revenant', name: 'revenant' },
     ch9:  { prefix: 'accord',   dataKey: 'unity-accord',     color: '#44ff66', cssVar: '--accord',   name: 'accord' },
     ch10: { prefix: 'vorax',    dataKey: 'vorax',            color: '#ff2266', cssVar: '--vorax',    name: 'vorax' },
     ch11: { prefix: 'guardian',  dataKey: 'core-guardians',   color: '#ffaa22', cssVar: '--guardians', name: 'guardians' }
@@ -238,7 +238,7 @@ const ChapterLoader = {
 
   /** All procedural-bg CSS classes that can be applied */
   ALL_BG_CLASSES: [
-    'bg-terran', 'bg-shards', 'bg-horde', 'bg-necro', 'bg-accord', 'bg-vorax', 'bg-guardians',
+    'bg-terran', 'bg-shards', 'bg-horde', 'bg-revenant', 'bg-accord', 'bg-vorax', 'bg-guardians',
     'bg-foundation', 'bg-galactic', 'bg-combat', 'bg-strategy', 'bg-finalwar', 'bg-presentation', 'bg-appendix', 'bg-cosmic'
   ],
 
@@ -246,9 +246,9 @@ const ChapterLoader = {
     // Remove all faction classes from body
     document.body.classList.remove(
       'faction-terran', 'faction-shards', 'faction-horde',
-      'faction-necro', 'faction-accord', 'faction-vorax', 'faction-guardians',
+      'faction-revenant', 'faction-accord', 'faction-vorax', 'faction-guardians',
       'faction-bg-terran', 'faction-bg-shards', 'faction-bg-horde',
-      'faction-bg-necro', 'faction-bg-accord', 'faction-bg-vorax', 'faction-bg-guardians'
+      'faction-bg-revenant', 'faction-bg-accord', 'faction-bg-vorax', 'faction-bg-guardians'
     );
 
     // Get #procedural-bg element

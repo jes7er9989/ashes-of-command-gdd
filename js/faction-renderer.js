@@ -414,7 +414,7 @@ const FactionRenderer = {
    */
   _buildIconPrefix: {
     terran: 'Terran', shards: 'Shards', horde: 'Horde',
-    necro: 'Necro', accord: 'Accord', vorax: 'Vorax', guardian: 'Guardians'
+    revenant: 'Revenant', accord: 'Accord', vorax: 'Vorax', guardian: 'Guardians'
   },
 
   /**
@@ -492,7 +492,7 @@ const FactionRenderer = {
   _prefixToChapter(prefix) {
     const map = {
       terran: 'ch5', shards: 'ch6', horde: 'ch7',
-      necro: 'ch8', accord: 'ch9', vorax: 'ch10', guardian: 'ch11'
+      revenant: 'ch8', accord: 'ch9', vorax: 'ch10', guardian: 'ch11'
     };
     return map[prefix] || '';
   }

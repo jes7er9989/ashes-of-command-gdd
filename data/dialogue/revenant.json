@@ -1,7 +1,7 @@
 [
   {
     "beat": "First Victory",
-    "trigger": "After winning first territory battle as Necro-Legion",
+    "trigger": "After winning first territory battle as The Revenant",
     "lines": [
       {
         "speaker": "Commander",
@@ -21,13 +21,13 @@
       {
         "speaker": "Vane",
         "style": "normal",
-        "text": "The enemy ran when your dead started moving. That fear is a strategic asset. Make sure every enemy sees the Reanimation. Let the galaxy know: the Necro-Legion does not stay dead."
+        "text": "The enemy ran when your dead started moving. That fear is a strategic asset. Make sure every enemy sees the Reanimation. Let the galaxy know: The Revenant does not stay dead."
       }
     ]
   },
   {
     "beat": "First Defeat",
-    "trigger": "After losing first territory battle as Necro-Legion",
+    "trigger": "After losing first territory battle as The Revenant",
     "lines": [
       {
         "speaker": "Commander",
@@ -53,7 +53,7 @@
   },
   {
     "beat": "Vorax First Encounter",
-    "trigger": "First Vorax engagement as Necro-Legion",
+    "trigger": "First Vorax engagement as The Revenant",
     "lines": [
       {
         "speaker": "Commander",
@@ -73,13 +73,13 @@
       {
         "speaker": "Vane",
         "style": "normal",
-        "text": "The Vorax are consuming the galaxy's archaeological record. Every tomb-world stripped is 100,000 years of history turned to mulch. This is not just military — it is a crime against memory. The Necro-Legion has a specific reason to fight beyond survival: preservation of the record."
+        "text": "The Vorax are consuming the galaxy's archaeological record. Every tomb-world stripped is 100,000 years of history turned to mulch. This is not just military — it is a crime against memory. The Revenant has a specific reason to fight beyond survival: preservation of the record."
       }
     ]
   },
   {
     "beat": "Core Guardian First Contact",
-    "trigger": "Fleet enters Core Guardian exclusion zone as Necro-Legion",
+    "trigger": "Fleet enters Core Guardian exclusion zone as The Revenant",
     "lines": [
       {
         "speaker": "BROADCAST",

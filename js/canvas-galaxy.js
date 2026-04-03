@@ -98,7 +98,7 @@ class GalaxyRenderer {
     terran:    { color: '#00b4ff', name: 'TERRAN LEAGUE',   chapterId: 'ch5'  },
     shards:    { color: '#00ffee', name: 'ETERNAL SHARDS',  chapterId: 'ch6'  },
     horde:     { color: '#ff6622', name: 'SCRAP-HORDE',     chapterId: 'ch7'  },
-    necro:     { color: '#00e070', name: 'NECRO-LEGION',    chapterId: 'ch8'  },
+    revenant:  { color: '#00e070', name: 'THE REVENANT',     chapterId: 'ch8'  },
     accord:    { color: '#44ff66', name: 'UNITY ACCORD',    chapterId: 'ch9'  },
     vorax:     { color: '#ff2266', name: 'VORAX SWARM',     chapterId: 'ch10' },
     guardians: { color: '#ffaa22', name: 'GUARDIANS',       chapterId: 'ch11' },
@@ -139,7 +139,7 @@ class GalaxyRenderer {
         terran:    { x: 310, y: 220 },
         shards:    { x: 460, y: 160 },
         horde:     { x: 180, y: 350 },
-        necro:     { x: 420, y: 380 },
+        revenant:  { x: 420, y: 380 },
         accord:    { x: 240, y: 150 },
         vorax:     { x: 130, y: 470 },
         guardians: { x: 300, y: 300 },
@@ -147,7 +147,7 @@ class GalaxyRenderer {
 
     this.territoryCounts = opts.territoryCounts
       || (typeof Dashboard !== 'undefined' ? Dashboard.TERRITORY_COUNTS : null)
-      || { terran: 32, guardians: 35, shards: 18, accord: 24, horde: 19, vorax: 28, necro: 14 };
+      || { terran: 32, guardians: 35, shards: 18, accord: 24, horde: 19, vorax: 28, revenant: 14 };
 
     /* ── Pre-generate all visual data ── */
     this.armStars = [];

@@ -38,7 +38,7 @@
   "terran": ["terran league", "human", "humanity", "earth", "terra"],
   "shards": ["eternal shards", "crystal", "crystalline", "aethyn"],
   "horde": ["scrap-horde", "scrap", "junk", "salvage", "rust"],
-  "necro": ["necro-legion", "undead", "undying", "protocol", "reanimated"],
+  "revenant": ["the revenant", "undead", "undying", "protocol", "reanimated", "necro-legion", "necro"],
   "accord": ["unity accord", "unity", "covenant", "diplomatic"],
   "vorax": ["vorax collective", "swarm", "devouring", "biological", "hive"],
   "guardians": ["core guardians", "ancient", "cosmic", "silent gods", "warden"],

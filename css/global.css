@@ -43,7 +43,7 @@
   --terran: #00b4ff;
   --shards: #00ffee;
   --horde: #ff6622;
-  --necro: #AA77FF;
+  --revenant: #AA77FF;
   --accord: #44ff66;
   --vorax: #ff2266;
   --guardians: #ffaa22;
@@ -3426,7 +3426,7 @@ body.edit-mode [data-editable]:hover {
     repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(0,255,238,0.015) 30deg, transparent 60deg),
     #04050e;
 }
-#procedural-bg.bg-necro {
+#procedural-bg.bg-revenant {
   background:
     radial-gradient(circle at 50% -10%, rgba(68,255,136,0.10) 0%, transparent 55%),
     radial-gradient(ellipse at 15% 90%, rgba(0,180,80,0.06) 0%, transparent 35%),
@@ -3508,7 +3508,7 @@ body.edit-mode [data-editable]:hover {
 body.faction-bg-terran    { --faction-active: var(--terran); }
 body.faction-bg-shards    { --faction-active: var(--shards); }
 body.faction-bg-horde     { --faction-active: var(--horde); }
-body.faction-bg-necro     { --faction-active: var(--necro); }
+body.faction-bg-revenant     { --faction-active: var(--revenant); }
 body.faction-bg-accord    { --faction-active: var(--accord); }
 body.faction-bg-vorax     { --faction-active: var(--vorax); }
 body.faction-bg-guardians { --faction-active: var(--guardians); }
@@ -3529,7 +3529,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
     repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,102,34,0.02) 20px, rgba(255,102,34,0.02) 22px),
     repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,102,34,0.015) 20px, rgba(255,102,34,0.015) 22px);
 }
-.faction-bg-necro .main-content {
+.faction-bg-revenant .main-content {
   background: radial-gradient(ellipse at 50% 0%, rgba(68,255,136,0.04) 0%, transparent 50%),
     repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(68,255,136,0.015) 60px, rgba(68,255,136,0.015) 61px),
     repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(68,255,136,0.01) 80px, rgba(68,255,136,0.01) 81px);
@@ -3554,7 +3554,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .sidebar { box-shadow: inset -1px 0 0 rgba(0,180,255,.15), 3px 0 20px rgba(0,180,255,.07); }
 .faction-bg-shards    .sidebar { box-shadow: inset -1px 0 0 rgba(0,255,238,.15), 3px 0 20px rgba(0,255,238,.07); }
 .faction-bg-horde     .sidebar { box-shadow: inset -1px 0 0 rgba(255,102,34,.15),3px 0 20px rgba(255,102,34,.07); }
-.faction-bg-necro     .sidebar { box-shadow: inset -1px 0 0 rgba(170,119,255,.15), 3px 0 20px rgba(170,119,255,.07); }
+.faction-bg-revenant     .sidebar { box-shadow: inset -1px 0 0 rgba(170,119,255,.15), 3px 0 20px rgba(170,119,255,.07); }
 .faction-bg-accord    .sidebar { box-shadow: inset -1px 0 0 rgba(68,255,102,.15),3px 0 20px rgba(68,255,102,.07); }
 .faction-bg-vorax     .sidebar { box-shadow: inset -1px 0 0 rgba(255,34,102,.15), 3px 0 20px rgba(255,34,102,.07); }
 .faction-bg-guardians .sidebar { box-shadow: inset -1px 0 0 rgba(255,170,34,.15),3px 0 20px rgba(255,170,34,.07); }
@@ -3563,7 +3563,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .sidebar-title { color: var(--terran); text-shadow: 0 0 12px var(--terran); }
 .faction-bg-shards    .sidebar-title { color: var(--shards); text-shadow: 0 0 12px var(--shards); }
 .faction-bg-horde     .sidebar-title { color: var(--horde);  text-shadow: 0 0 12px var(--horde); }
-.faction-bg-necro     .sidebar-title { color: var(--necro);  text-shadow: 0 0 12px var(--necro); }
+.faction-bg-revenant     .sidebar-title { color: var(--revenant);  text-shadow: 0 0 12px var(--revenant); }
 .faction-bg-accord    .sidebar-title { color: var(--accord); text-shadow: 0 0 12px var(--accord); }
 .faction-bg-vorax     .sidebar-title { color: var(--vorax);  text-shadow: 0 0 12px var(--vorax); }
 .faction-bg-guardians .sidebar-title { color: var(--guardians); text-shadow: 0 0 12px var(--guardians); }
@@ -3572,14 +3572,14 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .nav-chapter.active { color: var(--terran); border-left-color: var(--terran); background: rgba(0,180,255,.06); --fx-nav: var(--terran); }
 .faction-bg-shards    .nav-chapter.active { color: var(--shards); border-left-color: var(--shards); background: rgba(0,255,238,.06); --fx-nav: var(--shards); }
 .faction-bg-horde     .nav-chapter.active { color: var(--horde);  border-left-color: var(--horde);  background: rgba(255,102,34,.06); --fx-nav: var(--horde); }
-.faction-bg-necro     .nav-chapter.active { color: var(--necro);  border-left-color: var(--necro);  background: rgba(170,119,255,.06); --fx-nav: var(--necro); }
+.faction-bg-revenant     .nav-chapter.active { color: var(--revenant);  border-left-color: var(--revenant);  background: rgba(170,119,255,.06); --fx-nav: var(--revenant); }
 .faction-bg-accord    .nav-chapter.active { color: var(--accord); border-left-color: var(--accord); background: rgba(68,255,102,.06); --fx-nav: var(--accord); }
 .faction-bg-vorax     .nav-chapter.active { color: var(--vorax);  border-left-color: var(--vorax);  background: rgba(255,34,102,.06); --fx-nav: var(--vorax); }
 .faction-bg-guardians .nav-chapter.active { color: var(--guardians); border-left-color: var(--guardians); background: rgba(255,170,34,.06); --fx-nav: var(--guardians); }
 .faction-bg-terran    .nav-chapter.active::before { --fx-nav: var(--terran); }
 .faction-bg-shards    .nav-chapter.active::before { --fx-nav: var(--shards); }
 .faction-bg-horde     .nav-chapter.active::before { --fx-nav: var(--horde);  }
-.faction-bg-necro     .nav-chapter.active::before { --fx-nav: var(--necro);  }
+.faction-bg-revenant     .nav-chapter.active::before { --fx-nav: var(--revenant);  }
 .faction-bg-accord    .nav-chapter.active::before { --fx-nav: var(--accord); }
 .faction-bg-vorax     .nav-chapter.active::before { --fx-nav: var(--vorax);  }
 .faction-bg-guardians .nav-chapter.active::before { --fx-nav: var(--guardians); }
@@ -3588,7 +3588,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .search-box { border-color: var(--terran); box-shadow: 0 8px 48px rgba(0,180,255,.22), 0 0 0 1px rgba(0,180,255,.2); }
 .faction-bg-shards    .search-box { border-color: var(--shards); box-shadow: 0 8px 48px rgba(0,255,238,.22), 0 0 0 1px rgba(0,255,238,.2); }
 .faction-bg-horde     .search-box { border-color: var(--horde);  box-shadow: 0 8px 48px rgba(255,102,34,.22),0 0 0 1px rgba(255,102,34,.2); }
-.faction-bg-necro     .search-box { border-color: var(--necro);  box-shadow: 0 8px 48px rgba(170,119,255,.22), 0 0 0 1px rgba(170,119,255,.2); }
+.faction-bg-revenant     .search-box { border-color: var(--revenant);  box-shadow: 0 8px 48px rgba(170,119,255,.22), 0 0 0 1px rgba(170,119,255,.2); }
 .faction-bg-accord    .search-box { border-color: var(--accord); box-shadow: 0 8px 48px rgba(68,255,102,.22),0 0 0 1px rgba(68,255,102,.2); }
 .faction-bg-vorax     .search-box { border-color: var(--vorax);  box-shadow: 0 8px 48px rgba(255,34,102,.22), 0 0 0 1px rgba(255,34,102,.2); }
 .faction-bg-guardians .search-box { border-color: var(--guardians); box-shadow: 0 8px 48px rgba(255,170,34,.22),0 0 0 1px rgba(255,170,34,.2); }
@@ -3597,7 +3597,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .main-content::-webkit-scrollbar-thumb { background: rgba(0,180,255,.28); }
 .faction-bg-shards    .main-content::-webkit-scrollbar-thumb { background: rgba(0,255,238,.28); }
 .faction-bg-horde     .main-content::-webkit-scrollbar-thumb { background: rgba(255,102,34,.28); }
-.faction-bg-necro     .main-content::-webkit-scrollbar-thumb { background: rgba(170,119,255,.28); }
+.faction-bg-revenant     .main-content::-webkit-scrollbar-thumb { background: rgba(170,119,255,.28); }
 .faction-bg-accord    .main-content::-webkit-scrollbar-thumb { background: rgba(68,255,102,.28); }
 .faction-bg-vorax     .main-content::-webkit-scrollbar-thumb { background: rgba(255,34,102,.28); }
 .faction-bg-guardians .main-content::-webkit-scrollbar-thumb { background: rgba(255,170,34,.28); }
@@ -3606,7 +3606,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .card { --fx: var(--terran); }
 .faction-bg-shards    .card { --fx: var(--shards); }
 .faction-bg-horde     .card { --fx: var(--horde); }
-.faction-bg-necro     .card { --fx: var(--necro); }
+.faction-bg-revenant     .card { --fx: var(--revenant); }
 .faction-bg-accord    .card { --fx: var(--accord); }
 .faction-bg-vorax     .card { --fx: var(--vorax); }
 .faction-bg-guardians .card { --fx: var(--guardians); }
@@ -3615,7 +3615,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .system-card { --fx: var(--terran); }
 .faction-bg-shards    .system-card { --fx: var(--shards); }
 .faction-bg-horde     .system-card { --fx: var(--horde); }
-.faction-bg-necro     .system-card { --fx: var(--necro); }
+.faction-bg-revenant     .system-card { --fx: var(--revenant); }
 .faction-bg-accord    .system-card { --fx: var(--accord); }
 .faction-bg-vorax     .system-card { --fx: var(--vorax); }
 .faction-bg-guardians .system-card { --fx: var(--guardians); }
@@ -3624,7 +3624,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .section-heading { background: linear-gradient(90deg,#fff 15%,var(--terran) 50%,#fff 85%) 0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
 .faction-bg-shards    .section-heading { background: linear-gradient(90deg,#fff 15%,var(--shards) 50%,#fff 85%) 0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
 .faction-bg-horde     .section-heading { background: linear-gradient(90deg,#fff 15%,var(--horde) 50%,#fff 85%)  0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
-.faction-bg-necro     .section-heading { background: linear-gradient(90deg,#fff 15%,var(--necro) 50%,#fff 85%)  0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
+.faction-bg-revenant     .section-heading { background: linear-gradient(90deg,#fff 15%,var(--revenant) 50%,#fff 85%)  0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
 .faction-bg-accord    .section-heading { background: linear-gradient(90deg,#fff 15%,var(--accord) 50%,#fff 85%) 0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
 .faction-bg-vorax     .section-heading { background: linear-gradient(90deg,#fff 15%,var(--vorax) 50%,#fff 85%)  0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
 .faction-bg-guardians .section-heading { background: linear-gradient(90deg,#fff 15%,var(--guardians) 50%,#fff 85%) 0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
@@ -3633,7 +3633,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .quote-block { border-left-color: var(--terran); background: rgba(0,180,255,.025); }
 .faction-bg-shards    .quote-block { border-left-color: var(--shards); background: rgba(0,255,238,.025); }
 .faction-bg-horde     .quote-block { border-left-color: var(--horde);  background: rgba(255,102,34,.025); }
-.faction-bg-necro     .quote-block { border-left-color: var(--necro);  background: rgba(170,119,255,.025); }
+.faction-bg-revenant     .quote-block { border-left-color: var(--revenant);  background: rgba(170,119,255,.025); }
 .faction-bg-accord    .quote-block { border-left-color: var(--accord); background: rgba(68,255,102,.025); }
 .faction-bg-vorax     .quote-block { border-left-color: var(--vorax);  background: rgba(255,34,102,.025); }
 .faction-bg-guardians .quote-block { border-left-color: var(--guardians); background: rgba(255,170,34,.025); }
@@ -3642,7 +3642,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .power-bar-fill { background: var(--terran) !important; box-shadow: 0 0 6px var(--terran); }
 .faction-bg-shards    .power-bar-fill { background: var(--shards) !important; box-shadow: 0 0 6px var(--shards); }
 .faction-bg-horde     .power-bar-fill { background: var(--horde)  !important; box-shadow: 0 0 6px var(--horde); }
-.faction-bg-necro     .power-bar-fill { background: var(--necro)  !important; box-shadow: 0 0 6px var(--necro); }
+.faction-bg-revenant     .power-bar-fill { background: var(--revenant)  !important; box-shadow: 0 0 6px var(--revenant); }
 .faction-bg-accord    .power-bar-fill { background: var(--accord) !important; box-shadow: 0 0 6px var(--accord); }
 .faction-bg-vorax     .power-bar-fill { background: var(--vorax)  !important; box-shadow: 0 0 6px var(--vorax); }
 .faction-bg-guardians .power-bar-fill { background: var(--guardians) !important; box-shadow: 0 0 6px var(--guardians); }
@@ -3666,7 +3666,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .page-title-wrap::after { --fx: var(--terran); }
 .faction-bg-shards    .page-title-wrap::after { --fx: var(--shards); }
 .faction-bg-horde     .page-title-wrap::after { --fx: var(--horde); }
-.faction-bg-necro     .page-title-wrap::after { --fx: var(--necro); }
+.faction-bg-revenant     .page-title-wrap::after { --fx: var(--revenant); }
 .faction-bg-accord    .page-title-wrap::after { --fx: var(--accord); }
 .faction-bg-vorax     .page-title-wrap::after { --fx: var(--vorax); }
 .faction-bg-guardians .page-title-wrap::after { --fx: var(--guardians); }
@@ -3675,7 +3675,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .domain-tab { --fx: var(--terran); }
 .faction-bg-shards    .domain-tab { --fx: var(--shards); }
 .faction-bg-horde     .domain-tab { --fx: var(--horde); }
-.faction-bg-necro     .domain-tab { --fx: var(--necro); }
+.faction-bg-revenant     .domain-tab { --fx: var(--revenant); }
 .faction-bg-accord    .domain-tab { --fx: var(--accord); }
 .faction-bg-vorax     .domain-tab { --fx: var(--vorax); }
 .faction-bg-guardians .domain-tab { --fx: var(--guardians); }
@@ -3684,7 +3684,7 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .data-row:hover { border-left-color: var(--terran); background: rgba(0,180,255,.04); }
 .faction-bg-shards    .data-row:hover { border-left-color: var(--shards); background: rgba(0,255,238,.04); }
 .faction-bg-horde     .data-row:hover { border-left-color: var(--horde);  background: rgba(255,102,34,.04); }
-.faction-bg-necro     .data-row:hover { border-left-color: var(--necro);  background: rgba(170,119,255,.04); }
+.faction-bg-revenant     .data-row:hover { border-left-color: var(--revenant);  background: rgba(170,119,255,.04); }
 .faction-bg-accord    .data-row:hover { border-left-color: var(--accord); background: rgba(68,255,102,.04); }
 .faction-bg-vorax     .data-row:hover { border-left-color: var(--vorax);  background: rgba(255,34,102,.04); }
 .faction-bg-guardians .data-row:hover { border-left-color: var(--guardians); background: rgba(255,170,34,.04); }
@@ -5369,7 +5369,7 @@ body.crt-active {
 body.faction-terran    { --accent: #00b4ff; }
 body.faction-shards    { --accent: #00ffee; }
 body.faction-horde     { --accent: #ff6622; }
-body.faction-necro     { --accent: #AA77FF; }
+body.faction-revenant     { --accent: #AA77FF; }
 body.faction-accord    { --accent: #44ff66; }
 body.faction-vorax     { --accent: #ff2266; }
 body.faction-guardians { --accent: #ffaa22; }
@@ -5378,7 +5378,7 @@ body.faction-guardians { --accent: #ffaa22; }
 body.faction-terran    #content-area .section-heading { text-shadow: 0 0 14px rgba(0,180,255,0.3); }
 body.faction-shards    #content-area .section-heading { text-shadow: 0 0 14px rgba(0,255,238,0.3); }
 body.faction-horde     #content-area .section-heading { text-shadow: 0 0 14px rgba(255,102,34,0.3); }
-body.faction-necro     #content-area .section-heading { text-shadow: 0 0 14px rgba(170,119,255,0.3); }
+body.faction-revenant     #content-area .section-heading { text-shadow: 0 0 14px rgba(170,119,255,0.3); }
 body.faction-accord    #content-area .section-heading { text-shadow: 0 0 14px rgba(68,255,102,0.3); }
 body.faction-vorax     #content-area .section-heading { text-shadow: 0 0 14px rgba(255,34,102,0.3); }
 body.faction-guardians #content-area .section-heading { text-shadow: 0 0 14px rgba(255,170,34,0.3); }
@@ -5387,7 +5387,7 @@ body.faction-guardians #content-area .section-heading { text-shadow: 0 0 14px rg
 body.faction-terran    #content-area .card:hover { border-color: rgba(0,180,255,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,180,255,0.08); }
 body.faction-shards    #content-area .card:hover { border-color: rgba(0,255,238,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,255,238,0.08); }
 body.faction-horde     #content-area .card:hover { border-color: rgba(255,102,34,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,102,34,0.08); }
-body.faction-necro     #content-area .card:hover { border-color: rgba(170,119,255,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(170,119,255,0.08); }
+body.faction-revenant     #content-area .card:hover { border-color: rgba(170,119,255,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(170,119,255,0.08); }
 body.faction-accord    #content-area .card:hover { border-color: rgba(68,255,102,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(68,255,102,0.08); }
 body.faction-vorax     #content-area .card:hover { border-color: rgba(255,34,102,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,34,102,0.08); }
 body.faction-guardians #content-area .card:hover { border-color: rgba(255,170,34,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,170,34,0.08); }

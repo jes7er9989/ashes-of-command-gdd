@@ -63,8 +63,8 @@
     "chapterId": "ch7"
   },
   {
-    "key": "necro",
-    "name": "Necro-Legion",
+    "key": "revenant",
+    "name": "The Revenant",
     "subtitle": "The Undying Protocol",
     "color": "#00e070",
     "npc": false,
