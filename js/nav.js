@@ -614,3 +614,6 @@ const Nav = {
     });
   }
 };
+
+/* Expose Nav globally for inline onclick handlers (dashboard cards, etc.) */
+window.Nav = Nav;
