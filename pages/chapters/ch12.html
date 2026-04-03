@@ -305,19 +305,77 @@
 
     <div class="section-label">Warp Lanes &amp; Connectivity</div>
     <div class="section-heading" id="sec-ch12-3">Procedural Network with Guaranteed Connectivity</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
-      <div class="card"><div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">
-        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Proximity-based:</strong> Each system connects to 2-3 nearest neighbors</div>
-        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">All reachable:</strong> No isolated systems, no disconnected subgraphs</div>
-        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">1-3 chokepoints:</strong> Deliberate narrow passages for strategic control</div>
-        <div><strong style="color:var(--text-hi)">Core access:</strong> Nexus connected by 2-3 lanes. Only approach = THROUGH Guardians.</div>
-      </div></div>
-      <div class="card"><div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">
-        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Lane ambush:</strong> Hostile fleets on same lane COLLIDE — automatic space battle at midpoint</div>
-        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Wormholes:</strong> 1-2 per galaxy. Instant transit. Variable stability (5-40% collapse/use).</div>
-        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Seed-fixed:</strong> Wormhole locations fixed per seed. Discovery requires exploration.</div>
-        <div><strong style="color:var(--text-hi)">3 zoom levels:</strong> Galaxy → System → Planet (seamless scroll transition)</div>
-      </div></div>
+    <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:24px">
+
+      <!-- LANE GENERATION -->
+      <div class="card" style="border-top:2px solid var(--terran)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:var(--terran);margin-bottom:2px">LANE GENERATION</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">Proximity-Based &middot; Guaranteed Connectivity</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Connection Rules:</strong> Each system connects to 2&ndash;3 nearest neighbors. No isolated systems, no disconnected subgraphs.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Chokepoints:</strong> 1&ndash;3 deliberate narrow passages generated per galaxy. Strategic control points where a single fleet can block an entire front.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Core Access:</strong> Nexus connected by 2&ndash;3 lanes only. No direct lane from any homeworld &mdash; must fight through intermediate systems.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Lane Pruning:</strong> Direct homeworld-to-Nexus lanes automatically removed after generation. Connectivity verified after pruning.</div>
+          <div><strong style="color:var(--text-hi)">Seed-Fixed:</strong> All lane connections are deterministic per seed. Same seed = same network topology.</div>
+        </div>
+      </div>
+
+      <!-- TRAVEL & FLEET MOVEMENT -->
+      <div class="card" style="border-top:2px solid var(--shards)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:var(--shards);margin-bottom:2px">TRAVEL &amp; FLEET MOVEMENT</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">Cycle-Based Transit &middot; Fleet Visualization</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Transit Time:</strong> <span class="proto-badge">PH</span> 1 cycle per hop for standard fleets. Exact timing pending balance pass.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Fleet Size Impact:</strong> <span class="proto-badge">PH</span> Larger fleets may move slower due to logistics overhead. Pending balance pass.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">In-Transit Vulnerability:</strong> Fleets in warp cannot be recalled. Committed once launched. Can be intercepted at destination.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Lane Collision:</strong> Hostile fleets on the same lane COLLIDE &mdash; automatic space battle at the midpoint. Neither side chose the engagement.</div>
+          <div><strong style="color:var(--text-hi)">Map Visualization:</strong> Fleet markers move along lane paths in real-time. Multiple fleets visible simultaneously. Color-coded by faction. Fog of war hides enemy movement outside scan range.</div>
+        </div>
+      </div>
+
+      <!-- LANE CONTROL & BLOCKADES -->
+      <div class="card" style="border-top:2px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:var(--horde);margin-bottom:2px">LANE CONTROL &amp; BLOCKADES</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">Chokepoint Warfare &middot; Interception</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Stationing:</strong> Fleets can be stationed at any system to control adjacent lanes. Incoming hostile fleets are automatically intercepted.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Blockade:</strong> <span class="proto-badge">PH</span> Controlling all lanes into a system effectively blockades it &mdash; no reinforcements, no supply. Exact mechanics pending.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Chokepoint Value:</strong> A single well-defended chokepoint system can protect an entire sector. Losing one can collapse a front.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Ambush Potential:</strong> Fleets hidden in a system (fog of war) can surprise incoming enemies. First-strike advantage for the defender who was there first.</div>
+          <div><strong style="color:var(--text-hi)">Supply Impact:</strong> Blockaded systems suffer supply chain degradation (see Ch. 15). Extended blockade degrades garrison effectiveness.</div>
+        </div>
+      </div>
+
+      <!-- WORMHOLES -->
+      <div class="card" style="border-top:2px solid var(--guardians)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:var(--guardians);margin-bottom:2px">WORMHOLES</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">Instant Transit &middot; Variable Stability</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Count:</strong> 1&ndash;2 per galaxy depending on size. Fixed per seed.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Function:</strong> Instant transit between two fixed points. Bypasses all intermediate systems and lanes.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Stability:</strong> Variable &mdash; 5&ndash;40% collapse chance per use. <span class="proto-badge">PH</span> Exact rates pending balance pass.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Collapse Consequences:</strong> <span class="proto-badge">PH</span> Collapsed wormhole is gone permanently for the rest of the run. Fleet in transit during collapse is lost.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Stabilization:</strong> <span class="proto-badge">PH</span> Potential tech tree research to reduce collapse chance. Not eliminable, only reducible.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Discovery:</strong> Wormhole locations fixed per seed but must be discovered through exploration. Not visible on the map until a fleet or scout reaches the system.</div>
+          <div><strong style="color:var(--text-hi)">Strategic Value:</strong> Force projection across the galaxy. Losing access to a wormhole (collapse or enemy control) can be campaign-defining.</div>
+        </div>
+      </div>
+
+      <!-- FOG OF WAR & EXPLORATION -->
+      <div class="card" style="border-top:2px solid var(--necro)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:var(--necro);margin-bottom:2px">FOG OF WAR &amp; EXPLORATION</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">Limited Vision &middot; Scout-Driven Discovery</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Starting Vision:</strong> Player sees only their homeworld system and immediately adjacent systems at campaign start.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Scan Range:</strong> <span class="proto-badge">PH</span> Each controlled system reveals adjacent systems. Exact range pending.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Scout Ships:</strong> <span class="proto-badge">PH</span> Dedicated scout units can be sent to explore unknown systems. Faster than full fleets, minimal combat capability.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Intel Layers:</strong> System discovered (basic info: star type, planet count) vs system explored (full info: planet types, resources, garrison, traits).</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Enemy Movement:</strong> Enemy fleets only visible within your scan range. Beyond that, you&rsquo;re blind. Espionage operations (Ch. 24) can extend vision.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Wormhole &amp; Relic Discovery:</strong> Hidden features (wormholes, Aethyn relics, anomalies) only revealed when a fleet physically enters the system.</div>
+          <div><strong style="color:var(--text-hi)">Strategic Implication:</strong> Early game is exploration-driven. Mid game shifts to intelligence warfare. Late game is about maintaining vision across a sprawling empire.</div>
+        </div>
+      </div>
+
     </div>
   </div><!-- /page-ch12 -->
 
