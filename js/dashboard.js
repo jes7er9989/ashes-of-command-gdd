@@ -730,10 +730,10 @@ const Dashboard = {
             <div class="system-card-desc">124 research nodes across 4 branches \u00D7 5 tiers for playable factions, plus NPC-exclusive trees. Each faction\u2019s tech path reinforces its unique playstyle and strategic identity.</div>
             <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 28</div>
           </div>
-          <div class="system-card" style="border-top:3px solid var(--accord)" onclick="event.preventDefault();Nav.go('ch33')">
-            <div class="system-card-title">\uD83D\uDD04 Meta-Progression</div>
-            <div class="system-card-desc">3 progression layers\u2014In-Run, Archive, and Account\u2014ensure every campaign leaves a lasting mark. Stardust awards and persistent unlocks make each playthrough build on the last.</div>
-            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 33</div>
+          <div class="system-card" style="border-top:3px solid var(--accord)" onclick="event.preventDefault();Nav.go('ch43')">
+            <div class="system-card-title">\uD83D\uDD04 DLC Roadmap</div>
+            <div class="system-card-desc">Post-launch expansion plans: Playable Vorax, Playable Guardians, Schism Wars prequel campaign, and Co-Op multiplayer. The core game ships complete\u2014DLC expands the universe, not the missing pieces.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 43</div>
           </div>
         </div>
         <div class="divider"></div>
