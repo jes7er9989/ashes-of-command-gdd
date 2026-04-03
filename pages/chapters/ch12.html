@@ -2,7 +2,7 @@
   <div class="page" id="page-ch12">
     <div class="page-title-wrap">
 <div class="page-title">GALAXY GENERATION &amp; STRUCTURE</div>
-    <div class="page-subtitle">Procedural · Shareable Seeds · 3 Zoom Levels — Chapter 12</div>
+    <div class="page-subtitle">Procedural &middot; Shareable Seeds &middot; 5 Zones &middot; Fog of War &mdash; Chapter 12</div>
 </div>
     <div class="body-text" style="margin-bottom:24px">Every galaxy is procedurally generated from scratch. No hardcoded systems, no fixed positions. Every element — system count, positions, names, warp lanes, star types, planets, hazards, faction starts, wormholes — generated anew from a random seed. Same seed = same galaxy, different game.</div>
 
@@ -142,6 +142,7 @@
     <!-- CORE SYSTEM PLANETS (Lore Workshop Phase 1 Locked) -->
     <div class="section-label">The Core — 10 Named Worlds</div>
     <div class="section-heading" id="sec-ch12-core">Guardian-Protected Aethyn Legacy Systems</div>
+    <div class="body-text" style="margin-bottom:16px">All 10 Core worlds exist within the Nexus system at the galactic center. Each is protected by Core Guardian forces whose strength and behavior varies based on their corruption level. Capturing Core worlds is the final campaign push &mdash; you must fight through Guardian defenses for every one. The order you take them and what you do with them shapes your alignment and ultimately determines your ending.</div>
     <div style="display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:24px">
 
       <div class="card" style="padding:10px 14px;border-left:2px solid var(--guardians)">
@@ -246,6 +247,7 @@
           <div><strong style="color:var(--text-hi)">Hazards:</strong> <span style="color:var(--text-mid)">Guardian patrols (constant). Volatile Death chain reactions. Energy absorption renders energy weapons useless.</span></div>
           <div><strong style="color:var(--text-hi)">Encounters:</strong> <span style="color:var(--text-mid)">Core Guardians only. No faction presence. No Vorax.</span></div>
           <div><strong style="color:var(--text-hi)">Strategic Role:</strong> <span style="color:var(--text-mid)">Endgame objective. You come here to win, not to farm. Every system is a boss fight.</span></div>
+          <div style="margin-top:4px"><a href="#ch11" onclick="location.hash='#ch11'" style="color:var(--accent);font-size:0.85rem;text-decoration:none">See Ch. 11 &mdash; Core Guardians &rsaquo;</a></div>
         </div>
       </div>
       <div class="card" style="padding:10px 16px;border-left:3px solid var(--shards)">
@@ -256,6 +258,7 @@
           <div><strong style="color:var(--text-hi)">Hazards:</strong> <span style="color:var(--text-mid)">Guardian patrols (periodic). Anomalous readings near ruin sites. Radiation from White Dwarf stars.</span></div>
           <div><strong style="color:var(--text-hi)">Encounters:</strong> <span style="color:var(--text-mid)">Guardian scouts, rival faction expeditions. Contested exploration territory.</span></div>
           <div><strong style="color:var(--text-hi)">Strategic Role:</strong> <span style="color:var(--text-mid)">Tech advantage. Factions that push into the Inner Ring first gain access to Aethyn technology before rivals. High risk, high reward exploration.</span></div>
+          <div style="margin-top:4px"><a href="#ch11" onclick="location.hash='#ch11'" style="color:var(--accent);font-size:0.85rem;text-decoration:none">See Ch. 11 &mdash; Core Guardians &rsaquo;</a></div>
         </div>
       </div>
       <div class="card" style="padding:10px 16px;border-left:3px solid var(--terran)">
@@ -276,6 +279,7 @@
           <div><strong style="color:var(--text-hi)">Hazards:</strong> <span style="color:var(--text-mid)">Long supply lines (4+ hop penalties). Vorax scout incursions. Isolation from allies.</span></div>
           <div><strong style="color:var(--text-hi)">Encounters:</strong> <span style="color:var(--text-mid)">Vorax scouts (early warning). Neutral systems. Uncontacted minor settlements.</span></div>
           <div><strong style="color:var(--text-hi)">Strategic Role:</strong> <span style="color:var(--text-mid)">Expansion frontier. Cheap territory but expensive to defend. Early Vorax contact forces difficult choices &mdash; fortify the rim or abandon it.</span></div>
+          <div style="margin-top:4px"><a href="#ch10" onclick="location.hash='#ch10'" style="color:var(--accent);font-size:0.85rem;text-decoration:none">See Ch. 10 &mdash; Vorax &rsaquo;</a></div>
         </div>
       </div>
       <div class="card" style="padding:10px 16px;border-left:3px solid var(--vorax)">
@@ -286,6 +290,7 @@
           <div><strong style="color:var(--text-hi)">Hazards:</strong> <span style="color:var(--text-mid)">Vorax swarms (constant). Biofield interference disrupts communications. Terraforming corruption spreads to adjacent systems.</span></div>
           <div><strong style="color:var(--text-hi)">Encounters:</strong> <span style="color:var(--text-mid)">Vorax only. Massive swarm fleets. Evolved bioweapons adapted from consumed civilizations.</span></div>
           <div><strong style="color:var(--text-hi)">Strategic Role:</strong> <span style="color:var(--text-mid)">Containment line. You don&rsquo;t conquer The Edge &mdash; you slow it down. Delaying actions buy time for the core campaign. Losing the Outer Rim means The Edge reaches the Mid Ring.</span></div>
+          <div style="margin-top:4px"><a href="#ch10" onclick="location.hash='#ch10'" style="color:var(--accent);font-size:0.85rem;text-decoration:none">See Ch. 10 &mdash; Vorax &rsaquo;</a></div>
         </div>
       </div>
     </div>
@@ -294,13 +299,62 @@
 
     <div class="section-label">Star Types</div>
     <div class="section-heading" id="sec-ch12-2">5 Types Determine Planet Distribution</div>
-    <div style="border:1px solid var(--border);border-radius:2px;overflow-x:auto;margin-bottom:24px">
-      <div style="display:grid;grid-template-columns:130px 55px 1fr 1.2fr 1.2fr 1fr;min-width:820px;background:rgba(0,180,255,0.04);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>STAR TYPE</span><span>PLANETS</span><span>DOMINANT TYPES</span><span>STRATEGIC FLAVOR</span><span>HAZARDS</span><span>ZONE FREQUENCY</span></div>
-      <div style="display:grid;grid-template-columns:130px 55px 1fr 1.2fr 1.2fr 1fr;min-width:820px;padding:6px 12px;font-size:0.92rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span style="color:#ffcc44">Yellow Main Seq</span><span>5-8</span><span>Terrestrial, Ocean, Jungle</span><span>Balanced. Good habitability. Breadbasket systems &mdash; reliable food and population growth.</span><span>None inherent. Safe colonization.</span><span>Mid Ring (common), Outer Rim (occasional)</span></div>
-      <div style="display:grid;grid-template-columns:130px 55px 1fr 1.2fr 1.2fr 1fr;min-width:820px;padding:6px 12px;font-size:0.92rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span style="color:#ff6644">Red Giant</span><span>6-10</span><span>Volcanic, Desert, Gas Giant</span><span>Resource-rich but hostile. Extreme temperatures. High Scrap yields from mineral-dense worlds.</span><span>Solar flare events (periodic). 2% hull damage/cycle to unshielded ships in orbit.</span><span>Outer Rim (common), Mid Ring (occasional)</span></div>
-      <div style="display:grid;grid-template-columns:130px 55px 1fr 1.2fr 1.2fr 1fr;min-width:820px;padding:6px 12px;font-size:0.92rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span style="color:#6688ff">Blue Supergiant</span><span>4-7</span><span>Ice, Gas Giant, Dead</span><span>Radiation hazard. Rich minerals locked behind lethal environments. Short stellar lifespan creates urgency.</span><span>Radiation (1% HP/cycle unshielded). Sensor interference reduces scan range by 50%.</span><span>All zones (rare). Higher frequency in Inner Ring.</span></div>
-      <div style="display:grid;grid-template-columns:130px 55px 1fr 1.2fr 1.2fr 1fr;min-width:820px;padding:6px 12px;font-size:0.92rem;color:var(--text-mid);border-bottom:1px solid var(--border)"><span style="color:#ffaa88">Binary System</span><span>3-6</span><span>Variable (unstable orbits)</span><span>Gravitational chaos. Unstable orbits create unpredictable planetary conditions. Double the rare trait chance makes these worth the risk.</span><span>10% warp disruption/cycle. Orbital instability can shift planet positions between cycles.</span><span>All zones (rare). 2&times; rare trait chance.</span></div>
-      <div style="display:grid;grid-template-columns:130px 55px 1fr 1.2fr 1.2fr 1fr;min-width:820px;padding:6px 12px;font-size:0.92rem;color:var(--text-mid)"><span style="color:#ccccff">White Dwarf</span><span>2-5</span><span>Ancient Ruins, Dead, Moon</span><span>Inner Ring signature. Dying stars surrounded by the oldest systems in the galaxy. Aethyn ruins cluster here.</span><span>Gravitational anomalies near stellar remnant. Ancient defense systems may activate near ruins.</span><span>Inner Ring (dominant), Core (some).</span></div>
+    <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:24px">
+      <!-- YELLOW MAIN SEQUENCE -->
+      <div class="card" style="border-top:2px solid #ffcc44">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:#ffcc44;margin-bottom:2px">YELLOW MAIN SEQUENCE</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">5&ndash;8 Planets</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Dominant Types:</span> Terrestrial, Ocean, Jungle</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Strategic Flavor:</span> Balanced. Good habitability. Breadbasket systems &mdash; reliable food and population growth.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Hazards:</span> None inherent. Safe colonization.</div>
+          <div><span style="color:var(--text-hi);font-weight:600">Zone Frequency:</span> Mid Ring (common), Outer Rim (occasional)</div>
+        </div>
+      </div>
+      <!-- RED GIANT -->
+      <div class="card" style="border-top:2px solid #ff6644">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:#ff6644;margin-bottom:2px">RED GIANT</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">6&ndash;10 Planets</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Dominant Types:</span> Volcanic, Desert, Gas Giant</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Strategic Flavor:</span> Resource-rich but hostile. Extreme temperatures. High Scrap yields from mineral-dense worlds.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Hazards:</span> Solar flare events (periodic). 2% hull damage/cycle to unshielded ships in orbit.</div>
+          <div><span style="color:var(--text-hi);font-weight:600">Zone Frequency:</span> Outer Rim (common), Mid Ring (occasional)</div>
+        </div>
+      </div>
+      <!-- BLUE SUPERGIANT -->
+      <div class="card" style="border-top:2px solid #6688ff">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:#6688ff;margin-bottom:2px">BLUE SUPERGIANT</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">4&ndash;7 Planets</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Dominant Types:</span> Ice, Gas Giant, Dead</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Strategic Flavor:</span> Radiation hazard. Rich minerals locked behind lethal environments. Short stellar lifespan creates urgency.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Hazards:</span> Radiation (1% HP/cycle unshielded). Sensor interference reduces scan range by 50%.</div>
+          <div><span style="color:var(--text-hi);font-weight:600">Zone Frequency:</span> All zones (rare). Higher frequency in Inner Ring.</div>
+        </div>
+      </div>
+      <!-- BINARY SYSTEM -->
+      <div class="card" style="border-top:2px solid #ffaa88">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:#ffaa88;margin-bottom:2px">BINARY SYSTEM</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">3&ndash;6 Planets</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Dominant Types:</span> Variable (unstable orbits)</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Strategic Flavor:</span> Gravitational chaos. Unstable orbits create unpredictable planetary conditions. Double the rare trait chance makes these worth the risk.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Hazards:</span> 10% warp disruption/cycle. Orbital instability can shift planet positions between cycles.</div>
+          <div><span style="color:var(--text-hi);font-weight:600">Zone Frequency:</span> All zones (rare). 2&times; rare trait chance.</div>
+        </div>
+      </div>
+      <!-- WHITE DWARF -->
+      <div class="card" style="border-top:2px solid #ccccff">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:#ccccff;margin-bottom:2px">WHITE DWARF</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">2&ndash;5 Planets</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Dominant Types:</span> Ancient Ruins, Dead, Moon</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Strategic Flavor:</span> Inner Ring signature. Dying stars surrounded by the oldest systems in the galaxy. Aethyn ruins cluster here.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Hazards:</span> Gravitational anomalies near stellar remnant. Ancient defense systems may activate near ruins.</div>
+          <div><span style="color:var(--text-hi);font-weight:600">Zone Frequency:</span> Inner Ring (dominant), Core (some).</div>
+        </div>
+      </div>
     </div>
 
     <div class="section-label">Warp Lanes &amp; Connectivity</div>
