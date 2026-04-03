@@ -1,6 +1,6 @@
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   DASHBOARD â€" Cinematic Hero Landing Page
-   â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€
+   DASHBOARD ï¿½" Cinematic Hero Landing Page
+   ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
    Renders the default view when no chapter is selected:
    a full-viewport hero section with animated starfield,
    epigraph, game description, strategist quote, project scope,
@@ -11,7 +11,7 @@
    a command-console statistics banner, and a footer lore quote.
 
    Key exports:
-     Dashboard.render(container) â†' build and inject dashboard HTML
+     Dashboard.render(container) ï¿½' build and inject dashboard HTML
 
    Dependencies:
      - DataLoader  (loads factions.json, faction-emblems.json)
@@ -22,12 +22,12 @@
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    FUNCTION INDEX
    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   render(container)              | Main entry â€" builds full dashboard
+   render(container)              | Main entry ï¿½" builds full dashboard
    buildHero()                    | Full-viewport hero with starfield
-   buildEpigraph()                | Removed — absorbed into prologue
+   buildEpigraph()                | Removed ï¿½ absorbed into prologue
    buildGameDescription()         | State of the Galaxy prologue + rotating quotes
-   buildStrategistQuote()         | Removed — already in Hero
-   buildByTheNumbers()            | Project Scope â€" 6 stat cards
+   buildStrategistQuote()         | Removed ï¿½ already in Hero
+   buildByTheNumbers()            | Project Scope ï¿½" 6 stat cards
    buildCanvasGalaxyContainer()   | Mount for Canvas 2D galaxy (canvas-galaxy.js)
    buildCanvasSolarContainer()    | Mount for Three.js solar system (solar-system.js)
    buildCanvasTerritoryContainer()| Mount for SVG territory map (assets/territory-map.svg)
@@ -37,9 +37,9 @@
    buildFactionGrid(factions, e)  | Enhanced faction cards with emblems
    buildFactionCard(f, emblems)   | Single faction card with emblem
    buildStatBar(label, value, c)  | Power-curve horizontal bar
-   buildGameSystems()             | Quick Navigation â€" 12 clickable cards
+   buildGameSystems()             | Quick Navigation ï¿½" 12 clickable cards
    buildDocumentStructure()       | 8 Parts Â· 46 Chapters Â· 13 Appendices
-   buildFiveDifferentiators()     | What Makes It Unique â€" 5 cards
+   buildFiveDifferentiators()     | What Makes It Unique ï¿½" 5 cards
    buildSummary()                 | Command-console statistics readout
    buildFooterQuote()             | Iconic lore quote from the GDD
    initLoreQuoteCycler()          | Starts the rotating lore quotes
@@ -49,7 +49,7 @@
 
 const Dashboard = {
 
-  /* â"€â"€ Lore Quotes â"€â"€
+  /* ï¿½"ï¿½ï¿½"ï¿½ Lore Quotes ï¿½"ï¿½ï¿½"ï¿½
      Rotating quotes from across the Ashes of Command universe.
      Each cycles in the hero section beneath the title.            */
   LORE_QUOTES: [
@@ -83,24 +83,24 @@ const Dashboard = {
     { text: 'The simulation shaped the galaxy you must survive. Your choices built your prison.', source: 'Procedural Destiny Codex' }
   ],
 
-  /* â"€â"€ Quote Cycling State â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Quote Cycling State ï¿½"ï¿½ï¿½"ï¿½ */
   _quoteIndex: 0,
   _quoteTimer: null,
 
-  /* â"€â"€ Galaxy Map â€" Faction Homeworld Positions â"€â"€
+  /* ï¿½"ï¿½ï¿½"ï¿½ Galaxy Map ï¿½" Faction Homeworld Positions ï¿½"ï¿½ï¿½"ï¿½
      Each faction is placed along the spiral arms of the galaxy.
      Coordinates are percentages within the 600x600 SVG viewBox.    */
   HOMEWORLD_POSITIONS: {
-    terran:    { x: 310, y: 220 },   /* Inner arm â€" humanity's core sector        */
-    shards:    { x: 460, y: 160 },   /* Outer rim â€" ancient crystalline worlds     */
-    horde:     { x: 180, y: 350 },   /* Scrapyard belt â€" debris-rich zone          */
-    necro:     { x: 420, y: 380 },   /* Tomb sector â€" deep galactic south          */
+    terran:    { x: 310, y: 220 },   /* Inner arm ï¿½" humanity's core sector        */
+    shards:    { x: 460, y: 160 },   /* Outer rim ï¿½" ancient crystalline worlds     */
+    horde:     { x: 180, y: 350 },   /* Scrapyard belt ï¿½" debris-rich zone          */
+    necro:     { x: 420, y: 380 },   /* Tomb sector ï¿½" deep galactic south          */
     accord:    { x: 240, y: 150 },   /* Northern coalition space                   */
     vorax:     { x: 130, y: 470 },   /* Extra-galactic incursion point             */
-    guardians: { x: 300, y: 300 }    /* Galactic center â€" the Nexus                */
+    guardians: { x: 300, y: 300 }    /* Galactic center ï¿½" the Nexus                */
   },
 
-  /* â"€â"€ Territory System Counts â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Territory System Counts ï¿½"ï¿½ï¿½"ï¿½ */
   TERRITORY_COUNTS: {
     terran:    32,
     guardians: 35,
@@ -111,7 +111,7 @@ const Dashboard = {
     necro:     14
   },
 
-  /* â"€â"€ Main Render â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Main Render ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
    * Render the full cinematic dashboard into the given container.
@@ -161,7 +161,7 @@ const Dashboard = {
     }
   },
 
-  /* â"€â"€ Hero Section â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Hero Section ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
    * Build the full-viewport hero section with CSS starfield,
@@ -202,10 +202,10 @@ const Dashboard = {
       </section>`;
   },
 
-  /* â"€â"€ Epigraph â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Epigraph ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
-   * Build the epigraph quote â€" Unity Accord founding principles.
+   * Build the epigraph quote ï¿½" Unity Accord founding principles.
    * @returns {string} HTML string
    */
   /* -- Epigraph -- Rotating multi-faction thematic quotes with context */
@@ -222,10 +222,10 @@ const Dashboard = {
   _epigraphQuoteIndex: 0,
   _epigraphQuoteTimer: null,
 
-  /* Epigraph removed — redundant with State of the Galaxy prologue */
+  /* Epigraph removed ï¿½ redundant with State of the Galaxy prologue */
   buildEpigraph() { return ''; },
 
-  /* â"€â"€ Game Description â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Game Description ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
    * Build the document header with full title and elevator pitch.
@@ -262,7 +262,7 @@ const Dashboard = {
       </section>`;
   },
 
-  /* â"€â"€ Strategist Quote â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Strategist Quote ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
    * Build the strategist quote block.
@@ -279,7 +279,7 @@ const Dashboard = {
       </section>`;
   },
 
-  /* â"€â"€ By The Numbers â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ By The Numbers ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
    * Build the Project Scope / By the Numbers section with 6 stat cards.
@@ -391,7 +391,7 @@ const Dashboard = {
       </section>`;
   },
 
-  /* â"€â"€ REMOVED: Old CSS/SVG Renderers â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€
+  /* ï¿½"ï¿½ï¿½"ï¿½ REMOVED: Old CSS/SVG Renderers ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½
      buildGalaxyOverview(), buildSolarSystem(), buildTerritoryMap()
      Replaced by Canvas/Three.js/SVG-asset equivalents:
        - canvas-galaxy.js (Canvas 2D)
@@ -400,7 +400,7 @@ const Dashboard = {
      See buildCanvasGalaxyContainer(), buildCanvasSolarContainer(),
      buildCanvasTerritoryContainer() below.
      Removed: commit DEADCODE_CLEANUP
-     â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+     ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /* -- Core Loop (Five Phases) --------------------------- */
 
@@ -460,7 +460,7 @@ const Dashboard = {
             <div class="phase-cascade">\u25BC Force assembled \u2192 Approach Phase begins</div>
           </a>
 
-          <a class="phase-block phase-clickable" href="#ch24" onclick="location.hash='#ch24'" style="background:linear-gradient(180deg,rgba(255,170,34,0.08),transparent);border-top:2px solid rgba(255,170,34,0.5)">
+          <a class="phase-block phase-clickable" href="#ch24" onclick="location.hash='#ch24'" style="background:linear-gradient(180deg,rgba(68,255,102,0.08),transparent);border-top:2px solid rgba(68,255,102,0.5)">
             <div class="phase-num" style="color:var(--accord)">PHASE 3</div>
             <div class="phase-name">APPROACH</div>
             <div class="phase-tagline">The Decision Point</div>
@@ -594,7 +594,7 @@ const Dashboard = {
    * mechanic badge, meta stats, and early/mid/late power-curve bars.
    * Clicking the card navigates to that faction's chapter.
    * @param {Object} f - Faction data object
-   * @param {Object} emblems - Faction key â†' SVG inner-content string map
+   * @param {Object} emblems - Faction key ï¿½' SVG inner-content string map
    * @returns {string} HTML string
    */
   buildFactionCard(f, emblems) {
@@ -635,12 +635,12 @@ const Dashboard = {
       </div>`;
   },
 
-  /* â"€â"€ Stat Bar Helper â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Stat Bar Helper ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
    * Build a single horizontal stat bar (used for power-curve display).
    * @param {string} label - Bar label (e.g. 'Early', 'Mid', 'Late')
-   * @param {number} value - Percentage value (0â€"100)
+   * @param {number} value - Percentage value (0ï¿½"100)
    * @param {string} color - CSS color for the fill
    * @returns {string} HTML string
    */
@@ -656,10 +656,10 @@ const Dashboard = {
       </div>`;
   },
 
-  /* â"€â"€ Game Systems Grid â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Game Systems Grid ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
-   * Build the Game Systems Quick Navigation grid â€" 12 clickable cards.
+   * Build the Game Systems Quick Navigation grid ï¿½" 12 clickable cards.
    * @returns {string} HTML string
    */
   buildGameSystems() {
@@ -733,10 +733,10 @@ const Dashboard = {
       </section>`;
   },
 
-  /* â"€â"€ Document Structure â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Document Structure ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
-   * Build the Document Structure section â€" 4-column breakdown.
+   * Build the Document Structure section ï¿½" 4-column breakdown.
    * @returns {string} HTML string
    */
   buildDocumentStructure() {
@@ -789,7 +789,7 @@ const Dashboard = {
       </section>`;
   },
 
-  /* â"€â"€ Five Differentiators â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Five Differentiators ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
    * Build the "What Makes It Unique" section with 5 differentiator cards.
@@ -811,7 +811,7 @@ const Dashboard = {
       </section>`;
   },
 
-  /* â"€â"€ Summary Statistics â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Summary Statistics ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
    * Build the command-console statistics readout with scanning animation.
@@ -846,7 +846,7 @@ const Dashboard = {
       </section>`;
   },
 
-  /* â"€â"€ Footer â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Footer ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
    * Build the footer with document version line and stats.
@@ -879,7 +879,7 @@ const Dashboard = {
       </section>`;
   },
 
-  /* â"€â"€ Interactive Behaviors â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+  /* ï¿½"ï¿½ï¿½"ï¿½ Interactive Behaviors ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ï¿½"ï¿½ */
 
   /**
    * Start the lore quote cycling animation in the hero section.
@@ -1054,7 +1054,7 @@ const Dashboard = {
         const rect = card.getBoundingClientRect();
         /* How far through the viewport the card center is (0 = top, 1 = bottom) */
         const progress = (rect.top + rect.height / 2) / viewportHeight;
-        /* Subtle vertical shift â€" max Â±8px */
+        /* Subtle vertical shift ï¿½" max Â±8px */
         const shift = (progress - 0.5) * 16;
         card.style.transform = `translateY(${shift.toFixed(1)}px)`;
       });
@@ -1126,7 +1126,7 @@ const Dashboard = {
 
   /** Initialize all Canvas/WebGL renderers after DOM mount */
   _initCanvasRenderers() {
-    /* â"€â"€ Galaxy (Canvas 2D) â"€â"€ */
+    /* ï¿½"ï¿½ï¿½"ï¿½ Galaxy (Canvas 2D) ï¿½"ï¿½ï¿½"ï¿½ */
     const galaxyMount = document.getElementById('canvas-galaxy-mount');
     if (galaxyMount && typeof GalaxyRenderer !== 'undefined') {
       try {
@@ -1135,7 +1135,7 @@ const Dashboard = {
       } catch (e) { console.warn('[Dashboard] Galaxy renderer failed:', e); }
     }
 
-    /* â"€â"€ Solar System (Three.js) â"€â"€ */
+    /* ï¿½"ï¿½ï¿½"ï¿½ Solar System (Three.js) ï¿½"ï¿½ï¿½"ï¿½ */
     const solarMount = document.getElementById('canvas-solar-mount');
     if (solarMount && typeof SolarSystemRenderer !== 'undefined') {
       try {
@@ -1144,7 +1144,7 @@ const Dashboard = {
       } catch (e) { console.warn('[Dashboard] Solar system renderer failed:', e); }
     }
 
-    /* â"€â"€ Territory Map â€" uses hand-crafted SVG asset (assets/territory-map.svg) â"€â"€
+    /* ï¿½"ï¿½ï¿½"ï¿½ Territory Map ï¿½" uses hand-crafted SVG asset (assets/territory-map.svg) ï¿½"ï¿½ï¿½"ï¿½
        No Canvas renderer needed; loaded via <object> tag in buildCanvasTerritoryContainer() */
   }
 };

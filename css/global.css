@@ -43,10 +43,10 @@
   --terran: #00b4ff;
   --shards: #00ffee;
   --horde: #ff6622;
-  --necro: #44ff66;
-  --accord: #ffaa22;
+  --necro: #AA77FF;
+  --accord: #44ff66;
   --vorax: #ff2266;
-  --guardians: #C0C0D0;
+  --guardians: #ffaa22;
 
   /* Background scale (dark â†' light) */
   --bg-base: #07080c;
@@ -632,7 +632,7 @@ body.sidebar-collapsed .main-content {
   background:
     radial-gradient(ellipse at 20% 50%, rgba(0,180,255,0.03) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(0,180,255,0.02) 0%, transparent 40%),
-    radial-gradient(ellipse at 50% 80%, rgba(192,192,208,0.015) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(255,170,34,0.015) 0%, transparent 50%),
     var(--bg-base);
 }
 
@@ -819,17 +819,17 @@ body.sidebar-collapsed .main-content {
     /* Layer 3 â€" bright nearby stars (fast twinkle) */
     radial-gradient(2px 2px at 12% 45%, rgba(0,180,255,0.8), transparent),
     radial-gradient(2px 2px at 33% 25%, rgba(0,255,238,0.6), transparent),
-    radial-gradient(2px 2px at 58% 70%, rgba(255,170,34,0.5), transparent),
-    radial-gradient(2px 2px at 77% 15%, rgba(192,192,208,0.6), transparent),
+    radial-gradient(2px 2px at 58% 70%, rgba(68,255,102,0.5), transparent),
+    radial-gradient(2px 2px at 77% 15%, rgba(255,170,34,0.6), transparent),
     radial-gradient(2px 2px at 90% 45%, rgba(0,180,255,0.7), transparent),
     radial-gradient(2px 2px at 20% 85%, rgba(255,102,34,0.5), transparent),
-    radial-gradient(2px 2px at 65% 55%, rgba(68,255,102,0.4), transparent),
+    radial-gradient(2px 2px at 65% 55%, rgba(170,119,255,0.4), transparent),
     /* Layer 3b â€" extra bright accent stars */
     radial-gradient(2px 2px at 5% 32%, rgba(0,180,255,0.65), transparent),
-    radial-gradient(2px 2px at 28% 58%, rgba(192,192,208,0.5), transparent),
+    radial-gradient(2px 2px at 28% 58%, rgba(255,170,34,0.5), transparent),
     radial-gradient(2px 2px at 47% 12%, rgba(0,255,238,0.55), transparent),
-    radial-gradient(2px 2px at 82% 78%, rgba(255,170,34,0.45), transparent),
-    radial-gradient(2px 2px at 95% 22%, rgba(68,255,102,0.5), transparent),
+    radial-gradient(2px 2px at 82% 78%, rgba(68,255,102,0.45), transparent),
+    radial-gradient(2px 2px at 95% 22%, rgba(170,119,255,0.5), transparent),
     radial-gradient(2.5px 2.5px at 40% 90%, rgba(0,180,255,0.6), transparent),
     radial-gradient(2.5px 2.5px at 70% 40%, rgba(255,34,102,0.4), transparent),
     radial-gradient(2.5px 2.5px at 16% 68%, rgba(0,255,238,0.5), transparent);
@@ -1060,7 +1060,7 @@ body.sidebar-collapsed .main-content {
       rgba(0,180,255,0.06) 0%,
       transparent 60%),
     radial-gradient(ellipse 600px 400px at 70% 60%,
-      rgba(192,192,208,0.04) 0%,
+      rgba(255,170,34,0.04) 0%,
       transparent 50%),
     radial-gradient(ellipse 500px 300px at 50% 80%,
       rgba(255,34,102,0.03) 0%,
@@ -1318,7 +1318,7 @@ body.sidebar-collapsed .main-content {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  background: radial-gradient(ellipse at center, rgba(0,180,255,0.04) 0%, rgba(192,192,208,0.02) 40%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(0,180,255,0.04) 0%, rgba(255,170,34,0.02) 40%, transparent 70%);
   border-top: 1px solid rgba(0,180,255,0.08);
   border-bottom: 1px solid rgba(0,180,255,0.08);
 }
@@ -1347,9 +1347,9 @@ body.sidebar-collapsed .main-content {
   border-radius: 50%;
   background:
     radial-gradient(ellipse at 35% 30%, rgba(0,180,255,0.08) 0%, transparent 45%),
-    radial-gradient(ellipse at 65% 70%, rgba(192,192,208,0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 65% 70%, rgba(255,170,34,0.06) 0%, transparent 45%),
     radial-gradient(ellipse at 25% 65%, rgba(0,255,238,0.04) 0%, transparent 40%),
-    radial-gradient(ellipse at 70% 35%, rgba(255,170,34,0.035) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 35%, rgba(68,255,102,0.035) 0%, transparent 40%),
     radial-gradient(ellipse at 50% 50%, rgba(0,100,200,0.07) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
@@ -1428,13 +1428,13 @@ body.sidebar-collapsed .main-content {
       rgba(200,225,255,0.7) 18%,
       rgba(0,180,255,0.45) 35%,
       rgba(120,60,220,0.2) 50%,
-      rgba(192,192,208,0.08) 65%,
+      rgba(255,170,34,0.08) 65%,
       transparent 80%);
   box-shadow:
     0 0 15px 4px rgba(255,255,255,0.6),
     0 0 40px 12px rgba(200,230,255,0.3),
     0 0 70px 25px rgba(0,180,255,0.25),
-    0 0 120px 50px rgba(192,192,208,0.1);
+    0 0 120px 50px rgba(255,170,34,0.1);
   z-index: 2;
   pointer-events: none;
   animation: galaxyCorePulse 4s ease-in-out infinite alternate;
@@ -1446,14 +1446,14 @@ body.sidebar-collapsed .main-content {
       0 0 15px 4px rgba(255,255,255,0.6),
       0 0 40px 12px rgba(200,230,255,0.3),
       0 0 70px 25px rgba(0,180,255,0.25),
-      0 0 120px 50px rgba(192,192,208,0.1);
+      0 0 120px 50px rgba(255,170,34,0.1);
   }
   100% {
     box-shadow:
       0 0 20px 6px rgba(255,255,255,0.75),
       0 0 50px 16px rgba(200,230,255,0.4),
       0 0 90px 35px rgba(0,180,255,0.3),
-      0 0 140px 60px rgba(192,192,208,0.15);
+      0 0 140px 60px rgba(255,170,34,0.15);
   }
 }
 
@@ -2522,14 +2522,14 @@ html {
   box-shadow:
     267px 134px 0 1.5px rgba(0,180,255,0.3),
     534px 356px 0 1.5px rgba(0,255,238,0.25),
-    801px 178px 0 1.5px rgba(192,192,208,0.25),
-    1068px 423px 0 1.5px rgba(255,170,34,0.2),
+    801px 178px 0 1.5px rgba(255,170,34,0.25),
+    1068px 423px 0 1.5px rgba(68,255,102,0.2),
     1335px 145px 0 1.5px rgba(0,180,255,0.3),
-    434px 645px 0 1.5px rgba(68,255,102,0.2),
-    867px 567px 0 1.5px rgba(192,192,208,0.2),
+    434px 645px 0 1.5px rgba(170,119,255,0.2),
+    867px 567px 0 1.5px rgba(255,170,34,0.2),
     1300px 712px 0 1.5px rgba(0,255,238,0.25),
     178px 823px 0 1.5px rgba(255,34,102,0.2),
-    645px 189px 0 1.5px rgba(255,170,34,0.25),
+    645px 189px 0 1.5px rgba(68,255,102,0.25),
     1100px 89px 0 1.5px rgba(0,180,255,0.3),
     312px 512px 0 1.5px rgba(0,255,238,0.2);
   animation: dashStarsTwinkle 10s ease-in-out infinite alternate-reverse;
@@ -2734,8 +2734,8 @@ html {
 
 .result-type-chapter { color: var(--accent) !important; }
 .result-type-faction { color: inherit; }
-.result-type-unit { color: #ffaa22 !important; }
-.result-type-equip { color: #44ff66 !important; }
+.result-type-unit { color: #44ff66 !important; }
+.result-type-equip { color: #AA77FF !important; }
 
 .search-result-item .result-text {
   font-size: 0.93rem;
@@ -3454,9 +3454,9 @@ body.edit-mode [data-editable]:hover {
 }
 #procedural-bg.bg-accord {
   background:
-    radial-gradient(ellipse at 70% 20%, rgba(255,170,34,0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 70% 20%, rgba(68,255,102,0.12) 0%, transparent 45%),
     radial-gradient(circle at 30% 80%, rgba(255,200,100,0.07) 0%, transparent 40%),
-    repeating-linear-gradient(60deg,  transparent, transparent 28px, rgba(255,170,34,0.022) 28px, rgba(255,170,34,0.022) 29px),
+    repeating-linear-gradient(60deg,  transparent, transparent 28px, rgba(68,255,102,0.022) 28px, rgba(68,255,102,0.022) 29px),
     repeating-linear-gradient(-60deg, transparent, transparent 28px, rgba(255,150,0,0.015) 28px, rgba(255,150,0,0.015) 29px),
     #080700;
 }
@@ -3470,7 +3470,7 @@ body.edit-mode [data-editable]:hover {
 }
 #procedural-bg.bg-guardians {
   background:
-    radial-gradient(ellipse at 50% -20%, rgba(192,192,208,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% -20%, rgba(255,170,34,0.14) 0%, transparent 55%),
     radial-gradient(circle at 85% 85%, rgba(180,100,255,0.07) 0%, transparent 35%),
     repeating-linear-gradient(0deg,  transparent, transparent 50px, rgba(180,80,255,0.02) 50px, rgba(180,80,255,0.02) 51px),
     repeating-linear-gradient(90deg, transparent, transparent 65px, rgba(160,60,255,0.015) 65px, rgba(160,60,255,0.015) 66px),
@@ -3553,9 +3553,9 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
     repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(68,255,136,0.01) 80px, rgba(68,255,136,0.01) 81px);
 }
 .faction-bg-accord .main-content {
-  background: radial-gradient(ellipse at 80% 20%, rgba(255,170,34,0.04) 0%, transparent 50%),
-    repeating-linear-gradient(60deg, transparent, transparent 30px, rgba(255,170,34,0.015) 30px, rgba(255,170,34,0.015) 31px),
-    repeating-linear-gradient(-60deg, transparent, transparent 30px, rgba(255,170,34,0.012) 30px, rgba(255,170,34,0.012) 31px);
+  background: radial-gradient(ellipse at 80% 20%, rgba(68,255,102,0.04) 0%, transparent 50%),
+    repeating-linear-gradient(60deg, transparent, transparent 30px, rgba(68,255,102,0.015) 30px, rgba(68,255,102,0.015) 31px),
+    repeating-linear-gradient(-60deg, transparent, transparent 30px, rgba(68,255,102,0.012) 30px, rgba(68,255,102,0.012) 31px);
 }
 .faction-bg-vorax .main-content {
   background: radial-gradient(ellipse at 40% 60%, rgba(255,34,102,0.05) 0%, transparent 50%),
@@ -3563,19 +3563,19 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
     repeating-radial-gradient(circle at 50% 50%, transparent 0px, transparent 30px, rgba(255,34,102,0.01) 30px, rgba(255,34,102,0.01) 32px);
 }
 .faction-bg-guardians .main-content {
-  background: radial-gradient(ellipse at 50% 30%, rgba(192,192,208,0.04) 0%, transparent 50%),
-    repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(192,192,208,0.015) 50px, rgba(192,192,208,0.015) 51px),
-    repeating-linear-gradient(90deg, transparent, transparent 70px, rgba(192,192,208,0.012) 70px, rgba(192,192,208,0.012) 71px);
+  background: radial-gradient(ellipse at 50% 30%, rgba(255,170,34,0.04) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(255,170,34,0.015) 50px, rgba(255,170,34,0.015) 51px),
+    repeating-linear-gradient(90deg, transparent, transparent 70px, rgba(255,170,34,0.012) 70px, rgba(255,170,34,0.012) 71px);
 }
 
 /* â"€â"€ Sidebar Faction Glow â"€â"€ */
 .faction-bg-terran    .sidebar { box-shadow: inset -1px 0 0 rgba(0,180,255,.15), 3px 0 20px rgba(0,180,255,.07); }
 .faction-bg-shards    .sidebar { box-shadow: inset -1px 0 0 rgba(0,255,238,.15), 3px 0 20px rgba(0,255,238,.07); }
 .faction-bg-horde     .sidebar { box-shadow: inset -1px 0 0 rgba(255,102,34,.15),3px 0 20px rgba(255,102,34,.07); }
-.faction-bg-necro     .sidebar { box-shadow: inset -1px 0 0 rgba(68,255,102,.15), 3px 0 20px rgba(68,255,102,.07); }
-.faction-bg-accord    .sidebar { box-shadow: inset -1px 0 0 rgba(255,170,34,.15),3px 0 20px rgba(255,170,34,.07); }
+.faction-bg-necro     .sidebar { box-shadow: inset -1px 0 0 rgba(170,119,255,.15), 3px 0 20px rgba(170,119,255,.07); }
+.faction-bg-accord    .sidebar { box-shadow: inset -1px 0 0 rgba(68,255,102,.15),3px 0 20px rgba(68,255,102,.07); }
 .faction-bg-vorax     .sidebar { box-shadow: inset -1px 0 0 rgba(255,34,102,.15), 3px 0 20px rgba(255,34,102,.07); }
-.faction-bg-guardians .sidebar { box-shadow: inset -1px 0 0 rgba(192,192,208,.15),3px 0 20px rgba(192,192,208,.07); }
+.faction-bg-guardians .sidebar { box-shadow: inset -1px 0 0 rgba(255,170,34,.15),3px 0 20px rgba(255,170,34,.07); }
 
 /* â"€â"€ Sidebar Title Faction Glow â"€â"€ */
 .faction-bg-terran    .sidebar-title { color: var(--terran); text-shadow: 0 0 12px var(--terran); }
@@ -3590,10 +3590,10 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .nav-chapter.active { color: var(--terran); border-left-color: var(--terran); background: rgba(0,180,255,.06); --fx-nav: var(--terran); }
 .faction-bg-shards    .nav-chapter.active { color: var(--shards); border-left-color: var(--shards); background: rgba(0,255,238,.06); --fx-nav: var(--shards); }
 .faction-bg-horde     .nav-chapter.active { color: var(--horde);  border-left-color: var(--horde);  background: rgba(255,102,34,.06); --fx-nav: var(--horde); }
-.faction-bg-necro     .nav-chapter.active { color: var(--necro);  border-left-color: var(--necro);  background: rgba(68,255,102,.06); --fx-nav: var(--necro); }
-.faction-bg-accord    .nav-chapter.active { color: var(--accord); border-left-color: var(--accord); background: rgba(255,170,34,.06); --fx-nav: var(--accord); }
+.faction-bg-necro     .nav-chapter.active { color: var(--necro);  border-left-color: var(--necro);  background: rgba(170,119,255,.06); --fx-nav: var(--necro); }
+.faction-bg-accord    .nav-chapter.active { color: var(--accord); border-left-color: var(--accord); background: rgba(68,255,102,.06); --fx-nav: var(--accord); }
 .faction-bg-vorax     .nav-chapter.active { color: var(--vorax);  border-left-color: var(--vorax);  background: rgba(255,34,102,.06); --fx-nav: var(--vorax); }
-.faction-bg-guardians .nav-chapter.active { color: var(--guardians); border-left-color: var(--guardians); background: rgba(192,192,208,.06); --fx-nav: var(--guardians); }
+.faction-bg-guardians .nav-chapter.active { color: var(--guardians); border-left-color: var(--guardians); background: rgba(255,170,34,.06); --fx-nav: var(--guardians); }
 .faction-bg-terran    .nav-chapter.active::before { --fx-nav: var(--terran); }
 .faction-bg-shards    .nav-chapter.active::before { --fx-nav: var(--shards); }
 .faction-bg-horde     .nav-chapter.active::before { --fx-nav: var(--horde);  }
@@ -3606,19 +3606,19 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .search-box { border-color: var(--terran); box-shadow: 0 8px 48px rgba(0,180,255,.22), 0 0 0 1px rgba(0,180,255,.2); }
 .faction-bg-shards    .search-box { border-color: var(--shards); box-shadow: 0 8px 48px rgba(0,255,238,.22), 0 0 0 1px rgba(0,255,238,.2); }
 .faction-bg-horde     .search-box { border-color: var(--horde);  box-shadow: 0 8px 48px rgba(255,102,34,.22),0 0 0 1px rgba(255,102,34,.2); }
-.faction-bg-necro     .search-box { border-color: var(--necro);  box-shadow: 0 8px 48px rgba(68,255,102,.22), 0 0 0 1px rgba(68,255,102,.2); }
-.faction-bg-accord    .search-box { border-color: var(--accord); box-shadow: 0 8px 48px rgba(255,170,34,.22),0 0 0 1px rgba(255,170,34,.2); }
+.faction-bg-necro     .search-box { border-color: var(--necro);  box-shadow: 0 8px 48px rgba(170,119,255,.22), 0 0 0 1px rgba(170,119,255,.2); }
+.faction-bg-accord    .search-box { border-color: var(--accord); box-shadow: 0 8px 48px rgba(68,255,102,.22),0 0 0 1px rgba(68,255,102,.2); }
 .faction-bg-vorax     .search-box { border-color: var(--vorax);  box-shadow: 0 8px 48px rgba(255,34,102,.22), 0 0 0 1px rgba(255,34,102,.2); }
-.faction-bg-guardians .search-box { border-color: var(--guardians); box-shadow: 0 8px 48px rgba(192,192,208,.22),0 0 0 1px rgba(192,192,208,.2); }
+.faction-bg-guardians .search-box { border-color: var(--guardians); box-shadow: 0 8px 48px rgba(255,170,34,.22),0 0 0 1px rgba(255,170,34,.2); }
 
 /* â"€â"€ Scrollbar â€" Faction Color â"€â"€ */
 .faction-bg-terran    .main-content::-webkit-scrollbar-thumb { background: rgba(0,180,255,.28); }
 .faction-bg-shards    .main-content::-webkit-scrollbar-thumb { background: rgba(0,255,238,.28); }
 .faction-bg-horde     .main-content::-webkit-scrollbar-thumb { background: rgba(255,102,34,.28); }
-.faction-bg-necro     .main-content::-webkit-scrollbar-thumb { background: rgba(68,255,102,.28); }
-.faction-bg-accord    .main-content::-webkit-scrollbar-thumb { background: rgba(255,170,34,.28); }
+.faction-bg-necro     .main-content::-webkit-scrollbar-thumb { background: rgba(170,119,255,.28); }
+.faction-bg-accord    .main-content::-webkit-scrollbar-thumb { background: rgba(68,255,102,.28); }
 .faction-bg-vorax     .main-content::-webkit-scrollbar-thumb { background: rgba(255,34,102,.28); }
-.faction-bg-guardians .main-content::-webkit-scrollbar-thumb { background: rgba(192,192,208,.28); }
+.faction-bg-guardians .main-content::-webkit-scrollbar-thumb { background: rgba(255,170,34,.28); }
 
 /* â"€â"€ Cards â€" Faction Color Variable â"€â"€ */
 .faction-bg-terran    .card { --fx: var(--terran); }
@@ -3651,10 +3651,10 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .quote-block { border-left-color: var(--terran); background: rgba(0,180,255,.025); }
 .faction-bg-shards    .quote-block { border-left-color: var(--shards); background: rgba(0,255,238,.025); }
 .faction-bg-horde     .quote-block { border-left-color: var(--horde);  background: rgba(255,102,34,.025); }
-.faction-bg-necro     .quote-block { border-left-color: var(--necro);  background: rgba(68,255,102,.025); }
-.faction-bg-accord    .quote-block { border-left-color: var(--accord); background: rgba(255,170,34,.025); }
+.faction-bg-necro     .quote-block { border-left-color: var(--necro);  background: rgba(170,119,255,.025); }
+.faction-bg-accord    .quote-block { border-left-color: var(--accord); background: rgba(68,255,102,.025); }
 .faction-bg-vorax     .quote-block { border-left-color: var(--vorax);  background: rgba(255,34,102,.025); }
-.faction-bg-guardians .quote-block { border-left-color: var(--guardians); background: rgba(192,192,208,.025); }
+.faction-bg-guardians .quote-block { border-left-color: var(--guardians); background: rgba(255,170,34,.025); }
 
 /* â"€â"€ Power Bars â€" Faction Color â"€â"€ */
 .faction-bg-terran    .power-bar-fill { background: var(--terran) !important; box-shadow: 0 0 6px var(--terran); }
@@ -3687,10 +3687,10 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-terran    .data-row:hover { border-left-color: var(--terran); background: rgba(0,180,255,.04); }
 .faction-bg-shards    .data-row:hover { border-left-color: var(--shards); background: rgba(0,255,238,.04); }
 .faction-bg-horde     .data-row:hover { border-left-color: var(--horde);  background: rgba(255,102,34,.04); }
-.faction-bg-necro     .data-row:hover { border-left-color: var(--necro);  background: rgba(68,255,102,.04); }
-.faction-bg-accord    .data-row:hover { border-left-color: var(--accord); background: rgba(255,170,34,.04); }
+.faction-bg-necro     .data-row:hover { border-left-color: var(--necro);  background: rgba(170,119,255,.04); }
+.faction-bg-accord    .data-row:hover { border-left-color: var(--accord); background: rgba(68,255,102,.04); }
 .faction-bg-vorax     .data-row:hover { border-left-color: var(--vorax);  background: rgba(255,34,102,.04); }
-.faction-bg-guardians .data-row:hover { border-left-color: var(--guardians); background: rgba(192,192,208,.04); }
+.faction-bg-guardians .data-row:hover { border-left-color: var(--guardians); background: rgba(255,170,34,.04); }
 
 /* â"€â"€ Back-to-Top Button â€" Faction Color â"€â"€ */
 body[class*="faction-bg-"] .back-to-top {
@@ -4279,8 +4279,8 @@ body.crt-active {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  background: rgba(255,170,34,0.06);
-  border: 1px solid rgba(255,170,34,0.15);
+  background: rgba(68,255,102,0.06);
+  border: 1px solid rgba(68,255,102,0.15);
   border-radius: 4px;
   padding: 10px 16px;
   margin-bottom: 20px;
@@ -4544,7 +4544,7 @@ body.crt-active {
 
 .formation-tag-best {
   background: rgba(68, 255, 102, 0.12);
-  color: #44ff66;
+  color: #AA77FF;
   border: 1px solid rgba(68, 255, 102, 0.25);
 }
 
@@ -5369,28 +5369,28 @@ body.crt-active {
 body.faction-terran    { --accent: #00b4ff; }
 body.faction-shards    { --accent: #00ffee; }
 body.faction-horde     { --accent: #ff6622; }
-body.faction-necro     { --accent: #44ff66; }
-body.faction-accord    { --accent: #ffaa22; }
+body.faction-necro     { --accent: #AA77FF; }
+body.faction-accord    { --accent: #44ff66; }
 body.faction-vorax     { --accent: #ff2266; }
-body.faction-guardians { --accent: #C0C0D0; }
+body.faction-guardians { --accent: #ffaa22; }
 
 /* â"€â"€ Section Heading Glow â€" Faction Color â"€â"€ */
 body.faction-terran    #content-area .section-heading { text-shadow: 0 0 14px rgba(0,180,255,0.3); }
 body.faction-shards    #content-area .section-heading { text-shadow: 0 0 14px rgba(0,255,238,0.3); }
 body.faction-horde     #content-area .section-heading { text-shadow: 0 0 14px rgba(255,102,34,0.3); }
-body.faction-necro     #content-area .section-heading { text-shadow: 0 0 14px rgba(68,255,102,0.3); }
-body.faction-accord    #content-area .section-heading { text-shadow: 0 0 14px rgba(255,170,34,0.3); }
+body.faction-necro     #content-area .section-heading { text-shadow: 0 0 14px rgba(170,119,255,0.3); }
+body.faction-accord    #content-area .section-heading { text-shadow: 0 0 14px rgba(68,255,102,0.3); }
 body.faction-vorax     #content-area .section-heading { text-shadow: 0 0 14px rgba(255,34,102,0.3); }
-body.faction-guardians #content-area .section-heading { text-shadow: 0 0 14px rgba(192,192,208,0.3); }
+body.faction-guardians #content-area .section-heading { text-shadow: 0 0 14px rgba(255,170,34,0.3); }
 
 /* â"€â"€ Card Borders â€" Faction Color on Hover â"€â"€ */
 body.faction-terran    #content-area .card:hover { border-color: rgba(0,180,255,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,180,255,0.08); }
 body.faction-shards    #content-area .card:hover { border-color: rgba(0,255,238,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,255,238,0.08); }
 body.faction-horde     #content-area .card:hover { border-color: rgba(255,102,34,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,102,34,0.08); }
-body.faction-necro     #content-area .card:hover { border-color: rgba(68,255,102,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(68,255,102,0.08); }
-body.faction-accord    #content-area .card:hover { border-color: rgba(255,170,34,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,170,34,0.08); }
+body.faction-necro     #content-area .card:hover { border-color: rgba(170,119,255,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(170,119,255,0.08); }
+body.faction-accord    #content-area .card:hover { border-color: rgba(68,255,102,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(68,255,102,0.08); }
 body.faction-vorax     #content-area .card:hover { border-color: rgba(255,34,102,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,34,102,0.08); }
-body.faction-guardians #content-area .card:hover { border-color: rgba(192,192,208,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(192,192,208,0.08); }
+body.faction-guardians #content-area .card:hover { border-color: rgba(255,170,34,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,170,34,0.08); }
 
 /* â"€â"€ Links â€" Faction Color â"€â"€ */
 body[class*="faction-"] #content-area a {

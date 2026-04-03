@@ -52,10 +52,10 @@ const ChapterLoader = {
     ch5:  { prefix: 'terran',   dataKey: 'terran-league',    color: '#00b4ff', cssVar: '--terran',   name: 'terran' },
     ch6:  { prefix: 'shards',   dataKey: 'eternal-shards',   color: '#00ffee', cssVar: '--shards',   name: 'shards' },
     ch7:  { prefix: 'horde',    dataKey: 'scrap-horde',      color: '#ff6622', cssVar: '--horde',    name: 'horde' },
-    ch8:  { prefix: 'necro',    dataKey: 'necro-legion',     color: '#44ff66', cssVar: '--necro',    name: 'necro' },
-    ch9:  { prefix: 'accord',   dataKey: 'unity-accord',     color: '#ffaa22', cssVar: '--accord',   name: 'accord' },
+    ch8:  { prefix: 'necro',    dataKey: 'necro-legion',     color: '#AA77FF', cssVar: '--necro',    name: 'necro' },
+    ch9:  { prefix: 'accord',   dataKey: 'unity-accord',     color: '#44ff66', cssVar: '--accord',   name: 'accord' },
     ch10: { prefix: 'vorax',    dataKey: 'vorax',            color: '#ff2266', cssVar: '--vorax',    name: 'vorax' },
-    ch11: { prefix: 'guardian',  dataKey: 'core-guardians',   color: '#C0C0D0', cssVar: '--guardians', name: 'guardians' }
+    ch11: { prefix: 'guardian',  dataKey: 'core-guardians',   color: '#ffaa22', cssVar: '--guardians', name: 'guardians' }
   },
 
   /* ── Initialization ──────────────────────────────────── */

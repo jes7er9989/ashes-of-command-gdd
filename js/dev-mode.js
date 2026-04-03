@@ -109,7 +109,7 @@ const DevMode = (() => {
 
     console.log(
       '%c⚡ SYSTEM OVERRIDE: Developer Mode Unlocked.',
-      'color:#44ff66;background:#050e05;font-family:monospace;font-size:13px;padding:4px 10px;border:1px solid #44ff66;border-radius:2px'
+      'color:#AA77FF;background:#0a0510;font-family:monospace;font-size:13px;padding:4px 10px;border:1px solid #AA77FF;border-radius:2px'
     );
   }
 

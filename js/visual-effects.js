@@ -41,10 +41,10 @@ const FACTION_COLORS = {
   terran:    { r: 0, g: 180, b: 255, hex: '#00b4ff' },    // Blue — disciplined military
   shards:    { r: 0, g: 255, b: 238, hex: '#00ffee' },    // Cyan — crystalline energy
   horde:     { r: 255, g: 102, b: 34, hex: '#ff6622' },   // Orange — salvaged chaos
-  necro:     { r: 68, g: 255, b: 102, hex: '#44ff66' },   // Green — reanimation glow
-  accord:    { r: 255, g: 170, b: 34, hex: '#ffaa22' },   // Gold — diplomatic unity
+  necro:     { r: 170, g: 119, b: 255, hex: '#AA77FF' },   // Purple — reanimation glow
+  accord:    { r: 68, g: 255, b: 102, hex: '#44ff66' },   // Green — diplomatic unity
   vorax:     { r: 255, g: 34, b: 102, hex: '#ff2266' },   // Red — biological threat
-  guardians: { r: 192, g: 192, b: 208, hex: '#C0C0D0' },   // Purple — ancient protectors
+  guardians: { r: 255, g: 170, b: 34, hex: '#ffaa22' },   // Gold — ancient protectors
 };
 
 
@@ -506,7 +506,7 @@ const VisualEffects = (() => {
     // HoloTilt disabled — Thomas prefers cards that don't pitch around
     // HoloTilt.init();
 
-    console.log('%c[VFX] Visual effects online.', 'color:#C0C0D0;font-family:monospace');
+    console.log('%c[VFX] Visual effects online.', 'color:#ffaa22;font-family:monospace');
   }
 
   function destroy() {

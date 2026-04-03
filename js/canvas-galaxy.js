@@ -99,9 +99,9 @@ class GalaxyRenderer {
     shards:    { color: '#00ffee', name: 'ETERNAL SHARDS',  chapterId: 'ch6'  },
     horde:     { color: '#ff6622', name: 'SCRAP-HORDE',     chapterId: 'ch7'  },
     necro:     { color: '#00e070', name: 'NECRO-LEGION',    chapterId: 'ch8'  },
-    accord:    { color: '#ffaa22', name: 'UNITY ACCORD',    chapterId: 'ch9'  },
+    accord:    { color: '#44ff66', name: 'UNITY ACCORD',    chapterId: 'ch9'  },
     vorax:     { color: '#ff2266', name: 'VORAX SWARM',     chapterId: 'ch10' },
-    guardians: { color: '#C0C0D0', name: 'GUARDIANS',       chapterId: 'ch11' },
+    guardians: { color: '#ffaa22', name: 'GUARDIANS',       chapterId: 'ch11' },
   };
 
   /* ── Constructor ────────────────────────────────────────── */
