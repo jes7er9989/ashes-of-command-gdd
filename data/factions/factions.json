@@ -129,7 +129,7 @@
     "key": "guardians",
     "name": "Core Guardians",
     "subtitle": "The Silent Gods",
-    "color": "#cc44ff",
+    "color": "#ffaa22",
     "npc": true,
     "mechanic": "Volatile Death",
     "mechanicName": "Volatile Death",
