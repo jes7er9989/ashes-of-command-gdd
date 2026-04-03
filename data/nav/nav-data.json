@@ -1,27 +1,27 @@
 [
   {
-    "part": "I — Foundation",
+    "part": "I - Foundation",
     "chapters": [
       { "id": "ch1", "num": "1", "title": "Game Identity & Vision" },
       { "id": "ch2", "num": "2", "title": "Five-Phase Gameplay Loop" },
-      { "id": "ch3", "num": "3", "title": "Narrative Arc — \"The Last Decant\"" },
+      { "id": "ch3", "num": "3", "title": "Narrative Arc - \"The Last Decant\"" },
       { "id": "ch4", "num": "4", "title": "Commander Origins" }
     ]
   },
   {
-    "part": "II — The Seven Factions",
+    "part": "II - The Seven Factions",
     "chapters": [
-      { "id": "ch5", "num": "5", "title": "Terran League — The Last Bastion", "color": "#00b4ff" },
-      { "id": "ch6", "num": "6", "title": "Eternal Shards — The Dying Light", "color": "#00ffee" },
-      { "id": "ch7", "num": "7", "title": "Scrap-Horde — The Rust Tide", "color": "#ff6622" },
-      { "id": "ch8", "num": "8", "title": "The Revenant — The Undying Protocol", "color": "#44ff66" },
-      { "id": "ch9", "num": "9", "title": "Unity Accord — The Burning Covenant", "color": "#ffaa22" },
-      { "id": "ch10", "num": "10", "title": "Vorax — The Devouring Swarm", "color": "#ff2266" },
-      { "id": "ch11", "num": "11", "title": "Core Guardians — The Silent Gods", "color": "#ffaa22" }
+      { "id": "ch5", "num": "5", "title": "Terran League - The Last Bastion", "color": "#00b4ff" },
+      { "id": "ch6", "num": "6", "title": "Eternal Shards - The Dying Light", "color": "#00ffee" },
+      { "id": "ch7", "num": "7", "title": "Scrap-Horde - The Rust Tide", "color": "#ff6622" },
+      { "id": "ch8", "num": "8", "title": "The Revenant - The Undying Protocol", "color": "#AA77FF" },
+      { "id": "ch9", "num": "9", "title": "Unity Accord - The Burning Covenant", "color": "#44ff66" },
+      { "id": "ch10", "num": "10", "title": "Vorax - The Devouring Swarm", "color": "#ff2266" },
+      { "id": "ch11", "num": "11", "title": "Core Guardians - The Silent Gods", "color": "#ffaa22" }
     ]
   },
   {
-    "part": "III — The Galactic Map",
+    "part": "III - The Galactic Map",
     "chapters": [
       { "id": "ch12", "num": "12", "title": "Galaxy Generation & Structure" },
       { "id": "ch13", "num": "13", "title": "Planetary Bodies & Biomes" },
@@ -31,7 +31,7 @@
     ]
   },
   {
-    "part": "IV — Combat Systems",
+    "part": "IV - Combat Systems",
     "chapters": [
       { "id": "ch17", "num": "17", "title": "The Auto-Battle Engine" },
       { "id": "ch18", "num": "18", "title": "Space Combat" },
@@ -39,12 +39,12 @@
       { "id": "ch19b", "num": "19b", "title": "Ground Combat Vision" },
       { "id": "ch20", "num": "20", "title": "Equipment System" },
       { "id": "ch21", "num": "21", "title": "CP Abilities Reference" },
-      { "id": "ch22", "num": "22", "title": "Chain of Command — Generals" },
+      { "id": "ch22", "num": "22", "title": "Chain of Command - Generals" },
       { "id": "ch23", "num": "23", "title": "War Council & Advisors" }
     ]
   },
   {
-    "part": "V — Strategic Systems",
+    "part": "V - Strategic Systems",
     "chapters": [
       { "id": "ch24", "num": "24", "title": "Espionage & Intelligence" },
       { "id": "ch25", "num": "25", "title": "Alignment & Win Paths" },
@@ -57,9 +57,9 @@
     ]
   },
   {
-    "part": "VI — Final War & Meta",
+    "part": "VI - Final War & Meta",
     "chapters": [
-      { "id": "ch32", "num": "32", "title": "The Final War — Reality Mode" },
+      { "id": "ch32", "num": "32", "title": "The Final War - Reality Mode" },
       { "id": "ch33", "num": "33", "title": "Meta-Progression (3 Layers)" },
       { "id": "ch34", "num": "34", "title": "The Galactic Compendium" },
       { "id": "ch35", "num": "35", "title": "Empire Delegation" },
@@ -67,7 +67,7 @@
     ]
   },
   {
-    "part": "VII — Presentation",
+    "part": "VII - Presentation",
     "chapters": [
       { "id": "ch37", "num": "37", "title": "Art Direction & Visual Identity" },
       { "id": "ch38", "num": "38", "title": "The Diegetic UI" },
@@ -78,7 +78,7 @@
     ]
   },
   {
-    "part": "VIII — Business",
+    "part": "VIII - Business",
     "chapters": [
       { "id": "ch43", "num": "43", "title": "DLC Expansion Roadmap" },
       { "id": "ch44", "num": "44", "title": "Development Priority Order" },
@@ -87,7 +87,7 @@
     ]
   },
   {
-    "part": "Appendices A–F",
+    "part": "Appendices A-F",
     "chapters": [
       { "id": "appA", "num": "A", "title": "Unit Roster Quick-Reference" },
       { "id": "appB", "num": "B", "title": "Equipment Catalog Reference" },
@@ -98,19 +98,19 @@
     ]
   },
   {
-    "part": "Appendix L — Prototype Log",
+    "part": "Appendix L - Prototype Log",
     "chapters": [
       { "id": "appL", "num": "L", "title": "Prototype Implementation Log", "color": "#ffaa22" }
     ]
   },
   {
-    "part": "Appendix M — Project Checklist",
+    "part": "Appendix M - Project Checklist",
     "chapters": [
       { "id": "appM", "num": "M", "title": "Project Development Checklist", "color": "#ffaa22" }
     ]
   },
   {
-    "part": "Supplementary G–K",
+    "part": "Supplementary G-K",
     "chapters": [
       { "id": "suppG", "num": "G", "title": "Complete Tech Trees (124 Nodes)" },
       { "id": "suppH", "num": "H", "title": "Vorax Evolution Templates" },
