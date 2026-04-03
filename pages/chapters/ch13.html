@@ -1085,6 +1085,150 @@
       <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Advanced scanning technology (see Scanning &amp; Discovery) can extend weather forecasts from 1 cycle to 3 cycles, giving commanders significantly more planning time. Tech-gated improvement &mdash; early game you get basic forecasts, late game you can predict weather patterns across an entire campaign.</div>
     </div>
 
+    <div class="divider"></div>
+
+    <!-- ============================================================
+         SCANNING & DISCOVERY
+         ============================================================ -->
+    <div class="section-label">Scanning &amp; Discovery</div>
+    <div class="section-heading" id="sec-ch13-scanning">See Before You Commit</div>
+    <div class="body-text" style="margin-bottom:24px">Information is the most valuable resource in the galaxy. Before committing ground forces to a planet, commanders use a tiered scanning system to reveal planetary details &mdash; from basic surface composition visible on approach, to deep subsurface scans that require specialized technology and ground presence. Better intel means better preparation. The difference between a successful invasion and a catastrophic ambush is often one deep scan.</div>
+
+    <!-- Three-Tier Scanning System -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card" style="border-top:2px solid #4a8">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:#4a8;letter-spacing:2px;margin-bottom:8px">TIER 1: APPROACH SCAN</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--text-dim);margin-bottom:10px">Automatic &middot; Free</div>
+        <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;margin-bottom:12px">Triggers automatically when a fleet enters a system.</div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">REVEALS</div>
+        <div style="font-size:0.88rem;color:var(--text-mid);line-height:1.55;margin-bottom:12px">
+          &bull; Planet type<br>
+          &bull; Territory count<br>
+          &bull; Atmosphere type<br>
+          &bull; Current weather
+        </div>
+        <div style="font-size:0.85rem;color:var(--text-dim);font-style:italic;border-top:1px solid var(--border);padding-top:10px">&ldquo;Every commander gets this. It tells you WHAT you&rsquo;re looking at.&rdquo;</div>
+      </div>
+      <div class="card" style="border-top:2px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">TIER 2: ORBITAL SCAN</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--text-dim);margin-bottom:10px">Requires Orbit &middot; 1 Cycle</div>
+        <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;margin-bottom:12px">Requires fleet in orbit around the specific planet.</div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">REVEALS</div>
+        <div style="font-size:0.88rem;color:var(--text-mid);line-height:1.55;margin-bottom:12px">
+          &bull; Resource yields<br>
+          &bull; Planetary traits<br>
+          &bull; Garrison estimate (approximate)<br>
+          &bull; Weather forecast (1 cycle)<br>
+          &bull; Terrain overview per territory
+        </div>
+        <div style="font-size:0.85rem;color:var(--text-dim);font-style:italic;border-top:1px solid var(--border);padding-top:10px">&ldquo;Now you know what you&rsquo;re dealing with. Is it worth the fight?&rdquo;</div>
+      </div>
+      <div class="card" style="border-top:2px solid #f64">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:#f64;letter-spacing:2px;margin-bottom:8px">TIER 3: DEEP SCAN</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--text-dim);margin-bottom:10px">Tech-Gated &middot; Ground Presence or Scan Building</div>
+        <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;margin-bottom:12px">Requires advanced scanning technology (tech tree unlock) + ground presence OR specialized scan building.</div>
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">REVEALS</div>
+        <div style="font-size:0.88rem;color:var(--text-mid);line-height:1.55;margin-bottom:12px">
+          &bull; Exact garrison composition<br>
+          &bull; Hidden features (buried ruins, sleeper caches, hidden bases)<br>
+          &bull; Subsurface resources<br>
+          &bull; Extended weather forecast (3 cycles)<br>
+          &bull; Trap/defense locations on Ancient Ruins worlds
+        </div>
+        <div style="font-size:0.85rem;color:var(--text-dim);font-style:italic;border-top:1px solid var(--border);padding-top:10px">&ldquo;The full picture. No surprises. Expensive, but the commander who knows everything wins.&rdquo;</div>
+      </div>
+    </div>
+
+    <!-- Scan Discoveries by Planet Type -->
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:14px">DEEP SCAN DISCOVERIES BY PLANET TYPE</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#fff;font-weight:600">Capital World:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Hidden Bunker Network &middot; Classified Archives &middot; Emergency Cache</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#4a8;font-weight:600">Terrestrial:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Mineral Deposits &middot; Fertile Basin &middot; Collapsed Settlement</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#f64;font-weight:600">Volcanic:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Geothermal Vent Network &middot; Mineral Deposits &middot; Obsidian Ruins</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#48f;font-weight:600">Ocean/Archipelago:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Submerged Ruins &middot; Deep-Sea Mineral Vein &middot; Flux Deposit</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#2a6;font-weight:600">Jungle:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Overgrown Ruins &middot; Rare Biome Sample &middot; Hidden Settlement</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#da4;font-weight:600">Desert:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Buried Ruins &middot; Buried Cache &middot; Mineral Deposits &middot; Ancient Technology</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#8cf;font-weight:600">Ice World:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Cryo-Vault &middot; Revenant Sleeper Cache &middot; Frozen Wreckage &middot; Subglacial Lake</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#a8f;font-weight:600">Ancient Ruins:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Precursor Tech Cache &middot; Lore Fragment &middot; Dormant Sleeper Pod &middot; Aethyn Archive</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#fa8;font-weight:600">Gas Giant:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Exotic Gas Pocket &middot; Abandoned Platform &middot; Deep-Atmosphere Anomaly</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#999;font-weight:600">Moon:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Impact Crater Cache &middot; Subsurface Cavern &middot; Abandoned Outpost</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#666;font-weight:600">Orbital Station:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Hidden Compartment &middot; Encrypted Data Core &middot; Emergency Supply Cache</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#555;font-weight:600">Dead World:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Derelict Fleet &middot; Guardian Ruins &middot; Terraforming Assessment &middot; Buried Infrastructure</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#ffaa22;font-weight:600">Ring World:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Aethyn Database &middot; Intact Manufacturing Bay &middot; Stellar Tap Interface</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#ffaa22;font-weight:600">Dyson Sphere:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Energy Frequency Analysis &middot; Structural Weakness Map &middot; Control Node Location</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#ffaa22;font-weight:600">Aethyn Nexus:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Aethyn Archive Fragment &middot; Caste Origin Data &middot; Fracture Event Recording &middot; Pre-Fracture Star Map</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#AA77FF;font-weight:600">Worldship:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Cryo-Bay Manifest &middot; Ship Navigation Logs &middot; Reactor Status Assessment &middot; Cargo Manifest</span>
+        </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#00ffee;font-weight:600">Warp Gate:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Gate Destination Mapping &middot; Activation Sequence &middot; Structural Integrity Report</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Faction Scanning Advantages -->
+    <div class="card" style="margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px">FACTION SCANNING ADVANTAGES</div>
+        <span class="ph-tag">PH</span>
+      </div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Some factions&rsquo; technology lends itself to superior reconnaissance. These advantages emerge from tech tree choices and equipment loadouts, not inherent bonuses &mdash; any faction can invest in better scanning capability. The tech tree determines how quickly and deeply a faction can scan, not whether they can scan at all.</div>
+    </div>
+
+    <!-- Fog of War Integration -->
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">FOG OF WAR INTEGRATION</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Scanning feeds directly into the fog of war system. Unscanned planets appear as basic icons on the galactic map. Each scan tier peels back layers of fog, revealing more detail. Planets scanned by allies share intel (if diplomatic relations allow). Enemy-held planets gradually lose scan data as conditions change &mdash; a deep scan from 10 cycles ago may no longer be accurate.</div>
+    </div>
+
   </div><!-- /page-ch13 -->
 
   <!-- ============================================================
