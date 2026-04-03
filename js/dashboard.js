@@ -532,19 +532,19 @@ const Dashboard = {
 
         <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);margin-top:24px">
 
-          <div class="card" style="border-top:3px solid var(--terran);padding:20px">
+          <div class="card" style="border-top:3px solid var(--terran);padding:20px;cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s" onmouseover="this.style.boxShadow='0 0 12px rgba(0,180,255,0.15)'" onmouseout="this.style.boxShadow=''" onclick="event.preventDefault();Nav.go('ch33')">
             <div style="font-family:'Orbitron',sans-serif;font-size:0.85rem;letter-spacing:2px;color:var(--terran);margin-bottom:4px">LAYER 1: IN-RUN</div>
             <div style="font-family:'Share Tech Mono',monospace;font-size:0.75rem;letter-spacing:1px;color:var(--text-dim);margin-bottom:12px">RESETS EACH SIMULATION RUN</div>
             <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;margin:0">Territory control, resources, unit veterancy, equipment inventory, research progress, faction relationships, Commander rank. Everything you build in a run can be lost.</p>
           </div>
 
-          <div class="card" style="border-top:3px solid var(--accord);padding:20px">
+          <div class="card" style="border-top:3px solid var(--accord);padding:20px;cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s" onmouseover="this.style.boxShadow='0 0 12px rgba(0,180,255,0.15)'" onmouseout="this.style.boxShadow=''" onclick="event.preventDefault();Nav.go('ch33')">
             <div style="font-family:'Orbitron',sans-serif;font-size:0.85rem;letter-spacing:2px;color:var(--accord);margin-bottom:4px">LAYER 2: THE ARCHIVE</div>
             <div style="font-family:'Share Tech Mono',monospace;font-size:0.75rem;letter-spacing:1px;color:var(--text-dim);margin-bottom:12px">PERSISTS ACROSS SIMULATION RUNS</div>
             <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;margin:0"><strong>Simulation Data</strong> \u2014 meta-currency earned from completed runs. <strong>Blueprint Unlocks</strong> \u2014 researched Common/Uncommon equipment permanently available. <strong>Starting Bonuses</strong> \u2014 +5 Scrap, +1 Rookie per SD upgrade, stacking. <strong>Commander Perks</strong> \u2014 permanent HP, CP regen, aura radius. <strong>Lore Fragments</strong> \u2014 all discoveries persist in Compendium.</p>
           </div>
 
-          <div class="card" style="border-top:3px solid var(--guardians);padding:20px">
+          <div class="card" style="border-top:3px solid var(--guardians);padding:20px;cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s" onmouseover="this.style.boxShadow='0 0 12px rgba(0,180,255,0.15)'" onmouseout="this.style.boxShadow=''" onclick="event.preventDefault();Nav.go('ch33')">
             <div style="font-family:'Orbitron',sans-serif;font-size:0.85rem;letter-spacing:2px;color:var(--guardians);margin-bottom:4px">LAYER 3: ACCOUNT</div>
             <div style="font-family:'Share Tech Mono',monospace;font-size:0.75rem;letter-spacing:1px;color:var(--text-dim);margin-bottom:12px">PERSISTS ACROSS ENTIRE CAMPAIGNS</div>
             <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;margin:0"><strong>Meta Modifiers</strong> \u2014 +2% XP, +1 Scrap per campaign, stacking uncapped. <strong>Commander Titles</strong>. <strong>Legacy Bonuses</strong> \u2014 +2% per faction per campaign, max +10%. <strong>Legacy Echoes</strong> \u2014 legendary Generals as recruitable mercenaries. <strong>New Game+ Modifiers</strong> \u2014 Iron Galaxy, Accelerated Vorax, Generous Core, Fog of War+.</p>
@@ -617,8 +617,8 @@ const Dashboard = {
       : '';
 
     return `
-      <div class="faction-card parallax-card" style="--faction-color:${f.color}"
-           onclick="location.hash='#${f.chapterId}'">
+      <div class="faction-card parallax-card" style="--faction-color:${f.color};cursor:pointer"
+           onclick="event.preventDefault();Nav.go('${f.chapterId}')">
         ${npc}
         <div class="faction-card-header">
           ${emblemHtml}
@@ -752,7 +752,7 @@ const Dashboard = {
         <div class="section-label">Document Structure</div>
         <div class="section-heading">8 Parts \u00B7 46 Chapters \u00B7 13 Appendices (incl. Appendix L &amp; M)</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;">
-          <div class="card">
+          <div class="card" style="cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s" onmouseover="this.style.boxShadow='0 0 12px rgba(0,180,255,0.15)'" onmouseout="this.style.boxShadow=''" onclick="event.preventDefault();Nav.go('ch5')">
             <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">FACTIONS &amp; UNITS</div>
             <div style="font-size:0.85rem;color:var(--text-mid);line-height:1.6">
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>7 complete faction bibles with lore, gameplay, awakening scripts</div>
@@ -762,7 +762,7 @@ const Dashboard = {
               <div style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>18 Vorax evolution templates + hybrid system</div>
             </div>
           </div>
-          <div class="card">
+          <div class="card" style="cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s" onmouseover="this.style.boxShadow='0 0 12px rgba(0,180,255,0.15)'" onmouseout="this.style.boxShadow=''" onclick="event.preventDefault();Nav.go('ch17')">
             <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">SYSTEMS &amp; MECHANICS</div>
             <div style="font-size:0.85rem;color:var(--text-mid);line-height:1.6">
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>5-phase gameplay loop fully specified</div>
@@ -772,7 +772,7 @@ const Dashboard = {
               <div style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>Option C rank chain: Rookie\u2192Veteran\u2192Elite\u2192Commander\u2192General (kill-count thresholds)</div>
             </div>
           </div>
-          <div class="card">
+          <div class="card" style="cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s" onmouseover="this.style.boxShadow='0 0 12px rgba(0,180,255,0.15)'" onmouseout="this.style.boxShadow=''" onclick="event.preventDefault();Nav.go('ch12')">
             <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">GALAXY &amp; WORLD</div>
             <div style="font-size:0.85rem;color:var(--text-mid);line-height:1.6">
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>Procedural galaxy generation \u2014 \u00A712.11 Galactic Core Layout with faction homeworlds &amp; custom difficulty</div>
@@ -782,7 +782,7 @@ const Dashboard = {
               <div style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>15 building types: Supply Depot / Relay Station / Logistics Hub (MVP locked)</div>
             </div>
           </div>
-          <div class="card">
+          <div class="card" style="cursor:pointer;transition:border-color 0.2s,box-shadow 0.2s" onmouseover="this.style.boxShadow='0 0 12px rgba(0,180,255,0.15)'" onmouseout="this.style.boxShadow=''" onclick="event.preventDefault();Nav.go('ch33')">
             <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">NARRATIVE &amp; META</div>
             <div style="font-size:0.85rem;color:var(--text-mid);line-height:1.6">
               <div style="padding-left:14px;position:relative;margin-bottom:5px"><span style="position:absolute;left:0;color:rgba(0,180,255,0.3)">\u25B8</span>4-act story with simulation-to-reality twist</div>
@@ -808,11 +808,11 @@ const Dashboard = {
         <div class="section-label">What Makes It Unique</div>
         <div class="section-heading">Five Differentiators</div>
         <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:32px;">
-          <div class="card card-accent" style="border-left-color:var(--terran)"><strong style="color:#fff;font-size:1rem">1. The Auto-Battle General Fantasy.</strong> <span style="color:var(--text-mid);font-size:0.9rem">You prepared the army, chose equipment, set the formation, positioned the deployment \u2014 now watch, intervene with CP abilities at critical moments, and commit reserves when the line breaks. You are the general at the holographic map, not the soldier in the trench.</span></div>
-          <div class="card card-accent" style="border-left-color:var(--shards)"><strong style="color:#fff;font-size:1rem">2. Units That Become People.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Continuous promotion from anonymous Rookie to autonomous General who commands entire sectors, develops personality traits, forms rivalries, and can defect with their entire fleet if mistreated. Kill-count thresholds: Veteran=3, Elite=8, Commander=15, General=25.</span></div>
-          <div class="card card-accent" style="border-left-color:var(--horde)"><strong style="color:#fff;font-size:1rem">3. Procedural Destiny.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Cross-run behavioral profile GENERATES the endgame galaxy. An aggressive player wakes to a militarized galaxy. A diplomatic player wakes to trade routes and alliances. The simulation shaped the reality you must survive.</span></div>
-          <div class="card card-accent" style="border-left-color:var(--necro)"><strong style="color:#fff;font-size:1rem">4. The Dual-Threat Weapon Asymmetry.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Energy weapons work on Vorax but HEAL Core Guardians. Kinetic weapons work on Guardians but are overwhelmed by Vorax numbers. Maintain two armies, re-equip constantly, or pursue rare hybrid weapons.</span></div>
-          <div class="card card-accent" style="border-left-color:var(--guardians)"><strong style="color:#fff;font-size:1rem">5. The Galactic Compendium.</strong> <span style="color:var(--text-mid);font-size:0.9rem">A living document that fills as you play \u2014 500\u2013800 entries across three narrative voices: Commander Notes, AI Data Entries, and Advisor Commentary. It persists across all campaigns and becomes a personal record of everything discovered, fought, and survived.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--terran);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="event.preventDefault();Nav.go('ch17')"><strong style="color:#fff;font-size:1rem">1. The Auto-Battle General Fantasy.</strong> <span style="color:var(--text-mid);font-size:0.9rem">You prepared the army, chose equipment, set the formation, positioned the deployment \u2014 now watch, intervene with CP abilities at critical moments, and commit reserves when the line breaks. You are the general at the holographic map, not the soldier in the trench.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--shards);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="event.preventDefault();Nav.go('ch22')"><strong style="color:#fff;font-size:1rem">2. Units That Become People.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Continuous promotion from anonymous Rookie to autonomous General who commands entire sectors, develops personality traits, forms rivalries, and can defect with their entire fleet if mistreated. Kill-count thresholds: Veteran=3, Elite=8, Commander=15, General=25.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--horde);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="event.preventDefault();Nav.go('ch33')"><strong style="color:#fff;font-size:1rem">3. Procedural Destiny.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Cross-run behavioral profile GENERATES the endgame galaxy. An aggressive player wakes to a militarized galaxy. A diplomatic player wakes to trade routes and alliances. The simulation shaped the reality you must survive.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--necro);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="event.preventDefault();Nav.go('ch20')"><strong style="color:#fff;font-size:1rem">4. The Dual-Threat Weapon Asymmetry.</strong> <span style="color:var(--text-mid);font-size:0.9rem">Energy weapons work on Vorax but HEAL Core Guardians. Kinetic weapons work on Guardians but are overwhelmed by Vorax numbers. Maintain two armies, re-equip constantly, or pursue rare hybrid weapons.</span></div>
+          <div class="card card-accent" style="border-left-color:var(--guardians);cursor:pointer;transition:opacity 0.2s,border-color 0.2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'" onclick="event.preventDefault();Nav.go('ch33')"><strong style="color:#fff;font-size:1rem">5. The Galactic Compendium.</strong> <span style="color:var(--text-mid);font-size:0.9rem">A living document that fills as you play \u2014 500\u2013800 entries across three narrative voices: Commander Notes, AI Data Entries, and Advisor Commentary. It persists across all campaigns and becomes a personal record of everything discovered, fought, and survived.</span></div>
         </div>
         <div class="divider"></div>
       </section>`;
