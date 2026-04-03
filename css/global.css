@@ -3648,6 +3648,21 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-guardians .power-bar-fill { background: var(--guardians) !important; box-shadow: 0 0 6px var(--guardians); }
 
 /* â"€â"€ Page Title Wrap â€" Faction Underline â"€â"€ */
+.page-title-wrap {
+  position: relative;
+}
+.page-title-wrap::after {
+  content: '';
+  display: block;
+  width: 60%;
+  max-width: 320px;
+  height: 1px;
+  margin: 8px auto 0;
+  background: linear-gradient(90deg, transparent, var(--fx, transparent), transparent);
+  box-shadow: 0 0 8px var(--fx, transparent), 0 0 20px var(--fx, transparent);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
 .faction-bg-terran    .page-title-wrap::after { --fx: var(--terran); }
 .faction-bg-shards    .page-title-wrap::after { --fx: var(--shards); }
 .faction-bg-horde     .page-title-wrap::after { --fx: var(--horde); }
@@ -4958,7 +4973,8 @@ body.crt-active {
 /* â"€â"€ 15a. Content Wrapper â€" Constrain & Center â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 
 /* Chapter pages get the frosted card treatment */
-#content-area > .fade-in:not(#dashboard-view) {
+#content-area > .fade-in:not(#dashboard-view),
+#content-area > .page-enter:not(#dashboard-view) {
   background: rgba(12,14,20,0.55);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -4967,7 +4983,8 @@ body.crt-active {
   box-shadow: 0 4px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(0,180,255,0.05);
 }
 
-#content-area .fade-in:not(#dashboard-view) {
+#content-area .fade-in:not(#dashboard-view),
+#content-area .page-enter:not(#dashboard-view) {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -5259,7 +5276,8 @@ body.crt-active {
 /* â"€â"€ 15n. Quote Blocks Inside Chapters â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 
 /* Left-border quote style for chapter pages only (not dashboard) */
-#content-area .fade-in:not(#dashboard-view) .quote-block {
+#content-area .fade-in:not(#dashboard-view) .quote-block,
+#content-area .page-enter:not(#dashboard-view) .quote-block {
   border-left: 3px solid var(--accent);
   background: rgba(0,180,255,0.03);
   border-radius: 0 4px 4px 0;
@@ -5423,7 +5441,8 @@ body[class*="faction-"] .proto-badge {
 /* â"€â"€ 16b. Chapter Content Responsive â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 
 @media (max-width: 768px) {
-  #content-area .fade-in {
+  #content-area .fade-in,
+  #content-area .page-enter {
     padding: 0 8px;
   }
 
@@ -5491,7 +5510,8 @@ body[class*="faction-"] .proto-badge {
 }
 
 @media (max-width: 480px) {
-  #content-area .fade-in {
+  #content-area .fade-in,
+  #content-area .page-enter {
     padding: 0 4px;
   }
 
@@ -6437,4 +6457,59 @@ body.dev-mode-active .crt-overlay {
 @keyframes status-blink {
   0%, 90%, 100% { opacity: 1; }
   95% { opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CC-035: Page Transitions, Decrypt Reveal & Accessing Flash
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Page Exit ── */
+.page-exit {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+/* ── Page Enter ── */
+.page-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.page-enter.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+/* ── "ACCESSING RECORD..." Flash ── */
+.accessing-record-flash {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 80ms ease;
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+  text-shadow: 0 0 12px var(--accent);
+}
+.accessing-record-flash.visible {
+  opacity: 1;
+}
+
+/* ── Dev mode: disable all page transitions ── */
+body.dev-mode-active .page-exit,
+body.dev-mode-active .page-enter {
+  transition: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+body.dev-mode-active .accessing-record-flash {
+  display: none !important;
 }

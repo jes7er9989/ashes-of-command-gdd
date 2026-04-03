@@ -102,16 +102,27 @@ const ChapterLoader = {
       }
     }
 
-    // Inject HTML with fade-in wrapper + back-to-dashboard button at top AND bottom
-    const dashBtn = `
-      <div class="back-to-dashboard-wrap">
-        <button class="back-to-dashboard" onclick="location.hash='#dashboard'">
-          <span class="dash-btn-icon">◆</span>
-          <span class="dash-btn-label">RETURN TO COMMAND DASHBOARD</span>
-          <span class="dash-btn-icon">◆</span>
-        </button>
-      </div>`;
-    this.contentArea.innerHTML = `${dashBtn}<div class="fade-in">${html}</div>${dashBtn}`;
+    // Use page transition if DecryptReveal is available
+    const contentArea = this.contentArea;
+    const self = this;
+
+    const injectContent = () => {
+      const dashBtn = `
+        <div class="back-to-dashboard-wrap">
+          <button class="back-to-dashboard" onclick="location.hash='#dashboard'">
+            <span class="dash-btn-icon">◆</span>
+            <span class="dash-btn-label">RETURN TO COMMAND DASHBOARD</span>
+            <span class="dash-btn-icon">◆</span>
+          </button>
+        </div>`;
+      contentArea.innerHTML = `${dashBtn}<div class="fade-in">${html}</div>${dashBtn}`;
+    };
+
+    if (typeof DecryptReveal !== 'undefined') {
+      await DecryptReveal.transition(contentArea, injectContent);
+    } else {
+      injectContent();
+    }
 
     // Scroll to anchor if this was an alias, otherwise scroll to top
     if (alias && alias.anchor) {

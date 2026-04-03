@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v141';
+const CACHE_NAME = 'aoc-gdd-v142';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -16,6 +16,7 @@ const PRECACHE_URLS = [
   '/js/sprite-engine.js',
   '/js/icon-renderer.js',
   '/js/faction-renderer.js',
+  '/js/decrypt-reveal.js',
   '/js/chapter-loader.js',
   '/js/dashboard.js',
   '/js/search.js',
