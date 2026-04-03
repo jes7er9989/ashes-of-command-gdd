@@ -675,53 +675,65 @@ const Dashboard = {
         <div class="section-label">Game Systems</div>
         <div class="section-heading">Quick Navigation</div>
         <div class="systems-grid">
-          <div class="system-card" onclick="location.hash='#ch17'">
-            <div class="system-card-title">Auto-Battle Engine</div>
-            <div class="system-card-desc">Core combat engine, unit AI scaling (5 tiers), AI role system, speed controls, visual readability</div>
+          <div class="system-card" style="border-top:3px solid var(--terran)" onclick="event.preventDefault();Nav.go('ch17')">
+            <div class="system-card-title">\u2694\uFE0F Auto-Battle Engine</div>
+            <div class="system-card-desc">Core combat engine with 5-tier unit AI scaling, role-based targeting, and speed controls. Every battle plays out automatically\u2014your job is strategy, not micromanagement.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 17</div>
           </div>
-          <div class="system-card" onclick="location.hash='#ch18'">
-            <div class="system-card-title">Space Combat</div>
-            <div class="system-card-desc">5 formations, 7 CP abilities, MVP ship stats, fleet compositions, spaceCombatResult schema</div>
+          <div class="system-card" style="border-top:3px solid var(--shards)" onclick="event.preventDefault();Nav.go('ch18')">
+            <div class="system-card-title">\uD83D\uDE80 Space Combat</div>
+            <div class="system-card-desc">5 fleet formations and 7 Command Point abilities shape every orbital engagement. MVP ship stats and faction-unique compositions ensure no two battles feel the same.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 18</div>
           </div>
-          <div class="system-card" onclick="location.hash='#ch19'">
-            <div class="system-card-title">Ground Combat</div>
-            <div class="system-card-desc">Territory model, cover system, deployment, reserves, 7 CP abilities, 6 units per side</div>
+          <div class="system-card" style="border-top:3px solid var(--horde)" onclick="event.preventDefault();Nav.go('ch19')">
+            <div class="system-card-title">\uD83C\uDFAF Ground Combat</div>
+            <div class="system-card-desc">Territory-based warfare with cover, deployment zones, and reserves for 6 units per side. 7 CP abilities let you intervene at critical moments to turn the tide.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 19</div>
           </div>
-          <div class="system-card" onclick="location.hash='#ch20'">
-            <div class="system-card-title">Equipment System</div>
-            <div class="system-card-desc">6 slot categories, variable slots by rank, 208 items, 8 MVP items, starting loadout</div>
+          <div class="system-card" style="border-top:3px solid var(--necro)" onclick="event.preventDefault();Nav.go('ch20')">
+            <div class="system-card-title">\u2699\uFE0F Equipment System</div>
+            <div class="system-card-desc">208 items across 6 slot categories, with variable slots unlocked by rank. Outfit your commanders from starting loadouts to legendary faction-specific gear.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 20</div>
           </div>
-          <div class="system-card" onclick="location.hash='#ch22'">
-            <div class="system-card-title">General AI &amp; Chain of Command</div>
-            <div class="system-card-desc">Option C kill-count promotion chain, 6 traits, coaching, loyalty, defection, autonomous command</div>
+          <div class="system-card" style="border-top:3px solid var(--accord)" onclick="event.preventDefault();Nav.go('ch21')">
+            <div class="system-card-title">\uD83C\uDFC5 Commander Promotions</div>
+            <div class="system-card-desc">Kill-count promotion chains advance your officers through escalating ranks and unlock new abilities. Each promotion is a meaningful power spike that reshapes your command structure.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 21</div>
           </div>
-          <div class="system-card" onclick="location.hash='#ch12'">
-            <div class="system-card-title">Galaxy Generation</div>
-            <div class="system-card-desc">Procedural galaxies, 5 star types, shareable seeds, \u00A712.11 Galactic Core Layout, 2\u20135 faction homeworlds, wormholes</div>
+          <div class="system-card" style="border-top:3px solid var(--vorax)" onclick="event.preventDefault();Nav.go('ch22')">
+            <div class="system-card-title">\uD83E\uDDE0 General AI &amp; Chain of Command</div>
+            <div class="system-card-desc">6 personality traits drive loyalty, coaching, and autonomous decision-making for your generals. Manage defection risk or watch your best commanders turn against you.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 22</div>
           </div>
-          <div class="system-card" onclick="location.hash='#ch13'">
-            <div class="system-card-title">Planets &amp; Biomes</div>
-            <div class="system-card-desc">12 planet types, variable territories, planetary traits, Vorax terraforming</div>
+          <div class="system-card" style="border-top:3px solid var(--guardians)" onclick="event.preventDefault();Nav.go('ch12')">
+            <div class="system-card-title">\uD83C\uDF0C Galaxy Generation</div>
+            <div class="system-card-desc">Procedural galaxies with 5 star types, shareable seeds, and wormhole networks. Every map places 2\u20135 faction homeworlds around a dangerous Galactic Core.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 12</div>
           </div>
-          <div class="system-card" onclick="location.hash='#ch24'">
-            <div class="system-card-title">Espionage &amp; Intelligence</div>
-            <div class="system-card-desc">5 operation types, Deep Recon: 0 Intel, Sabotage: 4 Intel, 60% base success</div>
+          <div class="system-card" style="border-top:3px solid var(--terran)" onclick="event.preventDefault();Nav.go('ch13')">
+            <div class="system-card-title">\uD83C\uDF0D Planets &amp; Biomes</div>
+            <div class="system-card-desc">12 planet types with variable territory counts and unique planetary traits. Vorax terraforming can reshape entire worlds to suit your faction\u2019s needs.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 13</div>
           </div>
-          <div class="system-card" onclick="location.hash='#ch25'">
-            <div class="system-card-title">Alignment &amp; Win Paths</div>
-            <div class="system-card-desc">Architect #44aaff / Vanguard #ff6622 / Tyrant #cc44ff, Conquest/Unification/Pragmatist</div>
+          <div class="system-card" style="border-top:3px solid var(--shards)" onclick="event.preventDefault();Nav.go('ch24')">
+            <div class="system-card-title">\uD83D\uDC41\uFE0F Espionage &amp; Intelligence</div>
+            <div class="system-card-desc">5 covert operation types ranging from zero-cost Deep Recon to high-stakes Sabotage. Intel is a spendable resource\u2014gather it carefully, deploy it ruthlessly.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 24</div>
           </div>
-          <div class="system-card" onclick="location.hash='#ch28'">
-            <div class="system-card-title">Tech Trees</div>
-            <div class="system-card-desc">124 nodes, 4 branches \u00D7 5 tiers \u00D7 5 playable + 3 branches \u00D7 4 tiers \u00D7 2 NPC</div>
+          <div class="system-card" style="border-top:3px solid var(--horde)" onclick="event.preventDefault();Nav.go('ch25')">
+            <div class="system-card-title">\uD83E\uDDED Alignment &amp; Win Paths</div>
+            <div class="system-card-desc">Three alignment axes\u2014Architect, Vanguard, Tyrant\u2014shape your ruler\u2019s identity and unlock unique abilities. Pursue Conquest, Unification, or Pragmatist victory conditions.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 25</div>
           </div>
-          <div class="system-card" onclick="location.hash='#ch33'">
-            <div class="system-card-title">Meta-Progression</div>
-            <div class="system-card-desc">3 layers: In-Run / Archive / Account. localStorage key: 'aoc_archive'. SD awards.</div>
+          <div class="system-card" style="border-top:3px solid var(--necro)" onclick="event.preventDefault();Nav.go('ch28')">
+            <div class="system-card-title">\uD83C\uDF33 Tech Trees</div>
+            <div class="system-card-desc">124 research nodes across 4 branches \u00D7 5 tiers for playable factions, plus NPC-exclusive trees. Each faction\u2019s tech path reinforces its unique playstyle and strategic identity.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 28</div>
           </div>
-          <div class="system-card" onclick="location.hash='#ch43'">
-            <div class="system-card-title">DLC Roadmap</div>
-            <div class="system-card-desc">Playable Vorax, Playable Guardians, Schism Wars prequel, Co-Op multiplayer</div>
+          <div class="system-card" style="border-top:3px solid var(--accord)" onclick="event.preventDefault();Nav.go('ch33')">
+            <div class="system-card-title">\uD83D\uDD04 Meta-Progression</div>
+            <div class="system-card-desc">3 progression layers\u2014In-Run, Archive, and Account\u2014ensure every campaign leaves a lasting mark. Stardust awards and persistent unlocks make each playthrough build on the last.</div>
+            <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 33</div>
           </div>
         </div>
         <div class="divider"></div>
