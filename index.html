@@ -104,6 +104,7 @@
       <div class="sidebar-footer">
         <div class="footer-readout">MEMORY: 46 Archive Fragments | 13 Supp-Logs <span class="status-dot"></span></div>
         <div class="footer-readout">ASSETS: 7 Factions | 105 Units | 124 Tech</div>
+        <button class="sfx-toggle" id="sfx-toggle">[SFX: OFF]</button>
       </div>
     </aside>
 
@@ -296,29 +297,102 @@
           });
         }
 
+        // ── SFX Toggle (sidebar footer) ───────────────────────
+        // Default: muted. User opts in via [SFX: OFF] toggle.
+        let sfxEnabled = localStorage.getItem('aoc-sfx') === '1';
+        let sfxPrevVol = 0.72;
+        const sfxToggle = document.getElementById('sfx-toggle');
+        function _initAudioIfNeeded() {
+          if (!audioInited && typeof AudioEngine !== 'undefined') {
+            AudioEngine.init();
+            AudioEngine.setFaction('terran');
+            audioInited = true;
+          }
+        }
+        function _applySfxState() {
+          if (sfxToggle) sfxToggle.textContent = sfxEnabled ? '[SFX: ON]' : '[SFX: OFF]';
+          if (audioInited) {
+            if (!sfxEnabled) {
+              sfxPrevVol = AudioEngine.getSfxVol() || 0.72;
+              AudioEngine.setSfxVol(0);
+            } else {
+              AudioEngine.setSfxVol(sfxPrevVol);
+            }
+          }
+        }
+        if (sfxToggle) {
+          _applySfxState();
+          sfxToggle.addEventListener('click', () => {
+            _initAudioIfNeeded();
+            sfxEnabled = !sfxEnabled;
+            localStorage.setItem('aoc-sfx', sfxEnabled ? '1' : '0');
+            _applySfxState();
+            if (sfxEnabled) { try { AudioEngine.playClick(); } catch(ex) {} }
+          });
+        }
+
+        // Helper: only play SFX if enabled
+        function _sfx(fn) {
+          if (!sfxEnabled) return;
+          _initAudioIfNeeded();
+          try { fn(); } catch(ex) {}
+        }
+
+        // ── One-time AudioContext init on first interaction ───
+        document.addEventListener('click', function _firstInteraction() {
+          _initAudioIfNeeded();
+          _applySfxState();
+          document.removeEventListener('click', _firstInteraction);
+        }, { once: true });
+
+        // ── Hover sound throttle ─────────────────────────────
+        let _lastHover = 0;
+        function _throttledHover() {
+          const now = Date.now();
+          if (now - _lastHover < 200) return;
+          _lastHover = now;
+          _sfx(() => AudioEngine.playHover());
+        }
+
         // ── UI Sound Delegation ─────────────────────────────────
         // Hover sounds on sidebar nav links (event delegation for dynamic content)
         const navContainer = document.getElementById('nav-container');
         if (navContainer) {
           navContainer.addEventListener('mouseenter', (e) => {
             const link = e.target.closest('.nav-chapter');
-            if (link && audioInited && audioPlaying) {
-              try { AudioEngine.playHover(); } catch(ex) {}
-            }
-          }, true); // capture phase for mouseenter delegation
+            if (link) _throttledHover();
+          }, true);
+        }
+
+        // Click sounds on sidebar nav items and buttons
+        if (navContainer) {
+          navContainer.addEventListener('click', (e) => {
+            const link = e.target.closest('.nav-chapter, .nav-part-header');
+            if (link) _sfx(() => AudioEngine.playClick());
+          });
+        }
+
+        // Hover sounds on cards, domain tabs, system cards, faction grids
+        const contentArea = document.getElementById('content-area');
+        if (contentArea) {
+          contentArea.addEventListener('mouseenter', (e) => {
+            const el = e.target.closest('.card, .domain-tab, .system-card, .faction-grid-item');
+            if (el) _throttledHover();
+          }, true);
         }
 
         // Click sounds on buttons and interactive elements in main content
-        const contentArea = document.getElementById('content-area');
         if (contentArea) {
           contentArea.addEventListener('click', (e) => {
-            if (!audioInited || !audioPlaying) return;
             const btn = e.target.closest('button, .back-to-dashboard, .nav-part-header');
-            if (btn) {
-              try { AudioEngine.playClick(); } catch(ex) {}
-            }
+            if (btn) _sfx(() => AudioEngine.playClick());
           });
         }
+
+        // Chapter load sound — listen for hashchange
+        window.addEventListener('hashchange', () => {
+          setTimeout(() => _sfx(() => AudioEngine.playLoad()), 300);
+        });
 
         // Back-to-top button handled by Nav.bindBackToTop()
 

@@ -6513,3 +6513,76 @@ body.dev-mode-active .page-enter {
 body.dev-mode-active .accessing-record-flash {
   display: none !important;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   SFX Toggle — sidebar footer mute/unmute
+   ═══════════════════════════════════════════════════════════ */
+.sfx-toggle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  letter-spacing: 0.5px;
+  transition: color 0.2s, text-shadow 0.2s;
+  user-select: none;
+}
+.sfx-toggle:hover {
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Dev Mode: Strip visual polish for raw utility
+   ═══════════════════════════════════════════════════════════ */
+body.dev-mode-active .crt-overlay {
+  display: none !important;
+}
+body.dev-mode-active .radar-scan::after {
+  animation: none;
+  opacity: 0;
+}
+body.dev-mode-active .card::before,
+body.dev-mode-active .card::after {
+  display: none !important;
+}
+
+/* PH badges become bright red traffic lights */
+body.dev-mode-active .ph-tag {
+  background: #ff4444 !important;
+  color: #fff !important;
+  font-weight: 700;
+  border: 1px solid #ff4444;
+  box-shadow: 0 0 6px rgba(255,68,68,0.4);
+  opacity: 1 !important;
+}
+
+/* PROTOTYPE LOCKED badges become orange */
+body.dev-mode-active .proto-badge {
+  background: #ffaa22 !important;
+  color: #000 !important;
+  font-weight: 700;
+  border: 1px solid #ffaa22;
+  box-shadow: 0 0 6px rgba(255,170,34,0.4);
+}
+
+/* DEV MODE fixed badge indicator */
+body.dev-mode-active::after {
+  content: '[DEV MODE]';
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #ff4444;
+  background: rgba(0,0,0,0.8);
+  border: 1px solid #ff4444;
+  padding: 4px 8px;
+  border-radius: 2px;
+  z-index: 99999;
+  pointer-events: none;
+  letter-spacing: 1px;
+  text-shadow: 0 0 6px rgba(255,68,68,0.5);
+}

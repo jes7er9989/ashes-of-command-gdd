@@ -483,6 +483,12 @@ const AudioEngine = (() => {
     }
   };
 
+  function playLoad() {
+    if (!ctx) init();
+    _thud(60, 0.18, 0.10);
+    _noise(0.08, 0.06, 300, 3, false, 0);
+  }
+
   function playClick() {
     if (!ctx) init();
     const prof = uiProfiles[currentFaction];
@@ -913,6 +919,7 @@ const AudioEngine = (() => {
     getSfxVol,
     playClick,
     playHover,
+    playLoad,
     playAction,
     playAccordion,
     playRarity,
