@@ -419,7 +419,11 @@ const Nav = {
       }
     };
 
-    btn.addEventListener('click', toggle);
+    btn.addEventListener('click', () => {
+      toggle();
+      btn.classList.add('glitch');
+      setTimeout(() => btn.classList.remove('glitch'), 200);
+    });
     if (overlay) overlay.addEventListener('click', () => this._closeSidebar());
 
     // Auto-close sidebar when a chapter link is tapped on mobile

@@ -3014,25 +3014,7 @@ html {
   gap: 4px;
 }
 
-.hamburger span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  background: var(--text-mid);
-  border-radius: 1px;
-  transition: all 0.3s ease;
-}
-
-/* Animated X state */
-.hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translate(4px, 4px);
-}
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(4px, -4px);
-}
+/* Hamburger SVG icon styles are in the CC-034 section below */
 
 /* â"€â"€ Mobile Overlay â"€â"€
    Dark scrim behind the sidebar when open on mobile.            */
@@ -6305,4 +6287,154 @@ body.dev-mode-active .crt-overlay {
 .search-results,
 #content-area {
   scrollbar-color: rgba(0,180,255,0.3) var(--bg-base);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   CC-034: Diegetic Sidebar — Command Terminal Overhaul
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 1. Hamburger SVG Icon + Glitch ──────────────────────── */
+.hamburger-icon {
+  color: var(--text-mid);
+  transition: color 0.2s ease;
+}
+.hamburger-icon line {
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* X state — transform SVG lines */
+.hamburger.open .hamburger-icon line:nth-child(1) {
+  transform: rotate(45deg) translate(2px, -4px);
+}
+.hamburger.open .hamburger-icon line:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open .hamburger-icon line:nth-child(3) {
+  transform: rotate(-45deg) translate(2px, 4px);
+}
+
+/* Glitch animation on click */
+@keyframes hamburger-glitch {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-3px); }
+  50%  { transform: translateX(2px); }
+  75%  { transform: translateX(-1px); }
+  100% { transform: translateX(0); }
+}
+
+.hamburger.glitch .hamburger-icon {
+  animation: hamburger-glitch 0.2s ease-out;
+}
+
+/* ── 2. Boot Sequence Header ─────────────────────────────── */
+.boot-sequence {
+  margin-top: 6px;
+}
+
+.boot-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  opacity: 0;
+  animation: boot-fade-in 0.3s ease forwards;
+}
+
+.boot-line-1 { animation-delay: 0s; }
+.boot-line-2 { animation-delay: 0.1s; }
+.boot-line-3 { animation-delay: 0.2s; }
+
+@keyframes boot-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.boot-caret {
+  color: var(--accent);
+  margin-right: 2px;
+}
+
+/* ── 3. Search Focus Glow ────────────────────────────────── */
+.sidebar-search-wrap input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+/* ── 4. Tactical Filter Codes ────────────────────────────── */
+.filter-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-right: 4px;
+}
+
+.filter-option {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+}
+
+/* Category hover colors */
+.filter-option[data-category="lore"]:hover,
+.filter-option[data-category="lore"].active {
+  color: var(--guardians);
+}
+.filter-option[data-category="lore"]:hover .filter-code,
+.filter-option[data-category="lore"].active .filter-code {
+  color: var(--guardians);
+}
+
+.filter-option[data-category="factions"]:hover,
+.filter-option[data-category="factions"].active {
+  color: var(--terran);
+}
+.filter-option[data-category="factions"]:hover .filter-code,
+.filter-option[data-category="factions"].active .filter-code {
+  color: var(--terran);
+}
+
+.filter-option[data-category="strategy"]:hover,
+.filter-option[data-category="strategy"].active {
+  color: var(--accord);
+}
+.filter-option[data-category="strategy"]:hover .filter-code,
+.filter-option[data-category="strategy"].active .filter-code {
+  color: var(--accord);
+}
+
+/* Default accent for other categories */
+.filter-option[data-category="all"]:hover .filter-code,
+.filter-option[data-category="maps"]:hover .filter-code,
+.filter-option[data-category="combat"]:hover .filter-code,
+.filter-option[data-category="endgame"]:hover .filter-code,
+.filter-option[data-category="presentation"]:hover .filter-code,
+.filter-option[data-category="business"]:hover .filter-code,
+.filter-option[data-category="reference"]:hover .filter-code {
+  color: var(--accent);
+}
+
+/* ── 5. Sidebar Footer — Military Readout ────────────────── */
+.footer-readout {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--accord);
+  animation: status-blink 4s ease-in-out infinite;
+}
+
+@keyframes status-blink {
+  0%, 90%, 100% { opacity: 1; }
+  95% { opacity: 0; }
 }

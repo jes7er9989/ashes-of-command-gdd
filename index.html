@@ -44,7 +44,11 @@
        Hamburger button and dark overlay shown only at ≤768px.
        The overlay closes the sidebar when tapped.                 -->
   <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-    <span></span><span></span><span></span>
+    <svg class="hamburger-icon" viewBox="0 0 24 18" width="20" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square">
+      <line x1="1" y1="2"  x2="23" y2="2"  />
+      <line x1="1" y1="9"  x2="23" y2="9"  />
+      <line x1="1" y1="16" x2="23" y2="16" />
+    </svg>
   </button>
   <div class="mobile-overlay" id="mobile-overlay"></div>
 
@@ -61,13 +65,17 @@
       <div class="sidebar-header">
         <div class="sidebar-title">ASHES OF COMMAND</div>
         <div class="sidebar-subtitle-sm">THE RECLAMATION</div>
-        <div class="sidebar-subtitle">Interactive GDD v5.9.1</div>
+        <div class="boot-sequence">
+          <div class="boot-line boot-line-1"><span class="boot-caret">&gt;</span> INITIALIZING: Ashes of Command</div>
+          <div class="boot-line boot-line-2"><span class="boot-caret">&gt;</span> DIRECTIVE: The Reclamation</div>
+          <div class="boot-line boot-line-3"><span class="boot-caret">&gt;</span> CLEARANCE: GDD v5.9.1</div>
+        </div>
       </div>
 
       <div class="sidebar-search">
         <div class="sidebar-search-wrap">
           <span class="sidebar-search-icon">&#128269;</span>
-          <input type="text" id="nav-search" placeholder="Search..." autocomplete="off" spellcheck="false">
+          <input type="text" id="nav-search" placeholder="Query Archive [Ctrl+K]..." autocomplete="off" spellcheck="false">
           <span class="sidebar-search-shortcut">Ctrl+K</span>
         </div>
         <button class="sidebar-filter-btn" id="sidebar-filter-btn">
@@ -76,16 +84,16 @@
           <span class="filter-chevron">&#9662;</span>
         </button>
         <div class="sidebar-filter-dropdown" id="sidebar-filter-dropdown">
-          <button class="filter-option active" data-category="all">All</button>
-          <button class="filter-option" data-category="lore">Lore &amp; Narrative</button>
-          <button class="filter-option" data-category="factions">Factions</button>
-          <button class="filter-option" data-category="maps">Maps &amp; Exploration</button>
-          <button class="filter-option" data-category="combat">Combat</button>
-          <button class="filter-option" data-category="strategy">Strategy &amp; Diplomacy</button>
-          <button class="filter-option" data-category="endgame">Endgame &amp; Meta</button>
-          <button class="filter-option" data-category="presentation">Presentation</button>
-          <button class="filter-option" data-category="business">Business</button>
-          <button class="filter-option" data-category="reference">Reference</button>
+          <button class="filter-option active" data-category="all"><span class="filter-code">[SYS]</span> All Systems</button>
+          <button class="filter-option" data-category="lore"><span class="filter-code">[LRE]</span> Lore &amp; Narrative</button>
+          <button class="filter-option" data-category="factions"><span class="filter-code">[FAC]</span> Factions</button>
+          <button class="filter-option" data-category="maps"><span class="filter-code">[MAP]</span> Astrometrics</button>
+          <button class="filter-option" data-category="combat"><span class="filter-code">[TAC]</span> Combat Logistics</button>
+          <button class="filter-option" data-category="strategy"><span class="filter-code">[DIP]</span> Strategy &amp; Diplomacy</button>
+          <button class="filter-option" data-category="endgame"><span class="filter-code">[MTA]</span> Archive Progression</button>
+          <button class="filter-option" data-category="presentation"><span class="filter-code">[PRS]</span> Presentation</button>
+          <button class="filter-option" data-category="business"><span class="filter-code">[BIZ]</span> Business</button>
+          <button class="filter-option" data-category="reference"><span class="filter-code">[REF]</span> Reference</button>
         </div>
       </div>
 
@@ -94,8 +102,8 @@
       </nav>
 
       <div class="sidebar-footer">
-        <div>8 Parts · 46 Chapters · 13 Appendices</div>
-        <div>7 Factions · 105 Units · 208 Equipment</div>
+        <div class="footer-readout">MEMORY: 46 Archive Fragments | 13 Supp-Logs <span class="status-dot"></span></div>
+        <div class="footer-readout">ASSETS: 7 Factions | 105 Units | 124 Tech</div>
       </div>
     </aside>
 
