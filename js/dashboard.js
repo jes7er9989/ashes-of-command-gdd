@@ -525,11 +525,41 @@ const Dashboard = {
   buildRogueLiteFlow() {
     return `
       <section class="dashboard-section">
-        <div class="card" style="padding:16px 24px;text-align:center;margin-bottom:32px;background:rgba(0,180,255,0.06);border:1px solid rgba(0,180,255,0.2);border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,0.3)">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;letter-spacing:3px;color:var(--accent);text-shadow:0 0 20px rgba(0,180,255,0.3)">ROGUE-LITE LOOP</span>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:1rem;letter-spacing:2px;color:var(--text-hi);margin-top:8px">MAP → ARMADA → APPROACH → SPACE → GROUND → REPEAT</div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:2px;color:var(--text-dim);margin-top:6px">VICTORY OR DEATH → NEW SIMULATION RUN</div>
+        <div class="section-label">Death is a Lesson</div>
+        <div class="section-heading">Rogue-Lite Meta-Progression</div>
+
+        <p class="prologue-text" style="max-width:800px;margin:0 auto">Death resets your in-run progress \u2014 but blueprints, resources, and lore persist across runs through the <strong>Archive</strong>. Veteran players always feel their experience translating into power. The emotional arc is deliberate: learning, mastery, delegation, trust, consequence. Every death teaches something. Every run makes you stronger.</p>
+
+        <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);margin-top:24px">
+
+          <div class="card" style="border-top:3px solid var(--terran);padding:20px">
+            <div style="font-family:'Orbitron',sans-serif;font-size:0.85rem;letter-spacing:2px;color:var(--terran);margin-bottom:4px">LAYER 1: IN-RUN</div>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:0.75rem;letter-spacing:1px;color:var(--text-dim);margin-bottom:12px">RESETS EACH SIMULATION RUN</div>
+            <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;margin:0">Territory control, resources, unit veterancy, equipment inventory, research progress, faction relationships, Commander rank. Everything you build in a run can be lost.</p>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--accord);padding:20px">
+            <div style="font-family:'Orbitron',sans-serif;font-size:0.85rem;letter-spacing:2px;color:var(--accord);margin-bottom:4px">LAYER 2: THE ARCHIVE</div>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:0.75rem;letter-spacing:1px;color:var(--text-dim);margin-bottom:12px">PERSISTS ACROSS SIMULATION RUNS</div>
+            <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;margin:0"><strong>Simulation Data</strong> \u2014 meta-currency earned from completed runs. <strong>Blueprint Unlocks</strong> \u2014 researched Common/Uncommon equipment permanently available. <strong>Starting Bonuses</strong> \u2014 +5 Scrap, +1 Rookie per SD upgrade, stacking. <strong>Commander Perks</strong> \u2014 permanent HP, CP regen, aura radius. <strong>Lore Fragments</strong> \u2014 all discoveries persist in Compendium.</p>
+          </div>
+
+          <div class="card" style="border-top:3px solid var(--guardians);padding:20px">
+            <div style="font-family:'Orbitron',sans-serif;font-size:0.85rem;letter-spacing:2px;color:var(--guardians);margin-bottom:4px">LAYER 3: ACCOUNT</div>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:0.75rem;letter-spacing:1px;color:var(--text-dim);margin-bottom:12px">PERSISTS ACROSS ENTIRE CAMPAIGNS</div>
+            <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;margin:0"><strong>Meta Modifiers</strong> \u2014 +2% XP, +1 Scrap per campaign, stacking uncapped. <strong>Commander Titles</strong>. <strong>Legacy Bonuses</strong> \u2014 +2% per faction per campaign, max +10%. <strong>Legacy Echoes</strong> \u2014 legendary Generals as recruitable mercenaries. <strong>New Game+ Modifiers</strong> \u2014 Iron Galaxy, Accelerated Vorax, Generous Core, Fog of War+.</p>
+          </div>
+
         </div>
+
+        <div style="text-align:center;margin:28px 0 16px;font-family:'Share Tech Mono',monospace;font-size:0.95rem;letter-spacing:2px;color:var(--text-hi)">
+          RUN \u2192 DEATH \u2192 ARCHIVE SAVES \u2192 NEW RUN STRONGER \u2192 CAMPAIGN VICTORY \u2192 ACCOUNT SAVES \u21BA
+        </div>
+
+        <div style="text-align:center;margin-bottom:8px">
+          <a href="#ch33" onclick="event.preventDefault();Nav.go('ch33')" style="color:var(--accent);font-size:0.9rem;text-decoration:none;cursor:pointer">Ch. 33 \u2014 Meta-Progression & The Archive \u203A</a>
+        </div>
+
         <div class="divider"></div>
       </section>`;
   },
