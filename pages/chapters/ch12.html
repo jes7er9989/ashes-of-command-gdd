@@ -75,43 +75,68 @@
     <div class="divider"></div>
 
     <!-- §12.11 Galactic Core Layout — canonical anchor cross-ref -->
-    <div class="section-label">§12.11 — Galactic Core Layout <span class="proto-badge">PROTOTYPE LOCKED</span></div>
-    <div class="section-heading" id="sec-ch12-1">Fixed Anchor · Faction Homeworlds · Custom Difficulty</div>
-    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
-      <div style="display:grid;grid-template-columns:160px 180px 100px 1fr;background:rgba(0,180,255,0.04);padding:8px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase"><span>System</span><span>ID / Type</span><span>Coordinates</span><span>Notes</span></div>
-      <div style="display:grid;grid-template-columns:160px 180px 100px 1fr;padding:8px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;align-items:start">
-        <span style="color:#fff;font-weight:600">The Nexus</span>
-        <span style="font-family:'JetBrains Mono',monospace;color:var(--guardians)">sys-nexus · 'guardian'</span>
-        <span style="font-family:'JetBrains Mono',monospace;color:var(--text-mid)">(510, 320)</span>
-        <span style="color:var(--text-dim)">Fixed position. Win condition target. Guardian fleet: Gunship×2 + Dreadnought.</span>
+    <div class="section-label">§12.11 &mdash; Galactic Core Layout <span class="proto-badge">PROTOTYPE LOCKED</span></div>
+    <div class="section-heading" id="sec-ch12-1">Fixed Anchor &middot; Faction Homeworlds &middot; Win Paths</div>
+    <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:16px">
+      <!-- THE NEXUS -->
+      <div class="card" style="border-top:2px solid var(--guardians)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:var(--guardians);margin-bottom:2px">THE NEXUS</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">Galactic Center &mdash; Fixed Anchor Point</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Position:</span> Center of every generated galaxy. Fixed anchor &mdash; all other systems generate around it.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Purpose:</span> The Reclamation Engine. Final objective for all win conditions.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Defense:</span> Base Guardian fleet &mdash; Gunship &times;2 + Dreadnought. Fleet scales with difficulty setting (higher difficulty = larger Guardian presence).</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Access:</span> Connected by 2&ndash;3 warp lanes only. No direct lane from any homeworld &mdash; must fight through intermediate systems.</div>
+          <div><span style="color:var(--text-hi);font-weight:600">Lore:</span> Seat of the Aethyn Reclamation Engine. Core Guardians will destroy anyone who approaches regardless of intent.</div>
+        </div>
       </div>
-      <div style="display:grid;grid-template-columns:160px 180px 100px 1fr;padding:8px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;align-items:start">
-        <span style="color:#fff;font-weight:600">Faction Homeworlds</span>
-        <span style="font-family:'JetBrains Mono',monospace;color:var(--terran)">2–5 procedural systems</span>
-        <span style="font-family:'JetBrains Mono',monospace;color:var(--text-mid)">Procedural</span>
-        <span style="color:var(--text-dim)">Outer/mid rim, ≥3 hops apart, no direct lane to Nexus. Each gets Capital World. Custom difficulty toggles factions on/off (min 2).</span>
+      <!-- FACTION HOMEWORLDS -->
+      <div class="card" style="border-top:2px solid var(--terran)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:var(--terran);margin-bottom:2px">FACTION HOMEWORLDS</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">5 Procedural Systems &mdash; Outer/Mid Rim Placement</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Count:</span> 5 homeworlds &mdash; one per playable faction. Custom difficulty can reduce (minimum 2).</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Placement:</span> Outer or mid rim. Minimum 3 hops between any two homeworlds. No direct warp lane to the Nexus.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Starting Conditions:</span> Faction-specific &mdash; each faction begins with a loadout matching their identity and doctrine. (PH &mdash; exact starting resources, buildings, and fleet composition per faction pending balance pass.)</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Capital World:</span> Each homeworld includes a Capital World with pre-built infrastructure. Losing your Capital World does not eliminate you but severely cripples production.</div>
+          <div><span style="color:var(--text-hi);font-weight:600">Vorax &amp; Guardians:</span> Always present regardless of custom difficulty settings.</div>
+        </div>
       </div>
-      <div style="display:grid;grid-template-columns:160px 180px 100px 1fr;padding:8px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;align-items:start">
-        <span style="color:var(--text-mid)">Galaxy RNG</span>
-        <span style="font-family:'JetBrains Mono',monospace;color:var(--text-mid)">Fisher-Yates seeded</span>
-        <span style="font-family:'JetBrains Mono',monospace;color:var(--text-dim)">—</span>
-        <span style="color:var(--text-dim)">Seeded shuffle. Post-lane pruning removes direct Homeworld–Nexus lanes for all factions. <span style="font-family:'JetBrains Mono',monospace">_ensureConnectivity()</span> re-runs after pruning.</span>
+      <!-- SEED SYSTEM -->
+      <div class="card" style="border-top:2px solid var(--shards)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:var(--shards);margin-bottom:2px">SEED SYSTEM</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">Shareable &middot; Reproducible &middot; Seeded RNG</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Same Seed = Same Galaxy:</span> Identical seed produces identical system positions, warp lanes, star types, planet distributions, and faction homeworld placements.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Shareable:</span> Players can share seeds to play the same galaxy layout. Copy/paste from campaign start screen.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">What&rsquo;s Fixed Per Seed:</span> System positions, warp lane connections, star types, planet types and counts, homeworld assignments, wormhole locations, chokepoint positions.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">What&rsquo;s Randomized Within a Seed:</span> AI faction behavior, Vorax expansion patterns, galactic events, loot drops, unit trait rolls.</div>
+          <div><span style="color:var(--text-hi);font-weight:600">Lane Pruning:</span> Direct homeworld-to-Nexus lanes are automatically pruned after generation to ensure no faction has a shortcut. Connectivity is verified after pruning.</div>
+        </div>
       </div>
-      <div style="display:grid;grid-template-columns:160px 180px 100px 1fr;padding:8px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;align-items:start">
-        <span style="color:var(--text-mid)">Win Condition</span>
-        <span style="font-family:'JetBrains Mono',monospace;color:var(--guardians)">Conquer sys-nexus</span>
-        <span style="font-family:'JetBrains Mono',monospace;color:var(--text-dim)">—</span>
-        <span style="color:var(--text-dim)">Core Guardians are the final boss → VICTORY screen triggers.</span>
+      <!-- WIN CONDITIONS -->
+      <div class="card" style="border-top:2px solid var(--accord)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:var(--accord);margin-bottom:2px">WIN CONDITIONS</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">Three Paths to the Nexus &mdash; See Ch. 25</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Conquest (Vanguard):</span> Military dominance. Fight through to the Nexus and take it by force. The direct path.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Unification (Architect):</span> Diplomatic mastery. Unite enough factions under your banner before approaching the Nexus. Strength through alliance.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Pragmatist:</span> The middle road. Mix of military and diplomatic power. No single approach &mdash; adapt to what the galaxy demands.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">All Paths Converge:</span> Regardless of alignment, the Nexus is the final objective. How you get there and what happens when you arrive depends on your choices.</div>
+          <div><span style="color:var(--text-hi);font-weight:600">Full Detail:</span> Complete alignment mechanics, thresholds, and ending variations in <a href="#ch25" onclick="location.hash='#ch25'" style="color:var(--accent)">Chapter 25 &mdash; Alignment &amp; Win Paths</a>.</div>
+        </div>
       </div>
-      <div style="display:grid;grid-template-columns:160px 180px 100px 1fr;padding:8px 12px;font-size:0.98rem;align-items:start">
-        <span style="color:var(--text-mid)">Faction Elimination</span>
-        <span style="font-family:'JetBrains Mono',monospace;color:var(--vorax)">All planets lost</span>
-        <span style="font-family:'JetBrains Mono',monospace;color:var(--text-dim)">—</span>
-        <span style="color:var(--text-dim)">All planets lost + no fleets in transit → faction destroyed. Applies to player and all AI factions.</span>
+      <!-- FACTION ELIMINATION -->
+      <div class="card" style="border-top:2px solid var(--vorax)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:var(--vorax);margin-bottom:2px">FACTION ELIMINATION</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">All Planets Lost + No Fleets in Transit = Destroyed</div>
+        <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Trigger:</span> A faction is eliminated when it controls zero planets AND has no fleets in transit. Applies to player and all AI factions.</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Player Elimination:</span> If you are eliminated, the run ends. Death is permanent &mdash; progress transfers to the Archive (see Ch. 33).</div>
+          <div style="margin-bottom:4px"><span style="color:var(--text-hi);font-weight:600">Territory Decay:</span> When a faction is eliminated, their former territory remains but decays. Buildings degrade over time, garrisons weaken, infrastructure crumbles. (PH &mdash; exact decay rates and mechanics pending balance pass.)</div>
+          <div><span style="color:var(--text-hi);font-weight:600">Strategic Impact:</span> Eliminated faction territory becomes contested ground &mdash; weakened but not free. Neighboring factions and Vorax will compete for the remains.</div>
+        </div>
       </div>
-    </div>
-    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--accent)">
-      <div style="font-size:0.98rem;color:var(--text-mid);line-height:1.6"><strong style="color:var(--text-hi)">Custom Difficulty:</strong> Player can toggle AI factions on/off (2–5 playable factions). Vorax &amp; Core Guardians always present. Full specification in <strong style="color:var(--text-hi)">Appendix L</strong>.</div>
     </div>
 
     <!-- CORE SYSTEM PLANETS (Lore Workshop Phase 1 Locked) -->
