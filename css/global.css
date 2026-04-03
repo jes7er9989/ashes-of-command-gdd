@@ -6148,3 +6148,161 @@ body.light-mode .dashboard-section:nth-child(odd) {
 body.light-mode .dashboard-section:nth-child(even) {
   background: rgba(34,170,255,0.05);
 }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   12. DIEGETIC TERMINAL ATMOSPHERE  (CC-033)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── CRT Scanline Overlay ──
+   Persistent faint horizontal lines for command-console feel.
+   Disabled when dev-mode is active.                              */
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+  opacity: 0.025;
+}
+
+body.dev-mode-active .crt-overlay {
+  display: none;
+}
+
+/* ── JetBrains Mono for UI Controls ──
+   Monospace font on sidebar interactive elements only.           */
+.sidebar-filter-btn,
+.sidebar-filter-dropdown,
+.sidebar-search-wrap input,
+.sidebar-toggle,
+.sidebar-footer,
+.nav-chapter,
+.nav-chapter .ch-num,
+.sidebar a,
+.sidebar button,
+.sidebar label {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.5px;
+}
+
+/* ── Tactical Hover Brackets ──
+   Neon [ ] brackets appear on hover around interactive elements. */
+@media (hover: hover) {
+  .card,
+  .nav-chapter,
+  .system-card,
+  .domain-tab {
+    position: relative;
+  }
+
+  .card::before,
+  .card::after,
+  .nav-chapter::before,
+  .nav-chapter::after,
+  .system-card::before,
+  .system-card::after,
+  .domain-tab::before,
+  .domain-tab::after {
+    font-family: 'JetBrains Mono', monospace;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.15em;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    pointer-events: none;
+    color: var(--fx, var(--accent));
+  }
+
+  .card::before,
+  .nav-chapter::before,
+  .system-card::before,
+  .domain-tab::before {
+    content: '[';
+    left: -2px;
+  }
+
+  .card::after,
+  .nav-chapter::after,
+  .system-card::after,
+  .domain-tab::after {
+    content: ']';
+    right: -2px;
+  }
+
+  .card:hover::before,
+  .card:hover::after,
+  .nav-chapter:hover::before,
+  .nav-chapter:hover::after,
+  .system-card:hover::before,
+  .system-card:hover::after,
+  .domain-tab:hover::before,
+  .domain-tab:hover::after {
+    opacity: 1;
+  }
+}
+
+/* ── Radar Scan ──
+   Faint glowing bar sweeps top-to-bottom on data grids.
+   Apply .radar-scan class to target containers.                  */
+.radar-scan {
+  position: relative;
+  overflow: hidden;
+}
+
+.radar-scan::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent) 50%,
+    transparent 100%
+  );
+  opacity: 0.14;
+  pointer-events: none;
+  animation: radarSweep 5s linear infinite;
+}
+
+@keyframes radarSweep {
+  0%   { top: 0; }
+  100% { top: 100%; }
+}
+
+/* ── Enhanced Scrollbar ──
+   Accent-colored thumb for webkit & Firefox.                     */
+::-webkit-scrollbar-thumb {
+  background: rgba(0,180,255,0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,180,255,0.5);
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb,
+.search-results::-webkit-scrollbar-thumb {
+  background: rgba(0,180,255,0.3);
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover,
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,180,255,0.5);
+}
+
+.sidebar-nav,
+.search-results,
+#content-area {
+  scrollbar-color: rgba(0,180,255,0.3) var(--bg-base);
+}
