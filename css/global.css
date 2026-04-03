@@ -2251,8 +2251,72 @@ html {
   z-index: 1;
 }
 
+/* ── Core Loop Intro + Flow Diagram ── */
+.core-loop-intro {
+  text-align: center;
+  margin-bottom: 24px;
+}
 
-/* â"€â"€ 7k. Game Systems â€" Navigation Grid â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
+.core-loop-flow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.flow-node {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.3);
+  opacity: 0.9;
+}
+
+.flow-arrow {
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  opacity: 0.5;
+}
+
+.flow-arrow-loop {
+  font-size: 1.3rem;
+  color: var(--accent);
+  opacity: 0.6;
+}
+
+/* ── Phase Clickable + Cascade ── */
+.phase-clickable {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.phase-clickable:hover .phase-name {
+  color: var(--accent);
+}
+
+.phase-cascade {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  opacity: 0.5;
+  margin-top: auto;
+  padding-top: 10px;
+  text-align: center;
+  border-top: 1px solid rgba(0,180,255,0.1);
+}
+
+
+/* ── 7k. Game Systems — Navigation Grid ─────────────────────── */
 
 .systems-grid {
   display: grid;
