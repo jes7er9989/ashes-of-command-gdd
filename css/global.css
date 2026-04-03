@@ -5665,8 +5665,9 @@ embed {
     gap: 12px;
   }
 
+  /* -- Mobile: Game Systems 1-column -- */
   .systems-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 10px;
   }
 
@@ -5674,22 +5675,30 @@ embed {
     gap: 10px;
   }
 
+  /* -- Mobile: Rogue-Lite layer cards — override inline repeat(3,1fr) -- */
+  .stats-grid[style*="repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+
   /* â"€â"€ Dashboard section padding reduction â"€â"€ */
   .dashboard-section {
     padding: 24px 8px;
   }
 
-  /* â"€â"€ Phase cards: single-column stack, hide arrows â"€â"€ */
+  /* -- Mobile: Phase cards horizontal scroll with snap -- */
   .phase-loop {
-    flex-direction: column;
-    overflow-x: visible;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
     gap: 10px;
   }
 
   .phase-block {
-    min-width: 0;
-    width: 100%;
-    flex: none;
+    min-width: 240px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
   }
 
   .phase-arrow {
@@ -5790,6 +5799,11 @@ embed {
     gap: 8px;
   }
 
+  /* -- Mobile: By The Numbers 1-column on small phones -- */
+  .stats-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
   /* â"€â"€ Cards: full width, minimal margins â"€â"€ */
   .card,
   .system-card,
@@ -5845,6 +5859,42 @@ embed {
 
   .phase-desc {
     font-size: 0.88rem;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   20. SWIPE-SCROLL AFFORDANCE — Equipment & wide table indicator
+   ═══════════════════════════════════════════════════════════ */
+
+/* -- Mobile: Swipe-scroll container -- */
+.swipe-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  position: relative;
+}
+
+.swipe-scroll > * {
+  scroll-snap-align: start;
+}
+
+/* -- Mobile: Right-edge fade gradient to hint at scrollable content -- */
+@media (max-width: 768px) {
+  .swipe-scroll {
+    scrollbar-width: thin;
+    mask-image: linear-gradient(to right, #000 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, #000 85%, transparent 100%);
+  }
+
+  /* -- Mobile: Tables and wide grids get scroll-snap hint -- */
+  .page table,
+  .body-text table,
+  [id^="page-"] table,
+  .data-table,
+  .unit-stats-table,
+  .stat-comparison {
+    scroll-snap-type: x proximity;
   }
 }
 
