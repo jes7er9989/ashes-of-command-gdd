@@ -439,6 +439,34 @@
     {
       "id": "sec-ch13-3",
       "label": "Stripped World Restoration: 100⚙ & 20 Cycles"
+    },
+    {
+      "id": "sec-ch13-planets",
+      "label": "Standard Worlds — Detailed Profiles"
+    },
+    {
+      "id": "sec-ch13-megastructures",
+      "label": "5 Rare Discovery Types"
+    },
+    {
+      "id": "sec-ch13-weather",
+      "label": "Planetary Weather System"
+    },
+    {
+      "id": "sec-ch13-scanning",
+      "label": "Scanning & Discovery"
+    },
+    {
+      "id": "sec-ch13-sleepers",
+      "label": "Revenant Sleeper Caches"
+    },
+    {
+      "id": "sec-ch13-terraforming",
+      "label": "Terraforming"
+    },
+    {
+      "id": "sec-ch13-moons",
+      "label": "Moon Generation & Typing"
     }
   ],
   "ch14": [
