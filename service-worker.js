@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v195';
+const CACHE_NAME = 'aoc-gdd-v196';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -122,7 +122,10 @@ const PRECACHE_URLS = [
   '/data/units/unity-accord.json',
   '/data/units/vorax.json',
 
-  // JS modules (20)
+  // External CDN (precached for offline; lazy-loaded at runtime)
+  'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',
+
+  // JS modules (21)
   '/js/audio-engine.js',
   '/js/canvas-galaxy.js',
   '/js/chapter-index.js',
@@ -142,6 +145,7 @@ const PRECACHE_URLS = [
   '/js/search.js',
   '/js/solar-system.js',
   '/js/sprite-engine.js',
+  '/js/three-loader.js',
   '/js/visual-effects.js',
 
   // CSS (1)

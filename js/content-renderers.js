@@ -129,7 +129,7 @@ const ContentRenderers = {
        All platforms: planets start collapsed. Renderer created when
        detail is expanded, disposed when collapsed. Uses MutationObserver
        to watch for planet-detail-open class toggle. */
-    if (typeof PlanetRenderer !== 'undefined') {
+    if (typeof PlanetRenderer !== 'undefined' && typeof ensureThree === 'function') {
       container.querySelectorAll('.planet-detail').forEach(function(detail) {
         const wrap = detail.querySelector('.planet-svg-wrap[data-planet-type]');
         if (!wrap) return;
@@ -139,22 +139,38 @@ const ContentRenderers = {
           if (!type) return;
           const isOpen = detail.classList.contains('planet-detail-open');
 
-          if (isOpen && !wrap._planetInstance) {
-            /* Small delay to let max-height transition start so container has dimensions */
-            setTimeout(function() {
-              if (!wrap._planetInstance) {
-                wrap._planetInstance = PlanetRenderer.create(wrap, type);
-              }
-              /* SVG fallback for megastructures or WebGL failure */
-              if (!wrap._planetInstance && !wrap._svgFallback) {
-                _fetchSvgData().then(function(svgData) {
-                  if (svgData[type] && !wrap._planetInstance) {
-                    wrap.innerHTML = svgData[type];
-                    wrap._svgFallback = true;
-                  }
-                });
-              }
-            }, 50);
+          if (isOpen && !wrap._planetInstance && !wrap._threeLoading) {
+            wrap._threeLoading = true;
+            wrap.setAttribute('aria-busy', 'true');
+            ensureThree().then(function () {
+              wrap.removeAttribute('aria-busy');
+              /* Small delay to let max-height transition start so container has dimensions */
+              setTimeout(function() {
+                wrap._threeLoading = false;
+                if (!wrap._planetInstance && detail.classList.contains('planet-detail-open')) {
+                  wrap._planetInstance = PlanetRenderer.create(wrap, type);
+                }
+                /* SVG fallback for megastructures or WebGL failure */
+                if (!wrap._planetInstance && !wrap._svgFallback) {
+                  _fetchSvgData().then(function(svgData) {
+                    if (svgData[type] && !wrap._planetInstance) {
+                      wrap.innerHTML = svgData[type];
+                      wrap._svgFallback = true;
+                    }
+                  });
+                }
+              }, 50);
+            }).catch(function () {
+              wrap._threeLoading = false;
+              wrap.removeAttribute('aria-busy');
+              /* Three.js failed to load -- fall back to SVG */
+              _fetchSvgData().then(function(svgData) {
+                if (svgData[type] && !wrap._planetInstance) {
+                  wrap.innerHTML = svgData[type];
+                  wrap._svgFallback = true;
+                }
+              });
+            });
           } else if (!isOpen && wrap._planetInstance) {
             wrap._planetInstance.dispose();
             wrap._planetInstance = null;

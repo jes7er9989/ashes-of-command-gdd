@@ -1203,11 +1203,19 @@ const Dashboard = {
 
     /* �"��"� Solar System (Three.js) �"��"� */
     const solarMount = document.getElementById('canvas-solar-mount');
-    if (solarMount && typeof SolarSystemRenderer !== 'undefined') {
-      try {
-        this._solarRenderer = new SolarSystemRenderer(solarMount);
-        this._solarRenderer.start();
-      } catch (e) { console.warn('[Dashboard] Solar system renderer failed:', e); }
+    if (solarMount && typeof SolarSystemRenderer !== 'undefined' && typeof ensureThree === 'function') {
+      solarMount.setAttribute('aria-busy', 'true');
+      const _dash = this;
+      ensureThree().then(function () {
+        solarMount.removeAttribute('aria-busy');
+        try {
+          _dash._solarRenderer = new SolarSystemRenderer(solarMount);
+          _dash._solarRenderer.start();
+        } catch (e) { console.warn('[Dashboard] Solar system renderer failed:', e); }
+      }).catch(function (e) {
+        solarMount.removeAttribute('aria-busy');
+        console.warn('[Dashboard] Three.js lazy-load failed:', e);
+      });
     }
 
     /* �"��"� Territory Map �" uses hand-crafted SVG asset (assets/territory-map.svg) �"��"�
