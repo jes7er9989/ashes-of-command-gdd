@@ -1433,6 +1433,84 @@
       <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">The existing Vorax Terraforming Recovery system (see above) is a specialized case of terraforming &mdash; restoring a Vorax-stripped world follows the same general framework but with fixed target outcomes. Full terraforming expands this into a player-choice system.</div>
     </div>
 
+    <!-- ============================================================
+         MOON GENERATION & TYPING
+         ============================================================ -->
+    <div class="divider"></div>
+    <div class="section-label">Moon Generation &amp; Typing</div>
+    <div class="section-heading" id="sec-ch13-moons">Not Just Dead Rocks</div>
+    <p class="intro-text">Moons are not a single planet type &mdash; they are a SIZE class that can carry any biome. A moon orbiting a gas giant might be a frozen ice moon, a volcanic hellscape heated by tidal forces, or a jungle-covered world with its own atmosphere. Moon type is influenced by its parent planet and the host star system, creating realistic orbital environments. Bigger moons around gas giants can function as small planets with meaningful resource yields.</p>
+
+    <!-- Moon Type Influence -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">PARENT PLANET INFLUENCE</div>
+        <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Gas Giant moons:</strong> Higher chance of Ice, Volcanic (tidal heating), or Dead. Larger average size (up to small-planet scale).</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Terrestrial moons:</strong> Tend toward Dead or Ice. Smaller average size.</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Volcanic planet moons:</strong> Higher Volcanic/Dead chance (system-wide geological activity).</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Ocean world moons:</strong> Higher Ice chance (tidal water cycling).</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Capital World moons:</strong> Higher chance of matching parent biome or Dead (strip-mined for resources during civilization building).</div>
+        </div>
+        <div style="font-size:0.9rem;color:var(--text-dim);font-style:italic;border-top:1px solid var(--border);padding-top:10px">&ldquo;The parent shapes the child. A gas giant&rsquo;s gravitational forces create volcanic moons. A frozen system breeds frozen satellites.&rdquo;</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">SYSTEM TYPE INFLUENCE</div>
+        <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Hot star systems</strong> (Blue Giant, Red Giant): More Volcanic and Desert moons.</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Cool star systems</strong> (Red Dwarf, White Dwarf): More Ice and Dead moons.</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Stable star systems</strong> (Yellow Main Sequence): Widest variety &mdash; any moon type possible.</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Binary systems:</strong> Unstable orbits create more Dead and Volcanic moons.</div>
+        </div>
+        <div style="font-size:0.9rem;color:var(--text-dim);font-style:italic;border-top:1px solid var(--border);padding-top:10px">&ldquo;The star sets the temperature range. The parent sets the geology. Random variation fills in the rest.&rdquo;</div>
+      </div>
+    </div>
+
+    <!-- Moon Size Categories -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px">
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">MOONLET</div>
+        <div style="font-size:0.75rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:10px">1&ndash;2 TERRITORIES</div>
+        <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
+          <div style="margin-bottom:8px">Tiny. Barely worth landing on. No atmosphere. Quick skirmish or sensor outpost only.</div>
+          <div style="margin-bottom:8px">Always Dead type. Low gravity extreme (<strong style="color:var(--text-hi)">+30% speed, +40% range</strong>).</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Resource:</strong> negligible. <strong style="color:var(--text-hi)">Strategic:</strong> sensor/staging only.</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">STANDARD MOON</div>
+        <div style="font-size:0.75rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:10px">3&ndash;5 TERRITORIES</div>
+        <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
+          <div style="margin-bottom:8px">The typical moon. Can carry any biome type. Low gravity guaranteed.</div>
+          <div style="margin-bottom:8px">This is the Moon entry in the planet catalog &mdash; most moons are this size.</div>
+          <div style="margin-bottom:8px">Quick fights, forward operating bases, staging areas.</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">MAJOR MOON</div>
+        <div style="font-size:0.75rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:10px">6&ndash;10 TERRITORIES</div>
+        <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
+          <div style="margin-bottom:8px">Gas giant satellites primarily. Functions like a small planet.</div>
+          <div style="margin-bottom:8px">Can have meaningful resource yields, settlements, and infrastructure.</div>
+          <div style="margin-bottom:8px">May be the most valuable body in a gas giant system (since the giant itself only has platforms).</div>
+        </div>
+        <div style="font-size:0.9rem;color:var(--text-dim);font-style:italic;border-top:1px solid var(--border);padding-top:10px">&ldquo;Some moons are bigger than other factions&rsquo; homeworlds.&rdquo;</div>
+      </div>
+    </div>
+
+    <!-- Generation Rules Summary -->
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:14px">GENERATION RULES</div>
+      <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
+        <div style="margin-bottom:8px">Every planet has a CHANCE to generate 0&ndash;3 moons <span class="ph-tag">PH</span></div>
+        <div style="margin-bottom:8px">Gas Giants generate 1&ndash;5 moons (always at least 1, higher average)</div>
+        <div style="margin-bottom:8px">Moon type rolled from weighted probability table based on parent + system</div>
+        <div style="margin-bottom:8px">Moons inherit low gravity modifier regardless of type</div>
+        <div style="margin-bottom:8px">Named moons use procedural generation (parent name + suffix)</div>
+      </div>
+      <div style="font-size:0.9rem;color:var(--text-dim);font-style:italic;border-top:1px solid var(--border);padding-top:10px">&ldquo;In a Large galaxy, expect 30&ndash;50 moons. Most are forgettable. A few will decide the war.&rdquo;</div>
+    </div>
+
   </div><!-- /page-ch13 -->
 
   <!-- ============================================================
