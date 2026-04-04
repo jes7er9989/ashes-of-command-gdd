@@ -356,15 +356,44 @@
 
     <div class="divider"></div>
 
+    <!-- §18 Variable Victory Conditions (expanded CC-073) -->
     <div class="section-label">Variable Victory Conditions</div>
-    <div class="section-heading" id="sec-ch18-10">6 Types Based on Strategic Context</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px">
-      <div class="card"><strong style="color:var(--text-hi)">Fleet Destruction</strong><div style="font-size:0.95rem;color:var(--text-mid)">Destroy/rout 75% of enemy fleet</div></div>
-      <div class="card"><strong style="color:var(--text-hi)">Convoy Protection</strong><div style="font-size:0.95rem;color:var(--text-mid)">All transports survive and reach planet</div></div>
-      <div class="card"><strong style="color:var(--text-hi)">Station Assault</strong><div style="font-size:0.95rem;color:var(--text-mid)">Destroy the orbital station. Orbital Stations can be destroyed from space, skipping ground combat but losing all contents. See <a href="#ch13" onclick="location.hash='#ch13'">Ch.&nbsp;13</a>.</div></div>
-      <div class="card"><strong style="color:var(--text-hi)">Blockade Run</strong><div style="font-size:0.95rem;color:var(--text-mid)">50%+ fleet reaches far map edge</div></div>
-      <div class="card"><strong style="color:var(--text-hi)">Flagship Assassination</strong><div style="font-size:0.95rem;color:var(--text-mid)">Destroy enemy flagship</div></div>
-      <div class="card"><strong style="color:var(--text-hi)">Survival</strong><div style="font-size:0.95rem;color:var(--text-mid)">Survive 5 minutes vs Vorax Tendril</div></div>
+    <div class="section-heading" id="sec-ch18-victory">6+ Battle End Conditions &mdash; Not Every Fight Is a Deathmatch</div>
+    <div class="body-text" style="margin-bottom:16px">Space battles end differently based on context. The objective determines when the battle is won or lost. Some battles are fights to the death. Others are timed holds, escort missions, or desperate retreats. Victory conditions are determined by the conflict type and communicated to the player in the Pre-Battle Window.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--text-hi);letter-spacing:2px;margin-bottom:8px">ANNIHILATION</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Destroy or rout the enemy fleet. Classic engagement. Winner controls the system.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--text-hi);letter-spacing:2px;margin-bottom:8px">SYSTEM CONTROL</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Hold the primary orbital position for <span class="ph-tag">PH</span> X minutes. Defender must dislodge the attacker. Attacker must survive the timer.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--text-hi);letter-spacing:2px;margin-bottom:8px">ESCORT / CONVOY</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Protect a transport fleet through the system. Attacker wins if <span class="ph-tag">PH</span> 50%+ transports survive. Defender wins by destroying enough transports.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--text-hi);letter-spacing:2px;margin-bottom:8px">STATION ASSAULT</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Capture or destroy an orbital station. Boarding actions possible (infantry in space). Station has its own weapons and shields.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--text-hi);letter-spacing:2px;margin-bottom:8px">BLOCKADE BREAK</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Attacker must punch through a blockade fleet to reach the planet. Doesn&rsquo;t need to destroy the blockade &mdash; just get enough ships through.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--text-hi);letter-spacing:2px;margin-bottom:8px">RETREAT / EXTRACTION</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">One side is trying to withdraw. Winner is determined by how many ships escape vs how many the pursuer destroys. Fighting retreat with rear-guard actions.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--text-hi);letter-spacing:2px;margin-bottom:8px">HAZARD SURVIVAL</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Both fleets fighting near a collapsing star, in a dense asteroid field, or during a Vorax incursion. Survive the environment longer than the enemy. Sometimes both sides lose.</div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--accent);margin-bottom:16px">
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65"><strong style="color:var(--accent)">Note:</strong> Victory conditions can shift mid-battle. An annihilation fight becomes an extraction when your fleet takes catastrophic losses. A blockade break becomes a fighting retreat. The auto-battle adapts; your ROE should account for contingencies.</div>
     </div>
 
     <div class="section-label">Ship Classes</div>
@@ -486,6 +515,75 @@
         <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Disabled ships that are boarded become yours. They retain damage until repaired. Enemy crew can be detained (diplomatic leverage) or released (Accord approval). Captured ships of a different faction tech base operate at <span class="ph-tag">PH</span> 75% effectiveness until your engineers adapt (reducible through research).</div>
       </div>
     </div>
+    <div class="divider"></div>
+
+    <!-- §18 Space Environment (CC-073) -->
+    <div class="section-label">Space Environment</div>
+    <div class="section-heading" id="sec-ch18-environment">Asteroids &middot; Nebulae &middot; Warp Lanes &middot; Structures &mdash; Space Has Terrain</div>
+    <div class="body-text" style="margin-bottom:16px">Space isn&rsquo;t empty. Where you fight matters as much as what you bring. Environmental hazards, pre-built structures, and warp lane positioning create a tactical landscape that rewards preparation and punishes recklessness.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card" style="border-top:2px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">ASTEROID FIELDS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Block line of sight and movement. Ships can use them as cover (reduced incoming accuracy). Collisions damage ships that maneuver carelessly at high speed. Some asteroids contain mineable resources. Scrap-Horde excels at fighting in asteroid fields.</div>
+      </div>
+      <div class="card" style="border-top:2px solid var(--shards)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--shards);letter-spacing:2px;margin-bottom:8px">NEBULAE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Reduce sensor range for all ships inside. Shields regenerate slower. Energy weapons lose range. Perfect for ambushes &mdash; hide your fleet inside, enemy can&rsquo;t scan you until they&rsquo;re close. Eternal Shards&rsquo; psychic sensors partially bypass nebula interference.</div>
+      </div>
+      <div class="card" style="border-top:2px solid var(--vorax)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">STAR PROXIMITY</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Fighting near a star damages shields over time (solar radiation). Closer = more damage. Some weapons gain bonus damage from solar energy. Ships can slingshot around stars for speed boosts but risk hull damage. Solar flares are periodic events that spike radiation.</div>
+      </div>
+      <div class="card" style="border-top:2px solid var(--terran)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--terran);letter-spacing:2px;margin-bottom:8px">ORBITAL STRUCTURES</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Defense platforms, orbital stations, minefields. Defenders can pre-build these in systems they control. Attackers must deal with them during the engagement. Stations can be captured (see Ch.&nbsp;13 Orbital Station) or destroyed. Minefields damage ships entering the area &mdash; can be swept by fast ships or detonated by expendable craft.</div>
+      </div>
+      <div class="card" style="border-top:2px solid var(--guardians)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--guardians);letter-spacing:2px;margin-bottom:8px">WARP LANE POSITIONS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Fighting at a warp lane entrance gives the defender &ldquo;gate advantage&rdquo; &mdash; attackers arrive in a predictable formation and face concentrated fire. Controlling a warp lane chokepoint is one of the most powerful defensive positions in the game. Flanking through a secondary lane (if one exists) negates gate advantage.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">DEBRIS FROM PRIOR BATTLES</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Old battlefields leave debris fields that affect new engagements. Reduced visibility, collision hazards, and potential salvage. Fighting in your own old debris field means navigating your own dead ships. Debris clears over time (<span class="ph-tag">PH</span> 5 turns).</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §18 Orbital Bombardment (CC-073) -->
+    <div class="section-label">Orbital Bombardment</div>
+    <div class="section-heading" id="sec-ch18-bombardment">Precision Strikes &middot; Carpet Bombing &middot; Diplomatic Consequences</div>
+    <div class="body-text" style="margin-bottom:16px">If you control space, you can bombard the planet below without committing ground forces. This softens defenses, destroys fortifications, and demoralizes defenders &mdash; but at a cost. Infrastructure damage reduces the planet&rsquo;s value, and other factions are watching.</div>
+
+    <!-- Bombardment Tiers — 3-column -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="card" style="border-top:2px solid var(--terran)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--terran);letter-spacing:2px;margin-bottom:8px">SURGICAL STRIKE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Expensive, precise. Targets specific fortifications, anti-air, or military targets. Minimal collateral damage. Infrastructure preserved. Diplomatic penalty: <span class="ph-tag">PH</span> Minor. Requires good intel (scanning tier affects accuracy). Best for planets you want to capture intact.</div>
+      </div>
+      <div class="card" style="border-top:2px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">STANDARD BOMBARDMENT</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Moderate cost. Area targeting. Destroys fortifications and some infrastructure. Defender ground forces take <span class="ph-tag">PH</span> 15&ndash;25% casualties before invasion begins. Diplomatic penalty: <span class="ph-tag">PH</span> Moderate. The practical middle ground.</div>
+      </div>
+      <div class="card" style="border-top:2px solid var(--vorax)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">CARPET BOMBARDMENT</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Cheap, devastating. Destroys most surface structures, heavy defender casualties (<span class="ph-tag">PH</span> 40&ndash;60%). Infrastructure severely damaged &mdash; you&rsquo;re conquering rubble. Diplomatic penalty: <span class="ph-tag">PH</span> Severe. Unity Accord treats this as an atrocity. Other factions judge you. May trigger Guardian intervention on Core Worlds.</div>
+      </div>
+    </div>
+
+    <!-- Bombardment Consequences — 2-column -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">WHAT BOMBARDMENT DESTROYS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Fortifications (turrets, bunkers, minefields), anti-air defenses, supply depots, production facilities, civilian infrastructure (higher tiers). Revenant sleeper caches on the surface can be damaged or destroyed. Ancient ruins tech can be lost permanently.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accord);letter-spacing:2px;margin-bottom:8px">DIPLOMATIC FALLOUT</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">All factions track bombardment use. Unity Accord reacts most strongly &mdash; carpet bombing triggers alignment penalties and potential Accord hostility. Even standard bombardment affects relations. Surgical strikes are mostly tolerated. Bombardment of Core Worlds may trigger Nexus Guardian retaliation regardless of tier.</div>
+      </div>
+    </div>
+
   </div><!-- /page-ch18 -->
 
   <!-- ============================================================
