@@ -25,7 +25,29 @@
     "avgTerr": 12,
     "yield": "3⚙ 1I 1Inf",
     "encounter": "40%",
-    "subtypes": ["Temperate", "Arid-Temperate", "Tropical"],
+    "subtypes": [
+      {
+        "name": "Temperate",
+        "color": "#4a8",
+        "terrain": "Rolling grasslands, scattered deciduous forests, gentle river valleys. The most balanced terrain &mdash; open fields for ranged combat, forest patches for cover, river crossings as natural chokepoints. Weather cycles between clear skies, rain, and fog. Moderate visibility in all conditions.",
+        "visual": "Earth-like beauty &mdash; deep blue oceans, green continents, white clouds. The archetypal habitable world. City lights on the night side, agricultural patterns on temperate zones.",
+        "svgKey": "Terrestrial"
+      },
+      {
+        "name": "Arid-Temperate",
+        "color": "#b89040",
+        "terrain": "Dry savanna and scrubland with sparse tree cover. More open than temperate &mdash; longer sightlines, less natural cover. Dried riverbeds provide movement corridors. Rocky outcrops serve as strongpoints. Dust devils reduce visibility locally. Vehicles have better mobility than in dense terrain.",
+        "visual": "Golden-brown continents with minimal green. Vast open plains under a hazy sky. Thin cloud cover, bright sunlight. Resembles the African savanna from orbit &mdash; dry but not dead.",
+        "svgKey": "Terrestrial Arid"
+      },
+      {
+        "name": "Tropical",
+        "color": "#28a050",
+        "terrain": "Dense tropical forests, wide river deltas, coastal wetlands. Higher vegetation density than temperate &mdash; closer to Jungle but with more clearings and settled areas. Frequent rain reduces visibility. River networks segment the battlefield. High humidity degrades unsealed equipment over time.",
+        "visual": "Lush green landmasses with extensive river networks visible from orbit. Thick cloud bands over equatorial regions. Deep blue-green oceans. The most biodiverse terrestrial variant &mdash; rain forests cover 60%+ of land area.",
+        "svgKey": "Terrestrial Tropical"
+      }
+    ],
     "terrain": "The most tactically balanced terrain in the galaxy &mdash; open grasslands provide clean sightlines for ranged engagements, scattered forests offer light cover and concealment for ambush tactics, river crossings create natural chokepoints that reward defensive positioning, and rolling hills provide moderate height advantage without the extreme verticality of mountain worlds. Mixed terrain forces diverse army compositions: pure infantry struggles in open fields, pure vehicles bog down in forests, and balanced forces dominate. Weather patterns shift between clear skies (favoring ranged), rain (reducing visibility), and fog banks (infantry ambush conditions).",
     "visual": "Earth-like beauty from orbit &mdash; deep blue oceans covering 60&ndash;70% of the surface, green and brown continental landmasses with visible mountain ranges, white cloud formations tracking weather systems. These are the worlds every faction recognizes as &lsquo;home&rsquo; regardless of origin. Scattered city lights on the night side reveal moderate population density. Visible agricultural patterns on temperate continents.",
     "special": "40% random encounter chance per cycle &mdash; the galaxy&rsquo;s most contested real estate draws attention from everyone. Balanced resource yield makes them universally valuable: no faction can afford to ignore them, no faction gains disproportionate advantage from holding them. Soft advantages for factions whose biology or technology suits temperate environments, but no hard mechanical bonuses &mdash; advantages emerge from terrain interaction, not stat modifiers. Additional strategic upsides pending balance pass (PH). Distribution weighted by star type for realistic galaxy feel. The &lsquo;standard&rsquo; planet against which all other combat modifiers are measured &mdash; baseline encounters, baseline terrain, baseline everything.",

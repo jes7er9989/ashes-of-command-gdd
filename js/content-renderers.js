@@ -57,6 +57,74 @@ const ContentRenderers = {
     }
     container.innerHTML = html;
 
+    /* ── Subtype toggle handler ──
+       Cached SVG data for variant swaps (shared with fallback renderer below). */
+    var _svgDataCache = null;
+    function _fetchSvgData() {
+      if (_svgDataCache) return _svgDataCache;
+      _svgDataCache = fetch('data/planets/planet-svg.json')
+        .then(function(r) { return r.json(); })
+        .catch(function() { _svgDataCache = null; return {}; });
+      return _svgDataCache;
+    }
+
+    container.querySelectorAll('.planet-subtype-toggle').forEach(function(toggleWrap) {
+      var planetIdx = parseInt(toggleWrap.getAttribute('data-planet-idx'), 10);
+      var planet = planets[planetIdx];
+      if (!planet || !planet.subtypes) return;
+
+      toggleWrap.addEventListener('click', function(e) {
+        var btn = e.target.closest('.subtype-btn');
+        if (!btn) return;
+        var stIdx = parseInt(btn.getAttribute('data-subtype-idx'), 10);
+        var subtype = planet.subtypes[stIdx];
+        if (!subtype) return;
+
+        /* Update active button styles */
+        toggleWrap.querySelectorAll('.subtype-btn').forEach(function(b, bi) {
+          b.classList.remove('active');
+          b.style.borderColor = '';
+          b.style.color = '';
+        });
+        btn.classList.add('active');
+        btn.style.borderColor = subtype.color;
+        btn.style.color = subtype.color;
+
+        /* Find the detail container */
+        var detail = toggleWrap.closest('.planet-detail');
+        if (!detail) return;
+
+        /* Update TERRAIN and VISUAL text */
+        var terrainEl = detail.querySelector('.planet-terrain-body');
+        var visualEl = detail.querySelector('.planet-visual-body');
+        if (terrainEl) terrainEl.innerHTML = subtype.terrain;
+        if (visualEl) visualEl.innerHTML = subtype.visual;
+
+        /* Swap planet visual */
+        var wrap = detail.querySelector('.planet-svg-wrap');
+        if (!wrap) return;
+        var svgKey = subtype.svgKey || planet.name;
+
+        /* If 3D renderer is active, dispose it for variant swap */
+        if (wrap._planetInstance) {
+          wrap._planetInstance.dispose();
+          wrap._planetInstance = null;
+        }
+
+        /* Update data-planet-type for future renderer syncs */
+        wrap.setAttribute('data-planet-type', svgKey);
+        wrap._svgFallback = false;
+
+        /* Inject SVG fallback for the variant */
+        _fetchSvgData().then(function(svgData) {
+          if (svgData && svgData[svgKey]) {
+            wrap.innerHTML = svgData[svgKey];
+            wrap._svgFallback = true;
+          }
+        });
+      });
+    });
+
     /* Initialize Three.js planet renderers on-demand.
        All platforms: planets start collapsed. Renderer created when
        detail is expanded, disposed when collapsed. Uses MutationObserver
@@ -79,15 +147,12 @@ const ContentRenderers = {
               }
               /* SVG fallback for megastructures or WebGL failure */
               if (!wrap._planetInstance && !wrap._svgFallback) {
-                fetch('data/planets/planet-svg.json')
-                  .then(function(r) { return r.json(); })
-                  .then(function(svgData) {
-                    if (svgData[type] && !wrap._planetInstance) {
-                      wrap.innerHTML = svgData[type];
-                      wrap._svgFallback = true;
-                    }
-                  })
-                  .catch(function() {});
+                _fetchSvgData().then(function(svgData) {
+                  if (svgData[type] && !wrap._planetInstance) {
+                    wrap.innerHTML = svgData[type];
+                    wrap._svgFallback = true;
+                  }
+                });
               }
             }, 50);
           } else if (!isOpen && wrap._planetInstance) {
@@ -102,7 +167,6 @@ const ContentRenderers = {
       });
     } else {
       /* No Three.js — use SVG fallback for all planet types */
-      var svgCache = null;
       container.querySelectorAll('.planet-detail').forEach(function(detail) {
         var wrap = detail.querySelector('.planet-svg-wrap[data-planet-type]');
         if (!wrap) return;
@@ -112,17 +176,9 @@ const ContentRenderers = {
           if (!type) return;
           var isOpen = detail.classList.contains('planet-detail-open');
           if (isOpen && !wrap._svgFallback) {
-            if (svgCache) {
-              if (svgCache[type]) { wrap.innerHTML = svgCache[type]; wrap._svgFallback = true; }
-            } else {
-              fetch('data/planets/planet-svg.json')
-                .then(function(r) { return r.json(); })
-                .then(function(svgData) {
-                  svgCache = svgData;
-                  if (svgData[type]) { wrap.innerHTML = svgData[type]; wrap._svgFallback = true; }
-                })
-                .catch(function() {});
-            }
+            _fetchSvgData().then(function(svgData) {
+              if (svgData[type]) { wrap.innerHTML = svgData[type]; wrap._svgFallback = true; }
+            });
           }
         });
         mo.observe(detail, { attributes: true, attributeFilter: ['class'] });
@@ -145,6 +201,20 @@ const ContentRenderers = {
     /* Truncate terrain text for the summary column */
     const terrainShort = planet.terrain.split('.')[0] + '.';
 
+    /* Build subtype toggle buttons if planet has subtypes array of objects */
+    let subtypeToggle = '';
+    if (Array.isArray(planet.subtypes) && planet.subtypes.length && typeof planet.subtypes[0] === 'object') {
+      const btnBase = "font-family:'JetBrains Mono',monospace;font-size:0.75rem;padding:4px 10px;border:1px solid var(--border);background:transparent;color:var(--text-mid);cursor:pointer;border-radius:2px;letter-spacing:0.5px;transition:border-color 0.15s,color 0.15s";
+      subtypeToggle = '<div class="planet-subtype-toggle" data-planet-idx="' + idx + '" style="display:flex;gap:6px;margin:8px 0">';
+      for (let si = 0; si < planet.subtypes.length; si++) {
+        const st = planet.subtypes[si];
+        const isActive = si === 0;
+        const activeStyle = isActive ? ';border-color:' + st.color + ';color:' + st.color : '';
+        subtypeToggle += '<button class="subtype-btn' + (isActive ? ' active' : '') + '" data-subtype-idx="' + si + '" style="' + btnBase + activeStyle + '">' + st.name + '</button>';
+      }
+      subtypeToggle += '</div>';
+    }
+
     return `
       <div class="planet-row" style="border-bottom:1px solid var(--border)">
         <div class="planet-row-header" onclick="document.getElementById('${id}').classList.toggle('planet-detail-open')" style="display:grid;grid-template-columns:160px 90px 150px 90px 1fr;padding:12px 16px;font-size:0.95rem;cursor:pointer;transition:background 0.15s ease;align-items:start" onmouseenter="this.style.background='rgba(255,255,255,0.02)'" onmouseleave="this.style.background='transparent'">
@@ -157,14 +227,15 @@ const ContentRenderers = {
         <div id="${id}" class="planet-detail">
           <div class="planet-detail-inner">
             <div class="planet-svg-wrap" data-planet-type="${planet.name}"></div>
+            ${subtypeToggle}
             <div class="planet-detail-text">
               <div class="planet-detail-section">
                 <div class="planet-detail-label" style="color:${planet.color}">TERRAIN</div>
-                <div class="planet-detail-body">${planet.terrain}</div>
+                <div class="planet-detail-body planet-terrain-body">${planet.terrain}</div>
               </div>
               <div class="planet-detail-section">
                 <div class="planet-detail-label" style="color:${planet.color}">VISUAL</div>
-                <div class="planet-detail-body">${planet.visual}</div>
+                <div class="planet-detail-body planet-visual-body">${planet.visual}</div>
               </div>
               <div class="planet-detail-section">
                 <div class="planet-detail-label" style="color:${planet.color}">SPECIAL RULES</div>
