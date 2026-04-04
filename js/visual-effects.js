@@ -13,9 +13,9 @@
    AmbientParticles.init()           | Start floating particle system
    AmbientParticles.setFaction(f)    | Change particle colors
    AmbientParticles.destroy()        | Stop and remove particles
-   FactionCursor.init()              | Start custom cursor glow
-   FactionCursor.setFaction(f)       | Change cursor color
-   FactionCursor.destroy()           | Remove cursor effects
+   FactionCursor.init()              | No-op stub (cursor glow disabled)
+   FactionCursor.setFaction(f)       | No-op stub
+   FactionCursor.destroy()           | No-op stub
    FactionFlagBadge.init()           | Create faction emblem badge
    FactionFlagBadge.setFaction(f)    | Show faction emblem
    FactionFlagBadge.destroy()        | Remove badge
@@ -206,52 +206,10 @@ const AmbientParticles = (() => {
 
 
 // ───────────────────────────────────────────
-// SECTION: Faction Cursor
+// SECTION: Faction Cursor (disabled, stub-only)
 // ───────────────────────────────────────────
 
-const FactionCursor = (() => {
-  let glow = null;
-  let currentFaction = null;
-  let listening = false;
-
-  function init() {
-    // Cursor glow disabled by Thomas's request (2026-03-29)
-    return;
-  }
-
-  function destroy() {
-    if (listening) {
-      document.removeEventListener('mousemove', _onMove);
-      listening = false;
-    }
-    if (glow && glow.parentNode) {
-      glow.parentNode.removeChild(glow);
-      glow = null;
-    }
-  }
-
-  function setFaction(f) {
-    currentFaction = f;
-    if (glow) {
-      if (f && FACTION_COLORS[f]) {
-        const fc = FACTION_COLORS[f];
-        glow.style.background = 'radial-gradient(circle, rgba(' +
-          fc.r + ',' + fc.g + ',' + fc.b + ',0.15) 0%, transparent 70%)';
-        glow.style.display = 'block';
-      } else {
-        glow.style.display = 'none';
-      }
-    }
-  }
-
-  function _onMove(e) {
-    if (!glow || !currentFaction) return;
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  }
-
-  return { init, destroy, setFaction };
-})();
+const FactionCursor = { init() {}, destroy() {}, setFaction() {} };
 
 
 // ───────────────────────────────────────────

@@ -22,7 +22,6 @@
      DataLoader.loadNavData()        → navigation tree
      DataLoader.loadFactions()       → faction overview array
      DataLoader.loadFactionUnits(k)  → units for one faction
-     DataLoader.loadAllUnits()       → units for ALL factions
      DataLoader.FACTION_KEYS         → canonical faction key list
    ═══════════════════════════════════════════════════════════ */
 
@@ -258,39 +257,4 @@ const DataLoader = {
     'core-guardians'
   ],
 
-  /* ── Bulk Loaders ─────────────────────────────────────── */
-
-  /**
-   * Load units for every faction. Failures are silently replaced
-   * with empty arrays so one missing file doesn't break the whole set.
-   * @returns {Promise<Object>} Map of factionKey → unit array
-   */
-  async loadAllUnits() {
-    /* Preload all unit files in parallel for speed */
-    const paths = this.FACTION_KEYS.map(k => `data/units/${k}.json`);
-    await this.preload(paths);
-
-    const results = {};
-    for (const key of this.FACTION_KEYS) {
-      try { results[key] = await this.loadFactionUnits(key); }
-      catch (e) { results[key] = []; }
-    }
-    return results;
-  },
-
-  /**
-   * Load equipment for every faction (same error-tolerance as loadAllUnits).
-   * @returns {Promise<Object>} Map of factionKey → equipment array
-   */
-  async loadAllEquipment() {
-    const paths = this.FACTION_KEYS.map(k => `data/equipment/${k}.json`);
-    await this.preload(paths);
-
-    const results = {};
-    for (const key of this.FACTION_KEYS) {
-      try { results[key] = await this.loadFactionEquipment(key); }
-      catch (e) { results[key] = []; }
-    }
-    return results;
-  }
 };

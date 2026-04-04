@@ -15,7 +15,7 @@
      - playAction(type)         Named action sound
      - playAccordion(isOpen)    Accordion open/close sound
      - playRarity(tier)         Rarity reveal sound
-     - startViz()               Start audio visualizer
+     - startViz()               Start audio visualizer (7-bar panel)
 
    SFX-ONLY: All background music and ambient drones removed.
    This engine provides purely interactive sound effects that
@@ -925,35 +925,9 @@ const AudioEngine = (() => {
     playRarity,
     startViz,
 
-    /* ── Stubs for backward compatibility ─────────────────── */
-    /* These no-op so existing callers don't throw errors     */
-    toggle:             function() {},
-    startBg:            function() {},
-    stopBg:             function() {},
-    setMusicVol:        function() {},
-    getMusicVol:        function() { return 0; },
-    duck:               function() {},
-    setBpm:             function() {},
-    toggleBitcrush:     function() {},
-    isBitcrushOn:       function() { return false; },
-    setTrack:           function() {},
-    toggleHum:          function() { return false; },
-    toggleReverb:       function() {
-      if (!reverbSend) return false;
-      const now = ctx ? ctx.currentTime : 0;
-      const revOn = reverbSend.gain.value > 0.01;
-      if (revOn) {
-        reverbSend.gain.cancelScheduledValues(now);
-        reverbSend.gain.linearRampToValueAtTime(0.0001, now + 0.3);
-      } else {
-        reverbSend.gain.cancelScheduledValues(now);
-        reverbSend.gain.linearRampToValueAtTime(0.18, now + 0.5);
-      }
-      return !revOn;
-    },
-    crossfadeToCategory: function() {},
-    startCategoryBg:     function() {},
-    stopCategoryBg:      function() {},
-    onScroll:            function() {}
+    /* ── Stubs — active callers exist in index.html / visual-effects.js ── */
+    toggle:      function() {},
+    startBg:     function() {},
+    setMusicVol: function() {}
   };
 })();
