@@ -4,6 +4,22 @@
 <div class="page-title">GALAXY GENERATION &amp; STRUCTURE</div>
     <div class="page-subtitle">Procedural &middot; Shareable Seeds &middot; 5 Zones &middot; Fog of War &mdash; Chapter 12</div>
 </div>
+    <!-- UI/UX DESIGN DIRECTION — DIEGETIC GALAXY GENERATION -->
+    <div class="card" style="border-top:2px solid var(--accent);margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:var(--accent);margin-bottom:2px">UI/UX DESIGN DIRECTION &mdash; DIEGETIC GALAXY GENERATION</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">Phase 3+ &middot; Loading Screen &middot; Archive Mapping Sequence</div>
+      <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Concept:</strong> The galaxy generation loading screen should look like the Archive desperately mapping the current stellar drift. NOT a standard percentage loading bar.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Terminal Output:</strong> Scrolling monospace text simulating Archive systems booting and scanning:</div>
+        <div style="margin-left:12px;margin-bottom:2px;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--accent)">[CALCULATING STELLAR DRIFT]...</div>
+        <div style="margin-left:12px;margin-bottom:2px;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--accent)">[MAPPING WARP LANES]...</div>
+        <div style="margin-left:12px;margin-bottom:2px;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--accent)">[LOCATING VORAX INCURSIONS]...</div>
+        <div style="margin-left:12px;margin-bottom:6px;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--accent)">[ANCHORING NEXUS PROTOCOLS]...</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Visual Payoff:</strong> As each step completes, the galaxy map physically draws itself line by line in the background &mdash; stars appearing, warp lanes threading between them, faction markers fading in.</div>
+        <div><strong style="color:var(--text-hi)">Pattern Match:</strong> Follows the established diegetic UI pattern from Vorax Diegetic Horror UI (Ch.&nbsp;10) and Guardians Electromagnetic Bleed (Ch.&nbsp;11). Every screen the player sees should feel like it belongs to the Archive, not to a game engine.</div>
+      </div>
+    </div>
+
     <div class="body-text" style="margin-bottom:24px">Every galaxy is procedurally generated from scratch. No hardcoded systems, no fixed positions. Every element &mdash; system count, positions, names, warp lanes, star types, planets (17 types: 12 standard worlds + 5 megastructures), hazards, faction starts, wormholes &mdash; generated anew from a random seed. Same seed = same galaxy, different game. Each planet generates with an active weather system (see <a href="#ch13" onclick="location.hash='#ch13'" style="color:var(--accent);text-decoration:none">Ch.&nbsp;13</a>) that cycles through conditions based on planet type and star system. Weather is visible from orbit during approach.</div>
 
     <div class="section-label">Galaxy Size</div>
@@ -90,6 +106,21 @@
         <div style="margin-top:6px;font-style:italic;color:var(--accent)">&ldquo;Finding a megastructure changes the game. Plan accordingly.&rdquo;</div>
       </div>
       <div style="margin-top:8px"><a href="#ch13" onclick="location.hash='#ch13'" style="color:var(--accent);font-size:0.85rem;text-decoration:none">See Ch. 13 &mdash; Planetary Bodies &amp; Biomes &rsaquo;</a></div>
+    </div>
+
+    <!-- THE WORLDSHIP — AETHYN DRIFT ARK -->
+    <div class="card" style="border-top:2px solid gold;margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:gold;margin-bottom:2px">THE WORLDSHIP &mdash; AETHYN DRIFT ARK</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-mid);margin-bottom:10px">Mobile Megastructure &middot; Ancient Tragedy &middot; Event-Driven Discovery</div>
+      <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Origin:</strong> Built during the final years of the Vorax Siege, before the Reclamation Engine was fired. A desperate faction of the Aethyn constructed a continent-sized Ark to physically outrun the Vorax swarm without warp lanes &mdash; the last resort of a civilization that had already lost hope in every other option.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Current State:</strong> Drifting in dark space for tens of thousands of years. Its navigation systems still function, locked on a heading that no longer matters. The Aethyn who built it are long dead. Their stasis pods are filled entirely with dust.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Map Presence:</strong> An actively moving, massive planetary base that crawls slowly across the galactic map. Unlike all other megastructures, the Worldship is never stationary &mdash; it drifts between systems on a fixed trajectory determined at galaxy generation.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Capture Reward:</strong> A mobile fortress capable of projecting power anywhere on its drift path AND a staggering cache of Aethyn technology &mdash; intact blueprints, prototype weapons, research data that predates every living faction by millennia.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Point Defense:</strong> The Worldship&rsquo;s automated ancient point-defense systems are still fully operational and LETHAL. Approaching fleets will be fired upon immediately. These are Aethyn-grade weapons &mdash; expect losses before you even breach the hull.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">The Tragedy:</strong> Every stasis pod is accounted for. Thousands of them, neatly arranged, power still flowing. All empty except for fine grey dust. Whatever killed them happened slowly, over centuries, while the ship sailed on. The Worldship completed its mission perfectly. It just had no one left to save.</div>
+        <div><strong style="color:var(--text-hi)">Discovery:</strong> Appears as a galactic event mid-game. Not pre-placed &mdash; the Archive detects its drift signature entering sensor range. All factions receive the alert simultaneously.</div>
+      </div>
     </div>
 
     <div class="divider"></div>
@@ -431,7 +462,7 @@
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Transit Time:</strong> <span class="proto-badge">PH</span> 1 cycle per hop for standard fleets. Exact timing pending balance pass.</div>
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Fleet Size Impact:</strong> <span class="proto-badge">PH</span> Larger fleets may move slower due to logistics overhead. Pending balance pass.</div>
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">In-Transit Vulnerability:</strong> Fleets in warp cannot be recalled. Committed once launched. Can be intercepted at destination.</div>
-          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Lane Collision:</strong> Hostile fleets on the same lane COLLIDE &mdash; automatic space battle at the midpoint. Neither side chose the engagement.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Deep-Warp Interdiction:</strong> Hostile fleets on the same lane COLLIDE &mdash; automatic space battle at the midpoint. Neither side chose the engagement. Because neither fleet had time to prepare defensive formations, both fleets spawn on the auto-battler grid SCRAMBLED &mdash; randomized positions, significantly closer together than a standard battle. Simulates the absolute panic of dropping out of warp directly into the broadside of an enemy armada.</div>
           <div><strong style="color:var(--text-hi)">Map Visualization:</strong> Fleet markers move along lane paths in real-time. Multiple fleets visible simultaneously. Color-coded by faction. Fog of war hides enemy movement outside scan range.</div>
         </div>
       </div>
@@ -456,9 +487,11 @@
         <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Count:</strong> 1&ndash;2 per galaxy depending on size. Fixed per seed.</div>
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Function:</strong> Instant transit between two fixed points. Bypasses all intermediate systems and lanes.</div>
-          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Stability:</strong> Variable &mdash; 5&ndash;40% collapse chance per use. <span class="proto-badge">PH</span> Exact rates pending balance pass.</div>
-          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Collapse Consequences:</strong> <span class="proto-badge">PH</span> Collapsed wormhole is gone permanently for the rest of the run. Fleet in transit during collapse is lost.</div>
-          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Stabilization:</strong> <span class="proto-badge">PH</span> Potential tech tree research to reduce collapse chance. Not eliminable, only reducible.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Stability:</strong> Wormholes destabilize based on FLEET MASS transported. Larger fleets cause more structural damage per transit. No RNG collapse rolls.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Warp Shear:</strong> Every transit deals guaranteed percentage-based hull damage (<span class="ph-tag">PH</span> 10&ndash;20%, scaled to fleet tonnage) to all ships in the fleet. No coin flip &mdash; the cost is known before you commit.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Fractured State:</strong> After repeated heavy use, the wormhole permanently downgrades to Fractured. Fractured wormholes remain usable but inflict SEVERE damage (<span class="ph-tag">PH</span> 30&ndash;50% hull) on any transit. One-way downgrade &mdash; cannot be repaired.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Burnout:</strong> After enough Fractured transits, the wormhole collapses permanently. Total lifetime tonnage is the deciding factor, not luck.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Strategic Cost:</strong> Turns wormholes from a slot machine into a desperate, costly tactical decision. Players can PLAN around the damage cost instead of gambling on collapse odds. Send a small scout fleet cheaply or ram your entire armada through and pay the price in hull integrity.</div>
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Discovery:</strong> Wormhole locations fixed per seed but must be discovered through exploration. Not visible on the map until a fleet or scout reaches the system.</div>
           <div><strong style="color:var(--text-hi)">Strategic Value:</strong> Force projection across the galaxy. Losing access to a wormhole (collapse or enemy control) can be campaign-defining.</div>
         </div>
