@@ -5682,6 +5682,116 @@ embed {
   html {
     scroll-behavior: auto;
   }
+
+  /* ── CRT overlay: purely decorative ── */
+  .crt-overlay {
+    display: none;
+  }
+
+  /* ── Radar scan sweep line ── */
+  .radar-scan::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  /* ── Starfield drift + twinkle ── */
+  .hero-starfield,
+  .hero-starfield::before,
+  .hero-starfield::after {
+    animation: none;
+  }
+
+  /* ── Dashboard starfield layers ── */
+  #dashboard-view::before,
+  #dashboard-view::after {
+    animation: none;
+  }
+
+  /* ── Nebula background shift ── */
+  .hero-nebula {
+    animation: none;
+  }
+
+  /* ── Floating particles ── */
+  .p7-particle-field,
+  .p7-particle-field span {
+    animation: none;
+    display: none;
+  }
+
+  /* ── Page transitions ── */
+  .page-exit {
+    opacity: 0;
+    transform: none;
+    transition: none;
+  }
+  .page-enter {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .page-enter.page-enter-active {
+    transition: none;
+  }
+
+  /* ── Accessing record flash ── */
+  .accessing-record-flash {
+    animation: none;
+    transition: none;
+  }
+
+  /* ── Hero entrance + typewriter + cursor ── */
+  .hero-title,
+  .hero-subtitle,
+  .hero-tagline {
+    animation: none;
+    opacity: 1;
+  }
+
+  /* ── Title glow pulse ── */
+  .hero-title {
+    text-shadow: none;
+  }
+
+  /* ── Scroll indicator bounce ── */
+  .scroll-indicator {
+    animation: none;
+  }
+
+  /* ── Faction heading shimmer ── */
+  .section-heading {
+    animation: none;
+  }
+
+  /* ── Card pulse glow ── */
+  .p7-stat-card {
+    animation: none;
+  }
+
+  /* ── Console scan line ── */
+  .console-header::after {
+    animation: none;
+  }
+
+  /* ── Hamburger glitch ── */
+  .hamburger-icon {
+    animation: none;
+  }
+
+  /* ── Status blink ── */
+  .status-dot {
+    animation: none;
+  }
+
+  /* ── Dev priming indicator ── */
+  .dev-priming {
+    animation: none;
+  }
+
+  /* ── Preserve: focus ring transitions (fast but visible) ── */
+  :focus-visible {
+    transition-duration: 0.1s !important;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════
