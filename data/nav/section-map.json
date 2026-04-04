@@ -20,7 +20,7 @@
     },
     {
       "id": "sec-ch2-1",
-      "label": "The Game’s Home State"
+      "label": "The Game's Home State"
     },
     {
       "id": "sec-ch2-2",
@@ -37,6 +37,22 @@
   ],
   "ch3": [
     {
+      "id": "sec-ch3-aethyn",
+      "label": "The Aethyn — Progenitors of All Factions"
+    },
+    {
+      "id": "sec-ch3-fracture",
+      "label": "The Fracture — The Desperate Choice"
+    },
+    {
+      "id": "sec-ch3-scattering",
+      "label": "The Scattering — Seeds Among the Stars"
+    },
+    {
+      "id": "sec-ch3-timeline",
+      "label": "Seven Galactic Eras"
+    },
+    {
       "id": "sec-ch3-0",
       "label": "The Crucible (Simulation) → The Final War (Reality)"
     },
@@ -45,12 +61,16 @@
       "label": "Canonical Victory and Defeat States"
     },
     {
+      "id": "sec-ch3-strategist",
+      "label": "A Consciousness Born From Fragments"
+    },
+    {
       "id": "sec-ch3-2",
-      "label": "Fragments of the Original Strategist’s Life"
+      "label": "Artifacts System"
     },
     {
       "id": "sec-ch3-3",
-      "label": "Conquest · Unification · Pyrrhic · Secret Unifier"
+      "label": "Named Outcomes by Alignment Path + Pyrrhic"
     }
   ],
   "ch4": [
@@ -60,27 +80,27 @@
     },
     {
       "id": "sec-ch4-2",
-      "label": "Awareness Arc — Zero to Full"
+      "label": "Zero to Full — Mirrors the Player"
     },
     {
       "id": "sec-ch4-3",
-      "label": "Death & Permadeath Stakes"
+      "label": "Stakes Are Real"
     },
     {
       "id": "sec-ch4-4",
-      "label": "Commander Personality Framework"
+      "label": "Light Framework — Player Choices Override"
     },
     {
       "id": "sec-ch4-5",
-      "label": "Commander–Faction Relationship Arc"
+      "label": "Tool → Weapon → Leader → Legend"
     },
     {
       "id": "sec-ch4-6",
-      "label": "Truth Revealed — Path-Dependent"
+      "label": "What the Commander Learns — Path-Dependent"
     },
     {
       "id": "sec-ch4-7",
-      "label": "DLC Commander Equivalents"
+      "label": "Guardians & Vorax Campaigns"
     }
   ],
   "ch5": [
@@ -109,6 +129,10 @@
       "label": "Ground · Air · Space"
     },
     {
+      "id": "sec-ch5-buildings",
+      "label": "20 Building Types — Terran Architecture"
+    },
+    {
       "id": "sec-ch5-6",
       "label": "Terran League Equipment Catalog"
     },
@@ -126,15 +150,15 @@
     },
     {
       "id": "sec-ch5-bible",
-      "label": "Faction Bible — Cultural DNA"
+      "label": "Terran League Faction Bible"
     },
     {
       "id": "sec-ch5-bible-advisors",
-      "label": "Advisor Full Profiles"
+      "label": "Terran Advisors — Full Profiles"
     },
     {
       "id": "sec-ch5-bible-ai",
-      "label": "AI Director Seeds"
+      "label": "Procedural Generation DNA"
     }
   ],
   "ch6": [
@@ -155,6 +179,10 @@
       "label": "Ground · Air · Space"
     },
     {
+      "id": "sec-ch6-buildings",
+      "label": "20 Building Types — Shards Architecture"
+    },
+    {
       "id": "sec-ch6-4",
       "label": "Eternal Shards Equipment Catalog"
     },
@@ -172,15 +200,15 @@
     },
     {
       "id": "sec-ch6-bible",
-      "label": "Faction Bible — Cultural DNA"
+      "label": "Eternal Shards Faction Bible"
     },
     {
       "id": "sec-ch6-bible-advisors",
-      "label": "Advisor Archetypes"
+      "label": "The Commander’s Crystal Council"
     },
     {
       "id": "sec-ch6-bible-ai",
-      "label": "AI Director Seeds"
+      "label": "Procedural Generation DNA"
     }
   ],
   "ch7": [
@@ -205,6 +233,10 @@
       "label": "Ground · Air · Space"
     },
     {
+      "id": "sec-ch7-buildings",
+      "label": "20 Building Types — Horde Architecture"
+    },
+    {
       "id": "sec-ch7-5",
       "label": "Scrap-Horde Equipment Catalog"
     },
@@ -222,15 +254,15 @@
     },
     {
       "id": "sec-ch7-bible",
-      "label": "★ Faction Bible"
+      "label": "Scrap-Horde Faction Bible"
     },
     {
       "id": "sec-ch7-bible-advisors",
-      "label": "★ Advisors — Forge-Council"
+      "label": "The Commander’s Forge-Council"
     },
     {
       "id": "sec-ch7-bible-ai",
-      "label": "★ AI Director Seeds"
+      "label": "Procedural Generation DNA"
     }
   ],
   "ch8": [
@@ -240,7 +272,7 @@
     },
     {
       "id": "sec-ch8-1",
-      "label": "Ancient Machine Death"
+      "label": "Obsidian Protocol"
     },
     {
       "id": "sec-ch8-2",
@@ -255,8 +287,12 @@
       "label": "Ground · Air · Space"
     },
     {
+      "id": "sec-ch8-buildings",
+      "label": "20 Building Types — Revenant Architecture"
+    },
+    {
       "id": "sec-ch8-5",
-      "label": "The Revenant Equipment Catalog"
+      "label": "Revenant Equipment Catalog"
     },
     {
       "id": "sec-ch8-6",
@@ -268,15 +304,15 @@
     },
     {
       "id": "sec-ch8-bible",
-      "label": "★ Faction Bible"
+      "label": "Revenant Faction Bible"
     },
     {
       "id": "sec-ch8-bible-advisors",
-      "label": "★ Advisors — Commander’s Council"
+      "label": "The Commander’s Council"
     },
     {
       "id": "sec-ch8-bible-ai",
-      "label": "★ AI Director Seeds"
+      "label": "Procedural Generation DNA"
     },
     {
       "id": "sec-ch8-8",
@@ -305,6 +341,10 @@
       "label": "Ground · Air · Space"
     },
     {
+      "id": "sec-ch9-buildings",
+      "label": "20 Building Types — Accord Architecture"
+    },
+    {
       "id": "sec-ch9-5",
       "label": "Unity Accord Equipment Catalog"
     },
@@ -319,6 +359,22 @@
     {
       "id": "sec-ch9-8",
       "label": "Key Narrative Moments"
+    },
+    {
+      "id": "sec-ch9-bible",
+      "label": "Unity Accord Faction Bible"
+    },
+    {
+      "id": "sec-ch9-bible-species",
+      "label": "7 Moons — 7 Peoples — One Warmth"
+    },
+    {
+      "id": "sec-ch9-bible-advisors",
+      "label": "The Delegates — Hiding in Plain Sight"
+    },
+    {
+      "id": "sec-ch9-bible-ai",
+      "label": "Procedural Generation DNA"
     }
   ],
   "ch10": [
@@ -327,8 +383,12 @@
       "label": "The Extra-Galactic Threat"
     },
     {
+      "id": "sec-ch10-intel",
+      "label": "Layered Alien Intelligence"
+    },
+    {
       "id": "sec-ch10-1",
-      "label": "Biological Nightmare"
+      "label": "Biological Nightmare — Four Visual Pillars"
     },
     {
       "id": "sec-ch10-2",
@@ -343,6 +403,22 @@
       "label": "Ground · Air · Space"
     },
     {
+      "id": "sec-ch10-buildings",
+      "label": "20 Building Types — Vorax Architecture"
+    },
+    {
+      "id": "sec-ch10-eq",
+      "label": "Vorax Bio-Weapons & Adaptations"
+    },
+    {
+      "id": "sec-ch10-tech",
+      "label": "Biological Evolution Paths"
+    },
+    {
+      "id": "sec-ch10-dial",
+      "label": "Advisor Interpretations of Vorax Psychic Pressure"
+    },
+    {
       "id": "sec-ch10-5",
       "label": "\"The Swarm Unbound\" — Playable Vorax"
     }
@@ -354,7 +430,7 @@
     },
     {
       "id": "sec-ch11-1",
-      "label": "Nexus, Haven, and RNG — Canonical Coordinates"
+      "label": "Nexus, Faction Homeworlds, and RNG"
     },
     {
       "id": "sec-ch11-2",
@@ -369,40 +445,56 @@
       "label": "Ground · Air · Space"
     },
     {
+      "id": "sec-ch11-buildings",
+      "label": "20 Building Types — Guardians Architecture"
+    },
+    {
+      "id": "sec-ch11-eq",
+      "label": "Warden Arsenal — Ancient Technology"
+    },
+    {
+      "id": "sec-ch11-tech",
+      "label": "Ancient Protocols — Mastery Paths"
+    },
+    {
+      "id": "sec-ch11-dial",
+      "label": "The Celestial-Throne Speaks"
+    },
+    {
       "id": "sec-ch11-5",
       "label": "The Only Voice That Speaks"
     },
     {
-      "id": "sec-ch11-6",
-      "label": "\"The Core Awakens\" — Playable Guardians"
-    },
-    {
       "id": "sec-ch11-7",
-      "label": "Corruption Spectrum by Core Planet"
+      "label": "Culture Is Code Rot — Corruption Spectrum by Core Planet"
     },
     {
       "id": "sec-ch11-8",
-      "label": "Architecture — Forerunner Skeleton + Hard-Light Flesh"
+      "label": "Forerunner Skeleton — Hard-Light Flesh"
     },
     {
       "id": "sec-ch11-9",
-      "label": "Strategist Connection — Two Halves of the Same Plan"
+      "label": "Two Halves of the Same Plan"
     },
     {
       "id": "sec-ch11-10",
-      "label": "Guardian Fate — Path-Dependent Outcomes"
+      "label": "Path-Dependent Outcomes"
     },
     {
       "id": "sec-ch11-11",
-      "label": "Outposts & Lost Units Outside the Core"
+      "label": "Outposts & Lost Units"
     },
     {
       "id": "sec-ch11-12",
-      "label": "Faction Perceptions of the Guardians"
+      "label": "Every Theory Says More About Them Than the Guardians"
     },
     {
       "id": "sec-ch11-13",
-      "label": "Dyson Spheres — Aethyn Power Infrastructure"
+      "label": "Aethyn Galactic Power Infrastructure"
+    },
+    {
+      "id": "sec-ch11-6",
+      "label": "\"The Core Awakens\" — Playable Guardians"
     }
   ],
   "ch12": [
@@ -411,8 +503,20 @@
       "label": "Player-Selected at Campaign Start"
     },
     {
+      "id": "sec-ch12-mega",
+      "label": "Aethyn Relics · Rare Spawns · Galaxy-Changing Finds"
+    },
+    {
       "id": "sec-ch12-1",
-      "label": "Fixed Anchors · Fisher-Yates RNG · Post-Lane Pruning"
+      "label": "Fixed Anchor · Faction Homeworlds · Win Paths"
+    },
+    {
+      "id": "sec-ch12-core",
+      "label": "Guardian-Protected Aethyn Legacy Systems"
+    },
+    {
+      "id": "sec-ch12-geo",
+      "label": "Five Concentric Zones"
     },
     {
       "id": "sec-ch12-2",
@@ -426,7 +530,7 @@
   "ch13": [
     {
       "id": "sec-ch13-0",
-      "label": "12 Types — Click Any Row to Expand"
+      "label": "12 Planet Types"
     },
     {
       "id": "sec-ch13-1",
@@ -441,32 +545,24 @@
       "label": "Stripped World Restoration: 100⚙ & 20 Cycles"
     },
     {
-      "id": "sec-ch13-planets",
-      "label": "Standard Worlds — Detailed Profiles"
-    },
-    {
-      "id": "sec-ch13-megastructures",
-      "label": "5 Rare Discovery Types"
-    },
-    {
       "id": "sec-ch13-weather",
-      "label": "Planetary Weather System"
+      "label": "Predictable from Orbit, Sudden on the Ground"
     },
     {
       "id": "sec-ch13-scanning",
-      "label": "Scanning & Discovery"
+      "label": "See Before You Commit"
     },
     {
       "id": "sec-ch13-sleepers",
-      "label": "Revenant Sleeper Caches"
+      "label": "The Sleeping Army Beneath Your Feet"
     },
     {
       "id": "sec-ch13-terraforming",
-      "label": "Terraforming"
+      "label": "Reshaping Worlds to Serve the Empire"
     },
     {
       "id": "sec-ch13-moons",
-      "label": "Moon Generation & Typing"
+      "label": "Not Just Dead Rocks"
     }
   ],
   "ch14": [
@@ -512,15 +608,15 @@
     },
     {
       "id": "sec-ch16-2",
-      "label": "Tier-Locked Recruitment — Unit Tier → Building Req"
+      "label": "Unit Tier Determines Local Recruitment Requirements"
     },
     {
       "id": "sec-ch16-3",
-      "label": "War Factory — Auto-Produce · Recruit · Repair"
+      "label": "Auto-Production · Recruitment Unlock · Repair"
     },
     {
       "id": "sec-ch16-4",
-      "label": "Rally Points — Per-System Unit Gathering"
+      "label": "Per-System · Auto-Produced Units Gather Here"
     }
   ],
   "ch17": [
@@ -549,6 +645,18 @@
     {
       "id": "sec-ch18-0",
       "label": "Pre-Battle → Formation Select → Auto-Battle → Resolution"
+    },
+    {
+      "id": "sec-ch18-auto",
+      "label": "How Space Battles Play Out — The 80/20 Split"
+    },
+    {
+      "id": "sec-ch18-roe",
+      "label": "Player-Defined Behavioral Directives — Your Standing Orders for Combat"
+    },
+    {
+      "id": "sec-ch18-speed",
+      "label": "1x · 2x · 4x · Auto-Camera · Manual Override"
     },
     {
       "id": "sec-ch18-1",
@@ -588,14 +696,50 @@
     },
     {
       "id": "sec-ch18-10",
-      "label": "6 Types Based on Strategic Context"
+      "label": "6+ Battle End Conditions — Not Every Fight Is a Deathmatch"
     },
     {
       "id": "sec-ch18-11",
       "label": "6 Classes from Interceptor to Dreadnought"
+    },
+    {
+      "id": "sec-ch18-damage",
+      "label": "Shields → Hull → Subsystems — Every Hit Matters"
+    },
+    {
+      "id": "sec-ch18-outcomes",
+      "label": "Destroy · Disable · Capture — Not Every Victory Needs a Kill"
+    },
+    {
+      "id": "sec-ch18-salvage",
+      "label": "Debris Fields · Contested Recovery · Faction Bonuses"
+    },
+    {
+      "id": "sec-ch18-environment",
+      "label": "Asteroids · Nebulae · Warp Lanes · Structures — Space Has Terrain"
+    },
+    {
+      "id": "sec-ch18-bombardment",
+      "label": "Precision Strikes · Carpet Bombing · Diplomatic Consequences"
     }
   ],
   "ch19": [
+    {
+      "id": "sec-ch19-flow",
+      "label": "Territory Selection → Deployment → Auto-Battle → Resolution"
+    },
+    {
+      "id": "sec-ch19-generals",
+      "label": "Command · Death · Morale Cascade"
+    },
+    {
+      "id": "sec-ch19-roe",
+      "label": "Targeting · Aggression · Formation · Retreat — Your Standing Orders"
+    },
+    {
+      "id": "sec-ch19-victory",
+      "label": "Territory Control · Timed Hold · Defense · Extraction — Context Determines Victory"
+    },
     {
       "id": "sec-ch19-0",
       "label": "Canonical Reference — 6 Units Per Side Default"
@@ -615,12 +759,44 @@
     {
       "id": "sec-ch19-4",
       "label": "7 Targeted Abilities"
+    },
+    {
+      "id": "sec-ch19-morale",
+      "label": "Faction Identity · Unit Personality · Breaking Points"
+    },
+    {
+      "id": "sec-ch19-veterancy",
+      "label": "Experience Shapes Behavior — Not Just Stats"
+    },
+    {
+      "id": "sec-ch19-terrain",
+      "label": "Every Step Costs Something — Terrain Shapes the Battle"
+    },
+    {
+      "id": "sec-ch19-fog",
+      "label": "Unit Vision · Terrain Modifiers · Intel Wins Battles"
+    },
+    {
+      "id": "sec-ch19-reinforcements",
+      "label": "Auto-Deploy · CP Targeted Drops · Anti-Air Interception"
+    },
+    {
+      "id": "sec-ch19-retreat",
+      "label": "CP Cost · Physical Withdrawal · Rear Guard · Consequences"
+    },
+    {
+      "id": "sec-ch19-fortification",
+      "label": "Turrets · Bunkers · Minefields · Shield Generators"
+    },
+    {
+      "id": "sec-ch19-aar",
+      "label": "Battle Summary · XP Awards · Promotions · Replay"
     }
   ],
   "ch19b": [
     {
       "id": "sec-ch19b-0",
-      "label": "Dark Crusade · StarCraft · Mechabellum"
+      "label": "Three Games · One System"
     },
     {
       "id": "sec-ch19b-1",
@@ -628,7 +804,7 @@
     },
     {
       "id": "sec-ch19b-2",
-      "label": "Missing Pieces — Systems Not Yet Implemented"
+      "label": "Systems Not Yet Implemented"
     }
   ],
   "ch20": [
@@ -676,19 +852,19 @@
     },
     {
       "id": "sec-ch21-1",
-      "label": "Universal Ground Abilities (3) — Always Available"
+      "label": "Always Available · All Factions"
     },
     {
       "id": "sec-ch21-1b",
-      "label": "Faction-Specific Ground Abilities (6×7) — 42 Unique"
+      "label": "6 Unlock Sources · 42 Unique Abilities"
     },
     {
       "id": "sec-ch21-2",
-      "label": "Space CP Abilities (7) — Unchanged"
+      "label": "All 7 · Costs · Full Effects"
     },
     {
       "id": "sec-ch21-3",
-      "label": "Commander Abilities — Now General Rank 3+ Unlock"
+      "label": "Now Faction-Specific — General Rank 3+ Unlock"
     }
   ],
   "ch22": [
@@ -731,36 +907,36 @@
       "label": "The Twist That Recontextualizes Everything"
     },
     {
-      "id": "sec-ch23-4",
-      "label": "Three Independent Scores · Dominant Score = Alignment"
-    },
-    {
       "id": "sec-ch23-5",
-      "label": "15 Unique Advisor Characters (5 × 3)"
+      "label": "5 Factions × 3 Advisors — Same Archetypes, Different People"
     },
     {
       "id": "sec-ch23-6",
-      "label": "Faction-Specific Reveal Moments"
+      "label": "The Twist Hits Differently Per Faction"
     },
     {
       "id": "sec-ch23-7",
-      "label": "The Advisor Triangle — Shifts With Alignment"
+      "label": "The Triangle That Shifts With Alignment"
     },
     {
       "id": "sec-ch23-8",
-      "label": "The Wake-Up Moment — Earned, Not Scripted"
+      "label": "The Most Important Narrative Beat — Earned, Not Scripted"
     },
     {
       "id": "sec-ch23-9",
-      "label": "Advisor Death — The Sidelined Advisor"
+      "label": "The Sidelined Advisor Is At Risk"
     },
     {
       "id": "sec-ch23-10",
-      "label": "Advisors & the Strategist"
+      "label": "Gradual Awareness — They Can’t Hear It, But They See the Changes"
     },
     {
       "id": "sec-ch23-11",
-      "label": "Advisor Fate by Ending"
+      "label": "Surviving Advisors — Ending Epilogues"
+    },
+    {
+      "id": "sec-ch23-4",
+      "label": "Three Independent Scores · Dominant Score = Alignment"
     }
   ],
   "ch24": [
@@ -862,7 +1038,7 @@
     },
     {
       "id": "sec-ch32-3",
-      "label": "Alignment Determines the Galaxy’s Fate"
+      "label": "Alignment Determines the Galaxy's Fate"
     }
   ],
   "ch33": [
@@ -925,10 +1101,60 @@
       "label": "9 Specialized Sub-Chats for GDD Development"
     }
   ],
+  "ch43-ai": [
+    {
+      "id": "sec-ch43ai-0",
+      "label": "What the AI Director Is (and Isn't)"
+    },
+    {
+      "id": "sec-ch43ai-1",
+      "label": "The Galaxy Remembers Everything"
+    },
+    {
+      "id": "sec-ch43ai-2",
+      "label": "Battles That Tell Stories"
+    },
+    {
+      "id": "sec-ch43ai-3",
+      "label": "Factions Are Not Monoliths"
+    },
+    {
+      "id": "sec-ch43ai-4",
+      "label": "People, Not Units"
+    },
+    {
+      "id": "sec-ch43ai-5",
+      "label": "The Galaxy's Scars"
+    },
+    {
+      "id": "sec-ch43ai-6",
+      "label": "What You Hear Matters"
+    },
+    {
+      "id": "sec-ch43ai-7",
+      "label": "The Simulation Remembers"
+    },
+    {
+      "id": "sec-ch43ai-8",
+      "label": "The Swarm Evolves"
+    },
+    {
+      "id": "sec-ch43ai-9",
+      "label": "The Ancient Watchers"
+    },
+    {
+      "id": "sec-ch43ai-10",
+      "label": "Cracks in the Crucible"
+    },
+    {
+      "id": "sec-ch43ai-11",
+      "label": "The Crucible Learns"
+    }
+  ],
   "ch46": [
     {
       "id": "sec-ch46-0",
-      "label": "All Integrated into Canonical Chapters · See Appendix L"
+      "label": "All Integrated into Canonical Chapters · See Appendix L for Full Reference"
     }
   ],
   "appendices": [
@@ -955,10 +1181,84 @@
     {
       "id": "sec-appendices-5",
       "label": "Key Terminology Quick-Reference"
+    }
+  ],
+  "appL": [
+    {
+      "id": "sec-appL-10",
+      "label": "L.10 — Living Universe: Orbital Mechanics & Galactic Phenomena"
     },
     {
+      "id": "sec-appL-11",
+      "label": "L.11 — Ground Battle Visual Direction (StarCraft 2 + Dawn of War 2 Target)"
+    },
+    {
+      "id": "sec-appL-12",
+      "label": "L.12 — End-of-Campaign Summary / Final Cutscene (Planned Feature)"
+    },
+    {
+      "id": "sec-appL-13",
+      "label": "L.13 — DeploymentScene Architecture (Godot 4.4 Rewrite)"
+    },
+    {
+      "id": "sec-appL-14",
+      "label": "L.14 — Galaxy Map Visual Layer (Godot 4.4 Rewrite)"
+    },
+    {
+      "id": "sec-appL-15",
+      "label": "L.15 — Turn Phase Pipeline Architecture (Godot 4.4 Rewrite)"
+    },
+    {
+      "id": "sec-appL-16",
+      "label": "L.16 — Input Controls (Godot 4.4 Rewrite)"
+    }
+  ],
+  "appM": [
+    {
       "id": "sec-appM-0",
-      "label": "GDD Status · Godot Code · Living Universe · Kickstarter · Roadmap"
+      "label": "M.1 — GDD & Dashboard Status"
+    },
+    {
+      "id": "sec-appM-1",
+      "label": "M.2 — Godot Game Code Status"
+    },
+    {
+      "id": "sec-appM-2",
+      "label": "M.3 — Living Universe Status (17 Phenomena)"
+    },
+    {
+      "id": "sec-appM-3",
+      "label": "M.4 — Kickstarter Status"
+    },
+    {
+      "id": "sec-appM-4",
+      "label": "M.5 — Priority Roadmap"
+    }
+  ],
+  "dashboard": [
+    {
+      "id": "sec-dashboard-0",
+      "label": "By the Numbers"
+    },
+    {
+      "id": "sec-dashboard-1",
+      "label": "Five-Phase Gameplay"
+    },
+    {
+      "id": "sec-dashboard-2",
+      "label": "Every Faction Plays Differently"
+    },
+    {
+      "id": "sec-dashboard-3",
+      "label": "Quick Navigation"
+    },
+    {
+      "id": "sec-dashboard-4",
+      "label": "8 Parts · 46 Chapters · 13 Appendices (incl. Appendix L & M)"
+    },
+    {
+      "id": "sec-dashboard-5",
+      "label": "Five Differentiators"
     }
   ]
 }
