@@ -103,8 +103,15 @@ const Glossary = {
       ['Tendril',             'A Vorax hive-fleet that enters from the galaxy edge; anchored by its Hive-Ship'],
       ['The Archive',         'Cross-run meta-progression storage persisting across simulation runs (localStorage key: aoc_archive)'],
       ['Volatile Death',      'Core Guardian explosion on unit death \u2014 damages everything nearby, chains to adjacent Guardian units'],
-      ['Warden-Commander',    'Core Guardian spokesperson and interface entity for diplomatic contact attempts'],
+      ['Warden-Commander',    'Core Guardians singular AI voice, patient cosmic-scale neutrality'],
       ['Wreckage Salvage',    'Scrap-Horde faction passive \u2014 all deaths within 150px fuel survivors with Scrap Stacks'],
+      ['Mnemo-Cryst',         'Eternal Shards memory-matter, crystalline scaffolding of preserved ancestral thoughts'],
+      ['The Warmth',          'Unity Accord forced empathy doctrine, psychic warmth weaponized as plasma'],
+      ['STRATEGOS-1',         'De facto autonomous Unity Accord AI that manipulates the Council of Delegates'],
+      ['Caloric Equation',    'Vorax Deep Hive Mind motivation: calculating galaxy caloric value as ripening biomass'],
+      ['Abyssal Vacuum Biology', 'Vorax biological signature: Mariana Trench nightmares evolved for hard vacuum'],
+      ['Forged Construct',    'Scrap-Horde elite mineral-life unit, living slag that never stopped burning'],
+      ['Dark Space',          'Pressure-crushed void between galaxies where the Vorax originate'],
     ];
   },
 
