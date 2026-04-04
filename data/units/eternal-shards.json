@@ -37,7 +37,7 @@
         "bioAcid": 0
       }
     },
-    "physical": "Lithe, impossibly graceful warriors in form-fitting wraith-bone armor flowing like a second skin of living crystal. Armor shifts color — cyan at rest, violet in combat. Featureless visors glow with psychic emanations. No two identical — each suit grown organically over decades. No visible weapons. Hard-light blades MANIFEST from forearm crystalline nodes — one meter of shimmering razor-edged psychic energy. Cut at molecular level via atomic bond disruption.",
+    "physical": "Lithe, impossibly graceful warriors in form-fitting Mnemo-Cryst armor flowing like a second skin of living crystal. Armor shifts color — cyan at rest, violet in combat. Featureless visors glow with psychic emanations. No two identical — each suit grown organically over decades. No visible weapons. Hard-light blades MANIFEST from forearm crystalline nodes — one meter of shimmering razor-edged psychic energy. Cut at molecular level via atomic bond disruption.",
     "narrative": "What happens when a species mastered psychic combat for ten thousand years. They DANCE. Precognitive instinct choreographs every step. Phase Blinking through gunfire. Cuts so precise enemies take two steps after being struck before registering a severed spine. Against heavy armor: carve like scalpel through paper. Against shields: phase through as if nonexistent. The Shards mourn each Zealot — a century of training erased."
   },
   {
@@ -78,7 +78,7 @@
         "bioAcid": 0
       }
     },
-    "physical": "Slender figures in hooded wraith-bone cloaks shifting to match ambient light — nearly invisible stationary. Crystalline focusing array — meter-long prism aimed through psychic targeting interface. Fires needle-thin prismatic lance. Zero muzzle flash, zero sound. Visible for a fraction of a second as refracted color. Only sound: faint crystalline PING.",
+    "physical": "Slender figures in hooded Mnemo-Cryst cloaks shifting to match ambient light — nearly invisible stationary. Crystalline focusing array — meter-long prism aimed through psychic targeting interface. Fires needle-thin prismatic lance. Zero muzzle flash, zero sound. Visible for a fraction of a second as refracted color. Only sound: faint crystalline PING.",
     "narrative": "Does not miss. Psychic targeting accounts for wind, distance, movement, and the target's FUTURE position. First indication: a soldier falling dead with a perfectly circular hole through the helmet. Critical role: eliminate enemy Commanders from 500 meters. Energy damage is ineffective vs Guardians — switches to Shuriken (physical crystal darts) at endgame."
   },
   {
@@ -119,7 +119,7 @@
         "bioAcid": 0.02
       }
     },
-    "physical": "Sleek angular craft hovering one meter on anti-gravity. No treads, no wheels. Wraith-bone hull — smooth, iridescent, seamless. Twin plasma lances project SUSTAINED beams boring through armor over 2–3 seconds. Target doesn't explode — it MELTS.",
+    "physical": "Sleek angular craft hovering one meter on anti-gravity. No treads, no wheels. Mnemo-Cryst hull — smooth, iridescent, seamless. Twin plasma lances project SUSTAINED beams boring through armor over 2–3 seconds. Target doesn't explode — it MELTS.",
     "narrative": "Sustained energy application — no armor thickness matters given time. Limitation: must hold position for 2–3 sec during fire; escorts essential. Hover crosses rivers, ravines. Can ascend cliff faces — if the enemy hides behind a wall, float over it."
   },
   {
@@ -160,7 +160,7 @@
         "bioAcid": 0
       }
     },
-    "physical": "Six-meter wraith-bone construct. Pilot psychically MERGED — consciousness extending through the entire frame. Humanoid but elongated. Fingers EXTEND into crystalline talons. Chest resonance chamber broadcasts Phase Blink +2% aura within 30m.",
+    "physical": "Six-meter Mnemo-Cryst construct. Pilot psychically MERGED — consciousness extending through the entire frame. Humanoid but elongated. Fingers EXTEND into crystalline talons. Chest resonance chamber broadcasts Phase Blink +2% aura within 30m.",
     "narrative": "More than a vehicle — a union. Pilot surrenders individuality. When it falls: consciousness SNAPS back, traumatic separation. If the chamber is breached: consciousness may persist as echo for seconds — sometimes captured by a soul-stone. Sometimes dissipates. Gone."
   },
   {
@@ -529,7 +529,7 @@
         "bioAcid": 0.03
       }
     },
-    "physical": "Organic wraith-bone hull. Signature ability: Dimensional Shift — phases ENTIRE SHIP out of reality for 3 seconds. Dodges MAC rounds, torpedoes, boarding actions. Fires Ghostfire Torpedoes that phase through conventional shields before detonating inside the target hull.",
+    "physical": "Organic Mnemo-Cryst hull. Signature ability: Dimensional Shift — phases ENTIRE SHIP out of reality for 3 seconds. Dodges MAC rounds, torpedoes, boarding actions. Fires Ghostfire Torpedoes that phase through conventional shields before detonating inside the target hull.",
     "narrative": "The only capital ship that dodges killing blows by ceasing to exist. Fights on a different plane of reality. Veterans who have fought one describe the moment it vanishes under sustained fire as profoundly unsettling — like punching a ghost."
   },
   {
@@ -611,7 +611,7 @@
         "bioAcid": 0.05
       }
     },
-    "physical": "Wraith-bone cathedral, small-moon-sized. 200-crew mental energy channeled into the Infinity Lance — a reality-warping beam. Relatively fragile hull for its size. Personal Phase Blink 18%. Charge time 15 seconds. One shot bisects a capital ship.",
+    "physical": "Mnemo-Cryst cathedral, small-moon-sized. 200-crew mental energy channeled into the Infinity Lance — a reality-warping beam. Relatively fragile hull for its size. Personal Phase Blink 18%. Charge time 15 seconds. One shot bisects a capital ship.",
     "narrative": "Overwhelming power in a beautiful, irreplaceable vessel. Losing it is a cultural extinction event — not just a tactical setback. The Infinity Lance is not a weapon. It is a monument to everything the Shards once were, turned against a galaxy that will not let them survive."
   }
 ]

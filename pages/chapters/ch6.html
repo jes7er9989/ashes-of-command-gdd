@@ -29,7 +29,7 @@
     <div class="section-label" style="color:var(--shards)">Identity &amp; Lore</div>
     <div class="section-heading" id="sec-ch6-0">The Long Goodbye</div>
     <div class="body-text" style="margin-bottom:16px">The Eternal Shards are the last surviving fragment of the galaxy's most ancient civilization — a species that mastered psychic manipulation, energy-matter conversion, and dimensional folding when the other factions' ancestors were still single-celled organisms floating in primordial seas. They are not warriors by nature. They are scholars, seers, and artists who were forced to become warriors when the universe proved indifferent to cultural achievement.</div>
-    <div class="body-text" style="margin-bottom:16px">They are dying. Not quickly — not in a single cataclysm — but slowly, generationally, as their population dwindles, their wraith-bone infrastructure crumbles, and their psychic talents weaken with each successive generation. Every Eternal Shard alive knows they may be among the last of their kind. Every battle they fight costs lives they cannot replace. Every unit lost is a unique consciousness — a mind trained for centuries in psychic disciplines — that vanishes forever from the galaxy's psychic fabric.</div>
+    <div class="body-text" style="margin-bottom:16px">They are dying. Not quickly — not in a single cataclysm — but slowly, generationally, as their population dwindles, their Mnemo-Cryst infrastructure crumbles — memory-matter losing coherence, millennia of archived thought dissolving into psychic static — and their psychic talents weaken with each successive generation. Every Eternal Shard alive knows they may be among the last of their kind. Every battle they fight costs lives they cannot replace. Every unit lost is a unique consciousness — a mind trained for centuries in psychic disciplines — that vanishes forever from the galaxy's psychic fabric. Every structure that falls is a library of ancestral memory shattered beyond recovery.</div>
     <div class="body-text" style="margin-bottom:24px">Their strategy reflects their desperation: they field small numbers of extraordinarily powerful elite units, shielded by rechargeable energy barriers and capable of briefly flickering out of reality to dodge incoming fire. They do not swarm. They do not grind. They strike with devastating precision and withdraw before the enemy can bring numbers to bear. Every engagement is a calculated risk — they can win any battle, but they cannot afford the casualties of victory.</div>
 
     <div class="section-label" style="color:var(--shards)">Visual Identity</div>
@@ -242,7 +242,7 @@
   <text x="6" y="118" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#00ffee" opacity="0.35" letter-spacing="2">ES//GRD-01</text>
 </svg></div>
         <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:#fff;margin-bottom:4px">Ground Forces</div>
-        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.5">Wraith-bone armor — semi-organic crystalline material grown from psychic resonance. Shimmers with iridescent colors shifting with light angle. Weapons PROJECTED from the user's psychic field — hard-light blades from forearms, crystalline rifle constructs forming around hands. Troops glide rather than march, movements unnaturally graceful.</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.5">Mnemo-Cryst armor — memory-matter, a semi-organic crystalline lattice grown from the Shards' own thoughts as psychic scaffolding. Older veterans wear denser armor, physically heavier with centuries of archived memory woven into the crystal matrix. Shimmers with iridescent colors shifting with light angle. Weapons PROJECTED from the user's psychic field — hard-light blades from forearms, crystalline rifle constructs forming around hands. Troops glide rather than march, movements unnaturally graceful.</div>
       </div>
       <div class="card">
         <div style="margin-bottom:10px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 120" width="100%" style="display:block">
@@ -590,17 +590,22 @@
   <text x="6" y="118" font-family="'JetBrains Mono',monospace" font-size="4.5" fill="#00ffee" opacity="0.35" letter-spacing="2">ES//SPC-01</text>
 </svg></div>
         <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:#fff;margin-bottom:4px">Space Fleet</div>
-        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.5">Wraith-bone ships glowing with internal psychic energy — translucent hulls, crew silhouettes faintly visible like shadows in amber. Solar sails of woven light. Move silently without chemical thrust, propelled by psychic impulse. In formation: a constellation coming alive.</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.5">Mnemo-Cryst ships glowing with internal psychic energy — translucent hulls dense with millennia of archived memories, crew silhouettes faintly visible like shadows in amber. Capital ships are physically heavier than escorts: not from thicker plating, but from deeper memory. Breaking a hull doesn't just destroy a vessel — it shatters a library of ancestral thought. Solar sails of woven light. Move silently without chemical thrust, propelled by psychic impulse. In formation: a constellation coming alive.</div>
       </div>
     </div>
 
     <div class="divider"></div>
 
     <div class="section-label" style="color:var(--shards)">Gameplay</div>
-    <div class="section-heading" id="sec-ch6-2">Primary Mechanic: Phase Blink</div>
+    <div class="section-heading" id="sec-ch6-2">Primary Mechanic: Phase Blink <span style="font-size:0.75em;color:var(--text-mid);font-weight:400">(Reality Refraction)</span></div>
     <div class="card" style="border-left:3px solid var(--shards);margin-bottom:16px">
       <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:var(--shards);margin-bottom:8px">UNITS FLICKER OUT OF REALITY TO DODGE PROJECTILES</div>
-      <div style="font-size:0.91rem;color:var(--text-body);line-height:1.65;margin-bottom:12px">Every Eternal Shards unit has a 12% base chance per incoming projectile of triggering a Phase Blink — a brief dimensional shift moving the unit 2 meters in a random direction, causing the projectile to pass through empty space. Phase Blink is PASSIVE and automatic.</div>
+      <div style="font-size:0.91rem;color:var(--text-body);line-height:1.65;margin-bottom:12px">Every Eternal Shards unit has a base chance per incoming projectile to trigger a Phase Blink. They do not dodge. They do not deploy physical shields. Through a micro-fold in local spacetime, the unit forces reality to briefly rearrange itself so that the incoming projectile was never going to hit them in the first place. To an observer, the Shard simply flickers out of existence for a microsecond and reappears two meters away, untouched. It is automatic, passive, and mathematically infuriating to fight against.</div>
+      <div style="display:flex;gap:16px;margin-bottom:12px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;padding:4px 10px;border:1px solid rgba(0,255,238,0.25);color:var(--shards);border-radius:1px">12% BASE CHANCE</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;padding:4px 10px;border:1px solid rgba(0,255,238,0.25);color:var(--shards);border-radius:1px">PASSIVE</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;padding:4px 10px;border:1px solid rgba(0,255,238,0.25);color:var(--shards);border-radius:1px">2m DISPLACEMENT</div>
+      </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
         <div style="font-size:0.98rem;color:var(--text-mid);line-height:1.55">
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Base Chance:</strong> 12% per projectile (variable with upgrades)</div>
@@ -718,7 +723,7 @@
     <div class="card" style="border-left:3px solid var(--shards);margin-bottom:16px">
       <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--shards);letter-spacing:2px;margin-bottom:8px">EMOTIONAL CORE</div>
       <div style="font-size:0.95rem;color:#fff;font-weight:600;margin-bottom:8px">Harmony (Desperate) &mdash; &ldquo;Connection is everything.&rdquo;</div>
-      <div style="font-size:0.88rem;color:var(--text-mid);line-height:1.65">The echo of Aethyn unity. Every psychic bond is a fragment of what was. They seek connection &mdash; with each other, with the cosmos, with the signal they can almost hear. The faction that comes CLOSEST to remembering what it felt like to be Aethyn. Colored by desperation: they seek connection because they&rsquo;re running out of time. They are The Dying Light. <strong style="color:var(--text-hi)">Tyrant corruption:</strong> Forced connection. &ldquo;You WILL join us. Resistance is a disease.&rdquo;</div>
+      <div style="font-size:0.88rem;color:var(--text-mid);line-height:1.65">The echo of Aethyn unity. Every psychic bond is a fragment of what was. They seek connection &mdash; with each other, with the cosmos, with the signal they can almost hear. The faction that comes CLOSEST to remembering what it felt like to be Aethyn. But do not mistake this for serenity. The Communion is not peaceful &mdash; it is loud, chaotic, and saturated with the grief of a dying species. Every mind in the network feels the population counter ticking down. They cling to the bond not out of cultural preference but because severance from the Communion is not isolation &mdash; it is a literal, agonizing psychological death. They are not serene. They are drowning, and the Communion is the only thing keeping their heads above water. They are The Dying Light. <strong style="color:var(--text-hi)">Tyrant corruption:</strong> Forced connection. &ldquo;You WILL join us. Resistance is a disease.&rdquo;</div>
     </div>
 
     <!-- Government -->
@@ -748,7 +753,7 @@
     <!-- Social Structure -->
     <div class="card" style="border-left:3px solid var(--shards);margin-bottom:16px">
       <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--shards);letter-spacing:2px;margin-bottom:8px">SOCIAL STRUCTURE &mdash; COMMUNION + SPECIALIZATION</div>
-      <div style="font-size:0.88rem;color:var(--text-mid);line-height:1.65"><strong style="color:var(--text-hi)">Base layer:</strong> Psychic communion. Emotions bleed. Memories shared. Isolation = punishment. Being alone is not solitude, it&rsquo;s death. <strong style="color:var(--text-hi)">Professional layer:</strong> Specializations create work identity. You FEEL with everyone, WORK with your type. <strong style="color:var(--text-hi)">Tension:</strong> What you feel in communion vs. what your role demands. An empath soldier who feels the enemy dying.</div>
+      <div style="font-size:0.88rem;color:var(--text-mid);line-height:1.65"><strong style="color:var(--text-hi)">Base layer:</strong> Psychic communion. Emotions bleed. Memories shared. Isolation = punishment. Being alone is not solitude, it&rsquo;s death &mdash; a literal, screaming psychological unraveling that no Shard has ever survived with their mind intact. The network itself is not a calm pool of shared thought; it is a torrent of collective grief, desperate hope, and the constant low-frequency hum of a species counting its own extinction in real time. <strong style="color:var(--text-hi)">Professional layer:</strong> Specializations create work identity. You FEEL with everyone, WORK with your type. <strong style="color:var(--text-hi)">Tension:</strong> What you feel in communion vs. what your role demands. An empath soldier who feels the enemy dying. Their elegance on the battlefield is not grace &mdash; it is the hyper-efficient panic of a species that cannot afford a single casualty. Every perfect maneuver is born from the terror of irreplaceable loss.</div>
     </div>
 
     <!-- Economy -->
@@ -787,7 +792,7 @@
         <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">New structures:</strong> Raw crystal growth &mdash; jagged, organic, still forming.</div>
         <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Established:</strong> Shaped by psychic intent &mdash; precise, beautiful, impossibly elegant.</div>
         <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Ancient/critical:</strong> Semi-sentient. Walls thicken under attack. Rooms reconfigure. Tech reads psychic input.</div>
-        <div><strong style="color:var(--text-hi)">Ships (exception):</strong> 100,000+ year Aethyn relics. Not built &mdash; maintained. Translucent wraith-bone hulls, crew silhouettes visible like shadows in amber. Impossibly ancient, impossibly perfect.</div>
+        <div><strong style="color:var(--text-hi)">Ships (exception):</strong> 100,000+ year Aethyn relics. Not built &mdash; maintained. Translucent Mnemo-Cryst hulls, crew silhouettes visible like shadows in amber. The oldest ships are the densest — their crystal lattice compressed under the weight of a hundred thousand years of accumulated memory. Impossibly ancient, impossibly perfect.</div>
       </div>
     </div>
 
@@ -829,7 +834,7 @@
     <!-- Vorax Adaptation -->
     <div class="card" style="border-left:3px solid var(--vorax);margin-bottom:16px">
       <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">VORAX ADAPTATION &mdash; CRYSTAL CORRUPTION</div>
-      <div style="font-size:0.88rem;color:var(--text-mid);line-height:1.65">No biomass to consume &mdash; Shards biology is crystalline. Vorax absorb crystal-organic material instead. Twisted crystalline growths on Vorax units. Corrupted crystal amplifies Vorax signals instead of psychic harmony. Sacred material made grotesque. The most visually horrifying adaptation &mdash; the enemy wears your ancestors.</div>
+      <div style="font-size:0.88rem;color:var(--text-mid);line-height:1.65">No biomass to consume &mdash; Shards biology is crystalline. Vorax absorb Mnemo-Cryst material instead, and what they gain is far worse than armor. The twisted crystalline growths sprouting from Vorax carapaces are not just decoration &mdash; they are hijacked broadcast towers. The consumed Mnemo-Cryst retains its psychic resonance, but the Vorax corrupt the frequency. Instead of harmony, the crystalline growths broadcast agonizing psychic static back into the Shards&rsquo; Communion &mdash; a screeching, corrupted echo of ancestral memory turned into noise. Fighting the Vorax is not just a physical battle for the Shards; it is deafening psychological torture. Every Vorax unit wearing stolen crystal is a migraine that screams in the voice of the dead. Sacred material made grotesque. The most visually horrifying adaptation &mdash; the enemy wears your ancestors.</div>
     </div>
 
     <!-- Negotiation -->

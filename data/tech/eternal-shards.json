@@ -41,14 +41,14 @@
     ]
   },
   {
-    "branch": "Wraith-Bone Mastery",
+    "branch": "Mnemo-Cryst Mastery",
     "branchNum": 2,
     "nodes": [
       {
         "tier": "T1",
         "name": "Resonant Armor Growth",
         "cost": "8⚙ / 2 cycles",
-        "effect": "All wraith-bone armor regenerates 0.5% HP/sec passively during combat.",
+        "effect": "All Mnemo-Cryst armor regenerates 0.5% HP/sec passively during combat.",
         "notes": "Passive sustainability baseline"
       },
       {
@@ -128,9 +128,9 @@
     "nodes": [
       {
         "tier": "T1",
-        "name": "Wraith-Bone Cultivation",
+        "name": "Mnemo-Cryst Cultivation",
         "cost": "8⚙ / 2 cycles",
-        "effect": "Wraith-bone unit production time −15%. Equipment repair cost −20%.",
+        "effect": "Mnemo-Cryst unit production time −15%. Equipment repair cost −20%.",
         "notes": "Offset the Shards' production disadvantage"
       },
       {
