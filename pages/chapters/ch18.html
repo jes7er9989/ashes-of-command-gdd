@@ -378,6 +378,114 @@
       <div style="display:grid;grid-template-columns:100px 60px 80px 80px 1fr;padding:4px 10px;border-bottom:1px solid var(--border);color:var(--text-mid)"><span style="color:var(--text-hi)">Carrier</span><span>400-800</span><span>Slow</span><span>Force project</span><span>[W] [A] [S]</span></div>
       <div style="display:grid;grid-template-columns:100px 60px 80px 80px 1fr;padding:4px 10px;color:var(--text-hi)"><span>Dreadnought</span><span>1500+</span><span>Very Slow</span><span>Command/Super</span><span>All 6</span></div>
     </div>
+
+    <div class="divider"></div>
+
+    <!-- §18 Ship Damage Model -->
+    <div class="section-label">Ship Damage Model</div>
+    <div class="section-heading" id="sec-ch18-damage">Shields &rarr; Hull &rarr; Subsystems &mdash; Every Hit Matters</div>
+    <div class="body-text" style="margin-bottom:16px">Ships aren&rsquo;t simple HP pools. Every vessel has layered defenses and targetable subsystems. Damage degrades performance before killing &mdash; a crippled dreadnought with no engines and half its guns is still dangerous, but it&rsquo;s not winning any races. Directed targeting through Rules of Engagement determines where your shots land.</div>
+
+    <!-- Damage Layers — vertical flow, 3 rows -->
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
+      <div style="background:rgba(0,180,255,0.04);padding:7px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase">DAMAGE LAYERS</div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--shards);letter-spacing:2px;margin-bottom:8px">SHIELDS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Absorb incoming damage first. Regenerate over time when not taking fire. Shield strength varies by ship class. Some weapons bypass shields partially (kinetic penetrators, phase weapons). Shields can be stripped by focused fire to set up alpha strikes. EMP weapons temporarily disable shield regeneration.</div>
+      </div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--terran);letter-spacing:2px;margin-bottom:8px">HULL</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Once shields drop, hull takes damage. Hull integrity affects all subsystems proportionally &mdash; a ship at <span class="ph-tag">PH</span> 50% hull has degraded performance across the board. Armor type matters: ablative (good vs energy), reactive (good vs kinetic), composite (balanced). Faction armor philosophy differs (Terrans: thick ablative; Shards: crystalline regenerative; Horde: scrap-patched but redundant).</div>
+      </div>
+      <div style="padding:10px 12px">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">SUBSYSTEMS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">
+          Five targetable subsystems degrade as hull drops OR when specifically targeted via ROE:
+          <div style="margin-top:6px;margin-bottom:4px"><strong style="color:var(--text-hi)">Engines</strong> &mdash; Speed and maneuverability. At <span class="ph-tag">PH</span> 0%: ship is dead in space.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Weapons</strong> &mdash; Damage output. Degrades proportionally. At <span class="ph-tag">PH</span> 0%: ship is defanged.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Shields</strong> &mdash; Regeneration rate. Damaged shield generators regenerate slower or stop.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Sensors</strong> &mdash; Detection range and targeting accuracy. Degraded sensors = more missed shots.</div>
+          <div><strong style="color:var(--text-hi)">Reactor</strong> &mdash; Powers everything. Critical reactor damage can cause chain failures or explosion. Targeting the reactor is the fastest kill but risks destroying salvageable components.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subsystem Status -->
+    <div class="card" style="border-left:3px solid var(--accent);margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">SUBSYSTEM STATUS</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:6px 10px;margin-bottom:10px">
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--text-hi);font-size:0.9rem">Engines</span><span style="background:var(--border);height:6px;border-radius:1px;align-self:center"></span>
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--text-hi);font-size:0.9rem">Weapons</span><span style="background:var(--border);height:6px;border-radius:1px;align-self:center"></span>
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--text-hi);font-size:0.9rem">Shields</span><span style="background:var(--border);height:6px;border-radius:1px;align-self:center"></span>
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--text-hi);font-size:0.9rem">Sensors</span><span style="background:var(--border);height:6px;border-radius:1px;align-self:center"></span>
+          <span style="font-family:'JetBrains Mono',monospace;color:var(--text-hi);font-size:0.9rem">Reactor</span><span style="background:var(--border);height:6px;border-radius:1px;align-self:center"></span>
+        </div>
+        <div style="color:var(--text-dim);font-size:0.92rem;line-height:1.5">Subsystem damage is NOT random. It depends on: weapon type, ROE targeting orders, hit location (based on formation angle), and critical hit chance. A skilled commander using directed targeting can surgically disable a ship without destroying it.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §18 Engagement Outcomes -->
+    <div class="section-label">Engagement Outcomes</div>
+    <div class="section-heading" id="sec-ch18-outcomes">Destroy &middot; Disable &middot; Capture &mdash; Not Every Victory Needs a Kill</div>
+
+    <!-- Destroy vs Disable — 2-column card -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="card" style="border-left:3px solid var(--vorax)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">DESTROY</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Standard outcome. Ship reduced to <span class="ph-tag">PH</span> 0 hull &mdash; explodes, leaving a debris field. Fast, decisive, no risk of the ship fighting again. Debris can be salvaged for raw materials. Reactor kills may cause area-of-effect explosion damaging nearby ships (both sides).</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accord)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accord);letter-spacing:2px;margin-bottom:8px">DISABLE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">
+          Ship subsystems crippled but hull intact. Requires targeting engines + weapons via ROE. Slower and riskier (the ship fights back while you&rsquo;re being surgical). Rewards:
+          <div style="margin-top:6px;margin-bottom:4px"><strong style="color:var(--text-hi)">Capture</strong> &mdash; Board and claim the ship. Add to your fleet or strip for advanced components.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Research</strong> &mdash; Study enemy tech. Grants research points toward countering that faction.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Diplomacy</strong> &mdash; Return captured ships for diplomatic favor. Especially effective with the Accord.</div>
+          <div><strong style="color:var(--text-hi)">Ransom</strong> &mdash; Demand resources for the ship&rsquo;s return.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Warning card -->
+    <div class="card" style="border-left:3px solid var(--horde);margin-bottom:24px">
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65"><strong style="color:var(--horde)">Warning:</strong> Disabling is a luxury. In desperate battles, you won&rsquo;t have the CP or time to be surgical. Disable orders work best when you have fleet superiority and can afford the slower kill time.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §18 Salvage & Aftermath -->
+    <div class="section-label">Salvage &amp; Aftermath</div>
+    <div class="section-heading" id="sec-ch18-salvage">Debris Fields &middot; Contested Recovery &middot; Faction Bonuses</div>
+    <div class="body-text" style="margin-bottom:16px">Every space battle leaves a debris field. Destroyed ships become salvage; disabled ships become prizes. But salvage is contested &mdash; if you don&rsquo;t control the system after the battle, someone else will pick through your wreckage.</div>
+
+    <!-- Salvage Rules — 2x2 card grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">DEBRIS FIELDS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Destroyed ships leave debris proportional to their size class. Debris persists for <span class="ph-tag">PH</span> 5 turns before degrading. Collection requires a ship or station in the system. Resources recovered: raw materials, component fragments, occasionally intact tech modules.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">CONTESTED SALVAGE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">If you retreat after winning tactically (or get pushed out by a third party), the new system controller gets the salvage. Scrap-Horde pirates are attracted to large debris fields and may arrive to contest recovery. Denying salvage to the enemy is a valid strategic reason to stay in a system.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">FACTION SALVAGE BONUSES</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">
+          <div style="margin-bottom:4px"><strong style="color:var(--horde)">Scrap-Horde</strong> &mdash; +<span class="ph-tag">PH</span> 50% salvage yield. Can field-repair captured ships faster. This is their economy.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--revenant)">Revenant</strong> &mdash; Can attempt to reactivate enemy ship husks using their excavation tech. Success rate based on hull integrity.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--terran)">Terran League</strong> &mdash; Strip captured ships for spare parts. +<span class="ph-tag">PH</span> 25% component recovery.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--shards)">Eternal Shards</strong> &mdash; Psychic resonance scanning finds intact tech modules others would miss.</div>
+          <div><strong style="color:var(--accord)">Unity Accord</strong> &mdash; Diplomatic salvage &mdash; returning debris/ships to original faction earns favor.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">CAPTURED SHIPS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Disabled ships that are boarded become yours. They retain damage until repaired. Enemy crew can be detained (diplomatic leverage) or released (Accord approval). Captured ships of a different faction tech base operate at <span class="ph-tag">PH</span> 75% effectiveness until your engineers adapt (reducible through research).</div>
+      </div>
+    </div>
   </div><!-- /page-ch18 -->
 
   <!-- ============================================================
