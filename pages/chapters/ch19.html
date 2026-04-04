@@ -9,6 +9,174 @@
       <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Ground combat terrain is determined by planet type. Each of the 17 planet types creates distinct battlefield conditions &mdash; from the open killing fields of Dead Worlds to the corridor warfare of Orbital Stations. See <a href="#ch13" onclick="location.hash='#ch13'">Ch.&nbsp;13</a> for detailed terrain profiles per planet type.</div>
     </div>
 
+    <!-- §19 Ground Battle Flow -->
+    <div class="section-label">Ground Battle Flow</div>
+    <div class="section-heading" id="sec-ch19-flow">Territory Selection &rarr; Deployment &rarr; Auto-Battle &rarr; Resolution</div>
+    <div class="body-text" style="margin-bottom:16px">Ground combat is territory-by-territory. Each planet is divided into territories (see <a href="#ch13" onclick="location.hash='#ch13'">Ch.&nbsp;13</a>); conquering a planet means taking territories until the defender has none left. The auto-battler handles unit behavior; the commander handles strategy. CP represents your commander&rsquo;s attention &mdash; how many things one person can focus on at once (see <a href="#ch18" onclick="location.hash='#ch18'">Ch.&nbsp;18</a> for the full CP system).</div>
+
+    <!-- Battle Flow — vertical steps -->
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
+      <div style="background:rgba(0,180,255,0.04);padding:7px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase">BATTLE FLOW</div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">1.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Territory Selection</strong> &mdash; Choose which territory to attack based on adjacency to your held territories. Options may be limited by your space battle performance (see <a href="#ch18" onclick="location.hash='#ch18'">Ch.&nbsp;18</a>). Multiple territories can be attacked simultaneously if you have enough generals (see <a href="#ch22" onclick="location.hash='#ch22'">Ch.&nbsp;22</a>).</span>
+      </div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">2.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Pre-Battle Setup</strong> &mdash; Assign a general to lead the assault. Set army-level formation (determines how squads auto-arrange). Configure Rules of Engagement. Review terrain intel from scanning. Assign forces from your available pool.</span>
+      </div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">3.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Deployment</strong> &mdash; Forces deploy at designated drop zones. Space superiority determines drop zone quality (see <a href="#ch18" onclick="location.hash='#ch18'">Ch.&nbsp;18</a>). Reserves staged behind the front line for triggered deployment.</span>
+      </div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">4.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Auto-Battle</strong> &mdash; Squads execute based on formation, ROE, and terrain. The general&rsquo;s personality trait colors unit behavior (see <a href="#ch22" onclick="location.hash='#ch22'">Ch.&nbsp;22</a>). Commander intervenes with CP abilities, broad orders, and targeted squad redirects (squad redirect costs CP).</span>
+      </div>
+      <div style="padding:10px 12px;font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">5.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Resolution</strong> &mdash; Battle ends when victory conditions are met (see Variable Win Conditions below). Territory control changes. Forces resupply during the mandatory pause before the next engagement. After-action report with full replay available.</span>
+      </div>
+    </div>
+
+    <!-- Forced Pause card -->
+    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--accent)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">THE FORCED PAUSE</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Between territory battles, there is a mandatory resupply pause. Your army regroups, heals (if supply lines are intact), and replenishes. During this pause, other factions and AI make their moves. This is the breathing room that makes the game turn-based at the strategic layer and real-time at the tactical layer. Units that are supply-blocked do <strong style="color:var(--vorax)">NOT</strong> heal or resupply between battles.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §19 Generals in Ground Combat -->
+    <div class="section-label">Generals in Ground Combat</div>
+    <div class="section-heading" id="sec-ch19-generals">Command &middot; Death &middot; Morale Cascade</div>
+    <div class="body-text" style="margin-bottom:16px">Generals aren&rsquo;t abstract. They&rsquo;re on the battlefield with their troops, and they can die. A general&rsquo;s personality trait affects how their entire army fights (see <a href="#ch22" onclick="location.hash='#ch22'">Ch.&nbsp;22</a>). Losing a general mid-battle is catastrophic.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">GENERAL ON THE FIELD</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.7">
+          <div style="margin-bottom:4px">&bull; General is attached to a command unit on the battlefield</div>
+          <div style="margin-bottom:4px">&bull; Their personality trait passively modifies all units under their command (see <a href="#ch22" onclick="location.hash='#ch22'">Ch.&nbsp;22</a> trait bonuses)</div>
+          <div style="margin-bottom:4px">&bull; Their CP ability is available once per battle (see <a href="#ch22" onclick="location.hash='#ch22'">Ch.&nbsp;22</a> trait&rarr;ability mapping)</div>
+          <div style="margin-bottom:4px">&bull; General gains XP from battles won, units killed, objectives completed</div>
+          <div>&bull; Promotion path: Lieutenant &rarr; Captain &rarr; Colonel &rarr; General &rarr; Commander (see <a href="#ch22" onclick="location.hash='#ch22'">Ch.&nbsp;22</a>)</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--vorax)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">GENERAL DEATH &amp; WOUNDING</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.7">
+          <div style="margin-bottom:4px">&bull; If the general&rsquo;s command unit is destroyed, the general can die</div>
+          <div style="margin-bottom:4px">&bull; Survival chance based on rank + bodyguard quality + terrain: <span class="ph-tag">PH</span> 30-70%</div>
+          <div style="margin-bottom:4px">&bull; <strong style="color:var(--vorax)">Death:</strong> Permanent loss. All units under command suffer immediate morale shock. Army-wide <span class="ph-tag">PH</span> -30% combat effectiveness for remainder of battle. Standing orders default to &ldquo;hold position.&rdquo;</div>
+          <div>&bull; <strong style="color:var(--revenant)">Wounded (survived):</strong> General extracted. Out of action for <span class="ph-tag">PH</span> 3-5 turns. Army takes <span class="ph-tag">PH</span> -15% morale penalty. Second-in-command assumes control with reduced bonuses.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §19 Ground Rules of Engagement -->
+    <div class="section-label">Ground Rules of Engagement</div>
+    <div class="section-heading" id="sec-ch19-roe">Targeting &middot; Aggression &middot; Formation &middot; Retreat &mdash; Your Standing Orders</div>
+    <div class="body-text" style="margin-bottom:16px">Rules of Engagement work the same way on the ground as in space (see <a href="#ch18" onclick="location.hash='#ch18'">Ch.&nbsp;18</a>) but with ground-specific options. Set them before battle or spend CP to modify mid-fight. You can go fully autonomous or micromanage every squad&rsquo;s behavior.</div>
+
+    <!-- ROE Categories — 3-column card grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">TARGETING PRIORITY</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">Default: Role-based (anti-armor targets vehicles, snipers target high-value). Player can set custom priority per squad type: &ldquo;Focus infantry first,&rdquo; &ldquo;Ignore fortifications,&rdquo; &ldquo;Target the general.&rdquo;</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">AGGRESSION</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Assault</strong> &mdash; Push forward aggressively. Take ground. Accept higher casualties.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Balanced</strong> &mdash; Advance with cover-to-cover movement. Standard.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Defensive</strong> &mdash; Hold position. Dig in. Only fire when engaged.</div>
+          <div style="color:var(--text-dim);font-size:0.92rem">General personality modifies interpretation (Aggressive general makes &ldquo;balanced&rdquo; more forward).</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">COVER USAGE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Aggressive cover</strong> &mdash; Use cover on advance but don&rsquo;t stop to entrench</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Standard</strong> &mdash; Move cover-to-cover, pause to establish position</div>
+          <div><strong style="color:var(--text-hi)">Hunker</strong> &mdash; Find best available cover and stay. Maximum defense, zero advance.</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">SQUAD FORMATIONS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">
+          Army-level formation set by general (see Q27). Squads auto-adopt:
+          <div style="margin-top:6px;margin-bottom:4px"><strong style="color:var(--text-hi)">Defensive line</strong> &rarr; Squads spread, dig in, overlapping fields of fire</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Aggressive push</strong> &rarr; Wedge formations, lead with heavy armor</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Flanking maneuver</strong> &rarr; Split force, main body pins while flankers envelope</div>
+          <div><strong style="color:var(--text-hi)">Fighting withdrawal</strong> &rarr; Leapfrog retreat, rear guard covers</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">RETREAT CONDITIONS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Never</strong> &mdash; Fight to the last. Desperate situations or Reckless generals.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">At threshold</strong> &mdash; Squad retreats when below <span class="ph-tag">PH</span> 30% strength</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">On order</strong> &mdash; Only when commander spends CP to order retreat</div>
+          <div><strong style="color:var(--text-hi)">Smart retreat</strong> &mdash; Units fall back to better cover when taking heavy fire, re-engage when able</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">VEHICLE RULES</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Spearhead</strong> &mdash; Vehicles lead, infantry follows in cover</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Support</strong> &mdash; Vehicles hang back, provide fire support for advancing infantry</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Independent</strong> &mdash; Vehicles pursue own targets based on role</div>
+          <div style="color:var(--text-dim);font-size:0.92rem">Vehicle type determines terrain accessibility (see <a href="#ch13" onclick="location.hash='#ch13'">Ch.&nbsp;13</a> planet types)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §19 Variable Win Conditions -->
+    <div class="section-label">Variable Win Conditions</div>
+    <div class="section-heading" id="sec-ch19-victory">Territory Control &middot; Timed Hold &middot; Defense &middot; Extraction &mdash; Context Determines Victory</div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">TERRITORY CAPTURE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">Standard. Eliminate or rout all enemy forces from the territory. Attacker controls the territory.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">TIMED HOLD</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">Hold a specific position (objective point) for <span class="ph-tag">PH</span> X minutes. Defender must dislodge attacker before timer expires.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">DEFENSE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">Survive an assault for <span class="ph-tag">PH</span> X waves/minutes. Reinforcements incoming. Hold until relief arrives.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">EXTRACTION</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">Protect a specific unit or asset while it evacuates. Win condition: asset reaches extraction point. Lose condition: asset destroyed.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">HAZARD DEFENSE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">Defend against planetary hazards &mdash; wildlife incursion, Vorax tendril ground assault, environmental catastrophe. Both armies may fight the hazard simultaneously (temporary ceasefire or three-way battle).</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">SIEGE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">Assault a fortified position (bunker complex, planetary fortress, shield generator). Requires sustained bombardment + infantry push. Fortifications must be destroyed before objective can be captured.</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--accent)">
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Win conditions are communicated in the Pre-Battle Window. The auto-battle AI adapts unit behavior to the objective &mdash; in a Timed Hold, units will prioritize positioning on the objective rather than chasing kills.</div>
+    </div>
+
+    <div class="divider"></div>
+
     <!-- §17.3 MVP Ground Unit Stats cross-reference -->
     <div class="section-label">§17.3 — MVP Ground Unit Stats <span class="proto-badge">PROTOTYPE LOCKED</span></div>
     <div class="section-heading" id="sec-ch19-0">Canonical Reference — 6 Units Per Side Default</div>
