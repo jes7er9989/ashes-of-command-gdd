@@ -4026,7 +4026,7 @@ body.crt-active {
 }
 
 .stat-placeholder-banner {
-  display: none; /* Hidden by default; revealed only in Dev Mode */
+  display: flex;
   align-items: flex-start;
   gap: 8px;
   background: rgba(var(--accord-rgb),0.06);
@@ -4038,9 +4038,6 @@ body.crt-active {
   font-size: 0.72rem;
   color: var(--text-dim);
   line-height: 1.5;
-}
-body.dev-mode-active .stat-placeholder-banner {
-  display: flex;
 }
 
 @media (max-width: 768px) {
