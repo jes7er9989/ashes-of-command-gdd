@@ -96,7 +96,11 @@ const DataLoader = {
       this.preload([
         'data/nav/nav-data.json',
         'data/factions/factions.json',
-        'data/nav/section-map.json'
+        'data/nav/section-map.json',
+        'data/icons/equip-icons.json',
+        'data/icons/build-icons.json',
+        'data/sprites/unit-sprites.json',
+        'data/sprites/shapes.json'
       ]);
 
     } catch (err) {
