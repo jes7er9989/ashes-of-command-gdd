@@ -48,6 +48,11 @@
   --vorax: #ff2266;
   --guardians: #ffaa22;
 
+  /* Doctrine / alignment accent colors */
+  --architect: #44aaff;
+  --vanguard: #ff6622;
+  --tyrant: #ffaa22;
+
   /* Faction RGB triplets (for rgba() with variable alpha) */
   --terran-rgb: 0, 180, 255;
   --shards-rgb: 0, 255, 238;
@@ -56,6 +61,11 @@
   --accord-rgb: 68, 255, 102;
   --vorax-rgb: 255, 34, 102;
   --guardians-rgb: 255, 170, 34;
+
+  /* Doctrine RGB triplets */
+  --architect-rgb: 68, 170, 255;
+  --vanguard-rgb: 255, 102, 34;
+  --tyrant-rgb: 255, 170, 34;
 
   /* Background scale (dark â†' light) */
   --bg-base: #07080c;
