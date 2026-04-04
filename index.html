@@ -445,7 +445,7 @@
 
         // Register service worker for offline caching
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('js/service-worker.js')
+          navigator.serviceWorker.register('service-worker.js')
             .then(reg => console.log('%c[SW] Registered (scope: ' + reg.scope + ')', 'color:#AA77FF;font-family:monospace'))
             .catch(err => console.warn('[SW] Registration failed:', err));
         }
