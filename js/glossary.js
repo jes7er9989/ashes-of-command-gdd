@@ -112,6 +112,16 @@ const Glossary = {
       ['Abyssal Vacuum Biology', 'Vorax biological signature: Mariana Trench nightmares evolved for hard vacuum'],
       ['Forged Construct',    'Scrap-Horde elite mineral-life unit, living slag that never stopped burning'],
       ['Dark Space',          'Pressure-crushed void between galaxies where the Vorax originate'],
+      ['Terran League',       'The Last Bastion \u2014 humanity\u2019s last organized military force, versatile combined-arms generalists who win through adaptability and refusal to stay down'],
+      ['Eternal Shards',      'The Dying Light \u2014 the galaxy\u2019s most ancient civilization facing extinction, fielding few but devastating elite units with Phase Blink'],
+      ['Scrap-Horde',         'The Rust Tide \u2014 anarchic scavengers who build from garbage; every battlefield death fuels surviving Horde units via Wreckage Salvage'],
+      ['The Revenant',        'The Undying Protocol \u2014 ancient machine intelligences in living-metal; their fallen stand back up via Reanimation'],
+      ['Unity Accord',        'The Burning Covenant \u2014 precision coalition military under a rigid caste system; one hit marks the target for devastating coordinated fire'],
+      ['Vorax',               'The Devouring Swarm \u2014 extra-galactic biological horror that consumes civilizations and evolves their technology into new organisms'],
+      ['Core Guardians',      'The Silent Gods \u2014 Aethyn-created sentient AI constructs guarding the Reclamation Engine; their deaths chain-react into cascading explosions'],
+      ['Valerius',            'Major Valerius, the Architect advisor of the Terran League \u2014 calm, measured, advocates patience and intelligence'],
+      ['Krell',               'General Krell, the Vanguard advisor of the Terran League \u2014 rough, direct, advocates immediate aggression and overwhelming force'],
+      ['Vane',                'Inquisitor Vane, the Tyrant advisor of the Terran League \u2014 quiet, deliberate, advocates espionage and strategic cruelty'],
     ];
   },
 
