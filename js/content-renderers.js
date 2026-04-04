@@ -215,10 +215,74 @@ const ContentRenderers = {
       subtypeToggle += '</div>';
     }
 
+    /* Build megastructure badge */
+    const megaBadge = planet.megastructure
+      ? '<span style="font-family:\'JetBrains Mono\',monospace;font-size:0.65rem;color:#ffaa22;border:1px solid #ffaa22;padding:1px 5px;border-radius:2px;margin-left:8px;letter-spacing:1px">MEGASTRUCTURE</span>'
+      : '';
+
+    /* Build additional detail sections */
+    let extraSections = '';
+
+    /* Unique / Faction terrain (Capital World) */
+    if (planet.uniqueTerrain) {
+      extraSections += `
+              <div class="planet-detail-section">
+                <div class="planet-detail-label" style="color:${planet.color}">FACTION TERRAIN</div>
+                <div class="planet-detail-body">${planet.uniqueTerrain}</div>
+              </div>`;
+    }
+
+    /* Weather events */
+    if (Array.isArray(planet.weatherEvents) && planet.weatherEvents.length) {
+      extraSections += `
+              <div class="planet-detail-section">
+                <div class="planet-detail-label" style="color:${planet.color}">WEATHER EVENTS</div>
+                <div class="planet-detail-body">${planet.weatherEvents.join(' &middot; ')}</div>
+              </div>`;
+    }
+
+    /* Scan discoveries */
+    if (Array.isArray(planet.scanDiscoveries) && planet.scanDiscoveries.length) {
+      extraSections += `
+              <div class="planet-detail-section">
+                <div class="planet-detail-label" style="color:${planet.color}">SCAN DISCOVERIES</div>
+                <div class="planet-detail-body">${planet.scanDiscoveries.join(' &middot; ')}</div>
+              </div>`;
+    }
+
+    /* Revenant sleepers */
+    if (planet.revenantSleepers) {
+      const sleeperLabels = {
+        guaranteed: 'Guaranteed &mdash; always present',
+        common: 'Common &mdash; high probability',
+        rare: 'Rare &mdash; unlikely but possible',
+        none: 'None'
+      };
+      extraSections += `
+              <div class="planet-detail-section">
+                <div class="planet-detail-label" style="color:${planet.color}">REVENANT SLEEPERS</div>
+                <div class="planet-detail-body">${sleeperLabels[planet.revenantSleepers] || planet.revenantSleepers}</div>
+              </div>`;
+    }
+
+    /* Additional info notes */
+    let notes = '';
+    if (planet.energyYield) notes += 'Geothermal energy bonus (+E yield). ';
+    if (planet.fixedTerritory) notes += 'Fixed territory count per faction. ';
+    if (planet.defenderAdvantage) notes += 'Defender&rsquo;s advantage: auto-militia, orbital batteries, morale bonus. ';
+    if (planet.typed) notes += 'Can be typed (biome variants &mdash; jungle moon, ice moon, etc.). ';
+    if (notes) {
+      extraSections += `
+              <div class="planet-detail-section">
+                <div class="planet-detail-label" style="color:${planet.color}">NOTES</div>
+                <div class="planet-detail-body">${notes.trim()}</div>
+              </div>`;
+    }
+
     return `
       <div class="planet-row" style="border-bottom:1px solid var(--border)">
         <div class="planet-row-header" onclick="document.getElementById('${id}').classList.toggle('planet-detail-open')" style="display:grid;grid-template-columns:160px 90px 150px 90px 1fr;padding:12px 16px;font-size:0.95rem;cursor:pointer;transition:background 0.15s ease;align-items:start" onmouseenter="this.style.background='rgba(255,255,255,0.02)'" onmouseleave="this.style.background='transparent'">
-          <span style="color:${planet.color};font-weight:600">${planet.name}<span class="planet-expand-hint"> &mdash; click to expand &#9662;</span></span>
+          <span style="color:${planet.color};font-weight:600">${planet.name}${megaBadge}<span class="planet-expand-hint"> &mdash; click to expand &#9662;</span></span>
           <span class="planet-col-stats" style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.territories}<span class="ph-tag">PH</span></span>
           <span class="planet-col-stats" style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.yield}<span class="ph-tag">PH</span></span>
           <span class="planet-col-stats" style="color:var(--text-mid);font-family:'JetBrains Mono',monospace">${planet.encounter}<span class="ph-tag">PH</span></span>
@@ -244,7 +308,7 @@ const ContentRenderers = {
               <div class="planet-detail-section">
                 <div class="planet-detail-label" style="color:${planet.color}">NARRATIVE</div>
                 <div class="planet-detail-body" style="font-style:italic;color:var(--text-dim)">${planet.narrative}</div>
-              </div>
+              </div>${extraSections}
             </div>
           </div>
         </div>
