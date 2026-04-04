@@ -48,6 +48,15 @@
   --vorax: #ff2266;
   --guardians: #ffaa22;
 
+  /* Faction RGB triplets (for rgba() with variable alpha) */
+  --terran-rgb: 0, 180, 255;
+  --shards-rgb: 0, 255, 238;
+  --horde-rgb: 255, 102, 34;
+  --revenant-rgb: 170, 119, 255;
+  --accord-rgb: 68, 255, 102;
+  --vorax-rgb: 255, 34, 102;
+  --guardians-rgb: 255, 170, 34;
+
   /* Background scale (dark â†' light) */
   --bg-base: #07080c;
   --bg-panel: #0c0e14;
@@ -388,7 +397,7 @@ a:hover {
 
 .filter-option.active {
   color: var(--accent);
-  background: rgba(0, 180, 255, 0.06);
+  background: rgba(var(--terran-rgb), 0.06);
 }
 
 /* ── Sidebar Search Results (inline) ──────────────────── */
@@ -486,7 +495,7 @@ a:hover {
   cursor: pointer;
   user-select: none;
   transition: color var(--transition);
-  text-shadow: 0 0 12px rgba(0,180,255,0.12);
+  text-shadow: 0 0 12px rgba(var(--terran-rgb),0.12);
 }
 
 .nav-part-header:hover {
@@ -532,7 +541,7 @@ a:hover {
   color: #e8ecf2;
   background: var(--bg-hover);
   border-left-color: var(--accent);
-  text-shadow: 0 0 12px rgba(0,180,255,0.15);
+  text-shadow: 0 0 12px rgba(var(--terran-rgb),0.15);
 }
 
 .nav-chapter.active {
@@ -540,7 +549,7 @@ a:hover {
   background: var(--bg-hover);
   border-left-color: var(--accent);
   font-weight: 600;
-  text-shadow: 0 0 10px rgba(0,180,255,0.2);
+  text-shadow: 0 0 10px rgba(var(--terran-rgb),0.2);
 }
 
 .nav-syn-hint {
@@ -630,9 +639,9 @@ body.sidebar-collapsed .main-content {
   transition: margin-left 0.3s ease;
   overflow-x: clip;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(0,180,255,0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(0,180,255,0.02) 0%, transparent 40%),
-    radial-gradient(ellipse at 50% 80%, rgba(255,170,34,0.015) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 50%, rgba(var(--terran-rgb),0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(var(--terran-rgb),0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 80%, rgba(var(--guardians-rgb),0.015) 0%, transparent 50%),
     var(--bg-base);
 }
 
@@ -715,8 +724,8 @@ body.sidebar-collapsed .main-content {
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--vorax);
-  background: rgba(255, 34, 102, 0.1);
-  border: 1px solid rgba(255, 34, 102, 0.3);
+  background: rgba(var(--vorax-rgb), 0.1);
+  border: 1px solid rgba(var(--vorax-rgb), 0.3);
   padding: 2px 8px;
   border-radius: 2px;
   letter-spacing: 0.15em;
@@ -817,22 +826,22 @@ body.sidebar-collapsed .main-content {
     radial-gradient(1.5px 1.5px at 33% 92%, rgba(180,220,255,0.5), transparent),
     radial-gradient(1.5px 1.5px at 60% 5%, rgba(180,220,255,0.6), transparent),
     /* Layer 3 â€" bright nearby stars (fast twinkle) */
-    radial-gradient(2px 2px at 12% 45%, rgba(0,180,255,0.8), transparent),
-    radial-gradient(2px 2px at 33% 25%, rgba(0,255,238,0.6), transparent),
-    radial-gradient(2px 2px at 58% 70%, rgba(68,255,102,0.5), transparent),
-    radial-gradient(2px 2px at 77% 15%, rgba(255,170,34,0.6), transparent),
-    radial-gradient(2px 2px at 90% 45%, rgba(0,180,255,0.7), transparent),
-    radial-gradient(2px 2px at 20% 85%, rgba(255,102,34,0.5), transparent),
-    radial-gradient(2px 2px at 65% 55%, rgba(170,119,255,0.4), transparent),
+    radial-gradient(2px 2px at 12% 45%, rgba(var(--terran-rgb),0.8), transparent),
+    radial-gradient(2px 2px at 33% 25%, rgba(var(--shards-rgb),0.6), transparent),
+    radial-gradient(2px 2px at 58% 70%, rgba(var(--accord-rgb),0.5), transparent),
+    radial-gradient(2px 2px at 77% 15%, rgba(var(--guardians-rgb),0.6), transparent),
+    radial-gradient(2px 2px at 90% 45%, rgba(var(--terran-rgb),0.7), transparent),
+    radial-gradient(2px 2px at 20% 85%, rgba(var(--horde-rgb),0.5), transparent),
+    radial-gradient(2px 2px at 65% 55%, rgba(var(--revenant-rgb),0.4), transparent),
     /* Layer 3b â€" extra bright accent stars */
-    radial-gradient(2px 2px at 5% 32%, rgba(0,180,255,0.65), transparent),
-    radial-gradient(2px 2px at 28% 58%, rgba(255,170,34,0.5), transparent),
-    radial-gradient(2px 2px at 47% 12%, rgba(0,255,238,0.55), transparent),
-    radial-gradient(2px 2px at 82% 78%, rgba(68,255,102,0.45), transparent),
-    radial-gradient(2px 2px at 95% 22%, rgba(170,119,255,0.5), transparent),
-    radial-gradient(2.5px 2.5px at 40% 90%, rgba(0,180,255,0.6), transparent),
-    radial-gradient(2.5px 2.5px at 70% 40%, rgba(255,34,102,0.4), transparent),
-    radial-gradient(2.5px 2.5px at 16% 68%, rgba(0,255,238,0.5), transparent);
+    radial-gradient(2px 2px at 5% 32%, rgba(var(--terran-rgb),0.65), transparent),
+    radial-gradient(2px 2px at 28% 58%, rgba(var(--guardians-rgb),0.5), transparent),
+    radial-gradient(2px 2px at 47% 12%, rgba(var(--shards-rgb),0.55), transparent),
+    radial-gradient(2px 2px at 82% 78%, rgba(var(--accord-rgb),0.45), transparent),
+    radial-gradient(2px 2px at 95% 22%, rgba(var(--revenant-rgb),0.5), transparent),
+    radial-gradient(2.5px 2.5px at 40% 90%, rgba(var(--terran-rgb),0.6), transparent),
+    radial-gradient(2.5px 2.5px at 70% 40%, rgba(var(--vorax-rgb),0.4), transparent),
+    radial-gradient(2.5px 2.5px at 16% 68%, rgba(var(--shards-rgb),0.5), transparent);
   animation: starfieldDrift 120s linear infinite;
 }
 
@@ -918,8 +927,8 @@ body.sidebar-collapsed .main-content {
   padding: 40px 24px;
   border-radius: 8px;
   background: radial-gradient(ellipse 600px 300px at center 40%,
-    rgba(0,180,255,0.06) 0%,
-    rgba(0,180,255,0.02) 40%,
+    rgba(var(--terran-rgb),0.06) 0%,
+    rgba(var(--terran-rgb),0.02) 40%,
     transparent 70%);
 }
 
@@ -937,24 +946,24 @@ body.sidebar-collapsed .main-content {
   letter-spacing: 0.2em;
   margin-bottom: 8px;
   text-shadow:
-    0 0 20px rgba(0,180,255,0.4),
-    0 0 60px rgba(0,180,255,0.15),
-    0 0 100px rgba(0,180,255,0.05);
+    0 0 20px rgba(var(--terran-rgb),0.4),
+    0 0 60px rgba(var(--terran-rgb),0.15),
+    0 0 100px rgba(var(--terran-rgb),0.05);
   animation: titleGlow 4s ease-in-out infinite alternate;
 }
 
 @keyframes titleGlow {
   0% {
     text-shadow:
-      0 0 20px rgba(0,180,255,0.3),
-      0 0 60px rgba(0,180,255,0.1),
-      0 0 100px rgba(0,180,255,0.03);
+      0 0 20px rgba(var(--terran-rgb),0.3),
+      0 0 60px rgba(var(--terran-rgb),0.1),
+      0 0 100px rgba(var(--terran-rgb),0.03);
   }
   100% {
     text-shadow:
-      0 0 30px rgba(0,180,255,0.6),
-      0 0 80px rgba(0,180,255,0.25),
-      0 0 120px rgba(0,180,255,0.1);
+      0 0 30px rgba(var(--terran-rgb),0.6),
+      0 0 80px rgba(var(--terran-rgb),0.25),
+      0 0 120px rgba(var(--terran-rgb),0.1);
   }
 }
 
@@ -966,7 +975,7 @@ body.sidebar-collapsed .main-content {
   letter-spacing: 0.4em;
   opacity: 1;
   margin-bottom: 8px;
-  text-shadow: 0 0 15px rgba(0,180,255,0.3);
+  text-shadow: 0 0 15px rgba(var(--terran-rgb),0.3);
 }
 
 /* â"€â"€ Hero Version Tag â"€â"€ */
@@ -1057,13 +1066,13 @@ body.sidebar-collapsed .main-content {
   pointer-events: none;
   background:
     radial-gradient(ellipse 800px 500px at 30% 40%,
-      rgba(0,180,255,0.06) 0%,
+      rgba(var(--terran-rgb),0.06) 0%,
       transparent 60%),
     radial-gradient(ellipse 600px 400px at 70% 60%,
-      rgba(255,170,34,0.04) 0%,
+      rgba(var(--guardians-rgb),0.04) 0%,
       transparent 50%),
     radial-gradient(ellipse 500px 300px at 50% 80%,
-      rgba(255,34,102,0.03) 0%,
+      rgba(var(--vorax-rgb),0.03) 0%,
       transparent 50%);
   animation: nebulaShift 30s ease-in-out infinite alternate;
 }
@@ -1089,7 +1098,7 @@ body.sidebar-collapsed .main-content {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  border-right: 2px solid rgba(0,180,255,0.6);
+  border-right: 2px solid rgba(var(--terran-rgb),0.6);
   animation: heroTypewriter 3s steps(72) 0.8s forwards,
              heroCursorBlink 0.7s step-end infinite;
   max-width: 0;
@@ -1101,7 +1110,7 @@ body.sidebar-collapsed .main-content {
 }
 
 @keyframes heroCursorBlink {
-  0%, 100% { border-color: rgba(0,180,255,0.6); }
+  0%, 100% { border-color: rgba(var(--terran-rgb),0.6); }
   50%      { border-color: transparent; }
 }
 
@@ -1128,7 +1137,7 @@ body.sidebar-collapsed .main-content {
   color: var(--accent);
   letter-spacing: 0.12em;
   margin: 0;
-  text-shadow: 0 0 16px rgba(0,180,255,0.25);
+  text-shadow: 0 0 16px rgba(var(--terran-rgb),0.25);
 }
 
 /* ── Hero CTA Buttons ── Quick-jump navigation row */
@@ -1154,16 +1163,16 @@ body.sidebar-collapsed .main-content {
 }
 
 .hero-cta-primary {
-  background: rgba(0,180,255,0.15);
+  background: rgba(var(--terran-rgb),0.15);
   color: var(--accent);
-  border-color: rgba(0,180,255,0.4);
-  box-shadow: 0 0 20px rgba(0,180,255,0.1), inset 0 0 20px rgba(0,180,255,0.05);
+  border-color: rgba(var(--terran-rgb),0.4);
+  box-shadow: 0 0 20px rgba(var(--terran-rgb),0.1), inset 0 0 20px rgba(var(--terran-rgb),0.05);
 }
 
 .hero-cta-primary:hover {
-  background: rgba(0,180,255,0.25);
-  border-color: rgba(0,180,255,0.7);
-  box-shadow: 0 0 30px rgba(0,180,255,0.2), inset 0 0 30px rgba(0,180,255,0.1);
+  background: rgba(var(--terran-rgb),0.25);
+  border-color: rgba(var(--terran-rgb),0.7);
+  box-shadow: 0 0 30px rgba(var(--terran-rgb),0.2), inset 0 0 30px rgba(var(--terran-rgb),0.1);
   transform: translateY(-2px);
 }
 
@@ -1281,9 +1290,9 @@ body.sidebar-collapsed .main-content {
   text-align: center;
   padding: 20px 24px;
   margin: 8px 0 24px;
-  border-left: 2px solid rgba(0,180,255,0.3);
-  border-right: 2px solid rgba(0,180,255,0.3);
-  background: rgba(0,180,255,0.03);
+  border-left: 2px solid rgba(var(--terran-rgb),0.3);
+  border-right: 2px solid rgba(var(--terran-rgb),0.3);
+  background: rgba(var(--terran-rgb),0.03);
   border-radius: 4px;
   transition: opacity 0.5s ease;
 }
@@ -1318,9 +1327,9 @@ body.sidebar-collapsed .main-content {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  background: radial-gradient(ellipse at center, rgba(0,180,255,0.04) 0%, rgba(255,170,34,0.02) 40%, transparent 70%);
-  border-top: 1px solid rgba(0,180,255,0.08);
-  border-bottom: 1px solid rgba(0,180,255,0.08);
+  background: radial-gradient(ellipse at center, rgba(var(--terran-rgb),0.04) 0%, rgba(var(--guardians-rgb),0.02) 40%, transparent 70%);
+  border-top: 1px solid rgba(var(--terran-rgb),0.08);
+  border-bottom: 1px solid rgba(var(--terran-rgb),0.08);
 }
 
 .galaxy-map-container {
@@ -1346,10 +1355,10 @@ body.sidebar-collapsed .main-content {
   inset: 0;
   border-radius: 50%;
   background:
-    radial-gradient(ellipse at 35% 30%, rgba(0,180,255,0.08) 0%, transparent 45%),
-    radial-gradient(ellipse at 65% 70%, rgba(255,170,34,0.06) 0%, transparent 45%),
-    radial-gradient(ellipse at 25% 65%, rgba(0,255,238,0.04) 0%, transparent 40%),
-    radial-gradient(ellipse at 70% 35%, rgba(68,255,102,0.035) 0%, transparent 40%),
+    radial-gradient(ellipse at 35% 30%, rgba(var(--terran-rgb),0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 65% 70%, rgba(var(--guardians-rgb),0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 25% 65%, rgba(var(--shards-rgb),0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 35%, rgba(var(--accord-rgb),0.035) 0%, transparent 40%),
     radial-gradient(ellipse at 50% 50%, rgba(0,100,200,0.07) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
@@ -1426,15 +1435,15 @@ body.sidebar-collapsed .main-content {
       rgba(255,255,255,1) 0%,
       rgba(240,248,255,0.9) 8%,
       rgba(200,225,255,0.7) 18%,
-      rgba(0,180,255,0.45) 35%,
+      rgba(var(--terran-rgb),0.45) 35%,
       rgba(120,60,220,0.2) 50%,
-      rgba(255,170,34,0.08) 65%,
+      rgba(var(--guardians-rgb),0.08) 65%,
       transparent 80%);
   box-shadow:
     0 0 15px 4px rgba(255,255,255,0.6),
     0 0 40px 12px rgba(200,230,255,0.3),
-    0 0 70px 25px rgba(0,180,255,0.25),
-    0 0 120px 50px rgba(255,170,34,0.1);
+    0 0 70px 25px rgba(var(--terran-rgb),0.25),
+    0 0 120px 50px rgba(var(--guardians-rgb),0.1);
   z-index: 2;
   pointer-events: none;
   animation: galaxyCorePulse 4s ease-in-out infinite alternate;
@@ -1445,15 +1454,15 @@ body.sidebar-collapsed .main-content {
     box-shadow:
       0 0 15px 4px rgba(255,255,255,0.6),
       0 0 40px 12px rgba(200,230,255,0.3),
-      0 0 70px 25px rgba(0,180,255,0.25),
-      0 0 120px 50px rgba(255,170,34,0.1);
+      0 0 70px 25px rgba(var(--terran-rgb),0.25),
+      0 0 120px 50px rgba(var(--guardians-rgb),0.1);
   }
   100% {
     box-shadow:
       0 0 20px 6px rgba(255,255,255,0.75),
       0 0 50px 16px rgba(200,230,255,0.4),
-      0 0 90px 35px rgba(0,180,255,0.3),
-      0 0 140px 60px rgba(255,170,34,0.15);
+      0 0 90px 35px rgba(var(--terran-rgb),0.3),
+      0 0 140px 60px rgba(var(--guardians-rgb),0.15);
   }
 }
 
@@ -1628,7 +1637,7 @@ body.sidebar-collapsed .main-content {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  border-top: 1px solid rgba(0,180,255,0.08);
+  border-top: 1px solid rgba(var(--terran-rgb),0.08);
 }
 
 /* 2-column desktop, 1-column mobile */
@@ -1758,7 +1767,7 @@ body.sidebar-collapsed .main-content {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  border-top: 1px solid rgba(0,180,255,0.08);
+  border-top: 1px solid rgba(var(--terran-rgb),0.08);
 }
 
 .summary-bar {
@@ -1777,9 +1786,9 @@ body.sidebar-collapsed .main-content {
 .console-readout {
   position: relative;
   overflow: hidden;
-  border-color: rgba(0,180,255,0.15);
+  border-color: rgba(var(--terran-rgb),0.15);
   background:
-    linear-gradient(180deg, var(--bg-card) 0%, rgba(0,180,255,0.02) 50%, var(--bg-card) 100%);
+    linear-gradient(180deg, var(--bg-card) 0%, rgba(var(--terran-rgb),0.02) 50%, var(--bg-card) 100%);
 }
 
 /* Animated scanning line that sweeps across the readout */
@@ -1791,9 +1800,9 @@ body.sidebar-collapsed .main-content {
   height: 2px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(0,180,255,0.3) 30%,
-    rgba(0,180,255,0.6) 50%,
-    rgba(0,180,255,0.3) 70%,
+    rgba(var(--terran-rgb),0.3) 30%,
+    rgba(var(--terran-rgb),0.6) 50%,
+    rgba(var(--terran-rgb),0.3) 70%,
     transparent 100%);
   animation: consoleScan 4s ease-in-out infinite;
   pointer-events: none;
@@ -1815,7 +1824,7 @@ body.sidebar-collapsed .main-content {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--accent);
-  text-shadow: 0 0 8px rgba(0,180,255,0.3);
+  text-shadow: 0 0 8px rgba(var(--terran-rgb),0.3);
 }
 
 .summary-stat .label {
@@ -1836,7 +1845,7 @@ body.sidebar-collapsed .main-content {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  border-top: 1px solid rgba(0,180,255,0.08);
+  border-top: 1px solid rgba(var(--terran-rgb),0.08);
 }
 
 .footer-quote-divider {
@@ -1881,17 +1890,17 @@ html {
   padding: 48px 32px;
   margin: 0 -32px;
   text-align: center;
-  border-top: 1px solid rgba(0,180,255,0.08);
+  border-top: 1px solid rgba(var(--terran-rgb),0.08);
   box-sizing: border-box;
 }
 
 /* Alternating subtle backgrounds for visual separation */
 .dashboard-section:nth-child(odd) {
-  background: rgba(0,180,255,0.02);
+  background: rgba(var(--terran-rgb),0.02);
 }
 
 .dashboard-section:nth-child(even) {
-  background: rgba(0,180,255,0.04);
+  background: rgba(var(--terran-rgb),0.04);
 }
 
 /* â"€â"€ Section Label â€" small uppercase pre-heading â"€â"€ */
@@ -1918,7 +1927,7 @@ html {
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border);
   text-align: center;
-  text-shadow: 0 0 12px rgba(0,180,255,0.2);
+  text-shadow: 0 0 12px rgba(var(--terran-rgb),0.2);
 }
 
 /* â"€â"€ Divider â€" gradient horizontal rule between sections â"€â"€ */
@@ -1988,7 +1997,7 @@ html {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 6px;
-  text-shadow: 0 0 24px rgba(0,180,255,0.3), 0 0 60px rgba(0,180,255,0.1);
+  text-shadow: 0 0 24px rgba(var(--terran-rgb),0.3), 0 0 60px rgba(var(--terran-rgb),0.1);
 }
 
 .page-subtitle {
@@ -2021,7 +2030,7 @@ html {
 
 .stat-block {
   background: rgba(12,14,20,0.75);
-  border: 1px solid rgba(0,180,255,0.12);
+  border: 1px solid rgba(var(--terran-rgb),0.12);
   border-radius: 4px;
   padding: 24px 16px;
   text-align: center;
@@ -2038,12 +2047,12 @@ html {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,180,255,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--terran-rgb),0.3), transparent);
 }
 
 .stat-block:hover {
-  border-color: rgba(0,180,255,0.3);
-  box-shadow: 0 0 24px rgba(0,180,255,0.12), inset 0 0 20px rgba(0,180,255,0.04);
+  border-color: rgba(var(--terran-rgb),0.3);
+  box-shadow: 0 0 24px rgba(var(--terran-rgb),0.12), inset 0 0 20px rgba(var(--terran-rgb),0.04);
 }
 
 .stat-block .stat-value {
@@ -2135,8 +2144,8 @@ html {
   min-width: 180px;
   padding: 26px 20px 22px;
   border-radius: 6px;
-  border: 1px solid rgba(0,180,255,0.15);
-  border-top: 3px solid rgba(0,180,255,0.4);
+  border: 1px solid rgba(var(--terran-rgb),0.15);
+  border-top: 3px solid rgba(var(--terran-rgb),0.4);
   background: rgba(12,14,20,0.7);
   position: relative;
   transition: all 0.3s ease;
@@ -2146,9 +2155,9 @@ html {
 }
 
 .phase-block:hover {
-  border-color: rgba(0,180,255,0.3);
+  border-color: rgba(var(--terran-rgb),0.3);
   border-top-color: var(--accent);
-  box-shadow: 0 4px 24px rgba(0,180,255,0.15);
+  box-shadow: 0 4px 24px rgba(var(--terran-rgb),0.15);
 }
 
 .phase-num {
@@ -2159,8 +2168,8 @@ html {
   margin-bottom: 10px;
   display: inline-block;
   padding: 4px 12px;
-  background: rgba(0,180,255,0.12);
-  border: 1px solid rgba(0,180,255,0.2);
+  background: rgba(var(--terran-rgb),0.12);
+  border: 1px solid rgba(var(--terran-rgb),0.2);
   border-radius: 3px;
   color: var(--accent);
 }
@@ -2312,7 +2321,7 @@ html {
   margin-top: auto;
   padding-top: 10px;
   text-align: center;
-  border-top: 1px solid rgba(0,180,255,0.1);
+  border-top: 1px solid rgba(var(--terran-rgb),0.1);
 }
 
 
@@ -2327,8 +2336,8 @@ html {
 
 .system-card {
   background: rgba(12,14,20,0.7);
-  border: 1px solid rgba(0,180,255,0.15);
-  border-left: 4px solid rgba(0,180,255,0.45);
+  border: 1px solid rgba(var(--terran-rgb),0.15);
+  border-left: 4px solid rgba(var(--terran-rgb),0.45);
   border-radius: 6px;
   padding: 24px;
   cursor: pointer;
@@ -2338,12 +2347,12 @@ html {
 }
 
 .system-card:hover {
-  border-color: rgba(0,180,255,0.3);
+  border-color: rgba(var(--terran-rgb),0.3);
   border-left-color: var(--accent);
   background: var(--bg-hover);
   box-shadow:
-    0 4px 24px rgba(0,180,255,0.15),
-    inset 0 0 20px rgba(0,180,255,0.03);
+    0 4px 24px rgba(var(--terran-rgb),0.15),
+    inset 0 0 20px rgba(var(--terran-rgb),0.03);
 }
 
 .system-card-title {
@@ -2370,7 +2379,7 @@ html {
   line-height: 1.7;
   font-size: 0.98rem;
   background: rgba(12,14,20,0.75);
-  border: 1px solid rgba(0,180,255,0.12);
+  border: 1px solid rgba(var(--terran-rgb),0.12);
   border-left: 4px solid var(--accent);
   border-radius: 6px;
   text-align: left;
@@ -2381,7 +2390,7 @@ html {
 .card-accent:hover {
   border-left-color: var(--text-hi);
   background: var(--bg-hover);
-  box-shadow: 0 4px 20px rgba(0,180,255,0.15);
+  box-shadow: 0 4px 20px rgba(var(--terran-rgb),0.15);
 }
 
 .card-accent:nth-child(odd) {
@@ -2398,7 +2407,7 @@ html {
   background: rgba(12,14,20,0.75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(0,180,255,0.12);
+  border: 1px solid rgba(var(--terran-rgb),0.12);
   border-radius: 6px;
   padding: 24px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.3);
@@ -2406,9 +2415,9 @@ html {
 }
 
 .dashboard-section .card:hover {
-  border-color: rgba(0,180,255,0.25);
+  border-color: rgba(var(--terran-rgb),0.25);
   background: var(--bg-hover);
-  box-shadow: 0 4px 20px rgba(0,180,255,0.12);
+  box-shadow: 0 4px 20px rgba(var(--terran-rgb),0.12);
 }
 
 
@@ -2520,18 +2529,18 @@ html {
 /* Layer 2 â€" bright colored accent stars */
 #dashboard-view::after {
   box-shadow:
-    267px 134px 0 1.5px rgba(0,180,255,0.3),
-    534px 356px 0 1.5px rgba(0,255,238,0.25),
-    801px 178px 0 1.5px rgba(255,170,34,0.25),
-    1068px 423px 0 1.5px rgba(68,255,102,0.2),
-    1335px 145px 0 1.5px rgba(0,180,255,0.3),
-    434px 645px 0 1.5px rgba(170,119,255,0.2),
-    867px 567px 0 1.5px rgba(255,170,34,0.2),
-    1300px 712px 0 1.5px rgba(0,255,238,0.25),
-    178px 823px 0 1.5px rgba(255,34,102,0.2),
-    645px 189px 0 1.5px rgba(68,255,102,0.25),
-    1100px 89px 0 1.5px rgba(0,180,255,0.3),
-    312px 512px 0 1.5px rgba(0,255,238,0.2);
+    267px 134px 0 1.5px rgba(var(--terran-rgb),0.3),
+    534px 356px 0 1.5px rgba(var(--shards-rgb),0.25),
+    801px 178px 0 1.5px rgba(var(--guardians-rgb),0.25),
+    1068px 423px 0 1.5px rgba(var(--accord-rgb),0.2),
+    1335px 145px 0 1.5px rgba(var(--terran-rgb),0.3),
+    434px 645px 0 1.5px rgba(var(--revenant-rgb),0.2),
+    867px 567px 0 1.5px rgba(var(--guardians-rgb),0.2),
+    1300px 712px 0 1.5px rgba(var(--shards-rgb),0.25),
+    178px 823px 0 1.5px rgba(var(--vorax-rgb),0.2),
+    645px 189px 0 1.5px rgba(var(--accord-rgb),0.25),
+    1100px 89px 0 1.5px rgba(var(--terran-rgb),0.3),
+    312px 512px 0 1.5px rgba(var(--shards-rgb),0.2);
   animation: dashStarsTwinkle 10s ease-in-out infinite alternate-reverse;
 }
 
@@ -2818,7 +2827,7 @@ html {
   padding: 14px 32px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 0 12px rgba(0, 180, 255, 0.1), inset 0 0 12px rgba(0, 180, 255, 0.03);
+  box-shadow: 0 0 12px rgba(var(--terran-rgb), 0.1), inset 0 0 12px rgba(var(--terran-rgb), 0.03);
   text-transform: uppercase;
   position: relative;
   overflow: hidden;
@@ -2831,7 +2840,7 @@ html {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 180, 255, 0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--terran-rgb), 0.08), transparent);
   transition: left 0.5s ease;
 }
 
@@ -2843,7 +2852,7 @@ html {
   background: linear-gradient(135deg, var(--bg-hover), var(--bg-card));
   border-color: var(--text-hi);
   color: var(--text-hi);
-  box-shadow: 0 0 24px rgba(0, 180, 255, 0.25), inset 0 0 16px rgba(0, 180, 255, 0.06);
+  box-shadow: 0 0 24px rgba(var(--terran-rgb), 0.25), inset 0 0 16px rgba(var(--terran-rgb), 0.06);
   transform: translateY(-1px);
 }
 
@@ -2891,7 +2900,7 @@ html {
 .audio-controls.active .audio-toggle {
   color: var(--accent);
   border-color: var(--accent);
-  box-shadow: 0 0 8px rgba(0,180,255,0.3);
+  box-shadow: 0 0 8px rgba(var(--terran-rgb),0.3);
 }
 
 /* â"€â"€ Audio Panel (sliders) â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
@@ -2944,7 +2953,7 @@ html {
   background: var(--accent);
   border-radius: 50%;
   border: none;
-  box-shadow: 0 0 6px rgba(0,180,255,0.4);
+  box-shadow: 0 0 6px rgba(var(--terran-rgb),0.4);
 }
 
 .audio-slider-row input[type="range"]::-moz-range-thumb {
@@ -2953,7 +2962,7 @@ html {
   background: var(--accent);
   border-radius: 50%;
   border: none;
-  box-shadow: 0 0 6px rgba(0,180,255,0.4);
+  box-shadow: 0 0 6px rgba(var(--terran-rgb),0.4);
 }
 
 /* â"€â"€ Back to Top Button â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
@@ -3212,8 +3221,8 @@ html {
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 180, 255, 0.015) 2px,
-    rgba(0, 180, 255, 0.015) 4px
+    rgba(var(--terran-rgb), 0.015) 2px,
+    rgba(var(--terran-rgb), 0.015) 4px
   );
   pointer-events: none;
 }
@@ -3232,7 +3241,7 @@ html {
   left: 0;
   right: 0;
   padding: 10px 20px;
-  background: linear-gradient(90deg, rgba(7,8,12,0.95) 0%, rgba(0,180,255,0.12) 50%, rgba(7,8,12,0.95) 100%);
+  background: linear-gradient(90deg, rgba(7,8,12,0.95) 0%, rgba(var(--terran-rgb),0.12) 50%, rgba(7,8,12,0.95) 100%);
   border-bottom: 1px solid var(--accent);
   color: var(--accent);
   font-family: 'Share Tech Mono', monospace;
@@ -3274,14 +3283,14 @@ html {
 }
 
 @keyframes devPriming {
-  from { text-shadow: 0 0 4px rgba(0,180,255,0.3); }
-  to   { text-shadow: 0 0 12px rgba(0,180,255,0.7), 0 0 24px rgba(0,180,255,0.3); }
+  from { text-shadow: 0 0 4px rgba(var(--terran-rgb),0.3); }
+  to   { text-shadow: 0 0 12px rgba(var(--terran-rgb),0.7), 0 0 24px rgba(var(--terran-rgb),0.3); }
 }
 
 /* â"€â"€ Sidebar Title â€" Unlocked Glow â"€â"€
    Permanent subtle glow after dev mode is activated.              */
 .sidebar-title.dev-unlocked {
-  text-shadow: 0 0 8px rgba(0,180,255,0.5), 0 0 20px rgba(0,180,255,0.2);
+  text-shadow: 0 0 8px rgba(var(--terran-rgb),0.5), 0 0 20px rgba(var(--terran-rgb),0.2);
 }
 
 /* â"€â"€ Hidden Chapters (ch44â€"ch46) â"€â"€
@@ -3369,20 +3378,20 @@ body.dev-mode-active .nav-chapter[data-id="ch46"] {
    When edit mode is active, editable elements get a subtle
    left-border indicator and highlight on focus.                   */
 body.edit-mode [data-editable] {
-  outline: 1px dashed rgba(0,180,255,0.15);
+  outline: 1px dashed rgba(var(--terran-rgb),0.15);
   outline-offset: 2px;
   transition: outline-color 0.2s ease, background 0.2s ease;
   cursor: text;
 }
 
 body.edit-mode [data-editable]:hover {
-  outline-color: rgba(0,180,255,0.35);
+  outline-color: rgba(var(--terran-rgb),0.35);
 }
 
 [data-editable]:focus {
   outline: 1px solid var(--accent) !important;
   outline-offset: 2px;
-  background: rgba(0,180,255,0.04);
+  background: rgba(var(--terran-rgb),0.04);
 }
 
 
@@ -3404,26 +3413,26 @@ body.edit-mode [data-editable]:hover {
 }
 #procedural-bg.bg-terran {
   background:
-    radial-gradient(ellipse at 20% 80%, rgba(0,180,255,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(var(--terran-rgb),0.12) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(0,100,180,0.08) 0%, transparent 45%),
-    repeating-linear-gradient(0deg,   transparent, transparent 40px, rgba(0,180,255,0.025) 40px, rgba(0,180,255,0.025) 41px),
-    repeating-linear-gradient(90deg,  transparent, transparent 40px, rgba(0,180,255,0.018) 40px, rgba(0,180,255,0.018) 41px),
+    repeating-linear-gradient(0deg,   transparent, transparent 40px, rgba(var(--terran-rgb),0.025) 40px, rgba(var(--terran-rgb),0.025) 41px),
+    repeating-linear-gradient(90deg,  transparent, transparent 40px, rgba(var(--terran-rgb),0.018) 40px, rgba(var(--terran-rgb),0.018) 41px),
     #060c14;
 }
 #procedural-bg.bg-horde {
   background:
     radial-gradient(ellipse at 50% 50%, rgba(180,50,0,0.18) 0%, transparent 60%),
-    radial-gradient(circle at 90% 90%, rgba(255,102,34,0.1) 0%, transparent 35%),
+    radial-gradient(circle at 90% 90%, rgba(var(--horde-rgb),0.1) 0%, transparent 35%),
     repeating-linear-gradient(45deg,  transparent, transparent 18px, rgba(255,80,0,0.03) 18px, rgba(255,80,0,0.03) 20px),
     repeating-linear-gradient(-45deg, transparent, transparent 18px, rgba(200,40,0,0.02) 18px, rgba(200,40,0,0.02) 20px),
     #0d0602;
 }
 #procedural-bg.bg-shards {
   background:
-    radial-gradient(circle at 25% 30%, rgba(0,255,238,0.12) 0%, transparent 40%),
+    radial-gradient(circle at 25% 30%, rgba(var(--shards-rgb),0.12) 0%, transparent 40%),
     radial-gradient(circle at 75% 70%, rgba(162,0,255,0.10) 0%, transparent 40%),
     radial-gradient(circle at 50% 50%, rgba(0,100,255,0.06) 0%, transparent 60%),
-    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(0,255,238,0.015) 30deg, transparent 60deg),
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(var(--shards-rgb),0.015) 30deg, transparent 60deg),
     #04050e;
 }
 #procedural-bg.bg-revenant {
@@ -3436,23 +3445,23 @@ body.edit-mode [data-editable]:hover {
 }
 #procedural-bg.bg-accord {
   background:
-    radial-gradient(ellipse at 70% 20%, rgba(68,255,102,0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 70% 20%, rgba(var(--accord-rgb),0.12) 0%, transparent 45%),
     radial-gradient(circle at 30% 80%, rgba(255,200,100,0.07) 0%, transparent 40%),
-    repeating-linear-gradient(60deg,  transparent, transparent 28px, rgba(68,255,102,0.022) 28px, rgba(68,255,102,0.022) 29px),
+    repeating-linear-gradient(60deg,  transparent, transparent 28px, rgba(var(--accord-rgb),0.022) 28px, rgba(var(--accord-rgb),0.022) 29px),
     repeating-linear-gradient(-60deg, transparent, transparent 28px, rgba(255,150,0,0.015) 28px, rgba(255,150,0,0.015) 29px),
     #080700;
 }
 #procedural-bg.bg-vorax {
   background:
     radial-gradient(ellipse at 40% 60%, rgba(200,0,60,0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255,34,102,0.08) 0%, transparent 35%),
+    radial-gradient(circle at 80% 20%, rgba(var(--vorax-rgb),0.08) 0%, transparent 35%),
     radial-gradient(circle at 20% 20%, rgba(120,0,40,0.08) 0%, transparent 30%),
     repeating-radial-gradient(circle at 50% 50%, transparent 0px, transparent 28px, rgba(200,0,60,0.015) 28px, rgba(200,0,60,0.015) 30px),
     #060001;
 }
 #procedural-bg.bg-guardians {
   background:
-    radial-gradient(ellipse at 50% -20%, rgba(255,170,34,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% -20%, rgba(var(--guardians-rgb),0.14) 0%, transparent 55%),
     radial-gradient(circle at 85% 85%, rgba(180,100,255,0.07) 0%, transparent 35%),
     repeating-linear-gradient(0deg,  transparent, transparent 50px, rgba(180,80,255,0.02) 50px, rgba(180,80,255,0.02) 51px),
     repeating-linear-gradient(90deg, transparent, transparent 65px, rgba(160,60,255,0.015) 65px, rgba(160,60,255,0.015) 66px),
@@ -3515,19 +3524,19 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 
 /* â"€â"€ Main-Content Faction Backgrounds â"€â"€ */
 .faction-bg-terran .main-content {
-  background: radial-gradient(ellipse at 20% 30%, rgba(0,180,255,0.04) 0%, transparent 60%),
-    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0,180,255,0.02) 40px, rgba(0,180,255,0.02) 41px),
-    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0,180,255,0.015) 40px, rgba(0,180,255,0.015) 41px);
+  background: radial-gradient(ellipse at 20% 30%, rgba(var(--terran-rgb),0.04) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(var(--terran-rgb),0.02) 40px, rgba(var(--terran-rgb),0.02) 41px),
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(var(--terran-rgb),0.015) 40px, rgba(var(--terran-rgb),0.015) 41px);
 }
 .faction-bg-shards .main-content {
-  background: radial-gradient(ellipse at 70% 20%, rgba(0,255,238,0.05) 0%, transparent 50%),
-    radial-gradient(circle at 30% 80%, rgba(0,255,238,0.03) 0%, transparent 40%),
-    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(0,255,238,0.01) 30deg, transparent 60deg);
+  background: radial-gradient(ellipse at 70% 20%, rgba(var(--shards-rgb),0.05) 0%, transparent 50%),
+    radial-gradient(circle at 30% 80%, rgba(var(--shards-rgb),0.03) 0%, transparent 40%),
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(var(--shards-rgb),0.01) 30deg, transparent 60deg);
 }
 .faction-bg-horde .main-content {
-  background: radial-gradient(ellipse at 50% 50%, rgba(255,102,34,0.05) 0%, transparent 60%),
-    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,102,34,0.02) 20px, rgba(255,102,34,0.02) 22px),
-    repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,102,34,0.015) 20px, rgba(255,102,34,0.015) 22px);
+  background: radial-gradient(ellipse at 50% 50%, rgba(var(--horde-rgb),0.05) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(var(--horde-rgb),0.02) 20px, rgba(var(--horde-rgb),0.02) 22px),
+    repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(var(--horde-rgb),0.015) 20px, rgba(var(--horde-rgb),0.015) 22px);
 }
 .faction-bg-revenant .main-content {
   background: radial-gradient(ellipse at 50% 0%, rgba(68,255,136,0.04) 0%, transparent 50%),
@@ -3535,29 +3544,29 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
     repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(68,255,136,0.01) 80px, rgba(68,255,136,0.01) 81px);
 }
 .faction-bg-accord .main-content {
-  background: radial-gradient(ellipse at 80% 20%, rgba(68,255,102,0.04) 0%, transparent 50%),
-    repeating-linear-gradient(60deg, transparent, transparent 30px, rgba(68,255,102,0.015) 30px, rgba(68,255,102,0.015) 31px),
-    repeating-linear-gradient(-60deg, transparent, transparent 30px, rgba(68,255,102,0.012) 30px, rgba(68,255,102,0.012) 31px);
+  background: radial-gradient(ellipse at 80% 20%, rgba(var(--accord-rgb),0.04) 0%, transparent 50%),
+    repeating-linear-gradient(60deg, transparent, transparent 30px, rgba(var(--accord-rgb),0.015) 30px, rgba(var(--accord-rgb),0.015) 31px),
+    repeating-linear-gradient(-60deg, transparent, transparent 30px, rgba(var(--accord-rgb),0.012) 30px, rgba(var(--accord-rgb),0.012) 31px);
 }
 .faction-bg-vorax .main-content {
-  background: radial-gradient(ellipse at 40% 60%, rgba(255,34,102,0.05) 0%, transparent 50%),
-    radial-gradient(circle at 70% 30%, rgba(255,34,102,0.03) 0%, transparent 35%),
-    repeating-radial-gradient(circle at 50% 50%, transparent 0px, transparent 30px, rgba(255,34,102,0.01) 30px, rgba(255,34,102,0.01) 32px);
+  background: radial-gradient(ellipse at 40% 60%, rgba(var(--vorax-rgb),0.05) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(var(--vorax-rgb),0.03) 0%, transparent 35%),
+    repeating-radial-gradient(circle at 50% 50%, transparent 0px, transparent 30px, rgba(var(--vorax-rgb),0.01) 30px, rgba(var(--vorax-rgb),0.01) 32px);
 }
 .faction-bg-guardians .main-content {
-  background: radial-gradient(ellipse at 50% 30%, rgba(255,170,34,0.04) 0%, transparent 50%),
-    repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(255,170,34,0.015) 50px, rgba(255,170,34,0.015) 51px),
-    repeating-linear-gradient(90deg, transparent, transparent 70px, rgba(255,170,34,0.012) 70px, rgba(255,170,34,0.012) 71px);
+  background: radial-gradient(ellipse at 50% 30%, rgba(var(--guardians-rgb),0.04) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(var(--guardians-rgb),0.015) 50px, rgba(var(--guardians-rgb),0.015) 51px),
+    repeating-linear-gradient(90deg, transparent, transparent 70px, rgba(var(--guardians-rgb),0.012) 70px, rgba(var(--guardians-rgb),0.012) 71px);
 }
 
 /* â"€â"€ Sidebar Faction Glow â"€â"€ */
-.faction-bg-terran    .sidebar { box-shadow: inset -1px 0 0 rgba(0,180,255,.15), 3px 0 20px rgba(0,180,255,.07); }
-.faction-bg-shards    .sidebar { box-shadow: inset -1px 0 0 rgba(0,255,238,.15), 3px 0 20px rgba(0,255,238,.07); }
-.faction-bg-horde     .sidebar { box-shadow: inset -1px 0 0 rgba(255,102,34,.15),3px 0 20px rgba(255,102,34,.07); }
-.faction-bg-revenant     .sidebar { box-shadow: inset -1px 0 0 rgba(170,119,255,.15), 3px 0 20px rgba(170,119,255,.07); }
-.faction-bg-accord    .sidebar { box-shadow: inset -1px 0 0 rgba(68,255,102,.15),3px 0 20px rgba(68,255,102,.07); }
-.faction-bg-vorax     .sidebar { box-shadow: inset -1px 0 0 rgba(255,34,102,.15), 3px 0 20px rgba(255,34,102,.07); }
-.faction-bg-guardians .sidebar { box-shadow: inset -1px 0 0 rgba(255,170,34,.15),3px 0 20px rgba(255,170,34,.07); }
+.faction-bg-terran    .sidebar { box-shadow: inset -1px 0 0 rgba(var(--terran-rgb),.15), 3px 0 20px rgba(var(--terran-rgb),.07); }
+.faction-bg-shards    .sidebar { box-shadow: inset -1px 0 0 rgba(var(--shards-rgb),.15), 3px 0 20px rgba(var(--shards-rgb),.07); }
+.faction-bg-horde     .sidebar { box-shadow: inset -1px 0 0 rgba(var(--horde-rgb),.15),3px 0 20px rgba(var(--horde-rgb),.07); }
+.faction-bg-revenant     .sidebar { box-shadow: inset -1px 0 0 rgba(var(--revenant-rgb),.15), 3px 0 20px rgba(var(--revenant-rgb),.07); }
+.faction-bg-accord    .sidebar { box-shadow: inset -1px 0 0 rgba(var(--accord-rgb),.15),3px 0 20px rgba(var(--accord-rgb),.07); }
+.faction-bg-vorax     .sidebar { box-shadow: inset -1px 0 0 rgba(var(--vorax-rgb),.15), 3px 0 20px rgba(var(--vorax-rgb),.07); }
+.faction-bg-guardians .sidebar { box-shadow: inset -1px 0 0 rgba(var(--guardians-rgb),.15),3px 0 20px rgba(var(--guardians-rgb),.07); }
 
 /* â"€â"€ Sidebar Title Faction Glow â"€â"€ */
 .faction-bg-terran    .sidebar-title { color: var(--terran); text-shadow: 0 0 12px var(--terran); }
@@ -3569,13 +3578,13 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-guardians .sidebar-title { color: var(--guardians); text-shadow: 0 0 12px var(--guardians); }
 
 /* â"€â"€ Nav Active Items â€" Faction Color â"€â"€ */
-.faction-bg-terran    .nav-chapter.active { color: var(--terran); border-left-color: var(--terran); background: rgba(0,180,255,.06); --fx-nav: var(--terran); }
-.faction-bg-shards    .nav-chapter.active { color: var(--shards); border-left-color: var(--shards); background: rgba(0,255,238,.06); --fx-nav: var(--shards); }
-.faction-bg-horde     .nav-chapter.active { color: var(--horde);  border-left-color: var(--horde);  background: rgba(255,102,34,.06); --fx-nav: var(--horde); }
-.faction-bg-revenant     .nav-chapter.active { color: var(--revenant);  border-left-color: var(--revenant);  background: rgba(170,119,255,.06); --fx-nav: var(--revenant); }
-.faction-bg-accord    .nav-chapter.active { color: var(--accord); border-left-color: var(--accord); background: rgba(68,255,102,.06); --fx-nav: var(--accord); }
-.faction-bg-vorax     .nav-chapter.active { color: var(--vorax);  border-left-color: var(--vorax);  background: rgba(255,34,102,.06); --fx-nav: var(--vorax); }
-.faction-bg-guardians .nav-chapter.active { color: var(--guardians); border-left-color: var(--guardians); background: rgba(255,170,34,.06); --fx-nav: var(--guardians); }
+.faction-bg-terran    .nav-chapter.active { color: var(--terran); border-left-color: var(--terran); background: rgba(var(--terran-rgb),.06); --fx-nav: var(--terran); }
+.faction-bg-shards    .nav-chapter.active { color: var(--shards); border-left-color: var(--shards); background: rgba(var(--shards-rgb),.06); --fx-nav: var(--shards); }
+.faction-bg-horde     .nav-chapter.active { color: var(--horde);  border-left-color: var(--horde);  background: rgba(var(--horde-rgb),.06); --fx-nav: var(--horde); }
+.faction-bg-revenant     .nav-chapter.active { color: var(--revenant);  border-left-color: var(--revenant);  background: rgba(var(--revenant-rgb),.06); --fx-nav: var(--revenant); }
+.faction-bg-accord    .nav-chapter.active { color: var(--accord); border-left-color: var(--accord); background: rgba(var(--accord-rgb),.06); --fx-nav: var(--accord); }
+.faction-bg-vorax     .nav-chapter.active { color: var(--vorax);  border-left-color: var(--vorax);  background: rgba(var(--vorax-rgb),.06); --fx-nav: var(--vorax); }
+.faction-bg-guardians .nav-chapter.active { color: var(--guardians); border-left-color: var(--guardians); background: rgba(var(--guardians-rgb),.06); --fx-nav: var(--guardians); }
 .faction-bg-terran    .nav-chapter.active::before { --fx-nav: var(--terran); }
 .faction-bg-shards    .nav-chapter.active::before { --fx-nav: var(--shards); }
 .faction-bg-horde     .nav-chapter.active::before { --fx-nav: var(--horde);  }
@@ -3585,22 +3594,22 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-guardians .nav-chapter.active::before { --fx-nav: var(--guardians); }
 
 /* â"€â"€ Search Box â€" Faction Tint â"€â"€ */
-.faction-bg-terran    .search-box { border-color: var(--terran); box-shadow: 0 8px 48px rgba(0,180,255,.22), 0 0 0 1px rgba(0,180,255,.2); }
-.faction-bg-shards    .search-box { border-color: var(--shards); box-shadow: 0 8px 48px rgba(0,255,238,.22), 0 0 0 1px rgba(0,255,238,.2); }
-.faction-bg-horde     .search-box { border-color: var(--horde);  box-shadow: 0 8px 48px rgba(255,102,34,.22),0 0 0 1px rgba(255,102,34,.2); }
-.faction-bg-revenant     .search-box { border-color: var(--revenant);  box-shadow: 0 8px 48px rgba(170,119,255,.22), 0 0 0 1px rgba(170,119,255,.2); }
-.faction-bg-accord    .search-box { border-color: var(--accord); box-shadow: 0 8px 48px rgba(68,255,102,.22),0 0 0 1px rgba(68,255,102,.2); }
-.faction-bg-vorax     .search-box { border-color: var(--vorax);  box-shadow: 0 8px 48px rgba(255,34,102,.22), 0 0 0 1px rgba(255,34,102,.2); }
-.faction-bg-guardians .search-box { border-color: var(--guardians); box-shadow: 0 8px 48px rgba(255,170,34,.22),0 0 0 1px rgba(255,170,34,.2); }
+.faction-bg-terran    .search-box { border-color: var(--terran); box-shadow: 0 8px 48px rgba(var(--terran-rgb),.22), 0 0 0 1px rgba(var(--terran-rgb),.2); }
+.faction-bg-shards    .search-box { border-color: var(--shards); box-shadow: 0 8px 48px rgba(var(--shards-rgb),.22), 0 0 0 1px rgba(var(--shards-rgb),.2); }
+.faction-bg-horde     .search-box { border-color: var(--horde);  box-shadow: 0 8px 48px rgba(var(--horde-rgb),.22),0 0 0 1px rgba(var(--horde-rgb),.2); }
+.faction-bg-revenant     .search-box { border-color: var(--revenant);  box-shadow: 0 8px 48px rgba(var(--revenant-rgb),.22), 0 0 0 1px rgba(var(--revenant-rgb),.2); }
+.faction-bg-accord    .search-box { border-color: var(--accord); box-shadow: 0 8px 48px rgba(var(--accord-rgb),.22),0 0 0 1px rgba(var(--accord-rgb),.2); }
+.faction-bg-vorax     .search-box { border-color: var(--vorax);  box-shadow: 0 8px 48px rgba(var(--vorax-rgb),.22), 0 0 0 1px rgba(var(--vorax-rgb),.2); }
+.faction-bg-guardians .search-box { border-color: var(--guardians); box-shadow: 0 8px 48px rgba(var(--guardians-rgb),.22),0 0 0 1px rgba(var(--guardians-rgb),.2); }
 
 /* â"€â"€ Scrollbar â€" Faction Color â"€â"€ */
-.faction-bg-terran    .main-content::-webkit-scrollbar-thumb { background: rgba(0,180,255,.28); }
-.faction-bg-shards    .main-content::-webkit-scrollbar-thumb { background: rgba(0,255,238,.28); }
-.faction-bg-horde     .main-content::-webkit-scrollbar-thumb { background: rgba(255,102,34,.28); }
-.faction-bg-revenant     .main-content::-webkit-scrollbar-thumb { background: rgba(170,119,255,.28); }
-.faction-bg-accord    .main-content::-webkit-scrollbar-thumb { background: rgba(68,255,102,.28); }
-.faction-bg-vorax     .main-content::-webkit-scrollbar-thumb { background: rgba(255,34,102,.28); }
-.faction-bg-guardians .main-content::-webkit-scrollbar-thumb { background: rgba(255,170,34,.28); }
+.faction-bg-terran    .main-content::-webkit-scrollbar-thumb { background: rgba(var(--terran-rgb),.28); }
+.faction-bg-shards    .main-content::-webkit-scrollbar-thumb { background: rgba(var(--shards-rgb),.28); }
+.faction-bg-horde     .main-content::-webkit-scrollbar-thumb { background: rgba(var(--horde-rgb),.28); }
+.faction-bg-revenant     .main-content::-webkit-scrollbar-thumb { background: rgba(var(--revenant-rgb),.28); }
+.faction-bg-accord    .main-content::-webkit-scrollbar-thumb { background: rgba(var(--accord-rgb),.28); }
+.faction-bg-vorax     .main-content::-webkit-scrollbar-thumb { background: rgba(var(--vorax-rgb),.28); }
+.faction-bg-guardians .main-content::-webkit-scrollbar-thumb { background: rgba(var(--guardians-rgb),.28); }
 
 /* â"€â"€ Cards â€" Faction Color Variable â"€â"€ */
 .faction-bg-terran    .card { --fx: var(--terran); }
@@ -3630,13 +3639,13 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-guardians .section-heading { background: linear-gradient(90deg,#fff 15%,var(--guardians) 50%,#fff 85%) 0/300%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: p7-shimmer 5.5s linear infinite; }
 
 /* â"€â"€ Quote Blocks â€" Faction Color â"€â"€ */
-.faction-bg-terran    .quote-block { border-left-color: var(--terran); background: rgba(0,180,255,.025); }
-.faction-bg-shards    .quote-block { border-left-color: var(--shards); background: rgba(0,255,238,.025); }
-.faction-bg-horde     .quote-block { border-left-color: var(--horde);  background: rgba(255,102,34,.025); }
-.faction-bg-revenant     .quote-block { border-left-color: var(--revenant);  background: rgba(170,119,255,.025); }
-.faction-bg-accord    .quote-block { border-left-color: var(--accord); background: rgba(68,255,102,.025); }
-.faction-bg-vorax     .quote-block { border-left-color: var(--vorax);  background: rgba(255,34,102,.025); }
-.faction-bg-guardians .quote-block { border-left-color: var(--guardians); background: rgba(255,170,34,.025); }
+.faction-bg-terran    .quote-block { border-left-color: var(--terran); background: rgba(var(--terran-rgb),.025); }
+.faction-bg-shards    .quote-block { border-left-color: var(--shards); background: rgba(var(--shards-rgb),.025); }
+.faction-bg-horde     .quote-block { border-left-color: var(--horde);  background: rgba(var(--horde-rgb),.025); }
+.faction-bg-revenant     .quote-block { border-left-color: var(--revenant);  background: rgba(var(--revenant-rgb),.025); }
+.faction-bg-accord    .quote-block { border-left-color: var(--accord); background: rgba(var(--accord-rgb),.025); }
+.faction-bg-vorax     .quote-block { border-left-color: var(--vorax);  background: rgba(var(--vorax-rgb),.025); }
+.faction-bg-guardians .quote-block { border-left-color: var(--guardians); background: rgba(var(--guardians-rgb),.025); }
 
 /* â"€â"€ Power Bars â€" Faction Color â"€â"€ */
 .faction-bg-terran    .power-bar-fill { background: var(--terran) !important; box-shadow: 0 0 6px var(--terran); }
@@ -3681,13 +3690,13 @@ body.faction-bg-guardians { --faction-active: var(--guardians); }
 .faction-bg-guardians .domain-tab { --fx: var(--guardians); }
 
 /* â"€â"€ Data Rows â€" Faction Hover â"€â"€ */
-.faction-bg-terran    .data-row:hover { border-left-color: var(--terran); background: rgba(0,180,255,.04); }
-.faction-bg-shards    .data-row:hover { border-left-color: var(--shards); background: rgba(0,255,238,.04); }
-.faction-bg-horde     .data-row:hover { border-left-color: var(--horde);  background: rgba(255,102,34,.04); }
-.faction-bg-revenant     .data-row:hover { border-left-color: var(--revenant);  background: rgba(170,119,255,.04); }
-.faction-bg-accord    .data-row:hover { border-left-color: var(--accord); background: rgba(68,255,102,.04); }
-.faction-bg-vorax     .data-row:hover { border-left-color: var(--vorax);  background: rgba(255,34,102,.04); }
-.faction-bg-guardians .data-row:hover { border-left-color: var(--guardians); background: rgba(255,170,34,.04); }
+.faction-bg-terran    .data-row:hover { border-left-color: var(--terran); background: rgba(var(--terran-rgb),.04); }
+.faction-bg-shards    .data-row:hover { border-left-color: var(--shards); background: rgba(var(--shards-rgb),.04); }
+.faction-bg-horde     .data-row:hover { border-left-color: var(--horde);  background: rgba(var(--horde-rgb),.04); }
+.faction-bg-revenant     .data-row:hover { border-left-color: var(--revenant);  background: rgba(var(--revenant-rgb),.04); }
+.faction-bg-accord    .data-row:hover { border-left-color: var(--accord); background: rgba(var(--accord-rgb),.04); }
+.faction-bg-vorax     .data-row:hover { border-left-color: var(--vorax);  background: rgba(var(--vorax-rgb),.04); }
+.faction-bg-guardians .data-row:hover { border-left-color: var(--guardians); background: rgba(var(--guardians-rgb),.04); }
 
 /* â"€â"€ Back-to-Top Button â€" Faction Color â"€â"€ */
 body[class*="faction-bg-"] .back-to-top {
@@ -3821,8 +3830,8 @@ body[class*="faction-bg-"] .back-to-top:hover {
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 180, 255, 0.012) 2px,
-    rgba(0, 180, 255, 0.012) 4px
+    rgba(var(--terran-rgb), 0.012) 2px,
+    rgba(var(--terran-rgb), 0.012) 4px
   );
 }
 
@@ -3847,7 +3856,7 @@ body[class*="faction-bg-"] .back-to-top:hover {
 
 body.crt-active {
   /* Subtle text rendering shift for CRT feel */
-  text-shadow: 0 0 1px rgba(0,180,255,0.08);
+  text-shadow: 0 0 1px rgba(var(--terran-rgb),0.08);
 }
 
 /* â"€â"€ Holo-Tilt Card Transition â"€â"€
@@ -4249,7 +4258,7 @@ body.crt-active {
   gap: 24px;
   padding: 20px 20px 24px;
   border-top: 1px solid var(--border);
-  background: rgba(0, 180, 255, 0.015);
+  background: rgba(var(--terran-rgb), 0.015);
 }
 
 /* -- Placeholder Stat Tag -- */
@@ -4276,8 +4285,8 @@ body.crt-active {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  background: rgba(68,255,102,0.06);
-  border: 1px solid rgba(68,255,102,0.15);
+  background: rgba(var(--accord-rgb),0.06);
+  border: 1px solid rgba(var(--accord-rgb),0.15);
   border-radius: 4px;
   padding: 10px 16px;
   margin-bottom: 20px;
@@ -4480,7 +4489,7 @@ body.crt-active {
 
 .formation-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 0 12px rgba(0, 180, 255, 0.08);
+  box-shadow: 0 0 12px rgba(var(--terran-rgb), 0.08);
 }
 
 /* â"€â"€ Formation Diagram â"€â"€ */
@@ -4540,15 +4549,15 @@ body.crt-active {
 }
 
 .formation-tag-best {
-  background: rgba(68, 255, 102, 0.12);
+  background: rgba(var(--accord-rgb), 0.12);
   color: #AA77FF;
-  border: 1px solid rgba(68, 255, 102, 0.25);
+  border: 1px solid rgba(var(--accord-rgb), 0.25);
 }
 
 .formation-tag-weak {
-  background: rgba(255, 34, 102, 0.12);
+  background: rgba(var(--vorax-rgb), 0.12);
   color: #ff2266;
-  border: 1px solid rgba(255, 34, 102, 0.25);
+  border: 1px solid rgba(var(--vorax-rgb), 0.25);
 }
 
 /* â"€â"€ Mobile: single-column formations â"€â"€ */
@@ -4755,12 +4764,12 @@ body.crt-active {
 
   .stat-block:active {
     border-color: var(--border-hi);
-    box-shadow: 0 0 20px rgba(0,180,255,0.06), inset 0 0 20px rgba(0,180,255,0.02);
+    box-shadow: 0 0 20px rgba(var(--terran-rgb),0.06), inset 0 0 20px rgba(var(--terran-rgb),0.02);
   }
 
   .formation-card:active {
     border-color: var(--accent);
-    box-shadow: 0 0 12px rgba(0,180,255,0.08);
+    box-shadow: 0 0 12px rgba(var(--terran-rgb),0.08);
   }
 
   .back-to-dashboard:hover {
@@ -4771,7 +4780,7 @@ body.crt-active {
     background: linear-gradient(135deg, var(--bg-hover), var(--bg-card));
     border-color: var(--text-hi);
     color: var(--text-hi);
-    box-shadow: 0 0 24px rgba(0,180,255,0.25), inset 0 0 16px rgba(0,180,255,0.06);
+    box-shadow: 0 0 24px rgba(var(--terran-rgb),0.25), inset 0 0 16px rgba(var(--terran-rgb),0.06);
   }
 
   /* Glossary tooltip: tap-friendly, no hover dependency */
@@ -4978,9 +4987,9 @@ body.crt-active {
   background: rgba(12,14,20,0.55);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(0,180,255,0.08);
+  border: 1px solid rgba(var(--terran-rgb),0.08);
   border-radius: 8px;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(0,180,255,0.05);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3), inset 0 1px 0 rgba(var(--terran-rgb),0.05);
 }
 
 #content-area .fade-in:not(#dashboard-view),
@@ -5035,7 +5044,7 @@ body.crt-active {
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border);
   text-align: center;
-  text-shadow: 0 0 14px rgba(0,180,255,0.25);
+  text-shadow: 0 0 14px rgba(var(--terran-rgb),0.25);
 }
 
 /* â"€â"€ 15d. Paragraphs â€" Readable Body Text â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
@@ -5072,9 +5081,9 @@ body.crt-active {
 }
 
 #content-area .card:hover {
-  border-color: rgba(0,180,255,0.2);
+  border-color: rgba(var(--terran-rgb),0.2);
   background: var(--bg-hover);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,180,255,0.06);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(var(--terran-rgb),0.06);
 }
 
 /* â"€â"€ 15f. Dividers â€" Gradient Line â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
@@ -5104,7 +5113,7 @@ body.crt-active {
 #content-area a:hover {
   color: var(--text-hi);
   text-decoration: underline;
-  text-shadow: 0 0 8px rgba(0,180,255,0.3);
+  text-shadow: 0 0 8px rgba(var(--terran-rgb),0.3);
 }
 
 /* â"€â"€ 15i. Lists â€" Accent Bullets & Spacing â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
@@ -5150,7 +5159,7 @@ body.crt-active {
 
 #content-area table thead tr,
 #content-area table tr:first-child {
-  background: rgba(0,180,255,0.06);
+  background: rgba(var(--terran-rgb),0.06);
 }
 
 #content-area table th {
@@ -5179,18 +5188,18 @@ body.crt-active {
 }
 
 #content-area table tbody tr:nth-child(even) {
-  background: rgba(0,180,255,0.02);
+  background: rgba(var(--terran-rgb),0.02);
 }
 
 #content-area table tbody tr:hover {
-  background: rgba(0,180,255,0.05);
+  background: rgba(var(--terran-rgb),0.05);
 }
 
 /* â"€â"€ 15k. Blockquotes â€" Accent Border, Dim Background â"€â"€ */
 
 #content-area blockquote {
   border-left: 3px solid var(--accent);
-  background: rgba(0,180,255,0.03);
+  background: rgba(var(--terran-rgb),0.03);
   padding: 16px 20px;
   margin: 20px 0;
   border-radius: 0 4px 4px 0;
@@ -5208,7 +5217,7 @@ body.crt-active {
 #content-area code {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.82em;
-  background: rgba(0,180,255,0.06);
+  background: rgba(var(--terran-rgb),0.06);
   border: 1px solid var(--border);
   border-radius: 3px;
   padding: 2px 6px;
@@ -5244,7 +5253,7 @@ body.crt-active {
   font-weight: 700;
   color: var(--text-hi);
   letter-spacing: 0.08em;
-  text-shadow: 0 0 14px rgba(0,180,255,0.2);
+  text-shadow: 0 0 14px rgba(var(--terran-rgb),0.2);
   border-bottom: 1px solid var(--border);
   padding-bottom: 10px;
   margin-top: 48px;
@@ -5279,7 +5288,7 @@ body.crt-active {
 #content-area .fade-in:not(#dashboard-view) .quote-block,
 #content-area .page-enter:not(#dashboard-view) .quote-block {
   border-left: 3px solid var(--accent);
-  background: rgba(0,180,255,0.03);
+  background: rgba(var(--terran-rgb),0.03);
   border-radius: 0 4px 4px 0;
   padding: 16px 24px;
   margin: 20px auto;
@@ -5315,8 +5324,8 @@ body.crt-active {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   color: var(--accent);
-  background: rgba(0,180,255,0.08);
-  border: 1px solid rgba(0,180,255,0.2);
+  background: rgba(var(--terran-rgb),0.08);
+  border: 1px solid rgba(var(--terran-rgb),0.2);
   padding: 2px 6px;
   border-radius: 2px;
   letter-spacing: 0.1em;
@@ -5327,7 +5336,7 @@ body.crt-active {
 /* â"€â"€ 15r. Page Title & Subtitle in Chapters â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€â"€ */
 
 #content-area .page-title {
-  text-shadow: 0 0 20px rgba(0,180,255,0.2);
+  text-shadow: 0 0 20px rgba(var(--terran-rgb),0.2);
 }
 
 #content-area .page-subtitle {
@@ -5375,22 +5384,22 @@ body.faction-vorax     { --accent: #ff2266; }
 body.faction-guardians { --accent: #ffaa22; }
 
 /* â"€â"€ Section Heading Glow â€" Faction Color â"€â"€ */
-body.faction-terran    #content-area .section-heading { text-shadow: 0 0 14px rgba(0,180,255,0.3); }
-body.faction-shards    #content-area .section-heading { text-shadow: 0 0 14px rgba(0,255,238,0.3); }
-body.faction-horde     #content-area .section-heading { text-shadow: 0 0 14px rgba(255,102,34,0.3); }
-body.faction-revenant     #content-area .section-heading { text-shadow: 0 0 14px rgba(170,119,255,0.3); }
-body.faction-accord    #content-area .section-heading { text-shadow: 0 0 14px rgba(68,255,102,0.3); }
-body.faction-vorax     #content-area .section-heading { text-shadow: 0 0 14px rgba(255,34,102,0.3); }
-body.faction-guardians #content-area .section-heading { text-shadow: 0 0 14px rgba(255,170,34,0.3); }
+body.faction-terran    #content-area .section-heading { text-shadow: 0 0 14px rgba(var(--terran-rgb),0.3); }
+body.faction-shards    #content-area .section-heading { text-shadow: 0 0 14px rgba(var(--shards-rgb),0.3); }
+body.faction-horde     #content-area .section-heading { text-shadow: 0 0 14px rgba(var(--horde-rgb),0.3); }
+body.faction-revenant     #content-area .section-heading { text-shadow: 0 0 14px rgba(var(--revenant-rgb),0.3); }
+body.faction-accord    #content-area .section-heading { text-shadow: 0 0 14px rgba(var(--accord-rgb),0.3); }
+body.faction-vorax     #content-area .section-heading { text-shadow: 0 0 14px rgba(var(--vorax-rgb),0.3); }
+body.faction-guardians #content-area .section-heading { text-shadow: 0 0 14px rgba(var(--guardians-rgb),0.3); }
 
 /* â"€â"€ Card Borders â€" Faction Color on Hover â"€â"€ */
-body.faction-terran    #content-area .card:hover { border-color: rgba(0,180,255,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,180,255,0.08); }
-body.faction-shards    #content-area .card:hover { border-color: rgba(0,255,238,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(0,255,238,0.08); }
-body.faction-horde     #content-area .card:hover { border-color: rgba(255,102,34,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,102,34,0.08); }
-body.faction-revenant     #content-area .card:hover { border-color: rgba(170,119,255,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(170,119,255,0.08); }
-body.faction-accord    #content-area .card:hover { border-color: rgba(68,255,102,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(68,255,102,0.08); }
-body.faction-vorax     #content-area .card:hover { border-color: rgba(255,34,102,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,34,102,0.08); }
-body.faction-guardians #content-area .card:hover { border-color: rgba(255,170,34,0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(255,170,34,0.08); }
+body.faction-terran    #content-area .card:hover { border-color: rgba(var(--terran-rgb),0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(var(--terran-rgb),0.08); }
+body.faction-shards    #content-area .card:hover { border-color: rgba(var(--shards-rgb),0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(var(--shards-rgb),0.08); }
+body.faction-horde     #content-area .card:hover { border-color: rgba(var(--horde-rgb),0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(var(--horde-rgb),0.08); }
+body.faction-revenant     #content-area .card:hover { border-color: rgba(var(--revenant-rgb),0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(var(--revenant-rgb),0.08); }
+body.faction-accord    #content-area .card:hover { border-color: rgba(var(--accord-rgb),0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(var(--accord-rgb),0.08); }
+body.faction-vorax     #content-area .card:hover { border-color: rgba(var(--vorax-rgb),0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(var(--vorax-rgb),0.08); }
+body.faction-guardians #content-area .card:hover { border-color: rgba(var(--guardians-rgb),0.25); box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 12px rgba(var(--guardians-rgb),0.08); }
 
 /* â"€â"€ Links â€" Faction Color â"€â"€ */
 body[class*="faction-"] #content-area a {
@@ -6285,28 +6294,28 @@ body.dev-mode-active .crt-overlay {
 /* ── Enhanced Scrollbar ──
    Accent-colored thumb for webkit & Firefox.                     */
 ::-webkit-scrollbar-thumb {
-  background: rgba(0,180,255,0.3);
+  background: rgba(var(--terran-rgb),0.3);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,180,255,0.5);
+  background: rgba(var(--terran-rgb),0.5);
 }
 
 .sidebar-nav::-webkit-scrollbar-thumb,
 .search-results::-webkit-scrollbar-thumb {
-  background: rgba(0,180,255,0.3);
+  background: rgba(var(--terran-rgb),0.3);
 }
 
 .sidebar-nav::-webkit-scrollbar-thumb:hover,
 .search-results::-webkit-scrollbar-thumb:hover {
-  background: rgba(0,180,255,0.5);
+  background: rgba(var(--terran-rgb),0.5);
 }
 
 .sidebar-nav,
 .search-results,
 #content-area {
-  scrollbar-color: rgba(0,180,255,0.3) var(--bg-base);
+  scrollbar-color: rgba(var(--terran-rgb),0.3) var(--bg-base);
 }
 
 
@@ -6565,7 +6574,7 @@ body.dev-mode-active .proto-badge {
   color: #000 !important;
   font-weight: 700;
   border: 1px solid #ffaa22;
-  box-shadow: 0 0 6px rgba(255,170,34,0.4);
+  box-shadow: 0 0 6px rgba(var(--guardians-rgb),0.4);
 }
 
 /* DEV MODE fixed badge indicator */
