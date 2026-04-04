@@ -4027,17 +4027,30 @@ body.crt-active {
 
 .stat-placeholder-banner {
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  background: rgba(var(--accord-rgb),0.06);
-  border: 1px solid rgba(var(--accord-rgb),0.15);
-  border-radius: 4px;
-  padding: 10px 16px;
-  margin-bottom: 20px;
+  align-items: center;
+  gap: 10px;
+  background: rgba(var(--accord-rgb),0.05);
+  border: 1px solid rgba(var(--accord-rgb),0.18);
+  border-radius: 3px;
+  padding: 5px 10px 5px 6px;
+  margin-bottom: 14px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
+  font-size: 0.62rem;
   color: var(--text-dim);
-  line-height: 1.5;
+  line-height: 1.4;
+}
+.stat-placeholder-banner .ph-tag {
+  display: inline-block;
+  background: var(--accord);
+  color: #0a0a0a;
+  padding: 2px 7px;
+  border-radius: 2px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
