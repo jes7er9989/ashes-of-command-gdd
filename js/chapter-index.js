@@ -320,13 +320,6 @@ const ChapterIndex = {
       const isActive = el.dataset.id === hash;
       el.classList.toggle('active', isActive);
 
-      // Apply faction color to active item border
-      if (isActive && el.style.getPropertyValue('--ci-color')) {
-        el.style.borderLeftColor = el.style.getPropertyValue('--ci-color');
-      } else if (!isActive) {
-        el.style.borderLeftColor = '';
-      }
-
       // Scroll active item into view
       if (isActive) {
         requestAnimationFrame(() => {

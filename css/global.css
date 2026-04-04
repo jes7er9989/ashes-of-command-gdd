@@ -4092,31 +4092,31 @@ body.crt-active {
   gap: 8px;
   padding: 6px 18px 6px 32px;
   text-decoration: none;
-  border-left: 2px solid transparent;
-  transition: all var(--transition);
+  border-left: 3px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
   cursor: pointer;
 }
 
 .ci-chapter:hover {
-  background: var(--bg-hover);
-  border-left-color: var(--text-dim);
+  background: color-mix(in srgb, var(--ci-color, var(--accent)) 8%, transparent);
+  border-left-color: color-mix(in srgb, var(--ci-color, var(--text-dim)) 50%, transparent);
 }
 
 .ci-chapter.active {
-  background: var(--bg-hover);
-  border-left-color: var(--accent);
+  background: color-mix(in srgb, var(--ci-color, var(--accent)) 14%, transparent);
+  border-left-color: var(--ci-color, var(--accent));
 }
 
 .ci-num {
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.82rem;
-  color: var(--text-dim);
+  color: var(--ci-color, var(--text-dim));
   min-width: 24px;
   flex-shrink: 0;
 }
 
 .ci-title {
-  font-size: 0.98rem;
+  font-size: 0.9rem;
   color: var(--text-mid);
   line-height: 1.4;
 }
