@@ -246,6 +246,180 @@
       <div class="card"><strong style="color:var(--text-hi)">Artillery Barrage</strong> (3 CP)<span style="color:var(--text-mid)"> — Sustained area suppression bombardment</span></div>
       <div class="card"><strong style="color:var(--text-hi)">Emergency Repair</strong> (2 CP)<span style="color:var(--text-mid)"> — Instant 25% HP heal on single unit</span></div>
     </div>
+
+    <div class="divider"></div>
+
+    <!-- §19 Morale & Routing -->
+    <div class="section-label">Morale &amp; Routing</div>
+    <div class="section-heading" id="sec-ch19-morale">Faction Identity &middot; Unit Personality &middot; Breaking Points</div>
+    <div class="body-text" style="margin-bottom:16px">Morale determines when units stop fighting. Every unit has a morale value that fluctuates during battle based on what&rsquo;s happening around them. When morale breaks, the unit&rsquo;s response depends on BOTH their faction AND their unit type. Morale is the invisible hand that makes battles feel alive &mdash; units don&rsquo;t fight to the last man like robots (unless they ARE robots).</div>
+
+    <!-- Morale Factors — 2-column -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">MORALE GAINS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.7">
+          <div style="margin-bottom:4px">&bull; Winning nearby engagements</div>
+          <div style="margin-bottom:4px">&bull; General nearby (aura bonus, stronger with higher rank)</div>
+          <div style="margin-bottom:4px">&bull; Holding strong defensive position</div>
+          <div style="margin-bottom:4px">&bull; Reinforcements arriving</div>
+          <div style="margin-bottom:4px">&bull; Rally CP ability used</div>
+          <div style="margin-bottom:4px">&bull; Destroying high-value enemy target</div>
+          <div>&bull; Veterancy bonus (experienced troops hold longer)</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--vorax)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">MORALE LOSSES</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.7">
+          <div style="margin-bottom:4px">&bull; Taking heavy casualties quickly</div>
+          <div style="margin-bottom:4px">&bull; General killed or wounded</div>
+          <div style="margin-bottom:4px">&bull; Surrounded / flanked</div>
+          <div style="margin-bottom:4px">&bull; Supply cut off</div>
+          <div style="margin-bottom:4px">&bull; Friendly unit routing nearby (panic spreads)</div>
+          <div style="margin-bottom:4px">&bull; Under orbital bombardment</div>
+          <div style="margin-bottom:4px">&bull; Losing held objective</div>
+          <div>&bull; Weather/environmental hazards</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Faction Morale Behavior — 3x2 grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+      <div class="card" style="border-top:3px solid var(--terran)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--terran);letter-spacing:2px;margin-bottom:8px">TERRAN LEAGUE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Infantry suppress in place (stop advancing, reduced fire rate, hunker in cover). Vehicles reverse to safer positions. Rally-capable &mdash; CP rally ability is most effective on Terrans. Stubborn under fire but crack when surrounded.</div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--shards)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--shards);letter-spacing:2px;margin-bottom:8px">ETERNAL SHARDS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Scatter and regroup. Units break formation but attempt to reform at a rally point behind the line. Psychic link means morale loss spreads faster through nearby Shard units, but recovery is also faster when one unit rallies.</div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">SCRAP-HORDE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Light units rout wildly (random direction, may run into enemy). Heavy units and berserkers go berserk &mdash; uncontrolled aggression, attack nearest target (friend or foe if too close). Meks ignore morale entirely (mechanical).</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px">
+      <div class="card" style="border-top:3px solid var(--revenant)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--revenant);letter-spacing:2px;margin-bottom:8px">REVENANT</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Do not rout. Instead, systems shut down sequentially. At critical morale threshold, units enter &ldquo;conservation mode&rdquo; &mdash; reduced combat effectiveness, slower, prioritize self-preservation over objective. Ancient programming prevents full retreat but also prevents berserk behavior. Predictable, exploitable.</div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--accord)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accord);letter-spacing:2px;margin-bottom:8px">UNITY ACCORD</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Retreat in formation. Organized, disciplined withdrawal maintaining covering fire. The most orderly rout in the game &mdash; barely looks like a rout. However, once the formation breaks, individual Accord units surrender quickly (cultural aversion to pointless death).</div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--border)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--text-dim);letter-spacing:2px;margin-bottom:8px">FACTION-NEUTRAL NOTE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Unit TYPE also matters within each faction. Heavy armor holds longer than light scouts. Elite veterans hold longer than green recruits. Specialized units (snipers, engineers) have lower morale thresholds than line infantry. A Terran scout squad breaks before a Terran heavy weapons team.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §19 Veterancy & Rank -->
+    <div class="section-label">Veterancy &amp; Rank</div>
+    <div class="section-heading" id="sec-ch19-veterancy">Experience Shapes Behavior &mdash; Not Just Stats</div>
+    <div class="body-text" style="margin-bottom:16px">Veteran units don&rsquo;t just hit harder. They act smarter. The rank system (see <a href="#ch22" onclick="location.hash='#ch22'">Ch.&nbsp;22</a>) provides stat bonuses, but the real value of experience is in how units BEHAVE during the chaos of battle. A squad of green recruits with the same equipment as a veteran squad will lose &mdash; not because their guns are weaker, but because they panic, waste ammo on suppression, and break under pressure.</div>
+
+    <!-- Rank Behavior — 4 rows -->
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--text-dim);letter-spacing:1px;flex-shrink:0;min-width:160px">GREEN (Rank 0)</span>
+        <span style="color:var(--text-mid);line-height:1.55">Default AI behavior. Follow ROE literally. Poor cover usage (stand in the open too long). Panic fire under suppression (accuracy drops <span class="ph-tag">PH</span> 40%). Break morale at <span class="ph-tag">PH</span> 50% squad casualties. Slow to react to flanking.</span>
+      </div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--text-mid);letter-spacing:1px;flex-shrink:0;min-width:160px">EXPERIENCED (Rank 1-2)</span>
+        <span style="color:var(--text-mid);line-height:1.55">Better cover transitions. Suppress before advancing. Accuracy penalty under fire reduced to <span class="ph-tag">PH</span> 20%. Break at <span class="ph-tag">PH</span> 35% casualties. React to flanking within <span class="ph-tag">PH</span> 3 seconds. Begin to coordinate with adjacent squads.</span>
+      </div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--text-hi);letter-spacing:1px;flex-shrink:0;min-width:160px">VETERAN (Rank 3-4)</span>
+        <span style="color:var(--text-mid);line-height:1.55">Cover-to-cover movement automatic. Focus fire on priority targets without ROE override needed. Accuracy stable under fire. Break at <span class="ph-tag">PH</span> 20% casualties. Auto-retreat to better position when flanked. Coordinate flanking maneuvers with nearby veteran squads. Rally faster from morale breaks.</span>
+      </div>
+      <div style="padding:10px 12px;font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:1px;flex-shrink:0;min-width:160px">ELITE (Rank 5+)</span>
+        <span style="color:var(--text-mid);line-height:1.55">Near-perfect cover usage. Anticipate enemy movement (pre-aim likely positions). Minimal accuracy loss under any conditions. Break at <span class="ph-tag">PH</span> 10% casualties or general death only. Auto-coordinate complex tactics (bounding overwatch, fire-and-maneuver). Presence boosts morale of nearby green units. These are the units that win battles single-handedly.</span>
+      </div>
+    </div>
+
+    <!-- Squad Veterancy -->
+    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--accent)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">SQUAD VETERANCY</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Veterans elevate the whole squad. A squad with <span class="ph-tag">PH</span> 2+ veteran members performs one behavior tier above its average rank. One experienced soldier steadying a squad of green recruits makes them fight like they&rsquo;ve been there before. This is why preserving veterans matters more than preserving equipment.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §19 Terrain & Movement -->
+    <div class="section-label">Terrain &amp; Movement</div>
+    <div class="section-heading" id="sec-ch19-terrain">Every Step Costs Something &mdash; Terrain Shapes the Battle</div>
+    <div class="body-text" style="margin-bottom:16px">Terrain isn&rsquo;t decoration. It determines movement speed, combat effectiveness, available cover, and vision range. Different terrain types interact with faction abilities and equipment loadouts (see <a href="#ch13" onclick="location.hash='#ch13'">Ch.&nbsp;13</a> for full planet terrain profiles, <a href="#ch20" onclick="location.hash='#ch20'">Ch.&nbsp;20</a> for equipment modifiers).</div>
+
+    <!-- Terrain Effects — 3x2 grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">MOVEMENT</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Open ground: full speed. Roads/paths: +<span class="ph-tag">PH</span> 25% speed. Dense vegetation: -<span class="ph-tag">PH</span> 40% speed. Rubble/ruins: -<span class="ph-tag">PH</span> 30% speed. River/water: infantry wade (very slow), vehicles need bridge/ford. Elevation change: uphill slows, downhill speeds. Equipment modifiers: jump jets ignore terrain, treads handle mud, hover crosses water.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">COMBAT MODIFIERS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Forest: +cover, -vision, -vehicle mobility. Urban ruins: +cover, tight sightlines, infantry advantage. Open desert: +range, +vision, -cover. Mountains: +height advantage, -mobility, +defense. Swamp: -speed, -accuracy (unstable footing), +concealment.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">FACTION TERRAIN BONUSES</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Soft advantages, not hard bonuses (see <a href="#ch13" onclick="location.hash='#ch13'">Ch.&nbsp;13</a>). Scrap-Horde moves normally through rubble/junk terrain. Revenant ignores ancient ruins hazards. Shards gain minor benefits in crystalline terrain. Terrans get supply bonuses near roads/infrastructure. Accord moves faster in natural terrain (forests, plains).</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">DESTRUCTIBLE TERRAIN</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Cover can be destroyed. Trees blown down by explosives. Walls breached by heavy weapons. Bunkers collapsed by sustained fire. Destroying cover denies it to both sides. Orbital bombardment reshapes terrain (craters become new cover).</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">WEATHER EFFECTS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Rain: -accuracy, -visibility, +concealment. Sandstorm: -range, -shield effectiveness, reduced movement. Blizzard: -visibility (severe), -movement, cold debuffs on unshielded units. Volcanic eruption: area denial, random damage zones. Predictable weather from scanning (<a href="#ch13" onclick="location.hash='#ch13'">Ch.&nbsp;13</a>), sudden events mid-combat on all planet types.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">EQUIPMENT TERRAIN INTERACTION</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Jump jets: bypass terrain penalties, reach elevation quickly. Treaded vehicles: handle mud/rubble better than wheeled. Hover units: cross water, ignore ground obstacles. Sealed armor: ignore weather debuffs. Thermal gear: negate cold penalties. Each equipment choice matters based on WHERE you&rsquo;re fighting.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §19 Fog of War -->
+    <div class="section-label">Fog of War</div>
+    <div class="section-heading" id="sec-ch19-fog">Unit Vision &middot; Terrain Modifiers &middot; Intel Wins Battles</div>
+    <div class="body-text" style="margin-bottom:16px">You can&rsquo;t fight what you can&rsquo;t see. Each unit has a sight radius that reveals the map around them. Unexplored territory is dark. Previously seen but currently unobserved areas show last-known enemy positions (which may be outdated). Fog of war rewards scouting, punishes blind pushes, and makes intel infrastructure (radar towers, sensor arrays) genuinely valuable.</div>
+
+    <!-- Vision — 2-column -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">UNIT VISION RANGES</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.7">
+          <div style="margin-bottom:4px">&bull; Scout units: <span class="ph-tag">PH</span> 400 px (longest sight range)</div>
+          <div style="margin-bottom:4px">&bull; Infantry: <span class="ph-tag">PH</span> 250 px standard</div>
+          <div style="margin-bottom:4px">&bull; Vehicles: <span class="ph-tag">PH</span> 300 px (elevated sensors)</div>
+          <div style="margin-bottom:4px">&bull; Snipers: <span class="ph-tag">PH</span> 350 px (scoped)</div>
+          <div>&bull; General&rsquo;s command unit: <span class="ph-tag">PH</span> 200 px + intel overlay from infrastructure</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--border)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--text-dim);letter-spacing:2px;margin-bottom:8px">TERRAIN VISION MODIFIERS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.7">
+          <div style="margin-bottom:4px">&bull; Open desert/ice: +<span class="ph-tag">PH</span> 50% vision range</div>
+          <div style="margin-bottom:4px">&bull; Forest/jungle: -<span class="ph-tag">PH</span> 40% vision range</div>
+          <div style="margin-bottom:4px">&bull; Urban: variable (clear down streets, blind around corners)</div>
+          <div style="margin-bottom:4px">&bull; High ground: +<span class="ph-tag">PH</span> 30% vision range</div>
+          <div>&bull; Weather: rain -<span class="ph-tag">PH</span> 15%, blizzard -<span class="ph-tag">PH</span> 50%, sandstorm -<span class="ph-tag">PH</span> 30%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Intel Infrastructure -->
+    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--accent)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">INTEL INFRASTRUCTURE</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Radar towers and sensor arrays built on held territory remove fog of war in their radius AND grant bonus CP regeneration (your commander can see more, so they can do more). Destroying enemy sensor infrastructure blinds them. Building your own is a priority in any ground campaign. Scouts can be sacrificed to reveal enemy positions for artillery/orbital strikes.</div>
+    </div>
+
   </div><!-- /page-ch19 -->
   <!-- ============================================================
        PAGE: GROUND COMBAT VISION (Chapter 19b — Design Intent)
