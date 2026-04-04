@@ -31,6 +31,17 @@
     <div class="body-text" style="margin-bottom:16px">The Aethyn built the Nexus system as a sanctum of celestial engineering at the galactic core, housing the Reclamation Engine — the only device that can stop the Vorax. The Guardians sealed it and have stood watch ever since. Their power diminishes with distance from the Core. Some units still run clean code. Others have degraded — corrupted logic, repeated loops, attacking allies, protecting nothing. The Warden-Commander may be the last one running as intended.</div>
     <div class="body-text" style="margin-bottom:24px">Their visual form reflects Aethyn engineering at its peak: hard-light geometric constructs with energy cores. Angular crystalline shapes filled with flowing contained energy. No curves, no organic forms — mathematical precision given physical form. They leave thermal scarring beneath them and detonate on death. There is something tragic about them: machines built to help, forced to fight, waiting tens of thousands of years for someone worthy to finally end their vigil.</div>
 
+    <div class="card" style="border-left:3px solid var(--guardians);padding:10px 16px;margin-bottom:24px;background:rgba(255,170,34,0.02)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:var(--guardians);letter-spacing:2px;margin-bottom:8px">REPURPOSED TOOLS</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">
+        <div style="margin-bottom:6px">The Guardians have no true weapons. Every system that kills was built to build.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">The Macro-Laser</strong> that vaporizes a Terran tank in one shot was originally a surveyor's mining tool — designed to cut clean geological samples from asteroid cores.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">The Containment Shield</strong> that repels an orbital strike was meant to hold back stellar radiation during Dyson Sphere construction — protecting work crews from stars, not armies.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">The Hard-Light Barriers</strong> that create chokepoints and kill-zones were scaffolding. Temporary walls for pouring foundations across planetary surfaces.</div>
+        <div style="padding-top:6px;border-top:1px solid var(--border);margin-top:6px;color:var(--text-hi)">The player is not fighting an army. They are fighting runaway construction equipment forced to commit murder because its creators forgot to turn it off.</div>
+      </div>
+    </div>
+
     <!-- Nexus location -->
     <div class="section-label" style="color:var(--guardians)">§12.11 — Galactic Core Layout <span class="proto-badge">PROTOTYPE LOCKED</span></div>
     <div class="section-heading" id="sec-ch11-1">Nexus, Faction Homeworlds, and RNG</div>
@@ -103,6 +114,13 @@
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Scale:</strong> Blast radius 8m (Sentry) to 5km (Celestial-Throne)</div>
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Chain:</strong> One death can trigger adjacent Guardians' deaths → cascade</div>
           <div><strong style="color:var(--text-hi)">Dilemma:</strong> Optimal anti-Guardian doctrine is OPPOSITE of normal tactics</div>
+          <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--guardians);letter-spacing:1px;margin-bottom:6px">DAMAGE-TYPE GATING (CRITICAL BALANCE)</div>
+            <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Energy Kill:</strong> Guardian detonates violently — containment field OVERLOADS. Full chain-reaction risk. Plasma, lasers, ion weapons trigger the worst-case scenario.</div>
+            <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Kinetic / Melee Kill:</strong> Physical frame cracks — hard-light vents harmlessly into atmosphere over 3 seconds. Skeleton drops inert. No detonation. No chain.</div>
+            <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Tactical Implication:</strong> Ballistic and melee units safely dismantle Guardians. Factions relying purely on plasma or lasers are punished with catastrophic chain reactions.</div>
+            <div><strong style="color:var(--text-hi)">Design Link:</strong> Ties directly into Kinetic Vulnerability — energy heals them AND triggers volatile death. Kinetic hurts them AND vents them safely. The counter-play is internally consistent.</div>
+          </div>
         </div>
       </div>
       <div class="card" style="border-left:3px solid var(--guardians)">
@@ -113,6 +131,17 @@
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Barriers:</strong> Dome shields filtering enemy fire while allowing Guardian fire through.</div>
           <div><strong style="color:var(--text-hi)">Dynamic:</strong> Terrain constantly CHANGES mid-battle. AI reshapes battlefield.</div>
         </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--guardians);padding:10px 16px;margin-bottom:16px;background:rgba(255,170,34,0.02)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:var(--guardians);letter-spacing:2px;margin-bottom:4px">UI/UX DESIGN DIRECTION — ELECTROMAGNETIC BLEED</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:8px">PHASE 3+ IMPLEMENTATION</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">EM Field Interference:</strong> The sheer electromagnetic output of a Guardian unit causes the player's tactical UI to slightly glitch and distort during combat. Subtle scan-line artifacts, brief color-channel splits, micro-flickers in resource readouts.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Warden-Commander Presence:</strong> When the Warden-Commander speaks, text does not simply appear — it briefly scrambles surrounding interface elements. Tooltips shudder. Minimap static. The voice arrives BEFORE the UI catches up.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Fourth-Wall Bleed:</strong> The Guardians are so old and so dense with energy that they casually break the fourth wall of the player's tactical readout. They are not a faction ON the interface — they are a faction that the interface cannot fully contain.</div>
+        <div><strong style="color:var(--text-hi)">GDD Direction:</strong> In Chapter 11 itself, simulate this — interface distortion when the Warden-Commander card appears. Flickering borders, brief static overlays, destabilized layout elements. The document should FEEL like it is being affected by the subject it describes.</div>
       </div>
     </div>
 
@@ -188,6 +217,17 @@
         <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Unification Path:</strong> The entity you negotiate with. Logical evaluation, not emotional. "You claim the Vorax threaten survival. Define 'survival.' Your species has a median lifespan of 3.7 million years. The galaxy has existed for 13.8 billion. Your survival is a rounding error."</div>
         <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Characteristics:</strong> Precise measured statements. No emotion. Cosmic-scale timeframes casual. Patient beyond comprehension. Not hostile — does not understand desperation.</div>
         <div><strong style="color:var(--text-hi)">Can be CONVINCED:</strong> Not emotionally — through logical demonstration that the Vorax threaten the Core itself, falling within the Guardians' directive.</div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--guardians);padding:10px 16px;margin-bottom:16px;background:rgba(255,170,34,0.02)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.9rem;color:var(--guardians);letter-spacing:2px;margin-bottom:8px">VOICE DIRECTION — THE WARDEN-COMMANDER</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:8px">TONE-LOCK DIRECTIVE — ALL FUTURE DIALOGUE</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Register:</strong> Cosmic-scale timeframes delivered with absolute patient neutrality. No urgency. No inflection. Statements of measurement, not emotion.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Stance:</strong> Does NOT hate the player. Does not fear the player. Operates on a mathematical scale where the player's existence does not statistically matter. Hostility would require acknowledgment of threat. The Warden-Commander does not acknowledge threats — it acknowledges variables.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Canonical Line:</strong> <span style="font-family:'JetBrains Mono',monospace;color:var(--guardians)">"Your species has a median lifespan of 3.7 million years. The galaxy has existed for 13.8 billion. Your survival is a rounding error."</span></div>
+        <div><strong style="color:var(--text-hi)">Rule:</strong> Every future line of Warden-Commander dialogue must maintain this exact register. If a line could be read as angry, rewrite it. If it could be read as afraid, rewrite it. The only acceptable emotional bleed is the suppressed exhaustion defined in the Emotional State card below.</div>
       </div>
     </div>
 
