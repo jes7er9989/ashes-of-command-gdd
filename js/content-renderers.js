@@ -77,6 +77,18 @@ const ContentRenderers = {
               if (!wrap._planetInstance) {
                 wrap._planetInstance = PlanetRenderer.create(wrap, type);
               }
+              /* SVG fallback for megastructures or WebGL failure */
+              if (!wrap._planetInstance && !wrap._svgFallback) {
+                fetch('data/planets/planet-svg.json')
+                  .then(function(r) { return r.json(); })
+                  .then(function(svgData) {
+                    if (svgData[type] && !wrap._planetInstance) {
+                      wrap.innerHTML = svgData[type];
+                      wrap._svgFallback = true;
+                    }
+                  })
+                  .catch(function() {});
+              }
             }, 50);
           } else if (!isOpen && wrap._planetInstance) {
             wrap._planetInstance.dispose();
@@ -86,6 +98,33 @@ const ContentRenderers = {
 
         /* Watch for class changes (planet-detail-open toggle) */
         const mo = new MutationObserver(function() { syncRenderer(); });
+        mo.observe(detail, { attributes: true, attributeFilter: ['class'] });
+      });
+    } else {
+      /* No Three.js — use SVG fallback for all planet types */
+      var svgCache = null;
+      container.querySelectorAll('.planet-detail').forEach(function(detail) {
+        var wrap = detail.querySelector('.planet-svg-wrap[data-planet-type]');
+        if (!wrap) return;
+
+        var mo = new MutationObserver(function() {
+          var type = wrap.getAttribute('data-planet-type');
+          if (!type) return;
+          var isOpen = detail.classList.contains('planet-detail-open');
+          if (isOpen && !wrap._svgFallback) {
+            if (svgCache) {
+              if (svgCache[type]) { wrap.innerHTML = svgCache[type]; wrap._svgFallback = true; }
+            } else {
+              fetch('data/planets/planet-svg.json')
+                .then(function(r) { return r.json(); })
+                .then(function(svgData) {
+                  svgCache = svgData;
+                  if (svgData[type]) { wrap.innerHTML = svgData[type]; wrap._svgFallback = true; }
+                })
+                .catch(function() {});
+            }
+          }
+        });
         mo.observe(detail, { attributes: true, attributeFilter: ['class'] });
       });
     }

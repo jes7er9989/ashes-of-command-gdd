@@ -80,6 +80,10 @@ window.PlanetRenderer = (function () {
     }
 
     _build(type) {
+      const megastructures = ['Ring World', 'Dyson Sphere', 'Aethyn Nexus', 'Worldship', 'Warp Gate'];
+      if (megastructures.indexOf(type) !== -1) {
+        throw new Error('Megastructure — use SVG');
+      }
       const map = {
         'Capital World': '_capitalWorld',
         'Terrestrial': '_terrestrial',
