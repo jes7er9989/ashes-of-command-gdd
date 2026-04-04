@@ -420,6 +420,163 @@
       <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Radar towers and sensor arrays built on held territory remove fog of war in their radius AND grant bonus CP regeneration (your commander can see more, so they can do more). Destroying enemy sensor infrastructure blinds them. Building your own is a priority in any ground campaign. Scouts can be sacrificed to reveal enemy positions for artillery/orbital strikes.</div>
     </div>
 
+    <div class="divider"></div>
+
+    <!-- §19 Reinforcements & Drop Zones -->
+    <div class="section-label">Reinforcements &amp; Drop Zones</div>
+    <div class="section-heading" id="sec-ch19-reinforcements">Auto-Deploy &middot; CP Targeted Drops &middot; Anti-Air Interception</div>
+    <div class="body-text" style="margin-bottom:16px">Reserves don&rsquo;t appear from nowhere. They deploy from designated drop zones based on your space superiority and transport capacity. The default is automatic deployment when triggered, but spending CP lets you place reinforcements exactly where you need them. The enemy gets a say too &mdash; anti-air defenses and interceptor units can damage reinforcements before they land.</div>
+
+    <!-- Reinforcement Types — 3-column -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">AUTO-DEPLOY (DEFAULT)</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">
+          Reserves deploy automatically at pre-set drop zones when:
+          <div style="margin-top:6px;margin-bottom:4px">&bull; A squad is wiped out (replacement triggered)</div>
+          <div style="margin-bottom:4px">&bull; The battle reaches a phase threshold</div>
+          <div style="margin-bottom:4px">&bull; The commander&rsquo;s standing orders call for reinforcement</div>
+          <div style="margin-top:6px">Drop zone locations determined by beachhead from space battle (see <a href="#ch18" onclick="location.hash='#ch18'">Ch.&nbsp;18</a>). Automatic, no CP cost, but predictable &mdash; the enemy knows where your reserves will land.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">CP TARGETED DROP</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Spend <span class="ph-tag">PH</span> 2 CP to choose WHERE reinforcements land. Any location within your control radius or adjacent contested territory. Bypasses default drop zones. Useful for flanking drops, reinforcing a collapsing line, or surprise assaults. Higher risk &mdash; dropping into contested territory means units arrive under fire.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">ANTI-AIR INTERCEPTION</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">
+          Enemy anti-air defenses and interceptor units can target incoming drops:
+          <div style="margin-top:6px;margin-bottom:4px">&bull; Light AA: <span class="ph-tag">PH</span> 10-15% casualties on drop</div>
+          <div style="margin-bottom:4px">&bull; Heavy AA: <span class="ph-tag">PH</span> 25-35% casualties on drop</div>
+          <div style="margin-bottom:4px">&bull; Fighter interception: <span class="ph-tag">PH</span> 15-20% casualties</div>
+          <div style="margin-top:6px">Destroying enemy AA before dropping reinforcements is a priority. Orbital suppression fire (if space superiority held) can suppress AA during drops.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Space Superiority Gate -->
+    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--vorax)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">SPACE SUPERIORITY GATE</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">No space control = no reinforcements. If you lose your fleet mid-ground-campaign (see <a href="#ch18" onclick="location.hash='#ch18'">Ch.&nbsp;18</a>), your ground forces are cut off. No drops, no resupply, no extraction. They fight with what they have until you retake orbital control or they&rsquo;re destroyed. This is why space battles matter even if your goal is on the ground.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §19 Retreat & Withdrawal -->
+    <div class="section-label">Retreat &amp; Withdrawal</div>
+    <div class="section-heading" id="sec-ch19-retreat">CP Cost &middot; Physical Withdrawal &middot; Rear Guard &middot; Consequences</div>
+    <div class="body-text" style="margin-bottom:16px">Retreat is a command decision, not a button press. It costs CP to order (your commander&rsquo;s attention), and your units must physically withdraw under fire. A well-executed retreat preserves your army for the next battle. A botched one turns withdrawal into massacre.</div>
+
+    <!-- Retreat Flow — vertical steps -->
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
+      <div style="background:rgba(0,180,255,0.04);padding:7px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase">RETREAT FLOW</div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">1.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Order Retreat</strong> &mdash; Commander spends <span class="ph-tag">PH</span> 3 CP. All units receive withdrawal order. ROE automatically shifts to &ldquo;defensive/fall back.&rdquo;</span>
+      </div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">2.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Rear Guard</strong> &mdash; Highest-morale units auto-designated as rear guard (or player assigns via CP). Rear guard holds position to cover withdrawal. These units take the heaviest casualties.</span>
+      </div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">3.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Withdrawal</strong> &mdash; Units fall back toward drop zone / extraction point. Movement speed based on terrain. Units under fire move slower. Vehicles can cover infantry retreat.</span>
+      </div>
+      <div style="padding:10px 12px;font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">4.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Extraction</strong> &mdash; Units reaching extraction point are saved. Units that don&rsquo;t make it are lost (killed or captured). General extracted with command unit (if alive).</span>
+      </div>
+    </div>
+
+    <!-- Retreat Consequences — 2-column -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">SUCCESSFUL RETREAT</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Army preserved (minus rear guard losses). Falls back to last held territory on the planet. Can resupply and re-engage next turn. General survives with experience.</div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--vorax)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">FAILED RETREAT / NO RETREAT</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">If CP is unavailable for retreat order, units fight until routed (faction-specific morale break). Routed units scatter &mdash; some escape, some are captured, some die. If no territory to fall back to, units are lost entirely. Losing your last territory = losing the planet.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §19 Fortification & Defenses -->
+    <div class="section-label">Fortification &amp; Defenses</div>
+    <div class="section-heading" id="sec-ch19-fortification">Turrets &middot; Bunkers &middot; Minefields &middot; Shield Generators</div>
+    <div class="body-text" style="margin-bottom:16px">Defenders can build fortifications on held territories between battles. Fortifications take time and resources but dramatically increase defensive strength. They&rsquo;re also primary targets for orbital bombardment (see <a href="#ch18" onclick="location.hash='#ch18'">Ch.&nbsp;18</a>) and siege-type battles.</div>
+
+    <!-- Fortification Grid — 3x2 -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">TURRETS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Automated weapon emplacements. Fire on enemies within range without CP cost. Various types: anti-infantry, anti-vehicle, anti-air. Can be destroyed by focused fire or bombardment. Placement matters &mdash; covering approaches and chokepoints.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">BUNKERS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Infantry garrison points. Provide heavy cover (+<span class="ph-tag">PH</span> 60% damage reduction) and firing positions. Can be destroyed by heavy weapons or sustained fire. Garrisoned infantry fights at reduced mobility but massively increased survivability.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">MINEFIELDS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Area denial. Damage and slow units that enter. Can be cleared by engineers or detonated by expendable units. Invisible until triggered (unless enemy has scanning). Placement during the fortification phase, not during battle.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">SHIELD GENERATORS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Area shields that reduce incoming damage for all friendly units within radius. High value target &mdash; destroying the generator removes protection for everything it covers. Requires power supply (ties to planetary infrastructure).</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">WALLS &amp; BARRIERS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Physical barriers that block movement and provide cover. Must be breached by heavy weapons, engineers, or orbital strike. Channeling enemy movement through kill zones. Different materials have different HP (concrete, energy barrier, scrap-built).</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">SENSOR TOWERS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Remove fog of war in radius. Grant CP regeneration bonus. Detect incoming enemy forces and reinforce drops. High priority target for attackers. Can be built in forward positions for early warning.</div>
+      </div>
+    </div>
+
+    <!-- Build Rules -->
+    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--accent)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">BUILD RULES</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Fortifications are built during the resupply pause between battles, not during combat. Build time and cost depend on fortification type and territory infrastructure. Better-developed territories support more fortifications. Maximum fortification slots per territory: <span class="ph-tag">PH</span> 6-10 based on territory size.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §19 After-Action Report -->
+    <div class="section-label">After-Action Report</div>
+    <div class="section-heading" id="sec-ch19-aar">Battle Summary &middot; XP Awards &middot; Promotions &middot; Replay</div>
+    <div class="body-text" style="margin-bottom:16px">Every battle generates a detailed after-action report. This isn&rsquo;t just a score screen &mdash; it&rsquo;s how you learn, improve, and track your army&rsquo;s growth. The replay system lets you rewatch any battle at any speed to analyze what went right and what went wrong.</div>
+
+    <!-- Report Contents — 2x2 grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">CASUALTY REPORT</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Per-squad breakdown: units lost, units wounded, units captured. Enemy casualties confirmed. Friendly fire incidents (if any). Equipment lost vs recovered. Total force strength before and after.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">XP &amp; PROMOTIONS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">XP awards per squad based on: kills, objectives held, survival, special actions. General XP from battle outcome. Promotions highlighted with new rank and unlocked abilities. MVP unit identified (highest contribution score).</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">SALVAGE &amp; RECOVERY</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Equipment recovered from battlefield. Enemy equipment captured. Wounded units&rsquo; recovery timeline. Replacement units needed and availability.</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">STRATEGIC IMPACT</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Territory control change. Planet conquest progress (X of Y territories held). Supply line status. Next available actions (push forward, consolidate, withdraw).</div>
+      </div>
+    </div>
+
+    <!-- Replay -->
+    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--accent)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">BATTLE REPLAY</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Full battle replay available at 1x, 2x, 4x speed. Camera follows your perspective or can be set to free-cam. Useful for: identifying unit performance issues, learning enemy AI patterns, finding optimal CP timing, reviewing ROE effectiveness. Replays persist until the end of the campaign.</div>
+    </div>
+
   </div><!-- /page-ch19 -->
   <!-- ============================================================
        PAGE: GROUND COMBAT VISION (Chapter 19b — Design Intent)
