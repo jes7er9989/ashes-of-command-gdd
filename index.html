@@ -75,7 +75,7 @@
       <div class="sidebar-search">
         <div class="sidebar-search-wrap">
           <span class="sidebar-search-icon">&#128269;</span>
-          <input type="text" id="nav-search" placeholder="Query Archive [Ctrl+K]..." autocomplete="off" spellcheck="false">
+          <input type="text" id="nav-search" placeholder="Query Archive [Ctrl+K]..." autocomplete="off" spellcheck="false" aria-label="Search chapters and content">
           <span class="sidebar-search-shortcut">Ctrl+K</span>
         </div>
         <button class="sidebar-filter-btn" id="sidebar-filter-btn">
@@ -130,7 +130,7 @@
     <div class="search-box">
       <div class="search-input-wrap">
         <span class="search-icon">⌕</span>
-        <input type="text" id="search-input" placeholder="Search chapters, factions, units, equipment…" autocomplete="off" spellcheck="false">
+        <input type="text" id="search-input" placeholder="Search chapters, factions, units, equipment…" autocomplete="off" spellcheck="false" aria-label="Search the GDD archive">
         <span class="search-hint">ESC</span>
       </div>
       <div class="search-results" id="search-results"></div>
@@ -146,16 +146,16 @@
     </button>
     <div class="audio-panel" id="audio-panel">
       <div class="audio-slider-row">
-        <label>MUSIC</label>
-        <input type="range" id="audio-music" min="0" max="100" value="50">
+        <label for="audio-music">MUSIC</label>
+        <input type="range" id="audio-music" min="0" max="100" value="50" aria-label="Music volume">
       </div>
       <div class="audio-slider-row">
-        <label>SFX</label>
-        <input type="range" id="audio-sfx" min="0" max="100" value="70">
+        <label for="audio-sfx">SFX</label>
+        <input type="range" id="audio-sfx" min="0" max="100" value="70" aria-label="Sound effects volume">
       </div>
       <div class="audio-slider-row">
-        <label>AMBI</label>
-        <input type="range" id="audio-ambi" min="0" max="100" value="40">
+        <label for="audio-ambi">AMBI</label>
+        <input type="range" id="audio-ambi" min="0" max="100" value="40" aria-label="Ambient volume">
       </div>
     </div>
   </div>
@@ -463,8 +463,8 @@
       <span id="theme-icon">&#9790;</span>
     </button>
     <div id="brightness-control">
-      <span class="brightness-icon">&#9788;</span>
-      <input type="range" id="brightness-slider" min="80" max="160" value="100" step="5">
+      <label for="brightness-slider" class="brightness-icon">&#9788;</label>
+      <input type="range" id="brightness-slider" min="80" max="160" value="100" step="5" aria-label="Screen brightness">
     </div>
   </div>
   <script>
