@@ -9,6 +9,130 @@
     <div class="section-heading" id="sec-ch18-0">Pre-Battle → Formation Select → Auto-Battle → Resolution</div>
     <div class="body-text" style="margin-bottom:16px">Space battles trigger when fleets collide on warp lanes or when attacking a system. The player selects a formation in the Pre-Battle Window, then watches the auto-battle with CP intervention capability. Changing formation mid-battle costs 1 CP + 10-15 sec vulnerability.</div>
 
+    <!-- §18 Auto-Battle Resolution -->
+    <div class="section-label">Auto-Battle Resolution</div>
+    <div class="section-heading" id="sec-ch18-auto">How Space Battles Play Out &mdash; The 80/20 Split</div>
+    <div class="body-text" style="margin-bottom:16px">Space combat is an auto-battler. The player&rsquo;s job is 80% preparation and 20% intervention. Before the battle, you choose your fleet composition, formation, and Rules of Engagement. During the battle, your ships execute autonomously &mdash; you intervene with CP abilities, broad orders, and targeted squad redirects. CP represents your commander&rsquo;s attention: how many things one person can focus on simultaneously. Better infrastructure (comms arrays, sensor stations, experienced bridge crew) increases CP regeneration, letting you do more per engagement.</div>
+
+    <!-- Battle Flow — vertical steps -->
+    <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
+      <div style="background:rgba(0,180,255,0.04);padding:7px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase">BATTLE FLOW</div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">1.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Pre-Battle Window</strong> &mdash; Select formation, review Rules of Engagement, assign target priorities. Intel from scanning determines how much you know about the enemy fleet.</span>
+      </div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">2.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Engagement</strong> &mdash; Fleets close based on formation. Ships execute their AI targeting based on role and Rules of Engagement. The auto-battle runs.</span>
+      </div>
+      <div style="padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">3.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Commander Intervention</strong> &mdash; Spend CP on abilities (from Ch.&nbsp;21), broad orders (advance all, hold, fall back, focus fire), or redirect individual ship groups (costs CP per redirect).</span>
+      </div>
+      <div style="padding:10px 12px;font-size:0.98rem;display:flex;gap:10px;align-items:start">
+        <span style="font-family:'JetBrains Mono',monospace;color:var(--accent);font-weight:700;flex-shrink:0">4.</span>
+        <span style="color:var(--text-mid)"><strong style="color:var(--text-hi)">Resolution</strong> &mdash; Battle ends based on victory conditions. Disabled ships, debris fields, and salvage generated. After-action report with full replay option.</span>
+      </div>
+    </div>
+
+    <!-- CP as Attention — 2-column card -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px">
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">CP GENERATION</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.7">
+          <div style="margin-bottom:4px">Base regen: <span class="ph-tag">PH</span> 1 CP per <span class="ph-tag">PH</span> 30 seconds</div>
+          <div style="margin-bottom:4px">Comms arrays in system: +<span class="ph-tag">PH</span> 0.5 CP/sec per array</div>
+          <div style="margin-bottom:4px">Sensor stations: +<span class="ph-tag">PH</span> 0.25 CP/sec (reveals more info = better decisions)</div>
+          <div style="margin-bottom:4px">Commander rank bonus: +<span class="ph-tag">PH</span> 0.1 CP/sec per rank</div>
+          <div style="margin-bottom:4px">General trait bonus: varies by personality (see Ch.&nbsp;22)</div>
+          <div>Max CP pool: <span class="ph-tag">PH</span> 10 (expandable through tech/rank)</div>
+        </div>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">CP COSTS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.7">
+          <div style="margin-bottom:4px">Broad order (advance/hold/fall back): <span class="ph-tag">PH</span> 1 CP</div>
+          <div style="margin-bottom:4px">Change formation mid-battle: <span class="ph-tag">PH</span> 2 CP + vulnerability window</div>
+          <div style="margin-bottom:4px">Redirect individual ship group: <span class="ph-tag">PH</span> 1 CP per group</div>
+          <div style="margin-bottom:4px">CP abilities (Ch.&nbsp;21): <span class="ph-tag">PH</span> 2 CP each</div>
+          <div>Order retreat: <span class="ph-tag">PH</span> 3 CP (units must physically withdraw under fire)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §18 Rules of Engagement -->
+    <div class="section-label">Rules of Engagement</div>
+    <div class="section-heading" id="sec-ch18-roe">Player-Defined Behavioral Directives &mdash; Your Standing Orders for Combat</div>
+    <div class="body-text" style="margin-bottom:16px">Rules of Engagement (ROE) are player-configured directives that override default unit AI. Set them before battle, or spend CP to modify them mid-fight. ROE applies to both space and ground combat (see Ch.&nbsp;19). You can run fully autonomous (let the AI decide everything) or dial in specific behaviors for every engagement.</div>
+
+    <!-- ROE Categories — 3-column card grid -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">TARGETING PRIORITY</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">Default: Role-based (fighters target fighters, anti-capital targets capital ships). Player can override with custom priority lists per ship class: e.g. &ldquo;Frigates target engines first, Interceptors target point defense turrets.&rdquo;</div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">ENGAGEMENT MODE</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Destroy</strong> &mdash; Standard. Fire to kill.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Disable</strong> &mdash; Target engines and weapons. Ship left intact for capture/salvage/diplomatic leverage. Slower, riskier, but higher reward.</div>
+          <div><strong style="color:var(--text-hi)">Harass</strong> &mdash; Hit and run. Disengage when taking significant damage. Preserves your fleet.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">AGGRESSION LEVEL</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Aggressive</strong> &mdash; Close range, maximize damage output, accept casualties</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Balanced</strong> &mdash; Maintain optimal range for ship loadout</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Cautious</strong> &mdash; Keep maximum range, prioritize survival, retreat if outnumbered</div>
+          <div style="color:var(--text-dim);font-size:0.92rem">General personality trait modifies interpretation (see Ch.&nbsp;22)</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px">
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">SUBSYSTEM TARGETING</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">
+          Ships don&rsquo;t hit randomly. Weapon loadout and ROE determine what gets targeted:
+          <div style="margin-top:6px;margin-bottom:4px"><strong style="color:var(--text-hi)">Engines</strong> &mdash; Cripple mobility. Ship can&rsquo;t retreat or reposition.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Weapons</strong> &mdash; Defang. Ship becomes harmless but intact.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Shields</strong> &mdash; Strip defenses for follow-up alpha strike.</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Reactor</strong> &mdash; Kill shot. Maximum damage, risk of explosion.</div>
+          <div><strong style="color:var(--text-hi)">Point Defense</strong> &mdash; Open them up for torpedo/bomber runs.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">RETREAT CONDITIONS</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Never</strong> &mdash; Fight to the last ship (desperate/Reckless generals may override)</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">At threshold</strong> &mdash; Auto-retreat when fleet drops below <span class="ph-tag">PH</span> 40% combat effectiveness</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">On order</strong> &mdash; Only retreat when commander spends CP to order it</div>
+          <div><strong style="color:var(--text-hi)">Cautious auto</strong> &mdash; Individual ships retreat when critically damaged</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">FLEET COORDINATION</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.6">
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Concentrated fire</strong> &mdash; All ships focus one target at a time</div>
+          <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Distributed</strong> &mdash; Each ship engages nearest appropriate target</div>
+          <div><strong style="color:var(--text-hi)">Screen and strike</strong> &mdash; Small ships screen while capitals engage priority targets</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- §18 Battle Speed & Camera -->
+    <div class="section-label">Battle Speed &amp; Camera</div>
+    <div class="section-heading" id="sec-ch18-speed">1x &middot; 2x &middot; 4x &middot; Auto-Camera &middot; Manual Override</div>
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-size:0.98rem;color:var(--text-mid);line-height:1.65">Speed controls: 1x (real-time), 2x, 4x for less important engagements. Auto-camera follows key combat moments &mdash; ship kills, critical hits, boarding actions, flagship engagement. Player can override to manual tactical camera (top-down, free zoom/pan) at any time. Battle speed resets to 1x when CP abilities are available and a critical moment occurs. After-action replay available at all speeds.</div>
+    </div>
+
+    <div class="divider"></div>
+
     <div class="section-label">The Five Formations</div>
     <div class="section-heading" id="sec-ch18-1">Each Determines Starting Position + Movement AI</div>
     <div id="space-formations-ch18" style="margin-bottom:16px"></div>
