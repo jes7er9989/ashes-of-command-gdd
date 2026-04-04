@@ -4,7 +4,7 @@
 <div class="page-title">GALAXY GENERATION &amp; STRUCTURE</div>
     <div class="page-subtitle">Procedural &middot; Shareable Seeds &middot; 5 Zones &middot; Fog of War &mdash; Chapter 12</div>
 </div>
-    <div class="body-text" style="margin-bottom:24px">Every galaxy is procedurally generated from scratch. No hardcoded systems, no fixed positions. Every element — system count, positions, names, warp lanes, star types, planets, hazards, faction starts, wormholes — generated anew from a random seed. Same seed = same galaxy, different game.</div>
+    <div class="body-text" style="margin-bottom:24px">Every galaxy is procedurally generated from scratch. No hardcoded systems, no fixed positions. Every element &mdash; system count, positions, names, warp lanes, star types, planets (17 types: 12 standard worlds + 5 megastructures), hazards, faction starts, wormholes &mdash; generated anew from a random seed. Same seed = same galaxy, different game. Each planet generates with an active weather system (see <a href="#ch13" onclick="location.hash='#ch13'" style="color:var(--accent);text-decoration:none">Ch.&nbsp;13</a>) that cycles through conditions based on planet type and star system. Weather is visible from orbit during approach.</div>
 
     <div class="section-label">Galaxy Size</div>
     <div class="section-heading" id="sec-ch12-0">Player-Selected at Campaign Start</div>
@@ -70,6 +70,26 @@
     <!-- Note card -->
     <div class="card" style="border-left:3px solid var(--accent);margin-bottom:24px">
       <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">All sizes: 5 playable factions + Vorax + Core Guardians always present. Custom difficulty can toggle playable factions on/off (minimum 2). Vorax pressure is independent of galaxy size &mdash; controlled by difficulty settings only.</div>
+    </div>
+
+    <!-- MEGASTRUCTURE GENERATION -->
+    <div class="section-label">Megastructure Generation</div>
+    <div class="section-heading" id="sec-ch12-mega">Aethyn Relics &middot; Rare Spawns &middot; Galaxy-Changing Finds</div>
+    <div class="card" style="border-top:2px solid gold;margin-bottom:16px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.95rem;color:gold;margin-bottom:6px">MEGASTRUCTURE SPAWN RULES</div>
+      <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6">
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Ring World, Dyson Sphere, Aethyn Nexus:</strong> Spawn in the outer/mid galaxy. Aethyn origin. Gold on galactic map.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Worldship:</strong> Event-driven discovery &mdash; appears as a galactic event mid-game, not pre-placed.</div>
+        <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Warp Gate:</strong> Spawn at strategic locations creating artificial warp lane shortcuts.</div>
+        <div style="margin-bottom:6px"><strong style="color:var(--text-hi)">Rarity by Galaxy Size:</strong></div>
+        <div style="margin-left:12px;margin-bottom:4px"><span style="color:var(--revenant)">Small:</span> <span class="ph-tag">PH</span> 0&ndash;1 megastructures</div>
+        <div style="margin-left:12px;margin-bottom:4px"><span style="color:var(--terran)">Medium:</span> <span class="ph-tag">PH</span> 1&ndash;2 megastructures</div>
+        <div style="margin-left:12px;margin-bottom:4px"><span style="color:var(--accord)">Large:</span> <span class="ph-tag">PH</span> 2&ndash;3 megastructures</div>
+        <div style="margin-left:12px;margin-bottom:4px"><span style="color:var(--guardians)">Massive:</span> <span class="ph-tag">PH</span> 3&ndash;5 megastructures</div>
+        <div style="margin-top:6px;margin-bottom:4px"><strong style="color:var(--text-hi)">Worldship Exception:</strong> Worldships are separate from this count (event-driven, not pre-placed).</div>
+        <div style="margin-top:6px;font-style:italic;color:var(--accent)">&ldquo;Finding a megastructure changes the game. Plan accordingly.&rdquo;</div>
+      </div>
+      <div style="margin-top:8px"><a href="#ch13" onclick="location.hash='#ch13'" style="color:var(--accent);font-size:0.85rem;text-decoration:none">See Ch. 13 &mdash; Planetary Bodies &amp; Biomes &rsaquo;</a></div>
     </div>
 
     <div class="divider"></div>
@@ -381,6 +401,11 @@
       </div>
     </div>
 
+    <!-- Moon Generation Reference -->
+    <div class="card" style="border-left:3px solid var(--accent);margin-bottom:24px">
+      <div style="font-size:0.92rem;color:var(--text-mid);line-height:1.6"><strong style="color:var(--text-hi)">Moon Generation:</strong> Moons generate based on parent planet type and system star class. Each planet may generate <span class="ph-tag">PH</span> 0&ndash;3 moons; Gas Giants generate <span class="ph-tag">PH</span> 1&ndash;5. Moon type (biome) is influenced by the parent body. <a href="#ch13" onclick="location.hash='#ch13'" style="color:var(--accent);text-decoration:none">See Ch. 13 &mdash; Moon Typing Rules &rsaquo;</a></div>
+    </div>
+
     <div class="section-label">Warp Lanes &amp; Connectivity</div>
     <div class="section-heading" id="sec-ch12-3">Procedural Network with Guaranteed Connectivity</div>
     <div style="display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:24px">
@@ -451,6 +476,7 @@
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Enemy Movement:</strong> Enemy fleets only visible within your scan range. Beyond that, you&rsquo;re blind. Espionage operations (Ch. 24) can extend vision.</div>
           <div style="margin-bottom:4px"><strong style="color:var(--text-hi)">Wormhole &amp; Relic Discovery:</strong> Hidden features (wormholes, Aethyn relics, anomalies) only revealed when a fleet physically enters the system.</div>
           <div><strong style="color:var(--text-hi)">Strategic Implication:</strong> Early game is exploration-driven. Mid game shifts to intelligence warfare. Late game is about maintaining vision across a sprawling empire.</div>
+          <div style="margin-top:4px"><strong style="color:var(--text-hi)">Scanning:</strong> A three-tier scanning system (Approach &rarr; Orbital &rarr; Deep) reveals planetary details progressively. <a href="#ch13" onclick="location.hash='#ch13'" style="color:var(--accent);font-size:0.85rem;text-decoration:none">See Ch. 13 &mdash; Scanning &amp; Discovery &rsaquo;</a></div>
         </div>
       </div>
 
