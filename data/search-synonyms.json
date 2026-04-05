@@ -52,7 +52,8 @@
   "delegate": ["empire delegation", "automation", "management", "governor"],
   "balance": ["faction comparison", "matrix", "stats", "power level"],
   "megastructure": ["ring world", "dyson sphere", "worldship", "warp gate", "aethyn nexus"],
-  "terraforming": ["terraform", "terra-form", "world conversion"],
+  "planetary re-origination": ["terraforming", "terraform", "terra-form", "biosphere forging", "re-origination", "world conversion"],
+  "terraforming": ["planetary re-origination", "terraform", "terra-form", "biosphere forging", "re-origination", "world conversion"],
   "weather": ["storm", "blizzard", "sandstorm", "eruption", "climate"],
   "scanning": ["scan", "scanner", "deep scan", "orbital scan", "reconnaissance"],
   "sleeper": ["sleeper cache", "cryo", "dormant", "revenant sleeper", "wake"]

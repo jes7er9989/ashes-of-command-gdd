@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div class="section-label">Vorax Terraforming Recovery</div>
+    <div class="section-label">Vorax Re-Origination Recovery</div>
     <h2 class="section-heading" id="sec-ch13-3">Stripped World Restoration: 100⚙ &amp; 20 Cycles</h2>
     <div class="card" style="margin-bottom:24px">
       <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden">
@@ -169,15 +169,37 @@
           <span style="font-size:0.88rem;color:var(--text-mid)">Radiation Spike &middot; Dust Storm &middot; Ground Collapse</span>
         </div>
         <div style="border-top:1px solid var(--border);margin:6px 0;padding-top:8px">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:6px">MEGASTRUCTURES</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:1px">MEGASTRUCTURES &mdash; See <a href="#sec-ch13-csf" style="color:var(--accent)">Catastrophic System Failures</a> below</div>
         </div>
+      </div>
+    </div>
+
+    <!-- Weather + Scanning Interaction -->
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">WEATHER &amp; SCANNING INTERACTION</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Advanced scanning technology (see Scanning &amp; Discovery) can extend weather forecasts from 1 cycle to 3 cycles, giving commanders significantly more planning time. Tech-gated improvement &mdash; early game you get basic forecasts, late game you can predict weather patterns across an entire campaign.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ============================================================
+         CATASTROPHIC SYSTEM FAILURES (MEGASTRUCTURES)
+         ============================================================ -->
+    <div class="section-label">Megastructure Hazards</div>
+    <h2 class="section-heading" id="sec-ch13-csf">Catastrophic System Failures</h2>
+    <div class="body-text" style="margin-bottom:24px">Megastructures do not experience weather. They suffer Catastrophic System Failures. While a standard rainstorm might reduce sightlines, a Megastructure event alters reality itself &mdash; physically changing map topology mid-battle. Weather is atmospheric. Catastrophic System Failures are structural, violent, and often irreversible.</div>
+
+    <!-- Megastructure Failure Events Table -->
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:14px">FAILURE EVENTS BY MEGASTRUCTURE</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
         <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
           <span style="color:var(--guardians);font-weight:600">Ring World:</span>
           <span style="font-size:0.88rem;color:var(--text-mid)">Biome Collapse &middot; Atmospheric Breach &middot; System Malfunction</span>
         </div>
         <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
           <span style="color:var(--guardians);font-weight:600">Dyson Sphere:</span>
-          <span style="font-size:0.88rem;color:var(--text-dim);font-style:italic">No ground weather &mdash; space-only structure</span>
+          <span style="font-size:0.88rem;color:var(--text-dim);font-style:italic">No ground combat &mdash; space-only structure</span>
         </div>
         <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
           <span style="color:var(--guardians);font-weight:600">Aethyn Nexus:</span>
@@ -191,13 +213,60 @@
           <span style="color:var(--shards);font-weight:600">Warp Gate:</span>
           <span style="font-size:0.88rem;color:var(--text-mid)">Warp Field Fluctuation &middot; Energy Surge &middot; Spatial Distortion</span>
         </div>
+        <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
+          <span style="color:#666;font-weight:600">Orbital Station:</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Hull Breach &middot; Power Failure &middot; Decompression Event</span>
+        </div>
       </div>
     </div>
 
-    <!-- Weather + Scanning Interaction -->
+    <!-- Canonical Failure Deep-Dives -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+      <div class="card" style="border-top:2px solid var(--revenant)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--revenant);letter-spacing:2px;margin-bottom:10px">HULL BREACH</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:10px">ORBITAL STATION &middot; WORLDSHIP</div>
+        <div style="font-size:0.93rem;color:var(--text-mid);line-height:1.65">
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Effect:</strong> Violently vents an entire territory into hard vacuum.</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Damage Model:</strong> <span class="ph-tag">PH</span> 3 turns of suffocation damage-over-time, scaling with exposure duration. Exact damage values pending balance pass.</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Valid Defenses:</strong> Heavy armor OR magnetic anchors.</div>
+          <div><strong style="color:var(--text-hi)">Map Impact:</strong> Territory permanently vented for rest of battle. Physical event &mdash; permanent topology change.</div>
+        </div>
+      </div>
+      <div class="card" style="border-top:2px solid var(--guardians)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--guardians);letter-spacing:2px;margin-bottom:10px">PSYCHIC RESONANCE PULSE</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:10px">AETHYN NEXUS</div>
+        <div style="font-size:0.93rem;color:var(--text-mid);line-height:1.65">
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Effect:</strong> Scrambles IFF (Identify Friend/Foe) tags. Affected units fire on own squads (random friendly fire) until pulse fades.</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Scramble Mechanic:</strong> Per-unit independent roll &mdash; each biological unit rolls individually. <span class="ph-tag">PH</span> Exact scramble chance and pulse duration pending balance pass.</div>
+          <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Immunity:</strong> Mechanical, construct, and synthetic units are immune. Creates intentional hybrid-army design pressure &mdash; all-biological armies are maximally vulnerable.</div>
+          <div><strong style="color:var(--text-hi)">Map Impact:</strong> Temporary. Energy event &mdash; wears off when pulse fades.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Catastrophic System Failure Rules -->
     <div class="card" style="margin-bottom:24px">
-      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">WEATHER &amp; SCANNING INTERACTION</div>
-      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">Advanced scanning technology (see Scanning &amp; Discovery) can extend weather forecasts from 1 cycle to 3 cycles, giving commanders significantly more planning time. Tech-gated improvement &mdash; early game you get basic forecasts, late game you can predict weather patterns across an entire campaign.</div>
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:14px">CATASTROPHIC SYSTEM FAILURE RULES</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.7">
+        <div style="margin-bottom:12px">
+          <strong style="color:var(--text-hi)">1. Full Taxonomy Split:</strong> Megastructure events are NOT weather &mdash; they are Catastrophic System Failures. Maintained in a separate section from planetary weather events. Planetary weather is atmospheric modifiers; megastructure failures are reality alteration and map topology changes.
+        </div>
+        <div style="margin-bottom:12px">
+          <strong style="color:var(--text-hi)">2. Hull Breach Damage Model:</strong> <span class="ph-tag">PH</span> 3 turns of suffocation DoT scaling with exposure. Heavy armor OR magnetic anchors are valid defenses. Exact damage values pending balance pass.
+        </div>
+        <div style="margin-bottom:12px">
+          <strong style="color:var(--text-hi)">3. IFF Pulse Mechanic:</strong> Per-unit independent roll for biological units. Mechanical, construct, and synthetic units are immune. Creates intentional hybrid-army design pressure. <span class="ph-tag">PH</span> Exact scramble chance and pulse duration pending balance pass.
+        </div>
+        <div style="margin-bottom:12px">
+          <strong style="color:var(--text-hi)">4. Warning Lead Time Scales with Severity:</strong> Instakill-class events receive long warning (allows evacuation). Lethal DoT events receive short warning. Minor disruption events receive minimal or no warning. All warnings are diegetic. <span class="ph-tag">PH</span> Exact turn counts per tier pending balance pass. <span class="ph-tag">PH</span> Diegetic warning UI connects to Pitch #4 UI framework &mdash; separate design pass required.
+        </div>
+        <div style="margin-bottom:12px">
+          <strong style="color:var(--text-hi)">5. Hybrid Map Topology Persistence:</strong> Physical events (Hull Breach, structural collapse) cause PERMANENT map changes for rest of battle. Energy events (IFF Pulse, System Reboot) are TEMPORARY &mdash; wear off when event fades. <span class="ph-tag">PH</span> Late-game &lsquo;stabilization&rsquo; tech can reverse some physical damage post-event &mdash; tech tree placement is a separate pass.
+        </div>
+        <div>
+          <strong style="color:var(--text-hi)">6. Hybrid Trigger &mdash; Random Baseline + Damage Acceleration:</strong> Each megastructure has a baseline random failure rate. Combat damage accumulates &lsquo;structural stress.&rsquo; Stress accelerates failure probability &mdash; more combat equals more failures. <span class="ph-tag">PH</span> Stress-to-failure formula pending balance pass.
+        </div>
+      </div>
     </div>
 
     <div class="divider"></div>
@@ -304,7 +373,7 @@
         </div>
         <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
           <span style="color:#555;font-weight:600">Dead World:</span>
-          <span style="font-size:0.88rem;color:var(--text-mid)">Derelict Fleet &middot; Guardian Ruins &middot; Terraforming Assessment &middot; Buried Infrastructure</span>
+          <span style="font-size:0.88rem;color:var(--text-mid)">Derelict Fleet &middot; Guardian Ruins &middot; Re-Origination Assessment &middot; Buried Infrastructure</span>
         </div>
         <div style="display:inline-flex;align-items:baseline;gap:6px;margin-bottom:4px">
           <span style="color:var(--guardians);font-weight:600">Ring World:</span>
@@ -484,20 +553,20 @@
     </div>
 
     <!-- ============================================================
-         TERRAFORMING
+         PLANETARY RE-ORIGINATION
          ============================================================ -->
     <div class="divider"></div>
-    <div class="stat-placeholder-banner"><span class="ph-tag" style="opacity:1;font-size:0.55rem;flex-shrink:0">PH</span> <span>All terraforming costs, durations, and balance values in this section are <strong style="color:var(--text-mid)">placeholders</strong> pending in-game balancing.</span></div>
-    <div class="section-label">Terraforming</div>
+    <div class="stat-placeholder-banner"><span class="ph-tag" style="opacity:1;font-size:0.55rem;flex-shrink:0">PH</span> <span>All Re-Origination costs, durations, and balance values in this section are <strong style="color:var(--text-mid)">placeholders</strong> pending in-game balancing.</span></div>
+    <div class="section-label">Planetary Re-Origination</div>
     <h2 class="section-heading" id="sec-ch13-terraforming">Reshaping Worlds to Serve the Empire</h2>
-    <div class="body-text" style="margin-bottom:24px">Terraforming is the long game &mdash; investing resources and time to transform a planet into something more useful. Dead Worlds can be converted into entirely new planet types. Other worlds can be enhanced but not fundamentally changed. Terraforming is expensive, slow, and only worth the investment on strategically positioned worlds that justify the cost. It is the ultimate expression of the front-loading philosophy: suffer now, benefit forever.</div>
+    <div class="body-text" style="margin-bottom:24px">Planetary Re-Origination &mdash; also known as Biosphere Forging &mdash; is the violent, galactic-scale act of tearing a Dead World&rsquo;s crust apart and force-feeding it atmosphere over 15&ndash;30 cycles. The process generates thermal and electromagnetic noise on a galactic scale, lighting the world up like a bonfire on the map for the full duration. You aren&rsquo;t just building a world; you are ringing a dinner bell. Dead Worlds can be converted into entirely new planet types. Other worlds can be enhanced but not fundamentally changed. Re-Origination is expensive, slow, and only worth the investment on strategically positioned worlds that justify the cost. It is the ultimate expression of the front-loading philosophy: suffer now, benefit forever.</div>
 
-    <!-- Two Terraforming Modes -->
+    <!-- Two Re-Origination Modes -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
       <div class="card" style="border-left:3px solid var(--accent)">
         <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:12px">DEAD WORLD CONVERSION</div>
         <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
-          <div style="margin-bottom:8px">Dead Worlds can be terraformed into a <strong style="color:var(--text-hi)">specific planet type</strong> chosen by the player.</div>
+          <div style="margin-bottom:8px">Dead Worlds can be re-originated into a <strong style="color:var(--text-hi)">specific planet type</strong> chosen by the player.</div>
           <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Available Target Types:</strong> Terrestrial &middot; Desert &middot; Ice World &middot; Jungle &middot; Ocean <span class="ph-tag">PH</span> &mdash; not all types may be available</div>
           <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Process:</strong> Multi-stage transformation <span class="ph-tag">PH</span> &mdash; expands on the Vorax Recovery stage framework (see above)</div>
           <div style="margin-bottom:8px"><strong style="color:var(--text-hi)">Cost:</strong> High upfront investment + ongoing per-cycle maintenance during transformation <span class="ph-tag">PH</span></div>
@@ -518,34 +587,91 @@
       </div>
     </div>
 
-    <!-- Terraforming Requirements -->
+    <!-- Re-Origination Requirements -->
     <div class="card" style="margin-bottom:24px">
-      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:14px">TERRAFORMING REQUIREMENTS</div>
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:14px">RE-ORIGINATION REQUIREMENTS</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
         <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
           <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">PREREQUISITES</div>
           <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">
-            - Terraforming technology (tech tree unlock)<br>
-            - Dedicated Terraforming Station building on the planet<br>
+            - Re-Origination technology (tech tree unlock)<br>
+            - Dedicated Re-Origination Station building on the planet<br>
             - Ongoing resource investment each cycle
           </div>
         </div>
         <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
           <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">INTERRUPTIONS</div>
           <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">
-            - Enemy invasion: terraforming <strong style="color:var(--text-hi)">pauses</strong>, does not reset<br>
+            - Enemy invasion: Re-Origination <strong style="color:var(--text-hi)">pauses</strong>, does not reset<br>
             - Vorax consumption: <strong style="color:var(--vorax)">destroys all progress</strong><br>
-            - Multiple planets can be terraformed simultaneously if resources allow
+            - Multiple planets can be re-originated simultaneously if resources allow
           </div>
         </div>
       </div>
-      <div style="font-size:0.9rem;color:var(--text-dim);font-style:italic;border-top:1px solid var(--border);padding-top:10px">&ldquo;Terraforming is a commitment. Starting it on a frontline world is a gamble.&rdquo;</div>
+      <div style="font-size:0.9rem;color:var(--text-dim);font-style:italic;border-top:1px solid var(--border);padding-top:10px">&ldquo;Re-Origination is a commitment. Starting it on a frontline world is a gamble.&rdquo;</div>
     </div>
 
     <!-- Integration Note -->
     <div class="card" style="margin-bottom:24px;border-left:3px solid var(--vorax)">
       <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">INTEGRATION &mdash; VORAX RECOVERY</div>
-      <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">The existing Vorax Terraforming Recovery system (see above) is a specialized case of terraforming &mdash; restoring a Vorax-stripped world follows the same general framework but with fixed target outcomes. Full terraforming expands this into a player-choice system.</div>
+      <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">The existing Vorax Re-Origination Recovery system (see above) is a specialized case of Biosphere Forging &mdash; restoring a Vorax-stripped world follows the same general framework but with fixed target outcomes. Full Re-Origination expands this into a player-choice system.</div>
+    </div>
+
+    <!-- Re-Origination Design Rules -->
+    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--accent)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:14px">RE-ORIGINATION DESIGN RULES</div>
+      <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
+        <div style="margin-bottom:14px">Six locked design rules govern how Planetary Re-Origination interacts with the strategic layer.</div>
+
+        <!-- Rule 1 -->
+        <div style="margin-bottom:14px;padding:10px 14px;background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">1 &mdash; BROADCAST SIGNATURE SCALES WITH PLANET SIZE</div>
+          <div>Initiating Biosphere Forging on a Dead World generates a thermal and electromagnetic broadcast visible on the galactic map for the full duration of the process.</div>
+          <div style="margin-top:6px"><strong style="color:var(--text-hi)">Small Dead Worlds:</strong> Regional broadcast &mdash; visible within an N-jump radius. <!-- TODO: exact jump radius pending balance pass --> <span class="ph-tag">PH</span></div>
+          <div style="margin-top:4px"><strong style="color:var(--text-hi)">Large Dead Worlds:</strong> Galaxy-wide broadcast &mdash; visible to all factions.</div>
+          <div style="margin-top:4px;font-size:0.85rem;color:var(--text-dim);font-style:italic">Exact size thresholds pending numerical balance pass. <!-- TODO: planet-size thresholds for broadcast tiers --> <span class="ph-tag">PH</span></div>
+        </div>
+
+        <!-- Rule 2 -->
+        <div style="margin-bottom:14px;padding:10px 14px;background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--vorax);letter-spacing:2px;margin-bottom:6px">2 &mdash; VORAX WEIGHTED TARGETING (NOT GUARANTEED)</div>
+          <div>The Vorax target-selection AI <strong style="color:var(--text-hi)">biases toward</strong> worlds undergoing Re-Origination. This is not a scripted incursion &mdash; it is emergent behaviour that depends on the current Vorax fleet state, proximity, and existing targeting priorities.</div>
+          <div style="margin-top:4px;font-size:0.85rem;color:var(--text-dim);font-style:italic">Exact weighting coefficient pending balance pass. <!-- TODO: Vorax targeting weight for Re-Originating worlds --> <span class="ph-tag">PH</span></div>
+        </div>
+
+        <!-- Rule 3 -->
+        <div style="margin-bottom:14px;padding:10px 14px;background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">3 &mdash; NULL-FORGE DAMPING (COUNTER-PLAY TECH NODE)</div>
+          <div><strong style="color:var(--text-hi)">Tier 3 tech node</strong> available to all factions. Reduces the Re-Origination broadcast radius by <strong style="color:var(--text-hi)">40%</strong>.</div>
+          <div style="margin-top:4px;font-size:0.85rem;color:var(--text-dim);font-style:italic">Tech tree placement and prerequisites pending separate tech tree pass &mdash; do not modify tech tree in this session. <!-- TODO: Null-Forge Damping tech tree placement + prereqs --> <span class="ph-tag">PH</span></div>
+        </div>
+
+        <!-- Rule 4 -->
+        <div style="margin-bottom:14px;padding:10px 14px;background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">4 &mdash; DISRUPTION = PAUSE, NOT PROGRESS LOSS</div>
+          <div>Combat or attacks on a world undergoing Re-Origination <strong style="color:var(--text-hi)">pause the conversion timer</strong>. The timer resumes when the attacker is repelled. No progress is lost unless the forging infrastructure is destroyed outright &mdash; in which case progress resets to <strong style="color:var(--vorax)">0% (total loss)</strong>.</div>
+        </div>
+
+        <!-- Rule 5 -->
+        <div style="margin-bottom:14px;padding:10px 14px;background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">5 &mdash; UNIVERSAL ACCESS WITH FACTION FLAVOR</div>
+          <div>All five playable factions can Re-Originate at the <strong style="color:var(--text-hi)">same tech tier</strong>. Each faction employs a unique narrative approach to the process:</div>
+          <div style="margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:6px">
+            <div><strong style="color:var(--text-hi)">Terran League:</strong> Industrial &mdash; mega-drills, atmospheric processors</div>
+            <div><strong style="color:var(--text-hi)">Eternal Shards:</strong> Resonance-based &mdash; harmonic terraforming, crystalline seeding</div>
+            <div><strong style="color:var(--text-hi)">Scrap-Horde:</strong> Scavenged jury-rig &mdash; cobbled-together forging rigs from salvaged parts</div>
+            <div><strong style="color:var(--text-hi)">Necro-Legion:</strong> Corpse-seeding &mdash; biomechanical reanimation of dead worlds</div>
+            <div><strong style="color:var(--text-hi)">Unity Accord:</strong> Diplomatic consortium &mdash; pooled multi-faction resources, shared forging</div>
+          </div>
+          <div style="margin-top:6px;font-size:0.85rem;color:var(--text-dim);font-style:italic">Full faction flavor text pending faction bibles. <!-- TODO: faction-specific Re-Origination lore in faction bibles --> <span class="ph-tag">PH</span></div>
+        </div>
+
+        <!-- Rule 6 -->
+        <div style="padding:10px 14px;background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">6 &mdash; INDEPENDENT BROADCASTS, NO CAP</div>
+          <div>Multiple simultaneous Re-Originations create <strong style="color:var(--text-hi)">multiple independent bonfires</strong> on the galactic map. There is no hard cap and no signal amplification between broadcasts &mdash; each is independent, simply adding more visible targets.</div>
+        </div>
+      </div>
     </div>
 
     <!-- ============================================================

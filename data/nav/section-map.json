@@ -549,6 +549,10 @@
       "label": "Predictable from Orbit, Sudden on the Ground"
     },
     {
+      "id": "sec-ch13-csf",
+      "label": "Catastrophic System Failures"
+    },
+    {
       "id": "sec-ch13-scanning",
       "label": "See Before You Commit"
     },

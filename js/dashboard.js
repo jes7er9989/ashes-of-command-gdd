@@ -749,7 +749,7 @@ const Dashboard = {
           </div>
           <div class="system-card" style="border-top:3px solid var(--terran)" onclick="location.hash='#ch13'">
             <div class="system-card-title">\uD83C\uDF0D Planets &amp; Biomes</div>
-            <div class="system-card-desc">12 planet types with variable territory counts and unique planetary traits. Vorax terraforming can reshape entire worlds to suit your faction\u2019s needs.</div>
+            <div class="system-card-desc">12 planet types with variable territory counts and unique planetary traits. Vorax Planetary Re-Origination can reshape entire worlds to suit your faction\u2019s needs.</div>
             <div style="margin-top:auto;padding-top:0.5em;font-family:'Share Tech Mono',monospace;font-size:0.75em;opacity:0.45">Chapter 13</div>
           </div>
           <div class="system-card" style="border-top:3px solid var(--shards)" onclick="location.hash='#ch24'">
