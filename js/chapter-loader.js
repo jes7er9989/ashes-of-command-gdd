@@ -24,6 +24,30 @@ const ChapterLoader = {
   /** Reference to #content-area (lazily initialized) */
   contentArea: null,
 
+  /** Cached chapter-meta.json (reading times) — null until first fetch */
+  _chapterMeta: null,
+
+  /** Chapters that should never show a reading-time indicator */
+  _SKIP_READING_TIME: { dashboard: true, placeholder: true },
+
+  /**
+   * Fetch and cache data/nav/chapter-meta.json.
+   * Called lazily on first load() if not already cached.
+   * @returns {Promise<Object|null>}
+   */
+  async loadChapterMeta() {
+    if (this._chapterMeta) return this._chapterMeta;
+    try {
+      const resp = await fetch('data/nav/chapter-meta.json');
+      if (!resp.ok) throw new Error(resp.status);
+      this._chapterMeta = await resp.json();
+      return this._chapterMeta;
+    } catch (_) {
+      this._chapterMeta = null;
+      return null;
+    }
+  },
+
   /* ── Route Alias Map ────────────────────────────────── */
 
   /**
@@ -79,6 +103,7 @@ const ChapterLoader = {
    */
   async load(chapterId) {
     if (!this.contentArea) this.init();
+    if (!this._chapterMeta) this.loadChapterMeta();
 
     // Check for route aliases (e.g. appA → appendices + scroll)
     const alias = this.ROUTE_ALIASES[chapterId];
@@ -142,6 +167,9 @@ const ChapterLoader = {
       if (main) main.scrollTop = 0;
       if (this.contentArea) this.contentArea.scrollTop = 0;
     }
+
+    // Insert reading-time indicator below top back-to-dashboard button
+    this._insertReadingTime(fileId);
 
     // Update document title from nav metadata
     this.updateTitle(chapterId);
@@ -316,6 +344,36 @@ const ChapterLoader = {
 
     // Register global filter/sort functions that chapter HTML onclick handlers call
     FactionRenderer.registerFilterFunctions(units, prefix, color, sprites);
+  },
+
+  /* ── Reading-Time Indicator ─────────────────────────── */
+
+  /**
+   * Insert a reading-time pill below the first back-to-dashboard button.
+   * Skips dashboard, placeholder, and chapters not in meta.
+   * @param {string} fileId - The actual file ID (after alias resolution)
+   */
+  _insertReadingTime(fileId) {
+    if (this._SKIP_READING_TIME[fileId]) return;
+    if (!this._chapterMeta || !this._chapterMeta.chapters) return;
+    const entry = this._chapterMeta.chapters[fileId];
+    if (!entry) return;
+
+    // Find the first back-to-dashboard-wrap in contentArea
+    const topWrap = this.contentArea.querySelector('.back-to-dashboard-wrap');
+    if (!topWrap) return;
+
+    const pill = document.createElement('div');
+    pill.className = 'reading-time-indicator';
+    pill.setAttribute('aria-label', 'Estimated reading time');
+    pill.innerHTML =
+      '<svg viewBox="0 0 16 16" aria-hidden="true" width="12" height="12">' +
+        '<circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/>' +
+        '<path d="M8 4 L8 8 L11 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>' +
+      '</svg>' +
+      '<span>' + entry.minutes + ' min read</span>';
+
+    topWrap.insertAdjacentElement('afterend', pill);
   },
 
   /* ── Mobile Overflow Wrappers ────────────────────────── */

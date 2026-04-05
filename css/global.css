@@ -6607,6 +6607,30 @@ body.dev-mode-active::after {
   #kbd-help-badge:hover, #kbd-help-badge:focus-visible { transform: none; }
 }
 
+/* -- Reading Time Indicator --
+   Small pill below top nav button showing estimated reading time. */
+.reading-time-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 8px auto 16px;
+  padding: 4px 10px;
+  width: fit-content;
+  font-family: monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ci-color, var(--accent, #888));
+  opacity: 0.7;
+  border: 1px solid currentColor;
+  border-color: rgba(128,128,128,0.3);
+  border-radius: 10px;
+}
+.reading-time-indicator svg {
+  flex-shrink: 0;
+}
+
 /* -- Offline Status Badge --
    Small amber badge top-right when navigator.onLine === false.
    Hidden by default via [hidden]. */

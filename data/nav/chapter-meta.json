@@ -1,0 +1,234 @@
+{
+  "wpm": 225,
+  "generated": "2026-04-05T01:12:12.719Z",
+  "chapters": {
+    "appL": {
+      "words": 4895,
+      "minutes": 22
+    },
+    "appM": {
+      "words": 292,
+      "minutes": 1
+    },
+    "appendices": {
+      "words": 1053,
+      "minutes": 5
+    },
+    "ch1": {
+      "words": 453,
+      "minutes": 2
+    },
+    "ch10": {
+      "words": 2195,
+      "minutes": 10
+    },
+    "ch11": {
+      "words": 2863,
+      "minutes": 13
+    },
+    "ch12": {
+      "words": 5186,
+      "minutes": 23
+    },
+    "ch13": {
+      "words": 2542,
+      "minutes": 11
+    },
+    "ch14": {
+      "words": 494,
+      "minutes": 2
+    },
+    "ch15": {
+      "words": 410,
+      "minutes": 2
+    },
+    "ch16": {
+      "words": 571,
+      "minutes": 3
+    },
+    "ch17": {
+      "words": 487,
+      "minutes": 2
+    },
+    "ch18": {
+      "words": 2765,
+      "minutes": 12
+    },
+    "ch19": {
+      "words": 3505,
+      "minutes": 16
+    },
+    "ch19b": {
+      "words": 281,
+      "minutes": 1
+    },
+    "ch2": {
+      "words": 353,
+      "minutes": 2
+    },
+    "ch20": {
+      "words": 753,
+      "minutes": 3
+    },
+    "ch21": {
+      "words": 1236,
+      "minutes": 5
+    },
+    "ch22": {
+      "words": 643,
+      "minutes": 3
+    },
+    "ch23": {
+      "words": 1647,
+      "minutes": 7
+    },
+    "ch24": {
+      "words": 712,
+      "minutes": 3
+    },
+    "ch25": {
+      "words": 282,
+      "minutes": 1
+    },
+    "ch26": {
+      "words": 238,
+      "minutes": 1
+    },
+    "ch27": {
+      "words": 172,
+      "minutes": 1
+    },
+    "ch28": {
+      "words": 190,
+      "minutes": 1
+    },
+    "ch29": {
+      "words": 249,
+      "minutes": 1
+    },
+    "ch3": {
+      "words": 2260,
+      "minutes": 10
+    },
+    "ch30": {
+      "words": 246,
+      "minutes": 1
+    },
+    "ch31": {
+      "words": 243,
+      "minutes": 1
+    },
+    "ch32": {
+      "words": 408,
+      "minutes": 2
+    },
+    "ch33": {
+      "words": 602,
+      "minutes": 3
+    },
+    "ch34": {
+      "words": 226,
+      "minutes": 1
+    },
+    "ch35": {
+      "words": 172,
+      "minutes": 1
+    },
+    "ch36": {
+      "words": 103,
+      "minutes": 1
+    },
+    "ch37": {
+      "words": 362,
+      "minutes": 2
+    },
+    "ch38": {
+      "words": 111,
+      "minutes": 1
+    },
+    "ch39": {
+      "words": 87,
+      "minutes": 1
+    },
+    "ch4": {
+      "words": 1107,
+      "minutes": 5
+    },
+    "ch40": {
+      "words": 229,
+      "minutes": 1
+    },
+    "ch42": {
+      "words": 182,
+      "minutes": 1
+    },
+    "ch43": {
+      "words": 409,
+      "minutes": 2
+    },
+    "ch43-ai": {
+      "words": 2725,
+      "minutes": 12
+    },
+    "ch44": {
+      "words": 71,
+      "minutes": 1
+    },
+    "ch45": {
+      "words": 75,
+      "minutes": 1
+    },
+    "ch46": {
+      "words": 296,
+      "minutes": 1
+    },
+    "ch5": {
+      "words": 2867,
+      "minutes": 13
+    },
+    "ch6": {
+      "words": 2515,
+      "minutes": 11
+    },
+    "ch7": {
+      "words": 3251,
+      "minutes": 14
+    },
+    "ch8": {
+      "words": 3715,
+      "minutes": 17
+    },
+    "ch9": {
+      "words": 3454,
+      "minutes": 15
+    },
+    "dashboard": {
+      "words": 885,
+      "minutes": 4
+    },
+    "placeholder": {
+      "words": 32,
+      "minutes": 1
+    },
+    "suppG": {
+      "words": 76,
+      "minutes": 1
+    },
+    "suppH": {
+      "words": 64,
+      "minutes": 1
+    },
+    "suppI": {
+      "words": 65,
+      "minutes": 1
+    },
+    "suppJ": {
+      "words": 72,
+      "minutes": 1
+    },
+    "suppK": {
+      "words": 72,
+      "minutes": 1
+    }
+  }
+}

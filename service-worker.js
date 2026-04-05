@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v198';
+const CACHE_NAME = 'aoc-gdd-v199';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -103,6 +103,7 @@ const PRECACHE_URLS = [
   '/data/loadouts/unit-loadouts.json',
   '/data/nav/lore-quotes.json',
   '/data/nav/nav-data.json',
+  '/data/nav/chapter-meta.json',
   '/data/nav/section-map.json',
   '/data/planets/planet-svg.json',
   '/data/planets/planets.json',
