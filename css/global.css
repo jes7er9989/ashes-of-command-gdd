@@ -6607,14 +6607,22 @@ body.dev-mode-active::after {
   #kbd-help-badge:hover, #kbd-help-badge:focus-visible { transform: none; }
 }
 
-/* -- Reading Time Indicator --
-   Small pill below top nav button showing estimated reading time. */
-.reading-time-indicator {
+/* -- Chapter Meta Pills (reading time + last updated) --
+   Row of small pills below top nav button. */
+.chapter-meta-pills {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px auto 16px;
+}
+.reading-time-indicator {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  margin: 8px auto 16px;
+  margin: 0;
   padding: 4px 10px;
   width: fit-content;
   font-family: monospace;

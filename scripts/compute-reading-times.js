@@ -12,6 +12,7 @@
 
 const fs   = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 
 const WPM = 225;
 const CHAPTERS_DIR = path.resolve(__dirname, '..', 'pages', 'chapters');
@@ -60,6 +61,23 @@ function countWords(text) {
     .length;
 }
 
+/**
+ * Get the last git commit date (author date, ISO-8601) for a file.
+ * Returns null if the file is untracked or git is unavailable.
+ */
+function gitLastModified(filePath) {
+  try {
+    const out = execFileSync(
+      'git',
+      ['log', '-1', '--format=%aI', '--', filePath],
+      { cwd: path.resolve(__dirname, '..'), encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }
+    ).trim();
+    return out || null;
+  } catch (_e) {
+    return null;
+  }
+}
+
 // --- Main ---
 
 const files = fs.readdirSync(CHAPTERS_DIR).filter(f => f.endsWith('.html')).sort();
@@ -73,7 +91,8 @@ for (const file of files) {
   const words     = countWords(text);
   const minutes   = Math.max(1, Math.round(words / WPM));
 
-  chapters[chapterId] = { words, minutes };
+  const updated = gitLastModified(filePath);
+  chapters[chapterId] = { words, minutes, updated };
 }
 
 // Sort chapters alphabetically by key
@@ -98,6 +117,7 @@ if (dryRun) {
   console.log(`Chapters: ${Object.keys(sorted).length}`);
   // Print summary
   for (const [id, meta] of Object.entries(sorted)) {
-    console.log(`  ${id.padEnd(14)} ${String(meta.words).padStart(6)} words  ${String(meta.minutes).padStart(3)} min`);
+    const dateStr = meta.updated ? meta.updated.slice(0, 10) : '----------';
+    console.log(`  ${id.padEnd(14)} ${String(meta.words).padStart(6)} words  ${String(meta.minutes).padStart(3)} min  ${dateStr}`);
   }
 }

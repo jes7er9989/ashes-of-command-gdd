@@ -363,6 +363,9 @@ const ChapterLoader = {
     const topWrap = this.contentArea.querySelector('.back-to-dashboard-wrap');
     if (!topWrap) return;
 
+    const wrap = document.createElement('div');
+    wrap.className = 'chapter-meta-pills';
+
     const pill = document.createElement('div');
     pill.className = 'reading-time-indicator';
     pill.setAttribute('aria-label', 'Estimated reading time');
@@ -372,8 +375,27 @@ const ChapterLoader = {
         '<path d="M8 4 L8 8 L11 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>' +
       '</svg>' +
       '<span>' + entry.minutes + ' min read</span>';
+    wrap.appendChild(pill);
 
-    topWrap.insertAdjacentElement('afterend', pill);
+    // Last-updated date (if available from git)
+    if (entry.updated) {
+      const d = new Date(entry.updated);
+      if (!isNaN(d.getTime())) {
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const dateStr = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+        const datePill = document.createElement('div');
+        datePill.className = 'reading-time-indicator updated-indicator';
+        datePill.setAttribute('aria-label', 'Last updated');
+        datePill.innerHTML =
+          '<svg viewBox="0 0 16 16" aria-hidden="true" width="12" height="12">' +
+            '<path d="M3 3 h10 v10 h-10 z M3 6 h10 M6 3 v-1 M10 3 v-1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>' +
+          '</svg>' +
+          '<span>Updated ' + dateStr + '</span>';
+        wrap.appendChild(datePill);
+      }
+    }
+
+    topWrap.insertAdjacentElement('afterend', wrap);
   },
 
   /* ── Mobile Overflow Wrappers ────────────────────────── */
