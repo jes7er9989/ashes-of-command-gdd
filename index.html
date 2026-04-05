@@ -46,6 +46,32 @@
   <!-- Scroll progress bar: fills 0->100% as user scrolls through current page -->
   <div id="scroll-progress" aria-hidden="true"></div>
 
+  <!-- Keyboard shortcuts badge (bottom-right, opens help modal) -->
+  <button id="kbd-help-badge" type="button" aria-label="Show keyboard shortcuts" title="Keyboard shortcuts (?)">?</button>
+
+  <!-- Keyboard shortcuts modal -->
+  <div id="kbd-help-modal" class="kbd-modal" role="dialog" aria-modal="true" aria-labelledby="kbd-help-title" aria-hidden="true">
+    <div class="kbd-modal-backdrop" data-close></div>
+    <div class="kbd-modal-panel">
+      <div class="kbd-modal-header">
+        <h2 id="kbd-help-title">Keyboard Shortcuts</h2>
+        <button type="button" class="kbd-modal-close" aria-label="Close" data-close>&times;</button>
+      </div>
+      <dl class="kbd-list">
+        <dt><kbd>Ctrl</kbd> + <kbd>K</kbd> <span class="kbd-alt">or</span> <kbd>&#8984;</kbd> + <kbd>K</kbd></dt>
+        <dd>Open search</dd>
+        <dt><kbd>&uarr;</kbd> / <kbd>&darr;</kbd></dt>
+        <dd>Navigate search results</dd>
+        <dt><kbd>Enter</kbd></dt>
+        <dd>Select result</dd>
+        <dt><kbd>Esc</kbd></dt>
+        <dd>Close overlays &amp; menus</dd>
+        <dt><kbd>?</kbd></dt>
+        <dd>Show this help</dd>
+      </dl>
+    </div>
+  </div>
+
   <!-- ══════════════ MOBILE NAV CONTROLS ══════════════
        Hamburger button and dark overlay shown only at ≤768px.
        The overlay closes the sidebar when tapped.                 -->
@@ -458,6 +484,38 @@
         }
 
         console.log('%c[AOC] Systems online.', 'color:#00b4ff;font-family:monospace');
+
+        // Keyboard shortcuts help: ? key or badge click opens modal
+        (function() {
+          const modal = document.getElementById('kbd-help-modal');
+          const badge = document.getElementById('kbd-help-badge');
+          if (!modal || !badge) return;
+          let lastFocus = null;
+          function open() {
+            lastFocus = document.activeElement;
+            modal.setAttribute('aria-hidden', 'false');
+            const closeBtn = modal.querySelector('.kbd-modal-close');
+            if (closeBtn) closeBtn.focus();
+          }
+          function close() {
+            modal.setAttribute('aria-hidden', 'true');
+            if (lastFocus && lastFocus.focus) lastFocus.focus();
+          }
+          badge.addEventListener('click', open);
+          modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));
+          document.addEventListener('keydown', (e) => {
+            // Ignore if typing in an input/textarea/contenteditable
+            const t = e.target;
+            const typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
+            if (typing) return;
+            if (e.key === '?' || (e.key === '/' && e.shiftKey)) {
+              e.preventDefault();
+              modal.getAttribute('aria-hidden') === 'false' ? close() : open();
+            } else if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+              close();
+            }
+          });
+        })();
 
         // Scroll progress bar: throttled via rAF, updates --scroll-progress as scaleX
         (function() {
