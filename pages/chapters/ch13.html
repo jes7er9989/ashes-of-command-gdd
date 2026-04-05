@@ -85,7 +85,7 @@
         </div>
         <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
           <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">MID-COMBAT SHIFTS</div>
-          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.55">Some weather events are sudden (sandstorms, eruptions). These trigger during ground combat with brief warning &mdash; visual cue, 10-second countdown.</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.55">Some weather events are sudden (sandstorms, eruptions). These trigger during ground combat with diegetic warnings &mdash; staged alarm sequences that escalate through visual, audio, and environmental channels (see <a href="#sec-ch13-diegetic-warnings" style="color:var(--accent)">Diegetic Warning Framework</a> below).</div>
         </div>
         <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
           <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">WEATHER CYCLING</div>
@@ -266,6 +266,126 @@
         <div>
           <strong style="color:var(--text-hi)">6. Hybrid Trigger &mdash; Random Baseline + Damage Acceleration:</strong> Each megastructure has a baseline random failure rate. Combat damage accumulates &lsquo;structural stress.&rsquo; Stress accelerates failure probability &mdash; more combat equals more failures. <span class="ph-tag">PH</span> Stress-to-failure formula pending balance pass.
         </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ============================================================
+         DIEGETIC WARNING FRAMEWORK (Pitch #4)
+         ============================================================ -->
+    <div class="section-label">Diegetic Warning Framework</div>
+    <h2 class="section-heading" id="sec-ch13-diegetic-warnings">The Atmosphere Should Break Before the Event Hits</h2>
+    <div class="body-text" style="margin-bottom:24px">&ldquo;The player should not just watch a timer tick down; they should feel the atmosphere breaking.&rdquo; &mdash; Generic HUD countdowns are replaced with diegetic tactical alarms. The command console reacts to in-world conditions: visual banners, audio buildups, and environmental particle effects telegraph incoming events through the game world itself rather than through an overlay timer. Basic consoles show alarms only &mdash; numeric countdowns require the <strong style="color:var(--text-hi)">Advanced Meteorological Sensors</strong> tech unlock.</div>
+
+    <!-- 5 Design Rules -->
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:14px">DIEGETIC WARNING DESIGN RULES</div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:12px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">RULE 1 &mdash; TECH-GATED TIMER VISIBILITY</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">Basic command console shows alarm stages only &mdash; no numeric digits. Unlocking the <strong style="color:var(--text-hi)">Advanced Meteorological Sensors</strong> tech node adds precise numeric countdowns to all warning banners. Parallels the tech-gated intel curve in Containment Breach (see <a href="#sec-ch13-containment-breach" style="color:var(--accent)">&sect;13 Containment Breach Rule&nbsp;6</a>). <span class="ph-tag">PH</span> Advanced Meteorological Sensors tech node placement pending tech tree pass.</div>
+        </div>
+
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:12px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">RULE 2 &mdash; TRIPLE-CHANNEL ALARM STACK</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">Every warning fires across three simultaneous channels:<br>
+            <strong style="color:var(--text-hi)">Visual:</strong> Banner text, UI border flicker, color shifts.<br>
+            <strong style="color:var(--text-hi)">Audio:</strong> Wind/static ambient buildup, alarm chime, crescendo stingers.<br>
+            <strong style="color:var(--text-hi)">Environmental:</strong> In-world particle effects before impact (dust, sparks, static, debris).<br>
+            No camera shake &mdash; preserves long-match comfort.</div>
+        </div>
+
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:12px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">RULE 3 &mdash; VARIABLE STAGES BY SEVERITY</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">
+            <strong style="color:var(--text-hi)">Instakill-class events:</strong> 3 stages (slow buildup, long lead time).<br>
+            <strong style="color:var(--text-hi)">Lethal DoT events:</strong> 2 stages (medium warning).<br>
+            <strong style="color:var(--text-hi)">Minor events:</strong> 1 stage (quick flash).<br>
+            Stage count IS the severity grammar &mdash; players learn that more stages mean more danger. Directly implements CSF Rule&nbsp;4 (Warning Lead Time Scales with Severity). <span class="ph-tag">PH</span> Per-severity-tier exact stage timings pending balance pass.</div>
+        </div>
+
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:12px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">RULE 4 &mdash; HYBRID ALARM GRAMMAR</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">Every alarm banner uses the format: <strong style="color:var(--text-hi)">[TECHNICAL READOUT]</strong> &mdash; actionable consequence.<br>
+            Technical instrument language on top; short, plain-language tactical subtext below.<br>
+            Example: <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--text-hi)">[BAROMETRIC DROP DETECTED]</span> &mdash; <span style="color:var(--text-mid)">Storm imminent, prepare for reduced sightlines</span></div>
+        </div>
+
+        <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:12px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accent);letter-spacing:2px;margin-bottom:6px">RULE 5 &mdash; FRAMEWORK SCOPE</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">
+            <strong style="color:var(--text-hi)">Applies to:</strong> Weather events, Catastrophic System Failures, combat events (enemy reinforcements, air strikes, artillery, orbital bombardment).<br>
+            <strong style="color:var(--vorax)">Excluded:</strong> Strategic-map events (Vorax migration, faction declarations) &mdash; different scale and language. <span class="ph-tag">PH</span> Full combat event type list in scope pending combat pass.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Canonical Examples -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+      <div class="card" style="border-top:2px solid var(--revenant)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--revenant);letter-spacing:2px;margin-bottom:10px">HULL BREACH &mdash; 3-STAGE WARNING</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:10px">INSTAKILL-CLASS &middot; ORBITAL STATION &middot; WORLDSHIP</div>
+        <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
+          <div style="margin-bottom:10px;padding:8px 10px;background:rgba(255,170,0,0.04);border-left:2px solid #fa0;border-radius:0 2px 2px 0">
+            <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#fa0;letter-spacing:2px;margin-bottom:4px">STAGE 1 &mdash; 10 SEC BEFORE</div>
+            <div><strong style="color:var(--text-hi)">Visual:</strong> UI border faint amber flicker. <strong style="color:var(--text-hi)">Audio:</strong> Distant metal groan, low hum. <strong style="color:var(--text-hi)">Environment:</strong> Tiny debris drift in grid.</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-hi);margin-top:4px">[STRUCTURAL INTEGRITY: DEGRADING &mdash; GRID 3A]</div>
+          </div>
+          <div style="margin-bottom:10px;padding:8px 10px;background:rgba(255,170,0,0.08);border-left:2px solid #fa0;border-radius:0 2px 2px 0">
+            <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#fa0;letter-spacing:2px;margin-bottom:4px">STAGE 2 &mdash; 5 SEC BEFORE</div>
+            <div><strong style="color:var(--text-hi)">Visual:</strong> Amber alarm banner pulsing. <strong style="color:var(--text-hi)">Audio:</strong> Alarm chime, metal stress. <strong style="color:var(--text-hi)">Environment:</strong> Units visibly shake.</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-hi);margin-top:4px">[HULL BREACH IMMINENT &mdash; GRID 3A]</div>
+            <div style="font-size:0.85rem;color:var(--text-mid);margin-top:2px">&mdash; Evacuate vulnerable units, vacuum exposure in 5 seconds</div>
+          </div>
+          <div style="margin-bottom:10px;padding:8px 10px;background:rgba(255,34,34,0.08);border-left:2px solid #f33;border-radius:0 2px 2px 0">
+            <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#f33;letter-spacing:2px;margin-bottom:4px">STAGE 3 &mdash; 1 SEC BEFORE</div>
+            <div><strong style="color:var(--text-hi)">Visual:</strong> Full red alarm, banner flashes. <strong style="color:var(--text-hi)">Audio:</strong> Alarm screams, crescendo. <strong style="color:var(--text-hi)">Environment:</strong> Atmosphere distorts, objects lift.</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:#f33;margin-top:4px">[CRITICAL &mdash; VENTING]</div>
+            <div style="font-size:0.85rem;color:var(--text-mid);margin-top:2px">&mdash; Brace for decompression</div>
+          </div>
+          <div style="font-size:0.85rem;color:var(--text-dim);font-style:italic;border-top:1px solid var(--border);padding-top:8px">Then: Hull Breach hits, territory vents, DoT begins.</div>
+        </div>
+      </div>
+      <div class="card" style="border-top:2px solid var(--horde)">
+        <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--horde);letter-spacing:2px;margin-bottom:10px">AIR STRIKE &mdash; 2-STAGE WARNING</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--text-dim);letter-spacing:1px;margin-bottom:10px">LETHAL COMBAT EVENT</div>
+        <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
+          <div style="margin-bottom:10px;padding:8px 10px;background:rgba(255,170,0,0.04);border-left:2px solid #fa0;border-radius:0 2px 2px 0">
+            <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#fa0;letter-spacing:2px;margin-bottom:4px">STAGE 1</div>
+            <div><strong style="color:var(--text-hi)">Audio:</strong> Approaching jet wash.</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--text-hi);margin-top:4px">[HOSTILE AIR CONTACT &mdash; BEARING 340]</div>
+          </div>
+          <div style="margin-bottom:10px;padding:8px 10px;background:rgba(255,34,34,0.08);border-left:2px solid #f33;border-radius:0 2px 2px 0">
+            <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:#f33;letter-spacing:2px;margin-bottom:4px">STAGE 2</div>
+            <div><strong style="color:var(--text-hi)">Visual:</strong> Shadow over map, red targeting reticles.</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:#f33;margin-top:4px">[AIR STRIKE ORDNANCE &mdash; IMPACT IN 3]</div>
+            <div style="font-size:0.85rem;color:var(--text-mid);margin-top:2px">&mdash; Clear strike zones</div>
+          </div>
+          <div style="font-size:0.85rem;color:var(--text-dim);font-style:italic;border-top:1px solid var(--border);padding-top:8px">Then: Ordnance lands.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cross-Reference Note -->
+    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--accent)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">CROSS-REFERENCE &mdash; IMPLEMENTATION</div>
+      <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">The <a href="#sec-ch13-csf" style="color:var(--accent)">Catastrophic System Failures</a> section above implements this framework for megastructure hazards (CSF Rule&nbsp;4: Warning Lead Time Scales with Severity). Weather events in the <a href="#sec-ch13-weather" style="color:var(--accent)">Planetary Weather System</a> section also use diegetic warnings for mid-combat shifts. Combat event warnings (reinforcements, air strikes, artillery, orbital bombardment) are defined in their respective combat chapters.</div>
+    </div>
+
+    <!-- Open Items -->
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">OPEN ITEMS</div>
+      <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.65">
+        <div style="margin-bottom:4px"><span class="ph-tag">PH</span> Advanced Meteorological Sensors tech node placement</div>
+        <div style="margin-bottom:4px"><span class="ph-tag">PH</span> Per-severity-tier exact stage timings</div>
+        <div style="margin-bottom:4px"><span class="ph-tag">PH</span> Full alarm text catalog per event type</div>
+        <div style="margin-bottom:4px"><span class="ph-tag">PH</span> Particle effect specs per event</div>
+        <div style="margin-bottom:4px"><span class="ph-tag">PH</span> Audio asset list (chimes, loops, stingers)</div>
+        <div style="margin-bottom:4px"><span class="ph-tag">PH</span> Full combat event type list in scope</div>
+        <div><span class="ph-tag">PH</span> Accessibility settings (colorblind modes, audio-disabled visual boost)</div>
       </div>
     </div>
 
@@ -543,12 +663,138 @@
         </div>
         <div style="background:rgba(0,180,255,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
           <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">OTHER FACTIONS</div>
-          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">Can detect caches with Deep Scan. Can attempt to destroy caches (denying Revenant recruitment). Cannot wake sleepers &mdash; the technology is Revenant-specific. May accidentally trigger hostile corrupted units during excavation.</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">Can detect caches with Deep Scan. Faces a binary choice: <strong style="color:var(--text-hi)">Safe Purge</strong> (heavy resource cost, neutralizes the cache cleanly) or <strong style="color:var(--text-hi)">Quick Crack</strong> (fast excavation for Aethyn technology, risks a Containment Breach). Can also attempt to destroy caches outright (denying Revenant recruitment). Cannot wake sleepers &mdash; the technology is Revenant-specific. See <em>Containment Breach</em> below for full rules.</div>
         </div>
         <div style="background:rgba(255,34,102,0.03);border:1px solid var(--border);border-radius:2px;padding:10px 14px">
           <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--vorax);letter-spacing:2px;margin-bottom:6px">STRATEGIC DENIAL</div>
           <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">Smart commanders who know the Revenant is in the game will prioritize destroying sleeper caches on planets they control &mdash; denying the Revenant their primary recruitment pipeline.</div>
         </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         CONTAINMENT BREACH (Non-Revenant Sleeper Cache Interaction)
+         ============================================================ -->
+    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--vorax)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:14px" id="sec-ch13-containment-breach">CONTAINMENT BREACH</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65;margin-bottom:14px">When a non-Revenant faction deep-scans a Sleeper Cache, they face an explicit binary choice. There is no third option. You are literally fighting a tomb to steal its jewelry.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px">
+        <div style="background:rgba(0,180,255,0.04);border:1px solid var(--border);border-radius:2px;padding:14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--accord);letter-spacing:2px;margin-bottom:8px">SAFE PURGE</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">
+            Heavy resource investment to neutralize the cache cleanly before opening. The cache is rendered inert &mdash; no Revenant units awaken, no breach occurs. Contents are safely extracted.<br><br>
+            <strong style="color:var(--text-hi)">Cost:</strong> Scales with cache tier (T1/T2/T3) <span class="ph-tag">PH</span><br>
+            <strong style="color:var(--text-hi)">Duration:</strong> Commitment cycles required during purge <span class="ph-tag">PH</span><br>
+            <strong style="color:var(--text-hi)">Result:</strong> Safe extraction, no combat risk
+          </div>
+        </div>
+        <div style="background:rgba(255,34,102,0.04);border:1px solid var(--border);border-radius:2px;padding:14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">QUICK CRACK</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">
+            Fast excavation targeting Aethyn technology inside the cache. Minimal resource cost, maximum risk. A failed containment triggers a <strong style="color:var(--vorax)">Containment Breach</strong> &mdash; degraded Revenant units awaken and instantly initiate a ground battle on the node.<br><br>
+            <strong style="color:var(--text-hi)">Cost:</strong> Minimal (excavation crew only)<br>
+            <strong style="color:var(--text-hi)">Duration:</strong> Immediate (this turn)<br>
+            <strong style="color:var(--text-hi)">Risk:</strong> Containment Breach &mdash; ground battle on the node
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Containment Breach: 7 Design Rules -->
+    <div class="card" style="margin-bottom:24px">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--revenant);letter-spacing:2px;margin-bottom:14px">CONTAINMENT BREACH &mdash; DESIGN RULES</div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+
+        <!-- Rule 1: Indefinite Hold -->
+        <div style="background:rgba(170,119,255,0.04);border:1px solid var(--border);border-radius:2px;padding:12px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--revenant);letter-spacing:2px;margin-bottom:6px">RULE 1 &mdash; INDEFINITE HOLD ALLOWED</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">After deep-scanning a cache, the player can sit on the un-excavated cache as long as they want. There is no timer. The decision &mdash; purge or crack &mdash; can be timed strategically: wait for reinforcements, wait for scan tech upgrades (see Rule 6), or wait for the political situation to shift.</div>
+        </div>
+
+        <!-- Rule 2: Tiered Safe-Purge Cost -->
+        <div style="background:rgba(170,119,255,0.04);border:1px solid var(--border);border-radius:2px;padding:12px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--revenant);letter-spacing:2px;margin-bottom:6px">RULE 2 &mdash; TIERED SAFE-PURGE COST</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">
+            Safe Purge resource cost scales with cache tier. Higher-tier caches demand significantly more resources and commitment cycles to neutralize.<br>
+            <strong style="color:var(--text-hi)">T1 Cache:</strong> Low purge cost <span class="ph-tag">PH</span><br>
+            <strong style="color:var(--text-hi)">T2 Cache:</strong> Medium purge cost <span class="ph-tag">PH</span><br>
+            <strong style="color:var(--text-hi)">T3 Cache:</strong> High purge cost <span class="ph-tag">PH</span><br>
+            <span style="font-size:0.85rem;color:var(--text-dim);font-style:italic">Exact resource values and commitment cycle durations: TODO balance pass</span>
+          </div>
+        </div>
+
+        <!-- Rule 3: Tiered Loot-Table Crack Reward -->
+        <div style="background:rgba(170,119,255,0.04);border:1px solid var(--border);border-radius:2px;padding:12px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--revenant);letter-spacing:2px;margin-bottom:6px">RULE 3 &mdash; TIERED LOOT-TABLE CRACK REWARD</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">
+            A successful Quick Crack rolls from a loot table. Possible rewards include: tech node unlock, artifact, raw Aethyn resources, or blueprint.<br>
+            <strong style="color:var(--text-hi)">T1 Cache:</strong> Minor rewards <span class="ph-tag">PH</span><br>
+            <strong style="color:var(--text-hi)">T2 Cache:</strong> Moderate rewards <span class="ph-tag">PH</span><br>
+            <strong style="color:var(--text-hi)">T3 Cache:</strong> Major rewards <span class="ph-tag">PH</span><br>
+            <span style="font-size:0.85rem;color:var(--text-dim);font-style:italic">Exact loot table contents and probability weights: TODO balance pass</span>
+          </div>
+        </div>
+
+        <!-- Rule 4: Combined Breach Composition -->
+        <div style="background:rgba(255,34,102,0.04);border:1px solid var(--border);border-radius:2px;padding:12px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--vorax);letter-spacing:2px;margin-bottom:6px">RULE 4 &mdash; COMBINED BREACH COMPOSITION (TIER &times; THEME)</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">
+            The breach force is determined by two axes: cache <strong style="color:var(--text-hi)">tier</strong> controls SIZE, cache <strong style="color:var(--text-hi)">theme</strong> controls COMPOSITION.<br><br>
+            <strong style="color:var(--text-hi)">Size by Tier:</strong><br>
+            &bull; T1 = small skirmish force<br>
+            &bull; T2 = significant combat force<br>
+            &bull; T3 = near-full Revenant strike force with elite corrupted units<br><br>
+            <strong style="color:var(--text-hi)">Composition by Theme:</strong><br>
+            &bull; <strong>Military cache:</strong> degraded Revenant soldiers<br>
+            &bull; <strong>Research cache:</strong> corrupted scientists and bio-experiments<br>
+            &bull; <strong>Civilian cache:</strong> mutated population<br><br>
+            <span style="font-size:0.85rem;color:var(--text-dim);font-style:italic">Exact size curves and unit rosters per theme: TODO balance pass</span>
+          </div>
+        </div>
+
+        <!-- Rule 5: Conditional Flip on Breach Victory -->
+        <div style="background:rgba(255,34,102,0.04);border:1px solid var(--border);border-radius:2px;padding:12px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--vorax);letter-spacing:2px;margin-bottom:6px">RULE 5 &mdash; CONDITIONAL FLIP ON BREACH VICTORY</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">
+            If the breach force wins the ground battle:<br>
+            &bull; Colonists dead, garrison wiped<br>
+            &bull; <strong style="color:var(--revenant)">If Revenant player exists:</strong> node flips to Revenant control<br>
+            &bull; <strong style="color:var(--text-hi)">If no Revenant player:</strong> node becomes a hostile neutral zone (lethal, must be recaptured)
+          </div>
+        </div>
+
+        <!-- Rule 6: Tech-Gated Intel -->
+        <div style="background:rgba(170,119,255,0.04);border:1px solid var(--border);border-radius:2px;padding:12px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--revenant);letter-spacing:2px;margin-bottom:6px">RULE 6 &mdash; TECH-GATED INTEL</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">
+            Scan technology determines how much information the player has before committing to purge or crack.<br>
+            <strong style="color:var(--text-hi)">Basic deep-scan:</strong> reveals cache TIER only (T1/T2/T3)<br>
+            <strong style="color:var(--text-hi)">Advanced scan tech:</strong> reveals tier + theme + force composition<br><br>
+            This creates a natural difficulty curve: early game is terrifying (blind decisions), late game is calculated (informed risk). Synergizes with Rule 1 (Indefinite Hold) &mdash; wait until scan tech improves before committing.<br>
+            <span style="font-size:0.85rem;color:var(--text-dim);font-style:italic">Advanced scan tech tree placement: TODO separate tech tree pass <span class="ph-tag">PH</span></span>
+          </div>
+        </div>
+
+        <!-- Rule 7: Revenant Player Interaction -->
+        <div style="background:rgba(170,119,255,0.06);border:1px solid var(--border);border-radius:2px;padding:12px 14px">
+          <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--revenant);letter-spacing:2px;margin-bottom:6px">RULE 7 &mdash; REVENANT PLAYER INTERACTION (BOOST + DIRECT)</div>
+          <div style="font-size:0.9rem;color:var(--text-mid);line-height:1.6">
+            If a Revenant player exists in the game and a rival cracks a cache, the Revenant player can:<br>
+            <strong style="color:var(--revenant)">(a) BOOST</strong> &mdash; spend resources to amplify the breach force (scale and quality)<br>
+            <strong style="color:var(--revenant)">(b) DIRECT</strong> &mdash; aim the force against the cracker&rsquo;s settlement or assets<br><br>
+            The Revenant chooses which rival&rsquo;s greed to weaponize. Every Quick Crack in the galaxy is a potential lever for Revenant strategy.<br>
+            <span style="font-size:0.85rem;color:var(--text-dim);font-style:italic">Boost resource costs and direct-control duration: TODO balance pass <span class="ph-tag">PH</span></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Containment Breach: Canonical Example -->
+    <div class="card" style="margin-bottom:24px;border-left:3px solid var(--revenant);background:rgba(170,119,255,0.03)">
+      <div style="font-family:'Orbitron',monospace;font-size:0.7rem;color:var(--revenant);letter-spacing:2px;margin-bottom:10px">FIELD REPORT &mdash; CONTAINMENT BREACH INCIDENT</div>
+      <div style="font-size:0.93rem;color:var(--text-mid);line-height:1.75;font-style:italic">
+        A Terran scout drops a deep-scan probe onto a resource-rich ice world. The scan pings a buried Sleeper Cache. Tier is unknown until scan tech is upgraded. The commander chooses: divert a Containment Team and resources to safely purge the tomb over three cycles, or rush an excavation crew and crack it this turn. She cracks it. The tomb roars awake. A Revenant research cache disgorges degraded elite bio-experiments and corrupted scholars onto the node. Her lightly-armored colonists are slaughtered. The Revenant player, watching from three systems away, had already spent resources to amplify the force. They direct it toward the Terran settlement. The planet flips. The tomb reclaimed its jewelry, and the planet with it.
       </div>
     </div>
 

@@ -553,12 +553,20 @@
       "label": "Catastrophic System Failures"
     },
     {
+      "id": "sec-ch13-diegetic-warnings",
+      "label": "Diegetic Warning Framework"
+    },
+    {
       "id": "sec-ch13-scanning",
       "label": "See Before You Commit"
     },
     {
       "id": "sec-ch13-sleepers",
       "label": "The Sleeping Army Beneath Your Feet"
+    },
+    {
+      "id": "sec-ch13-containment-breach",
+      "label": "Containment Breach"
     },
     {
       "id": "sec-ch13-terraforming",
