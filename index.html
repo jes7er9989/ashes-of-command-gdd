@@ -43,6 +43,9 @@
   <!-- Skip link: first focusable element for keyboard users (WCAG 2.4.1) -->
   <a href="#content-area" class="skip-link">Skip to content</a>
 
+  <!-- Scroll progress bar: fills 0->100% as user scrolls through current page -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <!-- ══════════════ MOBILE NAV CONTROLS ══════════════
        Hamburger button and dark overlay shown only at ≤768px.
        The overlay closes the sidebar when tapped.                 -->
@@ -455,6 +458,24 @@
         }
 
         console.log('%c[AOC] Systems online.', 'color:#00b4ff;font-family:monospace');
+
+        // Scroll progress bar: throttled via rAF, updates --scroll-progress as scaleX
+        (function() {
+          const bar = document.getElementById('scroll-progress');
+          if (!bar) return;
+          let ticking = false;
+          function update() {
+            const h = document.documentElement.scrollHeight - window.innerHeight;
+            const ratio = h > 0 ? Math.min(1, window.scrollY / h) : 0;
+            bar.style.transform = 'scaleX(' + ratio + ')';
+            ticking = false;
+          }
+          window.addEventListener('scroll', function() {
+            if (!ticking) { requestAnimationFrame(update); ticking = true; }
+          }, { passive: true });
+          window.addEventListener('resize', update, { passive: true });
+          update();
+        })();
       } catch (e) {
         console.error('[AOC] Boot failure:', e);
       }

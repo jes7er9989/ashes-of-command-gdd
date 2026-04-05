@@ -200,6 +200,27 @@ body {
   outline-offset: 2px;
 }
 
+
+/* -- Scroll Progress Bar --
+   Thin bar at top of viewport, faction-colored, scaleX(0->1) as user scrolls.
+   Inherits --ci-color set by chapter-loader when faction class applies. */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 9999;
+  background: var(--ci-color, var(--accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+  will-change: transform;
+  box-shadow: 0 0 6px var(--ci-color, var(--accent));
+}
+@media (prefers-reduced-motion: reduce) {
+  #scroll-progress { transition: none; }
+}
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    3. TYPOGRAPHY
    â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
