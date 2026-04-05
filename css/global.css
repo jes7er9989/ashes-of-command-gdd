@@ -6606,3 +6606,44 @@ body.dev-mode-active::after {
   #kbd-help-badge { transition: none; }
   #kbd-help-badge:hover, #kbd-help-badge:focus-visible { transform: none; }
 }
+
+/* -- Offline Status Badge --
+   Small amber badge top-right when navigator.onLine === false.
+   Hidden by default via [hidden]. */
+#offline-badge {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9997;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(50, 30, 10, 0.92);
+  border: 1px solid #d97706;
+  border-radius: 14px;
+  color: #fbbf24;
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 10px rgba(217, 119, 6, 0.3);
+}
+#offline-badge[hidden] { display: none !important; }
+.offline-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fbbf24;
+  box-shadow: 0 0 6px #fbbf24;
+  animation: offline-pulse 1.6s ease-in-out infinite;
+}
+@keyframes offline-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .offline-dot { animation: none; }
+}

@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v197';
+const CACHE_NAME = 'aoc-gdd-v198';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -201,6 +201,27 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
+
+  // Navigation requests: network-first, fall back to cached index.html (SPA shell)
+  // This ensures offline users always land on a branded, functional page instead
+  // of the browser's default offline screen.
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          if (response.ok && url.origin === self.location.origin) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+          }
+          return response;
+        })
+        .catch(() =>
+          caches.match(event.request)
+            .then(cached => cached || caches.match('/index.html') || caches.match('/'))
+        )
+    );
+    return;
+  }
 
   // Network-first for JSON data files — always try fresh data
   if (url.pathname.endsWith('.json') && !url.pathname.endsWith('manifest.json')) {
