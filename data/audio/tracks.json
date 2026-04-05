@@ -1,0 +1,106 @@
+{
+  "defaultTrack": "theme-main",
+  "routes": {
+    "/": "theme-main",
+    "dashboard": "theme-dashboard",
+    "ch5": "faction-terran",
+    "ch6": "faction-shards",
+    "ch7": "faction-horde",
+    "ch8": "faction-revenant",
+    "ch9": "faction-accord",
+    "ch10": "faction-vorax",
+    "ch11": "faction-guardians"
+  },
+  "tracks": {
+    "theme-main": {
+      "file": "audio/music/theme-main.mp3",
+      "title": "The Reclamation",
+      "composer": "TBD",
+      "loop": true,
+      "fadeIn": 2000,
+      "fadeOut": 1500,
+      "loopStart": 0,
+      "loopEnd": null
+    },
+    "theme-dashboard": {
+      "file": "audio/music/theme-dashboard.mp3",
+      "title": "Command Deck",
+      "composer": "TBD",
+      "loop": true,
+      "fadeIn": 1500,
+      "fadeOut": 1200,
+      "loopStart": 0,
+      "loopEnd": null
+    },
+    "faction-terran": {
+      "file": "audio/music/faction-terran.mp3",
+      "title": "The Last Bastion",
+      "composer": "TBD",
+      "loop": true,
+      "fadeIn": 1800,
+      "fadeOut": 1500,
+      "loopStart": 0,
+      "loopEnd": null
+    },
+    "faction-shards": {
+      "file": "audio/music/faction-shards.mp3",
+      "title": "The Dying Light",
+      "composer": "TBD",
+      "loop": true,
+      "fadeIn": 1800,
+      "fadeOut": 1500,
+      "loopStart": 0,
+      "loopEnd": null
+    },
+    "faction-horde": {
+      "file": "audio/music/faction-horde.mp3",
+      "title": "The Rust Tide",
+      "composer": "TBD",
+      "loop": true,
+      "fadeIn": 1800,
+      "fadeOut": 1500,
+      "loopStart": 0,
+      "loopEnd": null
+    },
+    "faction-revenant": {
+      "file": "audio/music/faction-revenant.mp3",
+      "title": "The Undying Protocol",
+      "composer": "TBD",
+      "loop": true,
+      "fadeIn": 1800,
+      "fadeOut": 1500,
+      "loopStart": 0,
+      "loopEnd": null
+    },
+    "faction-accord": {
+      "file": "audio/music/faction-accord.mp3",
+      "title": "The Burning Covenant",
+      "composer": "TBD",
+      "loop": true,
+      "fadeIn": 1800,
+      "fadeOut": 1500,
+      "loopStart": 0,
+      "loopEnd": null
+    },
+    "faction-vorax": {
+      "file": "audio/music/faction-vorax.mp3",
+      "title": "The Devouring Swarm",
+      "composer": "TBD",
+      "loop": true,
+      "fadeIn": 1800,
+      "fadeOut": 1500,
+      "loopStart": 0,
+      "loopEnd": null
+    },
+    "faction-guardians": {
+      "file": "audio/music/faction-guardians.mp3",
+      "title": "The Silent Gods",
+      "composer": "TBD",
+      "loop": true,
+      "fadeIn": 1800,
+      "fadeOut": 1500,
+      "loopStart": 0,
+      "loopEnd": null
+    }
+  }
+}

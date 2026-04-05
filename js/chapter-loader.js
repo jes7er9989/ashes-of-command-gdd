@@ -165,6 +165,14 @@ const ChapterLoader = {
       }
     }
 
+    // Route-based background music (if user has interacted and MusicPlayer loaded)
+    if (typeof MusicPlayer !== 'undefined' && MusicPlayer.current !== undefined) {
+      var ab = document.getElementById('audio-toggle');
+      if (ab && ab.getAttribute('data-on') === '1') {
+        MusicPlayer.playForRoute(chapterId);
+      }
+    }
+
     // For faction chapters, load and render all faction data
     const faction = this.FACTION_MAP[chapterId];
     if (faction) {

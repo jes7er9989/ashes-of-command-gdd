@@ -773,9 +773,23 @@ const AudioEngine = (() => {
     playRarity,
     startViz,
 
-    /* ── Stubs — active callers exist in index.html / visual-effects.js ── */
-    toggle:      function() {},
-    startBg:     function() {},
-    setMusicVol: function() {}
+    /* ── Music bridge — delegates to MusicPlayer if loaded ── */
+    toggle: function() {
+      if (typeof MusicPlayer !== 'undefined' && MusicPlayer.current()) {
+        MusicPlayer.stop();
+      } else if (typeof MusicPlayer !== 'undefined') {
+        var hash = location.hash.replace('#', '') || '/';
+        MusicPlayer.playForRoute(hash);
+      }
+    },
+    startBg: function() {
+      if (typeof MusicPlayer !== 'undefined') {
+        var hash = location.hash.replace('#', '') || '/';
+        MusicPlayer.playForRoute(hash);
+      }
+    },
+    setMusicVol: function(v) {
+      if (typeof MusicPlayer !== 'undefined') MusicPlayer.setVolume(v);
+    }
   };
 })();

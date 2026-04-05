@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v196';
+const CACHE_NAME = 'aoc-gdd-v197';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -75,6 +75,7 @@ const PRECACHE_URLS = [
   '/pages/chapters/suppK.html',
 
   // Data — JSON (46)
+  '/data/audio/tracks.json',
   '/data/search-index.json',
   '/data/search-synonyms.json',
   '/data/dialogue/core-guardians.json',
@@ -127,6 +128,7 @@ const PRECACHE_URLS = [
 
   // JS modules (21)
   '/js/audio-engine.js',
+  '/js/music-player.js',
   '/js/canvas-galaxy.js',
   '/js/chapter-index.js',
   '/js/chapter-loader.js',
