@@ -367,7 +367,23 @@ const ContentRenderers = {
           <div class="planet-detail-inner">
             <div class="planet-svg-wrap" data-planet-type="${planet.name}"></div>
             ${subtypeToggle}
-            <div class="planet-detail-text">
+            <div class="planet-detail-text">${planet.megastructure ? `
+              <div class="planet-detail-section">
+                <div class="planet-detail-label" style="color:${planet.color}">NARRATIVE</div>
+                <div class="planet-detail-body" style="font-style:italic;color:var(--text-dim)">${planet.narrative}</div>
+              </div>
+              <div class="planet-detail-section">
+                <div class="planet-detail-label" style="color:${planet.color}">VISUAL</div>
+                <div class="planet-detail-body planet-visual-body">${planet.visual}</div>
+              </div>
+              <div class="planet-detail-section">
+                <div class="planet-detail-label" style="color:${planet.color}">TERRAIN</div>
+                <div class="planet-detail-body planet-terrain-body">${planet.terrain}</div>
+              </div>
+              <div class="planet-detail-section">
+                <div class="planet-detail-label" style="color:${planet.color}">SPECIAL RULES</div>
+                <div class="planet-detail-body">${planet.special}</div>
+              </div>` : `
               <div class="planet-detail-section">
                 <div class="planet-detail-label" style="color:${planet.color}">TERRAIN</div>
                 <div class="planet-detail-body planet-terrain-body">${planet.terrain}</div>
@@ -383,7 +399,7 @@ const ContentRenderers = {
               <div class="planet-detail-section">
                 <div class="planet-detail-label" style="color:${planet.color}">NARRATIVE</div>
                 <div class="planet-detail-body" style="font-style:italic;color:var(--text-dim)">${planet.narrative}</div>
-              </div>${extraSections}
+              </div>`}${extraSections}
             </div>
           </div>
         </div>
