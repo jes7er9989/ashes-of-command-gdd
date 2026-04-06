@@ -1104,6 +1104,9 @@ window.PlanetRenderer = (function () {
 
     _dysonSphere() {
       console.log('[DYSON] Building Dyson Sphere — planet-renderer v3.1');
+      // Pull camera back to show debris field and surrounding space
+      this.camera.position.z = 4.5;
+
       // Star-dominated lighting — everything is lit from within
       this.sun.color.set(0xffeedd);
       this.sun.intensity = 0.4;
