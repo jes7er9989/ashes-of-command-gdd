@@ -683,118 +683,257 @@ window.PlanetRenderer = (function () {
        ════════════════════════════════════ */
 
     _ringWorld() {
-      // Warm golden sunlight from the artificial star
+      // Dramatic lighting — star dominates
       this.sun.color.set(0xfff8d0);
-      this.sun.intensity = 1.0;
+      this.sun.intensity = 0.6;
       this.sun.position.set(0, 0, 5);
       this.fill.color.set(0x886633);
-      this.fill.intensity = 0.2;
-      this.ambient.intensity = 0.3;
+      this.fill.intensity = 0.15;
+      this.ambient.intensity = 0.2;
 
       this.megaGroup = new THREE.Group();
 
-      /* ── Artificial micro-star at the center ── */
-      var starGeo = new THREE.SphereGeometry(0.12, 32, 32);
-      var starMat = new THREE.MeshBasicMaterial({ color: 0xfff4dd });
+      /* ═══ ARTIFICIAL STAR — the centerpiece ═══ */
+      // Core — blazing white-gold
+      var starGeo = new THREE.SphereGeometry(0.1, 32, 32);
+      var starMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
       this.megaGroup.add(new THREE.Mesh(starGeo, starMat));
 
-      // Star corona layers
-      var coronaSizes = [0.18, 0.26, 0.36];
-      var coronaOpacities = [0.3, 0.15, 0.06];
-      var coronaColors = [0xffdd88, 0xffcc66, 0xffaa44];
-      for (var ci = 0; ci < 3; ci++) {
-        var cGeo = new THREE.SphereGeometry(coronaSizes[ci], 24, 24);
+      // Corona layers — progressively larger and dimmer
+      var coronaData = [
+        { r: 0.14, color: 0xfff8dd, op: 0.7 },
+        { r: 0.19, color: 0xffee99, op: 0.4 },
+        { r: 0.26, color: 0xffdd66, op: 0.2 },
+        { r: 0.35, color: 0xffcc44, op: 0.1 },
+        { r: 0.48, color: 0xffaa33, op: 0.04 },
+      ];
+      for (var ci = 0; ci < coronaData.length; ci++) {
+        var cd = coronaData[ci];
+        var cGeo = new THREE.SphereGeometry(cd.r, 24, 24);
         var cMat = new THREE.MeshBasicMaterial({
-          color: coronaColors[ci], transparent: true, opacity: coronaOpacities[ci],
-          depthWrite: false,
+          color: cd.color, transparent: true, opacity: cd.op, depthWrite: false,
         });
         this.megaGroup.add(new THREE.Mesh(cGeo, cMat));
       }
 
-      // Point light from artificial star
-      var starLight = new THREE.PointLight(0xffeedd, 0.9, 4);
+      // Light rays — flat planes through the star to simulate god-rays
+      for (var ri = 0; ri < 6; ri++) {
+        var rayGeo = new THREE.PlaneGeometry(0.015, 0.9);
+        var rayMat = new THREE.MeshBasicMaterial({
+          color: 0xffeedd, transparent: true, opacity: 0.06,
+          side: THREE.DoubleSide, depthWrite: false,
+        });
+        var ray = new THREE.Mesh(rayGeo, rayMat);
+        ray.rotation.z = (ri / 6) * Math.PI;
+        this.megaGroup.add(ray);
+      }
+
+      // Point light — illuminates the ring interior
+      var starLight = new THREE.PointLight(0xffeedd, 1.2, 5);
       this.megaGroup.add(starLight);
 
-      /* ── Ring band — procedural biome texture on a flat torus ── */
+      /* ═══ RING STRUCTURE — multi-layer band ═══ */
+
+      // Biome texture — high detail with city lights
       var bandCanvas = document.createElement('canvas');
-      bandCanvas.width = 1024;
-      bandCanvas.height = 64;
+      bandCanvas.width = 2048;
+      bandCanvas.height = 128;
       var bctx = bandCanvas.getContext('2d');
 
-      // Paint biome strips along the ring circumference
+      // Base biome strips with gradient transitions
       var biomes = [
-        { color: '#226699', len: 0.10 },  // deep ocean
-        { color: '#44aa55', len: 0.08 },  // forest
-        { color: '#66bb44', len: 0.06 },  // grassland
-        { color: '#ccaa33', len: 0.09 },  // desert
-        { color: '#44aa55', len: 0.07 },  // forest
-        { color: '#1166cc', len: 0.11 },  // ocean
-        { color: '#338833', len: 0.08 },  // jungle
-        { color: '#cc7733', len: 0.06 },  // arid
-        { color: '#44aa55', len: 0.07 },  // forest
-        { color: '#2277aa', len: 0.09 },  // ocean
-        { color: '#99bb44', len: 0.06 },  // plains
-        { color: '#226699', len: 0.08 },  // deep ocean
-        { color: '#555555', len: 0.05 },  // dead section (failed)
+        { r: 30, g: 90, b: 140, len: 0.08 },   // deep ocean
+        { r: 35, g: 110, b: 160, len: 0.04 },   // coastal
+        { r: 60, g: 150, b: 70, len: 0.07 },    // forest
+        { r: 90, g: 170, b: 60, len: 0.05 },    // grassland
+        { r: 190, g: 160, b: 50, len: 0.07 },   // desert
+        { r: 200, g: 120, b: 50, len: 0.04 },   // arid
+        { r: 60, g: 140, b: 60, len: 0.06 },    // forest
+        { r: 25, g: 80, b: 180, len: 0.09 },    // ocean
+        { r: 40, g: 120, b: 50, len: 0.06 },    // jungle
+        { r: 55, g: 160, b: 80, len: 0.05 },    // forest
+        { r: 35, g: 100, b: 150, len: 0.08 },   // ocean
+        { r: 140, g: 170, b: 60, len: 0.05 },   // plains
+        { r: 60, g: 150, b: 70, len: 0.06 },    // forest
+        { r: 25, g: 80, b: 130, len: 0.07 },    // deep ocean
+        { r: 50, g: 50, b: 50, len: 0.04 },     // dead section
+        { r: 60, g: 140, b: 65, len: 0.05 },    // forest
+        { r: 30, g: 95, b: 155, len: 0.04 },    // ocean
       ];
+
       var bx = 0;
+      var W = bandCanvas.width, H = bandCanvas.height;
+      var hullEdge = 10; // metallic rim thickness
+
       for (var bi = 0; bi < biomes.length; bi++) {
-        var bw = biomes[bi].len * bandCanvas.width;
-        bctx.fillStyle = biomes[bi].color;
-        bctx.fillRect(bx, 0, bw, bandCanvas.height);
-        // Energy barrier shimmer line between biomes
-        bctx.fillStyle = 'rgba(136,204,255,0.4)';
-        bctx.fillRect(bx, 0, 1.5, bandCanvas.height);
+        var bw = Math.round(biomes[bi].len * W);
+        var b = biomes[bi];
+
+        // Gradient fill for natural-looking biome transitions
+        var grad = bctx.createLinearGradient(bx, 0, bx + bw, 0);
+        var col = 'rgb(' + b.r + ',' + b.g + ',' + b.b + ')';
+        var colDark = 'rgb(' + Math.round(b.r * 0.7) + ',' + Math.round(b.g * 0.7) + ',' + Math.round(b.b * 0.7) + ')';
+        grad.addColorStop(0, colDark);
+        grad.addColorStop(0.3, col);
+        grad.addColorStop(0.7, col);
+        grad.addColorStop(1, colDark);
+        bctx.fillStyle = grad;
+        bctx.fillRect(bx, hullEdge, bw, H - hullEdge * 2);
+
+        // Energy barrier shimmer between biomes
+        bctx.fillStyle = 'rgba(100,200,255,0.5)';
+        bctx.fillRect(bx, hullEdge, 2, H - hullEdge * 2);
+
+        // City lights — tiny bright dots scattered on the biome surface
+        if (b.r !== 50) { // skip dead sections
+          for (var ci2 = 0; ci2 < 12; ci2++) {
+            var cx2 = bx + Math.random() * bw;
+            var cy2 = hullEdge + 4 + Math.random() * (H - hullEdge * 2 - 8);
+            var brightness = 180 + Math.floor(Math.random() * 75);
+            bctx.fillStyle = 'rgba(' + brightness + ',' + brightness + ',' + (brightness - 30) + ',0.7)';
+            bctx.fillRect(cx2, cy2, 1.5, 1.5);
+          }
+          // Occasional brighter infrastructure clusters
+          if (Math.random() > 0.5) {
+            var clx = bx + bw * 0.3 + Math.random() * bw * 0.4;
+            var cly = H * 0.35 + Math.random() * H * 0.3;
+            bctx.fillStyle = 'rgba(255,240,200,0.5)';
+            bctx.fillRect(clx, cly, 4, 3);
+            bctx.fillStyle = 'rgba(255,240,200,0.3)';
+            bctx.fillRect(clx - 2, cly - 1, 8, 5);
+          }
+        } else {
+          // Dead section — faint red warning glow
+          bctx.fillStyle = 'rgba(200,60,30,0.15)';
+          bctx.fillRect(bx, hullEdge, bw, H - hullEdge * 2);
+        }
         bx += bw;
       }
       // Fill remainder
-      bctx.fillStyle = '#44aa55';
-      bctx.fillRect(bx, 0, bandCanvas.width - bx, bandCanvas.height);
+      bctx.fillStyle = '#3a8845';
+      bctx.fillRect(bx, hullEdge, W - bx, H - hullEdge * 2);
 
-      // Outer hull edge lines (metallic rim on top and bottom of band)
-      bctx.fillStyle = '#667788';
-      bctx.fillRect(0, 0, bandCanvas.width, 6);
-      bctx.fillRect(0, bandCanvas.height - 6, bandCanvas.width, 6);
+      // Outer hull edges — metallic with panel lines
+      var hullGrad = bctx.createLinearGradient(0, 0, 0, hullEdge);
+      hullGrad.addColorStop(0, '#556677');
+      hullGrad.addColorStop(0.5, '#8899aa');
+      hullGrad.addColorStop(1, '#445566');
+      bctx.fillStyle = hullGrad;
+      bctx.fillRect(0, 0, W, hullEdge);
+      var hullGrad2 = bctx.createLinearGradient(0, H - hullEdge, 0, H);
+      hullGrad2.addColorStop(0, '#445566');
+      hullGrad2.addColorStop(0.5, '#8899aa');
+      hullGrad2.addColorStop(1, '#556677');
+      bctx.fillStyle = hullGrad2;
+      bctx.fillRect(0, H - hullEdge, W, hullEdge);
+
+      // Panel lines on hull
+      bctx.strokeStyle = 'rgba(150,170,190,0.3)';
+      bctx.lineWidth = 0.5;
+      for (var pi = 0; pi < W; pi += 24) {
+        bctx.beginPath();
+        bctx.moveTo(pi, 0);
+        bctx.lineTo(pi, hullEdge);
+        bctx.stroke();
+        bctx.beginPath();
+        bctx.moveTo(pi, H - hullEdge);
+        bctx.lineTo(pi, H);
+        bctx.stroke();
+      }
 
       var bandTex = new THREE.CanvasTexture(bandCanvas);
       bandTex.wrapS = THREE.RepeatWrapping;
 
-      // The ring — flat band (small tube radius)
-      var ringGeo = new THREE.TorusGeometry(1.0, 0.06, 16, 200);
+      // Primary ring band
+      var ringGeo = new THREE.TorusGeometry(1.0, 0.07, 24, 256);
       var ringMat = new THREE.MeshPhongMaterial({
-        map: bandTex,
-        shininess: 30,
-        emissive: 0x222211,
-        emissiveIntensity: 0.15,
+        map: bandTex, shininess: 40,
+        emissive: 0x111108, emissiveIntensity: 0.2,
       });
       var ring = new THREE.Mesh(ringGeo, ringMat);
       this.megaGroup.add(ring);
 
-      // Subtle inner glow from starlight hitting the habitat surface
-      var glowGeo = new THREE.TorusGeometry(1.0, 0.065, 12, 100);
-      var glowMat = new THREE.MeshBasicMaterial({
-        color: 0xddeeaa, transparent: true, opacity: 0.04,
-        side: THREE.DoubleSide, depthWrite: false,
+      // Structural framework — thinner outer ring (support lattice visible)
+      var frameGeo = new THREE.TorusGeometry(1.08, 0.008, 8, 256);
+      var frameMat = new THREE.MeshPhongMaterial({
+        color: 0x8899aa, shininess: 50,
+        emissive: 0x223344, emissiveIntensity: 0.1,
       });
-      this.megaGroup.add(new THREE.Mesh(glowGeo, glowMat));
+      this.megaGroup.add(new THREE.Mesh(frameGeo, frameMat));
+      // Second frame rail
+      var frameGeo2 = new THREE.TorusGeometry(1.08, 0.005, 6, 256);
+      var frame2 = new THREE.Mesh(frameGeo2, frameMat.clone());
+      frame2.position.z = 0.02;
+      this.megaGroup.add(frame2);
 
-      /* ── Docking spines / transit stations at rim ── */
-      for (var di = 0; di < 8; di++) {
-        var dAngle = (di / 8) * Math.PI * 2;
-        var spGeo = new THREE.BoxGeometry(0.015, 0.005, 0.005);
-        var spMat = new THREE.MeshPhongMaterial({
-          color: 0x99aabb, shininess: 40,
-          emissive: 0x334455, emissiveIntensity: 0.1,
+      // Inner atmosphere haze — warm glow from starlight on habitat
+      var hazeGeo = new THREE.TorusGeometry(0.97, 0.08, 12, 128);
+      var hazeMat = new THREE.MeshBasicMaterial({
+        color: 0xffeebb, transparent: true, opacity: 0.03,
+        side: THREE.BackSide, depthWrite: false,
+      });
+      this.megaGroup.add(new THREE.Mesh(hazeGeo, hazeMat));
+
+      /* ═══ DOCKING STATIONS — larger, lit structures ═══ */
+      for (var di = 0; di < 12; di++) {
+        var dAngle = (di / 12) * Math.PI * 2;
+        var stationGroup = new THREE.Group();
+
+        // Station body
+        var stGeo = new THREE.BoxGeometry(0.025, 0.008, 0.008);
+        var stMat = new THREE.MeshPhongMaterial({
+          color: 0x8899aa, shininess: 50,
+          emissive: 0x334455, emissiveIntensity: 0.2,
         });
-        var sp = new THREE.Mesh(spGeo, spMat);
-        sp.position.set(Math.cos(dAngle) * 1.07, Math.sin(dAngle) * 1.07, 0);
-        sp.rotation.z = dAngle;
-        this.megaGroup.add(sp);
+        stationGroup.add(new THREE.Mesh(stGeo, stMat));
+
+        // Station light
+        var ltGeo = new THREE.SphereGeometry(0.004, 6, 6);
+        var ltMat = new THREE.MeshBasicMaterial({
+          color: di % 3 === 0 ? 0xffaa44 : 0x88ccff, // alternating warm/cool lights
+        });
+        var lt = new THREE.Mesh(ltGeo, ltMat);
+        lt.position.x = 0.015;
+        stationGroup.add(lt);
+
+        stationGroup.position.set(
+          Math.cos(dAngle) * 1.1,
+          Math.sin(dAngle) * 1.1,
+          (Math.random() - 0.5) * 0.03
+        );
+        stationGroup.rotation.z = dAngle;
+        this.megaGroup.add(stationGroup);
       }
 
-      // Tilt for better viewing angle — show the ring as a band in space
-      this.megaGroup.rotation.x = 0.65;
-      this.megaGroup.rotation.y = 0.2;
+      /* ═══ PARTICLE FIELD — orbital debris and traffic ═══ */
+      var particleCount = 80;
+      var pPositions = new Float32Array(particleCount * 3);
+      var pColors = new Float32Array(particleCount * 3);
+      for (var pi2 = 0; pi2 < particleCount; pi2++) {
+        var pAngle = Math.random() * Math.PI * 2;
+        var pRadius = 0.7 + Math.random() * 0.6;
+        var pHeight = (Math.random() - 0.5) * 0.15;
+        pPositions[pi2 * 3] = Math.cos(pAngle) * pRadius;
+        pPositions[pi2 * 3 + 1] = Math.sin(pAngle) * pRadius;
+        pPositions[pi2 * 3 + 2] = pHeight;
+        // Mix of warm (traffic near star) and cool (debris) colors
+        var isTraffic = pRadius < 0.95;
+        pColors[pi2 * 3] = isTraffic ? 1.0 : 0.6;
+        pColors[pi2 * 3 + 1] = isTraffic ? 0.85 : 0.7;
+        pColors[pi2 * 3 + 2] = isTraffic ? 0.5 : 0.8;
+      }
+      var pGeo = new THREE.BufferGeometry();
+      pGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+      pGeo.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
+      var pMat = new THREE.PointsMaterial({
+        size: 0.008, vertexColors: true, transparent: true, opacity: 0.6,
+        depthWrite: false,
+      });
+      this.megaGroup.add(new THREE.Points(pGeo, pMat));
+
+      // Tilt for dramatic viewing angle
+      this.megaGroup.rotation.x = 0.6;
+      this.megaGroup.rotation.y = 0.15;
       this.scene.add(this.megaGroup);
       this.planet = this.megaGroup;
     }
