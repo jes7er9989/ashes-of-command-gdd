@@ -317,6 +317,7 @@
             }
             AudioEngine.toggle();
             audioPlaying = !audioPlaying;
+            if (!audioPlaying) AudioEngine.stopViz();
             audioIcon.innerHTML = audioPlaying ? '&#x1F50A;' : '&#x1F507;';
             audioBtn.setAttribute('data-on', audioPlaying ? '1' : '0');
             if (audioControls) audioControls.classList.toggle('active', audioPlaying);

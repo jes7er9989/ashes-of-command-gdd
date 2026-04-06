@@ -103,7 +103,7 @@ const ChapterLoader = {
    */
   async load(chapterId) {
     if (!this.contentArea) this.init();
-    if (!this._chapterMeta) this.loadChapterMeta();
+    if (!this._chapterMeta) await this.loadChapterMeta();
 
     // Check for route aliases (e.g. appA → appendices + scroll)
     const alias = this.ROUTE_ALIASES[chapterId];
@@ -187,7 +187,7 @@ const ChapterLoader = {
     if (factionAudio && typeof AudioEngine !== 'undefined') {
       AudioEngine.setFaction(factionAudio.name);
       // Play faction entrance sting if audio is on
-      var ab = document.getElementById('audio-toggle');
+      const ab = document.getElementById('audio-toggle');
       if (ab && ab.getAttribute('data-on') === '1') {
         try { AudioEngine.playAction('factionEnter'); } catch(e) {}
       }
@@ -195,8 +195,8 @@ const ChapterLoader = {
 
     // Route-based background music (if user has interacted and MusicPlayer loaded)
     if (typeof MusicPlayer !== 'undefined' && MusicPlayer.current !== undefined) {
-      var ab = document.getElementById('audio-toggle');
-      if (ab && ab.getAttribute('data-on') === '1') {
+      const audioBtn = document.getElementById('audio-toggle');
+      if (audioBtn && audioBtn.getAttribute('data-on') === '1') {
         MusicPlayer.playForRoute(chapterId);
       }
     }

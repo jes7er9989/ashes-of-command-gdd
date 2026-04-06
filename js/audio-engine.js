@@ -751,6 +751,11 @@ const AudioEngine = (() => {
     })();
   }
 
+  function stopViz() {
+    if (_vizRaf) { cancelAnimationFrame(_vizRaf); _vizRaf = null; }
+    if (_anlz)   { _anlz.disconnect(); _anlz = null; }
+  }
+
   /* ═══════════════════════════════════════════════════════════
      PUBLIC API
      ═══════════════════════════════════════════════════════════ */
@@ -772,6 +777,7 @@ const AudioEngine = (() => {
     playAccordion,
     playRarity,
     startViz,
+    stopViz,
 
     /* ── Music bridge — delegates to MusicPlayer if loaded ── */
     toggle: function() {

@@ -88,7 +88,6 @@ class SolarSystemRenderer {
     this.sol = null;
     this.coronaQuads = [];
     this.hoveredPlanet = null;
-    this.raycaster = new THREE.Raycaster();
     this.mouse = new THREE.Vector2();
     this._resizeTimer = null;
     this._isMobile = window.innerWidth < 768;
