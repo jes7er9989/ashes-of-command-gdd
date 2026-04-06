@@ -2155,43 +2155,83 @@ window.PlanetRenderer = (function () {
     }
 
     _warpGate() {
-      // Cool blue-white lighting from the warp field
-      this.sun.color.set(0xddeeff);
-      this.sun.intensity = 0.8;
+      this.camera.position.z = 4.2;
+
+      // Warp field blue-white illumination — everything bathed in shifted light
+      this.sun.color.set(0xccddff);
+      this.sun.intensity = 0.5;
       this.fill.color.set(0x224466);
-      this.fill.intensity = 0.3;
-      this.ambient.color.set(0x112233);
-      this.ambient.intensity = 0.45;
+      this.fill.intensity = 0.25;
+      this.ambient.color.set(0x0a1828);
+      this.ambient.intensity = 0.4;
 
       this.megaGroup = new THREE.Group();
 
-      // Outer ring structure
-      var ringGeo = new THREE.TorusGeometry(1.0, 0.08, 20, 80);
+      function _wgNoise(x, y) {
+        var n = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453;
+        return n - Math.floor(n);
+      }
+
+      /* ═══ OUTER RING — massive crystalline-metal hybrid structure ═══ */
+      // Procedural ring texture — Aethyn crystalline-metal with energy conduits
+      var ringCanvas = document.createElement('canvas');
+      ringCanvas.width = 512;
+      ringCanvas.height = 64;
+      var rctx = ringCanvas.getContext('2d');
+      var rData = rctx.createImageData(512, 64);
+      var rpx = rData.data;
+      for (var rx = 0; rx < 512; rx++) {
+        for (var ry = 0; ry < 64; ry++) {
+          var ri = (ry * 512 + rx) * 4;
+          var n = _wgNoise(rx * 0.05, ry * 0.1);
+          var base = 40 + Math.floor(n * 25);
+          // Energy conduit channels running around the ring
+          var isConduit = ry % 16 < 2 || rx % 64 < 1;
+          var isNode = (ry % 16 < 4) && (rx % 64 < 4);
+          if (isNode) {
+            rpx[ri] = 60; rpx[ri + 1] = 160; rpx[ri + 2] = 220;
+          } else if (isConduit) {
+            rpx[ri] = 30 + Math.floor(n * 20); rpx[ri + 1] = 80 + Math.floor(n * 30); rpx[ri + 2] = 140 + Math.floor(n * 40);
+          } else {
+            rpx[ri] = base; rpx[ri + 1] = base + 5; rpx[ri + 2] = base + 15;
+          }
+          rpx[ri + 3] = 255;
+        }
+      }
+      rctx.putImageData(rData, 0, 0);
+      var ringTex = new THREE.CanvasTexture(ringCanvas);
+      ringTex.wrapS = THREE.RepeatWrapping;
+
+      var ringGeo = new THREE.TorusGeometry(1.0, 0.1, 12, 96);
       var ringMat = new THREE.MeshPhongMaterial({
-        color: 0x556677, shininess: 50,
-        emissive: 0x223344, emissiveIntensity: 0.15,
+        map: ringTex, shininess: 60,
+        emissive: 0x112244, emissiveIntensity: 0.2,
       });
       this.warpRing = new THREE.Mesh(ringGeo, ringMat);
       this.megaGroup.add(this.warpRing);
 
-      // Inner structural ring
-      var innerRingGeo = new THREE.TorusGeometry(0.92, 0.03, 12, 64);
-      var innerRingMat = new THREE.MeshPhongMaterial({
-        color: 0x445566, shininess: 40,
-        emissive: 0x334466, emissiveIntensity: 0.2,
+      // Inner structural ring — secondary containment
+      var innerGeo = new THREE.TorusGeometry(0.9, 0.04, 8, 80);
+      var innerMat = new THREE.MeshPhongMaterial({
+        color: 0x445566, shininess: 50,
+        emissive: 0x223355, emissiveIntensity: 0.25,
       });
-      this.megaGroup.add(new THREE.Mesh(innerRingGeo, innerRingMat));
+      this.megaGroup.add(new THREE.Mesh(innerGeo, innerMat));
 
-      // Energy channel ring
-      var energyRingGeo = new THREE.TorusGeometry(1.0, 0.10, 12, 80);
-      var energyRingMat = new THREE.MeshBasicMaterial({
-        color: 0x4488cc, transparent: true, opacity: 0.08,
-        side: THREE.DoubleSide, depthWrite: false,
+      // Ring wireframe — visible structural lattice
+      this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(ringGeo),
+        new THREE.LineBasicMaterial({ color: 0x4488cc, transparent: true, opacity: 0.3 })));
+
+      // Energy conduit glow ring — pulsing blue around the structure
+      var conduitGeo = new THREE.TorusGeometry(1.0, 0.12, 6, 96);
+      this.warpConduitMat = new THREE.MeshBasicMaterial({
+        color: 0x3388cc, transparent: true, opacity: 0.06, side: THREE.DoubleSide, depthWrite: false,
       });
-      this.megaGroup.add(new THREE.Mesh(energyRingGeo, energyRingMat));
+      this.megaGroup.add(new THREE.Mesh(conduitGeo, this.warpConduitMat));
 
-      // Energy field inside the ring — animated disc
-      var fieldGeo = new THREE.CircleGeometry(0.88, 64);
+      /* ═══ WARP FIELD — the folded space-time portal ═══ */
+      // Primary field — rippling distortion disc
+      var fieldGeo = new THREE.CircleGeometry(0.86, 64);
       this.warpFieldMat = new THREE.MeshBasicMaterial({
         color: 0x4499dd, transparent: true, opacity: 0.15,
         side: THREE.DoubleSide, depthWrite: false,
@@ -2199,58 +2239,118 @@ window.PlanetRenderer = (function () {
       this.warpField = new THREE.Mesh(fieldGeo, this.warpFieldMat);
       this.megaGroup.add(this.warpField);
 
-      // Second energy field layer — offset for depth
-      var field2Geo = new THREE.CircleGeometry(0.82, 64);
+      // Secondary field layer — deeper, shifted
+      var field2Geo = new THREE.CircleGeometry(0.78, 64);
       this.warpField2Mat = new THREE.MeshBasicMaterial({
         color: 0x66bbff, transparent: true, opacity: 0.08,
         side: THREE.DoubleSide, depthWrite: false,
       });
       this.warpField2 = new THREE.Mesh(field2Geo, this.warpField2Mat);
-      this.warpField2.position.z = 0.02;
+      this.warpField2.position.z = 0.03;
       this.megaGroup.add(this.warpField2);
 
-      // Energy field glow from inside
-      this.warpGlow = new THREE.PointLight(0x4499dd, 0.6, 4);
+      // Innermost field — bright core of the warp tunnel
+      var field3Geo = new THREE.CircleGeometry(0.5, 48);
+      this.warpField3Mat = new THREE.MeshBasicMaterial({
+        color: 0xaaddff, transparent: true, opacity: 0.04,
+        side: THREE.DoubleSide, depthWrite: false,
+      });
+      this.warpField3 = new THREE.Mesh(field3Geo, this.warpField3Mat);
+      this.warpField3.position.z = -0.02;
+      this.megaGroup.add(this.warpField3);
+
+      // Central warp glow — light pouring from folded space
+      this.warpGlow = new THREE.PointLight(0x4499dd, 0.8, 5);
       this.megaGroup.add(this.warpGlow);
 
-      // Support pylons — 4 stations attached to ring exterior
-      var pylonAngles = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5];
-      for (var pi = 0; pi < pylonAngles.length; pi++) {
-        var pa = pylonAngles[pi];
+      /* ═══ 6 ANCHOR PYLONS — Aethyn crystalline stations stabilizing the gate ═══ */
+      this.warpPylonLights = [];
+      for (var wpi = 0; wpi < 6; wpi++) {
+        var wpa = (wpi / 6) * Math.PI * 2;
         var pylonGroup = new THREE.Group();
 
-        // Main pylon body
-        var pylonGeo = new THREE.BoxGeometry(0.06, 0.18, 0.06);
-        var pylonMat = new THREE.MeshPhongMaterial({ color: 0x445566, shininess: 30 });
+        // Main pylon body — angular Aethyn design
+        var pylonGeo = new THREE.BoxGeometry(0.07, 0.22, 0.07);
+        var pylonMat = new THREE.MeshPhongMaterial({
+          map: ringTex, shininess: 40,
+          emissive: 0x112233, emissiveIntensity: 0.15,
+        });
         pylonGroup.add(new THREE.Mesh(pylonGeo, pylonMat));
 
-        // Antenna
-        var antGeo = new THREE.CylinderGeometry(0.004, 0.004, 0.12, 4);
-        var antMesh = new THREE.Mesh(antGeo, pylonMat);
-        antMesh.position.y = 0.15;
-        pylonGroup.add(antMesh);
+        // Pylon wireframe edges
+        pylonGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(pylonGeo),
+          new THREE.LineBasicMaterial({ color: 0x4488aa, transparent: true, opacity: 0.3 })));
 
-        // Station light
-        var stLightGeo = new THREE.SphereGeometry(0.01, 6, 6);
-        var stLightMat = new THREE.MeshBasicMaterial({
-          color: pi % 2 === 0 ? 0xff4422 : 0x22ff44,
-          transparent: true, opacity: 0.8,
+        // Energy conduit beam — connecting pylon to ring
+        var beamGeo = new THREE.CylinderGeometry(0.006, 0.006, 0.1, 4);
+        var beamMat = new THREE.MeshBasicMaterial({ color: 0x4499dd, transparent: true, opacity: 0.3 });
+        var beam = new THREE.Mesh(beamGeo, beamMat);
+        beam.position.y = -0.12;
+        beam.rotation.z = Math.PI / 2;
+        pylonGroup.add(beam);
+
+        // Antenna spire — crystalline sensor
+        var antGeo = new THREE.CylinderGeometry(0.003, 0.008, 0.15, 6);
+        var ant = new THREE.Mesh(antGeo, new THREE.MeshPhongMaterial({ color: 0x556688, shininess: 40 }));
+        ant.position.y = 0.18;
+        pylonGroup.add(ant);
+
+        // Status light — pulsing beacon
+        var ltGeo = new THREE.OctahedronGeometry(0.012, 0);
+        var ltMat = new THREE.MeshBasicMaterial({
+          color: wpi % 2 === 0 ? 0x44aaff : 0x22ff88, transparent: true, opacity: 0.7,
         });
-        var stLight = new THREE.Mesh(stLightGeo, stLightMat);
-        stLight.position.y = 0.09;
-        pylonGroup.add(stLight);
+        var lt = new THREE.Mesh(ltGeo, ltMat);
+        lt.position.y = 0.26;
+        pylonGroup.add(lt);
+        this.warpPylonLights.push(lt);
 
-        // Position on the ring exterior
-        pylonGroup.position.set(Math.cos(pa) * 1.12, Math.sin(pa) * 1.12, 0);
-        // Point outward
-        pylonGroup.rotation.z = pa - Math.PI * 0.5;
+        // Docking arm — small berth for transit ships
+        var dockGeo = new THREE.BoxGeometry(0.12, 0.02, 0.03);
+        var dock = new THREE.Mesh(dockGeo, pylonMat.clone());
+        dock.position.set(0.08, -0.05, 0);
+        pylonGroup.add(dock);
+
+        pylonGroup.position.set(Math.cos(wpa) * 1.15, Math.sin(wpa) * 1.15, 0);
+        pylonGroup.rotation.z = wpa - Math.PI * 0.5;
         this.megaGroup.add(pylonGroup);
       }
 
-      // Ring edge glow lines
-      var edgeGeo = new THREE.TorusGeometry(1.0, 0.085, 6, 80);
-      var edgeMat = new THREE.LineBasicMaterial({ color: 0x4488cc, transparent: true, opacity: 0.3 });
-      this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(edgeGeo), edgeMat));
+      /* ═══ ENERGY STREAMERS — visible energy flowing into the ring ═══ */
+      for (var esi = 0; esi < 12; esi++) {
+        var esAngle = (esi / 12) * Math.PI * 2;
+        var esR = 1.0;
+        var esGeo = new THREE.SphereGeometry(0.015, 4, 4);
+        var esMat = new THREE.MeshBasicMaterial({
+          color: 0x55aaff, transparent: true, opacity: 0.3, depthWrite: false,
+        });
+        var es = new THREE.Mesh(esGeo, esMat);
+        es.position.set(Math.cos(esAngle) * esR, Math.sin(esAngle) * esR, 0);
+        this.megaGroup.add(es);
+      }
+
+      /* ═══ PARTICLE FIELD — warp energy motes swirling around the gate ═══ */
+      var pCount = 80;
+      var pPositions = new Float32Array(pCount * 3);
+      var pColors = new Float32Array(pCount * 3);
+      for (var wpi2 = 0; wpi2 < pCount; wpi2++) {
+        var wpAngle = Math.random() * Math.PI * 2;
+        var wpR = 0.3 + Math.random() * 1.0;
+        var wpZ = (Math.random() - 0.5) * 0.6;
+        pPositions[wpi2 * 3] = Math.cos(wpAngle) * wpR;
+        pPositions[wpi2 * 3 + 1] = Math.sin(wpAngle) * wpR;
+        pPositions[wpi2 * 3 + 2] = wpZ;
+        var isWarp = wpR < 0.8;
+        pColors[wpi2 * 3] = isWarp ? 0.3 : 0.5;
+        pColors[wpi2 * 3 + 1] = isWarp ? 0.6 : 0.7;
+        pColors[wpi2 * 3 + 2] = isWarp ? 1.0 : 0.9;
+      }
+      var ptGeo = new THREE.BufferGeometry();
+      ptGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+      ptGeo.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
+      this.megaGroup.add(new THREE.Points(ptGeo, new THREE.PointsMaterial({
+        size: 0.01, vertexColors: true, transparent: true, opacity: 0.4, depthWrite: false,
+      })));
 
       // Tilt for viewing angle
       this.megaGroup.rotation.x = 0.35;
@@ -2442,7 +2542,7 @@ window.PlanetRenderer = (function () {
         }
       }
 
-      // Warp Gate — pulsing energy field
+      // Warp Gate — pulsing layered energy field + conduit glow
       if (this.type === 'Warp Gate') {
         if (this.warpFieldMat) {
           this.warpFieldMat.opacity = 0.10 + Math.sin(t * 1.2) * 0.06 + Math.sin(t * 3.1) * 0.03;
@@ -2450,17 +2550,32 @@ window.PlanetRenderer = (function () {
         if (this.warpField2Mat) {
           this.warpField2Mat.opacity = 0.06 + Math.sin(t * 1.8 + 1) * 0.04;
         }
+        if (this.warpField3Mat) {
+          this.warpField3Mat.opacity = 0.03 + Math.sin(t * 2.5 + 2) * 0.03;
+        }
         if (this.warpField) {
           this.warpField.rotation.z += 0.005;
         }
         if (this.warpField2) {
           this.warpField2.rotation.z -= 0.003;
         }
+        if (this.warpField3) {
+          this.warpField3.rotation.z += 0.008;
+        }
         if (this.warpGlow) {
-          this.warpGlow.intensity = 0.5 + Math.sin(t * 1.2) * 0.2;
+          this.warpGlow.intensity = 0.6 + Math.sin(t * 1.0) * 0.3;
         }
         if (this.warpRing) {
-          this.warpRing.material.emissiveIntensity = 0.10 + Math.sin(t * 1.5) * 0.08;
+          this.warpRing.material.emissiveIntensity = 0.15 + Math.sin(t * 1.5) * 0.1;
+        }
+        if (this.warpConduitMat) {
+          this.warpConduitMat.opacity = 0.04 + Math.sin(t * 2.0) * 0.04;
+        }
+        // Pylon beacon pulse
+        if (this.warpPylonLights) {
+          for (var wpli = 0; wpli < this.warpPylonLights.length; wpli++) {
+            this.warpPylonLights[wpli].material.opacity = 0.4 + Math.sin(t * 2.0 + wpli * 1.0) * 0.35;
+          }
         }
       }
 
