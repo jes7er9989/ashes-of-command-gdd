@@ -1115,12 +1115,15 @@ window.PlanetRenderer = (function () {
 
       this.megaGroup = new THREE.Group();
 
-      /* ═══ TEST MARKER — bright green sphere, remove after confirming JS updates ═══ */
-      var testGeo = new THREE.SphereGeometry(0.5, 16, 16);
+      /* ═══ TEST — replace ENTIRE Dyson Sphere with a giant green ball ═══ */
+      var testGeo = new THREE.SphereGeometry(1.0, 32, 32);
       var testMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
       var testSphere = new THREE.Mesh(testGeo, testMat);
-      testSphere.position.set(-1.2, 1.0, 0);
       this.megaGroup.add(testSphere);
+      this.scene.add(this.megaGroup);
+      this.planet = this.megaGroup;
+      console.log('[DYSON TEST] Green ball added, returning early');
+      return;
 
       // Simple noise helper
       function _dsNoise(x, y) {
