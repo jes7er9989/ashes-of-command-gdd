@@ -1797,197 +1797,148 @@ window.PlanetRenderer = (function () {
         emissive: 0x080812, emissiveIntensity: 0.1,
       });
 
-      /* ═══ CENTRAL HUB — massive disc/dome core like Atlantis ═══ */
-      // Main disc body — flattened sphere, the city-core of the ship
-      var discGeo = new THREE.SphereGeometry(0.9, 48, 32);
-      var disc = new THREE.Mesh(discGeo, hullMat);
-      disc.scale.set(1.0, 0.35, 1.0);
-      this.megaGroup.add(disc);
+      /* ═══ CORE MASS — irregular rocky body like the Harvester ═══ */
+      // Base shape — deformed icosahedron, flattened and irregular, not a clean disc
+      var coreGeo = new THREE.IcosahedronGeometry(1.0, 3);
+      var corePos = coreGeo.attributes.position;
+      for (var cvi = 0; cvi < corePos.count; cvi++) {
+        var cvx = corePos.getX(cvi), cvy = corePos.getY(cvi), cvz = corePos.getZ(cvi);
+        // Flatten vertically — wider than tall
+        cvy *= 0.3;
+        // Add irregular noise to break the clean shape
+        var nVal = _wsNoise(cvx * 3 + 5, cvz * 3 + 7) * 0.15;
+        var nVal2 = _wsNoise(cvx * 6, cvz * 6) * 0.08;
+        var r = Math.sqrt(cvx * cvx + cvz * cvz);
+        // Roughen the edges more than the center
+        var edgeFactor = Math.min(r / 0.9, 1.0);
+        cvx += cvx * (nVal + nVal2) * edgeFactor;
+        cvz += cvz * (nVal + nVal2) * edgeFactor;
+        cvy += (nVal - 0.07) * 0.3;
+        corePos.setXYZ(cvi, cvx, cvy, cvz);
+      }
+      corePos.needsUpdate = true;
+      coreGeo.computeVertexNormals();
+      var core = new THREE.Mesh(coreGeo, hullMat);
+      this.megaGroup.add(core);
 
-      // Upper dome — command/residential section
-      var domeGeo = new THREE.SphereGeometry(0.55, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2);
-      var domeMat = hullMat.clone();
-      domeMat.emissive = new THREE.Color(0x0a0a18);
-      domeMat.emissiveIntensity = 0.15;
-      var dome = new THREE.Mesh(domeGeo, domeMat);
-      dome.position.y = 0.15;
-      this.megaGroup.add(dome);
+      // Core wireframe — visible structural skeleton
+      this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(coreGeo),
+        new THREE.LineBasicMaterial({ color: 0x556677, transparent: true, opacity: 0.2 })));
 
-      // Central spire — tall command tower rising from the dome
-      var spireGeo = new THREE.CylinderGeometry(0.04, 0.08, 0.6, 8);
+      // Central spire — tall command tower rising from the mass
+      var spireGeo = new THREE.CylinderGeometry(0.03, 0.07, 0.7, 8);
       var spireMat = new THREE.MeshPhongMaterial({ color: 0x4a5566, shininess: 40, emissive: 0x1a2233, emissiveIntensity: 0.2 });
       var spire = new THREE.Mesh(spireGeo, spireMat);
-      spire.position.y = 0.7;
+      spire.position.y = 0.6;
       this.megaGroup.add(spire);
-
       // Spire beacon
-      var spireBeacon = new THREE.Mesh(new THREE.SphereGeometry(0.02, 8, 8),
-        new THREE.MeshBasicMaterial({ color: 0x6688cc, transparent: true, opacity: 0.5 }));
-      spireBeacon.position.y = 1.02;
-      this.megaGroup.add(spireBeacon);
+      this.megaGroup.add(new THREE.Mesh(new THREE.SphereGeometry(0.02, 8, 8),
+        new THREE.MeshBasicMaterial({ color: 0x6688cc, transparent: true, opacity: 0.5 })).translateY(0.97));
 
-      // Disc edge wireframe — visible structural ribs
-      var discWireGeo = new THREE.SphereGeometry(0.905, 16, 8);
-      var discWire = new THREE.LineSegments(new THREE.EdgesGeometry(discWireGeo),
-        new THREE.LineBasicMaterial({ color: 0x556677, transparent: true, opacity: 0.3 }));
-      discWire.scale.set(1.0, 0.35, 1.0);
-      this.megaGroup.add(discWire);
-
-      /* ═══ SURFACE CITY — dense structures covering the disc like a flying city ═══ */
+      /* ═══ SURFACE CITY — dense structures covering the entire mass ═══ */
       var structMat = new THREE.MeshPhongMaterial({ map: hullTex, shininess: 15, emissive: 0x060610, emissiveIntensity: 0.1 });
       var structMat2 = new THREE.MeshPhongMaterial({ color: 0x3a4050, shininess: 20, emissive: 0x0a0a18, emissiveIntensity: 0.1 });
 
-      // Upper surface structures — towers, domes, blocks (Harvester-style dense detail)
-      for (var sci = 0; sci < 60; sci++) {
+      // Upper surface — towers, blocks, domes, spires (dense, chaotic, city-like)
+      for (var sci = 0; sci < 80; sci++) {
         var sAngle = Math.random() * Math.PI * 2;
-        var sDist = 0.15 + Math.random() * 0.7;
+        var sDist = Math.random() * 0.85;
         var sx = Math.cos(sAngle) * sDist;
         var sz = Math.sin(sAngle) * sDist;
+        // Surface height varies with the irregular core
+        var surfY = 0.12 + _wsNoise(sx * 3 + 5, sz * 3 + 7) * 0.06;
         var sType = Math.random();
-        var sMesh;
 
-        if (sType < 0.35) {
-          // Tall tower/spire
-          var tH = 0.04 + Math.random() * 0.12;
-          var sGeo = new THREE.CylinderGeometry(0.01 + Math.random() * 0.015, 0.015 + Math.random() * 0.02, tH, 6);
-          sMesh = new THREE.Mesh(sGeo, structMat2.clone());
-          sMesh.position.set(sx, 0.16 + tH * 0.5, sz);
-        } else if (sType < 0.65) {
-          // Block structure — residential/industrial
-          var bW = 0.02 + Math.random() * 0.04;
-          var bH = 0.02 + Math.random() * 0.06;
-          var bD = 0.02 + Math.random() * 0.04;
-          var sGeo2 = new THREE.BoxGeometry(bW, bH, bD);
-          sMesh = new THREE.Mesh(sGeo2, structMat.clone());
-          sMesh.position.set(sx, 0.15 + bH * 0.5, sz);
+        if (sType < 0.3) {
+          // Tall tower/spire — varying heights
+          var tH = 0.05 + Math.random() * 0.18;
+          var sMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.008 + Math.random() * 0.015, 0.012 + Math.random() * 0.02, tH, 6),
+            structMat2.clone());
+          sMesh.position.set(sx, surfY + tH * 0.5, sz);
+        } else if (sType < 0.55) {
+          // Block cluster
+          var bW = 0.02 + Math.random() * 0.05;
+          var bH = 0.02 + Math.random() * 0.08;
+          var sMesh = new THREE.Mesh(new THREE.BoxGeometry(bW, bH, 0.02 + Math.random() * 0.04), structMat.clone());
+          sMesh.position.set(sx, surfY + bH * 0.5, sz);
           sMesh.rotation.y = Math.random() * Math.PI;
+        } else if (sType < 0.75) {
+          // Small dome/pod
+          var sMesh = new THREE.Mesh(new THREE.SphereGeometry(0.015 + Math.random() * 0.025, 8, 6, 0, Math.PI * 2, 0, Math.PI / 2),
+            structMat2.clone());
+          sMesh.position.set(sx, surfY, sz);
         } else {
-          // Small dome
-          var dR = 0.015 + Math.random() * 0.025;
-          var sGeo3 = new THREE.SphereGeometry(dR, 8, 6, 0, Math.PI * 2, 0, Math.PI / 2);
-          sMesh = new THREE.Mesh(sGeo3, structMat2.clone());
-          sMesh.position.set(sx, 0.15, sz);
+          // Antenna/sensor mast — very thin and tall
+          var aH = 0.1 + Math.random() * 0.15;
+          var sMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.003, 0.006, aH, 4), structMat2.clone());
+          sMesh.position.set(sx, surfY + aH * 0.5, sz);
+          // Slight lean — nothing is perfectly vertical on a derelict
+          sMesh.rotation.x = (Math.random() - 0.5) * 0.3;
+          sMesh.rotation.z = (Math.random() - 0.5) * 0.3;
         }
         this.megaGroup.add(sMesh);
       }
 
-      // Underside structures — hanging bays, antenna arrays, machinery
-      for (var uci = 0; uci < 40; uci++) {
+      // Underside — massive hanging structures, engine pods, weapon bays
+      for (var uci = 0; uci < 50; uci++) {
         var uAngle = Math.random() * Math.PI * 2;
-        var uDist = 0.2 + Math.random() * 0.65;
+        var uDist = Math.random() * 0.8;
         var ux = Math.cos(uAngle) * uDist;
         var uz = Math.sin(uAngle) * uDist;
-        var uType = Math.random();
+        var uSurfY = -0.12 - _wsNoise(ux * 3 + 2, uz * 3 + 9) * 0.05;
 
-        if (uType < 0.5) {
-          // Hanging bay/pod
-          var pH = 0.03 + Math.random() * 0.06;
-          var uGeo = new THREE.BoxGeometry(0.02 + Math.random() * 0.03, pH, 0.02 + Math.random() * 0.03);
-          var uMesh = new THREE.Mesh(uGeo, structMat.clone());
-          uMesh.position.set(ux, -0.16 - pH * 0.5, uz);
+        if (Math.random() < 0.4) {
+          // Hanging engine/weapons pod — larger
+          var pH = 0.04 + Math.random() * 0.1;
+          var pW = 0.02 + Math.random() * 0.04;
+          var uMesh = new THREE.Mesh(new THREE.BoxGeometry(pW, pH, pW * (0.8 + Math.random())), structMat.clone());
+          uMesh.position.set(ux, uSurfY - pH * 0.5, uz);
           this.megaGroup.add(uMesh);
         } else {
-          // Hanging antenna/pipe
-          var aH = 0.05 + Math.random() * 0.1;
-          var uGeo2 = new THREE.CylinderGeometry(0.005, 0.008, aH, 4);
-          var uMesh2 = new THREE.Mesh(uGeo2, structMat2.clone());
-          uMesh2.position.set(ux, -0.16 - aH * 0.5, uz);
-          this.megaGroup.add(uMesh2);
+          // Antenna/pipe/conduit
+          var aH2 = 0.05 + Math.random() * 0.12;
+          var uMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.004, 0.007, aH2, 4), structMat2.clone());
+          uMesh.position.set(ux, uSurfY - aH2 * 0.5, uz);
+          this.megaGroup.add(uMesh);
         }
       }
 
-      // Edge protrusions — structures jutting out from the disc rim
-      for (var epi = 0; epi < 20; epi++) {
-        var epAngle = (epi / 20) * Math.PI * 2;
-        var epR = 0.88 + Math.random() * 0.08;
-        var epLen = 0.03 + Math.random() * 0.08;
-        var epGeo = new THREE.BoxGeometry(epLen, 0.04 + Math.random() * 0.06, 0.03);
+      // Massive edge protrusions — irregular chunks jutting out from the rim
+      for (var epi = 0; epi < 25; epi++) {
+        var epAngle = Math.random() * Math.PI * 2;
+        var epR = 0.85 + Math.random() * 0.15;
+        var epSize = 0.04 + Math.random() * 0.1;
+        // Use icosahedrons for irregular rocky protrusions
+        var epGeo = new THREE.IcosahedronGeometry(epSize, 0);
+        var epPos2 = epGeo.attributes.position;
+        for (var epvi = 0; epvi < epPos2.count; epvi++) {
+          var epx = epPos2.getX(epvi), epy = epPos2.getY(epvi), epz = epPos2.getZ(epvi);
+          epPos2.setXYZ(epvi, epx * (0.5 + Math.random() * 1.0), epy * (0.3 + Math.random() * 0.6), epz * (0.5 + Math.random() * 1.0));
+        }
+        epPos2.needsUpdate = true;
+        epGeo.computeVertexNormals();
         var epMesh = new THREE.Mesh(epGeo, structMat.clone());
-        epMesh.position.set(Math.cos(epAngle) * (epR + epLen * 0.5), (Math.random() - 0.5) * 0.15, Math.sin(epAngle) * (epR + epLen * 0.5));
-        epMesh.rotation.y = epAngle;
+        epMesh.position.set(Math.cos(epAngle) * epR, (Math.random() - 0.5) * 0.2, Math.sin(epAngle) * epR);
+        epMesh.rotation.set(Math.random() * 2, Math.random() * 2, Math.random() * 2);
         this.megaGroup.add(epMesh);
       }
 
-      /* ═══ RADIATING ARMS — 5 massive arms extending from the hub ═══ */
-      var armCount = 5;
-      for (var ai = 0; ai < armCount; ai++) {
-        var armAngle = (ai / armCount) * Math.PI * 2;
-        var armLen = 0.7 + (ai % 2) * 0.2; // alternating lengths
-        var armGroup = new THREE.Group();
-
-        // Arm body — tapered box
-        var armGeo = new THREE.BoxGeometry(armLen, 0.12, 0.18);
-        var arm = new THREE.Mesh(armGeo, hullMat.clone());
-        arm.position.x = armLen * 0.5 + 0.75;
-        armGroup.add(arm);
-
-        // Arm wireframe edges
-        armGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(armGeo),
-          new THREE.LineBasicMaterial({ color: 0x556677, transparent: true, opacity: 0.25 }))
-          .translateX(armLen * 0.5 + 0.75));
-
-        // Arm tip — engine pod or weapons platform
-        var tipGeo = new THREE.SphereGeometry(0.1, 12, 8);
-        var tipMat = hullMat.clone();
-        var tip = new THREE.Mesh(tipGeo, tipMat);
-        tip.scale.set(1.3, 0.7, 0.8);
-        tip.position.x = armLen + 0.8;
-        armGroup.add(tip);
-
-        // Engine glow at arm tip — most dead, one or two sputtering
-        if (ai === 1 || ai === 3) {
-          var engGlow = new THREE.Mesh(new THREE.SphereGeometry(0.04, 6, 6),
-            new THREE.MeshBasicMaterial({ color: 0x4466aa, transparent: true, opacity: 0.1 }));
-          engGlow.position.x = armLen + 0.92;
-          armGroup.add(engGlow);
-        }
-
-        // Turret on arm
-        var tBase = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.035, 0.03, 8),
-          new THREE.MeshPhongMaterial({ color: 0x4a5060, shininess: 30 }));
-        tBase.position.set(armLen * 0.5 + 0.75, 0.08, 0);
-        armGroup.add(tBase);
-        var tBarrel = new THREE.Mesh(new THREE.CylinderGeometry(0.006, 0.006, 0.08, 4),
-          new THREE.MeshPhongMaterial({ color: 0x3a3e4a, shininess: 20 }));
-        tBarrel.rotation.z = -0.3;
-        tBarrel.position.set(armLen * 0.5 + 0.8, 0.11, 0);
-        armGroup.add(tBarrel);
-
-        // Running light on arm
-        var armLight = new THREE.Mesh(new THREE.SphereGeometry(0.012, 6, 6),
-          new THREE.MeshBasicMaterial({ color: ai < 3 ? 0xffccaa : 0xff4422, transparent: true, opacity: 0.6 }));
-        armLight.position.set(armLen * 0.3 + 0.75, 0.08, 0.1);
-        armGroup.add(armLight);
-
-        // Rotate arm to its position around the disc
-        armGroup.rotation.y = armAngle;
-        this.megaGroup.add(armGroup);
+      /* ═══ HULL BREACHES — torn sections with interior glow ═══ */
+      var breachPositions = [
+        { pos: [0.6, 0.1, 0.55], size: 0.12 },
+        { pos: [-0.5, -0.1, -0.6], size: 0.1 },
+        { pos: [0.2, 0.2, -0.45], size: 0.08 },
+      ];
+      for (var bri = 0; bri < breachPositions.length; bri++) {
+        var br = breachPositions[bri];
+        // Dark void
+        this.megaGroup.add(new THREE.Mesh(new THREE.SphereGeometry(br.size, 8, 8),
+          new THREE.MeshBasicMaterial({ color: 0x060608 })).translateX(br.pos[0]).translateY(br.pos[1]).translateZ(br.pos[2]));
+        // Interior glow
+        this.megaGroup.add(new THREE.Mesh(new THREE.SphereGeometry(br.size * 0.7, 6, 6),
+          new THREE.MeshBasicMaterial({ color: 0xdd8833, transparent: true, opacity: 0.12, depthWrite: false }))
+          .translateX(br.pos[0]).translateY(br.pos[1]).translateZ(br.pos[2]));
       }
-
-      /* ═══ HULL BREACHES — missing arm section + dome damage ═══ */
-      // One arm is broken/missing its outer half (battle damage from Vorax breakout)
-      var brokenArmAngle = (2 / armCount) * Math.PI * 2 + 0.1;
-      var brokenStump = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.1, 0.16),
-        new THREE.MeshPhongMaterial({ color: 0x1a1a20, shininess: 5 }));
-      brokenStump.position.set(Math.cos(brokenArmAngle) * 0.9, 0, Math.sin(brokenArmAngle) * 0.9);
-      brokenStump.rotation.y = brokenArmAngle;
-      this.megaGroup.add(brokenStump);
-      // Breach glow at the break point
-      var breakGlow = new THREE.Mesh(new THREE.SphereGeometry(0.06, 8, 8),
-        new THREE.MeshBasicMaterial({ color: 0xff6622, transparent: true, opacity: 0.1, depthWrite: false }));
-      breakGlow.position.set(Math.cos(brokenArmAngle) * 1.05, 0, Math.sin(brokenArmAngle) * 1.05);
-      this.megaGroup.add(breakGlow);
-
-      // Dome breach — visible hole in upper dome with interior glow
-      var domeBreachGeo = new THREE.SphereGeometry(0.12, 12, 8);
-      var domeBreachMat = new THREE.MeshBasicMaterial({ color: 0x060608 });
-      var domeBreach = new THREE.Mesh(domeBreachGeo, domeBreachMat);
-      domeBreach.position.set(0.25, 0.42, 0.2);
-      this.megaGroup.add(domeBreach);
-      var domeBreachGlow = new THREE.Mesh(new THREE.SphereGeometry(0.08, 8, 8),
-        new THREE.MeshBasicMaterial({ color: 0xdd8833, transparent: true, opacity: 0.15, depthWrite: false }));
-      domeBreachGlow.position.set(0.25, 0.4, 0.2);
-      this.megaGroup.add(domeBreachGlow);
 
       /* ═══ EMBEDDED DEBRIS — meteor chunks and wreckage in the hull ═══ */
       var embeddedData = [
