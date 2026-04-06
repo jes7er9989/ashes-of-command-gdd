@@ -6,7 +6,7 @@
 
     <div class="body-text" style="margin-bottom:16px">All rulings integrated into canonical chapters. This appendix is the developer source of truth for implementation details — all values LOCKED unless explicit written approval.</div>
 
-    <div class="section-label">L.1 Slice Implementation Status</div>
+    <div class="section-label" id="sec-appL-1">L.1 Slice Implementation Status</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:24px">
       <div style="display:grid;grid-template-columns:40px 280px 120px 1fr;background:rgba(0,180,255,0.04);padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accent);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>#</span><span>FEATURE</span><span>STATUS</span><span>FILES</span></div>
       <div style="display:grid;grid-template-columns:40px 280px 120px 1fr;padding:4px 10px;font-size:0.92rem;border-bottom:1px solid var(--border)"><span style="color:var(--revenant)">1</span><span style="color:var(--text-mid)">Ground Combat MVP</span><span style="color:var(--revenant)">✅ COMPLETE</span><span style="color:var(--text-dim)">CombatEngine.js, Unit.js, BattleScene.js</span></div>
@@ -50,7 +50,7 @@
       <div style="display:grid;grid-template-columns:40px 280px 120px 1fr;padding:4px 10px;font-size:0.92rem"><span style="color:var(--terran)">G16</span><span style="color:var(--text-mid)">Warning Fixes + Git Init</span><span style="color:var(--revenant)">✅ COMPLETE</span><span style="color:var(--text-dim)">Fixed shadowed vars (rotation, name), integer division, unused params. Git repo initialized with .gitignore.</span></div>
     </div>
 
-    <div class="section-label">L.2 Key Stat Blocks (All Values Locked)</div>
+    <div class="section-label" id="sec-appL-2">L.2 Key Stat Blocks (All Values Locked)</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
       <div class="card">
         <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">L.9.2 TERRAN SHIPS</div>
@@ -90,7 +90,7 @@
 
     <div class="divider"></div>
 
-    <div class="section-label" style="color:var(--terran)">L.3 Godot 4.4 Migration — 3D Model Assets</div>
+    <div class="section-label" id="sec-appL-3" style="color:var(--terran)">L.3 Godot 4.4 Migration — 3D Model Assets</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
       <div style="display:grid;grid-template-columns:200px 80px 80px 1fr;background:rgba(0,180,255,0.04);padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accent);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>MODEL</span><span>SIZE</span><span>PARTS</span><span>GENERATOR</span></div>
       <div style="display:grid;grid-template-columns:200px 80px 80px 1fr;padding:4px 10px;font-size:0.92rem;border-bottom:1px solid var(--border)"><span style="color:var(--text-mid)">shock_marine.glb</span><span style="color:var(--text-hi)">2,299 KB</span><span style="color:var(--text-hi)">323</span><span style="color:var(--text-dim)">generate_terran_models.js → buildShockMarine()</span></div>
@@ -101,7 +101,7 @@
     </div>
     <div style="font-size:0.92rem;color:var(--text-dim);margin-bottom:8px">All models generated via Node.js + @gltf-transform/core. 40 parametric geometry generators, 24 PBR materials palette. Output: glTF binary (.glb).</div>
 
-    <div class="section-label" style="color:var(--terran)">L.3.1 Physical Dimensions (UNIT_SCALE_TABLE)</div>
+    <div class="section-label" id="sec-appL-3-1" style="color:var(--terran)">L.3.1 Physical Dimensions (UNIT_SCALE_TABLE)</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
       <div style="display:grid;grid-template-columns:200px 100px 100px 100px 1fr;background:rgba(0,180,255,0.04);padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accent);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>UNIT</span><span>HEIGHT (m)</span><span>COL RADIUS</span><span>COL HEIGHT</span><span>HP BAR Y</span></div>
       <div style="display:grid;grid-template-columns:200px 100px 100px 100px 1fr;padding:4px 10px;font-size:0.92rem;border-bottom:1px solid var(--border)"><span style="color:var(--text-mid)">Shock-Marine</span><span style="color:#fff;font-weight:600">1.8</span><span style="color:var(--text-hi)">0.30</span><span style="color:var(--text-hi)">1.80</span><span style="color:var(--text-hi)">2.50</span></div>
@@ -114,7 +114,7 @@
 
     <div class="divider"></div>
 
-    <div class="section-label" style="color:var(--horde)">L.4 Dynamic BattleManager Architecture (Godot 4.4)</div>
+    <div class="section-label" id="sec-appL-4" style="color:var(--horde)">L.4 Dynamic BattleManager Architecture (Godot 4.4)</div>
     <div class="body-text" style="margin-bottom:12px">Config-driven battle orchestrator. Accepts army composition via <code style="color:var(--accent)">start_battle(config: Dictionary)</code>. Handles variable army sizes, dynamic formation placement, reserve wave reinforcements, and last-stand mechanics.</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
       <div class="card">
@@ -138,7 +138,7 @@
       </div>
     </div>
 
-    <div class="section-label" style="color:var(--horde)">L.4.1 Category Sort Weights</div>
+    <div class="section-label" id="sec-appL-4-1" style="color:var(--horde)">L.4.1 Category Sort Weights</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
       <div style="display:grid;grid-template-columns:200px 80px 1fr;background:rgba(0,180,255,0.04);padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accent);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>CATEGORY</span><span>WEIGHT</span><span>POSITION</span></div>
       <div style="display:grid;grid-template-columns:200px 80px 1fr;padding:4px 10px;font-size:0.92rem;border-bottom:1px solid var(--border)"><span style="color:var(--text-mid)">Light Infantry</span><span style="color:#fff;font-weight:600">0</span><span style="color:var(--text-dim)">Front line</span></div>
@@ -149,7 +149,7 @@
       <div style="display:grid;grid-template-columns:200px 80px 1fr;padding:4px 10px;font-size:0.92rem"><span style="color:var(--text-mid)">Super-Heavy</span><span style="color:#fff;font-weight:600">5</span><span style="color:var(--text-dim)">Back rank</span></div>
     </div>
 
-    <div class="section-label" style="color:var(--horde)">L.4.2 Reserve Wave System</div>
+    <div class="section-label" id="sec-appL-4-2" style="color:var(--horde)">L.4.2 Reserve Wave System</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
       <div class="card">
         <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:6px">RESERVE DEPLOYMENT</div>
@@ -175,7 +175,7 @@
 
     <div class="divider"></div>
 
-    <div class="section-label" style="color:var(--vorax)">L.5 Battle Pipeline — 11-Step Combat Formula</div>
+    <div class="section-label" id="sec-appL-5" style="color:var(--vorax)">L.5 Battle Pipeline — 11-Step Combat Formula</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
       <div style="display:grid;grid-template-columns:40px 180px 1fr;background:rgba(255,34,102,0.04);padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--vorax);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>#</span><span>OPERATION</span><span>FORMULA</span></div>
       <div style="display:grid;grid-template-columns:40px 180px 1fr;padding:4px 10px;font-size:0.92rem;border-bottom:1px solid var(--border)"><span style="color:var(--vorax);font-weight:600">1</span><span style="color:var(--text-mid)">Accuracy Roll</span><span style="color:var(--text-dim)">rand() &lt; attacker.accuracy → hit or miss</span></div>
@@ -191,7 +191,7 @@
       <div style="display:grid;grid-template-columns:40px 180px 1fr;padding:4px 10px;font-size:0.92rem"><span style="color:var(--vorax);font-weight:600">11</span><span style="color:var(--text-mid)">Floating Number</span><span style="color:var(--text-dim)">DamageNumber3D at target pos (crit = yellow)</span></div>
     </div>
 
-    <div class="section-label" style="color:var(--vorax)">L.5.1 DEFAULT_TEST_CONFIG (Terran Mirror Match)</div>
+    <div class="section-label" id="sec-appL-5-1" style="color:var(--vorax)">L.5.1 DEFAULT_TEST_CONFIG (Terran Mirror Match)</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
       <div class="card">
         <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">INITIAL WAVE (×2 TEAMS)</div>
@@ -217,7 +217,7 @@
 
     <div class="divider"></div>
 
-    <div class="section-label" style="color:var(--vorax)">L.6 Runtime Bugs Found &amp; Fixed During Godot Testing</div>
+    <div class="section-label" id="sec-appL-6" style="color:var(--vorax)">L.6 Runtime Bugs Found &amp; Fixed During Godot Testing</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
       <div style="display:grid;grid-template-columns:40px 1fr;background:rgba(255,34,102,0.04);padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--vorax);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>#</span><span>BUG / RESOLUTION</span></div>
       <div style="padding:10px 12px;font-size:0.92rem;border-bottom:1px solid var(--border)">
@@ -260,7 +260,7 @@
 
     <div class="divider"></div>
 
-    <div class="section-label" style="color:var(--accord)">L.7 Godot 4.4 Engine Gotchas (Cumulative)</div>
+    <div class="section-label" id="sec-appL-7" style="color:var(--accord)">L.7 Godot 4.4 Engine Gotchas (Cumulative)</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
       <div style="display:grid;grid-template-columns:40px 1fr 1fr;background:rgba(68,255,102,0.04);padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accord);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>#</span><span>GOTCHA</span><span>DETAIL / WORKAROUND</span></div>
       <div style="display:grid;grid-template-columns:40px 1fr 1fr;padding:5px 10px;font-size:0.9rem;border-bottom:1px solid var(--border)"><span style="color:var(--accord);font-weight:600">1</span><span style="color:var(--text-mid)">class_name on Autoload scripts</span><span style="color:var(--text-dim)">Causes naming conflict — don't use on GameDatabase.gd</span></div>
@@ -277,7 +277,7 @@
 
     <div class="divider"></div>
 
-    <div class="section-label" style="color:var(--terran)">L.8 Balance Observations from First Playtest (Terran Mirror Match)</div>
+    <div class="section-label" id="sec-appL-8" style="color:var(--terran)">L.8 Balance Observations from First Playtest (Terran Mirror Match)</div>
     <div class="card" style="margin-bottom:8px;padding:10px 14px">
       <div style="font-family:'Orbitron',monospace;font-size:0.82rem;color:var(--text-dim);letter-spacing:2px;margin-bottom:6px">TEST CONFIG: 9 initial + 3 reserves per side · Terran mirror · DEFAULT_TEST_CONFIG</div>
     </div>
@@ -292,9 +292,9 @@
 
     <div class="divider"></div>
 
-    <div class="section-label" style="color:var(--accord)">L.9 Procedural Galaxy Generation: Implementation Specification</div>
+    <div class="section-label" id="sec-appL-9" style="color:var(--accord)">L.9 Procedural Galaxy Generation: Implementation Specification</div>
 
-    <div class="section-label" style="color:var(--accord);font-size:0.92rem;margin-top:4px">L.9.1 Galaxy Size Parameters</div>
+    <div class="section-label" id="sec-appL-9-1" style="color:var(--accord);font-size:0.92rem;margin-top:4px">L.9.1 Galaxy Size Parameters</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:12px">
       <div style="display:grid;grid-template-columns:90px 90px 100px 100px 1fr;background:rgba(68,255,102,0.04);padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accord);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>SIZE</span><span>SYSTEMS</span><span>NEUTRAL</span><span>CYCLES/RUN</span><span>NOTES</span></div>
       <div style="display:grid;grid-template-columns:90px 90px 100px 100px 1fr;padding:5px 10px;font-size:0.9rem;border-bottom:1px solid var(--border)"><span style="color:var(--text-hi)">Small</span><span style="color:var(--text-mid)">12 &ndash; 14</span><span style="color:var(--text-mid)">6 &ndash; 8</span><span style="color:var(--text-mid)">20 &ndash; 30</span><span style="color:var(--text-dim)">Tight, early conflict inevitable</span></div>
@@ -307,7 +307,7 @@
       <div>System count stays the same regardless of faction count &mdash; fewer factions = more neutral systems to contest.</div>
     </div>
 
-    <div class="section-label" style="color:var(--accord);font-size:0.92rem">L.9.2 Fixed Anchor &amp; Faction Homeworlds</div>
+    <div class="section-label" id="sec-appL-9-2" style="color:var(--accord);font-size:0.92rem">L.9.2 Fixed Anchor &amp; Faction Homeworlds</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:12px">
       <div style="display:grid;grid-template-columns:120px 100px 160px 1fr;background:rgba(68,255,102,0.04);padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accord);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>ANCHOR</span><span>ID</span><span>POSITION</span><span>RULES</span></div>
       <div style="display:grid;grid-template-columns:120px 100px 160px 1fr;padding:5px 10px;font-size:0.9rem"><span style="color:var(--text-hi)">The Nexus</span><span style="color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:0.85rem">sys-nexus</span><span style="color:var(--text-mid)">(510, 320) fixed</span><span style="color:var(--text-dim)">Win condition target. Guardian fleet: Gunship&times;2 + Dreadnought. Connected by 2&ndash;3 lanes.</span></div>
@@ -327,7 +327,7 @@
       <div style="margin-top:6px"><strong style="color:var(--text-hi)">Faction Elimination:</strong> A faction is destroyed when it loses ALL controlled planets AND has no fleets in transit. If a fleet is still moving, the faction survives.</div>
     </div>
 
-    <div class="section-label" style="color:var(--accord);font-size:0.92rem">L.9.3 Generation Pipeline (13 Steps)</div>
+    <div class="section-label" id="sec-appL-9-3" style="color:var(--accord);font-size:0.92rem">L.9.3 Generation Pipeline (13 Steps)</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
       <div style="display:grid;grid-template-columns:40px 180px 1fr;background:rgba(68,255,102,0.04);padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accord);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>#</span><span>STEP</span><span>SPECIFICATION</span></div>
       <div style="display:grid;grid-template-columns:40px 180px 1fr;padding:5px 10px;font-size:0.9rem;border-bottom:1px solid var(--border)"><span style="color:var(--accord);font-weight:600">1</span><span style="color:var(--text-hi)">Seed Initialization</span><span style="color:var(--text-dim)">Accept seed (user-provided or time-based). Init seeded PRNG (mulberry32). All randomness flows through this.</span></div>
@@ -347,7 +347,7 @@
       <div style="display:grid;grid-template-columns:40px 180px 1fr;padding:5px 10px;font-size:0.9rem"><span style="color:var(--accord);font-weight:600">13</span><span style="color:var(--text-hi)">Output</span><span style="color:var(--text-dim)">Return { seed, size, systems[], lanes[], wormholes[], homeworlds{} }. Each system: { id, name, position, star_type, planets[], faction, is_homeworld, lanes[] }. Each planet: { type, territory_count, territory_adjacency{}, base_yield, traits[] }.</span></div>
     </div>
 
-    <div class="section-label" style="color:var(--accord);font-size:0.92rem">L.9.4 Seeded RNG Requirement</div>
+    <div class="section-label" id="sec-appL-9-4" style="color:var(--accord);font-size:0.92rem">L.9.4 Seeded RNG Requirement</div>
     <div class="card" style="margin-bottom:16px;padding:10px 14px;font-size:0.92rem;color:var(--text-mid);line-height:1.7">
       <div>Same seed <strong style="color:var(--text-hi)">MUST</strong> produce identical galaxy across all platforms.</div>
       <div>Implementation: <span style="color:var(--accent);font-family:'JetBrains Mono',monospace">mulberry32</span> seeded PRNG. All random calls routed through it.</div>
@@ -355,7 +355,7 @@
       <div>Godot's built-in randi() not used &mdash; not guaranteed deterministic cross-platform.</div>
     </div>
 
-    <div class="section-label" style="color:var(--accord);font-size:0.92rem">L.9.5 Visual Style Reference (3 Zoom Levels)</div>
+    <div class="section-label" id="sec-appL-9-5" style="color:var(--accord);font-size:0.92rem">L.9.5 Visual Style Reference (3 Zoom Levels)</div>
     <div class="card" style="margin-bottom:12px;padding:10px 14px;font-size:0.92rem;color:var(--text-mid);line-height:1.7;border-left:3px solid var(--accord)">
       <div><strong style="color:var(--text-hi)">Helldivers 2 + Dawn of War: Soulstorm BLENDED</strong> &mdash; the galaxy map is NOT split into separate styles per zoom level. Instead, Zoom Level 1 (Galaxy View) blends BOTH: the HD2 radial layout with faction territory fog AND the DoW Soulstorm visual richness with detailed planet spheres, central stars, orbital rings, and fleet icons. Planets look like real celestial bodies inside faction-colored territory zones connected by supply lines.</div>
       <div style="margin-top:6px"><strong style="color:var(--text-hi)">What NOT to do:</strong> No 3D rotatable globe &mdash; all views top-down 2D. No photorealistic rendering &mdash; stylized sci-fi with glows and clean shapes. No cluttered UI &mdash; information density managed through zoom levels.</div>
@@ -371,7 +371,7 @@
       <div style="display:grid;grid-template-columns:repeat(7,1fr);padding:8px 10px;font-size:0.9rem;text-align:center;line-height:1.5"><span style="color:var(--terran)">&#9632; Terran<br><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem">#00b4ff</span></span><span style="color:var(--shards)">&#9632; Shards<br><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem">#00ffcc</span></span><span style="color:var(--horde)">&#9632; Horde<br><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem">#ff8800</span></span><span style="color:var(--revenant)">&#9632; Revenant<br><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem">#AA77FF</span></span><span style="color:var(--accord)">&#9632; Accord<br><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem">#44ff66</span></span><span style="color:var(--vorax)">&#9632; Vorax<br><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem">#ff2266</span></span><span style="color:#ffaa22">&#9632; Guardians<br><span style="font-family:'JetBrains Mono',monospace;font-size:0.82rem">#ffaa22</span></span></div>
     </div>
 
-    <div class="section-label" style="color:var(--accord);font-size:0.92rem">L.9.6 Territory Count Reference (from Ch13)</div>
+    <div class="section-label" id="sec-appL-9-6" style="color:var(--accord);font-size:0.92rem">L.9.6 Territory Count Reference (from Ch13)</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
       <div style="display:grid;grid-template-columns:160px 100px 1fr;background:rgba(68,255,102,0.04);padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accord);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>PLANET TYPE</span><span>TERRITORIES</span><span>NOTES</span></div>
       <div style="display:grid;grid-template-columns:160px 100px 1fr;padding:5px 10px;font-size:0.9rem;border-bottom:1px solid var(--border)"><span style="color:var(--text-mid)">Capital World</span><span style="color:var(--text-hi)">18 &ndash; 22</span><span style="color:var(--text-dim)">Multi-session campaign per planet</span></div>
@@ -506,11 +506,11 @@
     <div style="font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accord);letter-spacing:2px;margin:20px 0 8px">L.10.8 &mdash; FACTION-SPECIFIC PHENOMENA</div>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
       <div style="display:grid;grid-template-columns:130px 170px 1fr 1fr;background:rgba(68,255,102,0.04);padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accord);letter-spacing:1px;border-bottom:1px solid var(--border)"><span>FACTION</span><span>PHENOMENON</span><span>EFFECT</span><span>VISUAL</span></div>
-      <div style="display:grid;grid-template-columns:130px 170px 1fr 1fr;padding:5px 10px;font-size:0.9rem;border-bottom:1px solid var(--border)"><span style="color:#00e5ff">Eternal Shards</span><span style="color:var(--text-mid)">Resonance Nodes (2&ndash;3)</span><span style="color:var(--text-dim)">+10% ability effectiveness within 1 system</span><span style="color:var(--text-dim)">Teal crystalline asteroids pulsing</span></div>
+      <div style="display:grid;grid-template-columns:130px 170px 1fr 1fr;padding:5px 10px;font-size:0.9rem;border-bottom:1px solid var(--border)"><span style="color:var(--shards)">Eternal Shards</span><span style="color:var(--text-mid)">Resonance Nodes (2&ndash;3)</span><span style="color:var(--text-dim)">+10% ability effectiveness within 1 system</span><span style="color:var(--text-dim)">Teal crystalline asteroids pulsing</span></div>
       <div style="display:grid;grid-template-columns:130px 170px 1fr 1fr;padding:5px 10px;font-size:0.9rem;border-bottom:1px solid var(--border);background:rgba(170,119,255,0.01)"><span style="color:var(--revenant)">The Revenant</span><span style="color:var(--text-mid)">Tomb Beacons (3&ndash;5)</span><span style="color:var(--text-dim)">Free unit every 5 cycles when Revenant controls system</span><span style="color:var(--text-dim)">Faint purple pulses</span></div>
-      <div style="display:grid;grid-template-columns:130px 170px 1fr 1fr;padding:5px 10px;font-size:0.9rem;border-bottom:1px solid var(--border)"><span style="color:#ff6600">Scrap-Horde</span><span style="color:var(--text-mid)">Scrap Trails (dynamic)</span><span style="color:var(--text-dim)">Enemy +10% travel time on Horde lanes, Horde &minus;10%</span><span style="color:var(--text-dim)">Visible debris on lanes</span></div>
-      <div style="display:grid;grid-template-columns:130px 170px 1fr 1fr;padding:5px 10px;font-size:0.9rem;border-bottom:1px solid var(--border);background:rgba(68,255,102,0.01)"><span style="color:#ff0040">Vorax</span><span style="color:var(--text-mid)">Spore Clouds (drift)</span><span style="color:var(--text-dim)">Starts corruption if reaches undefended system</span><span style="color:var(--text-dim)">Faint red haze drifting</span></div>
-      <div style="display:grid;grid-template-columns:130px 170px 1fr 1fr;padding:5px 10px;font-size:0.9rem"><span style="color:#ff0040">Vorax</span><span style="color:var(--text-mid)">Tendril Spread (lanes)</span><span style="color:var(--text-dim)">1 lane/3 cycles, cuttable, isolated Vorax weaken</span><span style="color:var(--text-dim)">Red creep + pulse on lanes</span></div>
+      <div style="display:grid;grid-template-columns:130px 170px 1fr 1fr;padding:5px 10px;font-size:0.9rem;border-bottom:1px solid var(--border)"><span style="color:var(--horde)">Scrap-Horde</span><span style="color:var(--text-mid)">Scrap Trails (dynamic)</span><span style="color:var(--text-dim)">Enemy +10% travel time on Horde lanes, Horde &minus;10%</span><span style="color:var(--text-dim)">Visible debris on lanes</span></div>
+      <div style="display:grid;grid-template-columns:130px 170px 1fr 1fr;padding:5px 10px;font-size:0.9rem;border-bottom:1px solid var(--border);background:rgba(68,255,102,0.01)"><span style="color:var(--vorax)">Vorax</span><span style="color:var(--text-mid)">Spore Clouds (drift)</span><span style="color:var(--text-dim)">Starts corruption if reaches undefended system</span><span style="color:var(--text-dim)">Faint red haze drifting</span></div>
+      <div style="display:grid;grid-template-columns:130px 170px 1fr 1fr;padding:5px 10px;font-size:0.9rem"><span style="color:var(--vorax)">Vorax</span><span style="color:var(--text-mid)">Tendril Spread (lanes)</span><span style="color:var(--text-dim)">1 lane/3 cycles, cuttable, isolated Vorax weaken</span><span style="color:var(--text-dim)">Red creep + pulse on lanes</span></div>
     </div>
 
     <!-- L.10.9 — Mystery Phenomena -->
