@@ -1833,6 +1833,81 @@ window.PlanetRenderer = (function () {
       discWire.scale.set(1.0, 0.35, 1.0);
       this.megaGroup.add(discWire);
 
+      /* ═══ SURFACE CITY — dense structures covering the disc like a flying city ═══ */
+      var structMat = new THREE.MeshPhongMaterial({ map: hullTex, shininess: 15, emissive: 0x060610, emissiveIntensity: 0.1 });
+      var structMat2 = new THREE.MeshPhongMaterial({ color: 0x3a4050, shininess: 20, emissive: 0x0a0a18, emissiveIntensity: 0.1 });
+
+      // Upper surface structures — towers, domes, blocks (Harvester-style dense detail)
+      for (var sci = 0; sci < 60; sci++) {
+        var sAngle = Math.random() * Math.PI * 2;
+        var sDist = 0.15 + Math.random() * 0.7;
+        var sx = Math.cos(sAngle) * sDist;
+        var sz = Math.sin(sAngle) * sDist;
+        var sType = Math.random();
+        var sMesh;
+
+        if (sType < 0.35) {
+          // Tall tower/spire
+          var tH = 0.04 + Math.random() * 0.12;
+          var sGeo = new THREE.CylinderGeometry(0.01 + Math.random() * 0.015, 0.015 + Math.random() * 0.02, tH, 6);
+          sMesh = new THREE.Mesh(sGeo, structMat2.clone());
+          sMesh.position.set(sx, 0.16 + tH * 0.5, sz);
+        } else if (sType < 0.65) {
+          // Block structure — residential/industrial
+          var bW = 0.02 + Math.random() * 0.04;
+          var bH = 0.02 + Math.random() * 0.06;
+          var bD = 0.02 + Math.random() * 0.04;
+          var sGeo2 = new THREE.BoxGeometry(bW, bH, bD);
+          sMesh = new THREE.Mesh(sGeo2, structMat.clone());
+          sMesh.position.set(sx, 0.15 + bH * 0.5, sz);
+          sMesh.rotation.y = Math.random() * Math.PI;
+        } else {
+          // Small dome
+          var dR = 0.015 + Math.random() * 0.025;
+          var sGeo3 = new THREE.SphereGeometry(dR, 8, 6, 0, Math.PI * 2, 0, Math.PI / 2);
+          sMesh = new THREE.Mesh(sGeo3, structMat2.clone());
+          sMesh.position.set(sx, 0.15, sz);
+        }
+        this.megaGroup.add(sMesh);
+      }
+
+      // Underside structures — hanging bays, antenna arrays, machinery
+      for (var uci = 0; uci < 40; uci++) {
+        var uAngle = Math.random() * Math.PI * 2;
+        var uDist = 0.2 + Math.random() * 0.65;
+        var ux = Math.cos(uAngle) * uDist;
+        var uz = Math.sin(uAngle) * uDist;
+        var uType = Math.random();
+
+        if (uType < 0.5) {
+          // Hanging bay/pod
+          var pH = 0.03 + Math.random() * 0.06;
+          var uGeo = new THREE.BoxGeometry(0.02 + Math.random() * 0.03, pH, 0.02 + Math.random() * 0.03);
+          var uMesh = new THREE.Mesh(uGeo, structMat.clone());
+          uMesh.position.set(ux, -0.16 - pH * 0.5, uz);
+          this.megaGroup.add(uMesh);
+        } else {
+          // Hanging antenna/pipe
+          var aH = 0.05 + Math.random() * 0.1;
+          var uGeo2 = new THREE.CylinderGeometry(0.005, 0.008, aH, 4);
+          var uMesh2 = new THREE.Mesh(uGeo2, structMat2.clone());
+          uMesh2.position.set(ux, -0.16 - aH * 0.5, uz);
+          this.megaGroup.add(uMesh2);
+        }
+      }
+
+      // Edge protrusions — structures jutting out from the disc rim
+      for (var epi = 0; epi < 20; epi++) {
+        var epAngle = (epi / 20) * Math.PI * 2;
+        var epR = 0.88 + Math.random() * 0.08;
+        var epLen = 0.03 + Math.random() * 0.08;
+        var epGeo = new THREE.BoxGeometry(epLen, 0.04 + Math.random() * 0.06, 0.03);
+        var epMesh = new THREE.Mesh(epGeo, structMat.clone());
+        epMesh.position.set(Math.cos(epAngle) * (epR + epLen * 0.5), (Math.random() - 0.5) * 0.15, Math.sin(epAngle) * (epR + epLen * 0.5));
+        epMesh.rotation.y = epAngle;
+        this.megaGroup.add(epMesh);
+      }
+
       /* ═══ RADIATING ARMS — 5 massive arms extending from the hub ═══ */
       var armCount = 5;
       for (var ai = 0; ai < armCount; ai++) {
