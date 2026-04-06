@@ -2220,56 +2220,125 @@ window.PlanetRenderer = (function () {
 
       // Ring wireframe — visible structural lattice
       this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(ringGeo),
-        new THREE.LineBasicMaterial({ color: 0x4488cc, transparent: true, opacity: 0.3 })));
+        new THREE.LineBasicMaterial({ color: 0x6644aa, transparent: true, opacity: 0.3 })));
 
-      // Energy conduit glow ring — pulsing blue around the structure
+      // Conduit junction nodes — glowing points around the ring
+      for (var jni = 0; jni < 24; jni++) {
+        var jnAngle = (jni / 24) * Math.PI * 2;
+        var jnGeo = new THREE.OctahedronGeometry(0.015, 0);
+        var jnMat = new THREE.MeshBasicMaterial({
+          color: 0x8855cc, transparent: true, opacity: 0.5,
+        });
+        var jn = new THREE.Mesh(jnGeo, jnMat);
+        jn.position.set(Math.cos(jnAngle) * 1.0, Math.sin(jnAngle) * 1.0, 0);
+        this.megaGroup.add(jn);
+      }
+
+      // Cross-bracing struts — structural supports between inner and outer ring
+      for (var cbi = 0; cbi < 12; cbi++) {
+        var cbAngle = (cbi / 12) * Math.PI * 2;
+        var cbGeo = new THREE.CylinderGeometry(0.005, 0.005, 0.12, 4);
+        var cbMat = new THREE.MeshPhongMaterial({ color: 0x445566, shininess: 30 });
+        var cb = new THREE.Mesh(cbGeo, cbMat);
+        var cbMidR = 0.96;
+        cb.position.set(Math.cos(cbAngle) * cbMidR, Math.sin(cbAngle) * cbMidR, 0);
+        // Rotate to point radially
+        cb.rotation.z = cbAngle;
+        this.megaGroup.add(cb);
+      }
+
+      // Energy conduit glow ring — pulsing violet around the structure
       var conduitGeo = new THREE.TorusGeometry(1.0, 0.12, 6, 96);
       this.warpConduitMat = new THREE.MeshBasicMaterial({
         color: 0x6633aa, transparent: true, opacity: 0.06, side: THREE.DoubleSide, depthWrite: false,
       });
       this.megaGroup.add(new THREE.Mesh(conduitGeo, this.warpConduitMat));
 
-      /* ═══ WARP FIELD — black void center with swirling purple energy ═══ */
-      // Dark void core — the black hole center where light doesn't come back
-      var voidGeo = new THREE.CircleGeometry(0.45, 48);
-      var voidMat = new THREE.MeshBasicMaterial({
-        color: 0x020005, side: THREE.DoubleSide,
-      });
-      var voidCenter = new THREE.Mesh(voidGeo, voidMat);
-      voidCenter.position.z = -0.01;
-      this.megaGroup.add(voidCenter);
+      /* ═══ WARP FIELD — black void with spiraling particle vortex ═══ */
+      // Dark void core — absolute blackness at center
+      var voidGeo = new THREE.CircleGeometry(0.4, 48);
+      var voidMat = new THREE.MeshBasicMaterial({ color: 0x010003, side: THREE.DoubleSide });
+      this.megaGroup.add(new THREE.Mesh(voidGeo, voidMat).translateZ(-0.01));
 
-      // Outer swirling purple band — slow rotation
-      var fieldGeo = new THREE.RingGeometry(0.4, 0.86, 64);
-      this.warpFieldMat = new THREE.MeshBasicMaterial({
-        color: 0x7733aa, transparent: true, opacity: 0.18,
-        side: THREE.DoubleSide, depthWrite: false,
+      // Void edge glow — bright purple ring at the boundary of the darkness
+      var voidEdgeGeo = new THREE.RingGeometry(0.36, 0.44, 64);
+      var voidEdgeMat = new THREE.MeshBasicMaterial({
+        color: 0xaa55dd, transparent: true, opacity: 0.2, side: THREE.DoubleSide, depthWrite: false,
       });
-      this.warpField = new THREE.Mesh(fieldGeo, this.warpFieldMat);
+      this.megaGroup.add(new THREE.Mesh(voidEdgeGeo, voidEdgeMat));
+
+      // Faint flat field glow behind the particles
+      var fieldBgGeo = new THREE.RingGeometry(0.35, 0.85, 64);
+      this.warpFieldMat = new THREE.MeshBasicMaterial({
+        color: 0x5522aa, transparent: true, opacity: 0.06, side: THREE.DoubleSide, depthWrite: false,
+      });
+      this.warpField = new THREE.Mesh(fieldBgGeo, this.warpFieldMat);
       this.megaGroup.add(this.warpField);
 
-      // Middle swirling band — faster counter-rotation, deeper purple
-      var field2Geo = new THREE.RingGeometry(0.3, 0.65, 48);
-      this.warpField2Mat = new THREE.MeshBasicMaterial({
-        color: 0x9944cc, transparent: true, opacity: 0.12,
-        side: THREE.DoubleSide, depthWrite: false,
-      });
-      this.warpField2 = new THREE.Mesh(field2Geo, this.warpField2Mat);
-      this.warpField2.position.z = 0.01;
-      this.megaGroup.add(this.warpField2);
+      // Spiral particle vortex — 200 particles in spiral arms being sucked toward center
+      this.warpSpiralParticles = [];
+      var spiralCount = 200;
+      var spPositions = new Float32Array(spiralCount * 3);
+      var spColors = new Float32Array(spiralCount * 3);
+      for (var spi = 0; spi < spiralCount; spi++) {
+        // Distribute along spiral arms
+        var armIndex = spi % 4; // 4 spiral arms
+        var progress = (spi / spiralCount); // 0 to 1, outer to inner
+        var spR = 0.15 + (1 - progress) * 0.7; // radius decreases toward center
+        var spAngle = progress * Math.PI * 4 + (armIndex / 4) * Math.PI * 2; // 2 full rotations per arm
+        // Add randomness for natural look
+        spR += (Math.random() - 0.5) * 0.12;
+        spAngle += (Math.random() - 0.5) * 0.4;
+        var spZ = (Math.random() - 0.5) * 0.08; // slight depth scatter
 
-      // Inner band — bright violet at the edge of the void
-      var field3Geo = new THREE.RingGeometry(0.2, 0.42, 48);
-      this.warpField3Mat = new THREE.MeshBasicMaterial({
-        color: 0xbb66ee, transparent: true, opacity: 0.08,
-        side: THREE.DoubleSide, depthWrite: false,
-      });
-      this.warpField3 = new THREE.Mesh(field3Geo, this.warpField3Mat);
-      this.warpField3.position.z = -0.005;
-      this.megaGroup.add(this.warpField3);
+        spPositions[spi * 3] = Math.cos(spAngle) * spR;
+        spPositions[spi * 3 + 1] = Math.sin(spAngle) * spR;
+        spPositions[spi * 3 + 2] = spZ;
+
+        // Color: brighter purple closer to center, dimmer at edge
+        var brightness = 0.3 + progress * 0.7;
+        spColors[spi * 3] = 0.5 * brightness;
+        spColors[spi * 3 + 1] = 0.15 * brightness;
+        spColors[spi * 3 + 2] = 0.9 * brightness;
+      }
+      var spGeo = new THREE.BufferGeometry();
+      spGeo.setAttribute('position', new THREE.BufferAttribute(spPositions, 3));
+      spGeo.setAttribute('color', new THREE.BufferAttribute(spColors, 3));
+      this.warpSpiralMesh = new THREE.Points(spGeo, new THREE.PointsMaterial({
+        size: 0.015, vertexColors: true, transparent: true, opacity: 0.6, depthWrite: false,
+      }));
+      this.megaGroup.add(this.warpSpiralMesh);
+
+      // Second spiral layer — counter-rotating, different phase
+      var sp2Positions = new Float32Array(spiralCount * 3);
+      var sp2Colors = new Float32Array(spiralCount * 3);
+      for (var sp2i = 0; sp2i < spiralCount; sp2i++) {
+        var arm2 = sp2i % 3; // 3 arms
+        var prog2 = sp2i / spiralCount;
+        var r2 = 0.1 + (1 - prog2) * 0.75;
+        var a2 = prog2 * Math.PI * 5 + (arm2 / 3) * Math.PI * 2 + 0.5;
+        r2 += (Math.random() - 0.5) * 0.1;
+        a2 += (Math.random() - 0.5) * 0.5;
+
+        sp2Positions[sp2i * 3] = Math.cos(a2) * r2;
+        sp2Positions[sp2i * 3 + 1] = Math.sin(a2) * r2;
+        sp2Positions[sp2i * 3 + 2] = (Math.random() - 0.5) * 0.06;
+
+        var b2 = 0.2 + prog2 * 0.8;
+        sp2Colors[sp2i * 3] = 0.6 * b2;
+        sp2Colors[sp2i * 3 + 1] = 0.1 * b2;
+        sp2Colors[sp2i * 3 + 2] = 0.7 * b2;
+      }
+      var sp2Geo = new THREE.BufferGeometry();
+      sp2Geo.setAttribute('position', new THREE.BufferAttribute(sp2Positions, 3));
+      sp2Geo.setAttribute('color', new THREE.BufferAttribute(sp2Colors, 3));
+      this.warpSpiral2Mesh = new THREE.Points(sp2Geo, new THREE.PointsMaterial({
+        size: 0.01, vertexColors: true, transparent: true, opacity: 0.4, depthWrite: false,
+      }));
+      this.megaGroup.add(this.warpSpiral2Mesh);
 
       // Purple glow cast from the portal
-      this.warpGlow = new THREE.PointLight(0x7733aa, 0.7, 5);
+      this.warpGlow = new THREE.PointLight(0x7733aa, 0.8, 5);
       this.megaGroup.add(this.warpGlow);
 
       /* ═══ 6 ANCHOR PYLONS — Aethyn crystalline stations stabilizing the gate ═══ */
@@ -2551,32 +2620,28 @@ window.PlanetRenderer = (function () {
         }
       }
 
-      // Warp Gate — pulsing layered energy field + conduit glow
+      // Warp Gate — spiraling vortex + pulsing structure
       if (this.type === 'Warp Gate') {
+        // Spiral vortex rotation — particles being sucked into the void
+        if (this.warpSpiralMesh) {
+          this.warpSpiralMesh.rotation.z += 0.008;
+        }
+        if (this.warpSpiral2Mesh) {
+          this.warpSpiral2Mesh.rotation.z -= 0.005;
+        }
+        // Background field glow pulse
         if (this.warpFieldMat) {
-          this.warpFieldMat.opacity = 0.10 + Math.sin(t * 1.2) * 0.06 + Math.sin(t * 3.1) * 0.03;
+          this.warpFieldMat.opacity = 0.04 + Math.sin(t * 1.0) * 0.03;
         }
-        if (this.warpField2Mat) {
-          this.warpField2Mat.opacity = 0.06 + Math.sin(t * 1.8 + 1) * 0.04;
-        }
-        if (this.warpField3Mat) {
-          this.warpField3Mat.opacity = 0.03 + Math.sin(t * 2.5 + 2) * 0.03;
-        }
-        if (this.warpField) {
-          this.warpField.rotation.z += 0.005;
-        }
-        if (this.warpField2) {
-          this.warpField2.rotation.z -= 0.003;
-        }
-        if (this.warpField3) {
-          this.warpField3.rotation.z += 0.008;
-        }
+        // Portal glow breathing
         if (this.warpGlow) {
-          this.warpGlow.intensity = 0.6 + Math.sin(t * 1.0) * 0.3;
+          this.warpGlow.intensity = 0.6 + Math.sin(t * 0.8) * 0.3;
         }
+        // Ring emissive pulse
         if (this.warpRing) {
           this.warpRing.material.emissiveIntensity = 0.15 + Math.sin(t * 1.5) * 0.1;
         }
+        // Conduit glow pulse
         if (this.warpConduitMat) {
           this.warpConduitMat.opacity = 0.04 + Math.sin(t * 2.0) * 0.04;
         }
