@@ -40,7 +40,7 @@
   "horde": ["scrap-horde", "scrap", "junk", "salvage", "rust"],
   "revenant": ["the revenant", "undead", "undying", "protocol", "reanimated", "necro-legion", "necro"],
   "accord": ["unity accord", "unity", "covenant", "diplomatic"],
-  "vorax": ["vorax collective", "swarm", "devouring", "biological", "hive"],
+  "vorax": ["vorax", "the vorax", "swarm", "devouring", "biological", "hive"],
   "guardians": ["core guardians", "ancient", "cosmic", "silent gods", "warden"],
   "random": ["random events", "procedural", "rng", "reclamation events"],
   "event": ["random events", "galactic phenomena", "occurrence", "crisis"],
