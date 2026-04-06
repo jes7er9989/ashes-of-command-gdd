@@ -1808,6 +1808,86 @@ window.PlanetRenderer = (function () {
       wireframe.scale.set(2.2, 0.9, 1.0);
       this.megaGroup.add(wireframe);
 
+      /* ═══ HULL BREACHES — torn sections exposing the interior ═══ */
+      // Interior glow visible through breaches — amber emergency lighting inside
+      var interiorGeo = new THREE.SphereGeometry(0.48, 24, 16);
+      var interiorMat = new THREE.MeshBasicMaterial({
+        color: 0xdd8833, transparent: true, opacity: 0.08,
+        side: THREE.BackSide,
+      });
+      var interior = new THREE.Mesh(interiorGeo, interiorMat);
+      interior.scale.set(2.2, 0.9, 1.0);
+      this.megaGroup.add(interior);
+
+      // Breach holes — deform hull vertices inward to create visible gaps
+      var breachZones = [
+        { dir: new THREE.Vector3(0.5, 0.6, 0.6), angle: 0.3 },   // upper starboard
+        { dir: new THREE.Vector3(-0.8, -0.3, 0.5), angle: 0.22 }, // lower port-aft
+        { dir: new THREE.Vector3(0.3, -0.5, -0.7), angle: 0.18 }, // ventral
+      ];
+      var hPos = hullGeo.attributes.position;
+      for (var bzi = 0; bzi < breachZones.length; bzi++) {
+        var bz = breachZones[bzi];
+        bz.dir.normalize();
+        for (var hvi = 0; hvi < hPos.count; hvi++) {
+          var hvx = hPos.getX(hvi), hvy = hPos.getY(hvi), hvz = hPos.getZ(hvi);
+          // Account for the scale distortion (2.2, 0.9, 1.0)
+          var normV = new THREE.Vector3(hvx / 2.2, hvy / 0.9, hvz).normalize();
+          var angleTo = normV.angleTo(bz.dir);
+          if (angleTo < bz.angle) {
+            var depth = 1 - Math.pow(angleTo / bz.angle, 2);
+            hPos.setXYZ(hvi, hvx * (1 - depth * 0.4), hvy * (1 - depth * 0.4), hvz * (1 - depth * 0.4));
+          }
+        }
+      }
+      hPos.needsUpdate = true;
+      hullGeo.computeVertexNormals();
+
+      // Breach edge glow — torn metal glowing faint orange from exposed internal systems
+      for (var bgi = 0; bgi < breachZones.length; bgi++) {
+        var bg = breachZones[bgi];
+        var bgGeo = new THREE.RingGeometry(0.06, 0.14, 16);
+        var bgMat = new THREE.MeshBasicMaterial({
+          color: 0xff6622, transparent: true, opacity: 0.1,
+          side: THREE.DoubleSide, depthWrite: false,
+        });
+        var bgMesh = new THREE.Mesh(bgGeo, bgMat);
+        bgMesh.position.set(bg.dir.x * 1.1, bg.dir.y * 0.47, bg.dir.z * 0.52);
+        bgMesh.lookAt(0, 0, 0);
+        this.megaGroup.add(bgMesh);
+      }
+
+      /* ═══ EMBEDDED DEBRIS — meteors and wreckage lodged in the hull ═══ */
+      var debrisEmbedded = [
+        { pos: [0.7, 0.35, 0.35], size: 0.06 },   // meteor chunk in upper hull
+        { pos: [-0.5, -0.2, 0.48], size: 0.04 },   // small impact lodged portside
+        { pos: [0.2, 0.42, -0.3], size: 0.05 },    // debris in dorsal plating
+        { pos: [-0.9, 0.1, -0.25], size: 0.07 },   // large chunk near stern
+        { pos: [0.6, -0.3, -0.42], size: 0.035 },  // fragment in ventral hull
+      ];
+      for (var edi = 0; edi < debrisEmbedded.length; edi++) {
+        var ed = debrisEmbedded[edi];
+        // Irregular rock shape
+        var rockGeo = new THREE.IcosahedronGeometry(ed.size, 0);
+        var rockPos = rockGeo.attributes.position;
+        for (var rvi = 0; rvi < rockPos.count; rvi++) {
+          var rx = rockPos.getX(rvi), ry = rockPos.getY(rvi), rz = rockPos.getZ(rvi);
+          var jitter = 0.6 + _wsNoise(rx * 10 + edi, ry * 10) * 0.8;
+          rockPos.setXYZ(rvi, rx * jitter, ry * jitter, rz * jitter);
+        }
+        rockPos.needsUpdate = true;
+        rockGeo.computeVertexNormals();
+        var rockMat = new THREE.MeshPhongMaterial({
+          color: edi < 3 ? 0x443322 : 0x333844, // brown for meteors, grey for ship wreckage
+          shininess: 10,
+          emissive: 0x111111, emissiveIntensity: 0.05,
+        });
+        var rock = new THREE.Mesh(rockGeo, rockMat);
+        rock.position.set(ed.pos[0], ed.pos[1], ed.pos[2]);
+        rock.rotation.set(Math.random() * 3, Math.random() * 3, 0);
+        this.megaGroup.add(rock);
+      }
+
       /* ═══ ENGINE SECTION — massive thruster array at the stern ═══ */
       var engineGeo = new THREE.ConeGeometry(0.42, 0.6, 24);
       var engineMat = new THREE.MeshPhongMaterial({ map: hullTex, shininess: 10 });
