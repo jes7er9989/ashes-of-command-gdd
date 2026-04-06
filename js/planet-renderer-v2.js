@@ -1841,8 +1841,8 @@ window.PlanetRenderer = (function () {
         var r = Math.sqrt(cvx * cvx + cvz * cvz);
         if (r > 0.1) {
           // 6-pointed star — push outward at 6 angles, indent between them
-          var starWave = Math.cos(angle * 3) * 0.25; // 6 peaks (cos(3x) has 6 extremes in 2π)
-          var cutIn = starWave < -0.1 ? starWave * 0.6 : starWave * 0.35; // deeper cut-ins than protrusions
+          var starWave = Math.cos(angle * 6) * 0.22;
+          var cutIn = starWave < 0 ? starWave * 0.7 : starWave * 0.4; // deeper cut-ins than protrusions
           var newR = r + cutIn;
           // Add noise for irregular edge
           var edgeNoise = _wsNoise(cvx * 5 + 3, cvz * 5 + 7) * 0.06;
@@ -1889,7 +1889,7 @@ window.PlanetRenderer = (function () {
 
       for (var tti = 0; tti < 6; tti++) {
         var ttAngle = (tti / 6) * Math.PI * 2;
-        var ttR = 1.15;
+        var ttR = 1.18; // at the tip of each star point
         var ttx = Math.cos(ttAngle) * ttR;
         var ttz = Math.sin(ttAngle) * ttR;
         // Turret base — large platform
@@ -1922,8 +1922,8 @@ window.PlanetRenderer = (function () {
         var sx = Math.cos(sAngle) * sDist;
         var sz = Math.sin(sAngle) * sDist;
         // Check if point is within the star shape (approximate)
-        var starVal = Math.cos(sAngle * 3) * 0.25;
-        var maxR = 1.1 + (starVal > 0 ? starVal * 0.35 : starVal * 0.6);
+        var starVal = Math.cos(sAngle * 6) * 0.22;
+        var maxR = 1.1 + (starVal > 0 ? starVal * 0.4 : starVal * 0.7);
         if (sDist > maxR) continue; // skip points outside the star shape
 
         var surfY = 0.12;
@@ -1954,8 +1954,8 @@ window.PlanetRenderer = (function () {
         var uDist = Math.random() * 0.85;
         var ux = Math.cos(uAngle) * uDist;
         var uz = Math.sin(uAngle) * uDist;
-        var starV = Math.cos(uAngle * 3) * 0.25;
-        var uMaxR = 1.1 + (starV > 0 ? starV * 0.35 : starV * 0.6);
+        var starV = Math.cos(uAngle * 6) * 0.22;
+        var uMaxR = 1.1 + (starV > 0 ? starV * 0.4 : starV * 0.7);
         if (uDist > uMaxR) continue;
 
         var pH = 0.03 + Math.random() * 0.08;
