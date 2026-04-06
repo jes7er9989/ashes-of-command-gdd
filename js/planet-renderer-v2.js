@@ -1723,136 +1723,283 @@ window.PlanetRenderer = (function () {
     }
 
     _worldship() {
-      // Dim, cold lighting — derelict in deep space
-      this.sun.color.set(0xaabbcc);
-      this.sun.intensity = 0.8;
+      // Pull camera back for the full ark
+      this.camera.position.z = 4.5;
+
+      // Dim, cold lighting — derelict drifting in the void between stars
+      this.sun.color.set(0x8899aa);
+      this.sun.intensity = 0.6;
       this.sun.position.set(3, 1, 4);
-      this.fill.color.set(0x222244);
-      this.fill.intensity = 0.15;
-      this.ambient.color.set(0x0a0a14);
-      this.ambient.intensity = 0.3;
+      this.fill.color.set(0x1a1a2a);
+      this.fill.intensity = 0.1;
+      this.ambient.color.set(0x080812);
+      this.ambient.intensity = 0.25;
 
       this.megaGroup = new THREE.Group();
 
-      // Main hull — elongated sphere (capsule shape)
-      var hullGeo = new THREE.SphereGeometry(0.6, 48, 48);
+      // Noise helper
+      function _wsNoise(x, y) {
+        var n = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453;
+        return n - Math.floor(n);
+      }
+
+      /* ═══ MAIN HULL — procedural texture, scarred by millennia ═══ */
+      var hullCanvas = document.createElement('canvas');
+      hullCanvas.width = 1024;
+      hullCanvas.height = 512;
+      var hctx = hullCanvas.getContext('2d');
+      var hData = hctx.createImageData(1024, 512);
+      var hpx = hData.data;
+
+      for (var hx = 0; hx < 1024; hx++) {
+        for (var hy = 0; hy < 512; hy++) {
+          var hi = (hy * 1024 + hx) * 4;
+          var n1 = _wsNoise(hx * 0.04, hy * 0.04);
+          var n2 = _wsNoise(hx * 0.12, hy * 0.12) * 0.5;
+          var base = 35 + Math.floor((n1 + n2) * 25);
+
+          // Hull plate seams — structural grid
+          var isSeamH = hy % 32 < 1;
+          var isSeamV = hx % 48 < 1;
+          // Major structural ribs
+          var isRibH = hy % 128 < 2;
+          var isRibV = hx % 192 < 2;
+
+          // Impact damage — dark gouges scattered across hull
+          var isDamage = _wsNoise(hx * 0.008, hy * 0.008) > 0.85 && _wsNoise(hx * 0.04, hy * 0.04) > 0.65;
+          // Hull breach zones — darker, torn areas
+          var isBreach = _wsNoise(hx * 0.005, hy * 0.006) > 0.92;
+
+          if (isBreach) {
+            hpx[hi] = 8; hpx[hi + 1] = 8; hpx[hi + 2] = 12;
+          } else if (isDamage) {
+            hpx[hi] = base - 15; hpx[hi + 1] = base - 18; hpx[hi + 2] = base - 10;
+          } else if (isRibH || isRibV) {
+            hpx[hi] = base + 8; hpx[hi + 1] = base + 6; hpx[hi + 2] = base + 12;
+          } else if (isSeamH || isSeamV) {
+            hpx[hi] = base - 8; hpx[hi + 1] = base - 6; hpx[hi + 2] = base - 4;
+          } else {
+            // Hull plating — cold grey-blue metal
+            hpx[hi] = base + 2; hpx[hi + 1] = base + 4; hpx[hi + 2] = base + 10;
+            // Occasional faded markings
+            if (_wsNoise(hx * 0.02, hy * 0.015) > 0.88) {
+              hpx[hi] += 12; hpx[hi + 1] += 8; hpx[hi + 2] += 15;
+            }
+          }
+          hpx[hi + 3] = 255;
+        }
+      }
+      hctx.putImageData(hData, 0, 0);
+      var hullTex = new THREE.CanvasTexture(hullCanvas);
+
+      var hullGeo = new THREE.SphereGeometry(0.55, 48, 32);
       var hullMat = new THREE.MeshPhongMaterial({
-        color: 0x3a3e4a, shininess: 20,
+        map: hullTex, shininess: 15,
+        emissive: 0x050508, emissiveIntensity: 0.1,
       });
       var hull = new THREE.Mesh(hullGeo, hullMat);
-      hull.scale.set(1.8, 1.0, 1.0);
+      hull.scale.set(2.2, 0.9, 1.0);
       this.megaGroup.add(hull);
 
-      // Hull plating overlay — darker panels
-      var plateGeo = new THREE.SphereGeometry(0.605, 24, 24);
-      var plateMat = new THREE.MeshPhongMaterial({
-        color: 0x2a2e3a, shininess: 10, transparent: true, opacity: 0.6,
-        wireframe: true,
-      });
-      var plates = new THREE.Mesh(plateGeo, plateMat);
-      plates.scale.set(1.8, 1.0, 1.0);
-      this.megaGroup.add(plates);
+      // Hull structural wireframe — visible ribs and plating grid
+      var wireGeo = new THREE.SphereGeometry(0.555, 16, 12);
+      var wireMat = new THREE.LineBasicMaterial({ color: 0x556677, transparent: true, opacity: 0.25 });
+      var wireframe = new THREE.LineSegments(new THREE.EdgesGeometry(wireGeo), wireMat);
+      wireframe.scale.set(2.2, 0.9, 1.0);
+      this.megaGroup.add(wireframe);
 
-      // Engine section — rear cone
-      var engineGeo = new THREE.ConeGeometry(0.35, 0.5, 16);
-      var engineMat = new THREE.MeshPhongMaterial({ color: 0x2a2c34, shininess: 15 });
+      /* ═══ ENGINE SECTION — massive thruster array at the stern ═══ */
+      var engineGeo = new THREE.ConeGeometry(0.42, 0.6, 24);
+      var engineMat = new THREE.MeshPhongMaterial({ map: hullTex, shininess: 10 });
       var engine = new THREE.Mesh(engineGeo, engineMat);
       engine.rotation.z = -Math.PI / 2;
-      engine.position.x = -1.25;
+      engine.position.x = -1.45;
       this.megaGroup.add(engine);
 
-      // Engine nozzles
-      for (var ni = 0; ni < 6; ni++) {
-        var na = (ni / 6) * Math.PI * 2;
-        var nozzGeo = new THREE.CylinderGeometry(0.04, 0.06, 0.15, 8);
+      // Main engine nozzles — 8 thrusters in a ring
+      this.worldshipNozzleGlows = [];
+      for (var ni = 0; ni < 8; ni++) {
+        var na = (ni / 8) * Math.PI * 2;
+        var nozzGeo = new THREE.CylinderGeometry(0.05, 0.07, 0.18, 8);
         var nozzMat = new THREE.MeshPhongMaterial({ color: 0x1a1c24, shininess: 10 });
         var nozz = new THREE.Mesh(nozzGeo, nozzMat);
         nozz.rotation.z = Math.PI / 2;
-        nozz.position.set(-1.48, Math.cos(na) * 0.18, Math.sin(na) * 0.18);
+        nozz.position.set(-1.72, Math.cos(na) * 0.22, Math.sin(na) * 0.22);
         this.megaGroup.add(nozz);
+        // Faint residual engine glow — still firing at minimum power
+        var glowGeo = new THREE.SphereGeometry(0.03, 6, 6);
+        var glowMat = new THREE.MeshBasicMaterial({
+          color: 0x4466aa, transparent: true, opacity: 0.15,
+        });
+        var glow = new THREE.Mesh(glowGeo, glowMat);
+        glow.position.set(-1.82, Math.cos(na) * 0.22, Math.sin(na) * 0.22);
+        this.megaGroup.add(glow);
+        this.worldshipNozzleGlows.push(glow);
       }
 
-      // Command tower — dorsal structure
-      var towerGeo = new THREE.BoxGeometry(0.3, 0.15, 0.2);
-      var towerMat = new THREE.MeshPhongMaterial({ color: 0x444855, shininess: 25 });
+      /* ═══ BOW SECTION — forward observation dome and sensor array ═══ */
+      var bowGeo = new THREE.SphereGeometry(0.2, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+      var bowMat = new THREE.MeshPhongMaterial({
+        color: 0x445566, shininess: 40,
+        emissive: 0x112233, emissiveIntensity: 0.15,
+        transparent: true, opacity: 0.7,
+      });
+      var bow = new THREE.Mesh(bowGeo, bowMat);
+      bow.rotation.z = Math.PI / 2;
+      bow.position.x = 1.22;
+      this.megaGroup.add(bow);
+
+      // Sensor spines at the bow
+      for (var ssi = 0; ssi < 4; ssi++) {
+        var ssAngle = (ssi / 4) * Math.PI * 2;
+        var ssGeo = new THREE.CylinderGeometry(0.004, 0.001, 0.2, 4);
+        var ssMat = new THREE.MeshPhongMaterial({ color: 0x667788, shininess: 20 });
+        var ss = new THREE.Mesh(ssGeo, ssMat);
+        ss.position.set(1.35, Math.cos(ssAngle) * 0.08, Math.sin(ssAngle) * 0.08);
+        ss.rotation.z = Math.PI / 2;
+        this.megaGroup.add(ss);
+      }
+
+      /* ═══ COMMAND TOWER — dorsal superstructure ═══ */
+      var towerGeo = new THREE.BoxGeometry(0.4, 0.18, 0.22);
+      var towerMat = new THREE.MeshPhongMaterial({ map: hullTex, shininess: 25 });
       var tower = new THREE.Mesh(towerGeo, towerMat);
-      tower.position.set(0.5, 0.55, 0);
+      tower.position.set(0.5, 0.52, 0);
       this.megaGroup.add(tower);
 
-      // Bridge windows
-      var bridgeMat = new THREE.MeshPhongMaterial({
-        color: 0xaaddff, emissive: 0x4488aa, emissiveIntensity: 0.4, shininess: 60,
+      // Bridge viewports — panoramic windows, some still lit
+      this.worldshipBridgeLights = [];
+      var bridgeMat = new THREE.MeshBasicMaterial({
+        color: 0xaaddff, transparent: true, opacity: 0.6,
       });
-      for (var bw = 0; bw < 5; bw++) {
-        var win = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.015, 0.008), bridgeMat);
-        win.position.set(0.4 + bw * 0.05, 0.628, 0);
+      for (var bw = 0; bw < 8; bw++) {
+        var win = new THREE.Mesh(new THREE.BoxGeometry(0.025, 0.018, 0.01), bridgeMat.clone());
+        win.position.set(0.32 + bw * 0.045, 0.62, 0);
         this.megaGroup.add(win);
+        this.worldshipBridgeLights.push(win);
       }
 
-      // Docking bays — recessed sections along the hull
-      var bayMat = new THREE.MeshPhongMaterial({ color: 0x1a1c24, shininess: 5 });
-      var bayPositions = [
-        { x: 0.4, y: -0.3, z: 0.45 }, { x: -0.2, y: -0.3, z: 0.45 },
-        { x: 0.4, y: -0.3, z: -0.45 }, { x: -0.2, y: -0.3, z: -0.45 },
+      // Secondary tower — aft communications array
+      var commGeo = new THREE.CylinderGeometry(0.02, 0.015, 0.25, 6);
+      var commMat = new THREE.MeshPhongMaterial({ color: 0x556677, shininess: 20 });
+      var comm = new THREE.Mesh(commGeo, commMat);
+      comm.position.set(-0.3, 0.6, 0);
+      this.megaGroup.add(comm);
+
+      // Comm dish
+      var dishGeo = new THREE.SphereGeometry(0.06, 8, 8, 0, Math.PI * 2, 0, Math.PI / 2);
+      var dishMat = new THREE.MeshPhongMaterial({ color: 0x667788, shininess: 30, side: THREE.DoubleSide });
+      var dish = new THREE.Mesh(dishGeo, dishMat);
+      dish.position.set(-0.3, 0.73, 0);
+      dish.rotation.x = Math.PI;
+      this.megaGroup.add(dish);
+
+      /* ═══ VENTRAL STRUCTURES — hangar bays and cargo holds ═══ */
+      var bayMat2 = new THREE.MeshPhongMaterial({ color: 0x1a1c24, shininess: 5 });
+      var bayData = [
+        { x: 0.5, y: -0.35, z: 0.42, w: 0.3, h: 0.08, d: 0.14 },
+        { x: -0.1, y: -0.35, z: 0.42, w: 0.35, h: 0.06, d: 0.12 },
+        { x: 0.5, y: -0.35, z: -0.42, w: 0.3, h: 0.08, d: 0.14 },
+        { x: -0.1, y: -0.35, z: -0.42, w: 0.35, h: 0.06, d: 0.12 },
+        { x: 0.8, y: -0.25, z: 0, w: 0.2, h: 0.05, d: 0.2 },
+        { x: -0.6, y: -0.28, z: 0, w: 0.25, h: 0.06, d: 0.18 },
       ];
-      for (var bi = 0; bi < bayPositions.length; bi++) {
-        var bp = bayPositions[bi];
-        var bay = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.06, 0.12), bayMat);
-        bay.position.set(bp.x, bp.y, bp.z);
-        this.megaGroup.add(bay);
-      }
-
-      // Hull damage — dark scar marks
-      var scarMat = new THREE.MeshBasicMaterial({ color: 0x111118, transparent: true, opacity: 0.6 });
-      for (var di = 0; di < 15; di++) {
-        var scarGeo = new THREE.PlaneGeometry(0.04 + Math.random() * 0.08, 0.01 + Math.random() * 0.03);
-        var scar = new THREE.Mesh(scarGeo, scarMat);
-        var sTheta = Math.random() * Math.PI * 2;
-        var sPhi = Math.random() * Math.PI;
-        var sR = 0.61;
-        scar.position.set(
-          sR * Math.sin(sPhi) * Math.cos(sTheta) * 1.8,
-          sR * Math.cos(sPhi),
-          sR * Math.sin(sPhi) * Math.sin(sTheta)
-        );
-        scar.lookAt(0, 0, 0);
-        this.megaGroup.add(scar);
-      }
-
-      // Running lights along the hull
-      this.worldshipLights = [];
-      var lightPositions = [
-        [1.0, 0.2, 0], [-0.6, 0.2, 0], [0.3, 0, 0.55],
-        [0.3, 0, -0.55], [-0.8, -0.1, 0.3], [-0.8, -0.1, -0.3],
-        [0.7, -0.3, 0.3], [0.7, -0.3, -0.3],
-      ];
-      for (var li = 0; li < lightPositions.length; li++) {
-        var lp = lightPositions[li];
-        var lightGeo = new THREE.SphereGeometry(0.012, 6, 6);
-        var lightMat = new THREE.MeshBasicMaterial({
-          color: li < 4 ? 0xffccaa : 0xff4422,
-          transparent: true, opacity: 0.8,
+      for (var bi2 = 0; bi2 < bayData.length; bi2++) {
+        var bd2 = bayData[bi2];
+        var bay2 = new THREE.Mesh(new THREE.BoxGeometry(bd2.w, bd2.h, bd2.d), bayMat2);
+        bay2.position.set(bd2.x, bd2.y, bd2.z);
+        this.megaGroup.add(bay2);
+        // Bay interior glow — faint amber emergency lighting
+        var bayGlowGeo = new THREE.BoxGeometry(bd2.w * 0.8, bd2.h * 0.5, bd2.d * 0.8);
+        var bayGlowMat = new THREE.MeshBasicMaterial({
+          color: 0xffaa44, transparent: true, opacity: 0.06, depthWrite: false,
         });
-        var lightMesh = new THREE.Mesh(lightGeo, lightMat);
-        lightMesh.position.set(lp[0], lp[1], lp[2]);
-        this.megaGroup.add(lightMesh);
-        this.worldshipLights.push({ mesh: lightMesh, phase: Math.random() * 6.28, rate: 2 + Math.random() * 4 });
+        var bayGlow = new THREE.Mesh(bayGlowGeo, bayGlowMat);
+        bayGlow.position.set(bd2.x, bd2.y, bd2.z);
+        this.megaGroup.add(bayGlow);
       }
 
-      // Nav lights
-      var navRedL = new THREE.PointLight(0xff2222, 0.3, 2);
-      navRedL.position.set(-1.5, 0, 0.1);
-      this.megaGroup.add(navRedL);
-      this.worldshipNavRed = navRedL;
+      /* ═══ HULL DAMAGE — impact scars, breach marks, battle wounds ═══ */
+      var scarMat2 = new THREE.MeshBasicMaterial({ color: 0x080810, transparent: true, opacity: 0.7 });
+      for (var di2 = 0; di2 < 25; di2++) {
+        var scarSize = 0.03 + Math.random() * 0.1;
+        var scarGeo2 = new THREE.PlaneGeometry(scarSize, scarSize * (0.2 + Math.random() * 0.5));
+        var scar2 = new THREE.Mesh(scarGeo2, scarMat2);
+        var sTheta2 = Math.random() * Math.PI * 2;
+        var sPhi2 = Math.random() * Math.PI;
+        var sR2 = 0.56;
+        scar2.position.set(
+          sR2 * Math.sin(sPhi2) * Math.cos(sTheta2) * 2.2,
+          sR2 * Math.cos(sPhi2) * 0.9,
+          sR2 * Math.sin(sPhi2) * Math.sin(sTheta2)
+        );
+        scar2.lookAt(0, 0, 0);
+        this.megaGroup.add(scar2);
+      }
 
-      var navGreenL = new THREE.PointLight(0x22ff22, 0.3, 2);
-      navGreenL.position.set(1.1, 0, 0.1);
-      this.megaGroup.add(navGreenL);
-      this.worldshipNavGreen = navGreenL;
+      /* ═══ RUNNING LIGHTS — the ship isn't dead, just sleeping ═══ */
+      this.worldshipLights = [];
+      var lightData = [
+        { pos: [1.1, 0.15, 0], color: 0xffccaa },
+        { pos: [0.6, 0.2, 0.48], color: 0xffccaa },
+        { pos: [0.6, 0.2, -0.48], color: 0xffccaa },
+        { pos: [-0.4, 0.15, 0.45], color: 0xffccaa },
+        { pos: [-0.4, 0.15, -0.45], color: 0xffccaa },
+        { pos: [-1.0, 0.1, 0.3], color: 0xff4422 },
+        { pos: [-1.0, 0.1, -0.3], color: 0xff4422 },
+        { pos: [0.8, -0.2, 0.35], color: 0xff6633 },
+        { pos: [0.8, -0.2, -0.35], color: 0xff6633 },
+        { pos: [-0.7, -0.15, 0], color: 0xffaa44 },
+        { pos: [0.2, 0, 0.5], color: 0x44aaff },
+        { pos: [0.2, 0, -0.5], color: 0x44aaff },
+      ];
+      for (var li2 = 0; li2 < lightData.length; li2++) {
+        var ld = lightData[li2];
+        var lgGeo = new THREE.SphereGeometry(0.014, 6, 6);
+        var lgMat = new THREE.MeshBasicMaterial({
+          color: ld.color, transparent: true, opacity: 0.7,
+        });
+        var lgMesh = new THREE.Mesh(lgGeo, lgMat);
+        lgMesh.position.set(ld.pos[0], ld.pos[1], ld.pos[2]);
+        this.megaGroup.add(lgMesh);
+        this.worldshipLights.push({ mesh: lgMesh, phase: Math.random() * 6.28, rate: 1.5 + Math.random() * 5 });
+      }
 
-      // Slight initial tilt
+      // Navigation lights — still cycling after 100,000 years
+      this.worldshipNavRed = new THREE.PointLight(0xff2222, 0.25, 2);
+      this.worldshipNavRed.position.set(-1.8, 0, 0.1);
+      this.megaGroup.add(this.worldshipNavRed);
+
+      this.worldshipNavGreen = new THREE.PointLight(0x22ff22, 0.25, 2);
+      this.worldshipNavGreen.position.set(1.3, 0, 0.1);
+      this.megaGroup.add(this.worldshipNavGreen);
+
+      /* ═══ DEBRIS FIELD — millennia of micro-impacts shed hull fragments ═══ */
+      var debrisCount = 40;
+      var debrisPositions = new Float32Array(debrisCount * 3);
+      var debrisColors = new Float32Array(debrisCount * 3);
+      for (var dbi = 0; dbi < debrisCount; dbi++) {
+        var dAngle = Math.random() * Math.PI * 2;
+        var dR = 1.5 + Math.random() * 1.2;
+        var dY = (Math.random() - 0.5) * 1.0;
+        debrisPositions[dbi * 3] = Math.cos(dAngle) * dR;
+        debrisPositions[dbi * 3 + 1] = dY;
+        debrisPositions[dbi * 3 + 2] = Math.sin(dAngle) * dR;
+        debrisColors[dbi * 3] = 0.2 + Math.random() * 0.1;
+        debrisColors[dbi * 3 + 1] = 0.22 + Math.random() * 0.1;
+        debrisColors[dbi * 3 + 2] = 0.28 + Math.random() * 0.1;
+      }
+      var debrisGeo = new THREE.BufferGeometry();
+      debrisGeo.setAttribute('position', new THREE.BufferAttribute(debrisPositions, 3));
+      debrisGeo.setAttribute('color', new THREE.BufferAttribute(debrisColors, 3));
+      var debrisMat = new THREE.PointsMaterial({
+        size: 0.015, vertexColors: true, transparent: true, opacity: 0.4, depthWrite: false,
+      });
+      this.megaGroup.add(new THREE.Points(debrisGeo, debrisMat));
+
+      // Slight tumble tilt — the ship drifts endlessly
       this.megaGroup.rotation.x = 0.15;
-      this.megaGroup.rotation.z = 0.1;
+      this.megaGroup.rotation.z = 0.08;
       this.scene.add(this.megaGroup);
       this.planet = this.megaGroup;
     }
@@ -2103,22 +2250,39 @@ window.PlanetRenderer = (function () {
         }
       }
 
-      // Worldship — tumbling on two axes + flickering lights
+      // Worldship — slow tumble through the void + erratic systems flickering
       if (this.type === 'Worldship' && this.megaGroup) {
-        this.megaGroup.rotation.y += 0.0008;
-        this.megaGroup.rotation.x += 0.0003;
+        this.megaGroup.rotation.y += 0.0006;
+        this.megaGroup.rotation.x += 0.0002;
+        // Running lights — erratic, some dead, some flickering, some steady
         if (this.worldshipLights) {
           for (var wli = 0; wli < this.worldshipLights.length; wli++) {
             var wl = this.worldshipLights[wli];
             var flicker = Math.sin(t * wl.rate + wl.phase);
-            wl.mesh.material.opacity = flicker > 0.2 ? 0.8 : 0.05;
+            var erratic = Math.sin(t * wl.rate * 3.7 + wl.phase * 2.3);
+            // Some lights occasionally die completely then come back
+            wl.mesh.material.opacity = (flicker > 0.1 && erratic > -0.7) ? 0.7 : 0.02;
           }
         }
+        // Bridge lights — some windows dark, some flickering
+        if (this.worldshipBridgeLights) {
+          for (var bli = 0; bli < this.worldshipBridgeLights.length; bli++) {
+            var bFlicker = Math.sin(t * (1.5 + bli * 0.7) + bli * 2.1);
+            this.worldshipBridgeLights[bli].material.opacity = bFlicker > 0 ? 0.5 + bFlicker * 0.3 : 0.03;
+          }
+        }
+        // Engine nozzle glow — faint pulse, barely alive
+        if (this.worldshipNozzleGlows) {
+          for (var ngi = 0; ngi < this.worldshipNozzleGlows.length; ngi++) {
+            this.worldshipNozzleGlows[ngi].material.opacity = 0.08 + Math.sin(t * 0.4 + ngi * 0.8) * 0.08;
+          }
+        }
+        // Nav lights — alternating red/green blink, still cycling
         if (this.worldshipNavRed) {
-          this.worldshipNavRed.intensity = Math.sin(t * 2.5) > 0 ? 0.3 : 0.02;
+          this.worldshipNavRed.intensity = Math.sin(t * 2.0) > 0 ? 0.25 : 0.01;
         }
         if (this.worldshipNavGreen) {
-          this.worldshipNavGreen.intensity = Math.sin(t * 2.5) > 0 ? 0.3 : 0.02;
+          this.worldshipNavGreen.intensity = Math.sin(t * 2.0 + Math.PI) > 0 ? 0.25 : 0.01;
         }
       }
 
