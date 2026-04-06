@@ -732,6 +732,72 @@ window.PlanetRenderer = (function () {
       var starLight = new THREE.PointLight(0xffeedd, 1.2, 5);
       this.megaGroup.add(starLight);
 
+      /* ═══ HALF-DYSON COLLECTOR — energy harvester + night cycle shade ═══ */
+      // Hemisphere shell covering one side of the star
+      var collectorGeo = new THREE.SphereGeometry(0.42, 32, 24, 0, Math.PI);
+      // Outer surface — dark metallic engineering
+      var collectorCanvas = document.createElement('canvas');
+      collectorCanvas.width = 256;
+      collectorCanvas.height = 128;
+      var cctx = collectorCanvas.getContext('2d');
+      // Dark metallic base
+      cctx.fillStyle = '#1a2030';
+      cctx.fillRect(0, 0, 256, 128);
+      // Panel grid
+      cctx.strokeStyle = 'rgba(80,110,140,0.4)';
+      cctx.lineWidth = 0.5;
+      for (var cpx = 0; cpx < 256; cpx += 16) {
+        cctx.beginPath(); cctx.moveTo(cpx, 0); cctx.lineTo(cpx, 128); cctx.stroke();
+      }
+      for (var cpy = 0; cpy < 128; cpy += 12) {
+        cctx.beginPath(); cctx.moveTo(0, cpy); cctx.lineTo(256, cpy); cctx.stroke();
+      }
+      // Energy conduit lines across the collector
+      for (var ec = 0; ec < 5; ec++) {
+        var ecy = 10 + ec * 25;
+        cctx.strokeStyle = 'rgba(80,180,255,0.3)';
+        cctx.lineWidth = 1.5;
+        cctx.beginPath(); cctx.moveTo(0, ecy); cctx.lineTo(256, ecy); cctx.stroke();
+        // Glow nodes along conduits
+        for (var en = 0; en < 8; en++) {
+          var enx = 16 + en * 30;
+          cctx.fillStyle = 'rgba(100,200,255,0.5)';
+          cctx.fillRect(enx, ecy - 2, 4, 4);
+        }
+      }
+      var collectorTex = new THREE.CanvasTexture(collectorCanvas);
+
+      var collectorMat = new THREE.MeshPhongMaterial({
+        map: collectorTex, shininess: 40,
+        emissive: 0x0a1520, emissiveIntensity: 0.2,
+        side: THREE.DoubleSide,
+      });
+      var collector = new THREE.Mesh(collectorGeo, collectorMat);
+      // Rotate so the open face points toward the ring's lit side
+      collector.rotation.y = Math.PI / 2;
+      this.megaGroup.add(collector);
+
+      // Inner surface glow — energy being harvested from the star
+      var innerCollGeo = new THREE.SphereGeometry(0.40, 24, 16, 0, Math.PI);
+      var innerCollMat = new THREE.MeshBasicMaterial({
+        color: 0xffaa44, transparent: true, opacity: 0.08,
+        side: THREE.BackSide, depthWrite: false,
+      });
+      var innerColl = new THREE.Mesh(innerCollGeo, innerCollMat);
+      innerColl.rotation.y = Math.PI / 2;
+      this.megaGroup.add(innerColl);
+
+      // Collector rim — bright structural edge where the two halves meet
+      var rimGeo = new THREE.TorusGeometry(0.42, 0.006, 8, 64, Math.PI);
+      var rimMat = new THREE.MeshPhongMaterial({
+        color: 0x8899bb, shininess: 60,
+        emissive: 0x445566, emissiveIntensity: 0.2,
+      });
+      var rim = new THREE.Mesh(rimGeo, rimMat);
+      rim.rotation.y = Math.PI / 2;
+      rim.rotation.x = Math.PI / 2;
+      this.megaGroup.add(rim);
+
       /* ═══ RING STRUCTURE — multi-layer band with terrain textures ═══ */
 
       // Procedural terrain texture — pixel-level detail
