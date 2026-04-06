@@ -1724,7 +1724,7 @@ window.PlanetRenderer = (function () {
 
     _worldship() {
       // Pull camera back for the full ark
-      this.camera.position.z = 4.5;
+      this.camera.position.z = 5.0;
 
       // Dim, cold lighting — derelict drifting in the void between stars
       this.sun.color.set(0x8899aa);
@@ -1792,69 +1792,160 @@ window.PlanetRenderer = (function () {
       hctx.putImageData(hData, 0, 0);
       var hullTex = new THREE.CanvasTexture(hullCanvas);
 
-      var hullGeo = new THREE.SphereGeometry(0.55, 48, 32);
       var hullMat = new THREE.MeshPhongMaterial({
         map: hullTex, shininess: 15,
         emissive: 0x050508, emissiveIntensity: 0.1,
       });
-      var hull = new THREE.Mesh(hullGeo, hullMat);
-      hull.scale.set(2.2, 0.9, 1.0);
-      this.megaGroup.add(hull);
 
-      // Hull structural wireframe — visible ribs and plating grid
-      var wireGeo = new THREE.SphereGeometry(0.555, 16, 12);
-      var wireMat = new THREE.LineBasicMaterial({ color: 0x556677, transparent: true, opacity: 0.25 });
-      var wireframe = new THREE.LineSegments(new THREE.EdgesGeometry(wireGeo), wireMat);
-      wireframe.scale.set(2.2, 0.9, 1.0);
-      this.megaGroup.add(wireframe);
+      // Main hull — angular armored body (multiple box sections, not a sphere)
+      // Central spine — the main body of the ship
+      var spineGeo = new THREE.BoxGeometry(2.8, 0.45, 0.55);
+      var spine = new THREE.Mesh(spineGeo, hullMat);
+      this.megaGroup.add(spine);
 
-      /* ═══ HULL BREACHES — torn sections exposing the interior ═══ */
-      // Interior glow visible through breaches — amber emergency lighting inside
-      var interiorGeo = new THREE.SphereGeometry(0.48, 24, 16);
-      var interiorMat = new THREE.MeshBasicMaterial({
-        color: 0xdd8833, transparent: true, opacity: 0.08,
-        side: THREE.BackSide,
-      });
-      var interior = new THREE.Mesh(interiorGeo, interiorMat);
-      interior.scale.set(2.2, 0.9, 1.0);
-      this.megaGroup.add(interior);
+      // Forward armored prow — angular wedge
+      var prowGeo = new THREE.CylinderGeometry(0, 0.35, 0.8, 4);
+      var prow = new THREE.Mesh(prowGeo, hullMat.clone());
+      prow.rotation.z = Math.PI / 2;
+      prow.rotation.y = Math.PI / 4;
+      prow.position.x = 1.75;
+      this.megaGroup.add(prow);
 
-      // Breach holes — deform hull vertices inward to create visible gaps
-      var breachZones = [
-        { dir: new THREE.Vector3(0.5, 0.6, 0.6), angle: 0.3 },   // upper starboard
-        { dir: new THREE.Vector3(-0.8, -0.3, 0.5), angle: 0.22 }, // lower port-aft
-        { dir: new THREE.Vector3(0.3, -0.5, -0.7), angle: 0.18 }, // ventral
+      // Upper deck — raised command section running the top
+      var upperGeo = new THREE.BoxGeometry(1.6, 0.18, 0.4);
+      var upper = new THREE.Mesh(upperGeo, hullMat.clone());
+      upper.position.set(0.1, 0.3, 0);
+      this.megaGroup.add(upper);
+
+      // Lower hull — wider belly section (cargo/hangar bays)
+      var bellyGeo = new THREE.BoxGeometry(2.0, 0.2, 0.7);
+      var belly = new THREE.Mesh(bellyGeo, hullMat.clone());
+      belly.position.set(-0.1, -0.3, 0);
+      this.megaGroup.add(belly);
+
+      // Port and starboard armor flanks — angled plates
+      var flankGeo = new THREE.BoxGeometry(2.2, 0.35, 0.08);
+      var flankMatP = hullMat.clone();
+      var flankL = new THREE.Mesh(flankGeo, flankMatP);
+      flankL.position.set(0, 0, 0.32);
+      flankL.rotation.x = 0.15;
+      this.megaGroup.add(flankL);
+      var flankR = new THREE.Mesh(flankGeo.clone(), flankMatP.clone());
+      flankR.position.set(0, 0, -0.32);
+      flankR.rotation.x = -0.15;
+      this.megaGroup.add(flankR);
+
+      // Structural wireframe overlay — visible armor plating edges
+      var wireEdges = new THREE.EdgesGeometry(spineGeo);
+      var wireMat = new THREE.LineBasicMaterial({ color: 0x667788, transparent: true, opacity: 0.35 });
+      this.megaGroup.add(new THREE.LineSegments(wireEdges, wireMat));
+      this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(upperGeo), wireMat.clone()).translateY(0.3).translateX(0.1));
+      this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(bellyGeo), wireMat.clone()).translateY(-0.3).translateX(-0.1));
+
+      /* ═══ DEFENSE TURRETS — Aethyn-grade weapons emplacements ═══ */
+      var turretBaseGeo = new THREE.CylinderGeometry(0.04, 0.05, 0.04, 8);
+      var turretBarrelGeo = new THREE.CylinderGeometry(0.008, 0.008, 0.1, 4);
+      var turretMat = new THREE.MeshPhongMaterial({ color: 0x4a5060, shininess: 30 });
+      var turretBarrelMat = new THREE.MeshPhongMaterial({ color: 0x3a3e4a, shininess: 20 });
+      var turretPositions = [
+        // Dorsal turrets
+        { pos: [0.6, 0.42, 0], rot: [0, 0, 0] },
+        { pos: [-0.2, 0.42, 0], rot: [0, 0, 0] },
+        { pos: [-0.8, 0.25, 0], rot: [0, 0, 0] },
+        // Ventral turrets
+        { pos: [0.4, -0.42, 0], rot: [Math.PI, 0, 0] },
+        { pos: [-0.4, -0.42, 0], rot: [Math.PI, 0, 0] },
+        // Port broadside
+        { pos: [0.5, 0.05, 0.35], rot: [0, 0, Math.PI / 2] },
+        { pos: [-0.3, 0.05, 0.35], rot: [0, 0, Math.PI / 2] },
+        // Starboard broadside
+        { pos: [0.5, 0.05, -0.35], rot: [0, 0, -Math.PI / 2] },
+        { pos: [-0.3, 0.05, -0.35], rot: [0, 0, -Math.PI / 2] },
       ];
-      var hPos = hullGeo.attributes.position;
-      for (var bzi = 0; bzi < breachZones.length; bzi++) {
-        var bz = breachZones[bzi];
-        bz.dir.normalize();
-        for (var hvi = 0; hvi < hPos.count; hvi++) {
-          var hvx = hPos.getX(hvi), hvy = hPos.getY(hvi), hvz = hPos.getZ(hvi);
-          // Account for the scale distortion (2.2, 0.9, 1.0)
-          var normV = new THREE.Vector3(hvx / 2.2, hvy / 0.9, hvz).normalize();
-          var angleTo = normV.angleTo(bz.dir);
-          if (angleTo < bz.angle) {
-            var depth = 1 - Math.pow(angleTo / bz.angle, 2);
-            hPos.setXYZ(hvi, hvx * (1 - depth * 0.4), hvy * (1 - depth * 0.4), hvz * (1 - depth * 0.4));
-          }
-        }
+      for (var ti = 0; ti < turretPositions.length; ti++) {
+        var tp = turretPositions[ti];
+        var tBase = new THREE.Mesh(turretBaseGeo, turretMat);
+        tBase.position.set(tp.pos[0], tp.pos[1], tp.pos[2]);
+        tBase.rotation.set(tp.rot[0], tp.rot[1], tp.rot[2]);
+        this.megaGroup.add(tBase);
+        // Twin barrels
+        var barrel1 = new THREE.Mesh(turretBarrelGeo, turretBarrelMat);
+        barrel1.position.set(tp.pos[0] + 0.05, tp.pos[1] + (tp.rot[0] > 1 ? -0.04 : 0.04), tp.pos[2] + 0.012);
+        barrel1.rotation.z = tp.rot[0] > 1 ? 0.3 : -0.3;
+        this.megaGroup.add(barrel1);
+        var barrel2 = new THREE.Mesh(turretBarrelGeo.clone(), turretBarrelMat.clone());
+        barrel2.position.set(tp.pos[0] + 0.05, tp.pos[1] + (tp.rot[0] > 1 ? -0.04 : 0.04), tp.pos[2] - 0.012);
+        barrel2.rotation.z = tp.rot[0] > 1 ? 0.3 : -0.3;
+        this.megaGroup.add(barrel2);
       }
-      hPos.needsUpdate = true;
-      hullGeo.computeVertexNormals();
 
-      // Breach edge glow — torn metal glowing faint orange from exposed internal systems
-      for (var bgi = 0; bgi < breachZones.length; bgi++) {
-        var bg = breachZones[bgi];
-        var bgGeo = new THREE.RingGeometry(0.06, 0.14, 16);
-        var bgMat = new THREE.MeshBasicMaterial({
-          color: 0xff6622, transparent: true, opacity: 0.1,
+      /* ═══ ORBITAL DEFENSE PLATFORMS — detached sentries still on station ═══ */
+      this.worldshipPlatforms = [];
+      var platData = [
+        { pos: [0.8, 0.8, 0.6], size: 0.06 },
+        { pos: [-1.0, -0.6, 0.8], size: 0.05 },
+        { pos: [0.3, -0.7, -0.9], size: 0.055 },
+        { pos: [-0.6, 0.7, -0.7], size: 0.045 },
+      ];
+      for (var pi2 = 0; pi2 < platData.length; pi2++) {
+        var pd = platData[pi2];
+        var platGroup = new THREE.Group();
+        // Platform body — small angular station
+        var platBodyGeo = new THREE.BoxGeometry(pd.size * 2, pd.size, pd.size * 1.5);
+        var platBodyMat = new THREE.MeshPhongMaterial({ map: hullTex, shininess: 15 });
+        platGroup.add(new THREE.Mesh(platBodyGeo, platBodyMat));
+        // Platform turret
+        var ptGunGeo = new THREE.CylinderGeometry(0.005, 0.005, pd.size * 1.2, 4);
+        var ptGun = new THREE.Mesh(ptGunGeo, turretBarrelMat.clone());
+        ptGun.rotation.z = Math.PI / 2;
+        ptGun.position.x = pd.size * 0.8;
+        platGroup.add(ptGun);
+        // Warning beacon
+        var beaconGeo = new THREE.SphereGeometry(0.01, 6, 6);
+        var beaconMat = new THREE.MeshBasicMaterial({ color: 0xff4422, transparent: true, opacity: 0.6 });
+        var beacon = new THREE.Mesh(beaconGeo, beaconMat);
+        beacon.position.y = pd.size * 0.6;
+        platGroup.add(beacon);
+        platGroup.position.set(pd.pos[0], pd.pos[1], pd.pos[2]);
+        platGroup.rotation.set(Math.random() * 0.5, Math.random() * 3, Math.random() * 0.5);
+        this.megaGroup.add(platGroup);
+        this.worldshipPlatforms.push(beacon);
+      }
+
+      /* ═══ HULL BREACHES — blown-out sections exposing the interior ═══ */
+      var breachData = [
+        { pos: [0.6, 0.1, 0.3], size: 0.2, rot: [0, 0, 0] },       // starboard mid-section
+        { pos: [-0.7, -0.15, -0.28], size: 0.15, rot: [0, 1, 0] },  // port aft
+        { pos: [0.2, -0.32, 0.1], size: 0.18, rot: [1.5, 0, 0] },   // ventral
+      ];
+      for (var bri = 0; bri < breachData.length; bri++) {
+        var br = breachData[bri];
+        // Dark hole — represents the missing hull section
+        var holeGeo = new THREE.BoxGeometry(br.size, br.size * 0.6, br.size * 0.8);
+        var holeMat = new THREE.MeshBasicMaterial({ color: 0x060608 });
+        var hole = new THREE.Mesh(holeGeo, holeMat);
+        hole.position.set(br.pos[0], br.pos[1], br.pos[2]);
+        hole.rotation.set(br.rot[0], br.rot[1], br.rot[2]);
+        this.megaGroup.add(hole);
+        // Interior amber glow visible through the breach
+        var glowGeo = new THREE.BoxGeometry(br.size * 0.8, br.size * 0.4, br.size * 0.6);
+        var glowMat = new THREE.MeshBasicMaterial({
+          color: 0xdd8833, transparent: true, opacity: 0.12, depthWrite: false,
+        });
+        var glowMesh = new THREE.Mesh(glowGeo, glowMat);
+        glowMesh.position.set(br.pos[0], br.pos[1], br.pos[2]);
+        glowMesh.rotation.set(br.rot[0], br.rot[1], br.rot[2]);
+        this.megaGroup.add(glowMesh);
+        // Torn edge glow — ragged metal
+        var edgeGlowGeo = new THREE.RingGeometry(br.size * 0.35, br.size * 0.55, 12);
+        var edgeGlowMat = new THREE.MeshBasicMaterial({
+          color: 0xff6622, transparent: true, opacity: 0.08,
           side: THREE.DoubleSide, depthWrite: false,
         });
-        var bgMesh = new THREE.Mesh(bgGeo, bgMat);
-        bgMesh.position.set(bg.dir.x * 1.1, bg.dir.y * 0.47, bg.dir.z * 0.52);
-        bgMesh.lookAt(0, 0, 0);
-        this.megaGroup.add(bgMesh);
+        var edgeGlow = new THREE.Mesh(edgeGlowGeo, edgeGlowMat);
+        edgeGlow.position.set(br.pos[0], br.pos[1], br.pos[2]);
+        edgeGlow.rotation.set(br.rot[0], br.rot[1], br.rot[2]);
+        this.megaGroup.add(edgeGlow);
       }
 
       /* ═══ EMBEDDED DEBRIS — meteors and wreckage lodged in the hull ═══ */
@@ -2366,6 +2457,12 @@ window.PlanetRenderer = (function () {
         }
         if (this.worldshipNavGreen) {
           this.worldshipNavGreen.intensity = Math.sin(t * 2.0 + Math.PI) > 0 ? 0.25 : 0.01;
+        }
+        // Orbital defense platform beacons — warning blink
+        if (this.worldshipPlatforms) {
+          for (var wpi = 0; wpi < this.worldshipPlatforms.length; wpi++) {
+            this.worldshipPlatforms[wpi].material.opacity = Math.sin(t * 3.0 + wpi * 1.5) > 0.6 ? 0.7 : 0.05;
+          }
         }
       }
 
