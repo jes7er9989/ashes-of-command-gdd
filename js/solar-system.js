@@ -900,14 +900,15 @@ class SolarSystemRenderer {
     var baseAngle = (index / SOLAR_CME_COUNT) * Math.PI * 2 + 0.5;
     var elevAngle = (Math.random() - 0.5) * Math.PI * 0.5;
 
-    // Arc points from surface outward in a curve
-    var startR = SOLAR_SOL_RADIUS * 1.0;
-    var midR = SOLAR_SOL_RADIUS * 1.8 + Math.random() * 1.5;
-    var endR = SOLAR_SOL_RADIUS * 1.1;
+    // Arc points from surface outward in a tight curve close to the star
+    var startR = SOLAR_SOL_RADIUS * 1.02;
+    var midR = SOLAR_SOL_RADIUS * 1.15 + Math.random() * SOLAR_SOL_RADIUS * 0.15;
+    var endR = SOLAR_SOL_RADIUS * 1.03;
 
-    var startAngle = baseAngle - 0.2;
+    var arcSpread = 0.12 + Math.random() * 0.08;
+    var startAngle = baseAngle - arcSpread;
     var midAngle = baseAngle;
-    var endAngle = baseAngle + 0.2;
+    var endAngle = baseAngle + arcSpread;
 
     var points = [
       new THREE.Vector3(
@@ -917,7 +918,7 @@ class SolarSystemRenderer {
       ),
       new THREE.Vector3(
         Math.cos(midAngle) * Math.cos(elevAngle) * midR,
-        Math.sin(elevAngle) * midR + 1.0,
+        Math.sin(elevAngle) * midR + 0.3,
         Math.sin(midAngle) * Math.cos(elevAngle) * midR
       ),
       new THREE.Vector3(
@@ -928,7 +929,7 @@ class SolarSystemRenderer {
     ];
 
     var curve = new THREE.CatmullRomCurve3(points);
-    var tubeGeo = new THREE.TubeGeometry(curve, 20, 0.12, 6, false);
+    var tubeGeo = new THREE.TubeGeometry(curve, 20, 0.08, 6, false);
     var tubeMat = new THREE.MeshBasicMaterial({
       color: 0xff8833,
       transparent: true,
@@ -1259,8 +1260,8 @@ class SolarSystemRenderer {
     for (var m = 0; m < this.cmeArcs.length; m++) {
       var cme = this.cmeArcs[m];
       var cmeT = (Math.sin(elapsed * cme.speed + cme.phase) + 1) / 2;
-      cme.mesh.material.opacity = 0.2 + cmeT * 0.5;
-      var cmeScale = 0.7 + cmeT * 0.5;
+      cme.mesh.material.opacity = 0.3 + cmeT * 0.5;
+      var cmeScale = 0.9 + cmeT * 0.15;
       cme.mesh.scale.setScalar(cmeScale);
       // Slow rotation around Y to sweep the ejection around
       cme.mesh.rotation.y += 0.002;
