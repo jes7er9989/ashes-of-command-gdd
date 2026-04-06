@@ -51,11 +51,33 @@ const ContentRenderers = {
       return;
     }
 
-    let html = '';
+    /* Separate regular planets from megastructures */
+    const regularPlanets = [];
+    const megastructures = [];
     for (let i = 0; i < planets.length; i++) {
-      html += this._renderPlanetRow(planets[i], '', i);
+      if (planets[i].megastructure) {
+        megastructures.push({ planet: planets[i], idx: i });
+      } else {
+        regularPlanets.push({ planet: planets[i], idx: i });
+      }
+    }
+
+    /* Render regular planets into the main container */
+    let html = '';
+    for (const entry of regularPlanets) {
+      html += this._renderPlanetRow(entry.planet, '', entry.idx);
     }
     container.innerHTML = html;
+
+    /* Render megastructures into their dedicated container */
+    const megaContainer = document.getElementById('megastructure-list');
+    if (megaContainer && megastructures.length) {
+      let megaHtml = '';
+      for (const entry of megastructures) {
+        megaHtml += this._renderPlanetRow(entry.planet, '', entry.idx);
+      }
+      megaContainer.innerHTML = megaHtml;
+    }
 
     /* ── Subtype toggle handler ──
        Cached SVG data for variant swaps (shared with fallback renderer below). */
@@ -68,7 +90,13 @@ const ContentRenderers = {
       return _svgDataCache;
     }
 
-    container.querySelectorAll('.planet-subtype-toggle').forEach(function(toggleWrap) {
+    /* Collect all containers that hold planet/megastructure rows */
+    var _allContainers = [container];
+    if (megaContainer) _allContainers.push(megaContainer);
+
+    _allContainers.forEach(function(_ctr) {
+
+    _ctr.querySelectorAll('.planet-subtype-toggle').forEach(function(toggleWrap) {
       var planetIdx = parseInt(toggleWrap.getAttribute('data-planet-idx'), 10);
       var planet = planets[planetIdx];
       if (!planet || !planet.subtypes) return;
@@ -130,7 +158,7 @@ const ContentRenderers = {
        detail is expanded, disposed when collapsed. Uses MutationObserver
        to watch for planet-detail-open class toggle. */
     if (typeof PlanetRenderer !== 'undefined' && typeof ensureThree === 'function') {
-      container.querySelectorAll('.planet-detail').forEach(function(detail) {
+      _ctr.querySelectorAll('.planet-detail').forEach(function(detail) {
         const wrap = detail.querySelector('.planet-svg-wrap[data-planet-type]');
         if (!wrap) return;
 
@@ -183,7 +211,7 @@ const ContentRenderers = {
       });
     } else {
       /* No Three.js — use SVG fallback for all planet types */
-      container.querySelectorAll('.planet-detail').forEach(function(detail) {
+      _ctr.querySelectorAll('.planet-detail').forEach(function(detail) {
         var wrap = detail.querySelector('.planet-svg-wrap[data-planet-type]');
         if (!wrap) return;
 
@@ -200,6 +228,8 @@ const ContentRenderers = {
         mo.observe(detail, { attributes: true, attributeFilter: ['class'] });
       });
     }
+
+    }); /* end _allContainers.forEach */
   },
 
   /**

@@ -29,7 +29,7 @@ const Nav = {
     lore:         ['ch1','ch2','ch3','ch4'],
     factions:     ['ch5','ch6','ch7','ch8','ch9','ch10','ch11'],
     maps:         ['ch12','ch13','ch14','ch15','ch16'],
-    combat:       ['ch17','ch18','ch19','ch19b','ch20','ch21','ch22','ch23'],
+    combat:       ['ch17','ch18','ch19','ch20','ch21','ch22','ch23'],
     strategy:     ['ch24','ch25','ch26','ch27','ch28','ch29','ch30','ch31'],
     endgame:      ['ch32','ch33','ch34','ch35','ch36'],
     presentation: ['ch37','ch38','ch39','ch40','ch42','ch43-ai'],
