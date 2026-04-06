@@ -223,7 +223,7 @@
   </div>
 
   <!-- ══════════════ SCRIPTS ══════════════
-       Load order matters — 15 files total:
+       Load order matters — 21 files total:
          0. three.min.js (CDN)    - Three.js r128 for 3D renderers (solar system, etc.)
          1. data-loader.js        - No dependencies; provides DataLoader cache
          2. sprite-engine.js      - Depends on DataLoader (reads cached sprite/shape data)
@@ -448,20 +448,7 @@
             btn.disabled = false;
             btn.textContent = 'Install App';
           }
-          // Reset after user choice
-          e.userChoice.then(function(choice) {
-            window._pwaInstallPrompt = null;
-            var btn = document.getElementById('pwa-install-btn');
-            if (btn) {
-              if (choice.outcome === 'accepted') {
-                btn.disabled = true;
-                btn.textContent = 'Installed';
-              } else {
-                btn.disabled = true;
-                btn.textContent = 'Install App';
-              }
-            }
-          });
+          // userChoice handling moved to click handler (dashboard.js onclick)
         });
 
         // Mark as installed
