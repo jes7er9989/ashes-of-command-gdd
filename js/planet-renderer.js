@@ -1469,103 +1469,253 @@ window.PlanetRenderer = (function () {
     }
 
     _aethynNexus() {
-      // Cool blue-purple lighting
-      this.sun.color.set(0xccccff);
-      this.sun.intensity = 1.0;
+      // Pull camera back — this is moon-sized
+      this.camera.position.z = 4.2;
+
+      // Eerie psychic-crystalline lighting — otherworldly blue-purple
+      this.sun.color.set(0xbbbbff);
+      this.sun.intensity = 0.6;
+      this.sun.position.set(3, 2, 4);
       this.fill.color.set(0x442266);
-      this.fill.intensity = 0.3;
+      this.fill.intensity = 0.25;
       this.ambient.color.set(0x1a1a2e);
-      this.ambient.intensity = 0.45;
+      this.ambient.intensity = 0.5;
 
       this.megaGroup = new THREE.Group();
 
-      // Main crystalline body — icosahedron
-      var bodyGeo = new THREE.IcosahedronGeometry(0.8, 1);
+      // Noise helper for texture generation
+      function _nxNoise(x, y) {
+        var n = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453;
+        return n - Math.floor(n);
+      }
+
+      /* ═══ MAIN BODY — crystalline composite grown, not built ═══ */
+      // Procedural crystal surface texture — psychic-crystalline hybrid material
+      var bodyCanvas = document.createElement('canvas');
+      bodyCanvas.width = 512;
+      bodyCanvas.height = 512;
+      var bctx = bodyCanvas.getContext('2d');
+      var bData = bctx.createImageData(512, 512);
+      var bpx = bData.data;
+
+      for (var bx = 0; bx < 512; bx++) {
+        for (var by = 0; by < 512; by++) {
+          var bi = (by * 512 + bx) * 4;
+          var n1 = _nxNoise(bx * 0.06, by * 0.06);
+          var n2 = _nxNoise(bx * 0.15, by * 0.15) * 0.5;
+          var n3 = _nxNoise(bx * 0.4, by * 0.4) * 0.3;
+          var val = n1 + n2 + n3;
+
+          // Crystalline veins — glowing data channels running through the structure
+          var veinH = Math.abs(Math.sin(bx * 0.05 + n1 * 3)) < 0.08;
+          var veinV = Math.abs(Math.sin(by * 0.04 + n2 * 4)) < 0.06;
+          var isVein = veinH || veinV;
+          // Psychic energy nodes — where veins cross
+          var isNode = veinH && veinV;
+
+          if (isNode) {
+            // Bright psychic pulse point
+            bpx[bi]     = 160 + Math.floor(n1 * 60);
+            bpx[bi + 1] = 100 + Math.floor(n1 * 40);
+            bpx[bi + 2] = 255;
+          } else if (isVein) {
+            // Data channel — flowing purple-blue energy
+            bpx[bi]     = 80 + Math.floor(val * 40);
+            bpx[bi + 1] = 50 + Math.floor(val * 30);
+            bpx[bi + 2] = 180 + Math.floor(val * 50);
+          } else {
+            // Crystalline composite surface — dark with subtle color shifts
+            var baseR = 30 + Math.floor(val * 25);
+            var baseG = 35 + Math.floor(val * 20);
+            var baseB = 55 + Math.floor(val * 35);
+            // Occasional psychic glow patches — residual energy
+            if (_nxNoise(bx * 0.02, by * 0.02) > 0.78) {
+              baseR += 25; baseG += 15; baseB += 40;
+            }
+            bpx[bi] = baseR; bpx[bi + 1] = baseG; bpx[bi + 2] = baseB;
+          }
+          bpx[bi + 3] = 255;
+        }
+      }
+      bctx.putImageData(bData, 0, 0);
+      var bodyTex = new THREE.CanvasTexture(bodyCanvas);
+
+      var bodyGeo = new THREE.IcosahedronGeometry(0.85, 3);
       var bodyMat = new THREE.MeshPhongMaterial({
-        color: 0x445577, shininess: 80,
-        emissive: 0x4422aa, emissiveIntensity: 0.4,
-        transparent: true, opacity: 0.85,
+        map: bodyTex, shininess: 120,
+        emissive: 0x3318aa, emissiveIntensity: 0.35,
+        transparent: true, opacity: 0.88,
+        side: THREE.DoubleSide,
       });
       this.nexusBody = new THREE.Mesh(bodyGeo, bodyMat);
       this.megaGroup.add(this.nexusBody);
 
-      // Crystalline facet edges — visible geometric pattern
-      var edgeMat = new THREE.LineBasicMaterial({ color: 0x8866dd, transparent: true, opacity: 0.7 });
-      this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(bodyGeo), edgeMat));
+      // Crystalline facet edges — geometric pattern pulsing with energy
+      var edgeMat = new THREE.LineBasicMaterial({ color: 0x9977ee, transparent: true, opacity: 0.6 });
+      this.nexusEdges = new THREE.LineSegments(new THREE.EdgesGeometry(bodyGeo), edgeMat);
+      this.megaGroup.add(this.nexusEdges);
 
-      // Inner glow core
-      var coreGeo = new THREE.IcosahedronGeometry(0.45, 2);
+      /* ═══ INNER PSYCHIC CORE — the heart that may still be thinking ═══ */
+      var coreGeo = new THREE.IcosahedronGeometry(0.5, 2);
       var coreMat = new THREE.MeshBasicMaterial({
-        color: 0x7744cc, transparent: true, opacity: 0.25,
+        color: 0xaa66ff, transparent: true, opacity: 0.2,
       });
       this.nexusCore = new THREE.Mesh(coreGeo, coreMat);
       this.megaGroup.add(this.nexusCore);
 
-      // Core point light
-      this.nexusCoreLight = new THREE.PointLight(0x8855dd, 0.8, 4);
+      // Inner core bright pulse — deep psychic energy
+      var innerGeo = new THREE.IcosahedronGeometry(0.25, 2);
+      var innerMat = new THREE.MeshBasicMaterial({
+        color: 0xcc88ff, transparent: true, opacity: 0.35,
+      });
+      this.nexusInner = new THREE.Mesh(innerGeo, innerMat);
+      this.megaGroup.add(this.nexusInner);
+
+      this.nexusCoreLight = new THREE.PointLight(0x8855dd, 1.2, 5);
       this.megaGroup.add(this.nexusCoreLight);
 
-      // Docking spines — thin cylinders extending outward
-      var spinePositions = [
-        [1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0],
-        [0, 0, 1], [0, 0, -1],
+      /* ═══ DOCKING SPINES — branches of a dead tree, extending in all directions ═══ */
+      this.nexusSpineTips = [];
+      var spineDirections = [
+        [1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1],
         [0.7, 0.7, 0], [-0.7, -0.7, 0], [0.7, 0, 0.7], [-0.7, 0, -0.7],
+        [0, 0.7, 0.7], [0, -0.7, -0.7], [0.5, -0.5, 0.7], [-0.5, 0.7, -0.5],
       ];
-      for (var si = 0; si < spinePositions.length; si++) {
-        var sp = spinePositions[si];
-        var spineLen = 0.35 + Math.random() * 0.25;
-        var spineGeo = new THREE.CylinderGeometry(0.008, 0.004, spineLen, 6);
+      for (var si = 0; si < spineDirections.length; si++) {
+        var sp = spineDirections[si];
+        var dir = new THREE.Vector3(sp[0], sp[1], sp[2]).normalize();
+        var spineLen = 0.4 + Math.random() * 0.35;
+        // Main spine shaft
+        var spineGeo = new THREE.CylinderGeometry(0.012, 0.003, spineLen, 6);
         var spineMat = new THREE.MeshPhongMaterial({
-          color: 0x556688, shininess: 30,
-          emissive: 0x332255, emissiveIntensity: 0.2,
+          color: 0x556688, shininess: 50,
+          emissive: 0x332255, emissiveIntensity: 0.3,
         });
         var spine = new THREE.Mesh(spineGeo, spineMat);
-        var dir = new THREE.Vector3(sp[0], sp[1], sp[2]).normalize();
-        spine.position.copy(dir.clone().multiplyScalar(0.8 + spineLen * 0.5));
-        // Align cylinder to direction
+        spine.position.copy(dir.clone().multiplyScalar(0.85 + spineLen * 0.5));
         spine.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
         this.megaGroup.add(spine);
 
-        // Docking tip light
-        if (si < 6) {
-          var tipGeo = new THREE.SphereGeometry(0.012, 8, 8);
-          var tipMat = new THREE.MeshBasicMaterial({
-            color: 0xaa66ff, transparent: true, opacity: 0.7,
-          });
-          var tip = new THREE.Mesh(tipGeo, tipMat);
-          tip.position.copy(dir.clone().multiplyScalar(0.8 + spineLen));
-          this.megaGroup.add(tip);
+        // Spine energy conduit — glowing line running along each spine
+        var conduitGeo = new THREE.CylinderGeometry(0.003, 0.001, spineLen * 0.9, 4);
+        var conduitMat = new THREE.MeshBasicMaterial({
+          color: 0x8855ee, transparent: true, opacity: 0.4,
+        });
+        var conduit = new THREE.Mesh(conduitGeo, conduitMat);
+        conduit.position.copy(dir.clone().multiplyScalar(0.87 + spineLen * 0.5));
+        conduit.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+        this.megaGroup.add(conduit);
+
+        // Docking tip — pulsing psychic beacon
+        var tipGeo = new THREE.OctahedronGeometry(0.018, 0);
+        var tipMat = new THREE.MeshBasicMaterial({
+          color: 0xcc88ff, transparent: true, opacity: 0.7,
+        });
+        var tip = new THREE.Mesh(tipGeo, tipMat);
+        tip.position.copy(dir.clone().multiplyScalar(0.85 + spineLen));
+        this.megaGroup.add(tip);
+        this.nexusSpineTips.push(tip);
+
+        // Sub-branches on longer spines — fractal tree structure
+        if (spineLen > 0.5 && si < 8) {
+          var branchDir = dir.clone().applyAxisAngle(new THREE.Vector3(1, 0, 0), 0.6 + Math.random() * 0.4);
+          var branchLen = spineLen * 0.4;
+          var branchGeo = new THREE.CylinderGeometry(0.006, 0.002, branchLen, 4);
+          var branch = new THREE.Mesh(branchGeo, spineMat.clone());
+          var branchBase = dir.clone().multiplyScalar(0.85 + spineLen * 0.65);
+          branch.position.copy(branchBase.clone().add(branchDir.clone().multiplyScalar(branchLen * 0.5)));
+          branch.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), branchDir);
+          this.megaGroup.add(branch);
         }
       }
 
-      // Crystalline growths — small irregular icosahedra on the surface
-      for (var ci = 0; ci < 12; ci++) {
+      /* ═══ CRYSTALLINE GROWTHS — data-storage formations on the surface ═══ */
+      for (var ci = 0; ci < 20; ci++) {
         var theta = Math.random() * Math.PI * 2;
         var phi = Math.random() * Math.PI;
-        var cr = 0.78;
+        var cr = 0.83;
         var cx = cr * Math.sin(phi) * Math.cos(theta);
         var cy = cr * Math.cos(phi);
         var cz = cr * Math.sin(phi) * Math.sin(theta);
-        var crystalSize = 0.03 + Math.random() * 0.05;
-        var crystalGeo = new THREE.OctahedronGeometry(crystalSize, 0);
+        var crystalH = 0.04 + Math.random() * 0.08;
+        // Elongated octahedrons for crystal spires
+        var crystalGeo = new THREE.OctahedronGeometry(0.02, 0);
+        // Stretch vertically for spire effect
+        var cPos = crystalGeo.attributes.position;
+        for (var cpi = 0; cpi < cPos.count; cpi++) {
+          var cpY = cPos.getY(cpi);
+          if (cpY > 0) cPos.setY(cpi, cpY * (2 + crystalH * 20));
+        }
+        cPos.needsUpdate = true;
+        crystalGeo.computeVertexNormals();
+
         var crystalMat = new THREE.MeshPhongMaterial({
-          color: 0x6644bb, shininess: 90,
-          emissive: 0x5533aa, emissiveIntensity: 0.5,
-          transparent: true, opacity: 0.7,
+          color: 0x7755cc, shininess: 120,
+          emissive: 0x6644bb, emissiveIntensity: 0.6,
+          transparent: true, opacity: 0.75,
         });
         var crystal = new THREE.Mesh(crystalGeo, crystalMat);
         crystal.position.set(cx, cy, cz);
-        crystal.rotation.set(Math.random() * 3, Math.random() * 3, Math.random() * 3);
+        // Orient crystal to point outward from surface
+        crystal.lookAt(cx * 2, cy * 2, cz * 2);
+        crystal.rotateX(Math.PI / 2);
         this.megaGroup.add(crystal);
       }
 
-      // Outer energy aura
-      var auraGeo = new THREE.IcosahedronGeometry(1.0, 2);
-      var auraMat = new THREE.MeshBasicMaterial({
-        color: 0x6633bb, transparent: true, opacity: 0.04,
-        side: THREE.BackSide, depthWrite: false,
+      /* ═══ PSYCHIC RESONANCE RINGS — concentric energy bands ═══ */
+      var ringColors = [0x8866dd, 0x6644bb, 0xaa88ff];
+      for (var ri = 0; ri < 3; ri++) {
+        var rRadius = 1.0 + ri * 0.15;
+        var ringGeo = new THREE.TorusGeometry(rRadius, 0.006, 8, 96);
+        var ringMat = new THREE.MeshBasicMaterial({
+          color: ringColors[ri], transparent: true, opacity: 0.2 - ri * 0.05,
+          depthWrite: false,
+        });
+        var ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.x = Math.PI / 2 + ri * 0.3;
+        ring.rotation.y = ri * 0.5;
+        this.megaGroup.add(ring);
+      }
+
+      /* ═══ PSYCHIC ENERGY AURA — layered glow suggesting residual consciousness ═══ */
+      var auraLayers = [
+        { r: 1.05, color: 0x6633bb, op: 0.06 },
+        { r: 1.2, color: 0x5522aa, op: 0.03 },
+        { r: 1.4, color: 0x441199, op: 0.015 },
+      ];
+      for (var ai = 0; ai < auraLayers.length; ai++) {
+        var al = auraLayers[ai];
+        var aGeo = new THREE.IcosahedronGeometry(al.r, 2);
+        var aMat = new THREE.MeshBasicMaterial({
+          color: al.color, transparent: true, opacity: al.op,
+          side: THREE.BackSide, depthWrite: false,
+        });
+        this.megaGroup.add(new THREE.Mesh(aGeo, aMat));
+      }
+
+      /* ═══ PSYCHIC PARTICLE FIELD — floating data motes and energy wisps ═══ */
+      var pCount = 120;
+      var pPositions = new Float32Array(pCount * 3);
+      var pColors = new Float32Array(pCount * 3);
+      for (var pi = 0; pi < pCount; pi++) {
+        var pt = Math.random() * Math.PI * 2;
+        var pp = Math.random() * Math.PI;
+        var pR = 0.9 + Math.random() * 0.7;
+        pPositions[pi * 3]     = pR * Math.sin(pp) * Math.cos(pt);
+        pPositions[pi * 3 + 1] = pR * Math.sin(pp) * Math.sin(pt);
+        pPositions[pi * 3 + 2] = pR * Math.cos(pp);
+        var isPsychic = Math.random() > 0.4;
+        pColors[pi * 3]     = isPsychic ? 0.6 : 0.4;
+        pColors[pi * 3 + 1] = isPsychic ? 0.35 : 0.3;
+        pColors[pi * 3 + 2] = isPsychic ? 1.0 : 0.8;
+      }
+      var ptGeo = new THREE.BufferGeometry();
+      ptGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+      ptGeo.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
+      var ptMat = new THREE.PointsMaterial({
+        size: 0.012, vertexColors: true, transparent: true, opacity: 0.5, depthWrite: false,
       });
-      this.megaGroup.add(new THREE.Mesh(auraGeo, auraMat));
+      this.megaGroup.add(new THREE.Points(ptGeo, ptMat));
 
       this.megaGroup.rotation.x = 0.2;
       this.scene.add(this.megaGroup);
@@ -1917,19 +2067,39 @@ window.PlanetRenderer = (function () {
         }
       }
 
-      // Aethyn Nexus — slow rotation + pulsing core
+      // Aethyn Nexus — slow majestic rotation + psychic pulse cycle
       if (this.type === 'Aethyn Nexus') {
+        // Whole structure rotates slowly
+        if (this.megaGroup) {
+          this.megaGroup.rotation.y += 0.001;
+        }
+        // Body emissive pulse — residual psychic energy breathing
         if (this.nexusBody) {
-          this.nexusBody.rotation.y += 0.0015;
-          this.nexusBody.rotation.x += 0.0005;
-          this.nexusBody.material.emissiveIntensity = 0.3 + Math.sin(t * 0.8) * 0.15;
+          this.nexusBody.material.emissiveIntensity = 0.3 + Math.sin(t * 0.6) * 0.15;
         }
+        // Edge glow pulse
+        if (this.nexusEdges) {
+          this.nexusEdges.material.opacity = 0.4 + Math.sin(t * 0.8) * 0.25;
+        }
+        // Inner core counter-rotates — the mind within the shell
         if (this.nexusCore) {
-          this.nexusCore.rotation.y -= 0.003;
-          this.nexusCore.material.opacity = 0.18 + Math.sin(t * 1.2) * 0.1;
+          this.nexusCore.rotation.y -= 0.004;
+          this.nexusCore.rotation.x += 0.001;
+          this.nexusCore.material.opacity = 0.15 + Math.sin(t * 1.0) * 0.1;
         }
+        if (this.nexusInner) {
+          this.nexusInner.rotation.y += 0.006;
+          this.nexusInner.material.opacity = 0.25 + Math.sin(t * 1.5) * 0.15;
+        }
+        // Core light psychic breathing
         if (this.nexusCoreLight) {
-          this.nexusCoreLight.intensity = 0.6 + Math.sin(t * 0.8) * 0.3;
+          this.nexusCoreLight.intensity = 0.8 + Math.sin(t * 0.6) * 0.5;
+        }
+        // Spine tips flicker — data transmission beacons
+        if (this.nexusSpineTips) {
+          for (var sti = 0; sti < this.nexusSpineTips.length; sti++) {
+            this.nexusSpineTips[sti].material.opacity = 0.4 + Math.sin(t * 2.5 + sti * 1.8) * 0.35;
+          }
         }
       }
 
