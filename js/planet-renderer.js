@@ -1840,13 +1840,14 @@ window.PlanetRenderer = (function () {
         var angle = Math.atan2(cvz, cvx);
         var r = Math.sqrt(cvx * cvx + cvz * cvz);
         if (r > 0.1) {
-          // 6-pointed star — sharp angular protrusions with deep cut-ins
-          var starWave = Math.cos(angle * 6);
-          // Sharpen the peaks — square the wave for more angular points
-          var sharpWave = starWave > 0 ? Math.pow(starWave, 0.6) : -Math.pow(-starWave, 0.6);
-          var cutIn = sharpWave * 0.28;
-          // Extra depth on the cut-ins — these are deep structural channels
-          if (sharpWave < -0.2) cutIn *= 1.3;
+          // 12-pointed star — 6 major sharp points + 6 minor points between them
+          var wave6 = Math.cos(angle * 6);
+          var wave12 = Math.cos(angle * 12);
+          // Sharpen the main peaks — higher power = narrower, sharper tips
+          var sharpMain = wave6 > 0 ? Math.pow(wave6, 0.4) * 0.3 : -Math.pow(-wave6, 0.5) * 0.35;
+          // Secondary bumps between main points — half the height
+          var secondaryBump = wave12 > 0.3 ? (wave12 - 0.3) * 0.2 : 0;
+          var cutIn = sharpMain + secondaryBump;
           var newR = r + cutIn;
           // Add noise for irregular edge
           var edgeNoise = _wsNoise(cvx * 5 + 3, cvz * 5 + 7) * 0.06;
@@ -1953,6 +1954,30 @@ window.PlanetRenderer = (function () {
           .translateX(ttx).translateY(0.18).translateZ(ttz));
       }
 
+      /* ═══ 6 SECONDARY GUN EMPLACEMENTS — between the main turret points ═══ */
+      for (var sgi = 0; sgi < 6; sgi++) {
+        var sgAngle = (sgi / 6) * Math.PI * 2 + Math.PI / 6; // offset 30° from main turrets
+        var sgR = 0.85; // shorter reach than main turrets
+        var sgx = Math.cos(sgAngle) * sgR;
+        var sgz = Math.sin(sgAngle) * sgR;
+        // Smaller turret base
+        var sgBaseGeo = new THREE.CylinderGeometry(0.05, 0.065, 0.05, 6);
+        this.megaGroup.add(new THREE.Mesh(sgBaseGeo, structMat.clone())
+          .translateX(sgx).translateY(0.15).translateZ(sgz));
+        // Single barrel
+        var sgBarrel = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 0.1, 4),
+          new THREE.MeshPhongMaterial({ color: 0x3a3e4a, shininess: 20 }));
+        sgBarrel.rotation.z = -0.35;
+        sgBarrel.position.set(sgx + Math.cos(sgAngle) * 0.06, 0.2, sgz + Math.sin(sgAngle) * 0.06);
+        this.megaGroup.add(sgBarrel);
+        // Small targeting ring
+        var sgRing = new THREE.Mesh(new THREE.TorusGeometry(0.04, 0.004, 4, 16),
+          new THREE.MeshBasicMaterial({ color: 0x7799bb, transparent: true, opacity: 0.15 }));
+        sgRing.rotation.x = Math.PI / 2;
+        sgRing.position.set(sgx, 0.14, sgz);
+        this.megaGroup.add(sgRing);
+      }
+
       /* ═══ SURFACE CITY — dense structures covering the entire upper surface ═══ */
       for (var sci = 0; sci < 90; sci++) {
         var sAngle = Math.random() * Math.PI * 2;
@@ -1960,8 +1985,11 @@ window.PlanetRenderer = (function () {
         var sx = Math.cos(sAngle) * sDist;
         var sz = Math.sin(sAngle) * sDist;
         // Check if point is within the star shape (approximate)
-        var starVal = Math.cos(sAngle * 6) * 0.22;
-        var maxR = 1.1 + (starVal > 0 ? starVal * 0.4 : starVal * 0.7);
+        var sv6 = Math.cos(sAngle * 6);
+        var sv12 = Math.cos(sAngle * 12);
+        var svMain = sv6 > 0 ? Math.pow(sv6, 0.4) * 0.3 : -Math.pow(-sv6, 0.5) * 0.35;
+        var svSec = sv12 > 0.3 ? (sv12 - 0.3) * 0.2 : 0;
+        var maxR = 1.1 + svMain + svSec;
         if (sDist > maxR) continue; // skip points outside the star shape
 
         var surfY = 0.12;
@@ -1992,8 +2020,11 @@ window.PlanetRenderer = (function () {
         var uDist = Math.random() * 0.85;
         var ux = Math.cos(uAngle) * uDist;
         var uz = Math.sin(uAngle) * uDist;
-        var starV = Math.cos(uAngle * 6) * 0.22;
-        var uMaxR = 1.1 + (starV > 0 ? starV * 0.4 : starV * 0.7);
+        var uv6 = Math.cos(uAngle * 6);
+        var uv12 = Math.cos(uAngle * 12);
+        var uvMain = uv6 > 0 ? Math.pow(uv6, 0.4) * 0.3 : -Math.pow(-uv6, 0.5) * 0.35;
+        var uvSec = uv12 > 0.3 ? (uv12 - 0.3) * 0.2 : 0;
+        var uMaxR = 1.1 + uvMain + uvSec;
         if (uDist > uMaxR) continue;
 
         var pH = 0.03 + Math.random() * 0.08;
