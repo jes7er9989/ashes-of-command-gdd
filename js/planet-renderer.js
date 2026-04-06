@@ -1103,74 +1103,234 @@ window.PlanetRenderer = (function () {
     }
 
     _dysonSphere() {
-      // Intense warm light from the central star
+      // Star-dominated lighting — everything is lit from within
       this.sun.color.set(0xffeedd);
-      this.sun.intensity = 0.6;
+      this.sun.intensity = 0.4;
       this.sun.position.set(3, 2, 4);
       this.fill.color.set(0xffaa44);
-      this.fill.intensity = 0.3;
-      this.ambient.color.set(0x443322);
-      this.ambient.intensity = 0.5;
+      this.fill.intensity = 0.15;
+      this.ambient.color.set(0x221a10);
+      this.ambient.intensity = 0.3;
 
       this.megaGroup = new THREE.Group();
 
-      // Central star — bright emissive sphere
-      var starGeo = new THREE.SphereGeometry(0.35, 32, 32);
-      var starMat = new THREE.MeshBasicMaterial({
-        color: 0xffdd88,
-      });
+      // Simple noise helper
+      function _dsNoise(x, y) {
+        var n = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453;
+        return n - Math.floor(n);
+      }
+
+      /* ═══ CAPTURED STAR — blazing at the heart ═══ */
+      var starGeo = new THREE.SphereGeometry(0.3, 32, 32);
+      var starMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
       this.dysonStar = new THREE.Mesh(starGeo, starMat);
       this.megaGroup.add(this.dysonStar);
 
-      // Star glow layers
-      var glowSizes = [0.42, 0.50, 0.60];
-      var glowOpacities = [0.15, 0.08, 0.04];
-      for (var gi = 0; gi < glowSizes.length; gi++) {
-        var sgGeo = new THREE.SphereGeometry(glowSizes[gi], 24, 24);
-        var sgMat = new THREE.MeshBasicMaterial({
-          color: 0xffcc66, transparent: true, opacity: glowOpacities[gi],
-          side: THREE.BackSide, depthWrite: false,
+      // Star corona — 5 layers
+      var coronaData = [
+        { r: 0.36, color: 0xfff8dd, op: 0.6 },
+        { r: 0.42, color: 0xffee88, op: 0.35 },
+        { r: 0.50, color: 0xffdd66, op: 0.18 },
+        { r: 0.60, color: 0xffcc44, op: 0.08 },
+        { r: 0.72, color: 0xffaa33, op: 0.03 },
+      ];
+      for (var ci = 0; ci < coronaData.length; ci++) {
+        var cd = coronaData[ci];
+        var cGeo = new THREE.SphereGeometry(cd.r, 24, 24);
+        var cMat = new THREE.MeshBasicMaterial({
+          color: cd.color, transparent: true, opacity: cd.op, depthWrite: false,
         });
-        this.megaGroup.add(new THREE.Mesh(sgGeo, sgMat));
+        this.megaGroup.add(new THREE.Mesh(cGeo, cMat));
       }
 
       // Star point light
-      this.dysonStarLight = new THREE.PointLight(0xffdd88, 1.5, 5);
+      this.dysonStarLight = new THREE.PointLight(0xffeedd, 1.8, 6);
       this.megaGroup.add(this.dysonStarLight);
 
-      // Lattice cage — wireframe icosahedron
-      var latticeGeo = new THREE.IcosahedronGeometry(1.0, 1);
+      /* ═══ DYSON LATTICE — textured panel shell ═══ */
+
+      // Panel texture — industrial metal with energy conduit grid
+      var panelCanvas = document.createElement('canvas');
+      panelCanvas.width = 512;
+      panelCanvas.height = 512;
+      var pctx = panelCanvas.getContext('2d');
+      var pData = pctx.createImageData(512, 512);
+      var ppx = pData.data;
+
+      for (var px2 = 0; px2 < 512; px2++) {
+        for (var py = 0; py < 512; py++) {
+          var pi = (py * 512 + px2) * 4;
+          var n = _dsNoise(px2 * 0.08, py * 0.08);
+          var n2 = _dsNoise(px2 * 0.3, py * 0.3) * 0.4;
+          var base = 30 + Math.floor((n + n2) * 30);
+
+          // Panel grid lines
+          var isGridH = py % 32 < 1;
+          var isGridV = px2 % 32 < 1;
+          var isGrid = isGridH || isGridV;
+
+          // Energy conduit channels — thicker lines at major intervals
+          var isMajorH = py % 128 < 2;
+          var isMajorV = px2 % 128 < 2;
+          var isConduit = isMajorH || isMajorV;
+
+          // Conduit junction nodes — glowing intersection points
+          var isNode = (py % 128 < 6) && (px2 % 128 < 6);
+
+          if (isNode) {
+            // Energy node — bright blue-white glow
+            var nodeDist = Math.max(Math.abs(py % 128 - 3), Math.abs(px2 % 128 - 3));
+            var nodeGlow = Math.max(0, 1 - nodeDist / 4);
+            ppx[pi]     = Math.floor(80 + nodeGlow * 175);
+            ppx[pi + 1] = Math.floor(160 + nodeGlow * 95);
+            ppx[pi + 2] = Math.floor(220 + nodeGlow * 35);
+          } else if (isConduit) {
+            // Energy conduit — pulsing blue
+            ppx[pi]     = 50 + Math.floor(n * 30);
+            ppx[pi + 1] = 120 + Math.floor(n * 40);
+            ppx[pi + 2] = 180 + Math.floor(n * 40);
+          } else if (isGrid) {
+            // Panel seam — dark groove
+            ppx[pi] = base - 15;
+            ppx[pi + 1] = base - 10;
+            ppx[pi + 2] = base - 5;
+          } else {
+            // Panel surface — dark metallic with noise
+            ppx[pi]     = base + 5;
+            ppx[pi + 1] = base + 12;
+            ppx[pi + 2] = base + 20;
+
+            // Random damage patches — darker with reddish tint (post-Fracture decay)
+            if (_dsNoise(px2 * 0.01, py * 0.01) > 0.82 && _dsNoise(px2 * 0.05, py * 0.05) > 0.6) {
+              ppx[pi]     = base + 15;
+              ppx[pi + 1] = base - 5;
+              ppx[pi + 2] = base - 10;
+            }
+          }
+          ppx[pi + 3] = 255;
+        }
+      }
+      pctx.putImageData(pData, 0, 0);
+      var panelTex = new THREE.CanvasTexture(panelCanvas);
+
+      // Main lattice structure — high-detail icosahedron with panel texture
+      var latticeGeo = new THREE.IcosahedronGeometry(1.0, 2);
       var latticeMat = new THREE.MeshPhongMaterial({
-        color: 0x556677, wireframe: true,
-        emissive: 0x334455, emissiveIntensity: 0.3,
+        map: panelTex, shininess: 50,
+        emissive: 0x0a1520, emissiveIntensity: 0.2,
+        side: THREE.DoubleSide,
       });
       this.dysonLattice = new THREE.Mesh(latticeGeo, latticeMat);
       this.megaGroup.add(this.dysonLattice);
 
-      // Panel segments on the lattice faces — partial coverage
-      var panelGeo = new THREE.IcosahedronGeometry(0.98, 1);
-      var panelMat = new THREE.MeshPhongMaterial({
-        color: 0x445566, shininess: 40, transparent: true, opacity: 0.4,
-        emissive: 0x223344, emissiveIntensity: 0.15,
-        side: THREE.DoubleSide,
-      });
-      this.megaGroup.add(new THREE.Mesh(panelGeo, panelMat));
-
-      // Energy conduit lines along edges — bright emissive overlay
-      var conduitGeo = new THREE.IcosahedronGeometry(1.01, 1);
+      // Structural edge wireframe overlay — visible lattice skeleton
+      var edgeGeo = new THREE.IcosahedronGeometry(1.005, 1);
       this.dysonConduits = new THREE.LineSegments(
-        new THREE.EdgesGeometry(conduitGeo),
-        new THREE.LineBasicMaterial({ color: 0x88ccff, transparent: true, opacity: 0.6 })
+        new THREE.EdgesGeometry(edgeGeo),
+        new THREE.LineBasicMaterial({ color: 0x88ccff, transparent: true, opacity: 0.5 })
       );
       this.megaGroup.add(this.dysonConduits);
 
-      // Outer energy halo
-      var haloGeo = new THREE.SphereGeometry(1.08, 24, 24);
+      // Gaps in the shell — semi-transparent areas where panels are missing/damaged
+      // Achieved by a second icosahedron with holes (lower detail = fewer faces = visible gaps)
+      var gapGeo = new THREE.IcosahedronGeometry(1.01, 1);
+      var gapMat = new THREE.MeshBasicMaterial({
+        color: 0xffcc66, transparent: true, opacity: 0.06,
+        side: THREE.BackSide, depthWrite: false,
+      });
+      this.megaGroup.add(new THREE.Mesh(gapGeo, gapMat));
+
+      /* ═══ EQUATORIAL ENERGY RING — power distribution band ═══ */
+      var eqRingGeo = new THREE.TorusGeometry(1.12, 0.02, 12, 128);
+      var eqRingCanvas = document.createElement('canvas');
+      eqRingCanvas.width = 512;
+      eqRingCanvas.height = 16;
+      var eqctx = eqRingCanvas.getContext('2d');
+      // Metallic base with energy pulses
+      eqctx.fillStyle = '#2a3a4a';
+      eqctx.fillRect(0, 0, 512, 16);
+      for (var ex = 0; ex < 512; ex += 4) {
+        var eGlow = _dsNoise(ex * 0.1, 0.5) > 0.6;
+        eqctx.fillStyle = eGlow ? 'rgba(80,180,255,0.6)' : 'rgba(40,80,120,0.3)';
+        eqctx.fillRect(ex, 3, 3, 10);
+      }
+      var eqRingTex = new THREE.CanvasTexture(eqRingCanvas);
+      eqRingTex.wrapS = THREE.RepeatWrapping;
+      var eqRingMat = new THREE.MeshPhongMaterial({
+        map: eqRingTex, shininess: 40,
+        emissive: 0x2244aa, emissiveIntensity: 0.3,
+      });
+      this.megaGroup.add(new THREE.Mesh(eqRingGeo, eqRingMat));
+
+      // Second ring — perpendicular (forms a cross-band)
+      var eqRing2 = new THREE.Mesh(eqRingGeo.clone(), eqRingMat.clone());
+      eqRing2.rotation.x = Math.PI / 2;
+      this.megaGroup.add(eqRing2);
+
+      // Third ring — 45 degree angle
+      var eqRing3 = new THREE.Mesh(eqRingGeo.clone(), eqRingMat.clone());
+      eqRing3.rotation.x = Math.PI / 4;
+      this.megaGroup.add(eqRing3);
+
+      /* ═══ ENERGY BEAMS — power being channeled outward ═══ */
+      this.dysonBeams = [];
+      var beamDirections = [
+        [0, 1.6, 0], [0, -1.6, 0],
+        [1.4, 0.5, 0.5], [-1.3, -0.4, 0.7],
+        [0.5, 0.8, -1.3], [-0.6, 0.3, 1.4],
+      ];
+      for (var bi = 0; bi < beamDirections.length; bi++) {
+        var bd = beamDirections[bi];
+        var beamGeo = new THREE.CylinderGeometry(0.008, 0.003, 1.4, 4);
+        var beamMat = new THREE.MeshBasicMaterial({
+          color: 0x88ccff, transparent: true, opacity: 0.25,
+          depthWrite: false,
+        });
+        var beam = new THREE.Mesh(beamGeo, beamMat);
+        beam.position.set(bd[0] * 0.5, bd[1] * 0.5, bd[2] * 0.5);
+        beam.lookAt(bd[0], bd[1], bd[2]);
+        this.megaGroup.add(beam);
+        this.dysonBeams.push(beam);
+
+        // Relay station at beam endpoint
+        var relayGeo = new THREE.OctahedronGeometry(0.025, 0);
+        var relayMat = new THREE.MeshBasicMaterial({ color: 0x88ccff });
+        var relay = new THREE.Mesh(relayGeo, relayMat);
+        relay.position.set(bd[0], bd[1], bd[2]);
+        this.megaGroup.add(relay);
+      }
+
+      /* ═══ OUTER ENERGY HALO + PARTICLE FIELD ═══ */
+      var haloGeo = new THREE.SphereGeometry(1.2, 24, 24);
       var haloMat = new THREE.MeshBasicMaterial({
-        color: 0x6699cc, transparent: true, opacity: 0.04,
+        color: 0x6699cc, transparent: true, opacity: 0.03,
         side: THREE.BackSide, depthWrite: false,
       });
       this.megaGroup.add(new THREE.Mesh(haloGeo, haloMat));
+
+      // Energy particles around the structure
+      var particleCount = 100;
+      var pPositions = new Float32Array(particleCount * 3);
+      var pColors = new Float32Array(particleCount * 3);
+      for (var pi3 = 0; pi3 < particleCount; pi3++) {
+        var theta = Math.random() * Math.PI * 2;
+        var phi = Math.random() * Math.PI;
+        var pR = 1.05 + Math.random() * 0.4;
+        pPositions[pi3 * 3]     = pR * Math.sin(phi) * Math.cos(theta);
+        pPositions[pi3 * 3 + 1] = pR * Math.sin(phi) * Math.sin(theta);
+        pPositions[pi3 * 3 + 2] = pR * Math.cos(phi);
+        var isEnergy = Math.random() > 0.5;
+        pColors[pi3 * 3]     = isEnergy ? 0.5 : 0.8;
+        pColors[pi3 * 3 + 1] = isEnergy ? 0.75 : 0.7;
+        pColors[pi3 * 3 + 2] = isEnergy ? 1.0 : 0.5;
+      }
+      var ptGeo = new THREE.BufferGeometry();
+      ptGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+      ptGeo.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
+      var ptMat = new THREE.PointsMaterial({
+        size: 0.01, vertexColors: true, transparent: true, opacity: 0.5, depthWrite: false,
+      });
+      this.megaGroup.add(new THREE.Points(ptGeo, ptMat));
 
       this.scene.add(this.megaGroup);
       this.planet = this.megaGroup;
@@ -1585,23 +1745,29 @@ window.PlanetRenderer = (function () {
         }
       }
 
-      // Dyson Sphere — lattice rotation + star pulsing
+      // Dyson Sphere — lattice rotation + star pulsing + beam flicker
       if (this.type === 'Dyson Sphere') {
         if (this.dysonLattice) {
-          this.dysonLattice.rotation.y += 0.001;
-          this.dysonLattice.rotation.x += 0.0005;
+          this.dysonLattice.rotation.y += 0.0008;
+          this.dysonLattice.rotation.x += 0.0004;
         }
         if (this.dysonConduits) {
-          this.dysonConduits.rotation.y += 0.001;
-          this.dysonConduits.rotation.x += 0.0005;
-          this.dysonConduits.material.opacity = 0.4 + Math.sin(t * 2) * 0.2;
+          this.dysonConduits.rotation.y += 0.0008;
+          this.dysonConduits.rotation.x += 0.0004;
+          this.dysonConduits.material.opacity = 0.35 + Math.sin(t * 2) * 0.2;
         }
         if (this.dysonStar) {
           var starScale = 1.0 + Math.sin(t * 1.5) * 0.03;
           this.dysonStar.scale.set(starScale, starScale, starScale);
         }
         if (this.dysonStarLight) {
-          this.dysonStarLight.intensity = 1.3 + Math.sin(t * 1.5) * 0.3;
+          this.dysonStarLight.intensity = 1.5 + Math.sin(t * 1.5) * 0.4;
+        }
+        // Energy beams pulse
+        if (this.dysonBeams) {
+          for (var dbi = 0; dbi < this.dysonBeams.length; dbi++) {
+            this.dysonBeams[dbi].material.opacity = 0.15 + Math.sin(t * 1.8 + dbi * 1.2) * 0.15;
+          }
         }
       }
 
