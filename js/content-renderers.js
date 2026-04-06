@@ -132,6 +132,7 @@ const ContentRenderers = {
         var wrap = detail.querySelector('.planet-svg-wrap');
         if (!wrap) return;
         var svgKey = subtype.svgKey || planet.name;
+        var baseType = planet.name;
 
         /* If 3D renderer is active, dispose it for variant swap */
         if (wrap._planetInstance) {
@@ -143,13 +144,41 @@ const ContentRenderers = {
         wrap.setAttribute('data-planet-type', svgKey);
         wrap._svgFallback = false;
 
-        /* Inject SVG fallback for the variant */
-        _fetchSvgData().then(function(svgData) {
-          if (svgData && svgData[svgKey]) {
-            wrap.innerHTML = svgData[svgKey];
-            wrap._svgFallback = true;
-          }
-        });
+        /* Re-create Three.js renderer using the BASE planet type for consistent quality.
+           All subtypes of a planet type (e.g. Terrestrial Temperate/Tropical/Arid) share
+           the same 3D procedural render since they are the same planet class. */
+        if (typeof PlanetRenderer !== 'undefined' && typeof ensureThree === 'function') {
+          wrap.innerHTML = '';
+          ensureThree().then(function() {
+            if (!wrap._planetInstance && detail.classList.contains('planet-detail-open')) {
+              wrap._planetInstance = PlanetRenderer.create(wrap, baseType);
+            }
+            /* SVG fallback only if Three.js render failed (e.g. megastructures) */
+            if (!wrap._planetInstance && !wrap._svgFallback) {
+              _fetchSvgData().then(function(svgData) {
+                if (svgData && svgData[svgKey]) {
+                  wrap.innerHTML = svgData[svgKey];
+                  wrap._svgFallback = true;
+                }
+              });
+            }
+          }).catch(function() {
+            _fetchSvgData().then(function(svgData) {
+              if (svgData && svgData[svgKey]) {
+                wrap.innerHTML = svgData[svgKey];
+                wrap._svgFallback = true;
+              }
+            });
+          });
+        } else {
+          /* No Three.js available -- use SVG fallback */
+          _fetchSvgData().then(function(svgData) {
+            if (svgData && svgData[svgKey]) {
+              wrap.innerHTML = svgData[svgKey];
+              wrap._svgFallback = true;
+            }
+          });
+        }
       });
     });
 
