@@ -772,10 +772,12 @@ window.PlanetRenderer = (function () {
         emissive: 0x0a1520, emissiveIntensity: 0.2,
         side: THREE.DoubleSide,
       });
+      // Collector group — rotates independently (counter to ring) for day/night cycle
+      this.collectorGroup = new THREE.Group();
+
       var collector = new THREE.Mesh(collectorGeo, collectorMat);
-      // Rotate so the open face points toward the ring's lit side
       collector.rotation.y = Math.PI / 2;
-      this.megaGroup.add(collector);
+      this.collectorGroup.add(collector);
 
       // Inner surface glow — energy being harvested from the star
       var innerCollGeo = new THREE.SphereGeometry(0.40, 24, 16, 0, Math.PI);
@@ -785,7 +787,7 @@ window.PlanetRenderer = (function () {
       });
       var innerColl = new THREE.Mesh(innerCollGeo, innerCollMat);
       innerColl.rotation.y = Math.PI / 2;
-      this.megaGroup.add(innerColl);
+      this.collectorGroup.add(innerColl);
 
       // Collector rim — bright structural edge where the two halves meet
       var rimGeo = new THREE.TorusGeometry(0.42, 0.006, 8, 64, Math.PI);
@@ -796,7 +798,10 @@ window.PlanetRenderer = (function () {
       var rim = new THREE.Mesh(rimGeo, rimMat);
       rim.rotation.y = Math.PI / 2;
       rim.rotation.x = Math.PI / 2;
-      this.megaGroup.add(rim);
+      this.collectorGroup.add(rim);
+
+      // Match the ring's tilt but NOT its rotation — added to scene directly
+      this.megaGroup.add(this.collectorGroup);
 
       /* ═══ RING STRUCTURE — multi-layer band with terrain textures ═══ */
 
@@ -1571,9 +1576,13 @@ window.PlanetRenderer = (function () {
 
       // ── Megastructure animations ──
 
-      // Ring World — slow rotation
+      // Ring World — ring rotates one way, collector counter-rotates for day/night cycle
       if (this.type === 'Ring World' && this.megaGroup) {
         this.megaGroup.rotation.z += 0.002;
+        // Counter-rotate collector so shadow sweeps across different ring sections
+        if (this.collectorGroup) {
+          this.collectorGroup.rotation.z -= 0.004;
+        }
       }
 
       // Dyson Sphere — lattice rotation + star pulsing
