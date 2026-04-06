@@ -1216,6 +1216,10 @@ window.PlanetRenderer = (function () {
       pctx.putImageData(pData, 0, 0);
       var panelTex = new THREE.CanvasTexture(panelCanvas);
 
+      // Shell group — lattice, conduits, breach, and chunk all rotate together
+      this.dysonShellGroup = new THREE.Group();
+      this.megaGroup.add(this.dysonShellGroup);
+
       // Main lattice structure — high-detail icosahedron with panel texture
       // Breach direction — upper-right area where the chunk broke off
       var breachDir = new THREE.Vector3(0.7, 0.55, 0.45).normalize();
@@ -1243,7 +1247,7 @@ window.PlanetRenderer = (function () {
         side: THREE.DoubleSide,
       });
       this.dysonLattice = new THREE.Mesh(latticeGeo, latticeMat);
-      this.megaGroup.add(this.dysonLattice);
+      this.dysonShellGroup.add(this.dysonLattice);
 
       // Structural edge wireframe overlay — visible lattice skeleton
       var edgeGeo = new THREE.IcosahedronGeometry(1.005, 2);
@@ -1263,7 +1267,7 @@ window.PlanetRenderer = (function () {
         new THREE.EdgesGeometry(edgeGeo),
         new THREE.LineBasicMaterial({ color: 0x88ccff, transparent: true, opacity: 0.5 })
       );
-      this.megaGroup.add(this.dysonConduits);
+      this.dysonShellGroup.add(this.dysonConduits);
 
       // Breach glow — hot stellar light pouring through the gap
       var breachGlowGeo = new THREE.SphereGeometry(0.35, 16, 16);
@@ -1272,7 +1276,7 @@ window.PlanetRenderer = (function () {
       });
       var breachGlow = new THREE.Mesh(breachGlowGeo, breachGlowMat);
       breachGlow.position.copy(breachDir.clone().multiplyScalar(0.85));
-      this.megaGroup.add(breachGlow);
+      this.dysonShellGroup.add(breachGlow);
 
       // Breach edge glow — ragged energy along the torn edge
       var breachRingGeo = new THREE.RingGeometry(0.28, 0.42, 24);
@@ -1283,7 +1287,7 @@ window.PlanetRenderer = (function () {
       var breachRing = new THREE.Mesh(breachRingGeo, breachRingMat);
       breachRing.position.copy(breachDir.clone().multiplyScalar(0.92));
       breachRing.lookAt(0, 0, 0);
-      this.megaGroup.add(breachRing);
+      this.dysonShellGroup.add(breachRing);
 
       console.log('[DYSON] Section 3: Broken chunk');
       /* ═══ BROKEN CHUNK — torn off during the Fracture, drifting nearby ═══ */
@@ -1358,7 +1362,7 @@ window.PlanetRenderer = (function () {
       // Position the chunk drifting near the breach — clearly visible
       this.dysonChunkGroup.position.copy(breachDir.clone().multiplyScalar(1.55));
       this.dysonChunkGroup.rotation.set(0.3, -0.2, 0.15);
-      this.megaGroup.add(this.dysonChunkGroup);
+      this.dysonShellGroup.add(this.dysonChunkGroup);
 
       console.log('[DYSON] Section 4: Rings');
       /* ═══ EQUATORIAL ENERGY RING — power distribution band ═══ */
@@ -1381,17 +1385,17 @@ window.PlanetRenderer = (function () {
         map: eqRingTex, shininess: 40,
         emissive: 0x2244aa, emissiveIntensity: 0.3,
       });
-      this.megaGroup.add(new THREE.Mesh(eqRingGeo, eqRingMat));
+      this.dysonShellGroup.add(new THREE.Mesh(eqRingGeo, eqRingMat));
 
       // Second ring — perpendicular (forms a cross-band)
       var eqRing2 = new THREE.Mesh(eqRingGeo.clone(), eqRingMat.clone());
       eqRing2.rotation.x = Math.PI / 2;
-      this.megaGroup.add(eqRing2);
+      this.dysonShellGroup.add(eqRing2);
 
       // Third ring — 45 degree angle
       var eqRing3 = new THREE.Mesh(eqRingGeo.clone(), eqRingMat.clone());
       eqRing3.rotation.x = Math.PI / 4;
-      this.megaGroup.add(eqRing3);
+      this.dysonShellGroup.add(eqRing3);
 
       console.log('[DYSON] Section 5: Beams');
       /* ═══ ENERGY BEAMS — power being channeled outward ═══ */
@@ -1870,15 +1874,14 @@ window.PlanetRenderer = (function () {
         }
       }
 
-      // Dyson Sphere — lattice rotation + star pulsing + beam flicker
+      // Dyson Sphere — shell rotation + star pulsing + beam flicker
       if (this.type === 'Dyson Sphere') {
-        if (this.dysonLattice) {
-          this.dysonLattice.rotation.y += 0.0008;
-          this.dysonLattice.rotation.x += 0.0004;
+        // Rotate entire shell group (lattice, conduits, breach, chunk, rings) as one unit
+        if (this.dysonShellGroup) {
+          this.dysonShellGroup.rotation.y += 0.0008;
+          this.dysonShellGroup.rotation.x += 0.0004;
         }
         if (this.dysonConduits) {
-          this.dysonConduits.rotation.y += 0.0008;
-          this.dysonConduits.rotation.x += 0.0004;
           this.dysonConduits.material.opacity = 0.35 + Math.sin(t * 2) * 0.2;
         }
         if (this.dysonStar) {
