@@ -1826,15 +1826,18 @@ window.PlanetRenderer = (function () {
         nozz.rotation.z = Math.PI / 2;
         nozz.position.set(-1.72, Math.cos(na) * 0.22, Math.sin(na) * 0.22);
         this.megaGroup.add(nozz);
-        // Faint residual engine glow — still firing at minimum power
-        var glowGeo = new THREE.SphereGeometry(0.03, 6, 6);
-        var glowMat = new THREE.MeshBasicMaterial({
-          color: 0x4466aa, transparent: true, opacity: 0.15,
-        });
-        var glow = new THREE.Mesh(glowGeo, glowMat);
-        glow.position.set(-1.82, Math.cos(na) * 0.22, Math.sin(na) * 0.22);
-        this.megaGroup.add(glow);
-        this.worldshipNozzleGlows.push(glow);
+        // Most nozzles dead — a few still sputtering from locked-on damaged systems
+        var nozzleLive = (ni === 1 || ni === 5); // only 2 of 8 still firing
+        if (nozzleLive) {
+          var glowGeo = new THREE.SphereGeometry(0.03, 6, 6);
+          var glowMat = new THREE.MeshBasicMaterial({
+            color: 0x4466aa, transparent: true, opacity: 0.12,
+          });
+          var glow = new THREE.Mesh(glowGeo, glowMat);
+          glow.position.set(-1.82, Math.cos(na) * 0.22, Math.sin(na) * 0.22);
+          this.megaGroup.add(glow);
+          this.worldshipNozzleGlows.push(glow);
+        }
       }
 
       /* ═══ BOW SECTION — forward observation dome and sensor array ═══ */
