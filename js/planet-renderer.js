@@ -1281,42 +1281,67 @@ window.PlanetRenderer = (function () {
       );
       this.dysonShellGroup.add(this.dysonConduits);
 
-      // Breach glow — hot stellar light pouring through the gap
-      var breachGlowGeo = new THREE.SphereGeometry(0.35, 16, 16);
+      // Breach glow — irregular shape, stellar light pouring through jagged gap
+      var breachGlowGeo = new THREE.IcosahedronGeometry(0.3, 1);
+      // Deform to make it irregular — not a clean sphere
+      var bgPos = breachGlowGeo.attributes.position;
+      for (var bgi2 = 0; bgi2 < bgPos.count; bgi2++) {
+        var bgx = bgPos.getX(bgi2), bgy = bgPos.getY(bgi2), bgz = bgPos.getZ(bgi2);
+        var bgJitter = 0.6 + _dsNoise(bgx * 8, bgy * 8 + bgz * 5) * 0.8;
+        bgPos.setXYZ(bgi2, bgx * bgJitter, bgy * bgJitter, bgz * bgJitter);
+      }
+      bgPos.needsUpdate = true;
       var breachGlowMat = new THREE.MeshBasicMaterial({
-        color: 0xffcc44, transparent: true, opacity: 0.25, depthWrite: false,
+        color: 0xffcc44, transparent: true, opacity: 0.2, depthWrite: false,
       });
       var breachGlow = new THREE.Mesh(breachGlowGeo, breachGlowMat);
       breachGlow.position.copy(breachDir.clone().multiplyScalar(0.85));
       this.dysonShellGroup.add(breachGlow);
 
-      // Breach edge glow — ragged energy along the torn edge
-      var breachRingGeo = new THREE.RingGeometry(0.28, 0.42, 24);
-      var breachRingMat = new THREE.MeshBasicMaterial({
-        color: 0xff8833, transparent: true, opacity: 0.15,
-        side: THREE.DoubleSide, depthWrite: false,
-      });
-      var breachRing = new THREE.Mesh(breachRingGeo, breachRingMat);
-      breachRing.position.copy(breachDir.clone().multiplyScalar(0.92));
-      breachRing.lookAt(0, 0, 0);
-      this.dysonShellGroup.add(breachRing);
+      // Torn edge sparks — scattered small glows along the jagged rim
+      for (var tei = 0; tei < 8; tei++) {
+        var teAngle = Math.random() * Math.PI * 2;
+        var teR = 0.15 + Math.random() * 0.2;
+        var teGeo = new THREE.SphereGeometry(0.015 + Math.random() * 0.02, 4, 4);
+        var teMat = new THREE.MeshBasicMaterial({
+          color: Math.random() > 0.5 ? 0xff8833 : 0xffcc44, transparent: true, opacity: 0.1 + Math.random() * 0.1, depthWrite: false,
+        });
+        var teMesh = new THREE.Mesh(teGeo, teMat);
+        var teBase = breachDir.clone().multiplyScalar(0.92);
+        // Offset along a plane perpendicular to breach direction
+        var teUp = new THREE.Vector3(0, 1, 0);
+        var teRight = new THREE.Vector3().crossVectors(breachDir, teUp).normalize();
+        teUp.crossVectors(teRight, breachDir).normalize();
+        teMesh.position.copy(teBase.clone()
+          .add(teRight.clone().multiplyScalar(Math.cos(teAngle) * teR))
+          .add(teUp.clone().multiplyScalar(Math.sin(teAngle) * teR)));
+        this.dysonShellGroup.add(teMesh);
+      }
 
       console.log('[DYSON] Section 3: Broken chunk');
-      /* ═══ BROKEN CHUNK — torn off during the Fracture, drifting nearby ═══ */
+      /* ═══ BROKEN CHUNK — jagged shard ripped from the structure ═══ */
       this.dysonChunkGroup = new THREE.Group();
 
-      // Main chunk — a larger curved shell fragment
-      var chunkGeo = new THREE.IcosahedronGeometry(0.38, 2);
-      // Flatten into a shell-like curved plate
+      // Main chunk — irregular jagged shell fragment, not a smooth plate
+      var chunkGeo = new THREE.IcosahedronGeometry(0.35, 2);
       var chunkPositions = chunkGeo.attributes.position;
       for (var cvi = 0; cvi < chunkPositions.count; cvi++) {
         var cx = chunkPositions.getX(cvi);
         var cy = chunkPositions.getY(cvi);
         var cz = chunkPositions.getZ(cvi);
-        chunkPositions.setZ(cvi, cz * 0.18);
-        // Slight curl to make it look like a torn shell piece
+        // Flatten but with jagged noise — not uniform thickness
+        var flatNoise = _dsNoise(cx * 10, cy * 10) * 0.12;
+        chunkPositions.setZ(cvi, cz * (0.12 + flatNoise));
+        // Curl + jagged edges — noise-based distortion
         var dist = Math.sqrt(cx * cx + cy * cy);
-        chunkPositions.setZ(cvi, cz * 0.18 + dist * 0.15);
+        var edgeJag = _dsNoise(cx * 6 + 3, cy * 6 + 7) * 0.15;
+        chunkPositions.setZ(cvi, cz * (0.12 + flatNoise) + dist * 0.12 + edgeJag);
+        // Roughen outer edges — push some vertices outward/inward randomly
+        if (dist > 0.25) {
+          var jag = (_dsNoise(cx * 12, cy * 12) - 0.5) * 0.12;
+          chunkPositions.setX(cvi, cx + cx * jag);
+          chunkPositions.setY(cvi, cy + cy * jag);
+        }
       }
       chunkPositions.needsUpdate = true;
       chunkGeo.computeVertexNormals();
