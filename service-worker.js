@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v218';
+const CACHE_NAME = 'aoc-gdd-v219';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -138,7 +138,7 @@ const PRECACHE_URLS = [
   '/js/glossary.js',
   '/js/icon-renderer.js',
   '/js/nav.js',
-  '/js/planet-renderer.js',
+  '/js/planet-renderer-v2.js',
   '/js/planet-textures.js',
   '/js/search.js',
   '/js/solar-system.js',
