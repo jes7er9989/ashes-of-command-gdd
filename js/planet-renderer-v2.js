@@ -1217,7 +1217,26 @@ window.PlanetRenderer = (function () {
       var panelTex = new THREE.CanvasTexture(panelCanvas);
 
       // Main lattice structure — high-detail icosahedron with panel texture
-      var latticeGeo = new THREE.IcosahedronGeometry(1.0, 2);
+      // Breach direction — upper-right area where the chunk broke off
+      var breachDir = new THREE.Vector3(0.7, 0.55, 0.45).normalize();
+      var breachAngle = 0.42; // radial angle of the breach zone
+
+      var latticeGeo = new THREE.IcosahedronGeometry(1.0, 3);
+      // Push vertices inward in the breach zone to create a visible hole
+      var lPos = latticeGeo.attributes.position;
+      for (var lvi = 0; lvi < lPos.count; lvi++) {
+        var vx = lPos.getX(lvi), vy = lPos.getY(lvi), vz = lPos.getZ(lvi);
+        var vDir = new THREE.Vector3(vx, vy, vz).normalize();
+        var angleToBreach = vDir.angleTo(breachDir);
+        if (angleToBreach < breachAngle) {
+          // Push inward — collapse these vertices toward center
+          var collapseF = 1 - Math.pow(1 - angleToBreach / breachAngle, 2);
+          lPos.setXYZ(lvi, vx * (0.15 + 0.85 * collapseF), vy * (0.15 + 0.85 * collapseF), vz * (0.15 + 0.85 * collapseF));
+        }
+      }
+      lPos.needsUpdate = true;
+      latticeGeo.computeVertexNormals();
+
       var latticeMat = new THREE.MeshPhongMaterial({
         map: panelTex, shininess: 50,
         emissive: 0x0a1520, emissiveIntensity: 0.2,
@@ -1227,32 +1246,61 @@ window.PlanetRenderer = (function () {
       this.megaGroup.add(this.dysonLattice);
 
       // Structural edge wireframe overlay — visible lattice skeleton
-      var edgeGeo = new THREE.IcosahedronGeometry(1.005, 1);
+      var edgeGeo = new THREE.IcosahedronGeometry(1.005, 2);
+      // Apply same breach deformation to wireframe
+      var ePos = edgeGeo.attributes.position;
+      for (var evi = 0; evi < ePos.count; evi++) {
+        var evx = ePos.getX(evi), evy = ePos.getY(evi), evz = ePos.getZ(evi);
+        var evDir = new THREE.Vector3(evx, evy, evz).normalize();
+        var eAngle = evDir.angleTo(breachDir);
+        if (eAngle < breachAngle) {
+          var ecF = 1 - Math.pow(1 - eAngle / breachAngle, 2);
+          ePos.setXYZ(evi, evx * (0.15 + 0.85 * ecF), evy * (0.15 + 0.85 * ecF), evz * (0.15 + 0.85 * ecF));
+        }
+      }
+      ePos.needsUpdate = true;
       this.dysonConduits = new THREE.LineSegments(
         new THREE.EdgesGeometry(edgeGeo),
         new THREE.LineBasicMaterial({ color: 0x88ccff, transparent: true, opacity: 0.5 })
       );
       this.megaGroup.add(this.dysonConduits);
 
-      // Gaps in the shell — semi-transparent areas where panels are missing/damaged
-      var gapGeo = new THREE.IcosahedronGeometry(1.01, 1);
-      var gapMat = new THREE.MeshBasicMaterial({
-        color: 0xffcc66, transparent: true, opacity: 0.06,
-        side: THREE.BackSide, depthWrite: false,
+      // Breach glow — hot stellar light pouring through the gap
+      var breachGlowGeo = new THREE.SphereGeometry(0.35, 16, 16);
+      var breachGlowMat = new THREE.MeshBasicMaterial({
+        color: 0xffcc44, transparent: true, opacity: 0.25, depthWrite: false,
       });
-      this.megaGroup.add(new THREE.Mesh(gapGeo, gapMat));
+      var breachGlow = new THREE.Mesh(breachGlowGeo, breachGlowMat);
+      breachGlow.position.copy(breachDir.clone().multiplyScalar(0.85));
+      this.megaGroup.add(breachGlow);
+
+      // Breach edge glow — ragged energy along the torn edge
+      var breachRingGeo = new THREE.RingGeometry(0.28, 0.42, 24);
+      var breachRingMat = new THREE.MeshBasicMaterial({
+        color: 0xff8833, transparent: true, opacity: 0.15,
+        side: THREE.DoubleSide, depthWrite: false,
+      });
+      var breachRing = new THREE.Mesh(breachRingGeo, breachRingMat);
+      breachRing.position.copy(breachDir.clone().multiplyScalar(0.92));
+      breachRing.lookAt(0, 0, 0);
+      this.megaGroup.add(breachRing);
 
       console.log('[DYSON] Section 3: Broken chunk');
       /* ═══ BROKEN CHUNK — torn off during the Fracture, drifting nearby ═══ */
       this.dysonChunkGroup = new THREE.Group();
 
-      // Main chunk — a wedge of the shell
-      var chunkGeo = new THREE.IcosahedronGeometry(0.28, 1);
-      // Flatten it into a curved shard shape
+      // Main chunk — a larger curved shell fragment
+      var chunkGeo = new THREE.IcosahedronGeometry(0.38, 2);
+      // Flatten into a shell-like curved plate
       var chunkPositions = chunkGeo.attributes.position;
       for (var cvi = 0; cvi < chunkPositions.count; cvi++) {
+        var cx = chunkPositions.getX(cvi);
+        var cy = chunkPositions.getY(cvi);
         var cz = chunkPositions.getZ(cvi);
-        chunkPositions.setZ(cvi, cz * 0.25); // flatten into a shell-like piece
+        chunkPositions.setZ(cvi, cz * 0.18);
+        // Slight curl to make it look like a torn shell piece
+        var dist = Math.sqrt(cx * cx + cy * cy);
+        chunkPositions.setZ(cvi, cz * 0.18 + dist * 0.15);
       }
       chunkPositions.needsUpdate = true;
       chunkGeo.computeVertexNormals();
@@ -1268,44 +1316,47 @@ window.PlanetRenderer = (function () {
       // Chunk edge wireframe — exposed structural skeleton
       var chunkEdge = new THREE.LineSegments(
         new THREE.EdgesGeometry(chunkGeo),
-        new THREE.LineBasicMaterial({ color: 0x88ccff, transparent: true, opacity: 0.3 })
+        new THREE.LineBasicMaterial({ color: 0x88ccff, transparent: true, opacity: 0.4 })
       );
       this.dysonChunkGroup.add(chunkEdge);
 
-      // Sparking conduit on the broken edge — flickering energy leak
-      var sparkGeo = new THREE.SphereGeometry(0.015, 6, 6);
+      // Sparking conduits on the broken edge — flickering energy leaks
+      var sparkGeo = new THREE.SphereGeometry(0.025, 8, 8);
       var sparkMat = new THREE.MeshBasicMaterial({
-        color: 0x88ccff, transparent: true, opacity: 0.6,
+        color: 0x88ddff, transparent: true, opacity: 0.7,
       });
       this.dysonSpark = new THREE.Mesh(sparkGeo, sparkMat);
-      this.dysonSpark.position.set(0.12, -0.08, 0.04);
+      this.dysonSpark.position.set(0.18, -0.1, 0.06);
       this.dysonChunkGroup.add(this.dysonSpark);
 
-      // Second spark
       var spark2 = new THREE.Mesh(sparkGeo.clone(), sparkMat.clone());
-      spark2.position.set(-0.1, 0.06, -0.02);
+      spark2.position.set(-0.15, 0.1, -0.03);
       this.dysonChunkGroup.add(spark2);
       this.dysonSpark2 = spark2;
 
-      // Small debris fragments around the chunk
-      for (var dfi = 0; dfi < 8; dfi++) {
-        var fragGeo = new THREE.TetrahedronGeometry(0.01 + Math.random() * 0.015, 0);
+      var spark3 = new THREE.Mesh(sparkGeo.clone(), sparkMat.clone());
+      spark3.position.set(0.05, 0.2, 0.05);
+      this.dysonChunkGroup.add(spark3);
+
+      // Debris fragments trailing the chunk
+      for (var dfi = 0; dfi < 12; dfi++) {
+        var fragGeo = new THREE.TetrahedronGeometry(0.012 + Math.random() * 0.02, 0);
         var fragMat = new THREE.MeshPhongMaterial({
           color: 0x556677, shininess: 30,
           emissive: 0x112233, emissiveIntensity: 0.1,
         });
         var frag = new THREE.Mesh(fragGeo, fragMat);
         frag.position.set(
-          (Math.random() - 0.5) * 0.4,
-          (Math.random() - 0.5) * 0.3,
-          (Math.random() - 0.5) * 0.15
+          (Math.random() - 0.5) * 0.6,
+          (Math.random() - 0.5) * 0.5,
+          (Math.random() - 0.5) * 0.2
         );
         frag.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
         this.dysonChunkGroup.add(frag);
       }
 
-      // Position the chunk drifting away from the sphere
-      this.dysonChunkGroup.position.set(1.35, -0.5, 0.3);
+      // Position the chunk drifting near the breach — clearly visible
+      this.dysonChunkGroup.position.copy(breachDir.clone().multiplyScalar(1.55));
       this.dysonChunkGroup.rotation.set(0.3, -0.2, 0.15);
       this.megaGroup.add(this.dysonChunkGroup);
 
