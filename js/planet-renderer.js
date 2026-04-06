@@ -2225,42 +2225,51 @@ window.PlanetRenderer = (function () {
       // Energy conduit glow ring — pulsing blue around the structure
       var conduitGeo = new THREE.TorusGeometry(1.0, 0.12, 6, 96);
       this.warpConduitMat = new THREE.MeshBasicMaterial({
-        color: 0x3388cc, transparent: true, opacity: 0.06, side: THREE.DoubleSide, depthWrite: false,
+        color: 0x6633aa, transparent: true, opacity: 0.06, side: THREE.DoubleSide, depthWrite: false,
       });
       this.megaGroup.add(new THREE.Mesh(conduitGeo, this.warpConduitMat));
 
-      /* ═══ WARP FIELD — the folded space-time portal ═══ */
-      // Primary field — rippling distortion disc
-      var fieldGeo = new THREE.CircleGeometry(0.86, 64);
+      /* ═══ WARP FIELD — black void center with swirling purple energy ═══ */
+      // Dark void core — the black hole center where light doesn't come back
+      var voidGeo = new THREE.CircleGeometry(0.45, 48);
+      var voidMat = new THREE.MeshBasicMaterial({
+        color: 0x020005, side: THREE.DoubleSide,
+      });
+      var voidCenter = new THREE.Mesh(voidGeo, voidMat);
+      voidCenter.position.z = -0.01;
+      this.megaGroup.add(voidCenter);
+
+      // Outer swirling purple band — slow rotation
+      var fieldGeo = new THREE.RingGeometry(0.4, 0.86, 64);
       this.warpFieldMat = new THREE.MeshBasicMaterial({
-        color: 0x4499dd, transparent: true, opacity: 0.15,
+        color: 0x7733aa, transparent: true, opacity: 0.18,
         side: THREE.DoubleSide, depthWrite: false,
       });
       this.warpField = new THREE.Mesh(fieldGeo, this.warpFieldMat);
       this.megaGroup.add(this.warpField);
 
-      // Secondary field layer — deeper, shifted
-      var field2Geo = new THREE.CircleGeometry(0.78, 64);
+      // Middle swirling band — faster counter-rotation, deeper purple
+      var field2Geo = new THREE.RingGeometry(0.3, 0.65, 48);
       this.warpField2Mat = new THREE.MeshBasicMaterial({
-        color: 0x66bbff, transparent: true, opacity: 0.08,
+        color: 0x9944cc, transparent: true, opacity: 0.12,
         side: THREE.DoubleSide, depthWrite: false,
       });
       this.warpField2 = new THREE.Mesh(field2Geo, this.warpField2Mat);
-      this.warpField2.position.z = 0.03;
+      this.warpField2.position.z = 0.01;
       this.megaGroup.add(this.warpField2);
 
-      // Innermost field — bright core of the warp tunnel
-      var field3Geo = new THREE.CircleGeometry(0.5, 48);
+      // Inner band — bright violet at the edge of the void
+      var field3Geo = new THREE.RingGeometry(0.2, 0.42, 48);
       this.warpField3Mat = new THREE.MeshBasicMaterial({
-        color: 0xaaddff, transparent: true, opacity: 0.04,
+        color: 0xbb66ee, transparent: true, opacity: 0.08,
         side: THREE.DoubleSide, depthWrite: false,
       });
       this.warpField3 = new THREE.Mesh(field3Geo, this.warpField3Mat);
-      this.warpField3.position.z = -0.02;
+      this.warpField3.position.z = -0.005;
       this.megaGroup.add(this.warpField3);
 
-      // Central warp glow — light pouring from folded space
-      this.warpGlow = new THREE.PointLight(0x4499dd, 0.8, 5);
+      // Purple glow cast from the portal
+      this.warpGlow = new THREE.PointLight(0x7733aa, 0.7, 5);
       this.megaGroup.add(this.warpGlow);
 
       /* ═══ 6 ANCHOR PYLONS — Aethyn crystalline stations stabilizing the gate ═══ */
@@ -2322,7 +2331,7 @@ window.PlanetRenderer = (function () {
         var esR = 1.0;
         var esGeo = new THREE.SphereGeometry(0.015, 4, 4);
         var esMat = new THREE.MeshBasicMaterial({
-          color: 0x55aaff, transparent: true, opacity: 0.3, depthWrite: false,
+          color: 0x8844cc, transparent: true, opacity: 0.3, depthWrite: false,
         });
         var es = new THREE.Mesh(esGeo, esMat);
         es.position.set(Math.cos(esAngle) * esR, Math.sin(esAngle) * esR, 0);
@@ -2341,9 +2350,9 @@ window.PlanetRenderer = (function () {
         pPositions[wpi2 * 3 + 1] = Math.sin(wpAngle) * wpR;
         pPositions[wpi2 * 3 + 2] = wpZ;
         var isWarp = wpR < 0.8;
-        pColors[wpi2 * 3] = isWarp ? 0.3 : 0.5;
-        pColors[wpi2 * 3 + 1] = isWarp ? 0.6 : 0.7;
-        pColors[wpi2 * 3 + 2] = isWarp ? 1.0 : 0.9;
+        pColors[wpi2 * 3] = isWarp ? 0.5 : 0.4;
+        pColors[wpi2 * 3 + 1] = isWarp ? 0.2 : 0.3;
+        pColors[wpi2 * 3 + 2] = isWarp ? 0.8 : 0.7;
       }
       var ptGeo = new THREE.BufferGeometry();
       ptGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
