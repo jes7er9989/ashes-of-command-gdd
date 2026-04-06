@@ -1229,16 +1229,21 @@ window.PlanetRenderer = (function () {
       var breachAngle = 0.42; // radial angle of the breach zone
 
       var latticeGeo = new THREE.IcosahedronGeometry(1.0, 3);
-      // Push vertices inward in the breach zone to create a visible hole
+      // Rip vertices inward in the breach zone — jagged, rough tear not a clean circle
       var lPos = latticeGeo.attributes.position;
       for (var lvi = 0; lvi < lPos.count; lvi++) {
         var vx = lPos.getX(lvi), vy = lPos.getY(lvi), vz = lPos.getZ(lvi);
         var vDir = new THREE.Vector3(vx, vy, vz).normalize();
         var angleToBreach = vDir.angleTo(breachDir);
-        if (angleToBreach < breachAngle) {
-          // Push inward — collapse these vertices toward center
-          var collapseF = 1 - Math.pow(1 - angleToBreach / breachAngle, 2);
-          lPos.setXYZ(lvi, vx * (0.15 + 0.85 * collapseF), vy * (0.15 + 0.85 * collapseF), vz * (0.15 + 0.85 * collapseF));
+        // Jagged edge — use noise to make the breach boundary irregular
+        var edgeNoise = _dsNoise(vx * 8, vy * 8 + vz * 5) * 0.18 + _dsNoise(vx * 15, vz * 12) * 0.08;
+        var jaggedAngle = breachAngle + edgeNoise - 0.09;
+        if (angleToBreach < jaggedAngle) {
+          // Torn inward — varying depth for rough, uneven collapse
+          var tearDepth = _dsNoise(vx * 12 + 3, vz * 12 + 7) * 0.3 + 0.1;
+          var collapseF = 1 - Math.pow(1 - angleToBreach / jaggedAngle, 1.5);
+          var scale = tearDepth + (1 - tearDepth) * collapseF;
+          lPos.setXYZ(lvi, vx * scale, vy * scale, vz * scale);
         }
       }
       lPos.needsUpdate = true;
@@ -1254,15 +1259,19 @@ window.PlanetRenderer = (function () {
 
       // Structural edge wireframe overlay — visible lattice skeleton
       var edgeGeo = new THREE.IcosahedronGeometry(1.005, 2);
-      // Apply same breach deformation to wireframe
+      // Apply same jagged breach deformation to wireframe
       var ePos = edgeGeo.attributes.position;
       for (var evi = 0; evi < ePos.count; evi++) {
         var evx = ePos.getX(evi), evy = ePos.getY(evi), evz = ePos.getZ(evi);
         var evDir = new THREE.Vector3(evx, evy, evz).normalize();
         var eAngle = evDir.angleTo(breachDir);
-        if (eAngle < breachAngle) {
-          var ecF = 1 - Math.pow(1 - eAngle / breachAngle, 2);
-          ePos.setXYZ(evi, evx * (0.15 + 0.85 * ecF), evy * (0.15 + 0.85 * ecF), evz * (0.15 + 0.85 * ecF));
+        var eNoise = _dsNoise(evx * 8, evy * 8 + evz * 5) * 0.18 + _dsNoise(evx * 15, evz * 12) * 0.08;
+        var eJaggedAngle = breachAngle + eNoise - 0.09;
+        if (eAngle < eJaggedAngle) {
+          var eTearDepth = _dsNoise(evx * 12 + 3, evz * 12 + 7) * 0.3 + 0.1;
+          var ecF = 1 - Math.pow(1 - eAngle / eJaggedAngle, 1.5);
+          var eScale = eTearDepth + (1 - eTearDepth) * ecF;
+          ePos.setXYZ(evi, evx * eScale, evy * eScale, evz * eScale);
         }
       }
       ePos.needsUpdate = true;
