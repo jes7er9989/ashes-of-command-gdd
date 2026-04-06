@@ -685,111 +685,116 @@ window.PlanetRenderer = (function () {
     _ringWorld() {
       // Warm golden sunlight from the artificial star
       this.sun.color.set(0xfff8d0);
-      this.sun.intensity = 1.2;
+      this.sun.intensity = 1.0;
       this.sun.position.set(0, 0, 5);
       this.fill.color.set(0x886633);
-      this.fill.intensity = 0.25;
-      this.ambient.intensity = 0.35;
+      this.fill.intensity = 0.2;
+      this.ambient.intensity = 0.3;
 
       this.megaGroup = new THREE.Group();
 
       /* ── Artificial micro-star at the center ── */
-      var starGeo = new THREE.SphereGeometry(0.15, 32, 32);
-      var starMat = new THREE.MeshBasicMaterial({
-        color: 0xffeebb,
-      });
-      var star = new THREE.Mesh(starGeo, starMat);
-      this.megaGroup.add(star);
+      var starGeo = new THREE.SphereGeometry(0.12, 32, 32);
+      var starMat = new THREE.MeshBasicMaterial({ color: 0xfff4dd });
+      this.megaGroup.add(new THREE.Mesh(starGeo, starMat));
 
-      // Star corona glow — inner
-      var coronaGeo1 = new THREE.SphereGeometry(0.22, 24, 24);
-      var coronaMat1 = new THREE.MeshBasicMaterial({
-        color: 0xffdd88, transparent: true, opacity: 0.25,
-        depthWrite: false,
-      });
-      this.megaGroup.add(new THREE.Mesh(coronaGeo1, coronaMat1));
+      // Star corona layers
+      var coronaSizes = [0.18, 0.26, 0.36];
+      var coronaOpacities = [0.3, 0.15, 0.06];
+      var coronaColors = [0xffdd88, 0xffcc66, 0xffaa44];
+      for (var ci = 0; ci < 3; ci++) {
+        var cGeo = new THREE.SphereGeometry(coronaSizes[ci], 24, 24);
+        var cMat = new THREE.MeshBasicMaterial({
+          color: coronaColors[ci], transparent: true, opacity: coronaOpacities[ci],
+          depthWrite: false,
+        });
+        this.megaGroup.add(new THREE.Mesh(cGeo, cMat));
+      }
 
-      // Star corona glow — outer
-      var coronaGeo2 = new THREE.SphereGeometry(0.32, 24, 24);
-      var coronaMat2 = new THREE.MeshBasicMaterial({
-        color: 0xffaa44, transparent: true, opacity: 0.1,
-        depthWrite: false,
-      });
-      this.megaGroup.add(new THREE.Mesh(coronaGeo2, coronaMat2));
-
-      // Point light from the artificial star illuminating the ring interior
-      var starLight = new THREE.PointLight(0xffeedd, 0.8, 4);
-      starLight.position.set(0, 0, 0);
+      // Point light from artificial star
+      var starLight = new THREE.PointLight(0xffeedd, 0.9, 4);
       this.megaGroup.add(starLight);
 
-      /* ── Main ring body — outer metallic hull ── */
-      var ringGeo = new THREE.TorusGeometry(1.0, 0.13, 32, 128);
+      /* ── Ring band — procedural biome texture on a flat torus ── */
+      var bandCanvas = document.createElement('canvas');
+      bandCanvas.width = 1024;
+      bandCanvas.height = 64;
+      var bctx = bandCanvas.getContext('2d');
+
+      // Paint biome strips along the ring circumference
+      var biomes = [
+        { color: '#226699', len: 0.10 },  // deep ocean
+        { color: '#44aa55', len: 0.08 },  // forest
+        { color: '#66bb44', len: 0.06 },  // grassland
+        { color: '#ccaa33', len: 0.09 },  // desert
+        { color: '#44aa55', len: 0.07 },  // forest
+        { color: '#1166cc', len: 0.11 },  // ocean
+        { color: '#338833', len: 0.08 },  // jungle
+        { color: '#cc7733', len: 0.06 },  // arid
+        { color: '#44aa55', len: 0.07 },  // forest
+        { color: '#2277aa', len: 0.09 },  // ocean
+        { color: '#99bb44', len: 0.06 },  // plains
+        { color: '#226699', len: 0.08 },  // deep ocean
+        { color: '#555555', len: 0.05 },  // dead section (failed)
+      ];
+      var bx = 0;
+      for (var bi = 0; bi < biomes.length; bi++) {
+        var bw = biomes[bi].len * bandCanvas.width;
+        bctx.fillStyle = biomes[bi].color;
+        bctx.fillRect(bx, 0, bw, bandCanvas.height);
+        // Energy barrier shimmer line between biomes
+        bctx.fillStyle = 'rgba(136,204,255,0.4)';
+        bctx.fillRect(bx, 0, 1.5, bandCanvas.height);
+        bx += bw;
+      }
+      // Fill remainder
+      bctx.fillStyle = '#44aa55';
+      bctx.fillRect(bx, 0, bandCanvas.width - bx, bandCanvas.height);
+
+      // Outer hull edge lines (metallic rim on top and bottom of band)
+      bctx.fillStyle = '#667788';
+      bctx.fillRect(0, 0, bandCanvas.width, 6);
+      bctx.fillRect(0, bandCanvas.height - 6, bandCanvas.width, 6);
+
+      var bandTex = new THREE.CanvasTexture(bandCanvas);
+      bandTex.wrapS = THREE.RepeatWrapping;
+
+      // The ring — flat band (small tube radius)
+      var ringGeo = new THREE.TorusGeometry(1.0, 0.06, 16, 200);
       var ringMat = new THREE.MeshPhongMaterial({
-        color: 0x778899, shininess: 60,
-        emissive: 0x0a0a0f, emissiveIntensity: 0.15,
+        map: bandTex,
+        shininess: 30,
+        emissive: 0x222211,
+        emissiveIntensity: 0.15,
       });
       var ring = new THREE.Mesh(ringGeo, ringMat);
       this.megaGroup.add(ring);
 
-      /* ── Inner habitable surface — biome strips ── */
-      var innerGeo = new THREE.TorusGeometry(1.0, 0.12, 32, 128);
-      var innerMat = new THREE.MeshPhongMaterial({
-        color: 0x446633, shininess: 10,
-        emissive: 0x334422, emissiveIntensity: 0.3,
-        side: THREE.BackSide,
-      });
-      var inner = new THREE.Mesh(innerGeo, innerMat);
-      this.megaGroup.add(inner);
-
-      /* ── Biome strip highlights — vivid colored bands ── */
-      var biomeColors = [0x1155cc, 0x33bb33, 0xccaa33, 0x33bb33, 0x1155cc, 0xcc6633, 0x33bb33, 0x1155cc];
-      for (var bi = 0; bi < biomeColors.length; bi++) {
-        var bandAngle = (bi / biomeColors.length) * Math.PI * 2;
-        var bandGeo = new THREE.TorusGeometry(1.0, 0.028, 8, 16);
-        var bandMat = new THREE.MeshPhongMaterial({
-          color: biomeColors[bi], transparent: true, opacity: 0.45,
-          emissive: biomeColors[bi], emissiveIntensity: 0.25,
-        });
-        var band = new THREE.Mesh(bandGeo, bandMat);
-        band.rotation.x = bandAngle;
-        this.megaGroup.add(band);
-      }
-
-      /* ── Energy barriers — shimmering atmospheric membranes between biomes ── */
-      for (var wi = 0; wi < 10; wi++) {
-        var wallAngle = (wi / 10) * Math.PI * 2;
-        var barrierGeo = new THREE.TorusGeometry(1.0, 0.005, 4, 64);
-        var barrierMat = new THREE.MeshBasicMaterial({
-          color: 0x88ccff, transparent: true, opacity: 0.12 + Math.random() * 0.08,
-          depthWrite: false,
-        });
-        var barrier = new THREE.Mesh(barrierGeo, barrierMat);
-        barrier.rotation.x = wallAngle;
-        this.megaGroup.add(barrier);
-      }
-
-      /* ── Docking spines at rim edges ── */
-      for (var di = 0; di < 6; di++) {
-        var dockAngle = (di / 6) * Math.PI * 2;
-        var spineGeo = new THREE.CylinderGeometry(0.004, 0.002, 0.08, 4);
-        var spineMat = new THREE.MeshPhongMaterial({ color: 0x99aabb, shininess: 40 });
-        var spine = new THREE.Mesh(spineGeo, spineMat);
-        spine.position.set(Math.cos(dockAngle) * 1.0, Math.sin(dockAngle) * 1.0, 0.14);
-        spine.rotation.z = dockAngle;
-        this.megaGroup.add(spine);
-      }
-
-      /* ── Inner surface glow — starlight reflecting off habitat ── */
-      var glowGeo = new THREE.TorusGeometry(1.0, 0.15, 16, 64);
+      // Subtle inner glow from starlight hitting the habitat surface
+      var glowGeo = new THREE.TorusGeometry(1.0, 0.065, 12, 100);
       var glowMat = new THREE.MeshBasicMaterial({
-        color: 0xbbdd88, transparent: true, opacity: 0.05,
+        color: 0xddeeaa, transparent: true, opacity: 0.04,
         side: THREE.DoubleSide, depthWrite: false,
       });
       this.megaGroup.add(new THREE.Mesh(glowGeo, glowMat));
 
-      // Tilt for better viewing angle
-      this.megaGroup.rotation.x = 0.5;
-      this.megaGroup.rotation.y = 0.3;
+      /* ── Docking spines / transit stations at rim ── */
+      for (var di = 0; di < 8; di++) {
+        var dAngle = (di / 8) * Math.PI * 2;
+        var spGeo = new THREE.BoxGeometry(0.015, 0.005, 0.005);
+        var spMat = new THREE.MeshPhongMaterial({
+          color: 0x99aabb, shininess: 40,
+          emissive: 0x334455, emissiveIntensity: 0.1,
+        });
+        var sp = new THREE.Mesh(spGeo, spMat);
+        sp.position.set(Math.cos(dAngle) * 1.07, Math.sin(dAngle) * 1.07, 0);
+        sp.rotation.z = dAngle;
+        this.megaGroup.add(sp);
+      }
+
+      // Tilt for better viewing angle — show the ring as a band in space
+      this.megaGroup.rotation.x = 0.65;
+      this.megaGroup.rotation.y = 0.2;
       this.scene.add(this.megaGroup);
       this.planet = this.megaGroup;
     }
