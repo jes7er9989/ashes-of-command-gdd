@@ -111,8 +111,9 @@ class SolarSystemRenderer {
     this._initMouseControls();
     this._updateCameraPosition();
 
-    // Bind resize handler
+    // Bind resize handler and tick
     this._boundResize = this._onResize.bind(this);
+    this._boundTick = this._animate.bind(this);
     window.addEventListener('resize', this._boundResize);
   }
 
@@ -630,7 +631,7 @@ class SolarSystemRenderer {
    * hover highlights, and renders the scene.
    */
   _animate() {
-    this.animationId = requestAnimationFrame(this._animate.bind(this));
+    this.animationId = requestAnimationFrame(this._boundTick);
 
     /* Reduced motion: throttle to ~15fps */
     if (this._prefersReducedMotion) {
@@ -723,7 +724,7 @@ class SolarSystemRenderer {
   start() {
     if (this.animationId) return;  // already running
     this.clock.start();
-    this._animate();
+    this._boundTick();
   }
 
   /**

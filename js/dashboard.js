@@ -24,9 +24,7 @@
    ═══════════════════════════════════════════════════════════
    render(container)              | Main entry �" builds full dashboard
    buildHero()                    | Full-viewport hero with starfield
-   buildEpigraph()                | Removed � absorbed into prologue
    buildGameDescription()         | State of the Galaxy prologue + rotating quotes
-   buildStrategistQuote()         | Removed � already in Hero
    buildByTheNumbers()            | Project Scope �" 6 stat cards
    buildCanvasGalaxyContainer()   | Mount for Canvas 2D galaxy (canvas-galaxy.js)
    buildCanvasSolarContainer()    | Mount for Three.js solar system (solar-system.js)
@@ -131,7 +129,6 @@ const Dashboard = {
 
       view.innerHTML =
         this.buildHero() +
-        this.buildEpigraph() +
         this.buildGenreFusion() +
         this.buildExperienceStatement() +
         this.buildGameDescription() +
@@ -195,7 +192,7 @@ const Dashboard = {
             <button class="hero-cta-btn hero-cta-primary" onclick="document.getElementById('dashboard-view').querySelector('.dashboard-section').scrollIntoView({behavior:'smooth'})">Explore the GDD</button>
             <button class="hero-cta-btn hero-cta-secondary" onclick="document.querySelector('.faction-section').scrollIntoView({behavior:'smooth'})">Meet the Factions</button>
             <button class="hero-cta-btn hero-cta-secondary" onclick="document.getElementById('canvas-galaxy-mount').scrollIntoView({behavior:'smooth'})">View the Galaxy</button>
-            <button class="hero-cta-btn hero-cta-install" id="pwa-install-btn" disabled onclick="window._pwaInstallPrompt && window._pwaInstallPrompt.prompt()">Install App</button>
+            <button class="hero-cta-btn hero-cta-install" id="pwa-install-btn" disabled onclick="if(window._pwaInstallPrompt){var p=window._pwaInstallPrompt;p.prompt();p.userChoice.then(function(c){window._pwaInstallPrompt=null;var b=document.getElementById('pwa-install-btn');if(b){b.disabled=true;b.textContent=c.outcome==='accepted'?'Installed':'Install App'}})}">Install App</button>
           </div>
         </div>
         <div class="hero-scroll-indicator" id="hero-scroll-indicator">
@@ -211,22 +208,7 @@ const Dashboard = {
    * Build the epigraph quote �" Unity Accord founding principles.
    * @returns {string} HTML string
    */
-  /* -- Epigraph -- Rotating multi-faction thematic quotes with context */
 
-  EPIGRAPH_QUOTES: [
-    { text: 'The species that cannot share power will not survive to exercise it. Unity is not compromise \u2014 it is multiplication.', source: 'The Covenant Text \u2014 Unity Accord Founding Principles' },
-    { text: 'A wave of energy blasted from the Core \u2014 ripping apart everything at the molecular level. One wave. One moment. Everything changed.', source: 'The Fracture \u2014 Ch. 3' },
-    { text: 'They adapted to our weapons in three engagements. We ran out of weapons in five.', source: 'Terran After-Action Report \u2014 Vorax Contact' },
-    { text: 'Every faction believes they are indigenous to their homeworld. The truth rewriting identity is the moment the player realizes these warring peoples are family.', source: 'The Buried Truth \u2014 Ch. 3' },
-    { text: 'Death resets in-run progress. Blueprints, resources, lore persist across runs through the Archive. Veteran players always feel experience translating into power.', source: 'Rogue-Lite Meta-Progression \u2014 Ch. 1' },
-    { text: 'Hour 1 \u2014 Captain. Hour 10 \u2014 Admiral. Hour 20 \u2014 Emperor. The emotional arc: learning, mastery, delegation, trust, consequence.', source: 'The Experience Statement \u2014 Ch. 1' }
-  ],
-
-  _epigraphQuoteIndex: 0,
-  _epigraphQuoteTimer: null,
-
-  /* Epigraph removed \u2014 redundant with State of the Galaxy prologue */
-  buildEpigraph() { return ''; },
 
   /* -- Genre Fusion (4-Card Row) ----------------------------- */
 
@@ -308,20 +290,6 @@ const Dashboard = {
 
   /* �"��"� Strategist Quote �"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"� */
 
-  /**
-   * Build the strategist quote block.
-   * @returns {string} HTML string
-   */
-  buildStrategistQuote() {
-    return `
-      <section class="dashboard-section">
-        <div class="quote-block">
-          <div class="quote-text">\u201CMaster the Crucible. Learn what I could not teach myself. And when the simulation tells you you\u2019re ready\u2026 reunite our people. Whatever it costs.\u201D</div>
-          <div class="quote-attr">\u2014 THE ORIGINAL STRATEGIST</div>
-        </div>
-        <div class="divider"></div>
-      </section>`;
-  },
 
   /* �"��"� By The Numbers �"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"��"� */
 
@@ -986,40 +954,6 @@ const Dashboard = {
         if (currentQuote) currentQuote.classList.remove('quote-fading');
       }, 500);
     }, 6000);
-  },
-
-  /**
-   * Start the epigraph quote cycling animation.
-   * Fades out, swaps text, fades back in every 7 seconds.
-   * @returns {void}
-   */
-  initEpigraphQuoteCycler() {
-    if (this._epigraphQuoteTimer) clearInterval(this._epigraphQuoteTimer);
-
-    const textEl = document.getElementById('epigraph-quote-text');
-    const sourceEl = document.getElementById('epigraph-quote-source');
-    if (!textEl || !sourceEl) return;
-
-    this._epigraphQuoteIndex = 0;
-
-    this._epigraphQuoteTimer = setInterval(() => {
-      const block = document.getElementById('epigraph-quote-block');
-      if (!block) { clearInterval(this._epigraphQuoteTimer); return; }
-
-      block.classList.add('epigraph-quote-fading');
-
-      setTimeout(() => {
-        this._epigraphQuoteIndex = (this._epigraphQuoteIndex + 1) % this.EPIGRAPH_QUOTES.length;
-        const q = this.EPIGRAPH_QUOTES[this._epigraphQuoteIndex];
-        const t = document.getElementById('epigraph-quote-text');
-        const s = document.getElementById('epigraph-quote-source');
-        if (t) t.textContent = `\u201C${q.text}\u201D`;
-        if (s) s.textContent = `\u2014 ${q.source}`;
-
-        const b = document.getElementById('epigraph-quote-block');
-        if (b) b.classList.remove('epigraph-quote-fading');
-      }, 500);
-    }, 7000);
   },
 
   /**

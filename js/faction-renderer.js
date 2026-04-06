@@ -40,7 +40,6 @@ const FactionRenderer = {
     const el = document.getElementById(containerId);
     if (!el || !units.length) return;
     el.innerHTML = units.map((u, i) => this._unitRow(u, i, color, prefix, sprites)).join('');
-    this._bindUnitExpand(el, color, prefix, sprites, units);
   },
 
   /**
@@ -192,15 +191,6 @@ const FactionRenderer = {
       </div>
       ${physicalHtml}
       ${narrativeHtml}`;
-  },
-
-  /**
-   * Placeholder — click handling is done via inline onclick attributes
-   * on each unit row, so no additional binding is needed here.
-   * @param {HTMLElement} container - The unit list container
-   */
-  _bindUnitExpand(container) {
-    // Click handling is done via inline onclick — no extra binding needed
   },
 
   /* ═══════════════════════════════════════════════════════

@@ -23,7 +23,6 @@
    _shouldSkip(node)          | Check if a node is inside a heading/code/link
    _wrapMatches(textNode, re) | Replace matching text with glossary spans
    _escapeRegex(s)            | Escape regex special characters
-   _escapeHtml(s)             | Escape HTML special characters
    ═══════════════════════════════════════════════════════════ */
 
 const Glossary = {
@@ -283,14 +282,5 @@ const Glossary = {
    */
   _escapeRegex(s) {
     return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  },
-
-  /**
-   * Escape HTML special characters to prevent injection.
-   * @param {string} s - Raw string
-   * @returns {string} HTML-safe string
-   */
-  _escapeHtml(s) {
-    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 };

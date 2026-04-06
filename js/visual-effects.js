@@ -13,9 +13,6 @@
    AmbientParticles.init()           | Start floating particle system
    AmbientParticles.setFaction(f)    | Change particle colors
    AmbientParticles.destroy()        | Stop and remove particles
-   FactionCursor.init()              | No-op stub (cursor glow disabled)
-   FactionCursor.setFaction(f)       | No-op stub
-   FactionCursor.destroy()           | No-op stub
    FactionFlagBadge.init()           | Create faction emblem badge
    FactionFlagBadge.setFaction(f)    | Show faction emblem
    FactionFlagBadge.destroy()        | Remove badge
@@ -82,7 +79,6 @@ const FactionBgSwitcher = (() => {
 
       // Sync visual subsystems to current faction
       AmbientParticles.setFaction(faction);
-      FactionCursor.setFaction(faction);
       FactionFlagBadge.setFaction(faction);
 
       // Tell AudioEngine which faction we're on — even if audio is off,
@@ -98,7 +94,6 @@ const FactionBgSwitcher = (() => {
     } else {
       currentBg = null;
       AmbientParticles.setFaction(null);
-      FactionCursor.setFaction(null);
       FactionFlagBadge.setFaction(null);
       if (typeof AudioEngine !== 'undefined') {
         AudioEngine.setFaction(null);
@@ -203,13 +198,6 @@ const AmbientParticles = (() => {
 
   return { init, destroy, setFaction };
 })();
-
-
-// ───────────────────────────────────────────
-// SECTION: Faction Cursor (disabled, stub-only)
-// ───────────────────────────────────────────
-
-const FactionCursor = { init() {}, destroy() {}, setFaction() {} };
 
 
 // ───────────────────────────────────────────
@@ -455,7 +443,6 @@ const CRTEffect = (() => {
 
 const VisualEffects = (() => {
   function init() {
-    FactionCursor.init();
     FactionFlagBadge.init();
     AmbientParticles.init();
     ScanlineOverlay.init();
@@ -468,7 +455,6 @@ const VisualEffects = (() => {
   }
 
   function destroy() {
-    FactionCursor.destroy();
     FactionFlagBadge.destroy();
     AmbientParticles.destroy();
     ScanlineOverlay.destroy();

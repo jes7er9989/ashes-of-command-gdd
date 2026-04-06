@@ -158,6 +158,8 @@ class GalaxyRenderer {
     this.dustLanes = [];
     this.homeworlds = [];
 
+    this._boundTick = this._tick.bind(this);
+
     this._initCanvas();
     this._generateStars();
     this._generateNebulae();
@@ -486,7 +488,7 @@ class GalaxyRenderer {
     if (this.running) return;  /* Already running — no-op */
     this.running = true;
     this.lastTimestamp = performance.now();
-    this.rafId = requestAnimationFrame(this._tick.bind(this));
+    this.rafId = requestAnimationFrame(this._boundTick);
   }
 
   /**
@@ -513,7 +515,7 @@ class GalaxyRenderer {
     /* Reduced motion: throttle to ~15fps */
     if (this._prefersReducedMotion) {
       if (timestamp - this._lastFrameTime < 66) {
-        this.rafId = requestAnimationFrame(this._tick.bind(this));
+        this.rafId = requestAnimationFrame(this._boundTick);
         return;
       }
       this._lastFrameTime = timestamp;
@@ -535,7 +537,7 @@ class GalaxyRenderer {
     this._drawRoguePlanets(this.elapsedTime);
     this._drawHomeworlds(this.elapsedTime, rotation);
 
-    this.rafId = requestAnimationFrame(this._tick.bind(this));
+    this.rafId = requestAnimationFrame(this._boundTick);
   }
 
   /* ═══════════════════════════════════════════════════════════
