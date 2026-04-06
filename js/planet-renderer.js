@@ -1845,8 +1845,8 @@ window.PlanetRenderer = (function () {
           var wave12 = Math.cos(angle * 12);
           // Sharpen the main peaks — higher power = narrower, sharper tips
           var sharpMain = wave6 > 0 ? Math.pow(wave6, 0.4) * 0.3 : -Math.pow(-wave6, 0.5) * 0.35;
-          // Secondary bumps between main points — half the height
-          var secondaryBump = wave12 > 0.3 ? (wave12 - 0.3) * 0.2 : 0;
+          // Secondary bumps between main points — about 2/3 the main height
+          var secondaryBump = wave12 > 0.3 ? (wave12 - 0.3) * 0.4 : 0;
           var cutIn = sharpMain + secondaryBump;
           var newR = r + cutIn;
           // Add noise for irregular edge
@@ -1957,7 +1957,7 @@ window.PlanetRenderer = (function () {
       /* ═══ 6 SECONDARY GUN EMPLACEMENTS — between the main turret points ═══ */
       for (var sgi = 0; sgi < 6; sgi++) {
         var sgAngle = (sgi / 6) * Math.PI * 2 + Math.PI / 6; // offset 30° from main turrets
-        var sgR = 0.85; // shorter reach than main turrets
+        var sgR = 1.0; // secondary points — longer reach
         var sgx = Math.cos(sgAngle) * sgR;
         var sgz = Math.sin(sgAngle) * sgR;
         // Smaller turret base
@@ -1988,7 +1988,7 @@ window.PlanetRenderer = (function () {
         var sv6 = Math.cos(sAngle * 6);
         var sv12 = Math.cos(sAngle * 12);
         var svMain = sv6 > 0 ? Math.pow(sv6, 0.4) * 0.3 : -Math.pow(-sv6, 0.5) * 0.35;
-        var svSec = sv12 > 0.3 ? (sv12 - 0.3) * 0.2 : 0;
+        var svSec = sv12 > 0.3 ? (sv12 - 0.3) * 0.4 : 0;
         var maxR = 1.1 + svMain + svSec;
         if (sDist > maxR) continue; // skip points outside the star shape
 
@@ -2023,7 +2023,7 @@ window.PlanetRenderer = (function () {
         var uv6 = Math.cos(uAngle * 6);
         var uv12 = Math.cos(uAngle * 12);
         var uvMain = uv6 > 0 ? Math.pow(uv6, 0.4) * 0.3 : -Math.pow(-uv6, 0.5) * 0.35;
-        var uvSec = uv12 > 0.3 ? (uv12 - 0.3) * 0.2 : 0;
+        var uvSec = uv12 > 0.3 ? (uv12 - 0.3) * 0.4 : 0;
         var uMaxR = 1.1 + uvMain + uvSec;
         if (uDist > uMaxR) continue;
 
