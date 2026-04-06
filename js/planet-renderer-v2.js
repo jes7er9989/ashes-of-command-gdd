@@ -1855,8 +1855,13 @@ window.PlanetRenderer = (function () {
           corePos.setX(cvi, cvx * scale);
           corePos.setZ(cvi, cvz * scale);
         }
-        // Slight vertical noise — not perfectly flat
-        corePos.setY(cvi, cvy + _wsNoise(cvx * 4, cvz * 4) * 0.03);
+        // Taper edges to razor-thin — thick center, knife-edge at the rim
+        var finalX = corePos.getX(cvi), finalZ = corePos.getZ(cvi);
+        var distFromCenter = Math.sqrt(finalX * finalX + finalZ * finalZ);
+        var maxDist = 1.3; // approximate max radius of the star shape
+        var taperFactor = 1.0 - Math.pow(Math.min(distFromCenter / maxDist, 1.0), 1.5);
+        // Center stays full height, edges compress to near zero
+        corePos.setY(cvi, cvy * (0.08 + 0.92 * taperFactor) + _wsNoise(cvx * 4, cvz * 4) * 0.02);
       }
       corePos.needsUpdate = true;
       coreGeo.computeVertexNormals();
