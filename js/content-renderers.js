@@ -62,8 +62,6 @@ const ContentRenderers = {
       }
     }
 
-    console.log('%c[Planets] ' + planets.length + ' total, ' + regularPlanets.length + ' regular, ' + megastructures.length + ' megastructures', 'color:#ffaa22;font-family:monospace');
-
     /* Render regular planets into the main container */
     let html = '';
     for (const entry of regularPlanets) {
@@ -73,14 +71,12 @@ const ContentRenderers = {
 
     /* Render megastructures into their dedicated container */
     const megaContainer = document.getElementById('megastructure-list');
-    console.log('%c[Planets] megaContainer found: ' + !!megaContainer + ', megastructures count: ' + megastructures.length, 'color:#ffaa22;font-family:monospace');
     if (megaContainer && megastructures.length) {
       let megaHtml = '';
       for (const entry of megastructures) {
         megaHtml += this._renderPlanetRow(entry.planet, '', entry.idx);
       }
       megaContainer.innerHTML = megaHtml;
-      console.log('%c[Planets] Megastructure HTML injected (' + megaHtml.length + ' chars)', 'color:#ffaa22;font-family:monospace');
     }
 
     /* ── Subtype toggle handler ──
