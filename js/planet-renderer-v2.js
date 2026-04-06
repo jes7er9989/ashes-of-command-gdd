@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   PLANET RENDERER v3 — Three.js 3D Planet Visualization
+   PLANET RENDERER v3.1 — Three.js 3D Planet Visualization
    Renders each planet type as a spinning 3D sphere with procedural
    textures, bump maps, emissive maps, atmospheric glow, and unique
    per-type lighting, atmosphere, and cloud configurations.
@@ -1103,6 +1103,7 @@ window.PlanetRenderer = (function () {
     }
 
     _dysonSphere() {
+      console.log('[DYSON TEST] If you see this in console, planet-renderer.js v3.1 is loaded');
       // Star-dominated lighting — everything is lit from within
       this.sun.color.set(0xffeedd);
       this.sun.intensity = 0.4;
@@ -1113,6 +1114,13 @@ window.PlanetRenderer = (function () {
       this.ambient.intensity = 0.3;
 
       this.megaGroup = new THREE.Group();
+
+      /* ═══ TEST MARKER — bright green sphere, remove after confirming JS updates ═══ */
+      var testGeo = new THREE.SphereGeometry(0.5, 16, 16);
+      var testMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+      var testSphere = new THREE.Mesh(testGeo, testMat);
+      testSphere.position.set(-1.2, 1.0, 0);
+      this.megaGroup.add(testSphere);
 
       // Simple noise helper
       function _dsNoise(x, y) {
