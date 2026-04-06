@@ -1103,7 +1103,7 @@ window.PlanetRenderer = (function () {
     }
 
     _dysonSphere() {
-      console.log('[DYSON TEST] If you see this in console, planet-renderer.js v3.1 is loaded');
+      console.log('[DYSON] Building Dyson Sphere — planet-renderer v3.1');
       // Star-dominated lighting — everything is lit from within
       this.sun.color.set(0xffeedd);
       this.sun.intensity = 0.4;
@@ -1115,22 +1115,13 @@ window.PlanetRenderer = (function () {
 
       this.megaGroup = new THREE.Group();
 
-      /* ═══ TEST — replace ENTIRE Dyson Sphere with a giant green ball ═══ */
-      var testGeo = new THREE.SphereGeometry(1.0, 32, 32);
-      var testMat = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-      var testSphere = new THREE.Mesh(testGeo, testMat);
-      this.megaGroup.add(testSphere);
-      this.scene.add(this.megaGroup);
-      this.planet = this.megaGroup;
-      console.log('[DYSON TEST] Green ball added, returning early');
-      return;
-
       // Simple noise helper
       function _dsNoise(x, y) {
         var n = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453;
         return n - Math.floor(n);
       }
 
+      console.log('[DYSON] Section 1: Star');
       /* ═══ CAPTURED STAR — blazing at the heart ═══ */
       var starGeo = new THREE.SphereGeometry(0.3, 32, 32);
       var starMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
@@ -1158,6 +1149,7 @@ window.PlanetRenderer = (function () {
       this.dysonStarLight = new THREE.PointLight(0xffeedd, 1.8, 6);
       this.megaGroup.add(this.dysonStarLight);
 
+      console.log('[DYSON] Section 2: Lattice');
       /* ═══ DYSON LATTICE — textured panel shell ═══ */
 
       // Panel texture — industrial metal with energy conduit grid
@@ -1250,6 +1242,7 @@ window.PlanetRenderer = (function () {
       });
       this.megaGroup.add(new THREE.Mesh(gapGeo, gapMat));
 
+      console.log('[DYSON] Section 3: Broken chunk');
       /* ═══ BROKEN CHUNK — torn off during the Fracture, drifting nearby ═══ */
       this.dysonChunkGroup = new THREE.Group();
 
@@ -1316,6 +1309,7 @@ window.PlanetRenderer = (function () {
       this.dysonChunkGroup.rotation.set(0.3, -0.2, 0.15);
       this.megaGroup.add(this.dysonChunkGroup);
 
+      console.log('[DYSON] Section 4: Rings');
       /* ═══ EQUATORIAL ENERGY RING — power distribution band ═══ */
       var eqRingGeo = new THREE.TorusGeometry(1.12, 0.02, 12, 128);
       var eqRingCanvas = document.createElement('canvas');
@@ -1348,6 +1342,7 @@ window.PlanetRenderer = (function () {
       eqRing3.rotation.x = Math.PI / 4;
       this.megaGroup.add(eqRing3);
 
+      console.log('[DYSON] Section 5: Beams');
       /* ═══ ENERGY BEAMS — power being channeled outward ═══ */
       this.dysonBeams = [];
       var beamDirections = [
@@ -1376,6 +1371,7 @@ window.PlanetRenderer = (function () {
         this.megaGroup.add(relay);
       }
 
+      console.log('[DYSON] Section 6: Halo + particles');
       /* ═══ OUTER ENERGY HALO + PARTICLE FIELD ═══ */
       var haloGeo = new THREE.SphereGeometry(1.2, 24, 24);
       var haloMat = new THREE.MeshBasicMaterial({
@@ -1408,8 +1404,10 @@ window.PlanetRenderer = (function () {
       });
       this.megaGroup.add(new THREE.Points(ptGeo, ptMat));
 
+      console.log('[DYSON] Section 7: Adding to scene');
       this.scene.add(this.megaGroup);
       this.planet = this.megaGroup;
+      console.log('[DYSON] COMPLETE — all sections built successfully');
     }
 
     _aethynNexus() {
