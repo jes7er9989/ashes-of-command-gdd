@@ -1145,10 +1145,14 @@ const Dashboard = {
         try {
           _dash._solarRenderer = new SolarSystemRenderer(solarMount);
           _dash._solarRenderer.start();
-        } catch (e) { console.warn('[Dashboard] Solar system renderer failed:', e); }
+        } catch (e) {
+          console.warn('[Dashboard] Solar system renderer failed:', e);
+          solarMount.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:200px;color:#ffcc44;font-size:1.4rem;opacity:0.7;">&#9734; Star map unavailable</div>';
+        }
       }).catch(function (e) {
         solarMount.removeAttribute('aria-busy');
         console.warn('[Dashboard] Three.js lazy-load failed:', e);
+        solarMount.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:200px;color:#ffcc44;font-size:1.4rem;opacity:0.7;">&#9734; Star map unavailable</div>';
       });
     }
 

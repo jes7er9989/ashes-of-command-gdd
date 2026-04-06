@@ -128,6 +128,8 @@ var SolarTextures = {
     canvas.width = size;
     canvas.height = size;
     var ctx = canvas.getContext('2d');
+    var imageData = ctx.createImageData(size, size);
+    var pixels = imageData.data;
 
     for (var y = 0; y < size; y++) {
       for (var x = 0; x < size; x++) {
@@ -156,11 +158,15 @@ var SolarTextures = {
           b = Math.floor(b * 0.2);
         }
 
-        ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
-        ctx.fillRect(x, y, 1, 1);
+        var idx = (y * size + x) * 4;
+        pixels[idx] = r;
+        pixels[idx + 1] = g;
+        pixels[idx + 2] = b;
+        pixels[idx + 3] = 255;
       }
     }
 
+    ctx.putImageData(imageData, 0, 0);
     return canvas;
   },
 
@@ -172,6 +178,8 @@ var SolarTextures = {
     canvas.width = size;
     canvas.height = size;
     var ctx = canvas.getContext('2d');
+    var imageData = ctx.createImageData(size, size);
+    var pixels = imageData.data;
 
     for (var y = 0; y < size; y++) {
       for (var x = 0; x < size; x++) {
@@ -187,10 +195,14 @@ var SolarTextures = {
         val = Math.max(0, Math.min(1, val));
 
         var gray = Math.floor(90 + val * 90);
-        ctx.fillStyle = 'rgb(' + gray + ',' + gray + ',' + (gray - 5) + ')';
-        ctx.fillRect(x, y, 1, 1);
+        var idx = (y * size + x) * 4;
+        pixels[idx] = gray;
+        pixels[idx + 1] = gray;
+        pixels[idx + 2] = gray - 5;
+        pixels[idx + 3] = 255;
       }
     }
+    ctx.putImageData(imageData, 0, 0);
     return canvas;
   },
 
@@ -202,6 +214,8 @@ var SolarTextures = {
     canvas.width = size;
     canvas.height = size;
     var ctx = canvas.getContext('2d');
+    var imageData = ctx.createImageData(size, size);
+    var pixels = imageData.data;
 
     for (var y = 0; y < size; y++) {
       for (var x = 0; x < size; x++) {
@@ -213,14 +227,18 @@ var SolarTextures = {
         var cloud2 = this._fbm(nx * 0.7, ny * 2, 4, 55);
         var val = cloud1 * 0.6 + cloud2 * 0.4;
 
-        var r = Math.floor(200 + val * 50);
-        var g = Math.floor(160 + val * 50);
+        var r = Math.min(Math.floor(200 + val * 50), 255);
+        var g = Math.min(Math.floor(160 + val * 50), 255);
         var b = Math.floor(60 + val * 30);
 
-        ctx.fillStyle = 'rgb(' + Math.min(r, 255) + ',' + Math.min(g, 255) + ',' + b + ')';
-        ctx.fillRect(x, y, 1, 1);
+        var idx = (y * size + x) * 4;
+        pixels[idx] = r;
+        pixels[idx + 1] = g;
+        pixels[idx + 2] = b;
+        pixels[idx + 3] = 255;
       }
     }
+    ctx.putImageData(imageData, 0, 0);
     return canvas;
   },
 
@@ -232,6 +250,8 @@ var SolarTextures = {
     canvas.width = size;
     canvas.height = size;
     var ctx = canvas.getContext('2d');
+    var imageData = ctx.createImageData(size, size);
+    var pixels = imageData.data;
 
     for (var y = 0; y < size; y++) {
       for (var x = 0; x < size; x++) {
@@ -275,10 +295,14 @@ var SolarTextures = {
           b = Math.floor(b + (250 - b) * cloudAlpha);
         }
 
-        ctx.fillStyle = 'rgb(' + Math.min(r, 255) + ',' + Math.min(g, 255) + ',' + Math.min(b, 255) + ')';
-        ctx.fillRect(x, y, 1, 1);
+        var idx = (y * size + x) * 4;
+        pixels[idx] = Math.min(r, 255);
+        pixels[idx + 1] = Math.min(g, 255);
+        pixels[idx + 2] = Math.min(b, 255);
+        pixels[idx + 3] = 255;
       }
     }
+    ctx.putImageData(imageData, 0, 0);
     return canvas;
   },
 
@@ -290,6 +314,8 @@ var SolarTextures = {
     canvas.width = size;
     canvas.height = size;
     var ctx = canvas.getContext('2d');
+    var imageData = ctx.createImageData(size, size);
+    var pixels = imageData.data;
 
     for (var y = 0; y < size; y++) {
       for (var x = 0; x < size; x++) {
@@ -323,10 +349,14 @@ var SolarTextures = {
           }
         }
 
-        ctx.fillStyle = 'rgb(' + Math.min(r, 255) + ',' + Math.min(g, 255) + ',' + Math.min(b, 255) + ')';
-        ctx.fillRect(x, y, 1, 1);
+        var idx = (y * size + x) * 4;
+        pixels[idx] = Math.min(r, 255);
+        pixels[idx + 1] = Math.min(g, 255);
+        pixels[idx + 2] = Math.min(b, 255);
+        pixels[idx + 3] = 255;
       }
     }
+    ctx.putImageData(imageData, 0, 0);
     return canvas;
   },
 
@@ -338,6 +368,8 @@ var SolarTextures = {
     canvas.width = size;
     canvas.height = size;
     var ctx = canvas.getContext('2d');
+    var imageData = ctx.createImageData(size, size);
+    var pixels = imageData.data;
 
     for (var y = 0; y < size; y++) {
       for (var x = 0; x < size; x++) {
@@ -382,10 +414,14 @@ var SolarTextures = {
           b = Math.floor(b * (1 - spotFade * 0.6) + spotNoise * 10);
         }
 
-        ctx.fillStyle = 'rgb(' + Math.min(r, 255) + ',' + Math.min(g, 255) + ',' + Math.min(b, 255) + ')';
-        ctx.fillRect(x, y, 1, 1);
+        var idx = (y * size + x) * 4;
+        pixels[idx] = Math.min(r, 255);
+        pixels[idx + 1] = Math.min(g, 255);
+        pixels[idx + 2] = Math.min(b, 255);
+        pixels[idx + 3] = 255;
       }
     }
+    ctx.putImageData(imageData, 0, 0);
     return canvas;
   },
 
@@ -397,6 +433,8 @@ var SolarTextures = {
     canvas.width = size;
     canvas.height = size;
     var ctx = canvas.getContext('2d');
+    var imageData = ctx.createImageData(size, size);
+    var pixels = imageData.data;
 
     for (var y = 0; y < size; y++) {
       for (var x = 0; x < size; x++) {
@@ -409,14 +447,18 @@ var SolarTextures = {
         var val = band * 0.5 + turb * 0.5;
 
         // Golden palette
-        var r = Math.floor(190 + val * 55);
-        var g = Math.floor(165 + val * 50);
-        var b = Math.floor(90 + val * 40);
+        var r = Math.min(Math.floor(190 + val * 55), 255);
+        var g = Math.min(Math.floor(165 + val * 50), 255);
+        var b = Math.min(Math.floor(90 + val * 40), 255);
 
-        ctx.fillStyle = 'rgb(' + Math.min(r, 255) + ',' + Math.min(g, 255) + ',' + Math.min(b, 255) + ')';
-        ctx.fillRect(x, y, 1, 1);
+        var idx = (y * size + x) * 4;
+        pixels[idx] = r;
+        pixels[idx + 1] = g;
+        pixels[idx + 2] = b;
+        pixels[idx + 3] = 255;
       }
     }
+    ctx.putImageData(imageData, 0, 0);
     return canvas;
   },
 
@@ -428,6 +470,8 @@ var SolarTextures = {
     canvas.width = size;
     canvas.height = size;
     var ctx = canvas.getContext('2d');
+    var imageData = ctx.createImageData(size, size);
+    var pixels = imageData.data;
 
     for (var y = 0; y < size; y++) {
       for (var x = 0; x < size; x++) {
@@ -440,12 +484,16 @@ var SolarTextures = {
 
         var r = Math.floor(20 + val * 25);
         var g = Math.floor(40 + val * 50);
-        var b = Math.floor(130 + val * 80);
+        var b = Math.min(Math.floor(130 + val * 80), 255);
 
-        ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + Math.min(b, 255) + ')';
-        ctx.fillRect(x, y, 1, 1);
+        var idx = (y * size + x) * 4;
+        pixels[idx] = r;
+        pixels[idx + 1] = g;
+        pixels[idx + 2] = b;
+        pixels[idx + 3] = 255;
       }
     }
+    ctx.putImageData(imageData, 0, 0);
     return canvas;
   },
 
@@ -457,6 +505,8 @@ var SolarTextures = {
     canvas.width = size;
     canvas.height = 64;
     var ctx = canvas.getContext('2d');
+    var imageData = ctx.createImageData(size, 64);
+    var pixels = imageData.data;
 
     for (var x = 0; x < size; x++) {
       var t = x / size; // 0 = inner, 1 = outer
@@ -479,6 +529,7 @@ var SolarTextures = {
       density *= 0.7 + noise * 0.3;
 
       var alpha = Math.max(0, Math.min(1, density));
+      var a = Math.floor(alpha * 255);
 
       // Color: warm gold/tan
       var r = Math.floor(200 + noise * 40);
@@ -486,10 +537,14 @@ var SolarTextures = {
       var b = Math.floor(120 + noise * 20);
 
       for (var y = 0; y < 64; y++) {
-        ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
-        ctx.fillRect(x, y, 1, 1);
+        var idx = (y * size + x) * 4;
+        pixels[idx] = r;
+        pixels[idx + 1] = g;
+        pixels[idx + 2] = b;
+        pixels[idx + 3] = a;
       }
     }
+    ctx.putImageData(imageData, 0, 0);
     return canvas;
   },
 
