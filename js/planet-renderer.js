@@ -732,191 +732,285 @@ window.PlanetRenderer = (function () {
       var starLight = new THREE.PointLight(0xffeedd, 1.2, 5);
       this.megaGroup.add(starLight);
 
-      /* ═══ RING STRUCTURE — multi-layer band ═══ */
+      /* ═══ RING STRUCTURE — multi-layer band with terrain textures ═══ */
 
-      // Biome texture — high detail with city lights
+      // Procedural terrain texture — pixel-level detail
       var bandCanvas = document.createElement('canvas');
       bandCanvas.width = 2048;
-      bandCanvas.height = 128;
+      bandCanvas.height = 192;
       var bctx = bandCanvas.getContext('2d');
+      var W = bandCanvas.width, H = bandCanvas.height;
+      var hullEdge = 18;
+      var innerTop = hullEdge;
+      var innerBot = H - hullEdge;
+      var innerH = innerBot - innerTop;
 
-      // Base biome strips with gradient transitions
+      // Biome definitions with terrain noise parameters
       var biomes = [
-        { r: 30, g: 90, b: 140, len: 0.08 },   // deep ocean
-        { r: 35, g: 110, b: 160, len: 0.04 },   // coastal
-        { r: 60, g: 150, b: 70, len: 0.07 },    // forest
-        { r: 90, g: 170, b: 60, len: 0.05 },    // grassland
-        { r: 190, g: 160, b: 50, len: 0.07 },   // desert
-        { r: 200, g: 120, b: 50, len: 0.04 },   // arid
-        { r: 60, g: 140, b: 60, len: 0.06 },    // forest
-        { r: 25, g: 80, b: 180, len: 0.09 },    // ocean
-        { r: 40, g: 120, b: 50, len: 0.06 },    // jungle
-        { r: 55, g: 160, b: 80, len: 0.05 },    // forest
-        { r: 35, g: 100, b: 150, len: 0.08 },   // ocean
-        { r: 140, g: 170, b: 60, len: 0.05 },   // plains
-        { r: 60, g: 150, b: 70, len: 0.06 },    // forest
-        { r: 25, g: 80, b: 130, len: 0.07 },    // deep ocean
-        { r: 50, g: 50, b: 50, len: 0.04 },     // dead section
-        { r: 60, g: 140, b: 65, len: 0.05 },    // forest
-        { r: 30, g: 95, b: 155, len: 0.04 },    // ocean
+        { type: 'ocean',   r: 20, g: 70, b: 140, len: 0.08 },
+        { type: 'coast',   r: 50, g: 130, b: 160, len: 0.03 },
+        { type: 'forest',  r: 30, g: 100, b: 35, len: 0.07 },
+        { type: 'grass',   r: 80, g: 150, b: 45, len: 0.05 },
+        { type: 'desert',  r: 190, g: 165, b: 90, len: 0.07 },
+        { type: 'arid',    r: 170, g: 120, b: 60, len: 0.04 },
+        { type: 'forest',  r: 35, g: 110, b: 40, len: 0.06 },
+        { type: 'ocean',   r: 15, g: 55, b: 160, len: 0.09 },
+        { type: 'jungle',  r: 20, g: 80, b: 25, len: 0.06 },
+        { type: 'forest',  r: 40, g: 120, b: 50, len: 0.05 },
+        { type: 'ocean',   r: 25, g: 80, b: 145, len: 0.08 },
+        { type: 'grass',   r: 100, g: 160, b: 55, len: 0.05 },
+        { type: 'forest',  r: 30, g: 105, b: 38, len: 0.06 },
+        { type: 'ocean',   r: 18, g: 60, b: 130, len: 0.07 },
+        { type: 'dead',    r: 40, g: 38, b: 35, len: 0.04 },
+        { type: 'forest',  r: 35, g: 115, b: 42, len: 0.05 },
+        { type: 'coast',   r: 45, g: 120, b: 150, len: 0.05 },
       ];
 
-      var bx = 0;
-      var W = bandCanvas.width, H = bandCanvas.height;
-      var hullEdge = 10; // metallic rim thickness
+      // Use ImageData for pixel-level terrain painting
+      var imgData = bctx.createImageData(W, H);
+      var px = imgData.data;
 
+      // Simple seeded noise function
+      function _noise(x, y) {
+        var n = Math.sin(x * 12.9898 + y * 78.233) * 43758.5453;
+        return n - Math.floor(n);
+      }
+
+      // Paint pixel terrain for each biome
+      var bx = 0;
       for (var bi = 0; bi < biomes.length; bi++) {
         var bw = Math.round(biomes[bi].len * W);
         var b = biomes[bi];
+        var endX = Math.min(bx + bw, W);
 
-        // Gradient fill for natural-looking biome transitions
-        var grad = bctx.createLinearGradient(bx, 0, bx + bw, 0);
-        var col = 'rgb(' + b.r + ',' + b.g + ',' + b.b + ')';
-        var colDark = 'rgb(' + Math.round(b.r * 0.7) + ',' + Math.round(b.g * 0.7) + ',' + Math.round(b.b * 0.7) + ')';
-        grad.addColorStop(0, colDark);
-        grad.addColorStop(0.3, col);
-        grad.addColorStop(0.7, col);
-        grad.addColorStop(1, colDark);
-        bctx.fillStyle = grad;
-        bctx.fillRect(bx, hullEdge, bw, H - hullEdge * 2);
+        for (var px2 = bx; px2 < endX; px2++) {
+          for (var py = innerTop; py < innerBot; py++) {
+            var idx = (py * W + px2) * 4;
+            var n1 = _noise(px2 * 0.05, py * 0.08);
+            var n2 = _noise(px2 * 0.15, py * 0.2) * 0.5;
+            var n3 = _noise(px2 * 0.4, py * 0.5) * 0.25;
+            var nv = (n1 + n2 + n3) / 1.75; // 0-1
 
-        // Energy barrier shimmer between biomes
-        bctx.fillStyle = 'rgba(100,200,255,0.5)';
-        bctx.fillRect(bx, hullEdge, 2, H - hullEdge * 2);
+            if (b.type === 'ocean') {
+              // Deep water with wave highlights and depth variation
+              var depth = nv * 0.4;
+              var wave = _noise(px2 * 0.3, py * 0.1) > 0.7 ? 20 : 0;
+              px[idx]     = b.r + Math.floor(nv * 15) + wave;
+              px[idx + 1] = b.g + Math.floor(nv * 25) + wave;
+              px[idx + 2] = b.b + Math.floor(depth * 40) + wave * 0.5;
+            } else if (b.type === 'coast') {
+              // Shallow water with sand showing through
+              var sand = nv > 0.6 ? 1 : 0;
+              px[idx]     = sand ? 160 + Math.floor(nv * 40) : b.r + Math.floor(nv * 20);
+              px[idx + 1] = sand ? 150 + Math.floor(nv * 30) : b.g + Math.floor(nv * 30);
+              px[idx + 2] = sand ? 100 + Math.floor(nv * 20) : b.b + Math.floor(nv * 20);
+            } else if (b.type === 'forest' || b.type === 'jungle') {
+              // Dense canopy with dark clusters and lighter clearings
+              var canopy = nv < 0.4 ? -20 : nv > 0.8 ? 25 : 0;
+              px[idx]     = b.r + Math.floor(nv * 20) + canopy * 0.3;
+              px[idx + 1] = b.g + Math.floor(nv * 35) + canopy;
+              px[idx + 2] = b.b + Math.floor(nv * 15) + canopy * 0.2;
+            } else if (b.type === 'grass') {
+              // Rolling grasslands with patches
+              var patch = _noise(px2 * 0.08, py * 0.12) > 0.5 ? 15 : -10;
+              px[idx]     = b.r + Math.floor(nv * 25) + patch;
+              px[idx + 1] = b.g + Math.floor(nv * 20) + patch;
+              px[idx + 2] = b.b + Math.floor(nv * 10);
+            } else if (b.type === 'desert' || b.type === 'arid') {
+              // Sandy dunes with ridge lines and shadow
+              var dune = Math.sin(px2 * 0.08 + nv * 3) * 20;
+              var ridge = _noise(px2 * 0.2, py * 0.3) > 0.75 ? 15 : 0;
+              px[idx]     = b.r + Math.floor(dune) + ridge;
+              px[idx + 1] = b.g + Math.floor(dune * 0.8) + ridge * 0.8;
+              px[idx + 2] = b.b + Math.floor(dune * 0.4);
+            } else if (b.type === 'dead') {
+              // Scorched, dead biome with ember glow
+              var ember = _noise(px2 * 0.3, py * 0.3) > 0.85 ? 1 : 0;
+              px[idx]     = b.r + Math.floor(nv * 15) + ember * 80;
+              px[idx + 1] = b.g + Math.floor(nv * 10) + ember * 20;
+              px[idx + 2] = b.b + Math.floor(nv * 8);
+            }
+            px[idx + 3] = 255;
 
-        // City lights — tiny bright dots scattered on the biome surface
-        if (b.r !== 50) { // skip dead sections
-          for (var ci2 = 0; ci2 < 12; ci2++) {
-            var cx2 = bx + Math.random() * bw;
-            var cy2 = hullEdge + 4 + Math.random() * (H - hullEdge * 2 - 8);
-            var brightness = 180 + Math.floor(Math.random() * 75);
-            bctx.fillStyle = 'rgba(' + brightness + ',' + brightness + ',' + (brightness - 30) + ',0.7)';
-            bctx.fillRect(cx2, cy2, 1.5, 1.5);
+            // City lights — bright pixels scattered sparsely
+            if (b.type !== 'dead' && b.type !== 'ocean' && _noise(px2 * 1.7, py * 2.3) > 0.97) {
+              px[idx] = 240; px[idx + 1] = 230; px[idx + 2] = 190; px[idx + 3] = 255;
+            }
+            // Infrastructure clusters on land biomes
+            if (b.type !== 'dead' && b.type !== 'ocean' && b.type !== 'coast' &&
+                _noise(px2 * 0.6, py * 0.7) > 0.92 && _noise(px2 * 1.1, py * 1.2) > 0.5) {
+              px[idx] = 255; px[idx + 1] = 245; px[idx + 2] = 200; px[idx + 3] = 255;
+            }
           }
-          // Occasional brighter infrastructure clusters
-          if (Math.random() > 0.5) {
-            var clx = bx + bw * 0.3 + Math.random() * bw * 0.4;
-            var cly = H * 0.35 + Math.random() * H * 0.3;
-            bctx.fillStyle = 'rgba(255,240,200,0.5)';
-            bctx.fillRect(clx, cly, 4, 3);
-            bctx.fillStyle = 'rgba(255,240,200,0.3)';
-            bctx.fillRect(clx - 2, cly - 1, 8, 5);
-          }
-        } else {
-          // Dead section — faint red warning glow
-          bctx.fillStyle = 'rgba(200,60,30,0.15)';
-          bctx.fillRect(bx, hullEdge, bw, H - hullEdge * 2);
         }
+
+        // Energy barrier shimmer line between biomes (vertical bright line)
+        for (var by = innerTop; by < innerBot; by++) {
+          var bIdx = (by * W + bx) * 4;
+          var shimmer = 150 + Math.floor(_noise(bx, by * 0.5) * 100);
+          if (bx > 0 && bx < W) {
+            px[bIdx] = shimmer * 0.5; px[bIdx + 1] = shimmer * 0.85; px[bIdx + 2] = shimmer; px[bIdx + 3] = 200;
+            if (bx + 1 < W) { px[bIdx + 4] = shimmer * 0.3; px[bIdx + 5] = shimmer * 0.6; px[bIdx + 6] = shimmer * 0.8; px[bIdx + 7] = 140; }
+          }
+        }
+
         bx += bw;
       }
-      // Fill remainder
-      bctx.fillStyle = '#3a8845';
-      bctx.fillRect(bx, hullEdge, W - bx, H - hullEdge * 2);
 
-      // Outer hull edges — metallic with panel lines
-      var hullGrad = bctx.createLinearGradient(0, 0, 0, hullEdge);
-      hullGrad.addColorStop(0, '#556677');
-      hullGrad.addColorStop(0.5, '#8899aa');
-      hullGrad.addColorStop(1, '#445566');
-      bctx.fillStyle = hullGrad;
-      bctx.fillRect(0, 0, W, hullEdge);
-      var hullGrad2 = bctx.createLinearGradient(0, H - hullEdge, 0, H);
-      hullGrad2.addColorStop(0, '#445566');
-      hullGrad2.addColorStop(0.5, '#8899aa');
-      hullGrad2.addColorStop(1, '#556677');
-      bctx.fillStyle = hullGrad2;
-      bctx.fillRect(0, H - hullEdge, W, hullEdge);
-
-      // Panel lines on hull
-      bctx.strokeStyle = 'rgba(150,170,190,0.3)';
-      bctx.lineWidth = 0.5;
-      for (var pi = 0; pi < W; pi += 24) {
-        bctx.beginPath();
-        bctx.moveTo(pi, 0);
-        bctx.lineTo(pi, hullEdge);
-        bctx.stroke();
-        bctx.beginPath();
-        bctx.moveTo(pi, H - hullEdge);
-        bctx.lineTo(pi, H);
-        bctx.stroke();
+      // Hull edges — metallic with panel detail (top and bottom bands)
+      for (var hx = 0; hx < W; hx++) {
+        for (var hy = 0; hy < H; hy++) {
+          if (hy < innerTop || hy >= innerBot) {
+            var hIdx = (hy * W + hx) * 4;
+            var panelNoise = _noise(hx * 0.3, hy * 0.5);
+            var edgeDist = hy < innerTop ? hy / innerTop : (H - 1 - hy) / hullEdge;
+            var base = 55 + Math.floor(edgeDist * 50) + Math.floor(panelNoise * 25);
+            // Panel line grooves
+            var isPanel = (hx % 18 < 1) || (hy === 0) || (hy === H - 1);
+            var groove = isPanel ? -20 : 0;
+            // Rivet dots
+            var isRivet = (hx % 36 < 2) && ((hy < innerTop ? hy : H - 1 - hy) === Math.floor(hullEdge * 0.5));
+            var rivet = isRivet ? 30 : 0;
+            px[hIdx]     = Math.min(255, Math.max(0, base + 10 + groove + rivet));
+            px[hIdx + 1] = Math.min(255, Math.max(0, base + 20 + groove + rivet));
+            px[hIdx + 2] = Math.min(255, Math.max(0, base + 30 + groove + rivet));
+            px[hIdx + 3] = 255;
+            // Running lights along hull edge
+            if ((hx % 80 < 3) && edgeDist > 0.3 && edgeDist < 0.7) {
+              px[hIdx] = 100; px[hIdx + 1] = 180; px[hIdx + 2] = 255; px[hIdx + 3] = 255;
+            }
+          }
+        }
       }
+
+      bctx.putImageData(imgData, 0, 0);
 
       var bandTex = new THREE.CanvasTexture(bandCanvas);
       bandTex.wrapS = THREE.RepeatWrapping;
 
-      // Primary ring band
-      var ringGeo = new THREE.TorusGeometry(1.0, 0.07, 24, 256);
+      // Primary ring band — slightly thicker to show terrain detail
+      var ringGeo = new THREE.TorusGeometry(1.0, 0.08, 32, 256);
       var ringMat = new THREE.MeshPhongMaterial({
-        map: bandTex, shininess: 40,
-        emissive: 0x111108, emissiveIntensity: 0.2,
+        map: bandTex, shininess: 20,
+        emissive: 0x111108, emissiveIntensity: 0.15,
       });
       var ring = new THREE.Mesh(ringGeo, ringMat);
       this.megaGroup.add(ring);
 
-      // Structural framework — thinner outer ring (support lattice visible)
-      var frameGeo = new THREE.TorusGeometry(1.08, 0.008, 8, 256);
+      /* ═══ OUTER STRUCTURAL FRAMEWORK — cold engineering contrast ═══ */
+
+      // Outer hull texture — industrial metal with glowing conduit lines
+      var frameCanvas = document.createElement('canvas');
+      frameCanvas.width = 1024;
+      frameCanvas.height = 32;
+      var fctx = frameCanvas.getContext('2d');
+      var fData = fctx.createImageData(1024, 32);
+      var fpx = fData.data;
+      for (var fx = 0; fx < 1024; fx++) {
+        for (var fy = 0; fy < 32; fy++) {
+          var fi = (fy * 1024 + fx) * 4;
+          var fn = _noise(fx * 0.2, fy * 0.4);
+          var fBase = 50 + Math.floor(fn * 30);
+          var isConduit = (fy === 8 || fy === 24) && (fx % 6 < 4);
+          var isPanelLine = (fx % 12 < 1);
+          fpx[fi]     = isPanelLine ? fBase - 15 : fBase + 5;
+          fpx[fi + 1] = isPanelLine ? fBase - 10 : fBase + 15;
+          fpx[fi + 2] = isPanelLine ? fBase - 5 : fBase + 25;
+          fpx[fi + 3] = 255;
+          if (isConduit) {
+            var conduitGlow = fx % 120 < 8;
+            fpx[fi] = conduitGlow ? 80 : 40;
+            fpx[fi + 1] = conduitGlow ? 160 : 90;
+            fpx[fi + 2] = conduitGlow ? 220 : 130;
+          }
+        }
+      }
+      fctx.putImageData(fData, 0, 0);
+      var frameTex = new THREE.CanvasTexture(frameCanvas);
+      frameTex.wrapS = THREE.RepeatWrapping;
+
+      // Main outer frame — structural ring
+      var frameGeo = new THREE.TorusGeometry(1.1, 0.018, 12, 256);
       var frameMat = new THREE.MeshPhongMaterial({
-        color: 0x8899aa, shininess: 50,
-        emissive: 0x223344, emissiveIntensity: 0.1,
+        map: frameTex, shininess: 60,
+        emissive: 0x1a2a3a, emissiveIntensity: 0.15,
       });
       this.megaGroup.add(new THREE.Mesh(frameGeo, frameMat));
-      // Second frame rail
-      var frameGeo2 = new THREE.TorusGeometry(1.08, 0.005, 6, 256);
-      var frame2 = new THREE.Mesh(frameGeo2, frameMat.clone());
-      frame2.position.z = 0.02;
-      this.megaGroup.add(frame2);
 
-      // Inner atmosphere haze — warm glow from starlight on habitat
-      var hazeGeo = new THREE.TorusGeometry(0.97, 0.08, 12, 128);
+      // Second frame rail (offset)
+      var frameGeo2 = new THREE.TorusGeometry(1.1, 0.012, 8, 256);
+      var frame2 = new THREE.Mesh(frameGeo2, frameMat.clone());
+      frame2.position.z = 0.04;
+      this.megaGroup.add(frame2);
+      // Third rail other side
+      var frame3 = new THREE.Mesh(frameGeo2.clone(), frameMat.clone());
+      frame3.position.z = -0.04;
+      this.megaGroup.add(frame3);
+
+      // Cross-bracing struts connecting outer frame to ring band
+      for (var si = 0; si < 24; si++) {
+        var sAngle = (si / 24) * Math.PI * 2;
+        var strutGeo = new THREE.CylinderGeometry(0.003, 0.003, 0.12, 4);
+        var strutMat = new THREE.MeshPhongMaterial({
+          color: 0x6688aa, shininess: 50,
+          emissive: 0x223344, emissiveIntensity: 0.1,
+        });
+        var strut = new THREE.Mesh(strutGeo, strutMat);
+        // Position between ring edge and outer frame
+        var midR = 1.05;
+        strut.position.set(Math.cos(sAngle) * midR, Math.sin(sAngle) * midR, 0);
+        strut.rotation.z = sAngle + Math.PI / 2;
+        strut.rotation.x = Math.PI / 2;
+        this.megaGroup.add(strut);
+      }
+
+      // Inner atmosphere haze — warm starlight glow
+      var hazeGeo = new THREE.TorusGeometry(0.96, 0.09, 12, 128);
       var hazeMat = new THREE.MeshBasicMaterial({
-        color: 0xffeebb, transparent: true, opacity: 0.03,
+        color: 0xffeebb, transparent: true, opacity: 0.035,
         side: THREE.BackSide, depthWrite: false,
       });
       this.megaGroup.add(new THREE.Mesh(hazeGeo, hazeMat));
 
-      /* ═══ DOCKING STATIONS — larger, lit structures ═══ */
-      for (var di = 0; di < 12; di++) {
-        var dAngle = (di / 12) * Math.PI * 2;
-        var stationGroup = new THREE.Group();
-
+      /* ═══ DOCKING STATIONS — lit structures along the frame ═══ */
+      for (var di = 0; di < 16; di++) {
+        var dAngle = (di / 16) * Math.PI * 2;
+        var stGroup = new THREE.Group();
         // Station body
-        var stGeo = new THREE.BoxGeometry(0.025, 0.008, 0.008);
+        var stGeo = new THREE.BoxGeometry(0.03, 0.01, 0.012);
         var stMat = new THREE.MeshPhongMaterial({
-          color: 0x8899aa, shininess: 50,
-          emissive: 0x334455, emissiveIntensity: 0.2,
+          color: 0x778899, shininess: 50,
+          emissive: 0x2a3a4a, emissiveIntensity: 0.2,
         });
-        stationGroup.add(new THREE.Mesh(stGeo, stMat));
+        stGroup.add(new THREE.Mesh(stGeo, stMat));
+        // Antenna/spine
+        var antGeo = new THREE.CylinderGeometry(0.001, 0.001, 0.025, 4);
+        var ant = new THREE.Mesh(antGeo, stMat.clone());
+        ant.position.set(0.015, 0, 0.01);
+        stGroup.add(ant);
+        // Navigation light
+        var ltGeo = new THREE.SphereGeometry(0.005, 6, 6);
+        var ltColor = [0xffaa44, 0x88ccff, 0xff4444][di % 3];
+        var lt = new THREE.Mesh(ltGeo, new THREE.MeshBasicMaterial({ color: ltColor }));
+        lt.position.set(-0.015, 0, 0.008);
+        stGroup.add(lt);
 
-        // Station light
-        var ltGeo = new THREE.SphereGeometry(0.004, 6, 6);
-        var ltMat = new THREE.MeshBasicMaterial({
-          color: di % 3 === 0 ? 0xffaa44 : 0x88ccff, // alternating warm/cool lights
-        });
-        var lt = new THREE.Mesh(ltGeo, ltMat);
-        lt.position.x = 0.015;
-        stationGroup.add(lt);
-
-        stationGroup.position.set(
-          Math.cos(dAngle) * 1.1,
-          Math.sin(dAngle) * 1.1,
-          (Math.random() - 0.5) * 0.03
-        );
-        stationGroup.rotation.z = dAngle;
-        this.megaGroup.add(stationGroup);
+        stGroup.position.set(Math.cos(dAngle) * 1.14, Math.sin(dAngle) * 1.14, (Math.random() - 0.5) * 0.05);
+        stGroup.rotation.z = dAngle;
+        this.megaGroup.add(stGroup);
       }
 
-      /* ═══ PARTICLE FIELD — orbital debris and traffic ═══ */
-      var particleCount = 80;
+      /* ═══ PARTICLE FIELD — orbital traffic and debris ═══ */
+      var particleCount = 120;
       var pPositions = new Float32Array(particleCount * 3);
       var pColors = new Float32Array(particleCount * 3);
       for (var pi2 = 0; pi2 < particleCount; pi2++) {
         var pAngle = Math.random() * Math.PI * 2;
-        var pRadius = 0.7 + Math.random() * 0.6;
-        var pHeight = (Math.random() - 0.5) * 0.15;
+        var pRadius = 0.65 + Math.random() * 0.65;
+        var pHeight = (Math.random() - 0.5) * 0.2;
         pPositions[pi2 * 3] = Math.cos(pAngle) * pRadius;
         pPositions[pi2 * 3 + 1] = Math.sin(pAngle) * pRadius;
         pPositions[pi2 * 3 + 2] = pHeight;
-        // Mix of warm (traffic near star) and cool (debris) colors
         var isTraffic = pRadius < 0.95;
         pColors[pi2 * 3] = isTraffic ? 1.0 : 0.6;
         pColors[pi2 * 3 + 1] = isTraffic ? 0.85 : 0.7;
@@ -926,8 +1020,7 @@ window.PlanetRenderer = (function () {
       pGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
       pGeo.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
       var pMat = new THREE.PointsMaterial({
-        size: 0.008, vertexColors: true, transparent: true, opacity: 0.6,
-        depthWrite: false,
+        size: 0.008, vertexColors: true, transparent: true, opacity: 0.6, depthWrite: false,
       });
       this.megaGroup.add(new THREE.Points(pGeo, pMat));
 
