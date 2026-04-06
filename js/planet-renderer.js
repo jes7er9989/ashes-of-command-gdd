@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   PLANET RENDERER v3 — Three.js 3D Planet Visualization
+   PLANET RENDERER v3.1 — Three.js 3D Planet Visualization
    Renders each planet type as a spinning 3D sphere with procedural
    textures, bump maps, emissive maps, atmospheric glow, and unique
    per-type lighting, atmosphere, and cloud configurations.
