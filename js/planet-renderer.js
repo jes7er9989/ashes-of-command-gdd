@@ -1232,13 +1232,78 @@ window.PlanetRenderer = (function () {
       this.megaGroup.add(this.dysonConduits);
 
       // Gaps in the shell — semi-transparent areas where panels are missing/damaged
-      // Achieved by a second icosahedron with holes (lower detail = fewer faces = visible gaps)
       var gapGeo = new THREE.IcosahedronGeometry(1.01, 1);
       var gapMat = new THREE.MeshBasicMaterial({
         color: 0xffcc66, transparent: true, opacity: 0.06,
         side: THREE.BackSide, depthWrite: false,
       });
       this.megaGroup.add(new THREE.Mesh(gapGeo, gapMat));
+
+      /* ═══ BROKEN CHUNK — torn off during the Fracture, drifting nearby ═══ */
+      this.dysonChunkGroup = new THREE.Group();
+
+      // Main chunk — a wedge of the shell
+      var chunkGeo = new THREE.IcosahedronGeometry(0.28, 1);
+      // Flatten it into a curved shard shape
+      var chunkPositions = chunkGeo.attributes.position;
+      for (var cvi = 0; cvi < chunkPositions.count; cvi++) {
+        var cz = chunkPositions.getZ(cvi);
+        chunkPositions.setZ(cvi, cz * 0.25); // flatten into a shell-like piece
+      }
+      chunkPositions.needsUpdate = true;
+      chunkGeo.computeVertexNormals();
+
+      var chunkMat = new THREE.MeshPhongMaterial({
+        map: panelTex, shininess: 40,
+        emissive: 0x0a1520, emissiveIntensity: 0.15,
+        side: THREE.DoubleSide,
+      });
+      var chunk = new THREE.Mesh(chunkGeo, chunkMat);
+      this.dysonChunkGroup.add(chunk);
+
+      // Chunk edge wireframe — exposed structural skeleton
+      var chunkEdge = new THREE.LineSegments(
+        new THREE.EdgesGeometry(chunkGeo),
+        new THREE.LineBasicMaterial({ color: 0x88ccff, transparent: true, opacity: 0.3 })
+      );
+      this.dysonChunkGroup.add(chunkEdge);
+
+      // Sparking conduit on the broken edge — flickering energy leak
+      var sparkGeo = new THREE.SphereGeometry(0.015, 6, 6);
+      var sparkMat = new THREE.MeshBasicMaterial({
+        color: 0x88ccff, transparent: true, opacity: 0.6,
+      });
+      this.dysonSpark = new THREE.Mesh(sparkGeo, sparkMat);
+      this.dysonSpark.position.set(0.12, -0.08, 0.04);
+      this.dysonChunkGroup.add(this.dysonSpark);
+
+      // Second spark
+      var spark2 = new THREE.Mesh(sparkGeo.clone(), sparkMat.clone());
+      spark2.position.set(-0.1, 0.06, -0.02);
+      this.dysonChunkGroup.add(spark2);
+      this.dysonSpark2 = spark2;
+
+      // Small debris fragments around the chunk
+      for (var dfi = 0; dfi < 8; dfi++) {
+        var fragGeo = new THREE.TetrahedronGeometry(0.01 + Math.random() * 0.015, 0);
+        var fragMat = new THREE.MeshPhongMaterial({
+          color: 0x556677, shininess: 30,
+          emissive: 0x112233, emissiveIntensity: 0.1,
+        });
+        var frag = new THREE.Mesh(fragGeo, fragMat);
+        frag.position.set(
+          (Math.random() - 0.5) * 0.4,
+          (Math.random() - 0.5) * 0.3,
+          (Math.random() - 0.5) * 0.15
+        );
+        frag.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
+        this.dysonChunkGroup.add(frag);
+      }
+
+      // Position the chunk drifting away from the sphere
+      this.dysonChunkGroup.position.set(1.35, -0.5, 0.3);
+      this.dysonChunkGroup.rotation.set(0.3, -0.2, 0.15);
+      this.megaGroup.add(this.dysonChunkGroup);
 
       /* ═══ EQUATORIAL ENERGY RING — power distribution band ═══ */
       var eqRingGeo = new THREE.TorusGeometry(1.12, 0.02, 12, 128);
@@ -1768,6 +1833,21 @@ window.PlanetRenderer = (function () {
           for (var dbi = 0; dbi < this.dysonBeams.length; dbi++) {
             this.dysonBeams[dbi].material.opacity = 0.15 + Math.sin(t * 1.8 + dbi * 1.2) * 0.15;
           }
+        }
+        // Broken chunk — slow tumble drift
+        if (this.dysonChunkGroup) {
+          this.dysonChunkGroup.rotation.x += 0.0006;
+          this.dysonChunkGroup.rotation.y += 0.001;
+          this.dysonChunkGroup.rotation.z += 0.0003;
+        }
+        // Sparking conduits on the broken chunk — erratic flicker
+        if (this.dysonSpark) {
+          this.dysonSpark.material.opacity = Math.sin(t * 8.5) > 0.3 ? 0.7 : 0.05;
+          this.dysonSpark.scale.setScalar(0.8 + Math.sin(t * 12) * 0.4);
+        }
+        if (this.dysonSpark2) {
+          this.dysonSpark2.material.opacity = Math.sin(t * 6.2 + 2) > 0.4 ? 0.6 : 0.02;
+          this.dysonSpark2.scale.setScalar(0.7 + Math.sin(t * 9.5 + 1) * 0.5);
         }
       }
 
