@@ -81,10 +81,6 @@ window.PlanetRenderer = (function () {
     }
 
     _build(type) {
-      const megastructures = ['Ring World', 'Dyson Sphere', 'Aethyn Nexus', 'Worldship', 'Warp Gate'];
-      if (megastructures.indexOf(type) !== -1) {
-        throw new Error('Megastructure — use SVG');
-      }
       const map = {
         'Capital World':    '_capitalWorld',
         'Terrestrial':      '_terrestrial',
@@ -98,6 +94,11 @@ window.PlanetRenderer = (function () {
         'Moon':             '_moon',
         'Orbital Station':  '_orbitalStation',
         'Dead World':       '_deadWorld',
+        'Ring World':       '_ringWorld',
+        'Dyson Sphere':     '_dysonSphere',
+        'Aethyn Nexus':     '_aethynNexus',
+        'Worldship':        '_worldship',
+        'Warp Gate':        '_warpGate',
       };
       const fn = map[type] || '_terrestrial';
       this[fn]();
@@ -678,6 +679,498 @@ window.PlanetRenderer = (function () {
     }
 
     /* ════════════════════════════════════
+       MEGASTRUCTURE BUILDERS
+       ════════════════════════════════════ */
+
+    _ringWorld() {
+      // Warm golden sunlight from the ring's star
+      this.sun.color.set(0xfff8d0);
+      this.sun.intensity = 1.4;
+      this.sun.position.set(0, 0, 5);
+      this.fill.color.set(0x886633);
+      this.fill.intensity = 0.25;
+      this.ambient.intensity = 0.4;
+
+      this.megaGroup = new THREE.Group();
+
+      // Main ring body — outer metallic hull
+      var ringGeo = new THREE.TorusGeometry(1.0, 0.12, 24, 128);
+      var ringMat = new THREE.MeshPhongMaterial({
+        color: 0x667788, shininess: 50,
+        emissive: 0x111111, emissiveIntensity: 0.1,
+      });
+      var ring = new THREE.Mesh(ringGeo, ringMat);
+      this.megaGroup.add(ring);
+
+      // Inner habitable surface — biome strips
+      var innerGeo = new THREE.TorusGeometry(1.0, 0.115, 24, 128);
+      var innerMat = new THREE.MeshPhongMaterial({
+        color: 0x446633, shininess: 10,
+        emissive: 0x334422, emissiveIntensity: 0.3,
+        side: THREE.BackSide,
+      });
+      var inner = new THREE.Mesh(innerGeo, innerMat);
+      this.megaGroup.add(inner);
+
+      // Biome strip highlights — colored bands on the inner surface
+      var biomeColors = [0x2266aa, 0x44aa44, 0xbb9944, 0x44aa44, 0x2266aa];
+      for (var bi = 0; bi < biomeColors.length; bi++) {
+        var bandAngle = (bi / biomeColors.length) * Math.PI * 2;
+        var bandGeo = new THREE.TorusGeometry(1.0, 0.025, 6, 12);
+        var bandMat = new THREE.MeshPhongMaterial({
+          color: biomeColors[bi], transparent: true, opacity: 0.35,
+          emissive: biomeColors[bi], emissiveIntensity: 0.2,
+        });
+        var band = new THREE.Mesh(bandGeo, bandMat);
+        band.rotation.x = bandAngle;
+        this.megaGroup.add(band);
+      }
+
+      // Atmospheric containment walls — raised ridges along the ring
+      for (var wi = 0; wi < 8; wi++) {
+        var wallAngle = (wi / 8) * Math.PI * 2;
+        var wallGeo = new THREE.BoxGeometry(0.008, 0.16, 0.008);
+        var wallMat = new THREE.MeshPhongMaterial({ color: 0x99aabb, shininess: 30 });
+        var wall = new THREE.Mesh(wallGeo, wallMat);
+        wall.position.set(Math.cos(wallAngle) * 1.0, Math.sin(wallAngle) * 1.0, 0);
+        wall.rotation.z = wallAngle;
+        this.megaGroup.add(wall);
+      }
+
+      // Inner surface glow
+      var glowGeo = new THREE.TorusGeometry(1.0, 0.14, 16, 64);
+      var glowMat = new THREE.MeshBasicMaterial({
+        color: 0x88cc66, transparent: true, opacity: 0.06,
+        side: THREE.DoubleSide, depthWrite: false,
+      });
+      this.megaGroup.add(new THREE.Mesh(glowGeo, glowMat));
+
+      // Tilt for better viewing angle
+      this.megaGroup.rotation.x = 0.5;
+      this.megaGroup.rotation.y = 0.3;
+      this.scene.add(this.megaGroup);
+      this.planet = this.megaGroup;
+    }
+
+    _dysonSphere() {
+      // Intense warm light from the central star
+      this.sun.color.set(0xffeedd);
+      this.sun.intensity = 0.6;
+      this.sun.position.set(3, 2, 4);
+      this.fill.color.set(0xffaa44);
+      this.fill.intensity = 0.3;
+      this.ambient.color.set(0x443322);
+      this.ambient.intensity = 0.5;
+
+      this.megaGroup = new THREE.Group();
+
+      // Central star — bright emissive sphere
+      var starGeo = new THREE.SphereGeometry(0.35, 32, 32);
+      var starMat = new THREE.MeshBasicMaterial({
+        color: 0xffdd88,
+      });
+      this.dysonStar = new THREE.Mesh(starGeo, starMat);
+      this.megaGroup.add(this.dysonStar);
+
+      // Star glow layers
+      var glowSizes = [0.42, 0.50, 0.60];
+      var glowOpacities = [0.15, 0.08, 0.04];
+      for (var gi = 0; gi < glowSizes.length; gi++) {
+        var sgGeo = new THREE.SphereGeometry(glowSizes[gi], 24, 24);
+        var sgMat = new THREE.MeshBasicMaterial({
+          color: 0xffcc66, transparent: true, opacity: glowOpacities[gi],
+          side: THREE.BackSide, depthWrite: false,
+        });
+        this.megaGroup.add(new THREE.Mesh(sgGeo, sgMat));
+      }
+
+      // Star point light
+      this.dysonStarLight = new THREE.PointLight(0xffdd88, 1.5, 5);
+      this.megaGroup.add(this.dysonStarLight);
+
+      // Lattice cage — wireframe icosahedron
+      var latticeGeo = new THREE.IcosahedronGeometry(1.0, 1);
+      var latticeMat = new THREE.MeshPhongMaterial({
+        color: 0x556677, wireframe: true,
+        emissive: 0x334455, emissiveIntensity: 0.3,
+      });
+      this.dysonLattice = new THREE.Mesh(latticeGeo, latticeMat);
+      this.megaGroup.add(this.dysonLattice);
+
+      // Panel segments on the lattice faces — partial coverage
+      var panelGeo = new THREE.IcosahedronGeometry(0.98, 1);
+      var panelMat = new THREE.MeshPhongMaterial({
+        color: 0x445566, shininess: 40, transparent: true, opacity: 0.4,
+        emissive: 0x223344, emissiveIntensity: 0.15,
+        side: THREE.DoubleSide,
+      });
+      this.megaGroup.add(new THREE.Mesh(panelGeo, panelMat));
+
+      // Energy conduit lines along edges — bright emissive overlay
+      var conduitGeo = new THREE.IcosahedronGeometry(1.01, 1);
+      this.dysonConduits = new THREE.LineSegments(
+        new THREE.EdgesGeometry(conduitGeo),
+        new THREE.LineBasicMaterial({ color: 0x88ccff, transparent: true, opacity: 0.6 })
+      );
+      this.megaGroup.add(this.dysonConduits);
+
+      // Outer energy halo
+      var haloGeo = new THREE.SphereGeometry(1.08, 24, 24);
+      var haloMat = new THREE.MeshBasicMaterial({
+        color: 0x6699cc, transparent: true, opacity: 0.04,
+        side: THREE.BackSide, depthWrite: false,
+      });
+      this.megaGroup.add(new THREE.Mesh(haloGeo, haloMat));
+
+      this.scene.add(this.megaGroup);
+      this.planet = this.megaGroup;
+    }
+
+    _aethynNexus() {
+      // Cool blue-purple lighting
+      this.sun.color.set(0xccccff);
+      this.sun.intensity = 1.0;
+      this.fill.color.set(0x442266);
+      this.fill.intensity = 0.3;
+      this.ambient.color.set(0x1a1a2e);
+      this.ambient.intensity = 0.45;
+
+      this.megaGroup = new THREE.Group();
+
+      // Main crystalline body — icosahedron
+      var bodyGeo = new THREE.IcosahedronGeometry(0.8, 1);
+      var bodyMat = new THREE.MeshPhongMaterial({
+        color: 0x445577, shininess: 80,
+        emissive: 0x4422aa, emissiveIntensity: 0.4,
+        transparent: true, opacity: 0.85,
+      });
+      this.nexusBody = new THREE.Mesh(bodyGeo, bodyMat);
+      this.megaGroup.add(this.nexusBody);
+
+      // Crystalline facet edges — visible geometric pattern
+      var edgeMat = new THREE.LineBasicMaterial({ color: 0x8866dd, transparent: true, opacity: 0.7 });
+      this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(bodyGeo), edgeMat));
+
+      // Inner glow core
+      var coreGeo = new THREE.IcosahedronGeometry(0.45, 2);
+      var coreMat = new THREE.MeshBasicMaterial({
+        color: 0x7744cc, transparent: true, opacity: 0.25,
+      });
+      this.nexusCore = new THREE.Mesh(coreGeo, coreMat);
+      this.megaGroup.add(this.nexusCore);
+
+      // Core point light
+      this.nexusCoreLight = new THREE.PointLight(0x8855dd, 0.8, 4);
+      this.megaGroup.add(this.nexusCoreLight);
+
+      // Docking spines — thin cylinders extending outward
+      var spinePositions = [
+        [1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0],
+        [0, 0, 1], [0, 0, -1],
+        [0.7, 0.7, 0], [-0.7, -0.7, 0], [0.7, 0, 0.7], [-0.7, 0, -0.7],
+      ];
+      for (var si = 0; si < spinePositions.length; si++) {
+        var sp = spinePositions[si];
+        var spineLen = 0.35 + Math.random() * 0.25;
+        var spineGeo = new THREE.CylinderGeometry(0.008, 0.004, spineLen, 6);
+        var spineMat = new THREE.MeshPhongMaterial({
+          color: 0x556688, shininess: 30,
+          emissive: 0x332255, emissiveIntensity: 0.2,
+        });
+        var spine = new THREE.Mesh(spineGeo, spineMat);
+        var dir = new THREE.Vector3(sp[0], sp[1], sp[2]).normalize();
+        spine.position.copy(dir.clone().multiplyScalar(0.8 + spineLen * 0.5));
+        // Align cylinder to direction
+        spine.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
+        this.megaGroup.add(spine);
+
+        // Docking tip light
+        if (si < 6) {
+          var tipGeo = new THREE.SphereGeometry(0.012, 8, 8);
+          var tipMat = new THREE.MeshBasicMaterial({
+            color: 0xaa66ff, transparent: true, opacity: 0.7,
+          });
+          var tip = new THREE.Mesh(tipGeo, tipMat);
+          tip.position.copy(dir.clone().multiplyScalar(0.8 + spineLen));
+          this.megaGroup.add(tip);
+        }
+      }
+
+      // Crystalline growths — small irregular icosahedra on the surface
+      for (var ci = 0; ci < 12; ci++) {
+        var theta = Math.random() * Math.PI * 2;
+        var phi = Math.random() * Math.PI;
+        var cr = 0.78;
+        var cx = cr * Math.sin(phi) * Math.cos(theta);
+        var cy = cr * Math.cos(phi);
+        var cz = cr * Math.sin(phi) * Math.sin(theta);
+        var crystalSize = 0.03 + Math.random() * 0.05;
+        var crystalGeo = new THREE.OctahedronGeometry(crystalSize, 0);
+        var crystalMat = new THREE.MeshPhongMaterial({
+          color: 0x6644bb, shininess: 90,
+          emissive: 0x5533aa, emissiveIntensity: 0.5,
+          transparent: true, opacity: 0.7,
+        });
+        var crystal = new THREE.Mesh(crystalGeo, crystalMat);
+        crystal.position.set(cx, cy, cz);
+        crystal.rotation.set(Math.random() * 3, Math.random() * 3, Math.random() * 3);
+        this.megaGroup.add(crystal);
+      }
+
+      // Outer energy aura
+      var auraGeo = new THREE.IcosahedronGeometry(1.0, 2);
+      var auraMat = new THREE.MeshBasicMaterial({
+        color: 0x6633bb, transparent: true, opacity: 0.04,
+        side: THREE.BackSide, depthWrite: false,
+      });
+      this.megaGroup.add(new THREE.Mesh(auraGeo, auraMat));
+
+      this.megaGroup.rotation.x = 0.2;
+      this.scene.add(this.megaGroup);
+      this.planet = this.megaGroup;
+    }
+
+    _worldship() {
+      // Dim, cold lighting — derelict in deep space
+      this.sun.color.set(0xaabbcc);
+      this.sun.intensity = 0.8;
+      this.sun.position.set(3, 1, 4);
+      this.fill.color.set(0x222244);
+      this.fill.intensity = 0.15;
+      this.ambient.color.set(0x0a0a14);
+      this.ambient.intensity = 0.3;
+
+      this.megaGroup = new THREE.Group();
+
+      // Main hull — elongated sphere (capsule shape)
+      var hullGeo = new THREE.SphereGeometry(0.6, 48, 48);
+      var hullMat = new THREE.MeshPhongMaterial({
+        color: 0x3a3e4a, shininess: 20,
+      });
+      var hull = new THREE.Mesh(hullGeo, hullMat);
+      hull.scale.set(1.8, 1.0, 1.0);
+      this.megaGroup.add(hull);
+
+      // Hull plating overlay — darker panels
+      var plateGeo = new THREE.SphereGeometry(0.605, 24, 24);
+      var plateMat = new THREE.MeshPhongMaterial({
+        color: 0x2a2e3a, shininess: 10, transparent: true, opacity: 0.6,
+        wireframe: true,
+      });
+      var plates = new THREE.Mesh(plateGeo, plateMat);
+      plates.scale.set(1.8, 1.0, 1.0);
+      this.megaGroup.add(plates);
+
+      // Engine section — rear cone
+      var engineGeo = new THREE.ConeGeometry(0.35, 0.5, 16);
+      var engineMat = new THREE.MeshPhongMaterial({ color: 0x2a2c34, shininess: 15 });
+      var engine = new THREE.Mesh(engineGeo, engineMat);
+      engine.rotation.z = -Math.PI / 2;
+      engine.position.x = -1.25;
+      this.megaGroup.add(engine);
+
+      // Engine nozzles
+      for (var ni = 0; ni < 6; ni++) {
+        var na = (ni / 6) * Math.PI * 2;
+        var nozzGeo = new THREE.CylinderGeometry(0.04, 0.06, 0.15, 8);
+        var nozzMat = new THREE.MeshPhongMaterial({ color: 0x1a1c24, shininess: 10 });
+        var nozz = new THREE.Mesh(nozzGeo, nozzMat);
+        nozz.rotation.z = Math.PI / 2;
+        nozz.position.set(-1.48, Math.cos(na) * 0.18, Math.sin(na) * 0.18);
+        this.megaGroup.add(nozz);
+      }
+
+      // Command tower — dorsal structure
+      var towerGeo = new THREE.BoxGeometry(0.3, 0.15, 0.2);
+      var towerMat = new THREE.MeshPhongMaterial({ color: 0x444855, shininess: 25 });
+      var tower = new THREE.Mesh(towerGeo, towerMat);
+      tower.position.set(0.5, 0.55, 0);
+      this.megaGroup.add(tower);
+
+      // Bridge windows
+      var bridgeMat = new THREE.MeshPhongMaterial({
+        color: 0xaaddff, emissive: 0x4488aa, emissiveIntensity: 0.4, shininess: 60,
+      });
+      for (var bw = 0; bw < 5; bw++) {
+        var win = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.015, 0.008), bridgeMat);
+        win.position.set(0.4 + bw * 0.05, 0.628, 0);
+        this.megaGroup.add(win);
+      }
+
+      // Docking bays — recessed sections along the hull
+      var bayMat = new THREE.MeshPhongMaterial({ color: 0x1a1c24, shininess: 5 });
+      var bayPositions = [
+        { x: 0.4, y: -0.3, z: 0.45 }, { x: -0.2, y: -0.3, z: 0.45 },
+        { x: 0.4, y: -0.3, z: -0.45 }, { x: -0.2, y: -0.3, z: -0.45 },
+      ];
+      for (var bi = 0; bi < bayPositions.length; bi++) {
+        var bp = bayPositions[bi];
+        var bay = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.06, 0.12), bayMat);
+        bay.position.set(bp.x, bp.y, bp.z);
+        this.megaGroup.add(bay);
+      }
+
+      // Hull damage — dark scar marks
+      var scarMat = new THREE.MeshBasicMaterial({ color: 0x111118, transparent: true, opacity: 0.6 });
+      for (var di = 0; di < 15; di++) {
+        var scarGeo = new THREE.PlaneGeometry(0.04 + Math.random() * 0.08, 0.01 + Math.random() * 0.03);
+        var scar = new THREE.Mesh(scarGeo, scarMat);
+        var sTheta = Math.random() * Math.PI * 2;
+        var sPhi = Math.random() * Math.PI;
+        var sR = 0.61;
+        scar.position.set(
+          sR * Math.sin(sPhi) * Math.cos(sTheta) * 1.8,
+          sR * Math.cos(sPhi),
+          sR * Math.sin(sPhi) * Math.sin(sTheta)
+        );
+        scar.lookAt(0, 0, 0);
+        this.megaGroup.add(scar);
+      }
+
+      // Running lights along the hull
+      this.worldshipLights = [];
+      var lightPositions = [
+        [1.0, 0.2, 0], [-0.6, 0.2, 0], [0.3, 0, 0.55],
+        [0.3, 0, -0.55], [-0.8, -0.1, 0.3], [-0.8, -0.1, -0.3],
+        [0.7, -0.3, 0.3], [0.7, -0.3, -0.3],
+      ];
+      for (var li = 0; li < lightPositions.length; li++) {
+        var lp = lightPositions[li];
+        var lightGeo = new THREE.SphereGeometry(0.012, 6, 6);
+        var lightMat = new THREE.MeshBasicMaterial({
+          color: li < 4 ? 0xffccaa : 0xff4422,
+          transparent: true, opacity: 0.8,
+        });
+        var lightMesh = new THREE.Mesh(lightGeo, lightMat);
+        lightMesh.position.set(lp[0], lp[1], lp[2]);
+        this.megaGroup.add(lightMesh);
+        this.worldshipLights.push({ mesh: lightMesh, phase: Math.random() * 6.28, rate: 2 + Math.random() * 4 });
+      }
+
+      // Nav lights
+      var navRedL = new THREE.PointLight(0xff2222, 0.3, 2);
+      navRedL.position.set(-1.5, 0, 0.1);
+      this.megaGroup.add(navRedL);
+      this.worldshipNavRed = navRedL;
+
+      var navGreenL = new THREE.PointLight(0x22ff22, 0.3, 2);
+      navGreenL.position.set(1.1, 0, 0.1);
+      this.megaGroup.add(navGreenL);
+      this.worldshipNavGreen = navGreenL;
+
+      // Slight initial tilt
+      this.megaGroup.rotation.x = 0.15;
+      this.megaGroup.rotation.z = 0.1;
+      this.scene.add(this.megaGroup);
+      this.planet = this.megaGroup;
+    }
+
+    _warpGate() {
+      // Cool blue-white lighting from the warp field
+      this.sun.color.set(0xddeeff);
+      this.sun.intensity = 0.8;
+      this.fill.color.set(0x224466);
+      this.fill.intensity = 0.3;
+      this.ambient.color.set(0x112233);
+      this.ambient.intensity = 0.45;
+
+      this.megaGroup = new THREE.Group();
+
+      // Outer ring structure
+      var ringGeo = new THREE.TorusGeometry(1.0, 0.08, 20, 80);
+      var ringMat = new THREE.MeshPhongMaterial({
+        color: 0x556677, shininess: 50,
+        emissive: 0x223344, emissiveIntensity: 0.15,
+      });
+      this.warpRing = new THREE.Mesh(ringGeo, ringMat);
+      this.megaGroup.add(this.warpRing);
+
+      // Inner structural ring
+      var innerRingGeo = new THREE.TorusGeometry(0.92, 0.03, 12, 64);
+      var innerRingMat = new THREE.MeshPhongMaterial({
+        color: 0x445566, shininess: 40,
+        emissive: 0x334466, emissiveIntensity: 0.2,
+      });
+      this.megaGroup.add(new THREE.Mesh(innerRingGeo, innerRingMat));
+
+      // Energy channel ring
+      var energyRingGeo = new THREE.TorusGeometry(1.0, 0.10, 12, 80);
+      var energyRingMat = new THREE.MeshBasicMaterial({
+        color: 0x4488cc, transparent: true, opacity: 0.08,
+        side: THREE.DoubleSide, depthWrite: false,
+      });
+      this.megaGroup.add(new THREE.Mesh(energyRingGeo, energyRingMat));
+
+      // Energy field inside the ring — animated disc
+      var fieldGeo = new THREE.CircleGeometry(0.88, 64);
+      this.warpFieldMat = new THREE.MeshBasicMaterial({
+        color: 0x4499dd, transparent: true, opacity: 0.15,
+        side: THREE.DoubleSide, depthWrite: false,
+      });
+      this.warpField = new THREE.Mesh(fieldGeo, this.warpFieldMat);
+      this.megaGroup.add(this.warpField);
+
+      // Second energy field layer — offset for depth
+      var field2Geo = new THREE.CircleGeometry(0.82, 64);
+      this.warpField2Mat = new THREE.MeshBasicMaterial({
+        color: 0x66bbff, transparent: true, opacity: 0.08,
+        side: THREE.DoubleSide, depthWrite: false,
+      });
+      this.warpField2 = new THREE.Mesh(field2Geo, this.warpField2Mat);
+      this.warpField2.position.z = 0.02;
+      this.megaGroup.add(this.warpField2);
+
+      // Energy field glow from inside
+      this.warpGlow = new THREE.PointLight(0x4499dd, 0.6, 4);
+      this.megaGroup.add(this.warpGlow);
+
+      // Support pylons — 4 stations attached to ring exterior
+      var pylonAngles = [0, Math.PI * 0.5, Math.PI, Math.PI * 1.5];
+      for (var pi = 0; pi < pylonAngles.length; pi++) {
+        var pa = pylonAngles[pi];
+        var pylonGroup = new THREE.Group();
+
+        // Main pylon body
+        var pylonGeo = new THREE.BoxGeometry(0.06, 0.18, 0.06);
+        var pylonMat = new THREE.MeshPhongMaterial({ color: 0x445566, shininess: 30 });
+        pylonGroup.add(new THREE.Mesh(pylonGeo, pylonMat));
+
+        // Antenna
+        var antGeo = new THREE.CylinderGeometry(0.004, 0.004, 0.12, 4);
+        var antMesh = new THREE.Mesh(antGeo, pylonMat);
+        antMesh.position.y = 0.15;
+        pylonGroup.add(antMesh);
+
+        // Station light
+        var stLightGeo = new THREE.SphereGeometry(0.01, 6, 6);
+        var stLightMat = new THREE.MeshBasicMaterial({
+          color: pi % 2 === 0 ? 0xff4422 : 0x22ff44,
+          transparent: true, opacity: 0.8,
+        });
+        var stLight = new THREE.Mesh(stLightGeo, stLightMat);
+        stLight.position.y = 0.09;
+        pylonGroup.add(stLight);
+
+        // Position on the ring exterior
+        pylonGroup.position.set(Math.cos(pa) * 1.12, Math.sin(pa) * 1.12, 0);
+        // Point outward
+        pylonGroup.rotation.z = pa - Math.PI * 0.5;
+        this.megaGroup.add(pylonGroup);
+      }
+
+      // Ring edge glow lines
+      var edgeGeo = new THREE.TorusGeometry(1.0, 0.085, 6, 80);
+      var edgeMat = new THREE.LineBasicMaterial({ color: 0x4488cc, transparent: true, opacity: 0.3 });
+      this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(edgeGeo), edgeMat));
+
+      // Tilt for viewing angle
+      this.megaGroup.rotation.x = 0.35;
+      this.megaGroup.rotation.y = 0.2;
+      this.scene.add(this.megaGroup);
+      this.planet = this.megaGroup;
+    }
+
+    /* ════════════════════════════════════
        UPDATE
        ════════════════════════════════════ */
     update(t) {
@@ -729,6 +1222,90 @@ window.PlanetRenderer = (function () {
       // Dead world debris
       if (this.debrisGroup) {
         this.debrisGroup.rotation.y += 0.0004;
+      }
+
+      // ── Megastructure animations ──
+
+      // Ring World — slow rotation
+      if (this.type === 'Ring World' && this.megaGroup) {
+        this.megaGroup.rotation.z += 0.002;
+      }
+
+      // Dyson Sphere — lattice rotation + star pulsing
+      if (this.type === 'Dyson Sphere') {
+        if (this.dysonLattice) {
+          this.dysonLattice.rotation.y += 0.001;
+          this.dysonLattice.rotation.x += 0.0005;
+        }
+        if (this.dysonConduits) {
+          this.dysonConduits.rotation.y += 0.001;
+          this.dysonConduits.rotation.x += 0.0005;
+          this.dysonConduits.material.opacity = 0.4 + Math.sin(t * 2) * 0.2;
+        }
+        if (this.dysonStar) {
+          var starScale = 1.0 + Math.sin(t * 1.5) * 0.03;
+          this.dysonStar.scale.set(starScale, starScale, starScale);
+        }
+        if (this.dysonStarLight) {
+          this.dysonStarLight.intensity = 1.3 + Math.sin(t * 1.5) * 0.3;
+        }
+      }
+
+      // Aethyn Nexus — slow rotation + pulsing core
+      if (this.type === 'Aethyn Nexus') {
+        if (this.nexusBody) {
+          this.nexusBody.rotation.y += 0.0015;
+          this.nexusBody.rotation.x += 0.0005;
+          this.nexusBody.material.emissiveIntensity = 0.3 + Math.sin(t * 0.8) * 0.15;
+        }
+        if (this.nexusCore) {
+          this.nexusCore.rotation.y -= 0.003;
+          this.nexusCore.material.opacity = 0.18 + Math.sin(t * 1.2) * 0.1;
+        }
+        if (this.nexusCoreLight) {
+          this.nexusCoreLight.intensity = 0.6 + Math.sin(t * 0.8) * 0.3;
+        }
+      }
+
+      // Worldship — tumbling on two axes + flickering lights
+      if (this.type === 'Worldship' && this.megaGroup) {
+        this.megaGroup.rotation.y += 0.0008;
+        this.megaGroup.rotation.x += 0.0003;
+        if (this.worldshipLights) {
+          for (var wli = 0; wli < this.worldshipLights.length; wli++) {
+            var wl = this.worldshipLights[wli];
+            var flicker = Math.sin(t * wl.rate + wl.phase);
+            wl.mesh.material.opacity = flicker > 0.2 ? 0.8 : 0.05;
+          }
+        }
+        if (this.worldshipNavRed) {
+          this.worldshipNavRed.intensity = Math.sin(t * 2.5) > 0 ? 0.3 : 0.02;
+        }
+        if (this.worldshipNavGreen) {
+          this.worldshipNavGreen.intensity = Math.sin(t * 2.5) > 0 ? 0.3 : 0.02;
+        }
+      }
+
+      // Warp Gate — pulsing energy field
+      if (this.type === 'Warp Gate') {
+        if (this.warpFieldMat) {
+          this.warpFieldMat.opacity = 0.10 + Math.sin(t * 1.2) * 0.06 + Math.sin(t * 3.1) * 0.03;
+        }
+        if (this.warpField2Mat) {
+          this.warpField2Mat.opacity = 0.06 + Math.sin(t * 1.8 + 1) * 0.04;
+        }
+        if (this.warpField) {
+          this.warpField.rotation.z += 0.005;
+        }
+        if (this.warpField2) {
+          this.warpField2.rotation.z -= 0.003;
+        }
+        if (this.warpGlow) {
+          this.warpGlow.intensity = 0.5 + Math.sin(t * 1.2) * 0.2;
+        }
+        if (this.warpRing) {
+          this.warpRing.material.emissiveIntensity = 0.10 + Math.sin(t * 1.5) * 0.08;
+        }
       }
 
       this.renderer.render(this.scene, this.camera);
