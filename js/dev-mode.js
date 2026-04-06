@@ -28,6 +28,12 @@ const DevMode = (() => {
   let devUnlocked = false;
 
   // ───────────────────────────────────────────
+  // SECTION: FX Toggle State
+  // ───────────────────────────────────────────
+  const FX_STORAGE_KEY = 'dev-fx-disabled';
+  let fxDisabled = false;
+
+  // ───────────────────────────────────────────
   // SECTION: Edit Mode State
   // ───────────────────────────────────────────
   let editModeActive = false;
@@ -106,11 +112,41 @@ const DevMode = (() => {
     }
 
     _showToast();
+    _restoreFxState();
 
     console.log(
       '%c⚡ SYSTEM OVERRIDE: Developer Mode Unlocked.',
       'color:#AA77FF;background:#0a0510;font-family:monospace;font-size:13px;padding:4px 10px;border:1px solid #AA77FF;border-radius:2px'
     );
+  }
+
+  // ───────────────────────────────────────────
+  // SECTION: FX Toggle
+  // ───────────────────────────────────────────
+
+  function _createFxToggle() {
+    const btn = document.createElement('button');
+    btn.id = 'dev-fx-toggle';
+    btn.textContent = 'FX: ON';
+    btn.addEventListener('click', _toggleFx);
+    document.body.appendChild(btn);
+  }
+
+  function _toggleFx() {
+    fxDisabled = !fxDisabled;
+    document.body.classList.toggle('dev-fx-disabled', fxDisabled);
+    const btn = document.getElementById('dev-fx-toggle');
+    if (btn) btn.textContent = fxDisabled ? 'FX: OFF' : 'FX: ON';
+    try { localStorage.setItem(FX_STORAGE_KEY, fxDisabled ? '1' : '0'); } catch (_) { /* private browsing */ }
+  }
+
+  function _restoreFxState() {
+    try { fxDisabled = localStorage.getItem(FX_STORAGE_KEY) === '1'; } catch (_) { fxDisabled = false; }
+    if (fxDisabled) {
+      document.body.classList.add('dev-fx-disabled');
+      const btn = document.getElementById('dev-fx-toggle');
+      if (btn) btn.textContent = 'FX: OFF';
+    }
   }
 
   // ───────────────────────────────────────────
@@ -252,6 +288,7 @@ const DevMode = (() => {
 
   function init() {
     _createToast();
+    _createFxToggle();
 
     // Attach click listener to sidebar title for 10-click unlock
     const verEl = document.querySelector('.sidebar-title');

@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v203';
+const CACHE_NAME = 'aoc-gdd-v204';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -59,14 +59,9 @@ const PRECACHE_URLS = [
   '/pages/chapters/ch42.html',
   '/pages/chapters/ch43.html',
   '/pages/chapters/ch43-ai.html',
-  '/pages/chapters/ch44.html',
-  '/pages/chapters/ch45.html',
-  '/pages/chapters/ch46.html',
   '/pages/chapters/dashboard.html',
   '/pages/chapters/placeholder.html',
   '/pages/chapters/appendices.html',
-  '/pages/chapters/appL.html',
-  '/pages/chapters/appM.html',
   '/pages/chapters/suppG.html',
   '/pages/chapters/suppH.html',
   '/pages/chapters/suppI.html',

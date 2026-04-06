@@ -80,7 +80,6 @@
     "part": "VIII - Business",
     "chapters": [
       { "id": "ch43", "num": "43", "title": "DLC Expansion Roadmap" },
-      { "id": "ch44", "num": "44", "title": "Development Priority Order" },
       { "id": "ch45", "num": "45", "title": "Multi-Chat Workflow" },
       { "id": "ch46", "num": "46", "title": "Resolved Design Decisions (143)" }
     ]

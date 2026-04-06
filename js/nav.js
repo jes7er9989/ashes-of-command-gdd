@@ -33,7 +33,7 @@ const Nav = {
     strategy:     ['ch24','ch25','ch26','ch27','ch28','ch29','ch30','ch31'],
     endgame:      ['ch32','ch33','ch34','ch35','ch36'],
     presentation: ['ch37','ch38','ch39','ch40','ch42','ch43-ai'],
-    business:     ['ch43','ch44','ch45','ch46'],
+    business:     ['ch43','ch45','ch46'],
     reference:    ['appA','appB','appC','appD','appE','appF','appL','appM','suppG','suppH','suppI','suppJ','suppK']
   },
 

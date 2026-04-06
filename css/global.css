@@ -3059,17 +3059,31 @@ html {
 }
 
 /* â"€â"€ Hidden Chapters (ch44â€"ch46) â"€â"€
-   Dev-only chapters are hidden by default in the nav.
+   Dev-only pages are hidden by default in the nav.
    Revealed when body.dev-mode-active is present.                  */
-.nav-chapter[data-id="ch44"],
 .nav-chapter[data-id="ch45"],
-.nav-chapter[data-id="ch46"] {
+.nav-chapter[data-id="ch46"],
+.nav-chapter[data-id="appL"],
+.nav-chapter[data-id="appM"] {
+  display: none;
+}
+.nav-part-header[data-part="Appendix L - Prototype Log"],
+.nav-part-header[data-part="Appendix L - Prototype Log"] + .nav-part-chapters,
+.nav-part-header[data-part="Appendix M - Project Checklist"],
+.nav-part-header[data-part="Appendix M - Project Checklist"] + .nav-part-chapters {
   display: none;
 }
 
-body.dev-mode-active .nav-chapter[data-id="ch44"],
 body.dev-mode-active .nav-chapter[data-id="ch45"],
-body.dev-mode-active .nav-chapter[data-id="ch46"] {
+body.dev-mode-active .nav-chapter[data-id="ch46"],
+body.dev-mode-active .nav-chapter[data-id="appL"],
+body.dev-mode-active .nav-chapter[data-id="appM"] {
+  display: block;
+}
+body.dev-mode-active .nav-part-header[data-part="Appendix L - Prototype Log"],
+body.dev-mode-active .nav-part-header[data-part="Appendix L - Prototype Log"] + .nav-part-chapters,
+body.dev-mode-active .nav-part-header[data-part="Appendix M - Project Checklist"],
+body.dev-mode-active .nav-part-header[data-part="Appendix M - Project Checklist"] + .nav-part-chapters {
   display: block;
 }
 
@@ -6066,7 +6080,7 @@ body.light-mode .dashboard-section:nth-child(even) {
   opacity: 0.025;
 }
 
-body.dev-mode-active .crt-overlay {
+body.dev-fx-disabled .crt-overlay {
   display: none;
 }
 
@@ -6395,14 +6409,14 @@ body.dev-mode-active .crt-overlay {
   opacity: 1;
 }
 
-/* ── Dev mode: disable all page transitions ── */
-body.dev-mode-active .page-exit,
-body.dev-mode-active .page-enter {
+/* ── Dev FX-off: disable all page transitions ── */
+body.dev-fx-disabled .page-exit,
+body.dev-fx-disabled .page-enter {
   transition: none !important;
   opacity: 1 !important;
   transform: none !important;
 }
-body.dev-mode-active .accessing-record-flash {
+body.dev-fx-disabled .accessing-record-flash {
   display: none !important;
 }
 
@@ -6427,17 +6441,17 @@ body.dev-mode-active .accessing-record-flash {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   Dev Mode: Strip visual polish for raw utility
+   Dev FX Toggle: Strip visual polish when FX disabled
    ═══════════════════════════════════════════════════════════ */
-body.dev-mode-active .crt-overlay {
+body.dev-fx-disabled .crt-overlay {
   display: none !important;
 }
-body.dev-mode-active .radar-scan::after {
+body.dev-fx-disabled .radar-scan::after {
   animation: none;
   opacity: 0;
 }
-body.dev-mode-active .card::before,
-body.dev-mode-active .card::after {
+body.dev-fx-disabled .card::before,
+body.dev-fx-disabled .card::after {
   display: none !important;
 }
 
@@ -6458,6 +6472,38 @@ body.dev-mode-active .proto-badge {
   font-weight: 700;
   border: 1px solid #ffaa22;
   box-shadow: 0 0 6px rgba(var(--guardians-rgb),0.4);
+}
+
+/* DEV FX toggle button */
+#dev-fx-toggle {
+  position: fixed;
+  bottom: 12px;
+  right: 120px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+  background: rgba(0,0,0,0.8);
+  border: 1px solid var(--accent);
+  padding: 4px 8px;
+  border-radius: 2px;
+  z-index: 99999;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: color 0.2s, border-color 0.2s, text-shadow 0.2s;
+  display: none;
+}
+body.dev-mode-active #dev-fx-toggle {
+  display: block;
+}
+#dev-fx-toggle:hover {
+  color: #fff;
+  border-color: #fff;
+  text-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+body.dev-fx-disabled #dev-fx-toggle {
+  color: #ff4444;
+  border-color: #ff4444;
+  text-shadow: 0 0 6px rgba(255,68,68,0.5);
 }
 
 /* DEV MODE fixed badge indicator */

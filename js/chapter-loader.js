@@ -30,6 +30,9 @@ const ChapterLoader = {
   /** Chapters that should never show a reading-time indicator */
   _SKIP_READING_TIME: { dashboard: true, placeholder: true },
 
+  /** Chapters that require dev mode to be active */
+  DEV_ONLY_CHAPTERS: ['ch45', 'ch46', 'appL', 'appM'],
+
   /**
    * Fetch and cache data/nav/chapter-meta.json.
    * Called lazily on first load() if not already cached.
@@ -104,6 +107,13 @@ const ChapterLoader = {
   async load(chapterId) {
     if (!this.contentArea) this.init();
     if (!this._chapterMeta) await this.loadChapterMeta();
+
+    // Block dev-mode-only chapters when dev mode is not active
+    if (this.DEV_ONLY_CHAPTERS.includes(chapterId) &&
+        !document.body.classList.contains('dev-mode-active')) {
+      location.hash = '#dashboard';
+      return;
+    }
 
     // Check for route aliases (e.g. appA → appendices + scroll)
     const alias = this.ROUTE_ALIASES[chapterId];

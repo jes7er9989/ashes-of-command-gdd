@@ -354,7 +354,16 @@ const Search = {
 
     /* ── Sort by score (highest first) and cap ──────────── */
     results.sort((a, b) => b.score - a.score);
-    this.items = results.slice(0, this.MAX_RESULTS);
+
+    // Filter out dev-mode-only chapters when dev mode is inactive
+    const devOnly = typeof ChapterLoader !== 'undefined'
+      ? ChapterLoader.DEV_ONLY_CHAPTERS : [];
+    const devActive = document.body.classList.contains('dev-mode-active');
+    const filtered = (devOnly.length && !devActive)
+      ? results.filter(r => !devOnly.includes(r.hash))
+      : results;
+
+    this.items = filtered.slice(0, this.MAX_RESULTS);
     this.selectedIndex = this.items.length > 0 ? 0 : -1;
     this.renderResults(query);
   },
