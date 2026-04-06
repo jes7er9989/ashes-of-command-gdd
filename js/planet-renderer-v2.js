@@ -1832,17 +1832,21 @@ window.PlanetRenderer = (function () {
       });
 
       /* ═══ CORE BODY — 6-pointed star disc with cut-ins like the Harvester ═══ */
-      // Build the star shape using a cylinder with vertices pushed in/out based on angle
-      var coreGeo = new THREE.CylinderGeometry(1.1, 1.1, 0.22, 72, 4, false);
+      // Build the star shape — thicker, more angular, fortress-like
+      var coreGeo = new THREE.CylinderGeometry(1.1, 1.15, 0.3, 72, 4, false);
       var corePos = coreGeo.attributes.position;
       for (var cvi = 0; cvi < corePos.count; cvi++) {
         var cvx = corePos.getX(cvi), cvy = corePos.getY(cvi), cvz = corePos.getZ(cvi);
         var angle = Math.atan2(cvz, cvx);
         var r = Math.sqrt(cvx * cvx + cvz * cvz);
         if (r > 0.1) {
-          // 6-pointed star — push outward at 6 angles, indent between them
-          var starWave = Math.cos(angle * 6) * 0.22;
-          var cutIn = starWave < 0 ? starWave * 0.7 : starWave * 0.4; // deeper cut-ins than protrusions
+          // 6-pointed star — sharp angular protrusions with deep cut-ins
+          var starWave = Math.cos(angle * 6);
+          // Sharpen the peaks — square the wave for more angular points
+          var sharpWave = starWave > 0 ? Math.pow(starWave, 0.6) : -Math.pow(-starWave, 0.6);
+          var cutIn = sharpWave * 0.28;
+          // Extra depth on the cut-ins — these are deep structural channels
+          if (sharpWave < -0.2) cutIn *= 1.3;
           var newR = r + cutIn;
           // Add noise for irregular edge
           var edgeNoise = _wsNoise(cvx * 5 + 3, cvz * 5 + 7) * 0.06;
@@ -1863,24 +1867,43 @@ window.PlanetRenderer = (function () {
       this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(coreGeo),
         new THREE.LineBasicMaterial({ color: 0x556677, transparent: true, opacity: 0.2 })));
 
-      /* ═══ CENTRAL SPIRE + CONCENTRIC RINGS ═══ */
-      // Central command spire
-      var spireGeo = new THREE.CylinderGeometry(0.03, 0.08, 0.8, 8);
-      var spireMat = new THREE.MeshPhongMaterial({ color: 0x4a5566, shininess: 40, emissive: 0x1a2233, emissiveIntensity: 0.2 });
-      this.megaGroup.add(new THREE.Mesh(spireGeo, spireMat).translateY(0.5));
-      // Spire beacon
-      this.megaGroup.add(new THREE.Mesh(new THREE.SphereGeometry(0.025, 8, 8),
-        new THREE.MeshBasicMaterial({ color: 0x6688cc, transparent: true, opacity: 0.5 })).translateY(0.95));
+      /* ═══ CENTRAL COMMAND SPIRE — shorter, angular, armored ═══ */
+      // Octagonal spire — Aethyn angular aesthetic, not a smooth cylinder
+      var spireGeo = new THREE.CylinderGeometry(0.04, 0.1, 0.35, 8);
+      var spireMat = new THREE.MeshPhongMaterial({ color: 0x4a5566, shininess: 50, emissive: 0x1a2233, emissiveIntensity: 0.25 });
+      this.megaGroup.add(new THREE.Mesh(spireGeo, spireMat).translateY(0.32));
+      // Spire edges — angular wireframe
+      this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(spireGeo),
+        new THREE.LineBasicMaterial({ color: 0x7788aa, transparent: true, opacity: 0.35 })).translateY(0.32));
+      // Spire beacon — Aethyn crystalline
+      var beaconGeo = new THREE.OctahedronGeometry(0.025, 0);
+      this.megaGroup.add(new THREE.Mesh(beaconGeo,
+        new THREE.MeshBasicMaterial({ color: 0x6688cc, transparent: true, opacity: 0.5 })).translateY(0.52));
 
-      // Concentric ring structures on the upper surface
+      // Angular armor plates radiating from center — sharp Aethyn geometry
+      for (var api = 0; api < 6; api++) {
+        var apAngle = (api / 6) * Math.PI * 2 + Math.PI / 6; // offset between turret points
+        var apGeo = new THREE.BoxGeometry(0.5, 0.06, 0.04);
+        var apMat = new THREE.MeshPhongMaterial({ map: hullTex, shininess: 25, emissive: 0x080812, emissiveIntensity: 0.1 });
+        var ap = new THREE.Mesh(apGeo, apMat);
+        ap.position.set(Math.cos(apAngle) * 0.35, 0.17, Math.sin(apAngle) * 0.35);
+        ap.rotation.y = apAngle;
+        this.megaGroup.add(ap);
+      }
+
+      // Concentric ring structures — angular, structural
       var ringRadii = [0.2, 0.4, 0.65, 0.85];
       for (var cri = 0; cri < ringRadii.length; cri++) {
-        var crGeo = new THREE.TorusGeometry(ringRadii[cri], 0.012, 6, 48);
-        var crMat = new THREE.MeshPhongMaterial({ color: 0x3a4555, shininess: 25, emissive: 0x0a1018, emissiveIntensity: 0.15 });
+        var crGeo = new THREE.TorusGeometry(ringRadii[cri], 0.015, 4, 48); // 4 radial segments = angular cross-section
+        var crMat = new THREE.MeshPhongMaterial({ color: 0x3a4555, shininess: 30, emissive: 0x0a1018, emissiveIntensity: 0.15 });
         var crMesh = new THREE.Mesh(crGeo, crMat);
         crMesh.rotation.x = Math.PI / 2;
-        crMesh.position.y = 0.12;
+        crMesh.position.y = 0.16;
         this.megaGroup.add(crMesh);
+        // Ring wireframe for angular detail
+        this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(crGeo),
+          new THREE.LineBasicMaterial({ color: 0x556677, transparent: true, opacity: 0.15 }))
+          .rotateX(Math.PI / 2).translateZ(-0.16));
       }
 
       /* ═══ 6 TURRET EMPLACEMENTS — on each star point ═══ */
@@ -1889,30 +1912,40 @@ window.PlanetRenderer = (function () {
 
       for (var tti = 0; tti < 6; tti++) {
         var ttAngle = (tti / 6) * Math.PI * 2;
-        var ttR = 1.18; // at the tip of each star point
+        var ttR = 1.2; // at the tip of each star point
         var ttx = Math.cos(ttAngle) * ttR;
         var ttz = Math.sin(ttAngle) * ttR;
-        // Turret base — large platform
-        var ttBaseGeo = new THREE.CylinderGeometry(0.08, 0.1, 0.06, 8);
+        // Turret base — massive angular platform (Aethyn fortress-grade)
+        var ttBaseGeo = new THREE.CylinderGeometry(0.1, 0.13, 0.08, 8);
         var ttBase = new THREE.Mesh(ttBaseGeo, structMat.clone());
-        ttBase.position.set(ttx, 0.14, ttz);
+        ttBase.position.set(ttx, 0.18, ttz);
         this.megaGroup.add(ttBase);
-        // Twin barrels
+        // Angular turret housing
+        var ttHouseGeo = new THREE.BoxGeometry(0.08, 0.06, 0.12);
+        var ttHouse = new THREE.Mesh(ttHouseGeo, structMat2.clone());
+        ttHouse.position.set(ttx + Math.cos(ttAngle) * 0.02, 0.24, ttz + Math.sin(ttAngle) * 0.02);
+        ttHouse.rotation.y = ttAngle;
+        this.megaGroup.add(ttHouse);
+        // Heavy twin barrels
         for (var tbi = 0; tbi < 2; tbi++) {
-          var tbGeo = new THREE.CylinderGeometry(0.01, 0.01, 0.15, 4);
-          var tb = new THREE.Mesh(tbGeo, new THREE.MeshPhongMaterial({ color: 0x3a3e4a, shininess: 20 }));
-          tb.rotation.z = -0.4;
-          var tbOffset = tbi === 0 ? 0.025 : -0.025;
-          tb.position.set(ttx + Math.cos(ttAngle) * 0.06, 0.2, ttz + Math.sin(ttAngle) * 0.06 + tbOffset);
+          var tbGeo = new THREE.CylinderGeometry(0.012, 0.015, 0.2, 6);
+          var tb = new THREE.Mesh(tbGeo, new THREE.MeshPhongMaterial({ color: 0x3a3e4a, shininess: 25 }));
+          tb.rotation.z = -0.35;
+          var tbOffset = tbi === 0 ? 0.03 : -0.03;
+          tb.position.set(ttx + Math.cos(ttAngle) * 0.1, 0.27, ttz + Math.sin(ttAngle) * 0.1 + tbOffset);
           this.megaGroup.add(tb);
         }
-        // Turret ring glow — like the circular features in the reference
-        var ttRingGeo = new THREE.TorusGeometry(0.06, 0.005, 6, 24);
-        var ttRingMat = new THREE.MeshBasicMaterial({ color: 0x8899aa, transparent: true, opacity: 0.2 });
+        // Turret targeting ring — angular, Aethyn aesthetic
+        var ttRingGeo = new THREE.TorusGeometry(0.08, 0.006, 4, 24);
+        var ttRingMat = new THREE.MeshBasicMaterial({ color: 0x7799bb, transparent: true, opacity: 0.2 });
         var ttRing = new THREE.Mesh(ttRingGeo, ttRingMat);
         ttRing.rotation.x = Math.PI / 2;
-        ttRing.position.set(ttx, 0.13, ttz);
+        ttRing.position.set(ttx, 0.16, ttz);
         this.megaGroup.add(ttRing);
+        // Turret wireframe edges
+        this.megaGroup.add(new THREE.LineSegments(new THREE.EdgesGeometry(ttBaseGeo),
+          new THREE.LineBasicMaterial({ color: 0x667788, transparent: true, opacity: 0.25 }))
+          .translateX(ttx).translateY(0.18).translateZ(ttz));
       }
 
       /* ═══ SURFACE CITY — dense structures covering the entire upper surface ═══ */
