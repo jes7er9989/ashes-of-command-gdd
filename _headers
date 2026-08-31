@@ -1,0 +1,46 @@
+# Cloudflare Pages header rules
+# ─────────────────────────────────────────────────────────────
+# This site has no build step, so js/, css/, data/ and pages/ are
+# served under stable filenames that never change between deploys.
+# Without an explicit policy, browsers and the Cloudflare edge keep
+# serving an old copy after a push — a change can ship correctly and
+# still never reach a returning visitor.
+#
+# "no-cache" does NOT mean "don't store". It means "store it, but
+# revalidate with the origin before reusing it". Unchanged files come
+# back as a cheap 304, so this costs a round trip, not a re-download.
+#
+# assets/ holds icons and the territory map, which change rarely and
+# are safe to cache hard.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Application code — must always be revalidated
+/js/*
+  Cache-Control: no-cache
+
+/css/*
+  Cache-Control: no-cache
+
+# Content and data — updated whenever the GDD changes
+/pages/*
+  Cache-Control: no-cache
+
+/data/*
+  Cache-Control: no-cache
+
+# The shell and the worker that caches everything else
+/index.html
+  Cache-Control: no-cache
+
+/service-worker.js
+  Cache-Control: no-cache
+
+/manifest.json
+  Cache-Control: no-cache
+
+# Static imagery — safe to cache for a week
+/assets/*
+  Cache-Control: public, max-age=604800
