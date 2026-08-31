@@ -6725,3 +6725,80 @@ body.dev-mode-active::after {
 @media (prefers-reduced-motion: reduce) {
   .offline-dot { animation: none; }
 }
+
+/* ── Under Construction Banner ─────────────────────────── */
+/* Temporary site-wide notice. Pinned top-centre so it clears the
+   fixed sidebar (left) and the theme controls (right). pointer-events
+   is disabled so it can never intercept a click. Remove this block
+   and the #uc-banner markup in index.html to retire the notice. */
+
+#uc-banner {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9996;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100vw - 32px);
+  padding: 7px 16px;
+  background: rgba(20, 14, 2, 0.92);
+  border: 1px solid var(--guardians);
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255, 170, 34, 0.12), 0 4px 20px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-family: 'Share Tech Mono', 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#uc-banner .uc-dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--guardians);
+  box-shadow: 0 0 7px var(--guardians);
+  animation: uc-pulse 1.9s ease-in-out infinite;
+}
+
+#uc-banner .uc-label {
+  color: var(--guardians);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+#uc-banner .uc-sub {
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#uc-banner .uc-sep {
+  color: var(--border);
+  color: rgba(255, 170, 34, 0.35);
+  font-size: 0.72rem;
+}
+
+@keyframes uc-pulse {
+  0%, 100% { opacity: 1;    transform: scale(1);   }
+  50%      { opacity: 0.35; transform: scale(0.82); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #uc-banner .uc-dot { animation: none; }
+}
+
+/* Narrow screens: drop the secondary line, keep the warning */
+@media (max-width: 720px) {
+  #uc-banner { top: 6px; padding: 5px 12px; gap: 8px; }
+  #uc-banner .uc-label { font-size: 0.68rem; letter-spacing: 0.12em; }
+  #uc-banner .uc-sep,
+  #uc-banner .uc-sub { display: none; }
+}

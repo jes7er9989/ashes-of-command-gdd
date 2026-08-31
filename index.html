@@ -43,6 +43,15 @@
   <!-- Skip link: first focusable element for keyboard users (WCAG 2.4.1) -->
   <a href="#content-area" class="skip-link">Skip to content</a>
 
+  <!-- Temporary under-construction notice. Remove this block and the
+       #uc-banner rules in css/global.css to retire it. -->
+  <div id="uc-banner" role="status" aria-live="polite">
+    <span class="uc-dot" aria-hidden="true"></span>
+    <span class="uc-label">Under Construction</span>
+    <span class="uc-sep" aria-hidden="true">//</span>
+    <span class="uc-sub">Active development &mdash; content subject to change</span>
+  </div>
+
   <!-- Scroll progress bar: fills 0->100% as user scrolls through current page -->
   <div id="scroll-progress" aria-hidden="true"></div>
 

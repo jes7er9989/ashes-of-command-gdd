@@ -1,11 +1,11 @@
 /* ═══════════════════════════════════════════════════════════
    service-worker.js — Offline Caching (PWA)
    Part of: Ashes of Command: The Reclamation (Interactive GDD)
-   Created: 2026-03-28 | Modified: 2026-04-04
+   Created: 2026-03-28 | Modified: 2026-08-31
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v252';
+const CACHE_NAME = 'aoc-gdd-v253';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
