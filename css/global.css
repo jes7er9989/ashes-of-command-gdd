@@ -6121,6 +6121,22 @@ body.light-mode #content-area > .page-enter:not(#dashboard-view) {
               inset 0 1px 0 rgba(255,255,255,0.9);
 }
 
+/* ── Planet-type colours ───────────────────────────────────
+   planets.json carries a colour per planet type, injected inline by
+   content-renderers.js. An inline `color:` cannot be themed, so the
+   renderer now emits --pc-dark / --pc-light and the actual colour is
+   resolved here, where the theme can reach it. */
+.planet-name,
+.planet-detail-label,
+.territory-bar-label {
+  color: var(--pc-dark, var(--text-hi));
+}
+body.light-mode .planet-name,
+body.light-mode .planet-detail-label,
+body.light-mode .territory-bar-label {
+  color: var(--pc-light, var(--text-body));
+}
+
 /* ── Text that hardcodes a pale colour ─────────────────────── */
 body.light-mode .nav-chapter          { color: var(--text-body); }
 body.light-mode .nav-chapter:hover    { color: var(--text-hi); }

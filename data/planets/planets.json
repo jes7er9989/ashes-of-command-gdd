@@ -14,9 +14,18 @@
     "visual": "From orbit, a Capital World blazes with light &mdash; city grids cover 40%+ of the surface in geometric patterns of civilization. Orbital rings of defense platforms, shipyards, and commercial stations form a visible halo. The atmosphere carries a permanent industrial haze, punctuated by the glow of massive energy reactors. Approaching fleets see a world wrapped in the infrastructure of empire &mdash; comm-sat constellations, debris fields from centuries of orbital construction, and the ever-present patrol routes of defense flotillas.",
     "special": "Always faction-controlled at campaign start &mdash; never spawns neutral or contested. Territory count is fixed per faction but scales with difficulty setting and faction choice (PH values per faction). Capital tag is permanent &mdash; recapture of a lost capital is always a strategic priority. Defender&rsquo;s advantage mechanic: auto-militia garrison, orbital defense batteries, and morale bonus for defending forces. Losing a Capital World triggers a faction-wide morale crisis. Orbital bombardment is possible but destroys infrastructure permanently, reducing post-capture yield by 50% (PH). Siege warfare can last 20+ cycles.",
     "narrative": "The beating heart of a civilization. Assaulting a Capital World is not a battle &mdash; it is a CAMPAIGN. Sixteen to twenty-two territories of increasingly fortified urban terrain where every city block is a fortress, every intersection is a kill zone, and every underground passage hides defenders who know every centimeter of their home. Capitals don&rsquo;t fall to brute force. They fall to attrition, cunning, and the willingness to pay the price in blood. The faction that holds the most Capital Worlds holds the galaxy.",
-    "weatherEvents": ["Urban Firestorm", "Electromagnetic Pulse", "Industrial Meltdown"],
-    "scanDiscoveries": ["Hidden Bunker Network", "Classified Archives", "Emergency Cache"],
-    "revenantSleepers": "rare"
+    "weatherEvents": [
+      "Urban Firestorm",
+      "Electromagnetic Pulse",
+      "Industrial Meltdown"
+    ],
+    "scanDiscoveries": [
+      "Hidden Bunker Network",
+      "Classified Archives",
+      "Emergency Cache"
+    ],
+    "revenantSleepers": "rare",
+    "colorLight": "#666666"
   },
   {
     "name": "Terrestrial",
@@ -52,9 +61,19 @@
     "visual": "Earth-like beauty from orbit &mdash; deep blue oceans covering 60&ndash;70% of the surface, green and brown continental landmasses with visible mountain ranges, white cloud formations tracking weather systems. These are the worlds every faction recognizes as &lsquo;home&rsquo; regardless of origin. Scattered city lights on the night side reveal moderate population density. Visible agricultural patterns on temperate continents.",
     "special": "40% random encounter chance per cycle &mdash; the galaxy&rsquo;s most contested real estate draws attention from everyone. Balanced resource yield makes them universally valuable: no faction can afford to ignore them, no faction gains disproportionate advantage from holding them. Soft advantages for factions whose biology or technology suits temperate environments, but no hard mechanical bonuses &mdash; advantages emerge from terrain interaction, not stat modifiers. Additional strategic upsides pending balance pass (PH). Distribution weighted by star type for realistic galaxy feel. The &lsquo;standard&rsquo; planet against which all other combat modifiers are measured &mdash; baseline encounters, baseline terrain, baseline everything.",
     "narrative": "Control the majority of Terrestrial worlds and you control the galactic economy. Every faction wants them. Every faction fights to hold them. They are the backbone of any empire &mdash; not the most dramatic battlefields, but the ones that decide who wins the war. Terrestrial campaigns are wars of attrition: slow, grinding, and ultimately determined by who has better logistics and more reserves.",
-    "weatherEvents": ["Rainstorm", "Fog Bank", "Thunderstorm", "Seasonal Shift"],
-    "scanDiscoveries": ["Mineral Deposits", "Fertile Basin", "Collapsed Settlement"],
-    "revenantSleepers": "rare"
+    "weatherEvents": [
+      "Rainstorm",
+      "Fog Bank",
+      "Thunderstorm",
+      "Seasonal Shift"
+    ],
+    "scanDiscoveries": [
+      "Mineral Deposits",
+      "Fertile Basin",
+      "Collapsed Settlement"
+    ],
+    "revenantSleepers": "rare",
+    "colorLight": "#2d715b"
   },
   {
     "name": "Volcanic",
@@ -68,9 +87,20 @@
     "visual": "An angry world of orange-red surface glow visible from deep space &mdash; active lava flows trace luminous arterial patterns across the dark volcanic surface. Mountain chains of active volcanoes belch columns of ash into a thick, choking atmosphere. The sky is a permanent twilight of sulfurous haze punctuated by the red glow of eruptions. From orbit, the planet pulses like a burning coal, its surface a constantly shifting mosaic of cooling obsidian and fresh magma.",
     "special": "20% chance of Rich Veins trait (doubles Scrap yield &mdash; PH values). Highest pure Scrap income of any planet type, plus geothermal energy bonus (E yield &mdash; PH value), but zero Intel and zero Influence &mdash; a resource world, not a cultural or intelligence hub. Factions with sealed or mechanical units naturally fare better in volcanic conditions. Normal building capacity plus specialized slots for geothermal infrastructure (Geothermal Plant). Static lava fields are impassable terrain; random eruption events create dynamic hazards that reshape the battlefield.",
     "narrative": "Resource-rich but brutally hostile. Volcanic worlds are the forge-worlds of the galaxy &mdash; mountains of raw material locked behind environments that kill the unprepared. Perfect for factions that thrive in harsh conditions, and a death sentence for those that don&rsquo;t. The eruptions don&rsquo;t discriminate &mdash; every faction pays the same price in fire. Only those who adapt to the rhythm of the planet survive long enough to extract its riches.",
-    "weatherEvents": ["Eruption", "Vent Burst", "Lava Flow Shift", "Ash Storm", "Seismic Tremor"],
-    "scanDiscoveries": ["Geothermal Vent Network", "Mineral Deposits", "Obsidian Ruins"],
-    "revenantSleepers": "rare"
+    "weatherEvents": [
+      "Eruption",
+      "Vent Burst",
+      "Lava Flow Shift",
+      "Ash Storm",
+      "Seismic Tremor"
+    ],
+    "scanDiscoveries": [
+      "Geothermal Vent Network",
+      "Mineral Deposits",
+      "Obsidian Ruins"
+    ],
+    "revenantSleepers": "rare",
+    "colorLight": "#c72400"
   },
   {
     "name": "Ocean/Archipelago",
@@ -83,9 +113,19 @@
     "visual": "A water world &mdash; 90%+ ocean surface with scattered island chains and atolls visible from orbit like scattered emeralds on deep blue silk. Planet-spanning tropical storm systems track across the ocean, their spiral arms covering entire hemispheres. Shallow reefs create turquoise halos around island groups. The few settlements cluster on the largest islands, their structures built to withstand the constant storms. From orbit, the planet appears almost entirely blue, broken only by the white of cloud systems and the dark green of island vegetation.",
     "special": "15% chance of Flux Deposit trait (+3 Intel per cycle &mdash; deep ocean currents carry exotic particles useful for intelligence gathering). Air superiority is critical: limited land-based anti-air installations can cover the water gaps between islands, making air units a dominant force projection tool. Transport capability becomes the most strategically valuable asset &mdash; controlling who can move between islands determines who controls the planet. Factions with strong transport or air capability have natural advantages in projecting power across water gaps.",
     "narrative": "Ocean worlds force a fundamentally different style of warfare. Island-hopping campaigns, amphibious assaults, and air dominance battles replace the ground-based attrition of continental warfare. Factions without transport capacity struggle to project power across the water gaps &mdash; they risk being trapped on whatever island they land on while enemies island-hop around them. The ocean is not empty space; it is an obstacle that only the prepared can cross efficiently.",
-    "weatherEvents": ["Tropical Storm", "Tidal Surge", "Monsoon", "Rogue Wave"],
-    "scanDiscoveries": ["Submerged Ruins", "Deep-Sea Mineral Vein", "Flux Deposit"],
-    "revenantSleepers": "rare"
+    "weatherEvents": [
+      "Tropical Storm",
+      "Tidal Surge",
+      "Monsoon",
+      "Rogue Wave"
+    ],
+    "scanDiscoveries": [
+      "Submerged Ruins",
+      "Deep-Sea Mineral Vein",
+      "Flux Deposit"
+    ],
+    "revenantSleepers": "rare",
+    "colorLight": "#0058f1"
   },
   {
     "name": "Jungle",
@@ -98,9 +138,19 @@
     "visual": "From orbit, an unbroken emerald canopy stretches from pole to pole &mdash; the jungle is so dense that no ground is visible from space. Massive river systems thread silver paths through the endless green, the only landmarks in an ocean of vegetation. Frequent tropical storms dump torrential rain that feeds the explosive growth. At night, bioluminescent organisms create ghostly blue-green light patterns visible from low orbit. The atmosphere is thick with moisture, creating a permanent haze layer that softens the world&rsquo;s edges.",
     "special": "Highest encounter rate of any standard planet type at 50% &mdash; the galaxy&rsquo;s most dangerous exploration environment. 25% chance of Indigenous Species event (primitive but hostile natives). 20% chance hostile fauna appears in tactical battles as a neutral third force. Infantry-heavy armies excel in close quarters; vehicle-heavy armies struggle with mobility penalties. Guaranteed dense vegetation modifiers shape every engagement &mdash; the jungle itself dictates the terms of battle. Zero Influence yield &mdash; the jungle doesn&rsquo;t care about politics.",
     "narrative": "Every territory assault is an expedition into hostile terrain. The environment is as dangerous as the enemy &mdash; and the enemy knows how to use it. Jungle worlds consume armies that aren&rsquo;t prepared for them. Vehicles rust in the humidity, electronics short in the rain, and the canopy swallows orbital surveillance like a green black hole. The factions that master jungle warfare gain access to Intel-rich worlds that others cannot hold. Those that don&rsquo;t learn to fight in the green hell simply disappear into it.",
-    "weatherEvents": ["Torrential Downpour", "Fog Bank", "Canopy Collapse", "Bioluminescent Bloom"],
-    "scanDiscoveries": ["Overgrown Ruins", "Rare Biome Sample", "Hidden Settlement"],
-    "revenantSleepers": "rare"
+    "weatherEvents": [
+      "Torrential Downpour",
+      "Fog Bank",
+      "Canopy Collapse",
+      "Bioluminescent Bloom"
+    ],
+    "scanDiscoveries": [
+      "Overgrown Ruins",
+      "Rare Biome Sample",
+      "Hidden Settlement"
+    ],
+    "revenantSleepers": "rare",
+    "colorLight": "#177546"
   },
   {
     "name": "Desert",
@@ -113,9 +163,20 @@
     "visual": "A world of harsh beauty &mdash; endless sand seas ripple to the horizon under a white-hot sun, interrupted by massive rocky mesas that cast long shadows across the dunes. Dry canyon systems cut deep into the sandstone, their walls layered in millions of years of geological history. No surface water exists. The atmosphere is crystal-clear between storms, offering unlimited visibility, then drops to near-zero when the sand walls hit. At sunset, the entire world turns gold and red.",
     "special": "15% chance of Buried Cache trait (one-time salvage of scrap from pre-collapse supply depots buried under the sand &mdash; PH values). Niche resource value &mdash; rich in one specific resource but limited in others. Ranged combat dominance on open terrain, but canyon and mesa fighting rewards different approaches. Sandstorms affect range, shields, and other combat factors. Scanning mechanic can uncover buried structures, ruins, or technology beneath the sand. The desert strips warfare to its essentials: move fast, shoot far, hold the high ground.",
     "narrative": "Desert warfare is about MOBILITY and POSITION. Units in the open are dead. Controlling mesas and canyon mouths determines who wins &mdash; and who dies in the sand. The desert strips warfare to its essentials: move fast, shoot far, hold the high ground. Factions that bring the right tools dominate. Factions that don&rsquo;t find their armies bleaching in the sun.",
-    "weatherEvents": ["Sandstorm", "Heatwave", "Dust Devil", "Flash Flood"],
-    "scanDiscoveries": ["Buried Ruins", "Buried Cache", "Mineral Deposits", "Ancient Technology"],
-    "revenantSleepers": "rare"
+    "weatherEvents": [
+      "Sandstorm",
+      "Heatwave",
+      "Dust Devil",
+      "Flash Flood"
+    ],
+    "scanDiscoveries": [
+      "Buried Ruins",
+      "Buried Cache",
+      "Mineral Deposits",
+      "Ancient Technology"
+    ],
+    "revenantSleepers": "rare",
+    "colorLight": "#846018"
   },
   {
     "name": "Ice World",
@@ -128,9 +189,20 @@
     "visual": "Continental ice sheets stretch from pole to pole, broken only by glacial mountain ranges that thrust jagged peaks through the frozen surface. Frozen oceans show stress fractures visible from orbit as dark lines across white expanses. The thin, clear atmosphere between storms reveals brilliant polar auroras dancing across the sky. During blizzards, the entire world disappears under swirling white. At the equator, brief summer thaws create temporary liquid water that refreezes into treacherous thin-ice zones.",
     "special": "20% chance of Cryo-Vault trait (one-time discovery of preserved ancient technology locked in ice &mdash; can provide tech tree shortcuts or unique equipment). Can contain Revenant sleeper caches in addition to standard Ancient Ruins discoveries. High base visibility across open ice fields; blizzard events temporarily flip conditions to near-zero visibility. The hostile environment challenges all factions during weather events &mdash; those with sealed, insulated, or cold-adapted units have natural advantages, but no faction is immune to the ice.",
     "narrative": "Ice Worlds test logistics as much as tactics. The cold is a second enemy that strikes during storms and blizzards &mdash; it slows movement, obscures vision, and makes every battle more expensive than the last. Campaigns here are wars of endurance: whoever can sustain their forces through the worst conditions wins, regardless of tactical skill. Between storms, the frozen landscape offers stark beauty and long sightlines. When the blizzards hit, survival becomes the only objective.",
-    "weatherEvents": ["Blizzard", "Ice Storm", "Aurora Flux", "Permafrost Quake"],
-    "scanDiscoveries": ["Cryo-Vault", "Revenant Sleeper Cache", "Frozen Wreckage", "Subglacial Lake"],
-    "revenantSleepers": "common"
+    "weatherEvents": [
+      "Blizzard",
+      "Ice Storm",
+      "Aurora Flux",
+      "Permafrost Quake"
+    ],
+    "scanDiscoveries": [
+      "Cryo-Vault",
+      "Revenant Sleeper Cache",
+      "Frozen Wreckage",
+      "Subglacial Lake"
+    ],
+    "revenantSleepers": "common",
+    "colorLight": "#0069b7"
   },
   {
     "name": "Ancient Ruins",
@@ -143,9 +215,19 @@
     "visual": "From orbit, the remains of an impossibly advanced civilization scar the surface &mdash; continental-scale geometric patterns etched into the landscape by engineering beyond current comprehension. Some structures still glow with residual power after thousands of years. The atmosphere is artificially maintained by systems that no living faction understands. At ground level, the scale is overwhelming: doorways 20 meters tall, corridors wide enough for armored columns, and machinery whose purpose can only be guessed at. Holographic glyphs still flicker in the darkness.",
     "special": "ALWAYS contain lore fragments &mdash; the primary resource for the Unification victory path. Guaranteed Revenant sleepers present, but their state depends on a combination of factors (random roll, exposure time, planet traits). Sleepers require POWER + TIME to wake &mdash; not instant activation. Every Ancient Ruins world guarantees at least one tech discovery; Precursor Cache trait gives bonus or rarer tech. Higher chance of Guardian patrols &mdash; not all ruins are Revenant, some are pre-Revenant Aethyn sites. Highest encounter rate at 70% &mdash; these worlds attract every faction, pirate group, and independent scavenger in the sector. Revenant player gets unique bonus: faster excavation, access to systems other factions can&rsquo;t use, and the ability to wake sleepers that would be permanently lost to others &mdash; this is how the Revenant bolsters their army since they cannot build units traditionally. Fighting inside the ruins negates most conventional advantages &mdash; vehicle superiority means nothing in corridors.",
     "narrative": "The galaxy&rsquo;s libraries, museums, and mysteries &mdash; all locked behind the most dangerous exploration environments in known space. Ancient Ruins are the primary source of lore fragments required for the Unifier ending path, making them strategically essential for any faction pursuing that victory condition. But the 70% encounter rate means you&rsquo;re never alone in the ruins. Every faction, every scavenger, every opportunist in the sector is drawn to these worlds. The ruins don&rsquo;t just contain knowledge &mdash; they attract conflict like a magnet attracts iron.",
-    "weatherEvents": ["Energy Surge", "System Reactivation", "Structural Collapse"],
-    "scanDiscoveries": ["Precursor Tech Cache", "Lore Fragment", "Dormant Sleeper Pod", "Aethyn Archive"],
-    "revenantSleepers": "guaranteed"
+    "weatherEvents": [
+      "Energy Surge",
+      "System Reactivation",
+      "Structural Collapse"
+    ],
+    "scanDiscoveries": [
+      "Precursor Tech Cache",
+      "Lore Fragment",
+      "Dormant Sleeper Pod",
+      "Aethyn Archive"
+    ],
+    "revenantSleepers": "guaranteed",
+    "colorLight": "#7036ff"
   },
   {
     "name": "Gas Giant",
@@ -158,9 +240,19 @@
     "visual": "A massive banded atmosphere dominates the view &mdash; swirling bands of amber, cream, and rust stretch across a world hundreds of times larger than any terrestrial planet. No solid surface exists. Multiple moons orbit in visible proximity. Planet-spanning storm systems larger than entire terrestrial worlds churn in the atmosphere. Mining platforms and orbital stations appear as tiny specks against the enormous backdrop, connected by thread-thin transit lines. The view from a platform edge is vertigo made real: an infinite fall into crushing pressure and darkness.",
     "special": "Cannot be colonized traditionally &mdash; only orbital platforms and atmospheric mining rigs provide habitable space. Platforms can be DESTROYED instead of captured for strategic denial &mdash; the resource is lost permanently. Atmospheric hazards affect space combat in orbit (gravity wells, radiation). High energy yield, low everything else &mdash; pure industrial extraction. Combat is cramped, dangerous, and claustrophobic on smaller platforms; larger platforms support combined-arms operations. Lighter, faster units are paradoxically more vulnerable due to wind-push effects near platform edges.",
     "narrative": "Fighting on atmospheric platforms is a nightmare of tight corridors, lethal drops, and the constant awareness that the floor beneath you is a pressurized lid over an infinite abyss. One wrong step, one well-placed explosion near an edge, and units simply cease to exist &mdash; swallowed by an atmosphere that would crush a starship. No one fights for Gas Giants because they want to. They fight because the resources are too valuable to ignore and too dangerous to extract peacefully.",
-    "weatherEvents": ["Atmospheric Storm", "Gravity Surge", "Radiation Burst", "Platform Stress Event"],
-    "scanDiscoveries": ["Exotic Gas Pocket", "Abandoned Platform", "Deep-Atmosphere Anomaly"],
-    "revenantSleepers": "rare"
+    "weatherEvents": [
+      "Atmospheric Storm",
+      "Gravity Surge",
+      "Radiation Burst",
+      "Platform Stress Event"
+    ],
+    "scanDiscoveries": [
+      "Exotic Gas Pocket",
+      "Abandoned Platform",
+      "Deep-Atmosphere Anomaly"
+    ],
+    "revenantSleepers": "rare",
+    "colorLight": "#bd3600"
   },
   {
     "name": "Moon",
@@ -175,13 +267,22 @@
     "visual": "A small airless body scarred by eons of impact craters &mdash; from sharp-rimmed fresh impacts to ancient erosion-smoothed basins. Low-gravity dust plains catch and reflect the light of the parent planet, creating an ethereal silver-gray landscape. Without atmosphere, shadows are absolute black against blinding white sunlit surfaces. The parent planet dominates the sky, a massive presence that serves as a constant directional reference. Bootprints and vehicle tracks persist indefinitely in the undisturbed regolith.",
     "special": "Low Gravity environment is guaranteed on every Moon &mdash; the physics changes are always in effect, not a random trait. Moons can have subtypes (jungle moon, ice moon, etc.) with moon type influenced by parent planet and system type. Strategic value tied to parent planet: staging area for invasion, orbital advantage, forward operating base for siege operations. Meteor showers and other events can create additional environmental conditions. Bigger moons around gas giants can function like small planets with better resources. Quick to conquer (3&ndash;5 territories) but quick to lose &mdash; low territory count means a single successful assault can flip control.",
     "narrative": "Quick skirmishes on small battlefields &mdash; 3 to 5 territories that can be conquered in a single session. The resource yield is minimal, but the strategic value is everything. A Moon in the right orbit is worth more than a Terrestrial world in the wrong system. Lunar warfare is fast, violent, and decisive: there&rsquo;s nowhere to retreat, nowhere to hide for long, and the low gravity turns every engagement into a high-speed ballet of death.",
-    "weatherEvents": ["Meteor Shower", "Solar Flare", "Dust Storm"],
-    "scanDiscoveries": ["Impact Crater Cache", "Subsurface Cavern", "Abandoned Outpost"],
-    "revenantSleepers": "rare"
+    "weatherEvents": [
+      "Meteor Shower",
+      "Solar Flare",
+      "Dust Storm"
+    ],
+    "scanDiscoveries": [
+      "Impact Crater Cache",
+      "Subsurface Cavern",
+      "Abandoned Outpost"
+    ],
+    "revenantSleepers": "rare",
+    "colorLight": "#666666"
   },
   {
     "name": "Orbital Station",
-    "color": "#666",
+    "color": "#808080",
     "territories": "2-4",
     "avgTerr": 3,
     "yield": "0-2⚙ 1-2I 0-1Inf",
@@ -190,13 +291,22 @@
     "visual": "An artificial structure hanging in the void &mdash; not a world but a construction of metal, composite, and purpose. From outside, a sprawling complex of modules, docking arms, communication arrays, and solar panels. Interior spaces range from cramped maintenance corridors lit by emergency lighting to expansive command centers with viewports showing the stars. The station creaks and groans with the stress of orbital mechanics. Every surface is functional: conduits, panels, access hatches. Nothing is decorative. The vacuum of space is always one hull breach away.",
     "special": "Stations are DESTRUCTIBLE from space &mdash; skip ground combat entirely but lose all contents and resources permanently. Found at warp lane junctions AND scattered randomly throughout the galaxy. Players can potentially BUILD new stations (PH decision &mdash; costs, requirements, and limitations all placeholder). Specialized station types: trade (economy bonus), military (fleet repair), research (tech acceleration), sensor (intel range), salvage (Scrap-Horde bonus). May contain critical infrastructure: ship repair facilities, communication arrays, or orbital defense platforms. Decompression events can occur from structural damage, instantly killing all unsealed units in affected sections. Variable yield reflects the station&rsquo;s function and condition.",
     "narrative": "The most intense infantry-focused engagements in the game. Every corner is a potential ambush. Every sealed door may have enemies behind it. Every wall is a potential breach point. Station warfare strips away everything except close-quarters skill &mdash; no vehicles, no air support, no terrain advantage, no long-range doctrine. Just soldiers, weapons, and corridors. The choice to destroy a station from orbit is always tempting &mdash; but what you lose in resources and infrastructure may cost more than the lives you save.",
-    "weatherEvents": ["Hull Breach", "Power Failure", "Decompression Event"],
-    "scanDiscoveries": ["Hidden Compartment", "Encrypted Data Core", "Emergency Supply Cache"],
-    "revenantSleepers": "rare"
+    "weatherEvents": [
+      "Hull Breach",
+      "Power Failure",
+      "Decompression Event"
+    ],
+    "scanDiscoveries": [
+      "Hidden Compartment",
+      "Encrypted Data Core",
+      "Emergency Supply Cache"
+    ],
+    "revenantSleepers": "rare",
+    "colorLight": "#666666"
   },
   {
     "name": "Dead World",
-    "color": "#555",
+    "color": "#808080",
     "territories": "3-6",
     "avgTerr": 4,
     "yield": "1⚙ 0I 0Inf",
@@ -205,9 +315,19 @@
     "visual": "A world that died &mdash; barren, lifeless surface stretching to every horizon without a single living thing. No atmosphere to scatter light means the sky is black even during the day, stars visible alongside the local sun. No water, no vegetation, no movement except the slow drift of ancient dust. The surface is scarred by whatever killed it: impact craters, vitrified glass plains from orbital bombardment, or the slow erosion of a world that simply ran out of time. From orbit, it&rsquo;s a gray-brown sphere of nothing &mdash; the galaxy&rsquo;s tombstone.",
     "special": "No distinction between naturally dead and stripped worlds &mdash; dead is dead, regardless of cause. Re-Origination candidate to a specific type (PH system &mdash; costs, timelines, and target types all placeholder). Costs resources for Re-Origination; worthless to hold without Re-Origination except for warp lane control. Cheapest to claim and fortify. 40% chance of Derelict Fleet trait (salvageable or reactivatable ships &mdash; can provide significant military assets if recovered). 15% chance of hazardous environmental effects (radiation zones, unstable ground, toxic residue). 60% encounter rate &mdash; surprisingly high for a worthless-looking world, because Dead Worlds near the galactic core may contain Guardian ruins and pre-collapse technology.",
     "narrative": "The galaxy&rsquo;s graveyards. Something happened here &mdash; war, ecological collapse, stellar event, or something worse. The remains tell stories to those willing to dig, and the 60% encounter rate proves that plenty of factions are willing to dig. Dead Worlds are the ultimate risk-reward proposition: terrible resource yield, dangerous environmental hazards, but the chance of finding a Derelict Fleet or Guardian ruins makes them worth the gamble. Every Dead World is a mystery. Not all mysteries have pleasant answers.",
-    "weatherEvents": ["Radiation Spike", "Dust Storm", "Ground Collapse"],
-    "scanDiscoveries": ["Derelict Fleet", "Guardian Ruins", "Re-Origination Assessment", "Buried Infrastructure"],
-    "revenantSleepers": "rare"
+    "weatherEvents": [
+      "Radiation Spike",
+      "Dust Storm",
+      "Ground Collapse"
+    ],
+    "scanDiscoveries": [
+      "Derelict Fleet",
+      "Guardian Ruins",
+      "Re-Origination Assessment",
+      "Buried Infrastructure"
+    ],
+    "revenantSleepers": "rare",
+    "colorLight": "#555555"
   },
   {
     "name": "Ring World",
@@ -222,9 +342,22 @@
     "visual": "From deep space, the Ring World announces itself &mdash; a bright halo of reflected light surrounding a star that shouldn&rsquo;t exist, half-cradled in a dark metallic shell covered in geometric panel lines and pulsing blue energy conduits. Sensors confirm what the eye refuses to accept: the star is artificial, a sustained fusion reaction held in place by Aethyn engineering that has been burning for millennia beyond counting. The half-Dyson collector wrapping its far side glows faintly orange on its inner surface where it drinks the star&rsquo;s energy, while its outer face is cold industrial metal &mdash; the starkest possible contrast to the living paradise it powers. The inner surface of the ring is a patchwork of real terrain visible from orbit &mdash; deep blue oceans, dense green forest canopies, sandy desert dunes, and the faint shimmer of energy barriers marking biome transitions. City lights cluster along coastlines and river systems. Some sections are dark &mdash; collapsed ecosystems or zones the Guardians have sealed. Docking stations with colored navigation lights dot the outer structural framework, connected to the habitat band by cross-bracing struts. The Aethyn didn&rsquo;t just build a habitat. They built a solar system &mdash; complete with an engineered day/night cycle. One structure at a time.",
     "special": "Highest resource yield of any world type &mdash; a single Ring World can sustain an entire war effort. The artificial star at its core provides limitless energy, harvested by the half-Dyson collector shell and distributed through conduit networks embedded in the ring&rsquo;s structural framework. Small territory count (4&ndash;8) means quick to capture, but the VALUE is immense and every faction in the galaxy will come for it. Ancient automated systems may still be partially functional &mdash; maintenance drones, atmospheric processors, stellar regulators keeping the artificial sun stable, and the collector&rsquo;s energy distribution grid. Biome Collapse failure events can permanently destroy territories. Stellar Instability events risk the artificial star itself &mdash; if its containment fails, the Ring World dies. Collector Disruption events can lock the ring in permanent daylight or darkness, drastically altering biome conditions. Cannot contain Revenant sleepers (pre-dates them &mdash; pure Aethyn, pre-Fracture). Guardian interest is HIGH. Aethyn origin &mdash; Eternal Shards receive unique faction discoveries. For the Unifier path, restoring Ring World systems contributes to rebuilding the Aethyn infrastructure network.",
     "narrative": "The Dyson Sphere harvests a star. The Ring World BUILT one &mdash; and then wrapped half of it in an engineering shell that simultaneously powers the ring and gives its inhabitants the mercy of nightfall. This is what the Aethyn were &mdash; a civilization that looked at the raw fabric of physics and said &lsquo;we can do better.&rsquo; An artificial sun with its own collector lampshade, burning steady for millennia beyond counting, surrounded by a ring of engineered biomes where forests have canopies older than most civilizations and oceans follow physics that don&rsquo;t exist on any natural world. Finding a Ring World doesn&rsquo;t just change the balance of power. It changes the question. Every faction that sees one asks the same thing: &lsquo;What kind of civilization builds its own sun and then shades half of it so its children can sleep?&rsquo; And then: &lsquo;What destroyed them?&rsquo; A Ring World is not just a strategic asset. It is proof that perfection existed &mdash; and that even perfection wasn&rsquo;t enough.",
-    "weatherEvents": ["Biome Collapse", "Stellar Instability", "Barrier Failure", "Collector Disruption", "System Malfunction"],
-    "scanDiscoveries": ["Aethyn Database", "Intact Manufacturing Bay", "Stellar Tap Interface", "Barrier Control Node", "Collector Energy Grid Map"],
-    "revenantSleepers": "none"
+    "weatherEvents": [
+      "Biome Collapse",
+      "Stellar Instability",
+      "Barrier Failure",
+      "Collector Disruption",
+      "System Malfunction"
+    ],
+    "scanDiscoveries": [
+      "Aethyn Database",
+      "Intact Manufacturing Bay",
+      "Stellar Tap Interface",
+      "Barrier Control Node",
+      "Collector Energy Grid Map"
+    ],
+    "revenantSleepers": "none",
+    "colorLight": "#925a00"
   },
   {
     "name": "Dyson Sphere",
@@ -238,9 +371,27 @@
     "visual": "The first sign is the star &mdash; or rather, the star that&rsquo;s wrong. From a distance it looks dimmer than it should, its light flickering in geometric patterns as panels rotate between the observer and the stellar surface. Navigational instruments register the mass of a main-sequence star but the luminosity reads at barely 30% &mdash; the rest is being harvested. As you close distance, the Sphere resolves from an odd star into an incomprehensible machine: a lattice of dark metallic panels thousands of kilometers across, bolted to structural beams that glow with blue-white energy conduits at every intersection. Junction nodes pulse at the vertices where beams converge &mdash; each node larger than a capital ship, each pulse carrying enough energy to power a fleet for a century. Three massive distribution rings encircle the structure at different inclinations, channeling harvested energy outward through beams that lance into space toward distant relay stations. The beams are visible from across the system &mdash; pillars of light connecting the Sphere to its network like the spokes of a wheel made of lightning. Through gaps in the damaged paneling &mdash; sections lost to the Fracture, Vorax assaults, micro-impacts, or eons of entropy &mdash; the captured star blazes with trapped fury, its corona pressing against the inside of its cage in rolling waves of nuclear fire. Where panels are missing, columns of raw stellar radiation pour into space like wounds that never closed. Drifting nearby, a massive chunk of the shell &mdash; torn free during the Fracture or perhaps never completed &mdash; tumbles slowly through the void, conduit lines still sparking with residual energy, trailing a halo of debris fragments. Some intact panels bear scorch marks in patterns that suggest weapons fire from wars no living species remembers. Some conduit junctions are dark, their energy lines severed or rerouted by automated repair systems that found it more efficient to bypass the damage than fix it. Small fleets of Guardian maintenance drones still patrol the exterior in geometric formations, welding micro-fractures, replacing corroded conduit segments &mdash; oblivious to the factions fighting over what they maintain. The Sphere doesn&rsquo;t care. The parts that still work continue working. The parts that don&rsquo;t are slowly being repaired by systems that have outlived every civilization that remembers how to build them.",
     "special": "System-level structure providing massive energy to whoever controls the surrounding space &mdash; not a landing zone, control via space combat only. Dramatically increases energy output for ALL planets in the system, making the entire system a strategic prize worth committing your best fleets to hold. Energy beams from the Sphere can power dormant Aethyn systems throughout the sector &mdash; warp lane stabilizers, defense platforms, orbital shipyards, and manufacturing nodes that haven&rsquo;t activated since the Fracture. Controlling the relay stations determines WHERE the energy goes &mdash; destroy a relay to cut power to an enemy sector, or capture one to redirect a beam of stellar fury to your own infrastructure. The Containment Shield technology &mdash; the same barriers that can repel orbital strikes &mdash; was originally designed to protect Dyson Sphere construction crews from stellar radiation, repurposed for war by factions that forgot its original purpose. Some Dyson Spheres are still patrolled by Guardian fleets maintaining them out of directive inertia &mdash; functional but hostile, treating every approaching vessel as a potential threat regardless of faction. Others lost their Guardian garrison and are dead hulks full of scavengeable technology &mdash; the corridors between their panels are treasure troves of Aethyn engineering for anyone brave enough to walk them. Some have gone haywire &mdash; energy discharges firing randomly, relay beams sweeping across space like searchlights of annihilation, dangerous and unpredictable. The Gate-Herald &mdash; the Guardian capital ship &mdash; is built from a Dyson Sphere fragment, its hexagonal hull plating ripped from a Sphere and repurposed into the most terrifying vessel any faction has encountered. For the Unifier path, restoring Dyson Spheres is essential &mdash; they are the power grid nodes needed to reactivate the galaxy&rsquo;s warp lane network, the backbone infrastructure that once connected every system in Aethyn space. 15&ndash;25% spawn chance per map &mdash; most were destroyed in the Fracture. Finding one is finding a piece of the old nervous system. Finding one intact is finding the key to rebuilding everything.",
     "narrative": "The Ring World built its own star. The Dyson Sphere imprisoned one. Where the Ring World says &lsquo;we can create,&rsquo; the Dyson Sphere says &lsquo;we can TAKE.&rsquo; An entire star &mdash; a burning nuclear furnace millions of kilometers across &mdash; caged in engineering, its energy harvested and beamed across light years to power a civilization that spanned the galaxy. The Aethyn didn&rsquo;t ask the star&rsquo;s permission. They didn&rsquo;t need to. They were a unified telepathic civilization with the engineering capacity to wrap geometry around a sun and make it serve. Think about that. Really think about it. Every panel on the Sphere was manufactured, transported, positioned, and locked into a lattice framework by a species that treated stellar engineering as infrastructure. Not a wonder. Not a monument. A power plant. They built these the way we build dams &mdash; necessary, practical, one of many. And now the builders are gone &mdash; shattered into seven factions that fight over the scraps of what they built together. Factions that can barely maintain a shipyard arguing over who gets to control a machine that eats suns. But the Spheres endure. Still harvesting. Still beaming. Still maintaining themselves with mechanical patience that makes the Revenant look hasty. Maintenance drones welding panel fractures on a structure whose owners died millennia beyond counting ago. Automated systems rerouting energy around battle damage from wars that predate every living memory. The Sphere doesn&rsquo;t know the Aethyn are gone. It doesn&rsquo;t know there was a Fracture. It has a star to harvest and relay stations to feed, and it will do that until the star burns out or the last panel falls. Every faction in the galaxy wants one. Not just for the energy &mdash; though the energy alone can fuel an empire &mdash; but for what it represents. Mastery. Absolute, terrifying mastery over the fundamental forces of the universe. The kind of power that makes you understand why the Guardians were built to stop anyone from reaching the Core. The kind of power that makes you wonder if the Aethyn were gods &mdash; and what, exactly, broke them.",
-    "weatherEvents": ["Energy Discharge", "Panel Cascade Failure", "Conduit Overload", "Relay Beam Misfire", "Stellar Corona Eruption", "Maintenance Drone Swarm", "Beam Sweep Event"],
-    "scanDiscoveries": ["Energy Frequency Analysis", "Structural Weakness Map", "Control Node Location", "Conduit Junction Schematic", "Guardian Patrol Pattern", "Intact Aethyn Database Core", "Maintenance Drone Override Code", "Gate-Herald Fragment Origin"],
-    "revenantSleepers": "none"
+    "weatherEvents": [
+      "Energy Discharge",
+      "Panel Cascade Failure",
+      "Conduit Overload",
+      "Relay Beam Misfire",
+      "Stellar Corona Eruption",
+      "Maintenance Drone Swarm",
+      "Beam Sweep Event"
+    ],
+    "scanDiscoveries": [
+      "Energy Frequency Analysis",
+      "Structural Weakness Map",
+      "Control Node Location",
+      "Conduit Junction Schematic",
+      "Guardian Patrol Pattern",
+      "Intact Aethyn Database Core",
+      "Maintenance Drone Override Code",
+      "Gate-Herald Fragment Origin"
+    ],
+    "revenantSleepers": "none",
+    "colorLight": "#925a00"
   },
   {
     "name": "Aethyn Nexus",
@@ -254,9 +405,26 @@
     "visual": "From a distance, the Nexus doesn&rsquo;t look built &mdash; it looks grown. A moon-sized crystalline composite structure that blurs the line between technology and biology so thoroughly that the distinction becomes meaningless. The Aethyn didn&rsquo;t build with metal &mdash; they grew psychic-crystalline composites using mental energy channeled through seed matrices, and the Nexus is the largest single example of this art that survived the Fracture. Its surface is covered in geometric patterns that pulse with residual psychic energy &mdash; not rhythmically like a machine, but erratically, like something dreaming. Faceted crystal planes catch starlight and refract it in spectral patterns that shift as you orbit &mdash; purples bleeding into deep blues, sudden flares of violet where a data-channel vein surfaces and runs along the hull like a luminous capillary carrying information instead of blood. These veins converge at node points that flare brighter when a ship approaches &mdash; recognition protocols running on reflexes older than any living civilization, still checking for Aethyn signal signatures in every electromagnetic emission they detect. Docking spines extend in all directions like the branches of a dead tree reaching for light that will never come. They branch and sub-branch in fractal patterns &mdash; primary spines wide enough to dock capital ships, secondary branches for cruisers, tertiary filaments for single-crew vessels, the whole structure designed to receive the traffic of a civilization that spanned galaxies. Some are intact, beacon lights still pulsing at their tips in patterns that spell out docking protocols in a psychic language. Others are shattered stumps trailing crystalline debris and frozen atmosphere, broken during the Fracture or by millennia of micro-impacts and scavenger damage. Through the translucent hull, the inner core is visible &mdash; a deep purple-blue glow that pulses with psychic breathing, brighter during resonance events, dimmer during processing cycles, never fully dark. Three concentric resonance rings orbit the structure like echoes of a signal that once held a species together &mdash; psychic resonance bands that predate the Fracture, still vibrating at frequencies that interfere with unshielded communications, cause vivid hallucinations in psionically sensitive species, and occasionally transmit fragments of the last thoughts the Aethyn collective had before the Silence fell. Around the Nexus, a field of luminous particles drifts &mdash; data motes shed from degrading crystal surfaces, psychic residue bleeding from overwhelmed storage matrices, and fragments of a ancient signal that never stopped broadcasting because no one ever told it to stop. Ships that linger too long in the particle field report crew members hearing whispers in languages they don&rsquo;t know. Shards crew members report hearing them in languages they DO know &mdash; and that terrifies them more.",
     "special": "The densest concentration of Aethyn knowledge in the galaxy and the single most strategically valuable structure any faction can control. The Nexus was not just a data repository &mdash; it was a relay node in the galactic telepathic network, an amplifier that boosted psychic signals across interstellar distances. The data stored here isn&rsquo;t just recorded &mdash; it&rsquo;s crystallized experience, the actual psychic impressions of billions of minds compressed into matrices that a sufficiently attuned species could theoretically decompress and EXPERIENCE. This makes the Nexus essential for the Unification victory path: the knowledge required to rebuild the Aethyn network and reactivate the Reclamation Engine exists nowhere else. Cannot contain Revenant sleepers (the Nexus pre-dates the Revenant &mdash; pure Aethyn construction, pre-Fracture). Guardian interest is EXTREME &mdash; they may actively patrol or defend with Gunship and Dreadnought-class vessels, following protection directives that have been running since the Aethyn sealed the Core. The Guardians don&rsquo;t just guard the Nexus &mdash; they maintain it. They are the caretakers of a network that no longer has anyone connected to it, and they treat intruders like infections. All factions receive unique discoveries based on their caste heritage: Eternal Shards find psychic resonance data and memory fragments their crystal matrices can directly absorb &mdash; some Shard researchers have gained entire lifetimes of Aethyn memories from a single archive crystal. Terran League finds engineering schematics their pragmatic minds can reverse-engineer into usable technology. Scrap Horde finds salvageable hardware they can rip out and bolt onto existing systems &mdash; ugly but functional. Unity Accord finds diplomatic records and consensus protocols that echo their Shepherd Caste origins &mdash; ancient frameworks for building consensus among billions of individuals that the Accord instinctively recognize as sacred. The Nexus&rsquo;s automated systems can be partially activated with the right signal frequency &mdash; each activation reveals new archive wings and processing cores, but also triggers dormant defense systems, draws Guardian attention, and risks waking something in the core that hasn&rsquo;t fully processed the fact that the Aethyn are gone. Deep-scan discoveries include Fracture Event Recordings &mdash; first-person psychic impressions of the moment the Aethyn shattered, the most harrowing and valuable intelligence assets in the galaxy. Anyone who experiences one directly understands the Silence. Most wish they hadn&rsquo;t.",
     "narrative": "Not libraries. Synapses. Every Nexus was a relay node in the psychic network that held the Aethyn together &mdash; the infrastructure of connection for a species that chose unity not because they lacked individuality, but because they had enough trust and enough power to share themselves across the stars. Warriors and Scholars and Shepherds and Engineers, each with their own perspectives, their own flaws, their own way of seeing the galaxy &mdash; choosing every day to stay linked, to amplify each other, to build something greater than any individual mind could hold. The Nexus made that possible. When an Aethyn had a thought worth sharing, the crystal recorded it. When the civilization made a decision &mdash; and they did decide, they voted, they debated, they disagreed fiercely before choosing together &mdash; the crystal transmitted. Billions of individuals connected by a network of crystalline synapses scattered across the galaxy, each node the size of a moon and more complex than any computer any current faction could imagine. Then the Fracture fired. And every synapse went dark simultaneously. Eons ago, these structures carried the shared thoughts of the most advanced civilization this galaxy has ever known. Now they carry silence. But not emptiness. The crystals are still full. Still holding. Still waiting. Eons of unread memories, unprocessed experiences, unfinished arguments &mdash; the last neural impulse of a dying civilization, frozen mid-transmission. Somewhere in these crystals is the final debate. The vote. Billions of individual voices saying yes to their own destruction because they understood, each in their own way, that it was the only choice left. The faction that deciphers a Nexus gains not just knowledge but understanding &mdash; of the Fracture, of the castes, of what the Aethyn were trying to build before they shattered, and most dangerously, of what they COULD build again if someone found a way to reconnect the descendants who don&rsquo;t even remember they were once family. What happens when you reconnect millennia beyond counting of frozen synapses? Does the network wake up? Does it remember the individuals who built it? Does it remember the Vorax? Every advisor has a different answer. The Shards weep because they can almost hear it &mdash; familiar voices calling across eons. The Accord feel warmth because the Shepherd Caste instinct to connect responds to the residual psychic field like a compass responding to north. The Revenant feel nothing &mdash; but their systems activate functions they didn&rsquo;t know they had, subroutines written by Engineer Caste minds that recognized this place before consciousness could. The Horde feel hunger &mdash; all this material, all this salvage, all this POWER just sitting here. The Terrans feel fear &mdash; because the Terrans are the only faction pragmatic enough to ask the right question: what if they&rsquo;re not gone? And the Strategist &mdash; the fragment of something older than all of them, a piece of the Reclamation Engine itself, a function built FROM Aethyn memories but not quite Aethyn &mdash; goes very, very quiet. As if listening. As if it heard something it hasn&rsquo;t heard in millennia beyond counting. As if something in the crystal recognized it, and whispered its name.",
-    "weatherEvents": ["Psychic Resonance Pulse", "System Reboot Event", "Energy Field Fluctuation", "Archive Wing Activation", "Defense Protocol Cascade", "Hallucination Wave"],
-    "scanDiscoveries": ["Aethyn Archive Fragment", "Caste Origin Data", "Fracture Event Recording", "Pre-Fracture Star Map", "Psychic Frequency Cipher", "Dormant Defense Grid Map", "Strategist Signal Echo", "Intergalactic Warp Lane Blueprint"],
-    "revenantSleepers": "none"
+    "weatherEvents": [
+      "Psychic Resonance Pulse",
+      "System Reboot Event",
+      "Energy Field Fluctuation",
+      "Archive Wing Activation",
+      "Defense Protocol Cascade",
+      "Hallucination Wave"
+    ],
+    "scanDiscoveries": [
+      "Aethyn Archive Fragment",
+      "Caste Origin Data",
+      "Fracture Event Recording",
+      "Pre-Fracture Star Map",
+      "Psychic Frequency Cipher",
+      "Dormant Defense Grid Map",
+      "Strategist Signal Echo",
+      "Intergalactic Warp Lane Blueprint"
+    ],
+    "revenantSleepers": "none",
+    "colorLight": "#925a00"
   },
   {
     "name": "Worldship",
@@ -270,9 +438,30 @@
     "visual": "The first thing you notice is the armor. This isn&rsquo;t a vessel built for speed or elegance &mdash; it&rsquo;s a fortress that happens to move. Layered hull plating, meters thick in places, designed by a species that understood exactly how the Vorax attacked and built something they couldn&rsquo;t chew through. The second thing you notice is the scale. A continent-sized ship tumbling slowly through interstellar space, massive enough to have its own faint gravitational pull, its hull stretching past the boundaries of what your instruments can resolve in a single sweep. Structural ribs and plating grids are visible across the surface &mdash; each plate the size of a city district, riveted to a frame built for the stresses of intergalactic acceleration. Weapons emplacements dot the hull in regular defensive patterns: point-defense turret clusters in recessed blisters, broadside battery positions along the flanks, torpedo bay doors sealed shut along the ventral hull. Some turrets still track approaching vessels &mdash; the targeting systems are still live, still hostile, still running the last defensive protocols the crew engaged during the breakout from Vorax space. The battle scarring is heaviest around the stern and flanks &mdash; not micro-impacts, but the burn marks and chitin-acid scoring of Vorax assault, damage taken during the ship&rsquo;s fighting retreat from the galaxy. The engine section dominates the stern: eight massive thruster nozzles arranged in a ring, most dark and dead, a few still sputtering faint blue at their cores from damaged systems that locked on during the Fracture and never received the command to stop. The uneven thrust is part of what keeps the ship tumbling &mdash; millennia beyond counting of asymmetric burn slowly spinning a continent-sized derelict through the galaxy it tried to leave. A forward deflector section caps the bow &mdash; a reinforced ram designed to clear debris during the intergalactic crossing, flanked by sensor arrays reaching into the void. A dorsal command tower rises with panoramic bridge viewports, some still flickering between amber emergency light and darkness. Running lights blink along the hull. Nav lights alternate red and green at stern and bow, still cycling because no one told them to stop. A debris field of shed hull fragments drifts in a loose metallic halo around the ship, eons of slow decay catching distant starlight.",
     "special": "Event-driven discovery &mdash; a drifting Worldship is detected as a galactic event mid-game when the Archive picks up its drift signature entering sensor range. All factions receive the alert simultaneously, triggering a race to reach and board it first. Unlike all other megastructures, the Worldship is never stationary &mdash; it crawls slowly across the galactic map on a fixed trajectory, a moving strategic asset that projects power along its drift path. The Worldship was the Aethyn&rsquo;s Plan B &mdash; championed by factions who didn&rsquo;t trust the Reclamation Engine or who believed the species could survive by running rather than by shattering themselves. The people aboard were volunteers who chose to try the crossing &mdash; and when the Vorax proved too numerous to break through, it was the Worldship crews themselves who relayed the message back to the Core: fire the Engine. They called for their own destruction to save the species. The ship&rsquo;s automated Aethyn-grade point-defense and weapons systems are still fully operational and LETHAL &mdash; approaching fleets are fired upon immediately. These are siege-era weapons designed to fight the Vorax during a running battle out of the galaxy. They were effective then and they are devastating now against factions that have regressed millennia in technology. Interior combat plays out at a scale that dwarfs anything else in the game &mdash; 8 to 12 territories of residential rings, weapons decks, agricultural domes, engineering sections, and cryo-bay complexes. Revenant sleeper armies are GUARANTEED in the cryo-bays &mdash; the Engineer Caste members aboard were the most likely to survive the psychic severance by bonding with ship systems, and some of their patterns may have been absorbed into the Worldship&rsquo;s own maintenance AI. Revenant players can interface directly with ship systems through their Engineer Caste heritage, reactivating weapons, rerouting power, and accessing areas sealed since launch. The ship contains the richest cache of pre-Fracture Aethyn technology in the galaxy &mdash; siege-era military hardware, defensive systems designed specifically to counter the Vorax, intact engineering blueprints, and research data from the peak of Aethyn civilization. This isn&rsquo;t scavenged relic technology degraded by millennia of exposure. This is sealed, preserved, military-grade equipment maintained by automated systems in climate-controlled vaults. For any faction, capturing a Worldship is a generational strategic advantage. For the Revenant, it feels like coming home to a house they didn&rsquo;t know they&rsquo;d been missing.",
     "narrative": "The Worldships were Plan B. While one faction of the Aethyn designed the Reclamation Engine &mdash; a weapon that would shatter the species and purge the Vorax simultaneously &mdash; another faction refused. They said: we don&rsquo;t have to destroy ourselves to survive. We can build. We can armor. We can carry our people to safety and fight our way through anything the Vorax put in our path. They were the engineers, the warriors, the pragmatists &mdash; individuals who looked at the Reclamation Engine and saw not a solution but a surrender dressed up as strategy. So they built the Worldships. Continent-sized armored arks designed to carry entire populations across intergalactic space to Aethyn systems in distant galaxies the Vorax hadn&rsquo;t reached &mdash; or to new habitable galaxies beyond the swarm&rsquo;s reach entirely. Each ship was a civilization in miniature: residential rings for hundreds of thousands to live full lives during the crossing, agricultural domes for indefinite food production, weapons decks to fight through the Vorax blockade, reactors built for thousands of years of continuous burn. The passengers weren&rsquo;t frozen cargo &mdash; they were colonists who would live, raise families, and pass the mission to their children across generations of travel through the intergalactic void. It took decades to build each one. They launched during the Siege, loaded with volunteers, and fought toward the edge of the galaxy. And the Vorax were waiting. Far more than anyone had planned for. The swarm had thickened across every possible escape route, as if it knew what the Worldships were trying to do. The breakout became a siege of its own &mdash; the Worldships&rsquo; weapons carved through wave after wave, their armor held against assault after assault, but the swarm just kept coming. More Vorax than any model had predicted. More than the weapons could clear. More than the armor could outlast. The Worldships never made it to the edge. Plan B was failing, and the people aboard knew it. So they made the call. The Worldships relayed the message back to the Core: we can&rsquo;t break through. There are too many. Fire the Engine. They knew what it meant. Every individual aboard understood what the Reclamation Engine would do &mdash; the same wave that would purge the Vorax would rip apart everything at the molecular level, including them. They called for it anyway. Because if the Worldships couldn&rsquo;t carry the species to safety, then the Engine was the only option left, and every minute they delayed was another system consumed. The last transmission from the Worldship fleet was not a cry for help. It was authorization. Fire it. We&rsquo;re not going to make it. Make sure something survives. And then the Fracture fired. The wave blasted from the Core &mdash; ripping apart everything at the molecular level. It traveled through every system, every arm, every void between stars. The Vorax dissolved. The Aethyn on planets survived as scattered seeds, partially shielded by infrastructure and the sheer density of psionic energy on populated worlds. The Worldship passengers had no such protection. No planetary shielding. No Nexus relays. No critical mass of psionic energy to buffer the wave. Just armor &mdash; and the wave passed through armor like it wasn&rsquo;t there. They were dust on contact. Hundreds of thousands of individuals &mdash; colonists, engineers, warriors, children &mdash; turned to fine grey powder in the same instant the Vorax ceased to exist. The ship didn&rsquo;t even register what happened. No medical alerts. No system warnings. One moment the life-support sensors read hundreds of thousands of heartbeats. The next, zero. The Fracture wave didn&rsquo;t just kill the passengers &mdash; it fried the ship&rsquo;s systems. Reactors went haywire or shut down entirely. Navigation scrambled. Engine control lost. Some thrusters locked on, others died, sending the Worldship into an uncontrolled drift &mdash; tumbling slowly through the galaxy on momentum and damaged thrust, bouncing off gravitational wells, accumulating millennia beyond counting of micro-impacts and debris damage on top of the Vorax battle scarring it already carried. Every stasis pod is accounted for. Every residential quarter is logged. Every name is in the manifest. All empty except for fine grey dust &mdash; the last physical trace of every individual who tried Plan B and, when it failed, had the courage to call for Plan A themselves. Now the Worldship drifts endlessly through the galaxy it tried to leave &mdash; a damaged derelict tumbling between star systems, scarred by the Vorax breakout and eons of aimless wandering through space. Its armor held against everything except the one weapon it was never designed to survive. Its call was heard, and the Engine saved the species. It just couldn&rsquo;t save the people who made the call.",
-    "weatherEvents": ["Hull Breach Event", "Power Fluctuation", "Automated Defense Activation", "Cryo-Bay Cascade Failure", "Reactor Containment Warning", "Atmosphere Reroute", "Weapons Deck Live Fire", "Residential Ring Pressure Loss"],
-    "scanDiscoveries": ["Cryo-Bay Manifest", "Ship Navigation Logs", "Reactor Status Assessment", "Cargo Manifest", "Aethyn Siege-Era Weapons Schematics", "Final Crew Medical Records", "Vorax Countermeasure Database", "Original Launch Orders", "Passenger Manifest — Full Names", "The Last Vote Record"],
-    "revenantSleepers": "guaranteed"
+    "weatherEvents": [
+      "Hull Breach Event",
+      "Power Fluctuation",
+      "Automated Defense Activation",
+      "Cryo-Bay Cascade Failure",
+      "Reactor Containment Warning",
+      "Atmosphere Reroute",
+      "Weapons Deck Live Fire",
+      "Residential Ring Pressure Loss"
+    ],
+    "scanDiscoveries": [
+      "Cryo-Bay Manifest",
+      "Ship Navigation Logs",
+      "Reactor Status Assessment",
+      "Cargo Manifest",
+      "Aethyn Siege-Era Weapons Schematics",
+      "Final Crew Medical Records",
+      "Vorax Countermeasure Database",
+      "Original Launch Orders",
+      "Passenger Manifest — Full Names",
+      "The Last Vote Record"
+    ],
+    "revenantSleepers": "guaranteed",
+    "colorLight": "#7c2eff"
   },
   {
     "name": "Warp Gate",
@@ -286,8 +475,24 @@
     "visual": "The ring announces itself from across the system &mdash; a circle of folded space-time large enough for capital ships to transit through, and at its center, something that shouldn&rsquo;t exist. The warp field isn&rsquo;t a shimmer or a glow &mdash; it&rsquo;s a hole. A perfect void at the center where space itself has been folded so completely that light doesn&rsquo;t come back, surrounded by spiraling bands of deep purple energy that swirl inward like matter falling into a singularity. The purple is not light &mdash; it&rsquo;s the visible edge of folded dimensions, the boundary where normal space-time ends and whatever the Aethyn punched through to connect star systems begins. You cannot see the other end. You cannot see anything through it. Sensors read it as simultaneously empty and infinitely deep. Ships that transit through describe the crossing as instantaneous. Ships that watch from outside see them stretch, compress, and vanish into the spiral like thread pulled through a needle. The ring structure framing this void is massive crystalline-metal hybrid engineering: Aethyn construction at its most precise, every surface etched with energy conduit channels that pulse with violet light as they feed power to the field. The conduits converge at junction nodes that flare brighter in steady rhythms &mdash; the heartbeat of a machine that has been tearing a hole in space-time for millennia beyond counting. Six angular anchor pylons are locked in formation around the ring exterior, each one an Aethyn station bristling with antenna spires and docking berths. Energy beams visibly connect each pylon to the ring &mdash; stabilization feeds keeping the warp field from collapsing or expanding beyond its containment. Octahedral beacon lights pulse at the top of each pylon in alternating blue and green, broadcasting docking protocols in a psychic frequency that no living species can fully decode. The purple energy at the center spirals in layers &mdash; an outer band rotating slowly, a middle band counter-rotating faster, and at the very core, a darkness so complete it makes the void of space look bright by comparison. The light from the spiraling energy casts everything nearby in shifting purple-violet illumination that makes shadows twist in directions they shouldn&rsquo;t. A cloud of luminous energy motes drifts around the gate &mdash; particles of distorted space-time made visible, slowly spiraling inward toward the void like everything else near a Warp Gate eventually does.",
     "special": "Creates an artificial warp lane connecting two points within the galaxy that would otherwise be unconnected &mdash; a shortcut through space-time built by a civilization that found natural warp lanes too slow and too limited. Before the Vorax, these Gates connected galaxies. Now they can only connect star systems within this one &mdash; the Vorax knull blocks warp signals from reaching anything extragalactic. The signal goes out, hits the knull, and dies. The surviving Gates still function for intra-galactic connections &mdash; still folding space, still maintaining their fields, still broadcasting docking protocols in psychic frequencies that no living species can fully decode. Controlling a Warp Gate means controlling a strategic shortcut: you can keep it open for your own fleets&rsquo; rapid transit, shut it down to deny the lane to enemies, or redirect it to connect different systems if you can decipher the Aethyn activation sequences. Destroying a Warp Gate removes the artificial lane permanently &mdash; an irreversible strategic decision that closes a door forever. The territory count is tiny (2&ndash;4) making them quick to capture, but the strategic implications are enormous &mdash; a single Warp Gate can connect your empire&rsquo;s flanks, open invasion routes behind enemy lines, or create supply lines across sectors that would otherwise take cycles to traverse. The old intergalactic coordinates are still in the system &mdash; a scan discovery that reveals where the Gate once connected to, addresses in distant galaxies that the activation sequence still tries to reach every maintenance cycle. For the Unifier path, restoring the internal Warp Gate network is essential &mdash; they are the transit nodes needed to rebuild the galaxy&rsquo;s warp lane infrastructure. Breaking through the Vorax knull to restore intergalactic connections would require dealing with the Vorax first.",
     "narrative": "The Aethyn connected galaxies. Not star systems &mdash; galaxies. Thousands of them, linked by a network of warp lanes maintained by Dyson Sphere power grids and anchored by structures like this one. The Warp Gates were the on-ramps &mdash; the points where ships entered folded space and emerged light-years away in a different arm of the galaxy, or a different galaxy entirely. Every Gate was a door to everywhere. Then the Vorax came. They didn&rsquo;t just invade &mdash; they produced a knull, a field that blocks warp signals from connecting to anything outside the galaxy. The intergalactic lanes didn&rsquo;t just burn out in the Fracture &mdash; they were already dying, the Vorax knull smothering the warp frequencies that held them open. The Fracture finished what the Vorax started. The highways between galaxies collapsed. This galaxy &mdash; once one node in a civilization spanning thousands &mdash; became an island. Not just physically isolated, but fundamentally cut off at the level of the technology that connected it. The warp signal goes out and hits the knull and dies. Nothing comes back. The factions that emerged from the Fracture don&rsquo;t even know other galaxies were connected. They don&rsquo;t know the lanes existed. They look at the surviving Warp Gates and see strategic shortcuts between star systems &mdash; useful, valuable, worth fighting over. They have no idea they&rsquo;re using the shattered remains of an intergalactic highway. The Gates still work for local connections &mdash; folding space between star systems within the galaxy. The fields still fold. The activation sequences are still in the pylons. But the old intergalactic coordinates? They&rsquo;re still in the system. Some operator millennia beyond counting ago punched in an address in a galaxy on the other side of the universe, and the Gate tries to connect every time it cycles through its maintenance routine. The signal goes out. The knull swallows it. Nothing connects. It tries again next cycle. It will try again every cycle until the power runs out or someone clears the queue. The factions fight over these as local shortcuts and don&rsquo;t realize what they&rsquo;ve lost. Don&rsquo;t realize that the shortcut between two star systems they&rsquo;re bleeding over was once a highway to a thousand galaxies. For the Unifier path, restoring the internal Gate network is essential &mdash; reconnecting the galaxy&rsquo;s transit infrastructure. But breaking through the knull? That would require dealing with the Vorax first. And even then, no one knows what&rsquo;s left on the other side. A thousand Aethyn galaxies that may have survived. Or a thousand galaxies the Vorax already consumed. The Gates can&rsquo;t tell you which. They just wait for someone to punch in the address and find out.",
-    "weatherEvents": ["Warp Field Fluctuation", "Energy Surge", "Spatial Distortion", "Transit Echo Event", "Gravitational Anomaly", "Conduit Overcharge"],
-    "scanDiscoveries": ["Gate Destination Mapping", "Activation Sequence", "Structural Integrity Report", "Original Destination Coordinates", "Intergalactic Lane Blueprint", "Aethyn Transit Frequency Cipher", "Pre-Fracture Network Map"],
-    "revenantSleepers": "none"
+    "weatherEvents": [
+      "Warp Field Fluctuation",
+      "Energy Surge",
+      "Spatial Distortion",
+      "Transit Echo Event",
+      "Gravitational Anomaly",
+      "Conduit Overcharge"
+    ],
+    "scanDiscoveries": [
+      "Gate Destination Mapping",
+      "Activation Sequence",
+      "Structural Integrity Report",
+      "Original Destination Coordinates",
+      "Intergalactic Lane Blueprint",
+      "Aethyn Transit Frequency Cipher",
+      "Pre-Fracture Network Map"
+    ],
+    "revenantSleepers": "none",
+    "colorLight": "#00726b"
   }
 ]
