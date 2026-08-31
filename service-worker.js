@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v255';
+const CACHE_NAME = 'aoc-gdd-v256';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -15,7 +15,7 @@ const PRECACHE_URLS = [
   '/index.html',
   '/manifest.json',
 
-  // Chapter pages (57)
+  // Chapter pages (51)
   '/pages/chapters/ch1.html',
   '/pages/chapters/ch2.html',
   '/pages/chapters/ch3.html',
@@ -68,7 +68,7 @@ const PRECACHE_URLS = [
   '/pages/chapters/suppJ.html',
   '/pages/chapters/suppK.html',
 
-  // Data — JSON (46)
+  // Data — JSON (45)
   '/data/audio/tracks.json',
   '/data/search-index.json',
   '/data/search-synonyms.json',
@@ -92,8 +92,6 @@ const PRECACHE_URLS = [
   '/data/factions/faction-names.json',
   '/data/factions/factions.json',
   '/data/formations/formations.json',
-  '/data/icons/build-icons.json',
-  '/data/icons/equip-icons.json',
   '/data/loadouts/unit-loadouts.json',
   '/data/nav/lore-quotes.json',
   '/data/nav/nav-data.json',
@@ -102,7 +100,6 @@ const PRECACHE_URLS = [
   '/data/planets/planet-svg.json',
   '/data/planets/planets.json',
   '/data/sprites/shapes.json',
-  '/data/sprites/unit-sprites.json',
   '/data/tech/core-guardians.json',
   '/data/tech/eternal-shards.json',
   '/data/tech/revenant.json',
@@ -118,11 +115,12 @@ const PRECACHE_URLS = [
   '/data/units/unity-accord.json',
   '/data/units/vorax.json',
 
-  // Three.js (local bundle + CDN fallback for offline)
+  // Three.js (local bundle only - the cdnjs fallback is fetched
+  // on demand by three-loader.js; precaching a cross-origin URL
+  // would make the atomic cache.addAll() fail whenever it is blocked)
   '/js/vendor/three.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js',
 
-  // JS modules (21)
+  // JS modules (22)
   '/js/audio-engine.js',
   '/js/music-player.js',
   '/js/canvas-galaxy.js',

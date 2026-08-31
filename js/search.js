@@ -56,8 +56,14 @@ const Search = {
     this.bindInput();
     this.bindOverlay();
 
-    // Pre-load the search index in the background
-    this._loadIndex();
+    // Warm the search index (~500 KB) once the browser is idle rather than
+    // during boot. search() already awaits _loadIndex() if the index is not
+    // ready, so a query issued before this fires still works - it just waits.
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(() => this._loadIndex(), { timeout: 5000 });
+    } else {
+      setTimeout(() => this._loadIndex(), 2000);
+    }
   },
 
   /** Load search index + synonyms via DataLoader (cached by worker) */
