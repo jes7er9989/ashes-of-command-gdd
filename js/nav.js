@@ -77,9 +77,13 @@ const Nav = {
 
     let html = '';
     for (const part of this.navData) {
-      const chapters = catIds
+      let chapters = catIds
         ? part.chapters.filter(ch => catIds.has(ch.id))
         : part.chapters;
+
+      // Never list a dev-only chapter while dev mode is off — the loader
+      // would just bounce the user back to the dashboard.
+      chapters = chapters.filter(ch => !ChapterLoader.isHidden(ch.id));
 
       if (chapters.length === 0) continue;
 
@@ -118,6 +122,7 @@ const Nav = {
       const results = [];
       for (const part of this.navData) {
         for (const ch of part.chapters) {
+          if (ChapterLoader.isHidden(ch.id)) continue;
           if (ch.title.toLowerCase().includes(query) || ch.num.toLowerCase().includes(query)) {
             results.push({ ...ch, part: part.part, score: 1 });
           }
@@ -140,6 +145,7 @@ const Nav = {
     /* ── Score each indexed chapter ────────────────────── */
     const scored = [];
     for (const entry of index) {
+      if (ChapterLoader.isHidden(entry.id)) continue;
       let bestScore = 0;
       let synonymHint = null;
 
@@ -512,7 +518,12 @@ const Nav = {
         'faction-terran', 'faction-shards', 'faction-horde',
         'faction-revenant', 'faction-accord', 'faction-vorax', 'faction-guardians'
       );
-      Dashboard.render(content);
+      // Dashboard.render is async — it awaits faction data before writing
+      // the stat tiles, so the prune must wait for it or it sweeps an
+      // empty container.
+      Promise.resolve(Dashboard.render(content))
+        .then(() => ChapterLoader.pruneHiddenLinks(content))
+        .catch(() => { /* dashboard reports its own failures */ });
     } else {
       ChapterLoader.load(hash);
     }

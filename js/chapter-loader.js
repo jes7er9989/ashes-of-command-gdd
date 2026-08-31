@@ -34,6 +34,35 @@ const ChapterLoader = {
   DEV_ONLY_CHAPTERS: ['ch45', 'ch46', 'appL', 'appM'],
 
   /**
+   * Single source of truth for "should this chapter be visible right now".
+   * load() refuses to open a hidden chapter, and every surface that lists
+   * chapters (sidebar nav, nav search, the index overlay, the search
+   * overlay, the dashboard stat tiles) filters through this so a user is
+   * never offered a link that silently bounces them back to the dashboard.
+   * @param {string} chapterId
+   * @returns {boolean} true when the chapter must not be shown or opened
+   */
+  isHidden(chapterId) {
+    return this.DEV_ONLY_CHAPTERS.indexOf(chapterId) !== -1 &&
+           !document.body.classList.contains('dev-mode-active');
+  },
+
+  /**
+   * Remove any in-page link that points at a currently hidden chapter.
+   * The sidebar, index overlay and search filter themselves, but rendered
+   * content (e.g. the dashboard's stat tiles) can also link to a chapter,
+   * and a tile that bounces you straight back is worse than no tile.
+   * Generic on purpose, so tiles added later are covered automatically.
+   * @param {Element} root - Container to sweep
+   */
+  pruneHiddenLinks(root) {
+    if (!root || !root.querySelectorAll) return;
+    root.querySelectorAll('a[href^="#"]').forEach(a => {
+      if (this.isHidden(a.getAttribute('href').slice(1))) a.remove();
+    });
+  },
+
+  /**
    * Fetch and cache data/nav/chapter-meta.json.
    * Called lazily on first load() if not already cached.
    * @returns {Promise<Object|null>}
@@ -108,9 +137,10 @@ const ChapterLoader = {
     if (!this.contentArea) this.init();
     if (!this._chapterMeta) await this.loadChapterMeta();
 
-    // Block dev-mode-only chapters when dev mode is not active
-    if (this.DEV_ONLY_CHAPTERS.includes(chapterId) &&
-        !document.body.classList.contains('dev-mode-active')) {
+    // Block dev-mode-only chapters when dev mode is not active. Nothing in
+    // the UI should offer these while hidden, so reaching here means a typed
+    // or bookmarked hash.
+    if (this.isHidden(chapterId)) {
       location.hash = '#dashboard';
       return;
     }

@@ -198,6 +198,8 @@ const Search = {
     /* ── Search the content index (chapters) ─────────── */
     if (this._index) {
       for (const entry of this._index) {
+        // Dev-only chapters must not surface in search while hidden
+        if (ChapterLoader.isHidden(entry.id)) continue;
         let score = 0;
         let matchedTerm = primary;
         let snippet = '';

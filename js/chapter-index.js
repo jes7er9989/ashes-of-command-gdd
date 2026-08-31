@@ -90,6 +90,19 @@ const ChapterIndex = {
    * Create the full-screen overlay element and append it to <body>.
    * Contains a search input and the scrollable chapter tree.
    */
+  /**
+   * Rebuild the tree from the current nav data. Used when the set of
+   * visible chapters changes at runtime — unlocking developer mode
+   * reveals the dev-only chapters, which were filtered out of the
+   * tree that was built at boot.
+   */
+  refresh() {
+    if (!this.navData) return;
+    const filter = this.filterInput ? this.filterInput.value.trim() : '';
+    this._buildTree(this.navData, filter);
+    this._highlightCurrent();
+  },
+
   _buildOverlay() {
     const el = document.createElement('div');
     el.className = 'chapter-index-overlay';
@@ -162,8 +175,12 @@ const ChapterIndex = {
 
     for (const part of data) {
       const chapters = part.chapters.filter(ch =>
-        !lc || ch.title.toLowerCase().includes(lc) || ch.num.toLowerCase().includes(lc)
+        !ChapterLoader.isHidden(ch.id) &&
+        (!lc || ch.title.toLowerCase().includes(lc) || ch.num.toLowerCase().includes(lc))
       );
+
+      // Parts that are entirely dev-only vanish along with their chapters
+      if (chapters.length === 0) continue;
 
       // Skip empty parts when filtering
       if (lc && chapters.length === 0) continue;

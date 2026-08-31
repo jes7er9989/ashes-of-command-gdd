@@ -103,6 +103,16 @@ const DevMode = (() => {
     // Add body class — reveals hidden chapters & edit bar via CSS
     document.body.classList.add('dev-mode-active');
 
+    // The sidebar, index overlay and dashboard were built while those
+    // chapters were hidden, so rebuild them now that they are allowed.
+    try {
+      if (typeof Nav !== 'undefined' && Nav.container) Nav.render();
+      if (typeof ChapterIndex !== 'undefined' && ChapterIndex.refresh) ChapterIndex.refresh();
+      if (typeof Nav !== 'undefined' && Nav.onHashChange) Nav.onHashChange();
+    } catch (err) {
+      console.warn('[DevMode] Could not refresh chapter listings:', err.message);
+    }
+
     // Update sidebar title appearance
     const verEl = document.querySelector('.sidebar-title');
     if (verEl) {
