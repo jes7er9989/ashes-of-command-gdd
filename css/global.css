@@ -6093,6 +6093,17 @@ body.light-mode .kbd-modal-backdrop {
   background: rgba(11,18,32,0.45);
 }
 
+/* The chapter pages get a frosted card. Its dark fill put correct
+   light-theme text on a dark scrim, which was most of the light-mode
+   contrast failures on ch5-ch11. */
+body.light-mode #content-area > .fade-in:not(#dashboard-view),
+body.light-mode #content-area > .page-enter:not(#dashboard-view) {
+  background: rgba(255,255,255,0.72);
+  border-color: rgba(11,18,32,0.08);
+  box-shadow: 0 4px 30px rgba(11,18,32,0.08),
+              inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
 /* ── Text that hardcodes a pale colour ─────────────────────── */
 body.light-mode .nav-chapter          { color: var(--text-body); }
 body.light-mode .nav-chapter:hover    { color: var(--text-hi); }

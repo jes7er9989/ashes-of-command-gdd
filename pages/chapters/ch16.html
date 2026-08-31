@@ -12,13 +12,13 @@
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:24px">
       <div style="display:grid;grid-template-columns:160px 70px 90px 1fr;background:rgba(0,180,255,0.04);padding:6px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase;align-items:center;gap:4px"><span>Building</span><span>Cost</span><span>Time</span><span>Effect</span></div>
       <div style="display:grid;grid-template-columns:160px 70px 90px 1fr;padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;align-items:start">
-        <span style="color:#fff;font-weight:600">Supply Depot</span>
+        <span style="color:var(--text-hi);font-weight:600">Supply Depot</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--accent)">10⚙</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--text-mid)">2 cycles</span>
         <span style="color:var(--text-mid)">Resets supply distance from this territory. Holds 20⚙ emergency reserves.</span>
       </div>
       <div style="display:grid;grid-template-columns:160px 70px 90px 1fr;padding:10px 12px;border-bottom:1px solid var(--border);font-size:0.98rem;align-items:start">
-        <span style="color:#fff;font-weight:600">Relay Station</span>
+        <span style="color:var(--text-hi);font-weight:600">Relay Station</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--accent)">8⚙</span>
         <span style="font-family:'JetBrains Mono',monospace;color:var(--text-mid)">1 cycle</span>
         <span style="color:var(--text-mid)">+25% supply speed on this lane. Stackable — up to 3 stations = +75% max. Does not reset distance.</span>
@@ -58,7 +58,7 @@
     </div>
     <div class="card" style="margin-bottom:16px;border-left:3px solid var(--terran)">
       <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">ARMADA TRANSPORT EXCEPTION</div>
-      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Units transported via Armada <strong style="color:#fff">bypass tier-lock restrictions</strong>. The restriction applies to <em>local recruitment only</em>. If you invaded with Titans in your fleet, your Titans fight — you just can't <em>build new</em> Titans at that territory without an Adv. War Factory.</div>
+      <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Units transported via Armada <strong style="color:var(--text-hi)">bypass tier-lock restrictions</strong>. The restriction applies to <em>local recruitment only</em>. If you invaded with Titans in your fleet, your Titans fight — you just can't <em>build new</em> Titans at that territory without an Adv. War Factory.</div>
     </div>
 
     <div class="divider"></div>
@@ -69,15 +69,15 @@
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px">
       <div class="card" style="border-left:3px solid var(--vorax)">
         <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:6px">AUTO-PRODUCTION</div>
-        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">War Factory auto-produces <strong style="color:#fff">1 free unit every 2 turns</strong>. Unit type based on territory type + other buildings present. Adv. War Factory counts as 2× (produces faster or better units).</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">War Factory auto-produces <strong style="color:var(--text-hi)">1 free unit every 2 turns</strong>. Unit type based on territory type + other buildings present. Adv. War Factory counts as 2× (produces faster or better units).</div>
       </div>
       <div class="card" style="border-left:3px solid var(--terran)">
         <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--terran);letter-spacing:2px;margin-bottom:6px">RECRUITMENT UNLOCK</div>
-        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Enables <strong style="color:#fff">paid recruitment</strong> of heavy/vehicle units via RecruitPanel. Adv. War Factory additionally unlocks super-heavy/elite recruitment at the territory.</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Enables <strong style="color:var(--text-hi)">paid recruitment</strong> of heavy/vehicle units via RecruitPanel. Adv. War Factory additionally unlocks super-heavy/elite recruitment at the territory.</div>
       </div>
       <div class="card" style="border-left:3px solid var(--accord)">
         <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accord);letter-spacing:2px;margin-bottom:6px">REPAIR / HEAL</div>
-        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Units at territories with War Factory <strong style="color:#fff">heal between battles</strong> (restore HP). Damaged units automatically recover without spending additional resources.</div>
+        <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">Units at territories with War Factory <strong style="color:var(--text-hi)">heal between battles</strong> (restore HP). Damaged units automatically recover without spending additional resources.</div>
       </div>
     </div>
     <div class="card" style="margin-bottom:16px">
@@ -96,14 +96,14 @@
     <div class="card" style="margin-bottom:16px;border-left:3px solid var(--horde)">
       <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--horde);letter-spacing:2px;margin-bottom:8px">RALLY POINTS</div>
       <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">
-        Player designates a <strong style="color:#fff">rally territory per system</strong>. All auto-produced units from War Factories in that system automatically gather at the rally point. This prevents units from scattering across 15+ territories in a system and lets the player concentrate forces at strategic locations.
+        Player designates a <strong style="color:var(--text-hi)">rally territory per system</strong>. All auto-produced units from War Factories in that system automatically gather at the rally point. This prevents units from scattering across 15+ territories in a system and lets the player concentrate forces at strategic locations.
       </div>
     </div>
 
     <div class="card" style="margin-bottom:16px">
       <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--accent);letter-spacing:2px;margin-bottom:8px">BUILDING COST MODEL — ONE-TIME ONLY</div>
       <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.55">
-        All buildings have a <strong style="color:#fff">one-time construction cost</strong> only. There is no ongoing upkeep. Once built, a building operates indefinitely until destroyed. This simplifies the economic model and makes territory development feel permanent and rewarding rather than a drain.
+        All buildings have a <strong style="color:var(--text-hi)">one-time construction cost</strong> only. There is no ongoing upkeep. Once built, a building operates indefinitely until destroyed. This simplifies the economic model and makes territory development feel permanent and rewarding rather than a drain.
       </div>
     </div>
   </div><!-- /page-ch16 -->

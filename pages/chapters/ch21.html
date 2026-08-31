@@ -10,9 +10,9 @@
     <h2 class="section-heading" id="sec-ch21-0">Generation · Pool · Starting CP</h2>
     <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-bottom:16px">
       <div style="display:grid;grid-template-columns:200px 1fr;background:rgba(0,180,255,0.04);padding:7px 12px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);letter-spacing:1px;text-transform:uppercase"><span>Parameter</span><span>Value</span></div>
-      <div style="display:grid;grid-template-columns:200px 1fr;padding:7px 12px;border-bottom:1px solid var(--border);font-size:0.98rem"><span style="color:var(--text-mid)">Starting CP (per battle)</span><span style="color:#fff;font-weight:600">3</span></div>
-      <div style="display:grid;grid-template-columns:200px 1fr;padding:7px 12px;border-bottom:1px solid var(--border);font-size:0.98rem"><span style="color:var(--text-mid)">Maximum Pool</span><span style="color:#fff;font-weight:600">10</span></div>
-      <div style="display:grid;grid-template-columns:200px 1fr;padding:7px 12px;border-bottom:1px solid var(--border);font-size:0.98rem"><span style="color:var(--text-mid)">Regen Rate (base)</span><span style="color:#fff;font-weight:600">1 CP / 30 sec</span></div>
+      <div style="display:grid;grid-template-columns:200px 1fr;padding:7px 12px;border-bottom:1px solid var(--border);font-size:0.98rem"><span style="color:var(--text-mid)">Starting CP (per battle)</span><span style="color:var(--text-hi);font-weight:600">3</span></div>
+      <div style="display:grid;grid-template-columns:200px 1fr;padding:7px 12px;border-bottom:1px solid var(--border);font-size:0.98rem"><span style="color:var(--text-mid)">Maximum Pool</span><span style="color:var(--text-hi);font-weight:600">10</span></div>
+      <div style="display:grid;grid-template-columns:200px 1fr;padding:7px 12px;border-bottom:1px solid var(--border);font-size:0.98rem"><span style="color:var(--text-mid)">Regen Rate (base)</span><span style="color:var(--text-hi);font-weight:600">1 CP / 30 sec</span></div>
       <div style="display:grid;grid-template-columns:200px 1fr;padding:7px 12px;border-bottom:1px solid var(--border);font-size:0.98rem"><span style="color:var(--text-mid)">Accord Commander Regen</span><span style="color:var(--accord);font-weight:600">1 CP / 26 sec</span></div>
       <div style="display:grid;grid-template-columns:200px 1fr;padding:7px 12px;font-size:0.98rem"><span style="color:var(--text-mid)">Excess CP</span><span style="color:var(--text-dim)">Wasted — pool cannot exceed 10.</span></div>
     </div>
@@ -21,9 +21,9 @@
     <div class="card" style="border-left:3px solid var(--vorax);margin-bottom:24px">
       <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--vorax);letter-spacing:2px;margin-bottom:8px">ORBITAL STRIKE — CONFIRMED VALUES <span class="proto-badge">PROTOTYPE LOCKED</span></div>
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;font-size:0.98rem;text-align:center">
-        <div style="padding:8px;background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:2px"><div style="color:var(--text-dim);font-size:0.85rem;margin-bottom:2px">COST</div><div style="color:#fff;font-weight:600">3 CP</div></div>
-        <div style="padding:8px;background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:2px"><div style="color:var(--text-dim);font-size:0.85rem;margin-bottom:2px">RADIUS</div><div style="color:#fff;font-weight:600">75 px</div></div>
-        <div style="padding:8px;background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:2px"><div style="color:var(--text-dim);font-size:0.85rem;margin-bottom:2px">DAMAGE (BASE)</div><div style="color:#fff;font-weight:600">150</div></div>
+        <div style="padding:8px;background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:2px"><div style="color:var(--text-dim);font-size:0.85rem;margin-bottom:2px">COST</div><div style="color:var(--text-hi);font-weight:600">3 CP</div></div>
+        <div style="padding:8px;background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:2px"><div style="color:var(--text-dim);font-size:0.85rem;margin-bottom:2px">RADIUS</div><div style="color:var(--text-hi);font-weight:600">75 px</div></div>
+        <div style="padding:8px;background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:2px"><div style="color:var(--text-dim);font-size:0.85rem;margin-bottom:2px">DAMAGE (BASE)</div><div style="color:var(--text-hi);font-weight:600">150</div></div>
         <div style="padding:8px;background:rgba(0,180,255,0.06);border:1px solid rgba(0,180,255,0.2);border-radius:2px"><div style="color:var(--terran);font-size:0.85rem;margin-bottom:2px">TERRAN BONUS</div><div style="color:var(--terran);font-weight:600">172</div></div>
       </div>
     </div>
@@ -193,7 +193,7 @@
     <div class="card" style="margin-bottom:16px;border-left:3px solid var(--terran)">
       <div style="font-family:'Orbitron',monospace;font-size:0.85rem;color:var(--terran);letter-spacing:2px;margin-bottom:8px">COMMANDER ABILITY SYSTEM — REDESIGNED</div>
       <div style="font-size:0.95rem;color:var(--text-mid);line-height:1.65">
-        The old trait-based commander abilities (War Cry, Fortify, Rally, etc.) have been <strong style="color:#fff">replaced</strong> by the faction-specific <span style="color:var(--terran)">General Rank 3+</span> unlock system above. Each faction now has a unique commander-tier ability that unlocks when the assigned General reaches Rank 3, replacing the generic trait abilities.
+        The old trait-based commander abilities (War Cry, Fortify, Rally, etc.) have been <strong style="color:var(--text-hi)">replaced</strong> by the faction-specific <span style="color:var(--terran)">General Rank 3+</span> unlock system above. Each faction now has a unique commander-tier ability that unlocks when the assigned General reaches Rank 3, replacing the generic trait abilities.
       </div>
       <div style="font-size:0.92rem;color:var(--text-dim);margin-top:8px">See §21.1c faction tables — ability #5 in each faction is the General Rank 3+ unlock.</div>
     </div>
