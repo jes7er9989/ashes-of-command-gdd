@@ -980,7 +980,7 @@ body.sidebar-collapsed .main-content {
   position: relative;
   z-index: 1;
   text-align: center;
-  animation: heroFadeIn 1.5s ease forwards;
+  animation: heroFadeIn 0.5s ease forwards;
   padding: 40px 24px;
   border-radius: 8px;
   background: radial-gradient(ellipse 600px 300px at center 40%,
@@ -989,6 +989,11 @@ body.sidebar-collapsed .main-content {
     transparent 70%);
 }
 
+/* Hero entrance timing is deliberately tight. The staged reveal used to
+   settle at ~3.8s (content 1.5s, typewriter 0.8s+3s, pitch 1.5s+2s), which
+   meant the landing page was not readable for nearly four seconds on every
+   single visit. Same choreography, ~1.15s. prefers-reduced-motion still
+   collapses all of it via the global override further down. */
 @keyframes heroFadeIn {
   0%   { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
@@ -1156,7 +1161,7 @@ body.sidebar-collapsed .main-content {
   overflow: hidden;
   white-space: nowrap;
   border-right: 2px solid rgba(var(--terran-rgb),0.6);
-  animation: heroTypewriter 3s steps(72) 0.8s forwards,
+  animation: heroTypewriter 0.9s steps(72) 0.25s forwards,
              heroCursorBlink 0.7s step-end infinite;
   max-width: 0;
 }
@@ -1176,7 +1181,7 @@ body.sidebar-collapsed .main-content {
   max-width: 700px;
   margin: 16px auto 8px;
   text-align: center;
-  animation: heroFadeIn 2s ease 1.5s both;
+  animation: heroFadeIn 0.55s ease 0.6s both;
 }
 
 .hero-pitch {
@@ -2883,7 +2888,7 @@ html {
     white-space: normal;
     border-right: none;
     max-width: 100%;
-    animation: heroFadeIn 1.5s ease forwards;
+    animation: heroFadeIn 0.5s ease forwards;
   }
 
   .hero-tagline-expanded {
@@ -5923,139 +5928,188 @@ embed {
    Works on ALL pages (dashboard + chapters + appendices).
    ────────────────────────────────────────────────────────── */
 
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT MODE — a genuine light theme, driven by the token set
+   ───────────────────────────────────────────────────────────────
+   The previous version redefined 11 of 33 tokens, and redefined them
+   to *dark* values (--bg-base: #1a1e2a), then patched ~26 components
+   individually. The result read as a second dark theme and the toggle
+   looked broken.
+
+   Two rules make this work:
+   1. Redefine the WHOLE token set. Anything styled through var()
+      then follows automatically and no per-component patching is needed.
+   2. Neon does not survive a pale ground. Every faction hue is darkened
+      until it clears 4.5:1 on --bg-base while keeping its hue, and the
+      glow text-shadows are dropped — a neon bloom on near-white reads as
+      smudge, which is what sank the first attempt. Emphasis comes from
+      colour and weight instead.
+   ═══════════════════════════════════════════════════════════════ */
+
 body.light-mode {
-  --bg-base: #1a1e2a;
-  --bg-panel: #1e2230;
-  --bg-card: rgba(30,36,50,0.6);
-  --bg-hover: #252a3a;
-  --text-dim: #8899aa;
-  --text-mid: #b0bcc8;
-  --text-body: #d8dee8;
-  --text-hi: #f0f2f6;
-  --border: rgba(255,255,255,0.08);
-  --border-hi: rgba(255,255,255,0.15);
-  --accent: #22aaff;
+  /* ── Ground: cool near-white, never pure #fff ── */
+  --bg-base:   #eef1f6;
+  --bg-panel:  #ffffff;
+  --bg-card:   #f7f9fc;
+  --bg-hover:  #e3e9f2;
+
+  /* ── Borders: dark at low alpha, the inverse of the dark theme ── */
+  --border:    rgba(11,18,32,0.10);
+  --border-hi: rgba(11,18,32,0.22);
+
+  /* ── Text: all four steps clear 4.5:1 on --bg-base ── */
+  --text-hi:   #0b1220;   /* 16.5:1 */
+  --text-body: #2b3648;   /* 10.8:1 */
+  --text-mid:  #4a5768;   /*  6.5:1 */
+  --text-dim:  #59677a;   /*  4.9:1 */
+
+  /* ── Faction identity, darkened to stay legible (hue preserved) ── */
+  --terran:     #005f88;
+  --shards:     #007069;
+  --horde:      #b63800;
+  --revenant:   #7928ff;
+  --accord:     #007415;
+  --vorax:      #c8003d;
+  --guardians:  #8d5700;
+  --architect:  #0065b9;
+  --vanguard:   #b63800;
+  --tyrant:     #8d5700;
+  --accent:     #005f88;
+
+  --terran-rgb:    0, 95, 136;
+  --shards-rgb:    0, 112, 105;
+  --horde-rgb:     182, 56, 0;
+  --revenant-rgb:  121, 40, 255;
+  --accord-rgb:    0, 116, 21;
+  --vorax-rgb:     200, 0, 61;
+  --guardians-rgb: 141, 87, 0;
+  --architect-rgb: 0, 101, 185;
+  --vanguard-rgb:  182, 56, 0;
+  --tyrant-rgb:    141, 87, 0;
+
+  background: var(--bg-base);
+  color: var(--text-body);
 }
 
-body.light-mode .sidebar {
-  background: #161a26;
-  border-right-color: rgba(255,255,255,0.06);
-}
-
-body.light-mode #display-controls {
-  background: rgba(26,30,42,0.9);
-  border-color: rgba(255,255,255,0.1);
-}
-
-/* Softer hero gradient - not harsh white */
-body.light-mode .hero-starfield {
-  background: linear-gradient(180deg, #141828 0%, #1a1e2a 50%, #1e2230 100%);
+/* ── Kill the neon bloom ───────────────────────────────────────
+   Glows are the signature of the dark theme and the ruin of the
+   light one. Strip them wholesale, then restore a flat colour for
+   the pieces that relied on the glow for their weight. */
+body.light-mode .hero-title,
+body.light-mode .section-heading,
+body.light-mode .sidebar-title,
+body.light-mode .nav-chapter,
+body.light-mode .nav-part-header,
+body.light-mode .stat-value,
+body.light-mode .card,
+body.light-mode .quote-text,
+body.light-mode .hero-lore-text {
+  text-shadow: none;
+  box-shadow: none;
 }
 
 body.light-mode .hero-title {
-  text-shadow: 0 0 30px rgba(34,170,255,0.4);
+  color: var(--accent);
 }
 
-body.light-mode .hero-lore-text {
-  color: #d0d8e4;
-  text-shadow: 0 0 20px rgba(34,170,255,0.15);
+/* ── Backdrops that were hand-painted dark ─────────────────── */
+body.light-mode .hero-starfield {
+  background: linear-gradient(180deg, #e4e9f2 0%, #eef1f6 50%, #f5f7fb 100%);
 }
 
-body.light-mode .hero-lore-source {
-  color: #90a0b0;
+body.light-mode .hero-nebula,
+body.light-mode #procedural-bg,
+body.light-mode #ambient-particles {
+  opacity: 0.25;
 }
 
-/* Sidebar nav - brighter text */
-body.light-mode .nav-chapter {
-  color: #c0c8d4;
+/* Scanlines are a dark-CRT conceit; on paper-white they read as banding */
+body.light-mode .crt-overlay,
+body.light-mode #scanline-overlay {
+  display: none;
 }
 
-body.light-mode .nav-chapter:hover {
-  color: #f0f2f6;
-  background: rgba(255,255,255,0.05);
+body.light-mode #display-controls,
+body.light-mode .sidebar {
+  background: var(--bg-panel);
+  border-color: var(--border);
 }
 
-body.light-mode .nav-chapter.active {
-  color: #f0f2f6;
-  background: rgba(34,170,255,0.1);
-}
-
-body.light-mode .nav-part-header {
-  color: #90a0b0;
-}
-
-/* Cards - more transparent */
-body.light-mode .card {
-  background: rgba(30,36,50,0.5);
-  border-color: rgba(255,255,255,0.08);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
-}
-
-/* Content area overrides */
-body.light-mode #content-area {
-  background: #1a1e2a;
-}
-
-body.light-mode #content-area .card {
-  background: rgba(30,36,50,0.5);
-}
-
-body.light-mode .section-heading {
-  text-shadow: 0 0 14px rgba(34,170,255,0.25);
-}
-
-body.light-mode .quote-text {
-  color: #c8d0dc;
-}
-
-/* Bold text for readability */
-body.light-mode .body-text,
-body.light-mode p,
-body.light-mode .card {
-  font-weight: 500;
-}
-
-body.light-mode .section-heading {
-  font-weight: 800;
-}
-
-body.light-mode .nav-chapter {
-  font-weight: 500;
-}
-
-/* Search and filter */
-body.light-mode .sidebar-search-wrap input {
-  background: rgba(255,255,255,0.05);
-  border-color: rgba(255,255,255,0.1);
-  color: #d8dee8;
-}
-
-body.light-mode .sidebar-filter-btn {
-  background: rgba(255,255,255,0.04);
-  border-color: rgba(255,255,255,0.08);
-  color: #90a0b0;
-}
-
-body.light-mode .filter-option:hover {
-  background: rgba(255,255,255,0.06);
-}
-
-body.light-mode .filter-option.active {
-  background: rgba(34,170,255,0.1);
-}
-
-body.light-mode #brightness-slider {
-  background: rgba(255,255,255,0.12);
-}
-
-/* Dashboard sections */
+/* ── Alternating dashboard bands, restated in the light palette ── */
 body.light-mode .dashboard-section:nth-child(odd) {
-  background: rgba(34,170,255,0.03);
+  background: rgba(var(--accent-rgb, 0,115,163), 0.03);
+}
+body.light-mode .dashboard-section:nth-child(even) {
+  background: rgba(var(--accent-rgb, 0,115,163), 0.06);
 }
 
-body.light-mode .dashboard-section:nth-child(even) {
-  background: rgba(34,170,255,0.05);
+/* ── Form controls pick up the panel colour ── */
+body.light-mode .sidebar-search-wrap input,
+body.light-mode .chapter-index-search input,
+body.light-mode .search-input-wrap input,
+body.light-mode .sidebar-filter-btn {
+  background: var(--bg-panel);
+  color: var(--text-body);
+  border-color: var(--border);
 }
+
+/* ── Panels that hardcode a dark fill ──────────────────────────
+   These predate the token set and paint rgba(12,14,20,0.7)-ish
+   directly, so dark body text landed on a dark card. Restated
+   against the light palette. */
+body.light-mode .faction-card,
+body.light-mode .system-card,
+body.light-mode .stat-block,
+body.light-mode .phase-block,
+body.light-mode .summary-bar,
+body.light-mode .card-accent:nth-child(odd),
+body.light-mode .card-accent:nth-child(even),
+body.light-mode .planet-svg-wrap,
+body.light-mode .formation-diagram,
+body.light-mode .kbd-modal-panel {
+  background: var(--bg-card);
+  border-color: var(--border);
+}
+
+body.light-mode .phase-details,
+body.light-mode .flow-node,
+body.light-mode .kbd-list kbd {
+  background: var(--bg-hover);
+  border-color: var(--border);
+  color: var(--text-body);
+}
+
+body.light-mode #kbd-help-badge,
+body.light-mode #kbd-help-badge:hover,
+body.light-mode #kbd-help-badge:focus-visible,
+body.light-mode .back-to-top,
+body.light-mode #dev-fx-toggle {
+  background: var(--bg-panel);
+  color: var(--text-body);
+  border-color: var(--border-hi);
+}
+
+body.light-mode .kbd-modal-backdrop {
+  background: rgba(11,18,32,0.45);
+}
+
+/* ── Text that hardcodes a pale colour ─────────────────────── */
+body.light-mode .nav-chapter          { color: var(--text-body); }
+body.light-mode .nav-chapter:hover    { color: var(--text-hi); }
+body.light-mode .nav-chapter.active   { color: var(--accent); }
+body.light-mode .hero-lore-text,
+body.light-mode .epigraph-quote-text,
+body.light-mode .prologue-quote-text  { color: var(--text-body); }
+body.light-mode .hero-lore-source     { color: var(--text-mid); }
+body.light-mode .system-card-title    { color: var(--text-hi); }
+body.light-mode #dev-fx-toggle:hover  { color: var(--text-hi); }
+body.light-mode strong                { color: var(--text-hi); }
+
+/* The under-construction notice was tuned for a dark ground */
+body.light-mode #uc-banner {
+  background: rgba(255,251,240,0.96);
+}
+body.light-mode #uc-banner .uc-sep { color: rgba(156,96,0,0.45); }
 
 
 /* ═══════════════════════════════════════════════════════════════
