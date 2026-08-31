@@ -111,12 +111,12 @@ const ContentRenderers = {
         /* Update active button styles */
         toggleWrap.querySelectorAll('.subtype-btn').forEach(function(b, bi) {
           b.classList.remove('active');
-          b.style.borderColor = '';
-          b.style.color = '';
+          b.style.removeProperty('--pc-active');
         });
         btn.classList.add('active');
-        btn.style.borderColor = subtype.color;
-        btn.style.color = subtype.color;
+        /* colour resolves in CSS so it can follow the theme */
+        btn.style.setProperty('--pc-dark', subtype.color);
+        btn.style.setProperty('--pc-light', subtype.colorLight || subtype.color);
 
         /* Find the detail container */
         var detail = toggleWrap.closest('.planet-detail');
@@ -284,7 +284,7 @@ const ContentRenderers = {
       for (let si = 0; si < planet.subtypes.length; si++) {
         const st = planet.subtypes[si];
         const isActive = si === 0;
-        const activeStyle = isActive ? ';border-color:' + st.color + ';color:' + st.color : '';
+        const activeStyle = ';--pc-dark:' + st.color + ';--pc-light:' + (st.colorLight || st.color);
         subtypeToggle += '<button class="subtype-btn' + (isActive ? ' active' : '') + '" data-subtype-idx="' + si + '" style="' + btnBase + activeStyle + '">' + st.name + '</button>';
       }
       subtypeToggle += '</div>';
@@ -292,7 +292,7 @@ const ContentRenderers = {
 
     /* Build megastructure badge */
     const megaBadge = planet.megastructure
-      ? '<span style="font-family:\'JetBrains Mono\',monospace;font-size:0.65rem;color:#ffaa22;border:1px solid #ffaa22;padding:1px 5px;border-radius:2px;margin-left:8px;letter-spacing:1px">MEGASTRUCTURE</span>'
+      ? '<span style="font-family:\'JetBrains Mono\',monospace;font-size:0.65rem;color:var(--warning);border:1px solid var(--warning);padding:1px 5px;border-radius:2px;margin-left:8px;letter-spacing:1px">MEGASTRUCTURE</span>'
       : '';
 
     /* Build additional detail sections */

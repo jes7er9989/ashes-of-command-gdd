@@ -40,21 +40,24 @@
         "color": "#4a8",
         "terrain": "Rolling grasslands, scattered deciduous forests, gentle river valleys. The most balanced terrain &mdash; open fields for ranged combat, forest patches for cover, river crossings as natural chokepoints. Weather cycles between clear skies, rain, and fog. Moderate visibility in all conditions.",
         "visual": "Earth-like beauty &mdash; deep blue oceans, green continents, white clouds. The archetypal habitable world. City lights on the night side, agricultural patterns on temperate zones.",
-        "svgKey": "Terrestrial"
+        "svgKey": "Terrestrial",
+        "colorLight": "#2d715b"
       },
       {
         "name": "Arid-Temperate",
         "color": "#b89040",
         "terrain": "Dry savanna and scrubland with sparse tree cover. More open than temperate &mdash; longer sightlines, less natural cover. Dried riverbeds provide movement corridors. Rocky outcrops serve as strongpoints. Dust devils reduce visibility locally. Vehicles have better mobility than in dense terrain.",
         "visual": "Golden-brown continents with minimal green. Vast open plains under a hazy sky. Thin cloud cover, bright sunlight. Resembles the African savanna from orbit &mdash; dry but not dead.",
-        "svgKey": "Terrestrial Arid"
+        "svgKey": "Terrestrial Arid",
+        "colorLight": "#7e632c"
       },
       {
         "name": "Tropical",
         "color": "#28a050",
         "terrain": "Dense tropical forests, wide river deltas, coastal wetlands. Higher vegetation density than temperate &mdash; closer to Jungle but with more clearings and settled areas. Frequent rain reduces visibility. River networks segment the battlefield. High humidity degrades unsealed equipment over time.",
         "visual": "Lush green landmasses with extensive river networks visible from orbit. Thick cloud bands over equatorial regions. Deep blue-green oceans. The most biodiverse terrestrial variant &mdash; rain forests cover 60%+ of land area.",
-        "svgKey": "Terrestrial Tropical"
+        "svgKey": "Terrestrial Tropical",
+        "colorLight": "#1d763b"
       }
     ],
     "terrain": "The most tactically balanced terrain in the galaxy &mdash; open grasslands provide clean sightlines for ranged engagements, scattered forests offer light cover and concealment for ambush tactics, river crossings create natural chokepoints that reward defensive positioning, and rolling hills provide moderate height advantage without the extreme verticality of mountain worlds. Mixed terrain forces diverse army compositions: pure infantry struggles in open fields, pure vehicles bog down in forests, and balanced forces dominate. Weather patterns shift between clear skies (favoring ranged), rain (reducing visibility), and fog banks (infantry ambush conditions).",

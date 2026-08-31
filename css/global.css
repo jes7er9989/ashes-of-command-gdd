@@ -6131,6 +6131,15 @@ body.light-mode #content-area > .page-enter:not(#dashboard-view) {
 .territory-bar-label {
   color: var(--pc-dark, var(--text-hi));
 }
+.subtype-btn.active {
+  color: var(--pc-dark, var(--accent));
+  border-color: var(--pc-dark, var(--accent));
+}
+body.light-mode .subtype-btn.active {
+  color: var(--pc-light, var(--accent));
+  border-color: var(--pc-light, var(--accent));
+}
+
 body.light-mode .planet-name,
 body.light-mode .planet-detail-label,
 body.light-mode .territory-bar-label {
