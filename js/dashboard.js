@@ -622,7 +622,7 @@ const Dashboard = {
       : '';
 
     return `
-      <div class="faction-card parallax-card" style="--faction-color:${f.color};cursor:pointer"
+      <div class="faction-card parallax-card" style="--faction-color:var(--${f.key}, ${f.color});cursor:pointer"
            onclick="location.hash='#${f.chapterId}'">
         ${npc}
         <div class="faction-card-header">

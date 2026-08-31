@@ -86,6 +86,16 @@
   /* Primary UI accent (Terran blue) */
   --accent: #00b4ff;
 
+  /* ── Semantic roles ──────────────────────────────────────
+     Chapter HTML used ~30 ad-hoc hexes for 7 meanings, inline,
+     where no stylesheet could reach them. These give each role
+     one value per theme so content follows the theme. */
+  --danger:   #ff3333;
+  --warning:  #ffaa22;
+  --success:  #44cc66;
+  --terminal: #00ff41;
+  --info:     #4488ff;
+
   /* Layout tokens */
   --sidebar-w: 260px;
   --transition: 0.2s ease;
@@ -5975,6 +5985,13 @@ body.light-mode {
   --vanguard:   #b63800;
   --tyrant:     #8d5700;
   --accent:     #005f88;
+
+  /* Semantic roles, darkened to clear 5.2:1 on the light ground */
+  --danger:   #c90000;
+  --warning:  #8d5700;
+  --success:  #1f7234;
+  --terminal: #00751e;
+  --info:     #0056ec;
 
   --terran-rgb:    0, 95, 136;
   --shards-rgb:    0, 112, 105;
