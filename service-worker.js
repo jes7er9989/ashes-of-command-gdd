@@ -147,7 +147,7 @@ const PRECACHE_URLS = [
   '/js/visual-effects.js',
 
   // CSS (1)
-  '/css/global.css',
+  '/css/global.css?v=253',
 
   // Assets (4)
   '/assets/favicon.svg',
