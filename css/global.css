@@ -6121,6 +6121,21 @@ body.light-mode #content-area > .page-enter:not(#dashboard-view) {
               inset 0 1px 0 rgba(255,255,255,0.9);
 }
 
+/* ── Space viewports on a light page ───────────────────────
+   The galaxy and solar renders are starfields: black is correct, and
+   forcing them light would make the stars invisible. But on a light
+   page an unframed black rectangle reads as a broken render, so give
+   them a frame that says "window into space" instead. Dark mode leaves
+   them edge-to-edge, which is the intended effect there. */
+body.light-mode #canvas-galaxy-mount,
+body.light-mode #canvas-solar-mount,
+body.light-mode .planet-svg-wrap {
+  border: 1px solid var(--border-hi);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 14px rgba(11,18,32,0.10);
+}
+
 /* ── Planet-type colours ───────────────────────────────────
    planets.json carries a colour per planet type, injected inline by
    content-renderers.js. An inline `color:` cannot be themed, so the
