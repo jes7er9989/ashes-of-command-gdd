@@ -34,6 +34,35 @@ const DevMode = (() => {
   let fxDisabled = false;
 
   // ───────────────────────────────────────────
+  // SECTION: Unlock Persistence
+  // ───────────────────────────────────────────
+  // Dev mode used to reset on every reload, which meant re-doing the ten
+  // clicks each time just to reach the dev-only chapters. The flag is
+  // restored here, during module evaluation: module scripts are deferred
+  // so this runs before boot() calls Nav.init(), and the sidebar is built
+  // with the right set of chapters the first time instead of flashing.
+  // This is convenience, not access control — the chapters are in the
+  // repo and anyone reading the source can find them.
+  const DEV_STORAGE_KEY = 'aoc-dev-mode';
+
+  function _storeUnlocked(on) {
+    try {
+      if (on) localStorage.setItem(DEV_STORAGE_KEY, '1');
+      else localStorage.removeItem(DEV_STORAGE_KEY);
+    } catch (_) { /* private browsing — falls back to session-only */ }
+  }
+
+  function _wasUnlocked() {
+    try { return localStorage.getItem(DEV_STORAGE_KEY) === '1'; }
+    catch (_) { return false; }
+  }
+
+  if (_wasUnlocked() && document.body) {
+    devUnlocked = true;
+    document.body.classList.add('dev-mode-active');
+  }
+
+  // ───────────────────────────────────────────
   // SECTION: Edit Mode State
   // ───────────────────────────────────────────
   let editModeActive = false;
@@ -66,8 +95,6 @@ const DevMode = (() => {
    * After 10 clicks within 4 seconds, activates developer mode.
    */
   function _onTitleClick() {
-    if (devUnlocked) return;
-
     clickCount++;
 
     const verEl = document.querySelector('.sidebar-title');
@@ -87,13 +114,46 @@ const DevMode = (() => {
     if (clickCount >= REQUIRED_CLICKS) {
       clearTimeout(clickTimer);
       clickCount = 0;
-      _unlock();
+      if (verEl) verEl.classList.remove('dev-priming');
+      // Same gesture both ways: ten clicks toggles dev mode off again.
+      if (devUnlocked) lock(); else _unlock();
     }
+  }
+
+  /**
+   * Leave developer mode and forget the stored flag. Rebuilds the chapter
+   * listings so the dev-only chapters disappear again without a reload.
+   */
+  function lock() {
+    if (!devUnlocked) return;
+    devUnlocked = false;
+    _storeUnlocked(false);
+
+    document.body.classList.remove('dev-mode-active');
+
+    const verEl = document.querySelector('.sidebar-title');
+    if (verEl) {
+      verEl.classList.remove('dev-unlocked', 'dev-priming');
+      verEl.title = '';
+    }
+
+    // If a dev-only chapter is open, ChapterLoader.load() will bounce to
+    // the dashboard as soon as we re-route below.
+    try {
+      if (typeof Nav !== 'undefined' && Nav.container) Nav.render();
+      if (typeof ChapterIndex !== 'undefined' && ChapterIndex.refresh) ChapterIndex.refresh();
+      if (typeof Nav !== 'undefined' && Nav.onHashChange) Nav.onHashChange();
+    } catch (err) {
+      console.warn('[DevMode] Could not refresh chapter listings:', err.message);
+    }
+
+    console.log('%c[DevMode] Developer Mode locked.', 'color:#8090a0;font-family:monospace');
   }
 
   function _unlock() {
     if (devUnlocked) return;
     devUnlocked = true;
+    _storeUnlocked(true);
 
     // Play unlock fanfare if audio engine is available
     if (typeof AudioEngine !== 'undefined') {
@@ -118,7 +178,7 @@ const DevMode = (() => {
     if (verEl) {
       verEl.classList.remove('dev-priming');
       verEl.classList.add('dev-unlocked');
-      verEl.title = 'Developer Mode ACTIVE';
+      verEl.title = 'Developer Mode ACTIVE — click the title 10x to exit';
     }
 
     _showToast();
@@ -300,6 +360,16 @@ const DevMode = (() => {
     _createToast();
     _createFxToggle();
 
+    // Restored from a previous session: apply the unlocked styling only.
+    // No fanfare — the toast and sound belong to the act of unlocking.
+    if (devUnlocked) {
+      const restoredEl = document.querySelector('.sidebar-title');
+      if (restoredEl) {
+        restoredEl.classList.add('dev-unlocked');
+        restoredEl.title = 'Developer Mode ACTIVE — click the title 10x to exit';
+      }
+    }
+
     // Attach click listener to sidebar title for 10-click unlock
     const verEl = document.querySelector('.sidebar-title');
     if (verEl) {
@@ -321,6 +391,7 @@ const DevMode = (() => {
   return {
     init,
     isUnlocked: () => devUnlocked,
+    lock,
     toggleEditMode,
     exportHTML,
   };
