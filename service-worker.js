@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v253';
+const CACHE_NAME = 'aoc-gdd-v254';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -147,7 +147,7 @@ const PRECACHE_URLS = [
   '/js/visual-effects.js',
 
   // CSS (1)
-  '/css/global.css?v=253',
+  '/css/global.css?v=254',
 
   // Assets (4)
   '/assets/favicon.svg',

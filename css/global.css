@@ -6797,7 +6797,9 @@ body.dev-mode-active::after {
 
 /* Narrow screens: drop the secondary line, keep the warning */
 @media (max-width: 720px) {
-  #uc-banner { top: 6px; padding: 5px 12px; gap: 8px; }
+  /* Drop below the hamburger + #display-controls row (both end at ~56px)
+     so the notice never overlaps the theme controls on narrow screens. */
+  #uc-banner { top: 64px; padding: 5px 12px; gap: 8px; }
   #uc-banner .uc-label { font-size: 0.68rem; letter-spacing: 0.12em; }
   #uc-banner .uc-sep,
   #uc-banner .uc-sub { display: none; }
