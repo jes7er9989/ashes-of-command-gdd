@@ -91,14 +91,17 @@ const DataLoader = {
         this._workerReady = false;
       };
 
-      /* Preload critical data for first paint */
+      /* Preload data genuinely needed for the dashboard's first paint.
+         Deliberately excludes the three heavy sets — unit-sprites.json
+         (1.3 MB), equip-icons.json (1.0 MB) and build-icons.json (0.7 MB).
+         The dashboard never reads them; only the seven faction chapters
+         (ch5-ch11) do, and ChapterLoader.initFactionChapter() awaits all
+         three before rendering. Keeping them out of boot saves ~3.1 MB on
+         every first visit and they stay cached in IndexedDB afterwards. */
       this.preload([
         'data/nav/nav-data.json',
         'data/factions/factions.json',
         'data/nav/section-map.json',
-        'data/icons/equip-icons.json',
-        'data/icons/build-icons.json',
-        'data/sprites/unit-sprites.json',
         'data/sprites/shapes.json'
       ]);
 

@@ -257,27 +257,27 @@
 
        service-worker.js is registered at runtime, not loaded
        as a script tag.                                            -->
-  <script src="js/three-loader.js"></script>
-  <script src="js/data-loader.js"></script>
-  <script src="js/sprite-engine.js"></script>
-  <script src="js/icon-renderer.js"></script>
-  <script src="js/faction-renderer.js"></script>
-  <script src="js/planet-textures.js"></script>
-  <script src="js/planet-renderer-v2.js"></script>
-  <script src="js/content-renderers.js"></script>
-  <script src="js/decrypt-reveal.js"></script>
-  <script src="js/chapter-loader.js"></script>
-  <script src="js/dashboard.js"></script>
-  <script src="js/search.js"></script>
-  <script src="js/chapter-index.js"></script>
-  <script src="js/glossary.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/audio-engine.js"></script>
-  <script src="js/music-player.js"></script>
-  <script src="js/visual-effects.js"></script>
-  <script src="js/dev-mode.js"></script>
-  <script src="js/solar-system.js"></script>
-  <script src="js/canvas-galaxy.js"></script>
+  <script defer src="js/three-loader.js"></script>
+  <script defer src="js/data-loader.js"></script>
+  <script defer src="js/sprite-engine.js"></script>
+  <script defer src="js/icon-renderer.js"></script>
+  <script defer src="js/faction-renderer.js"></script>
+  <script defer src="js/planet-textures.js"></script>
+  <script defer src="js/planet-renderer-v2.js"></script>
+  <script defer src="js/content-renderers.js"></script>
+  <script defer src="js/decrypt-reveal.js"></script>
+  <script defer src="js/chapter-loader.js"></script>
+  <script defer src="js/dashboard.js"></script>
+  <script defer src="js/search.js"></script>
+  <script defer src="js/chapter-index.js"></script>
+  <script defer src="js/glossary.js"></script>
+  <script defer src="js/nav.js"></script>
+  <script defer src="js/audio-engine.js"></script>
+  <script defer src="js/music-player.js"></script>
+  <script defer src="js/visual-effects.js"></script>
+  <script defer src="js/dev-mode.js"></script>
+  <script defer src="js/solar-system.js"></script>
+  <script defer src="js/canvas-galaxy.js"></script>
 
 
   <script>
@@ -300,7 +300,7 @@
      *   8. Service worker        - register for offline caching
      *   Note: Glossary.init() is called by ChapterLoader.load() after each chapter renders
      */
-    (async function boot() {
+    async function boot() {
       try {
         DataLoader.init();
         ChapterLoader.init();
@@ -556,7 +556,11 @@
       } catch (e) {
         console.error('[AOC] Boot failure:', e);
       }
-    })();
+    }
+
+    /* Module scripts are deferred, so they have all executed by the time
+       DOMContentLoaded fires. Booting any earlier would hit undefined globals. */
+    document.addEventListener('DOMContentLoaded', boot);
   </script>
 
   <!-- Display Controls (top-right) -->

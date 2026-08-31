@@ -336,7 +336,12 @@ const ChapterLoader = {
       DataLoader.loadFactionDialogue(dataKey).catch(() => [])
     ]);
 
-    // Sprites and building icons are shared across all factions (single JSON files)
+    // Sprites and icon sets are shared across all factions (single JSON files).
+    // These are large (~3.1 MB combined) so they are NOT preloaded at boot —
+    // they are fetched here, the first time a faction chapter is opened, and
+    // then served from the DataLoader/IndexedDB cache. IconRenderer and
+    // FactionRenderer read them synchronously from DataLoader.cache, so every
+    // one of them must be awaited before the renderers run below.
     let sprites = {};
     try {
       sprites = await DataLoader.load('data/sprites/unit-sprites.json');
@@ -344,6 +349,9 @@ const ChapterLoader = {
     try {
       await DataLoader.load('data/icons/build-icons.json');
     } catch (e) { /* building icons are optional - page works without them */ }
+    try {
+      await DataLoader.load('data/icons/equip-icons.json');
+    } catch (e) { /* equipment icons are optional - page works without them */ }
 
     // Hand off to FactionRenderer to build each UI section
     FactionRenderer.buildUnitList(units, `${prefix}-unit-list`, color, prefix, sprites);
