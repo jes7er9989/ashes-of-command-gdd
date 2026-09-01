@@ -1,5 +1,9 @@
-# Reference files (original monolith + rules — not needed for deployment)
-reference/
+# Reference material.
+# The GDD monoliths and extracted source ARE tracked — they are the material
+# this PWA was built from and existed in exactly one place (this disk) until
+# 1 Sep 2026. The rules-*.md are Thomas's personal AI engagement docs, not
+# project files, and stay out of a public repo.
+reference/rules-*.md
 
 # Build/utility scripts (not needed for deployment)
 extract-data.js
