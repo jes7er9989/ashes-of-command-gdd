@@ -96,6 +96,16 @@
   --terminal: #00ff41;
   --info:     #4488ff;
 
+  /* Equipment rarity tiers. These alias the semantic roles rather than
+     carrying their own hexes, so they follow the theme automatically and
+     the tier -> colour relationship is stated once. The data used to
+     carry a rarityColor per item, which meant Uncommon shipped as two
+     different greens (#44cc66 and #44ff88). */
+  --rarity-common:    var(--text-dim);
+  --rarity-uncommon:  var(--success);
+  --rarity-rare:      var(--info);
+  --rarity-legendary: var(--warning);
+
   /* Layout tokens */
   --sidebar-w: 260px;
   --transition: 0.2s ease;

@@ -217,7 +217,14 @@ const FactionRenderer = {
    * @returns {string} HTML string
    */
   _equipRow(item, idx, color) {
-    const rarityStyle = item.rarityColor ? `color:${item.rarityColor}` : 'color:var(--text-dim)';
+    /* Colour comes from the rarity tier, not from the data. An inline hex
+       cannot follow the theme, and the data disagreed with itself on
+       Uncommon. rarityColor is still read as a fallback for any item
+       that has no recognised tier. */
+    const rarityTier = String(item.rarity || '').trim().toLowerCase();
+    const rarityStyle = ['common','uncommon','rare','legendary'].indexOf(rarityTier) !== -1
+      ? `color:var(--rarity-${rarityTier})`
+      : (item.rarityColor ? `color:${item.rarityColor}` : 'color:var(--text-dim)');
     const protoIcon = item.proto ? `<span style="color:${color};font-size:0.5rem" title="Prototype">★</span>` : '';
     // Equipment icon from IconRenderer (falls back to placeholder if missing)
     const equipIcon = (typeof IconRenderer !== 'undefined')
