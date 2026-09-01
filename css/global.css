@@ -96,15 +96,25 @@
   --terminal: #00ff41;
   --info:     #4488ff;
 
-  /* Equipment rarity tiers. These alias the semantic roles rather than
-     carrying their own hexes, so they follow the theme automatically and
-     the tier -> colour relationship is stated once. The data used to
-     carry a rarityColor per item, which meant Uncommon shipped as two
-     different greens (#44cc66 and #44ff88). */
+  /* Equipment rarity tiers, aliasing the semantic roles so the
+     tier -> colour relationship is stated once. The data used to carry a
+     rarityColor per item, which meant Uncommon shipped as two different
+     greens (#44cc66 and #44ff88).
+
+     NOTE: a custom property that aliases another is substituted where it
+     is DECLARED, not where it is used — so declaring these only here
+     would freeze the dark values and light mode would inherit them.
+     They are re-declared under body.light-mode for that reason. */
   --rarity-common:    var(--text-dim);
   --rarity-uncommon:  var(--success);
   --rarity-rare:      var(--info);
   --rarity-legendary: var(--warning);
+
+  /* Unit domains (ground / air / space) */
+  --domain-ground:  #88aa44;
+  --domain-air:     #44aaff;
+  --domain-space:   #aa66ff;
+
 
   /* Layout tokens */
   --sidebar-w: 260px;
@@ -6002,6 +6012,19 @@ body.light-mode {
   --success:  #1f7234;
   --terminal: #00751e;
   --info:     #0056ec;
+
+  /* Re-declared so they resolve against the light values above, not the
+     dark ones frozen at :root. See the note there. */
+  --rarity-common:    var(--text-dim);
+  --rarity-uncommon:  var(--success);
+  --rarity-rare:      var(--info);
+  --rarity-legendary: var(--warning);
+
+  /* Unit domains, darkened for the light ground */
+  --domain-ground:  #566b2b;
+  --domain-air:     #0065b8;
+  --domain-space:   #811dff;
+
 
   --terran-rgb:    0, 95, 136;
   --shards-rgb:    0, 112, 105;

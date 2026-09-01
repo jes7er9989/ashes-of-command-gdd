@@ -462,7 +462,8 @@ const FactionRenderer = {
    * @returns {string} HTML string for the badge
    */
   _domainBadge(domain) {
-    const colors = { ground: '#88aa44', air: '#44aaff', space: '#aa66ff' };
+    /* Tokens, not hexes — an inline colour cannot follow the theme. */
+    const colors = { ground: 'var(--domain-ground)', air: 'var(--domain-air)', space: 'var(--domain-space)' };
     const c = colors[domain] || 'var(--text-dim)';
     return `<span style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;padding:1px 6px;border:1px solid ${c};color:${c};border-radius:1px;letter-spacing:1px;text-transform:uppercase">${domain || '?'}</span>`;
   },

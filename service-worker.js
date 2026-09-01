@@ -5,7 +5,7 @@
    Dependencies: none
    ═══════════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'aoc-gdd-v269';
+const CACHE_NAME = 'aoc-gdd-v270';
 
 // Static assets to precache on install
 const PRECACHE_URLS = [
@@ -121,31 +121,31 @@ const PRECACHE_URLS = [
   '/js/vendor/three.min.js',
 
   // JS modules (22)
-  '/js/audio-engine.js?v=269',
-  '/js/music-player.js?v=269',
-  '/js/canvas-galaxy.js?v=269',
-  '/js/chapter-index.js?v=269',
-  '/js/chapter-loader.js?v=269',
-  '/js/content-renderers.js?v=269',
-  '/js/dashboard.js?v=269',
-  '/js/data-loader.js?v=269',
+  '/js/audio-engine.js?v=270',
+  '/js/music-player.js?v=270',
+  '/js/canvas-galaxy.js?v=270',
+  '/js/chapter-index.js?v=270',
+  '/js/chapter-loader.js?v=270',
+  '/js/content-renderers.js?v=270',
+  '/js/dashboard.js?v=270',
+  '/js/data-loader.js?v=270',
   '/js/data-worker.js',
-  '/js/decrypt-reveal.js?v=269',
-  '/js/dev-mode.js?v=269',
-  '/js/faction-renderer.js?v=269',
-  '/js/glossary.js?v=269',
-  '/js/icon-renderer.js?v=269',
-  '/js/nav.js?v=269',
-  '/js/planet-renderer-v2.js?v=269',
-  '/js/planet-textures.js?v=269',
-  '/js/search.js?v=269',
-  '/js/solar-system.js?v=269',
-  '/js/sprite-engine.js?v=269',
-  '/js/three-loader.js?v=269',
-  '/js/visual-effects.js?v=269',
+  '/js/decrypt-reveal.js?v=270',
+  '/js/dev-mode.js?v=270',
+  '/js/faction-renderer.js?v=270',
+  '/js/glossary.js?v=270',
+  '/js/icon-renderer.js?v=270',
+  '/js/nav.js?v=270',
+  '/js/planet-renderer-v2.js?v=270',
+  '/js/planet-textures.js?v=270',
+  '/js/search.js?v=270',
+  '/js/solar-system.js?v=270',
+  '/js/sprite-engine.js?v=270',
+  '/js/three-loader.js?v=270',
+  '/js/visual-effects.js?v=270',
 
   // CSS (1)
-  '/css/global.css?v=269',
+  '/css/global.css?v=270',
 
   // Assets (4)
   '/assets/favicon.svg',
