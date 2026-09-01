@@ -119,8 +119,20 @@ if (fs.existsSync(appFile)) {
     if (!ch) continue;
 
     // Extract the section for this appendix
-    const re = new RegExp(`id="page-${appId}"[\\s\\S]*?(?=<div class="page"|$)`, 'i');
-    const m = appHtml.match(re);
+    /* appendices.html is ONE page (id="page-appendices") containing six
+       sections id="sec-appendices-0" .. "-5" — exactly what
+       ChapterLoader.ROUTE_ALIASES maps appA..appF onto. The previous
+       regex looked for id="page-appA", which does not exist in the file,
+       so this loop silently produced nothing and every appendix — the
+       Glossary, Unit Roster, Equipment Catalog, Faction Matrix — was
+       missing from search entirely. */
+    const secIdx = appIds.indexOf(appId);
+    const secStart = appHtml.indexOf(`id="sec-appendices-${secIdx}"`);
+    let m = null;
+    if (secStart !== -1) {
+      const nextAt = appHtml.indexOf(`id="sec-appendices-${secIdx + 1}"`, secStart);
+      m = [appHtml.slice(secStart, nextAt === -1 ? appHtml.length : nextAt)];
+    }
     if (m) {
       const sectionHtml = m[0];
       const sections = extractSectionHeadings(sectionHtml);
@@ -141,6 +153,43 @@ if (fs.existsSync(appFile)) {
       });
     }
   }
+}
+
+// ── Megastructures (rendered at runtime from planets.json) ───
+// ch13 renders its five megastructures from data, not from markup, so
+// they cannot be scraped out of ch13.html. They were previously added to
+// the index by hand, which meant re-running this script silently deleted
+// them. Generating them here makes a rebuild safe and complete.
+try {
+  const planetsPath = path.resolve(__dirname, 'data', 'planets', 'planets.json');
+  const planets = JSON.parse(fs.readFileSync(planetsPath, 'utf8'));
+  const ch13 = chapters.find(c => c.id === 'ch13') || {};
+  for (const pl of planets.filter(x => x.megastructure)) {
+    const slug = pl.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    /* Lead the snippet with `special`, not `narrative`. Several of these
+       narratives deliberately open by contrasting with another
+       megastructure — Ring World's begins "The Dyson Sphere harvests a
+       star..." — so a narrative-first excerpt reads as the wrong entry.
+       `special` is the distinguishing mechanical description. */
+    const clean = v => String(v || '').replace(/&mdash;/g, '—').replace(/&lsquo;|&rsquo;/g, "'");
+    const lead = [`Megastructure: ${pl.name}.`, clean(pl.special)].filter(Boolean).join(' ');
+    const rest = [clean(pl.terrain), clean(pl.narrative), clean(pl.visual)].filter(Boolean).join(' ');
+    const content = `${lead} ${rest}`.replace(/\s+/g, ' ').trim();
+    index.push({
+      id: `ch13-mega-${slug}`,
+      num: ch13.num || '13',
+      title: `${pl.name} (Megastructure)`,
+      pageTitle: pl.name.toUpperCase(),
+      subtitle: `Megastructure · Chapter 13 — Planetary Bodies & Biomes`,
+      part: ch13.part || 'III - The Galactic Map',
+      color: null,
+      sections: [],
+      content,
+      desc: lead.substring(0, 300)
+    });
+  }
+} catch (e) {
+  console.warn('  WARN: could not add megastructures —', e.message);
 }
 
 // ── Write output ─────────────────────────────────────────────
