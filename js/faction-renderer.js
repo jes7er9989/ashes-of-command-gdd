@@ -321,7 +321,7 @@ const FactionRenderer = {
   _dialogueBeat(beat, color) {
     const linesHtml = (beat.lines || []).map(l => {
       const style = l.style === 'italic' ? 'font-style:italic;' : '';
-      const speakerColor = l.speaker === 'Commander' ? color : 'var(--text-hi)';
+      const speakerColor = l.speaker === 'Commander' ? this._css(color) : 'var(--text-hi)';
       return `
         <div style="margin-bottom:8px">
           <span style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:${speakerColor};letter-spacing:1px">${l.speaker}:</span>
