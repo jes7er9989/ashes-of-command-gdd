@@ -5991,7 +5991,7 @@ body.light-mode {
   --text-hi:   #0b1220;   /* 16.5:1 */
   --text-body: #2b3648;   /* 10.8:1 */
   --text-mid:  #4a5768;   /*  6.5:1 */
-  --text-dim:  #59677a;   /*  4.9:1 */
+  --text-dim:  #4d5969;   /*  6.2:1 on the base ground, so tinted panels still clear 4.5 */
 
   /* ── Faction identity, darkened to stay legible (hue preserved) ── */
   --terran:     #005f88;

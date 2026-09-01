@@ -356,7 +356,13 @@ const ChapterLoader = {
    * @returns {Promise<void>}
    */
   async initFactionChapter(faction) {
-    const { prefix, dataKey, color } = faction;
+    const { prefix, dataKey, color, cssVar } = faction;
+
+    /* Give the renderer a theme-aware colour to use for plain CSS values.
+       The hex is still passed for colour maths (rgba tints, sprite data). */
+    if (typeof FactionRenderer !== 'undefined') {
+      FactionRenderer._cssColor = cssVar ? `var(${cssVar})` : null;
+    }
 
     // Fetch all four data types concurrently
     const [units, equipment, tech, dialogue] = await Promise.all([

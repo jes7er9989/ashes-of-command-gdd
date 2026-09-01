@@ -23,6 +23,16 @@
 
 const FactionRenderer = {
 
+  /* ── Theme-aware faction colour ─────────────────────────────
+     The hex in FACTION_MAP is still needed wherever we do colour maths
+     (_hexToRgb for rgba tints, and the data-color attribute SpriteEngine
+     parses). But an inline hex cannot follow the theme, so anywhere the
+     value is used as a plain CSS colour we emit var(--<faction>) instead.
+     ChapterLoader sets _cssColor before the builders run. */
+  _cssColor: null,
+  _css(fallbackHex) { return this._cssColor || fallbackHex; },
+
+
   /* ═══════════════════════════════════════════════════════
      UNIT LIST — Roster table with expandable detail panels
      ═══════════════════════════════════════════════════════ */
@@ -140,7 +150,7 @@ const FactionRenderer = {
         <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
           <span style="width:50px;font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);text-align:right">${st.label}</span>
           <div style="flex:1;height:6px;background:rgba(255,255,255,0.05);border-radius:1px;overflow:hidden">
-            <div style="width:${pct}%;height:100%;background:${color};border-radius:1px;transition:width 0.3s"></div>
+            <div style="width:${pct}%;height:100%;background:${this._css(color)};border-radius:1px;transition:width 0.3s"></div>
           </div>
           <span style="width:32px;font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-mid);text-align:right">${v}<span class="ph-tag">PH</span></span>
         </div>`;
@@ -166,23 +176,23 @@ const FactionRenderer = {
     if (s.buildCycles) costs.push(`${s.buildCycles} cycles${PH}`);
     if (s.supplyCost) costs.push(`${s.supplyCost} supply${PH}`);
     const costHtml = costs.length
-      ? `<div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:${color};margin-top:6px">Cost: ${costs.join(' · ')}</div>`
+      ? `<div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:${this._css(color)};margin-top:6px">Cost: ${costs.join(' · ')}</div>`
       : '';
 
     // ── Flavor text sections ──
     const physicalHtml = u.physical
-      ? `<div style="margin-top:12px"><div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:${color};letter-spacing:2px;margin-bottom:4px">PHYSICAL</div><div style="font-size:0.72rem;color:var(--text-mid);line-height:1.55">${u.physical}</div></div>`
+      ? `<div style="margin-top:12px"><div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:${this._css(color)};letter-spacing:2px;margin-bottom:4px">PHYSICAL</div><div style="font-size:0.72rem;color:var(--text-mid);line-height:1.55">${u.physical}</div></div>`
       : '';
 
     const narrativeHtml = u.narrative
-      ? `<div style="margin-top:10px"><div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:${color};letter-spacing:2px;margin-bottom:4px">NARRATIVE</div><div style="font-size:0.72rem;color:var(--text-mid);line-height:1.55;font-style:italic">${u.narrative}</div></div>`
+      ? `<div style="margin-top:10px"><div style="font-family:'Orbitron',monospace;font-size:0.55rem;color:${this._css(color)};letter-spacing:2px;margin-bottom:4px">NARRATIVE</div><div style="font-size:0.72rem;color:var(--text-mid);line-height:1.55;font-style:italic">${u.narrative}</div></div>`
       : '';
 
     return `
       <div style="display:flex;gap:16px;align-items:flex-start">
         ${spriteHtml}
         <div style="flex:1;min-width:0">
-          <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:${color};margin-bottom:2px">${u.name}</div>
+          <div style="font-family:'Orbitron',monospace;font-size:0.75rem;color:${this._css(color)};margin-bottom:2px">${u.name}</div>
           <div style="font-size:0.65rem;color:var(--text-dim);margin-bottom:10px">${u.role || ''} · ${u.category || ''} · ${this._domainBadge(u.domain)}</div>
           ${statsHtml}
           ${extrasHtml}
@@ -225,7 +235,7 @@ const FactionRenderer = {
     const rarityStyle = ['common','uncommon','rare','legendary'].indexOf(rarityTier) !== -1
       ? `color:var(--rarity-${rarityTier})`
       : (item.rarityColor ? `color:${item.rarityColor}` : 'color:var(--text-dim)');
-    const protoIcon = item.proto ? `<span style="color:${color};font-size:0.5rem" title="Prototype">★</span>` : '';
+    const protoIcon = item.proto ? `<span style="color:${this._css(color)};font-size:0.5rem" title="Prototype">★</span>` : '';
     // Equipment icon from IconRenderer (falls back to placeholder if missing)
     const equipIcon = (typeof IconRenderer !== 'undefined')
       ? IconRenderer.renderEquipIcon(item.name, 24)
@@ -268,7 +278,7 @@ const FactionRenderer = {
   _techBranch(branch, color) {
     const nodesHtml = (branch.nodes || []).map(n => `
       <div style="display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.03)">
-        <div style="flex-shrink:0;width:32px;height:32px;border:1px solid ${color};border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:0.55rem;color:${color};background:rgba(${this._hexToRgb(color)},0.06)">${n.tier}</div>
+        <div style="flex-shrink:0;width:32px;height:32px;border:1px solid ${this._css(color)};border-radius:2px;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:0.55rem;color:${this._css(color)};background:rgba(${this._hexToRgb(color)},0.06)">${n.tier}</div>
         <div style="flex:1;min-width:0">
           <div style="font-size:0.75rem;color:var(--text-hi);margin-bottom:2px">${n.name}</div>
           <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);margin-bottom:4px">${n.cost ? n.cost + ' <span class="ph-tag">PH</span>' : ''}</div>
@@ -278,8 +288,8 @@ const FactionRenderer = {
       </div>`).join('');
 
     return `
-      <div class="card" style="border-left:3px solid ${color};margin-bottom:12px">
-        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:${color};letter-spacing:2px;margin-bottom:10px">
+      <div class="card" style="border-left:3px solid ${this._css(color)};margin-bottom:12px">
+        <div style="font-family:'Orbitron',monospace;font-size:0.65rem;color:${this._css(color)};letter-spacing:2px;margin-bottom:10px">
           BRANCH ${branch.branchNum || ''} — ${branch.branch || ''}
         </div>
         ${nodesHtml}
@@ -320,8 +330,8 @@ const FactionRenderer = {
     }).join('');
 
     return `
-      <div class="card" style="border-left:3px solid ${color};margin-bottom:12px">
-        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:${color};letter-spacing:2px;margin-bottom:4px">${beat.beat || ''}</div>
+      <div class="card" style="border-left:3px solid ${this._css(color)};margin-bottom:12px">
+        <div style="font-family:'Orbitron',monospace;font-size:0.6rem;color:${this._css(color)};letter-spacing:2px;margin-bottom:4px">${beat.beat || ''}</div>
         <div style="font-size:0.65rem;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-bottom:10px">${beat.trigger || ''}</div>
         ${linesHtml}
       </div>`;
@@ -442,7 +452,7 @@ const FactionRenderer = {
           const displayName = key.substring(iconPrefix.length + 1);
           const iconHtml = IconRenderer.renderBuildIcon(key, 48);
           return `
-            <div class="card" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-left:3px solid ${color};transition:background 0.15s"
+            <div class="card" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-left:3px solid ${this._css(color)};transition:background 0.15s"
                  onmouseenter="this.style.background='rgba(${this._hexToRgb(color)},0.06)'"
                  onmouseleave="this.style.background=''">
               ${iconHtml}
