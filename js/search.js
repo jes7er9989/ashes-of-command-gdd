@@ -176,11 +176,89 @@ const Search = {
   },
 
   /* ═══════════════════════════════════════════════════════
+     HELPERS — fuzzy matching, de-duplication, themed colours
+     ═══════════════════════════════════════════════════════ */
+
+  MIN_QUERY_LEN: 2,
+
+  /** Faction hexes as they appear in the index, mapped to theme tokens so
+      result rows follow light/dark instead of pinning the dark value. */
+  _COLOUR_TOKEN: {
+    '#00b4ff': 'var(--terran)',   '#00ffee': 'var(--shards)',
+    '#ff6622': 'var(--horde)',    '#aa77ff': 'var(--revenant)',
+    '#44ff66': 'var(--accord)',   '#ff2266': 'var(--vorax)',
+    '#ffaa22': 'var(--guardians)'
+  },
+  _themed(colour) {
+    if (!colour) return '';
+    return this._COLOUR_TOKEN[String(colour).trim().toLowerCase()] || colour;
+  },
+
+  /** Levenshtein distance, capped — we only care about small edits. */
+  _editDistance(a, b) {
+    if (a === b) return 0;
+    if (Math.abs(a.length - b.length) > 2) return 99;
+    let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+    for (let i = 1; i <= a.length; i++) {
+      const cur = [i];
+      for (let j = 1; j <= b.length; j++) {
+        cur[j] = Math.min(
+          prev[j] + 1,
+          cur[j - 1] + 1,
+          prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)
+        );
+      }
+      prev = cur;
+    }
+    return prev[b.length];
+  },
+
+  /** Is `word` a plausible typo of `target`? Stricter on short words. */
+  _isTypo(word, target) {
+    if (word.length < 3 || target.length < 3) return false;
+    const allowed = word.length <= 4 ? 1 : 2;
+    return this._editDistance(word, target) <= allowed;
+  },
+
+  /**
+   * Last-resort pass, only used when a strict search finds nothing.
+   * Matches query words against chapter titles with a small edit budget,
+   * so "terren league" and "vorrax" resolve instead of returning a blank.
+   * @returns {Array} result objects flagged isFuzzy
+   */
+  _fuzzySearch(query) {
+    if (!this._index) return [];
+    const words = query.toLowerCase().split(/\s+/).filter(w => w.length >= 3);
+    if (!words.length) return [];
+    const hits = [];
+    for (const entry of this._index) {
+      if (typeof ChapterLoader !== 'undefined' && ChapterLoader.isHidden(entry.id)) continue;
+      const haystack = ((entry.title || '') + ' ' + (entry.pageTitle || '')).toLowerCase();
+      const targets = haystack.split(/[^a-z0-9]+/).filter(Boolean);
+      let best = 0;
+      for (const w of words) {
+        for (const t of targets) {
+          if (this._isTypo(w, t)) { best = Math.max(best, this.WEIGHT_TITLE * 0.5); }
+        }
+      }
+      if (best > 0) {
+        hits.push({
+          type: 'Chapter', hash: '#' + entry.id, text: entry.title,
+          snippet: entry.desc || entry.subtitle || '', score: best,
+          color: entry.color, part: entry.part, isFuzzy: true
+        });
+      }
+    }
+    return hits.sort((a, b) => b.score - a.score);
+  },
+
+  /* ═══════════════════════════════════════════════════════
      SEARCH ENGINE
      ═══════════════════════════════════════════════════════ */
 
   async search(query) {
-    if (!query) {
+    if (!query || query.trim().length < this.MIN_QUERY_LEN) {
+      /* One character matches almost everything and just produces noise. */
       this.resultsList.innerHTML = '<div class="search-hint">Search chapters, units, equipment, factions...</div>';
       this.items = [];
       this.selectedIndex = -1;
@@ -371,7 +449,25 @@ const Search = {
       ? results.filter(r => !devOnly.includes(r.hash))
       : results;
 
-    this.items = filtered.slice(0, this.MAX_RESULTS);
+    /* One chapter can match on several sections and eat multiple slots.
+       Keep its best-scoring hit only; Unit/Equip/Faction rows are left
+       alone because they are genuinely distinct entities. */
+    const seenChapter = new Set();
+    const deduped = filtered.filter(r => {
+      /* Chapter and Faction rows both navigate to a chapter, so two of
+         them for the same target are two ways of saying one thing. Unit
+         and Equip rows are distinct entities and are left alone. */
+      if (r.type !== 'Chapter' && r.type !== 'Faction') return true;
+      const base = String(r.hash || '').replace('#', '').split('-')[0];
+      if (seenChapter.has(base)) return false;
+      seenChapter.add(base);
+      return true;
+    });
+
+    /* Nothing matched — try again allowing small spelling errors. */
+    const finalResults = deduped.length ? deduped : this._fuzzySearch(query);
+
+    this.items = finalResults.slice(0, this.MAX_RESULTS);
     this.selectedIndex = this.items.length > 0 ? 0 : -1;
     this.renderResults(query);
   },
@@ -390,10 +486,10 @@ const Search = {
 
     this.resultsList.innerHTML = this.items.map((item, i) => {
       const typeClass = item.type.toLowerCase();
-      const colorStyle = item.color ? ` style="color:${item.color}"` : '';
+      const colorStyle = item.color ? ` style="color:${this._themed(item.color)}"` : '';
       const synonymBadge = item.isSynonym
         ? `<span class="search-synonym-badge">via "${this.escapeHtml(item.matchedTerm)}"</span>`
-        : '';
+        : (item.isFuzzy ? '<span class="search-synonym-badge">closest match</span>' : '');
       const snippetHtml = item.snippet
         ? `<div class="search-snippet">${this.escapeHtml(item.snippet).replace(re, '<mark>$1</mark>')}</div>`
         : '';
