@@ -637,7 +637,7 @@ const Dashboard = {
         <div class="faction-meta">
           <span>\u25C6 ${f.curve}</span>
           <span>\u25A3 ${f.skill}</span>
-          <span>\u2B21 ${f.units} units</span>
+          <span>\u2B21 ${f.units} starting units</span>
         </div>
         <div class="stat-bars">
           ${this.buildStatBar('Early', f.early, f.color)}
