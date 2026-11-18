@@ -388,7 +388,7 @@ const Dashboard = {
             <div class="stat-desc">Three named advisors with competing agendas. They start as helpful voices in the simulation \u2014 then you discover they\u2019re real people with faces, histories, and stakes in the outcome.</div>
           </a>
           <a class="stat-block stat-link" href="#ch46" onclick="location.hash='#ch46'">
-            <div class="stat-value btn-countup" data-target="143" style="color:var(--guardians)">0</div>
+            <div class="stat-value btn-countup" data-target="158" style="color:var(--guardians)">0</div>
             <div class="stat-label">Design Decisions</div>
             <div class="stat-desc">128 locked decisions plus 15 prototype rulings. Every major design choice documented, debated, and locked. This GDD doesn\u2019t hand-wave \u2014 it commits.</div>
           </a>
@@ -895,7 +895,7 @@ const Dashboard = {
             Ashes of Command: The Reclamation \u2014 Complete Master GDD v5.9.1
           </div>
           <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);letter-spacing:2px;margin-top:4px">
-            <span style="color:var(--accent)">46</span> Chapters \u00B7 <span style="color:var(--accent)">8</span> Parts \u00B7 <span style="color:var(--accent)">13</span> Appendices (incl. Appendix L &amp; M) \u00B7 <span style="color:var(--accent)">143</span> Resolved Decisions \u00B7 <span style="color:var(--accent)">15</span> Prototype Rulings
+            <span style="color:var(--accent)">46</span> Chapters \u00B7 <span style="color:var(--accent)">8</span> Parts \u00B7 <span style="color:var(--accent)">13</span> Appendices (incl. Appendix L &amp; M) \u00B7 <span style="color:var(--accent)">158</span> Resolved Decisions \u00B7 <span style="color:var(--accent)">15</span> Prototype Rulings
           </div>
           <div style="font-family:'Share Tech Mono',monospace;font-size:0.5rem;color:var(--text-dim);letter-spacing:2px;margin-top:4px">
             Last Updated: April 2026

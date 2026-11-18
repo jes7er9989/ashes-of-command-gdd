@@ -1,12 +1,12 @@
   <div class="page" id="page-ch46">
     <div class="page-title-wrap">
 <div class="page-title">RESOLVED DESIGN DECISIONS</div>
-    <div class="page-subtitle">143 Questions Answered — 1 Open Flag — Chapter 46</div>
+    <div class="page-subtitle">158 Questions Answered — 7 Open Flags — Chapter 46</div>
 </div>
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
-      <div class="card" style="text-align:center"><div style="font-family:'Orbitron',monospace;font-size:1.8rem;color:var(--accent)">143</div><div style="font-size:0.9rem;color:var(--text-dim)">Design Questions Resolved</div></div>
-      <div class="card" style="text-align:center"><div style="font-family:'Orbitron',monospace;font-size:1.8rem;color:var(--accord)">1</div><div style="font-size:0.9rem;color:var(--text-dim)">Open Flag (General Rank Mod)</div></div>
+      <div class="card" style="text-align:center"><div style="font-family:'Orbitron',monospace;font-size:1.8rem;color:var(--accent)">158</div><div style="font-size:0.9rem;color:var(--text-dim)">Design Questions Resolved</div></div>
+      <div class="card" style="text-align:center"><div style="font-family:'Orbitron',monospace;font-size:1.8rem;color:var(--accord)">7</div><div style="font-size:0.9rem;color:var(--text-dim)">Open Flags</div></div>
       <div class="card" style="text-align:center"><div style="font-family:'Orbitron',monospace;font-size:1.8rem;color:var(--accord)">46</div><div style="font-size:0.9rem;color:var(--text-dim)">Chapters Complete</div></div>
     </div>
 
@@ -14,7 +14,7 @@
       <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:4px">Core Mechanics (Q1-20)</div><div style="color:var(--text-dim);line-height:1.4">Abstract cycles · Simultaneous turns · Paradox pause · Ops=Generals · Degrading supply · Battles 3-5 min early, 15-30 late · Same engine space/ground · XP promotion · Threat scaling not inflation</div></div>
       <div class="card"><div style="color:var(--horde);font-weight:600;margin-bottom:4px">Combat (Q21-35)</div><div style="color:var(--text-dim);line-height:1.4">Unit-specific equipment · Complex scaling AI · Commander rescue · Flexible formations · Asymmetric curves · DoW territory model · Commander aura+CP · Rare hybrid weapons</div></div>
       <div class="card"><div style="color:var(--guardians);font-weight:600;margin-bottom:4px">Narrative (Q36-50)</div><div style="color:var(--text-dim);line-height:1.4">Nameless Strategist · Procedural Artifacts · Scaling endings · Full-character advisors · Named Vorax+Guardian voices · Multi-voice Compendium · DLC recontextualizes</div></div>
-      <div class="card"><div style="color:var(--shards);font-weight:600;margin-bottom:4px">Factions (Q51-60)</div><div style="color:var(--text-dim);line-height:1.4">All 5 unlocked + recommended order · Balanced outcomes · Adaptive Vorax AI · Automated Guardian warnings · Shared tech structure · Core Guardians as Aethyn AI constructs</div></div>
+      <div class="card"><div style="color:var(--shards);font-weight:600;margin-bottom:4px">Factions (Q51-60)</div><div style="color:var(--text-dim);line-height:1.4">4 at start, Revenant earned by winning the Final War + recommended order · Balanced outcomes · Adaptive Vorax AI · Automated Guardian warnings · Shared tech structure · Core Guardians as Aethyn AI constructs</div></div>
       <div class="card"><div style="color:var(--accord);font-weight:600;margin-bottom:4px">Systems (Q61-75)</div><div style="color:var(--text-dim);line-height:1.4">Presets + Custom difficulty · Variable research · Decaying betrayal · Dual-layer minimap · Unlimited saves (Hardcore ironman) · 500-800 Compendium entries · Event-driven diplomacy</div></div>
       <div class="card"><div style="color:var(--vorax);font-weight:600;margin-bottom:4px">Post-Audit (Q76-108)</div><div style="color:var(--text-dim);line-height:1.4">Tiered slots · Procedural battle maps · Full cover system · Chain-reaction Volatile Death · Celestial constructs as maps · Between-battle adaptation · Creep fades 3-5 cycles · 50% Horde starvation resist</div></div>
     </div>
@@ -37,6 +37,26 @@
       <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-141</div><div style="color:var(--text-dim)">MVP starting resources: Scrap=30, Intel=12, Influence=5</div></div>
       <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-142</div><div style="color:var(--text-dim)">Loot roll: min(0.85, battlesWon × 0.15)</div></div>
       <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-143</div><div style="color:var(--text-dim)">The Maw reclassified: type='neutral' (Vorax spawn via VoraxManager)</div></div>
+    </div>
+
+    <div class="section-label">Design Decisions (144-158)</div>
+    <h2 class="section-heading" id="sec-ch46-1">Decided November 17, 2026</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:16px;font-size:0.92rem">
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-144</div><div style="color:var(--text-dim)">Map time: simultaneous turns. Plan with the galaxy frozen, commit, the cycle plays out for all factions</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-145</div><div style="color:var(--text-dim)">Simulation premise is in the open. Still secret: advisors are real, who built the Commander, shared ancestry</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-146</div><div style="color:var(--text-dim)">Cost of staying in the simulation scales by tier (Ch. 36)</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-147</div><div style="color:var(--text-dim)">Hard tier added: Story, Standard, Hard, Hardcore, Custom</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-148</div><div style="color:var(--text-dim)">Commander is on the field in battles you control, or a General stands in (Ch. 4)</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-149</div><div style="color:var(--text-dim)">Revenant earned by winning the Final War; 4 factions at start (Ch. 8)</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-150</div><div style="color:var(--text-dim)">Homeworld unification opens every run (Ch. 12, §12B)</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-151</div><div style="color:var(--text-dim)">Start from one seat; homeworld size scales with galaxy size</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-152</div><div style="color:var(--text-dim)">Home territories: Approach Phase with the holder tilting it, plus per-faction rules</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-153</div><div style="color:var(--text-dim)">AI faction unity depends on the faction</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-154</div><div style="color:var(--text-dim)">Faction groups are real powers on the map</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-155</div><div style="color:var(--text-dim)">Hold a spaceport at home to send fleets off-world</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-156</div><div style="color:var(--text-dim)">Unifying moves the Divergence axes; full unity earns a per-faction reward</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-157</div><div style="color:var(--text-dim)">Vorax appear after the first homeworld unites, with a latest cycle</div></div>
+      <div class="card"><div style="color:var(--terran);font-weight:600;margin-bottom:3px">D-158</div><div style="color:var(--text-dim)">Battles: 3-5 min early, 15-30 late; length follows what is on the field</div></div>
     </div>
   </div><!-- /page-ch46 -->
 
