@@ -38,7 +38,7 @@
         "bioAcid": 0
       }
     },
-    "physical": "Humans encased in bulky, mass-produced powered exosuits that hum with servo assistance. The exosuit is a crude framework of hydraulic pistons, armored plates, and sealed joint covers bolted over a pressurized bodyglove. The helmet is a full-face visor with a HUD visible as a faint green glow behind the faceplate. They carry belt-fed ballistic assault rifles with underslung equipment rails — the standard M7, a weapon so ubiquitous that every soldier can field-strip one blindfolded. Power cells visible as blocky protrusions on the lower back. When they fire, the rifle's report is a deafening supersonic CRACK, and physical brass casings eject in an arc.",
+    "physical": "Humans encased in bulky, mass-produced powered exosuits that hum with servo assistance. The exosuit is a crude framework of hydraulic pistons, armored plates, and sealed joint covers bolted over a pressurized bodyglove. The helmet is a full-face visor with a HUD visible as a faint green glow behind the faceplate. They carry belt-fed ballistic assault rifles with underslung equipment rails — the standard TL-7, a weapon so ubiquitous that every soldier can field-strip one blindfolded. Power cells visible as blocky protrusions on the lower back. When they fire, the rifle's report is a deafening supersonic CRACK, and physical brass casings eject in an arc.",
     "narrative": "Shock-Marines are the Terran League's answer to every tactical problem: put enough of them on the field and something will work. They are not elite. Not specialized. They are competent, trained, disciplined soldiers in reliable equipment. The galaxy will fear them not because any single Marine is extraordinary, but because the Marine NEXT to them, and the hundred behind, are all exactly as competent and unwilling to retreat. When a Shock-Marine dies, they leave behind a body in a dented exosuit, a rifle with a half-loaded magazine, and a small personal effect — a photo, a letter, a coin from a colony that may not exist anymore.",
     "repair": "PRIMARY beneficiary of Field Repair drones. Modular exosuits DESIGNED for drone-assisted repair — standardized connection points allow rapid patching. Effectively +2% HP regen/sec on top of drone healing because the suit assists the process."
   },
@@ -80,8 +80,8 @@
         "bioAcid": 0
       }
     },
-    "physical": "Heavy infantry in bulky, heat-resistant hazard suits layered over exosuit frames. Adds 40% bulk — distinctive wide-shouldered, lumbering silhouette. Pressurized promethium tanks on back — cylindrical armored containers connected by reinforced fuel lines to a handheld ignition nozzle. The nozzle is a meter-long wand with a pilot flame at the tip. When firing: roaring liquid-fire arc — viscous orange-white chemical gel arcing 30 meters, sticking to any surface. Deep guttural WHOOSH followed by crackling roar. Air shimmers with heat distortion.",
-    "narrative": "Specialists in the ugly art of clearance. When a bunker won't fall to explosives, when a trench network is too deep for artillery — the Hellfire-Troopers fill the defensive position with liquid fire at 1,200°C. The fire doesn't just kill — it denies terrain. A promethium-soaked trench is impassable for minutes. The smell is what veterans talk about. The AFTERMATH. Chemical stench of promethium mixed with scorched metal, burned earth. Hellfire-Troopers eat separately from other units. No one makes them. They just do.",
+    "physical": "Heavy infantry in bulky, heat-resistant hazard suits layered over exosuit frames. Adds 40% bulk — distinctive wide-shouldered, lumbering silhouette. Pressurized hellfire gel tanks on back — cylindrical armored containers connected by reinforced fuel lines to a handheld ignition nozzle. The nozzle is a meter-long wand with a pilot flame at the tip. When firing: roaring liquid-fire arc — viscous orange-white chemical gel arcing 30 meters, sticking to any surface. Deep guttural WHOOSH followed by crackling roar. Air shimmers with heat distortion.",
+    "narrative": "Specialists in the ugly art of clearance. When a bunker won't fall to explosives, when a trench network is too deep for artillery — the Hellfire-Troopers fill the defensive position with liquid fire at 1,200°C. The fire doesn't just kill — it denies terrain. A hellfire-gel-soaked trench is impassable for minutes. The smell is what veterans talk about. The AFTERMATH. Chemical stench of hellfire gel mixed with scorched metal, burned earth. Hellfire-Troopers eat separately from other units. No one makes them. They just do.",
     "repair": "MORE DIFFICULT for drones to service due to hazardous chemical systems. Drones prioritize other units, only servicing Hellfire-Troopers when no other unit is below 75% HP."
   },
   {
@@ -212,7 +212,7 @@
   },
   {
     "num": 6,
-    "name": "Wraith-Fighter",
+    "name": "Redline Fighter",
     "role": "Air Superiority Interceptor",
     "category": "Light Air",
     "domain": "air",
@@ -249,7 +249,7 @@
       }
     },
     "physical": "Aerodynamic swept-wing superiority fighter with twin afterburner engines cracking the sound barrier. Angular, aggressive predator silhouette. Single-bubble reinforced glass canopy, 270° field of view. Underwing hardpoints: air-to-air missiles and guided bombs. At full afterburn: twin contrails of superheated exhaust, Mach 3 — the sound arrives AFTER the fighter has passed.",
-    "narrative": "Wraith-Fighter pilots are the Terran League's aristocrats. They fight clean wars in climate-controlled cockpits above the mud and blood. At least, that's the reputation. The reality: pilots die alone in fireballs at 900 m/s, and the comfortable cockpit becomes a coffin when canopy seals won't release during emergency descent. In battle: establish air superiority, intercept bombers, then transition to precision ground support.",
+    "narrative": "Redline Fighter pilots are the Terran League's aristocrats. They fight clean wars in climate-controlled cockpits above the mud and blood. At least, that's the reputation. The reality: pilots die alone in fireballs at 900 m/s, and the comfortable cockpit becomes a coffin when canopy seals won't release during emergency descent. In battle: establish air superiority, intercept bombers, then transition to precision ground support.",
     "repair": "Standard drone servicing upon return to carrier or airstrip."
   },
   {
@@ -338,7 +338,7 @@
   },
   {
     "num": 9,
-    "name": "Condor Dropship",
+    "name": "Bastion Dropship",
     "role": "Atmospheric Transport / Rapid Deployment",
     "category": "Transport Air",
     "domain": "air",
@@ -375,7 +375,7 @@
       }
     },
     "physical": "Flying brick of titanium and ablative plating. Two massive turbofan engines bolted to sides. Rear-loading ramp deploys a full squad in four seconds. Intentionally aggressive descent at steep angles through anti-air fire — relies on thick armor, not agility. Cockpit armored against direct flak. Troop compartment padded, pressurized, crash-harness equipped.",
-    "narrative": "The worst experience in the Terran League military. Troops call it 'the coffin drop' — sealed in a lightless metal box, no windows, pilot's voice crackling: 'Flak hit, port side, no breach. Hold on — evasive. Impact in five. Four. Three. Two —' The ramp drops. Daylight floods in. Marines sprint down into whatever hell awaits. Condor lifts off immediately. One-way ticket to the war zone. Extraction is someone else's problem.",
+    "narrative": "The worst experience in the Terran League military. Troops call it 'the coffin drop' — sealed in a lightless metal box, no windows, pilot's voice crackling: 'Flak hit, port side, no breach. Hold on — evasive. Impact in five. Four. Three. Two —' The ramp drops. Daylight floods in. Marines sprint down into whatever hell awaits. Bastion lifts off immediately. One-way ticket to the war zone. Extraction is someone else's problem.",
     "repair": "Standard drone servicing upon return."
   },
   {
@@ -416,13 +416,13 @@
         "bioAcid": 0
       }
     },
-    "physical": "Massive high-altitude bomber. Wingspan twice the Wraith-Fighter. Payload bay runs entire fuselage length. Operates above most ground-based anti-air, appearing as distant silver cross. Four turbofan engines. Bomb bay doors open in sequence — dozens of unguided HE bombs cascading in calculated patterns. Bombs are heavy, cheap, numerous. Precision through volume.",
+    "physical": "Massive high-altitude bomber. Wingspan twice the Redline Fighter. Payload bay runs entire fuselage length. Operates above most ground-based anti-air, appearing as distant silver cross. Four turbofan engines. Bomb bay doors open in sequence — dozens of unguided HE bombs cascading in calculated patterns. Bombs are heavy, cheap, numerous. Precision through volume.",
     "narrative": "The Terran League's oldest and most controversial weapon. Carpet bombing — deliberate, systematic destruction without discrimination. A single sortie turns a forest into a crater-pocked wasteland, reduces an urban district to rubble, denies an entire territory. After-action reports: 'Area denial achieved. Estimated hostile casualties: significant. Collateral damage: total.' The weapon of the Vanguard and the Tyrant. But when the Vorax swarm with thousands of Scythe-Fiends — suddenly doesn't feel controversial.",
     "repair": "Standard drone servicing."
   },
   {
     "num": 11,
-    "name": "Sabre-Interceptor",
+    "name": "Bulwark Interceptor",
     "role": "Space Superiority Fighter / Escort Screen",
     "category": "Escort Ship",
     "domain": "space",
@@ -459,7 +459,7 @@
       }
     },
     "physical": "Rugged, heavily armored single-seat void fighter. Not aerodynamic — compact angular brick of armor plate with twin chemical thrusters and forward-mounted tungsten autocannons. Cramped pressurized cockpit capsule surrounded by centimeters of armor. Thick reinforced glass with anti-spalling coating. A pilot sealed inside a flying safe.",
-    "narrative": "Sabre pilots survive where others die. Not the fastest, not the most agile, not the most comfortable — but built to TAKE HITS and keep fighting. Absorbs enemy fire on thick hull, returns fire with physical rounds that don't care about energy shields, limps back to carrier for repair. Sabre pilots have a saying: 'Glass jaw or iron chin.' They chose iron.",
+    "narrative": "Bulwark pilots survive where others die. Not the fastest, not the most agile, not the most comfortable — but built to TAKE HITS and keep fighting. Absorbs enemy fire on thick hull, returns fire with physical rounds that don't care about energy shields, limps back to carrier for repair. Bulwark pilots have a saying: 'Glass jaw or iron chin.' They chose iron.",
     "repair": "Standard drone servicing at carrier."
   },
   {
@@ -585,7 +585,7 @@
         "bioAcid": 0.02
       }
     },
-    "physical": "Sprawling mobile flight deck crawling with EVA mechanics and repair bays. Largest dedicated carrier. Dorsal flight deck — flat magnetized landing strip where Sabres launch and recover in continuous cycles. Below: hangar bay with reserve fighters, munitions, repair facilities. EVA mechanics in pressure suits work on hull during combat. Lightly armed for its size — PD clusters and single forward lance. Value is in fighters: sustains 40+ Sabre-Interceptors.",
+    "physical": "Sprawling mobile flight deck crawling with EVA mechanics and repair bays. Largest dedicated carrier. Dorsal flight deck — flat magnetized landing strip where Bulwarks launch and recover in continuous cycles. Below: hangar bay with reserve fighters, munitions, repair facilities. EVA mechanics in pressure suits work on hull during combat. Lightly armed for its size — PD clusters and single forward gun. Value is in fighters: sustains 40+ Bulwark Interceptors.",
     "narrative": "Holds back from the battle line, letting Broadswords and Frigates form the front. Launches wave after wave of manned interceptors — pilots pulling G-forces in coffin-sized cockpits, firing tungsten rounds while repair drones race to service returnees. Crew: 800+ personnel including pilots, mechanics, flight directors, munitions handlers, medical staff. A floating city dedicated to keeping fighters in the fight.",
     "repair": "PROVIDES repair infrastructure for entire fighter wing."
   },
@@ -627,8 +627,8 @@
         "bioAcid": 0.05
       }
     },
-    "physical": "Colossal flagship built around dual-core fusion reactor. Kilometer-long wedge of layered armor, bristling with weapons. Signature weapon: spinal-mounted Magnetic Accelerator Cannon (MAC) — railgun running the ship's entire length. Fires depleted-uranium slugs at fractional lightspeed. Loading diverts ALL power for 3 seconds — lights dim, PD offline, engines to minimum. Electromagnetic discharge arcs along hull. Slug exits as streak of light. Impact snaps a capital ship in half.",
-    "narrative": "The Terran League's final argument. Deployed when diplomacy has failed, combined arms have failed, every option exhausted. The MAC shot: the moment every space battle holds its breath. The Dreadnought aligns — slowly, ponderously, entire kilometer rotating. Everyone knows what's coming. 3-second power diversion countdown visible: lights dimming like a beast drawing breath. Then the shot. A streak. A kinetic impact in megatons. An enemy ship that was whole is now two pieces drifting apart. One shot. One kill. Then reload, and the fleet covers.",
+    "physical": "Colossal flagship built around dual-core fusion reactor. Kilometer-long wedge of layered armor, bristling with weapons. Signature weapon: the Spinal Mass Driver — railgun running the ship's entire length. Fires depleted-uranium slugs at fractional lightspeed. Loading diverts ALL power for 3 seconds — lights dim, PD offline, engines to minimum. Electromagnetic discharge arcs along hull. Slug exits as streak of light. Impact snaps a capital ship in half.",
+    "narrative": "The Terran League's final argument. Deployed when diplomacy has failed, combined arms have failed, every option exhausted. The Mass Driver shot: the moment every space battle holds its breath. The Dreadnought aligns — slowly, ponderously, entire kilometer rotating. Everyone knows what's coming. 3-second power diversion countdown visible: lights dimming like a beast drawing breath. Then the shot. A streak. A kinetic impact in megatons. An enemy ship that was whole is now two pieces drifting apart. One shot. One kill. Then reload, and the fleet covers.",
     "repair": "Carries own dedicated repair drone squadron (separate from fleet pool). Self-repairs during combat. Must overwhelm repair capacity with sustained concentrated fire, or it simply heals between volleys."
   }
 ]

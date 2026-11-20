@@ -54,7 +54,7 @@ const IconRenderer = {
   /**
    * Look up an equipment icon SVG string by item name.
    * Returns the full <svg>…</svg> string, or a placeholder if not found.
-   * @param {string} name - Equipment item name (e.g. 'M7 Assault Rifle')
+   * @param {string} name - Equipment item name (e.g. 'TL-7 Assault Rifle')
    * @returns {string} SVG markup string
    */
   getEquipIcon(name) {

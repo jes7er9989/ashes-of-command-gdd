@@ -7,7 +7,7 @@
     "effect": "+30% melee damage. Simple, brutal, reliably lethal at close range."
   },
   {
-    "name": "\"Da Big Choppa\"",
+    "name": "\"The Big Cleaver\"",
     "slot": "[W]",
     "rarity": "Rare",
     "rarityColor": "#4488ff",
@@ -42,7 +42,7 @@
     "effect": "+20% melee damage, +10% movement speed, −15% accuracy for 10 seconds. Worth it."
   },
   {
-    "name": "Waaagh! Banner",
+    "name": "Iron Tide Banner",
     "slot": "[G]",
     "rarity": "Rare",
     "rarityColor": "#4488ff",
@@ -60,7 +60,7 @@
     "slot": "[W]",
     "rarity": "Common",
     "rarityColor": "#aaa",
-    "effect": "Sawn-off double-barrel cobbled from pipe fittings and a pressure valve. Fires anything that fits. Kicks like a grox. Breaks after 3 shots. Immediately replaced with another Boom-Stick."
+    "effect": "Sawn-off double-barrel cobbled from pipe fittings and a pressure valve. Fires anything that fits. Kicks like a forge-hammer. Breaks after 3 shots. Immediately replaced with another Boom-Stick."
   },
   {
     "name": "Scrap-Weave Hide",

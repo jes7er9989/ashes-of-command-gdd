@@ -38,8 +38,8 @@
       }
     },
     "rankNote": "PRIMARY rank progression unit. Kills tracked per unit: Rookie→Veteran at 3 kills, Veteran→Elite at 8, Elite→Commander at 15 (proposed). Rank mods apply AFTER supply penalty in canonical stat order.",
-    "physical": "Standardized skeletal chassis of tarnished living metal. Gauss Flayer weapon. Skull-like faceplate with burning green optical sensors. Advances in perfect geometric grids — each unit 3m apart, same speed, same angle. Falls — green lights dim — 5-second pause — living metal flows back into position, lights reignite. The dead stand back up.",
-    "narrative": "The backbone. Individually unremarkable. Collectively terrifying. A wall of skeletal machines advancing in mathematical formation, firing gauss beams that strip armor atom by atom. Kill one — it falls. Wait 5 seconds. It stands back up. Kill it again. It falls again. Wait. It stands again. The psychological impact on biological troops is devastating: they are fighting an army that DOES NOT STAY DEAD."
+    "physical": "Standardized matte-black chassis of living obsidian. Entropy Rifle weapon. Faceless geometric helmet with a horizontal ultraviolet optical slit. Advances in perfect geometric grids — each unit 3m apart, same speed, same angle. Falls — violet lights dim — 5-second pause — living obsidian flows back into position, lights reignite. The dead stand back up.",
+    "narrative": "The backbone. Individually unremarkable. Collectively terrifying. A wall of faceless black machines advancing in mathematical formation, firing entropy beams that strip armor layer by layer. Kill one — it falls. Wait 5 seconds. It stands back up. Kill it again. It falls again. Wait. It stands again. The psychological impact on biological troops is devastating: they are fighting an army that DOES NOT STAY DEAD."
   },
   {
     "num": 2,
@@ -79,12 +79,12 @@
         "bioAcid": 0
       }
     },
-    "physical": "Standard Legionnaire chassis with a third optical sensor mounted on the forehead — a dimensional anchor targeting system. Primary weapon: Synaptic Disintegrator — fires a beam that directly disrupts the target's neural architecture, causing instant collapse of biological nervous systems. Against non-biological targets: standard gauss overcharge mode — a devastating single shot through armor at extreme range.",
-    "narrative": "The third sensor COUNTERS Phase Blink. A Phase Blinking Zealot is invisible to conventional targeting during the blink. The Death-Mark sees them anyway. This makes The Revenant one of the Eternal Shards' most dangerous opponents — their primary defensive mechanic neutralized by a single sniper unit."
+    "physical": "Standard Legionnaire chassis with a third optical sensor mounted on the forehead — a dimensional anchor targeting system. Primary weapon: Neural Disruptor — fires a beam that directly disrupts the target's neural architecture, causing instant collapse of biological nervous systems. Against non-biological targets: standard entropy overcharge mode — a devastating single shot through armor at extreme range.",
+    "narrative": "The third sensor COUNTERS Phase Blink. A Phase Blinking Dancer is invisible to conventional targeting during the blink. The Sniper sees them anyway. This makes The Revenant one of the Eternal Shards' most dangerous opponents — their primary defensive mechanic neutralized by a single sniper unit."
   },
   {
     "num": 3,
-    "name": "Tomb-Stalker",
+    "name": "Burrow-Stalker",
     "role": "Burrowing Ambush Predator",
     "category": "Light Mech",
     "domain": "ground",
@@ -120,12 +120,12 @@
         "bioAcid": 0
       }
     },
-    "physical": "Three-meter serpentine centipede of living metal. Dozens of articulated segments with digging appendages. Burrows through solid earth and rock by disassembling material at the molecular level with gauss-field mandibles. Erupts from the ground in a shower of debris, mandibles spread wide, gauss-field generators shredding anything caught in the aperture. Body rises vertically before crashing down in a crushing embrace.",
+    "physical": "Three-meter serpentine centipede of living obsidian. Dozens of articulated segments with digging appendages. Burrows through solid earth and rock by disassembling material at the molecular level with entropy-field mandibles. Erupts from the ground in a shower of debris, mandibles spread wide, entropy-field generators shredding anything caught in the aperture. Body rises vertically before crashing down in a crushing embrace.",
     "narrative": "The most terrifying thing that can happen to infantry behind fortifications. Burrows UNDERNEATH defensive lines and surfaces in the rear among supply depots and command posts. First warning: ground tremor. Second warning: ground breaking. No third warning. Can be deployed defensively — burrowed beneath territory, waiting motionless for enemies to advance overhead."
   },
   {
     "num": 4,
-    "name": "Resurrection-Lord",
+    "name": "Vault-Warden",
     "role": "Heavy Infantry / Reanimation Amplifier",
     "category": "Heavy Infantry",
     "domain": "ground",
@@ -161,12 +161,12 @@
         "bioAcid": 0.02
       }
     },
-    "physical": "Ornate, regal chassis — taller and broader than a standard Legionnaire, with sculpted geometric patterns across the torso. Carved death-mask faceplate. Crown of green energy hovering above — a projection of enhanced command protocols. Staff of the Overlord: two-meter weapon topped with a glowing resurrection orb. Fights in melee with energy-wreathed blade tip while broadcasting enhanced Reanimation signals.",
-    "narrative": "Not just a combatant — a RALLYING POINT. Enhanced broadcast: all fallen Revenant units within 25m have significantly increased Reanimation chance. Fighting near a Lord is fighting at 150% strength. The Lord's own Reanimation: 25% base. Priority target — but it keeps coming back. The psychological impact: the enemy finally kills the Lord, celebrates, turns away — and hears living metal reassembling behind them."
+    "physical": "Ornate, regal chassis — taller and broader than a standard Legionnaire, with sculpted geometric patterns across the torso. Carved death-mask faceplate. Crown of ultraviolet energy hovering above — a projection of enhanced command protocols. Warden's Staff: two-meter weapon topped with a glowing reanimation beacon. Fights in melee with energy-wreathed blade tip while broadcasting enhanced Reanimation signals.",
+    "narrative": "Not just a combatant — a RALLYING POINT. Enhanced broadcast: all fallen Revenant units within 25m have significantly increased Reanimation chance. Fighting near a Warden is fighting at 150% strength. The Warden's own Reanimation: 25% base. Priority target — but it keeps coming back. The psychological impact: the enemy finally kills the Warden, celebrates, turns away — and hears living obsidian reassembling behind them."
   },
   {
     "num": 5,
-    "name": "Doomsday-Monolith",
+    "name": "Erasure Engine",
     "role": "Super-Heavy Siege / Strategic Weapon",
     "category": "Super-Heavy",
     "domain": "ground",
@@ -202,12 +202,12 @@
         "bioAcid": 0.03
       }
     },
-    "physical": "Fifteen-meter hovering obelisk. Pyramidal, dark living metal that absorbs light — a hole in the visual field. Apex crystal houses the Doomsday Cannon — charges 3 seconds (green to blinding white) then discharges a molecular disintegration beam. Hovers slower than walking speed, flattening terrain, crushing anything beneath. Approach announced by a deep resonant hum building in frequency. +10% Reanimation aura across 50m radius.",
-    "narrative": "The Doomsday Cannon doesn't explode or burn — it DISINTEGRATES. Matter ceases to exist at the atomic level. A bunker VANISHES, leaving a smooth glassy crater where it stood. Behind a Monolith: the faction's most terrifying configuration — slow inexorable tide of unkillable machines marching behind a weapon that erases existence. Weakness: speed and charge time. Fast units can flank it; the 3-second charge window is a scatter signal."
+    "physical": "Fifteen-meter hovering obelisk. Pyramidal, dark living obsidian that absorbs light — a hole in the visual field. Apex crystal houses the Erasure Cannon — charges 3 seconds (violet to blinding white) then discharges a molecular disintegration beam. Hovers slower than walking speed, flattening terrain, crushing anything beneath. Approach announced by a deep resonant hum building in frequency. +10% Reanimation aura across 50m radius.",
+    "narrative": "The Erasure Cannon doesn't explode or burn — it DISINTEGRATES. Matter ceases to exist at the atomic level. A bunker VANISHES, leaving a smooth glassy crater where it stood. Behind an Erasure Engine: the faction's most terrifying configuration — slow inexorable tide of unkillable machines marching behind a weapon that erases existence. Weakness: speed and charge time. Fast units can flank it; the 3-second charge window is a scatter signal."
   },
   {
     "num": 6,
-    "name": "Doom-Scythe",
+    "name": "Crescent Fighter",
     "role": "Interceptor / Heavy Fighter",
     "category": "Light Air",
     "domain": "air",
@@ -243,12 +243,12 @@
         "bioAcid": 0
       }
     },
-    "physical": "Crescent-shaped living-metal fighter. Inertialess drive — instantaneous stops, perpendicular direction changes, backward flight at full speed. Particle whip fires sweeping green lightning arcs hitting multiple targets simultaneously. Twin gauss array for focused single-target damage. Living-metal hull passively regenerates between exchanges.",
+    "physical": "Crescent-shaped living-obsidian fighter. Inertialess drive — instantaneous stops, perpendicular direction changes, backward flight at full speed. Arc lash fires sweeping violet lightning arcs hitting multiple targets simultaneously. Twin entropy array for focused single-target damage. Living-obsidian hull passively regenerates between exchanges.",
     "narrative": "One of the most dangerous air units in the galaxy — fast, agile, well-armed, nearly unkillable. Moves in ways physics should not permit. Conventional tracking is useless. Other faction pilots are trained to disengage and call for kinetic artillery support."
   },
   {
     "num": 7,
-    "name": "Night-Shroud Bomber",
+    "name": "Blackout Bomber",
     "role": "Stealth Bomber / Area Control",
     "category": "Heavy Air",
     "domain": "air",
@@ -284,12 +284,12 @@
         "bioAcid": 0
       }
     },
-    "physical": "Flat angular craft emitting a dimensional displacement field — functionally invisible to sensors and visual detection. Drops Tesla Mines: self-contained gauss-field generators that embed in the ground and detonate within 5m proximity of any non-Revenant unit. Cascade of electrical arcs chains between nearby targets.",
+    "physical": "Flat angular craft emitting a dimensional displacement field — functionally invisible to sensors and visual detection. Drops Arc Mines: self-contained entropy-field generators that embed in the ground and detonate within 5m proximity of any non-Revenant unit. Cascade of electrical arcs chains between nearby targets.",
     "narrative": "Seeds approach routes with linked electrical death. A single sortie turns a clear advance corridor into a gauntlet of invisible triggered charges. The enemy learns to advance slowly. The Revenant uses that time."
   },
   {
     "num": 8,
-    "name": "Ghost-Ark",
+    "name": "Mender Skiff",
     "role": "Transport / Mobile Repair Platform",
     "category": "Transport Air",
     "domain": "air",
@@ -325,8 +325,8 @@
         "bioAcid": 0
       }
     },
-    "physical": "Open-topped living-metal skiff carrying infantry while simultaneously repairing them. Repair scarabs — tiny beetle-like machines — crawl over damaged units, physically rebuilding from stored living-metal reserves. Passengers regenerate 2% HP/sec on top of passive regen (approximately 4× healing rate). Side-mounted gauss arrays for light defence.",
-    "narrative": "Value is sustainment, not firepower. Units riding a Ghost-Ark are being rebuilt in transit — arriving at the combat zone healthier than when they departed. The wounded go in; the repaired come out. An efficient system that takes the sting out of sustained attrition."
+    "physical": "Open-topped living-obsidian skiff carrying infantry while simultaneously repairing them. Menders — tiny beetle-like machines — crawl over damaged units, physically rebuilding from stored living-obsidian reserves. Passengers regenerate 2% HP/sec on top of passive regen (approximately 4× healing rate). Side-mounted entropy arrays for light defence.",
+    "narrative": "Value is sustainment, not firepower. Units riding a Mender Skiff are being rebuilt in transit — arriving at the combat zone healthier than when they departed. The wounded go in; the repaired come out. An efficient system that takes the sting out of sustained attrition."
   },
   {
     "num": 9,
@@ -407,12 +407,12 @@
         "bioAcid": 0.02
       }
     },
-    "physical": "Destroyer-sized aerial warship on gravity-displacement projectors. Hull bristling with gauss batteries and Tesla arrays. A broadside suppresses entire sectors. Tesla arrays chain lightning across clustered formations. Also an aerial command platform — a Commander aboard projects enhanced Reanimation aura across all ground forces below.",
-    "narrative": "The ideal Revenant command vehicle: protected, elevated, projecting Reanimation coverage across the widest possible ground area. Most effective with a Resurrection-Lord at the Commander slot — aura stacks."
+    "physical": "Destroyer-sized aerial warship on gravity-displacement projectors. Hull bristling with entropy batteries and arc arrays. A broadside suppresses entire sectors. Arc arrays chain lightning across clustered formations. Also an aerial command platform — a Commander aboard projects enhanced Reanimation aura across all ground forces below.",
+    "narrative": "The ideal Revenant command vehicle: protected, elevated, projecting Reanimation coverage across the widest possible ground area. Most effective with a Vault-Warden at the Commander slot — aura stacks."
   },
   {
     "num": 11,
-    "name": "Scarab-Swarm",
+    "name": "Mender-Swarm",
     "role": "Self-Replicating Repair / Escort",
     "category": "Escort Ship",
     "domain": "space",
@@ -448,12 +448,12 @@
         "bioAcid": 0
       }
     },
-    "physical": "Hundreds of tiny living-metal beetle-craft operating in coordinated swarm formation. Latch onto allied ships for molecular-level repairs during combat. Self-replicate from battlefield debris — the more ships are destroyed nearby, the more Scarabs exist. Prolonged battles see repair capacity INCREASE over time.",
-    "narrative": "The more death happens, the more healing exists. A fleet with Scarab-Swarms becomes harder to kill the longer the battle lasts. Enemies quickly learn that sustaining a Revenant space engagement is strategically inadvisable — every minute makes them stronger."
+    "physical": "Hundreds of tiny living-obsidian beetle-craft operating in coordinated swarm formation. Latch onto allied ships for molecular-level repairs during combat. Self-replicate from battlefield debris — the more ships are destroyed nearby, the more menders exist. Prolonged battles see repair capacity INCREASE over time.",
+    "narrative": "The more death happens, the more healing exists. A fleet with Mender-Swarms becomes harder to kill the longer the battle lasts. Enemies quickly learn that sustaining a Revenant space engagement is strategically inadvisable — every minute makes them stronger."
   },
   {
     "num": 12,
-    "name": "Jackal-Raider",
+    "name": "Harrier Corvette",
     "role": "Fast Attack Corvette / Harassment",
     "category": "Escort Ship",
     "domain": "space",
@@ -489,13 +489,13 @@
         "bioAcid": 0
       }
     },
-    "physical": "Small fast crescent with forward-mounted gauss destructor — a sustained green beam carving through escort-class hulls. Living-metal hull regenerates between engagement windows. Can harass indefinitely — withdraws damaged, returns in a few minutes at full health.",
-    "narrative": "Indefinite harassment. The enemy cannot outrun attrition against ships that heal themselves. A wing of Jackal-Raiders assigned to a specific enemy escort will eventually destroy it regardless of the battle's outcome."
+    "physical": "Small fast crescent with forward-mounted entropy destructor — a sustained violet beam carving through escort-class hulls. Living-obsidian hull regenerates between engagement windows. Can harass indefinitely — withdraws damaged, returns in a few minutes at full health.",
+    "narrative": "Indefinite harassment. The enemy cannot outrun attrition against ships that heal themselves. A wing of Harrier Corvettes assigned to a specific enemy escort will eventually destroy it regardless of the battle's outcome."
   },
   {
     "num": 13,
     "name": "Entropy-Cruiser",
-    "role": "Capital Ship / Gauss Broadside",
+    "role": "Capital Ship / Entropy Broadside",
     "category": "Capital Ship",
     "domain": "space",
     "slots": "[W] [A] [AM] [S] → all Elite",
@@ -530,12 +530,12 @@
         "bioAcid": 0.02
       }
     },
-    "physical": "Large crescent-hulled capital ship with gauss battery banks along both flanks. Fights broadsides like a Terran Broadsword, but gauss weapons STRIP armor over time rather than punching through it. The beam always degrades target armor — after sustained bombardment, the heaviest plating becomes paper-thin. Living-metal hull plus Scarab escorts makes it extraordinarily difficult to permanently destroy.",
+    "physical": "Large crescent-hulled capital ship with entropy battery banks along both flanks. Fights broadsides like a Terran Broadsword, but entropy weapons STRIP armor over time rather than punching through it. The beam always degrades target armor — after sustained bombardment, the heaviest plating becomes paper-thin. Living-obsidian hull plus mender escorts makes it extraordinarily difficult to permanently destroy.",
     "narrative": "The patient killer. Doesn't need to penetrate armor — it erodes it, layer by layer, until there's nothing left. Two Entropy-Cruisers working the same target simultaneously will defeat any capital ship in the galaxy given enough time. Time is The Revenant's weapon."
   },
   {
     "num": 14,
-    "name": "Resurrection-Barge",
+    "name": "Reanimation Barge",
     "role": "Ship Recovery / Space Reanimation Platform",
     "category": "Capital Ship",
     "domain": "space",
@@ -572,11 +572,11 @@
       }
     },
     "physical": "Flat-decked vessel built around a large-scale Reanimation matrix and tractor beam arrays. Reconstructs destroyed Revenant ships from recovered wreckage. 30–60 second rebuild time depending on ship class. The ship is physically rebuilt and relaunched into battle, resuming its previous position.",
-    "narrative": "THE highest-priority target when fighting The Revenant in space. Without it: losses are permanent. With it: functionally immortal. A fleet with a Resurrection-Barge fights at effectively double strength — every destroyed ship is a temporary inconvenience."
+    "narrative": "THE highest-priority target when fighting The Revenant in space. Without it: losses are permanent. With it: functionally immortal. A fleet with a Reanimation Barge fights at effectively double strength — every destroyed ship is a temporary inconvenience."
   },
   {
     "num": 15,
-    "name": "Cairn-Tombship",
+    "name": "Vault-Ship",
     "role": "Flagship / Strategic Command",
     "category": "Flagship",
     "domain": "space",
@@ -612,7 +612,7 @@
         "bioAcid": 0.03
       }
     },
-    "physical": "Two-kilometer crescent of living metal. Surface carved with geometric patterns glowing green, visible from orbit. 100,000 years old — excavated from a tomb-shipyard in sealed space. Doom Ray: focused gauss beam that strips hull plating from a capital ship in a single 5-second sustained burst. Fleet-wide effect: doubles passive regen, +50% Scarab efficiency.",
-    "narrative": "Not the hardest-hitting or most exotic flagship — but the most DURABLE. Living-metal regenerates. Scarabs repair continuously. Reanimation reconstructs critical systems. Killing it requires sustained concentrated firepower over a protracted period — every other target is a distraction while it heals. The thesis: time is on our side. It always has been."
+    "physical": "Two-kilometer crescent of living obsidian. Surface carved with geometric patterns glowing deep purple, visible from orbit. 100,000 years old — excavated from a vault-shipyard in sealed space. Doom Ray: focused entropy beam that strips hull plating from a capital ship in a single 5-second sustained burst. Fleet-wide effect: doubles passive regen, +50% mender efficiency.",
+    "narrative": "Not the hardest-hitting or most exotic flagship — but the most DURABLE. Living-obsidian regenerates. Menders repair continuously. Reanimation reconstructs critical systems. Killing it requires sustained concentrated firepower over a protracted period — every other target is a distraction while it heals. The thesis: time is on our side. It always has been."
   }
 ]

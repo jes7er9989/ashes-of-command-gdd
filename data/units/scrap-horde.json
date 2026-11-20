@@ -1,7 +1,7 @@
 [
   {
     "num": 1,
-    "name": "Slaughter-Brute",
+    "name": "Rust-Brute",
     "role": "Expendable Melee Swarm / Scrap Stack Fuel",
     "category": "Light Infantry",
     "domain": "ground",
@@ -40,11 +40,11 @@
     },
     "physical": "Two meters tall, nearly as wide. Fusion of engineered muscle and crude cybernetics. Each individual unit is unique — hydraulic piston forearm, optical sensor over a missing eye, steel jaw welded in place. Scrap armor: mismatched plates, chain links, a car hood for a chestplate. Weapons: sharpened hull-plate cleavers, engine-piston maces, pipe-bomb slug-throwers that fire once with a thunderclap then require fist-hammered reloading.",
     "narrative": "Most numerous, most expendable. Workers and scrap-pickers given a weapon and pointed at the enemy. Tactical doctrine: 'run toward the loud noises.' Yet terrifying — ten Brutes charging, howling, swinging industrial cutting tools with engineered-laborer strength. +25% melee from faction passive. Every death — their own or the enemy's — generates Scrap Stacks, fuelling survivors. The Brutes are fuel. They know it. A Veteran Brute who survived five battles and REFUSED to be disposable — that's the story the Horde tells around forge fires.",
-    "scrapNote": "PRIMARY Scrap Stack generator. Default count: 6 per side (MVP). Each Slaughter-Brute death within 150px of a surviving Horde unit triggers one stack."
+    "scrapNote": "PRIMARY Scrap Stack generator. Default count: 6 per side (MVP). Each Rust-Brute death within 150px of a surviving Horde unit triggers one stack."
   },
   {
     "num": 2,
-    "name": "Scrap-Trukk",
+    "name": "Scrap-Truck",
     "role": "Fast Transport / Light Combat",
     "category": "Light Vehicle",
     "domain": "ground",
@@ -81,11 +81,11 @@
       }
     },
     "physical": "Open-topped four-wheeler welded from three salvaged chassis. Exposed engine belching smoke, running on anything flammable. Flat bed with welded railing for 8 standing Brutes. Driver behind salvaged plate-glass windshield. Pintle-mounted slug-thrower on the cab roof spraying inaccurate fire. Covered in welded spikes, trophies, crude graffiti. FAST — recklessly, dangerously fast. Sheds parts mid-drive. Driver compensates through skill and complete disregard for physics.",
-    "narrative": "One purpose: deliver Brutes to the enemy's face. Roars at arrest-worthy speeds, bouncing over terrain, crashing through fences. In emergencies, the Trukk IS the weapon — ramming crushes infantry, flips light vehicles, embeds in walls. Driver and passengers often survive the impact and continue fighting on foot among the wreckage."
+    "narrative": "One purpose: deliver Brutes to the enemy's face. Roars at arrest-worthy speeds, bouncing over terrain, crashing through fences. In emergencies, the Truck IS the weapon — ramming crushes infantry, flips light vehicles, embeds in walls. Driver and passengers often survive the impact and continue fighting on foot among the wreckage."
   },
   {
     "num": 3,
-    "name": "Loota-Mech",
+    "name": "Looter-Mech",
     "role": "Looted Weapons Platform",
     "category": "Light Mech",
     "domain": "ground",
@@ -121,8 +121,8 @@
         "bioAcid": 0
       }
     },
-    "physical": "Bipedal walker assembled from four or more factions' salvaged tech. Gutted Terran walker chassis. Revenant legs rewired with crude bypass circuits. Unity Accord railgun on right arm, Terran flamethrower on left, Eternal Shards energy coil duct-taped to the top as 'targeting' — connects to nothing but glows impressively. Cockpit: a rat's nest of wiring, toggle switches, and handwritten labels. Mek-Boy pilot controls via joysticks, foot pedals, and percussive maintenance.",
-    "narrative": "Most versatile and most unpredictable. No two identical. Might have excellent ranged capability (if the railgun works) or melee only (if the railgun jammed and the Mek-Boy rerouted power to a hydraulic fist). Loadout reflects recent salvage — fighting Terran produces ballistic mechs; fighting Shards produces psychic coils connected to car batteries."
+    "physical": "Bipedal walker assembled from four or more factions' salvaged tech. Gutted Terran walker chassis. Revenant legs rewired with crude bypass circuits. Unity Accord railgun on right arm, Terran flamethrower on left, Eternal Shards energy coil duct-taped to the top as 'targeting' — connects to nothing but glows impressively. Cockpit: a rat's nest of wiring, toggle switches, and handwritten labels. Scrap-Smith pilot controls via joysticks, foot pedals, and percussive maintenance.",
+    "narrative": "Most versatile and most unpredictable. No two identical. Might have excellent ranged capability (if the railgun works) or melee only (if the railgun jammed and the Scrap-Smith rerouted power to a hydraulic fist). Loadout reflects recent salvage — fighting Terran produces ballistic mechs; fighting Shards produces psychic coils connected to car batteries."
   },
   {
     "num": 4,
@@ -203,12 +203,12 @@
         "bioAcid": 0.05
       }
     },
-    "physical": "Twelve meters, six-legged. Central pillar: siege tower plus mobile shrine plus weapons platform. Body: grotesque scrap-metal face — leering idol with semi-religious significance. Eyes: forge-fires behind iron grates. Mouth: industrial shears with hydraulic bite force. Six legs: repurposed mining drills. Festooned with weapons operated by 30+ crew climbing over the exterior. Atop: Waaagh!-Caller broadcasting psycho-sonic war cry through amplified speakers.",
-    "narrative": "Not just a weapon — a SYMBOL. Walking monument to violence and the Horde's refusal to die quietly. +15% damage aura from the Waaagh!-Caller within 30m. Mass pushes through walls, crushes barricades. Crew repairs mid-battle with hammers and torches. Its destruction is a campaign event — forge-fire eyes gutter, structure collapses with seismic impact. Veterans fight with desperate fury (+20% dmg for 30s). Rookies waver (−10% speed for 30s)."
+    "physical": "Twelve meters, six-legged. Central pillar: siege tower plus mobile shrine plus weapons platform. Body: grotesque scrap-metal face — leering idol with semi-religious significance. Eyes: forge-fires behind iron grates. Mouth: industrial shears with hydraulic bite force. Six legs: repurposed mining drills. Festooned with weapons operated by 30+ crew climbing over the exterior. Atop: Iron Tide Caller broadcasting psycho-sonic war cry through amplified speakers.",
+    "narrative": "Not just a weapon — a SYMBOL. Walking monument to violence and the Horde's refusal to die quietly. +15% damage aura from the Iron Tide Caller within 30m. Mass pushes through walls, crushes barricades. Crew repairs mid-battle with hammers and torches. Its destruction is a campaign event — forge-fire eyes gutter, structure collapses with seismic impact. Veterans fight with desperate fury (+20% dmg for 30s). Rookies waver (−10% speed for 30s)."
   },
   {
     "num": 6,
-    "name": "Dakka-Copter",
+    "name": "Slug-Copter",
     "role": "Fast Attack / Anti-Infantry",
     "category": "Light Air",
     "domain": "air",
@@ -245,11 +245,11 @@
       }
     },
     "physical": "Crude rotary-wing built from salvaged helicopter parts. Oversized engines making it faster than any engineer would sanction. Armament: as many slug-throwers as the airframe can carry without falling. Pilot fires ALL simultaneously — a cone of inaccurate, devastating suppressive fire scything through infantry formations.",
-    "narrative": "The name is onomatopoeia — the sound when firing: 'DAKKA-DAKKA-DAKKA-DAKKA.' Pilots scream the word in time with their guns. No doctrine. No precision. Just an entire airframe's worth of lead at once."
+    "narrative": "The name says what it throws: slugs, as many as the airframe can carry. Pilots scream along in time with their guns. No doctrine. No precision. Just an entire airframe's worth of lead at once."
   },
   {
     "num": 7,
-    "name": "Scrap-Bommer",
+    "name": "Scrap-Bomber",
     "role": "Ground Attack / Area Denial",
     "category": "Heavy Air",
     "domain": "air",
@@ -367,7 +367,7 @@
         "bioAcid": 0
       }
     },
-    "physical": "Massive gas-filled airship with welded scrap-metal gondola. Absurdly large, painfully slow, impossible to miss. Value: cargo capacity — transports an entire company of Brutes plus Trukks. Deploys via rear loading ramp. Vulnerable to sustained anti-air — burst fire punctures the gas envelope.",
+    "physical": "Massive gas-filled airship with welded scrap-metal gondola. Absurdly large, painfully slow, impossible to miss. Value: cargo capacity — transports an entire company of Brutes plus Trucks. Deploys via rear loading ramp. Vulnerable to sustained anti-air — burst fire punctures the gas envelope.",
     "narrative": "Slow fiery descent is terrifying for the enemy and hilarious for Horde passengers who leap from the crashing Zeppelin into enemy positions below. The crash is considered an acceptable delivery method."
   },
   {
@@ -614,6 +614,6 @@
       }
     },
     "physical": "800m hollowed-out asteroid with engines bolted to the back and weapons on every surface. Internal forges, barracks, fighting pits, Warlord's throne room. Crew 2,000+. Armor IS the asteroid — hundreds of meters of rock absorbing everything with geological indifference. Dozens of captured weapon systems, internal Slag-Fighter bays, boarding craft, and ramming capability.",
-    "narrative": "The thesis statement: we took a rock from the void, hollowed it out, filled it with guns and fury, and now it's the most dangerous object in the galaxy. 'Da Big Gun' fires once per battle — 50% of target's max HP regardless of armor type. Recoils the Fortress backward 200m. The Horde considers this a feature."
+    "narrative": "The thesis statement: we took a rock from the void, hollowed it out, filled it with guns and fury, and now it's the most dangerous object in the galaxy. 'The Big Gun' fires once per battle — 50% of target's max HP regardless of armor type. Recoils the Fortress backward 200m. The Horde considers this a feature."
   }
 ]

@@ -1,47 +1,47 @@
 [
   {
-    "branch": "Gauss Mastery",
+    "branch": "Entropy Mastery",
     "branchNum": 1,
     "nodes": [
       {
         "tier": "T1",
         "name": "Overcharged Capacitors",
         "cost": "8⚙ / 2 cycles",
-        "effect": "All gauss weapons +8% damage. Gauss Flayer fire rate +5%.",
+        "effect": "All entropy weapons +8% damage. Entropy Rifle fire rate +5%.",
         "notes": "Baseline damage increase — the foundation of Legion firepower"
       },
       {
         "tier": "T2a",
         "name": "Entropic Degradation",
         "cost": "15⚙ / 4 cycles",
-        "effect": "Unlocks Entropic Charge equipment (armor degrades 5% per hit). All gauss weapons gain +2% passive armor degradation per hit.",
+        "effect": "Unlocks Entropic Charge equipment (armor degrades 5% per hit). All entropy weapons gain +2% passive armor degradation per hit.",
         "notes": "Every hit weakens the target for every subsequent hit"
       },
       {
         "tier": "T2b",
-        "name": "Tesla Capacitor Arrays",
+        "name": "Arc Capacitor Arrays",
         "cost": "15⚙ / 4 cycles",
-        "effect": "Unlocks Tesla Capacitor (chains to 1 additional target at 50% damage). Doom-Scythe particle whip chain +1 target.",
+        "effect": "Unlocks Arc Capacitor (chains to 1 additional target at 50% damage). Crescent Fighter arc lash chain +1 target.",
         "notes": "Chain lightning begins — spread damage across formations"
       },
       {
         "tier": "T3",
         "name": "Molecular Disassembly Beams",
         "cost": "25⚙ / 6 cycles",
-        "effect": "All gauss weapons +15% damage vs vehicles and buildings. Doomsday Cannon charge time 3s→2.5s.",
+        "effect": "All entropy weapons +15% damage vs vehicles and buildings. Erasure Cannon charge time 3s→2.5s.",
         "notes": "Anti-armor specialization — the patient siege doctrine rewarded"
       },
       {
         "tier": "T4",
-        "name": "Tesla Cascade",
+        "name": "Arc Cascade",
         "cost": "40⚙ / 8 cycles",
-        "effect": "ALL gauss weapons chain-hit 1 additional target at 50% damage (stacks with Tesla Capacitor for 2 chains). Every shot hits primary AND arcs.",
+        "effect": "ALL entropy weapons chain-hit 1 additional target at 50% damage (stacks with Arc Capacitor for 2 chains). Every shot hits primary AND arcs.",
         "notes": "CULMINATION — the entire Legion fires chain lightning simultaneously"
       }
     ]
   },
   {
-    "branch": "Living Metal",
+    "branch": "Living Obsidian",
     "branchNum": 2,
     "nodes": [
       {
@@ -53,28 +53,28 @@
       },
       {
         "tier": "T2a",
-        "name": "Quantum Shielding Protocols",
+        "name": "Emergency Hardening",
         "cost": "15⚙ / 4 cycles",
         "effect": "Below 25% HP: 50% damage resistance for 4 seconds. All units 10% damage resistance below 40% HP.",
         "notes": "Emergency hardening — hard to finish off wounded Legion units"
       },
       {
         "tier": "T2b",
-        "name": "Improved Reanimation Protocols",
+        "name": "Improved Reanimation",
         "cost": "15⚙ / 4 cycles",
         "effect": "Reanimation base chance 15%→20%. Stand-up delay 5s→4s.",
         "notes": "DIRECT PRIMARY mechanic upgrade — 1 in 5 fallen units stands back up faster"
       },
       {
         "tier": "T3",
-        "name": "Necrodermis Refinement",
+        "name": "Living Obsidian Refinement",
         "cost": "25⚙ / 6 cycles",
-        "effect": "Unlocks Necrodermis Shell equipment (+35% HP, 1.5%/sec regen, −20% speed). All passive regen 0.8%→1.0%/sec.",
-        "notes": "Pinnacle of living-metal armor — the walking fortress configuration"
+        "effect": "Unlocks Living Obsidian Shell equipment (+35% HP, 1.5%/sec regen, −20% speed). All passive regen 0.8%→1.0%/sec.",
+        "notes": "Pinnacle of living-obsidian armor — the walking fortress configuration"
       },
       {
         "tier": "T4",
-        "name": "Necrodermis Perfection",
+        "name": "Living Obsidian Perfection",
         "cost": "40⚙ / 8 cycles",
         "effect": "Reanimation base 20%→25%. Passive regen 1.0%→1.5%/sec. Reanimated units return at 30% HP (up from 15%). Healing visually apparent in real-time.",
         "notes": "CULMINATION — functionally immortal against anything except sustained incendiary or acid"
@@ -82,7 +82,7 @@
     ]
   },
   {
-    "branch": "Command Protocols",
+    "branch": "Chain of Command",
     "branchNum": 3,
     "nodes": [
       {
@@ -110,7 +110,7 @@
         "tier": "T3",
         "name": "Temporal Stasis Mastery",
         "cost": "25⚙ / 6 cycles",
-        "effect": "Unlocks Temporal Stasis Field equipment (on death: freeze 10m radius, 3s). Chronometron slow duration +2s. All falling units apply 1s slow to nearby enemies.",
+        "effect": "Unlocks Temporal Stasis Field equipment (on death: freeze 10m radius, 3s). Time Dilator slow duration +2s. All falling units apply 1s slow to nearby enemies.",
         "notes": "Even death serves the Legion — every casualty becomes a tactical event"
       },
       {
@@ -128,37 +128,37 @@
     "nodes": [
       {
         "tier": "T1",
-        "name": "Tomb-World Excavation",
+        "name": "Vault-World Excavation",
         "cost": "8⚙ / 2 cycles",
         "effect": "Ancient Ruins planets yield +50% lore fragments. Research conducted on Ruins planets 20% faster.",
         "notes": "Archaeological expertise — The Revenant explores their own history"
       },
       {
         "tier": "T2a",
-        "name": "Doomsday-Monolith Activation",
+        "name": "Erasure Engine Activation",
         "cost": "15⚙ / 4 cycles",
-        "effect": "Unlocks Doomsday-Monolith production. 7 cycles at Advanced War Factory. +10% Reanimation aura on deployment.",
+        "effect": "Unlocks Erasure Engine production. 7 cycles at Advanced War Factory. +10% Reanimation aura on deployment.",
         "notes": "15m hovering obelisk of molecular disintegration"
       },
       {
         "tier": "T2b",
-        "name": "Cairn-Tombship Reactivation",
+        "name": "Vault-Ship Reactivation",
         "cost": "15⚙ / 4 cycles",
-        "effect": "Unlocks Cairn-Tombship flagship. Requires Shipyard + dormant hull (found on Ancient Ruins planet) + 9 cycles.",
-        "notes": "2km of self-healing, 100,000-year-old living metal"
+        "effect": "Unlocks Vault-Ship flagship. Requires Shipyard + dormant hull (found on Ancient Ruins planet) + 9 cycles.",
+        "notes": "2km of self-healing, 100,000-year-old living obsidian"
       },
       {
         "tier": "T3",
-        "name": "Hybrid Gauss/Kinetic Synthesis",
+        "name": "Hybrid Entropy/Kinetic Synthesis",
         "cost": "25⚙ / 6 cycles",
-        "effect": "Unlocks Hybrid Gauss/Kinetic Slug (Legendary: +15% vs BOTH Vorax AND Core Guardians). 1 set per 5 cycles per Forge.",
-        "notes": "Gauss-enhanced kinetic impact — the dual-front endgame solution"
+        "effect": "Unlocks Hybrid Entropy/Kinetic Slug (Legendary: +15% vs BOTH Vorax AND Core Guardians). 1 set per 5 cycles per Forge.",
+        "notes": "Entropy-enhanced kinetic impact — the dual-front endgame solution"
       },
       {
         "tier": "T4",
-        "name": "Transdimensional Beaming",
+        "name": "Tactical Displacement",
         "cost": "40⚙ / 8 cycles",
-        "effect": "All units: active teleport 20m (10s cooldown). Beamer weapon variant: displaces target 300m, applies 3s disorientation.",
+        "effect": "All units: active teleport 20m (10s cooldown). Displacer weapon variant: displaces target 300m, applies 3s disorientation.",
         "notes": "CULMINATION — tactical teleportation bypassing terrain, cover, and fortifications entirely"
       }
     ]

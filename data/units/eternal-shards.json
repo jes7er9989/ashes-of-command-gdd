@@ -1,7 +1,7 @@
 [
   {
     "num": 1,
-    "name": "Void-Blade Zealot",
+    "name": "Void-Blade Dancer",
     "role": "Melee Elite / Assassin",
     "category": "Light Infantry",
     "domain": "ground",
@@ -38,7 +38,7 @@
       }
     },
     "physical": "Lithe, impossibly graceful warriors in form-fitting Mnemo-Cryst armor flowing like a second skin of living crystal. Armor shifts color — cyan at rest, violet in combat. Featureless visors glow with psychic emanations. No two identical — each suit grown organically over decades. No visible weapons. Hard-light blades MANIFEST from forearm crystalline nodes — one meter of shimmering razor-edged psychic energy. Cut at molecular level via atomic bond disruption.",
-    "narrative": "What happens when a species mastered psychic combat for ten thousand years. They DANCE. Precognitive instinct choreographs every step. Phase Blinking through gunfire. Cuts so precise enemies take two steps after being struck before registering a severed spine. Against heavy armor: carve like scalpel through paper. Against shields: phase through as if nonexistent. The Shards mourn each Zealot — a century of training erased."
+    "narrative": "What happens when a species mastered psychic combat for ten thousand years. They DANCE. Precognitive instinct choreographs every step. Phase Blinking through gunfire. Cuts so precise enemies take two steps after being struck before registering a severed spine. Against heavy armor: carve like scalpel through paper. Against shields: phase through as if nonexistent. The Shards mourn each Dancer — a century of training erased."
   },
   {
     "num": 2,
@@ -79,7 +79,7 @@
       }
     },
     "physical": "Slender figures in hooded Mnemo-Cryst cloaks shifting to match ambient light — nearly invisible stationary. Crystalline focusing array — meter-long prism aimed through psychic targeting interface. Fires needle-thin prismatic lance. Zero muzzle flash, zero sound. Visible for a fraction of a second as refracted color. Only sound: faint crystalline PING.",
-    "narrative": "Does not miss. Psychic targeting accounts for wind, distance, movement, and the target's FUTURE position. First indication: a soldier falling dead with a perfectly circular hole through the helmet. Critical role: eliminate enemy Commanders from 500 meters. Energy damage is ineffective vs Guardians — switches to Shuriken (physical crystal darts) at endgame."
+    "narrative": "Does not miss. Psychic targeting accounts for wind, distance, movement, and the target's FUTURE position. First indication: a soldier falling dead with a perfectly circular hole through the helmet. Critical role: eliminate enemy Commanders from 500 meters. Energy damage is ineffective vs Guardians — switches to Shard-darts (physical crystal darts) at endgame."
   },
   {
     "num": 3,
@@ -161,7 +161,7 @@
       }
     },
     "physical": "Six-meter Mnemo-Cryst construct. Pilot psychically MERGED — consciousness extending through the entire frame. Humanoid but elongated. Fingers EXTEND into crystalline talons. Chest resonance chamber broadcasts Phase Blink +2% aura within 30m.",
-    "narrative": "More than a vehicle — a union. Pilot surrenders individuality. When it falls: consciousness SNAPS back, traumatic separation. If the chamber is breached: consciousness may persist as echo for seconds — sometimes captured by a soul-stone. Sometimes dissipates. Gone."
+    "narrative": "More than a vehicle — a union. Pilot surrenders individuality. When it falls: consciousness SNAPS back, traumatic separation. If the chamber is breached: consciousness may persist as echo for seconds — sometimes captured by an echo-stone. Sometimes dissipates. Gone."
   },
   {
     "num": 5,
@@ -201,7 +201,7 @@
         "bioAcid": 0.05
       }
     },
-    "physical": "Fifteen meters tall. Inhabited by a CHORUS of hundreds of ancient warrior consciousnesses. Wailing Doom sword — six meters of white-hot psychic fire carving reality. Eye-lances. Ground cracks from psychic pressure. Silence bubble extends 20 meters.",
+    "physical": "Fifteen meters tall. Inhabited by a CHORUS of hundreds of ancient warrior consciousnesses. Its sword, the Lament — six meters of white-hot psychic fire carving reality. Eye-lances. Ground cracks from psychic pressure. Silence bubble extends 20 meters.",
     "narrative": "Physical manifestation of collective psychic legacy. 50m Phase Blink aura. The chorus SINGS — subsonic frequency felt as bone-deep resonance. When it falls: not a death rattle but a lament. Every Shard in earshot hears it. A piece of the species dies."
   },
   {
@@ -406,7 +406,7 @@
         "bioAcid": 0
       }
     },
-    "physical": "Central Distortion Cannon tears spacetime — gravity wells crush targets beneath multiplied weight. 4–5 sec per pulse, 3 pulses per recharge cycle. Buildings collapse. Vehicles crumple. Infantry driven through the ground.",
+    "physical": "Central Gravity-Well Cannon tears spacetime — gravity wells crush targets beneath multiplied weight. 4–5 sec per pulse, 3 pulses per recharge cycle. Buildings collapse. Vehicles crumple. Infantry driven through the ground.",
     "narrative": "Hovers above fortifications and CRUSHES them with multiplied gravity. Targets squeezed flat by invisible force. No blast, no fire — just inexorable compression. Fortification engineers call it the worst weapon in the galaxy."
   },
   {
@@ -447,8 +447,8 @@
         "bioAcid": 0
       }
     },
-    "physical": "Single psychic pilot IS the sensor array — FEELS other ships through the psychic medium at ranges exceeding conventional electronics. Fires Shuriken — physical crystal darts, bypassing energy shields entirely for anti-Guardian kinetic damage.",
-    "narrative": "The critical kinetic-damage option against Guardians who are healed by energy weapons. The scout that can fight the endgame. Small, fast, fragile — but a Shuriken through a Guardian's containment field ends the engagement."
+    "physical": "Single psychic pilot IS the sensor array — FEELS other ships through the psychic medium at ranges exceeding conventional electronics. Fires Shard-darts — physical crystal darts, bypassing energy shields entirely for anti-Guardian kinetic damage.",
+    "narrative": "The critical kinetic-damage option against Guardians who are healed by energy weapons. The scout that can fight the endgame. Small, fast, fragile — but a Shard-dart through a Guardian's containment field ends the engagement."
   },
   {
     "num": 12,
@@ -493,7 +493,7 @@
   },
   {
     "num": 13,
-    "name": "Void-Stalker Cruiser",
+    "name": "Ghostfire Cruiser",
     "role": "Capital Ship / Dimensional Warfare",
     "category": "Capital Ship",
     "domain": "space",
@@ -529,7 +529,7 @@
         "bioAcid": 0.03
       }
     },
-    "physical": "Organic Mnemo-Cryst hull. Signature ability: Dimensional Shift — phases ENTIRE SHIP out of reality for 3 seconds. Dodges MAC rounds, torpedoes, boarding actions. Fires Ghostfire Torpedoes that phase through conventional shields before detonating inside the target hull.",
+    "physical": "Organic Mnemo-Cryst hull. Signature ability: Dimensional Shift — phases ENTIRE SHIP out of reality for 3 seconds. Dodges mass-driver rounds, torpedoes, boarding actions. Fires Ghostfire Torpedoes that phase through conventional shields before detonating inside the target hull.",
     "narrative": "The only capital ship that dodges killing blows by ceasing to exist. Fights on a different plane of reality. Veterans who have fought one describe the moment it vanishes under sustained fire as profoundly unsettling — like punching a ghost."
   },
   {
@@ -570,8 +570,8 @@
         "bioAcid": 0.02
       }
     },
-    "physical": "Carrier plus psychic amplifier. Provides fleet-wide +5% Phase Blink chance while operational. Soul-stone recovery arrays capture the consciousness of destroyed units within 500m.",
-    "narrative": "The fleet's heart. Destroying it removes the fleet-wide Phase Blink bonus immediately — the highest-priority target in any Shards engagement. Losses near it may be recovered via soul-stone. It is both command post and cemetery."
+    "physical": "Carrier plus psychic amplifier. Provides fleet-wide +5% Phase Blink chance while operational. Echo-stone recovery arrays capture the consciousness of destroyed units within 500m.",
+    "narrative": "The fleet's heart. Destroying it removes the fleet-wide Phase Blink bonus immediately — the highest-priority target in any Shards engagement. Losses near it may be recovered via echo-stone. It is both command post and cemetery."
   },
   {
     "num": 15,

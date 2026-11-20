@@ -329,7 +329,7 @@
       "stat": "+1.5% HP/sec aura · 60px"
     }
   ],
-  "Wraith-Fighter": [
+  "Redline Fighter": [
     {
       "name": "Twin-Linked Lasers",
       "slot": "[W]",
@@ -527,7 +527,7 @@
       "stat": "Acc scales w/ LOS inf"
     }
   ],
-  "Condor Dropship": [
+  "Bastion Dropship": [
     {
       "name": "Dual Door-Gunners",
       "slot": "[W]",
@@ -659,7 +659,7 @@
       "stat": "+15% DZ radius · MCC"
     }
   ],
-  "Sabre-Interceptor": [
+  "Bulwark Interceptor": [
     {
       "name": "Twin-Linked Gauss Cannons",
       "slot": "[W]",
@@ -989,7 +989,7 @@
       "stat": "Anti-CC aura · Fleet"
     }
   ],
-  "Slaughter-Brute": [
+  "Rust-Brute": [
     {
       "name": "Rusted Cleaver",
       "slot": "[W]",
@@ -1055,7 +1055,7 @@
       "stat": "Death boom · +Scrap"
     }
   ],
-  "Scrap-Trukk": [
+  "Scrap-Truck": [
     {
       "name": "Twin-Machine Guns",
       "slot": "[W]",
@@ -1121,7 +1121,7 @@
       "stat": "+10% HP per Scrap"
     }
   ],
-  "Loota-Mech": [
+  "Looter-Mech": [
     {
       "name": "Junker Auto-Rifle",
       "slot": "[W]",
@@ -1319,7 +1319,7 @@
       "stat": "+50% Scrap from acid"
     }
   ],
-  "Dakka-Copter": [
+  "Slug-Copter": [
     {
       "name": "Twin Autocannons",
       "slot": "[W]",
@@ -1385,7 +1385,7 @@
       "stat": "+30% speed · Air-Ctrl"
     }
   ],
-  "Scrap-Bommer": [
+  "Scrap-Bomber": [
     {
       "name": "Carpet-Bomb Chute",
       "slot": "[W]",
@@ -1979,7 +1979,7 @@
       "stat": "-10% cost · +15% spawn"
     }
   ],
-  "Void-Blade Zealot": [
+  "Void-Blade Dancer": [
     {
       "name": "Phase-Blade",
       "slot": "[W]",
@@ -2771,7 +2771,7 @@
       "stat": "25% dmg intercept"
     }
   ],
-  "Void-Stalker Cruiser": [
+  "Ghostfire Cruiser": [
     {
       "name": "Twin-Oblivion Beams",
       "slot": "[W]",
@@ -3101,7 +3101,7 @@
       "stat": "Kill→adj +dmg buff"
     }
   ],
-  "Tomb-Stalker": [
+  "Burrow-Stalker": [
     {
       "name": "Twin-Scythes",
       "slot": "[W]",
@@ -3167,7 +3167,7 @@
       "stat": "+30% flank dmg"
     }
   ],
-  "Resurrection-Lord": [
+  "Vault-Warden": [
     {
       "name": "Void-Halberd",
       "slot": "[W]",
@@ -3233,7 +3233,7 @@
       "stat": "Anti-crit · 1HP save"
     }
   ],
-  "Doomsday-Monolith": [
+  "Erasure Engine": [
     {
       "name": "Doomsday-Cannon",
       "slot": "[W]",
@@ -3299,7 +3299,7 @@
       "stat": "50px · -1% HP/sec"
     }
   ],
-  "Doom-Scythe": [
+  "Crescent Fighter": [
     {
       "name": "Twin Gauss-Flayers",
       "slot": "[W]",
@@ -3365,7 +3365,7 @@
       "stat": "+10% ATK spd · Adj ally"
     }
   ],
-  "Night-Shroud Bomber": [
+  "Blackout Bomber": [
     {
       "name": "Continuous Death-Ray",
       "slot": "[W]",
@@ -3497,7 +3497,7 @@
       "stat": "Stealth aura · Below"
     }
   ],
-  "Ghost-Ark": [
+  "Mender Skiff": [
     {
       "name": "Defensive Gauss-Blasters",
       "slot": "[W]",
@@ -3629,7 +3629,7 @@
       "stat": "80px morale break"
     }
   ],
-  "Scarab-Swarm": [
+  "Mender-Swarm": [
     {
       "name": "Micro-Flayers",
       "slot": "[W]",
@@ -3695,7 +3695,7 @@
       "stat": "+5% eva/ally Scarab"
     }
   ],
-  "Jackal-Raider": [
+  "Harrier Corvette": [
     {
       "name": "Twin Gauss-Cannons",
       "slot": "[W]",
@@ -3827,7 +3827,7 @@
       "stat": "Kill→+5% HP"
     }
   ],
-  "Resurrection-Barge": [
+  "Reanimation Barge": [
     {
       "name": "Defensive Gauss-Blasters",
       "slot": "[W]",
@@ -3893,7 +3893,7 @@
       "stat": "30% fighter respawn"
     }
   ],
-  "Cairn-Tombship": [
+  "Vault-Ship": [
     {
       "name": "Annihilator-Beam",
       "slot": "[W]",

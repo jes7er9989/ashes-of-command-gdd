@@ -33,9 +33,9 @@
       },
       {
         "tier": "T4",
-        "name": "Magnetic Accelerator Technology",
+        "name": "Mass Driver Technology",
         "cost": "40⚙ / 8 cycles",
-        "effect": "Unlocks Magnetic Accelerator (hyper-velocity slugs penetrate multiple targets in a line). Ship MAC weapons +15% dmg.",
+        "effect": "Unlocks Mass Driver (hyper-velocity slugs penetrate multiple targets in a line). Ship Mass Driver weapons +15% dmg.",
         "notes": "CULMINATION — brute-force kinetic supremacy"
       }
     ]
@@ -144,8 +144,8 @@
         "tier": "T2b",
         "name": "Nova-Class Construction",
         "cost": "15⚙ / 4 cycles",
-        "effect": "Unlocks Nova-Dreadnought flagship. Requires orbital Shipyard + 8 cycles. Spinal MAC calibrated on construction.",
-        "notes": "The MAC gun — the ultimate capital ship in the galaxy"
+        "effect": "Unlocks Nova-Dreadnought flagship. Requires orbital Shipyard + 8 cycles. Spinal Mass Driver calibrated on construction.",
+        "notes": "The Spinal Mass Driver — the ultimate capital ship in the galaxy"
       },
       {
         "tier": "T3",

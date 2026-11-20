@@ -1,6 +1,6 @@
 [
   {
-    "name": "M7 Assault Rifle",
+    "name": "TL-7 Assault Rifle",
     "slot": "[W]",
     "rarity": "Common",
     "rarityColor": "#aaa",
@@ -18,7 +18,7 @@
     "statBlock": "+15% dmg · −20% range"
   },
   {
-    "name": "Plasma Pistol",
+    "name": "TL-3 Plasma Sidearm",
     "slot": "[W]",
     "rarity": "Uncommon",
     "rarityColor": "#44ff88",
@@ -50,7 +50,7 @@
     "rarity": "Rare",
     "rarityColor": "#4488ff",
     "proto": true,
-    "effect": "Full-body reinforced ceramite shell. Walking bunker. +40% HP, −15% movement speed. Accept the trade.",
+    "effect": "Full-body reinforced ceramic composite shell. Walking bunker. +40% HP, −15% movement speed. Accept the trade.",
     "statBlock": "+40% HP · −15% move spd"
   },
   {
@@ -79,14 +79,14 @@
     "effect": "AOE explosive, destroys cover. 15m blast radius. Forces enemies out of defensive positions."
   },
   {
-    "name": "Magnetic Accelerator (Vehicle)",
+    "name": "Mass Driver (Vehicle)",
     "slot": "[W]",
     "rarity": "Rare",
     "rarityColor": "#4488ff",
     "effect": "Hyper-velocity slugs that penetrate multiple targets in a line. The Terran answer to railguns. Unlocked via Branch 4 T4."
   },
   {
-    "name": "Spinal MAC Gun (Ship)",
+    "name": "Spinal Mass Driver (Ship)",
     "slot": "[W]",
     "rarity": "Rare",
     "rarityColor": "#4488ff",

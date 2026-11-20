@@ -129,6 +129,10 @@
       "label": "Default Equipment Loadout at Battle Start"
     },
     {
+      "id": "sec-ch5-opening",
+      "label": "Unifying Terra"
+    },
+    {
       "id": "sec-ch5-5",
       "label": "Ground · Air · Space"
     },
@@ -177,6 +181,10 @@
     {
       "id": "sec-ch6-2",
       "label": "Primary Mechanic: Phase Blink (Reality Refraction)"
+    },
+    {
+      "id": "sec-ch6-opening",
+      "label": "Unifying Shael"
     },
     {
       "id": "sec-ch6-3",
@@ -230,7 +238,11 @@
     },
     {
       "id": "sec-ch7-3",
-      "label": "Slaughter-Brute — Confirmed Prototype Values"
+      "label": "Rust-Brute — Confirmed Prototype Values"
+    },
+    {
+      "id": "sec-ch7-opening",
+      "label": "Unifying Rusthold"
     },
     {
       "id": "sec-ch7-4",
@@ -285,6 +297,10 @@
     {
       "id": "sec-ch8-3",
       "label": "Kill-Count Thresholds — Confirmed for All Factions"
+    },
+    {
+      "id": "sec-ch8-opening",
+      "label": "Unifying Nexavar"
     },
     {
       "id": "sec-ch8-4",
@@ -1177,6 +1193,10 @@
     {
       "id": "sec-ch46-1",
       "label": "Decided November 17, 2026"
+    },
+    {
+      "id": "sec-ch46-3",
+      "label": "Decided November 17 to 20, 2026: The First Four Factions"
     },
     {
       "id": "sec-ch46-2",

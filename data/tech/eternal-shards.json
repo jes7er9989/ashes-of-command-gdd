@@ -28,8 +28,8 @@
         "tier": "T3",
         "name": "Void Scythe Forging",
         "cost": "25⚙ / 6 cycles",
-        "effect": "Unlocks Void Scythe (15% instant kill vs light infantry). All melee attacks +15%. Zealots +1 attack per second.",
-        "notes": "Melee power spike — makes Zealots terrifying"
+        "effect": "Unlocks Void Scythe (15% instant kill vs light infantry). All melee attacks +15%. Dancers +1 attack per second.",
+        "notes": "Melee power spike — makes Dancers terrifying"
       },
       {
         "tier": "T4",
@@ -67,14 +67,14 @@
       },
       {
         "tier": "T3",
-        "name": "Soul-Stone Refinement",
+        "name": "Echo-Stone Refinement",
         "cost": "25⚙ / 6 cycles",
-        "effect": "Soul-Stone Ward +10% (20%→30%). All units gain passive 3% baseline resurrection chance.",
+        "effect": "Echo-Stone Ward +10% (20%→30%). All units gain passive 3% baseline resurrection chance.",
         "notes": "Pseudo-Reanimation — the Shards' answer to Revenant persistence"
       },
       {
         "tier": "T4",
-        "name": "Soul-Stone Integration",
+        "name": "Echo-Stone Integration",
         "cost": "40⚙ / 8 cycles",
         "effect": "All units: 5% base resurrection (total 8% with T3). Return at 40% HP. Auto-capture range 200m.",
         "notes": "CULMINATION — halt the extinction curve"

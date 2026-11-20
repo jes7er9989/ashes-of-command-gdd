@@ -5,7 +5,7 @@
     "nodes": [
       {
         "tier": "T1",
-        "name": "Sharper Choppas",
+        "name": "Sharper Cleavers",
         "cost": "8⚙ / 2 cycles",
         "effect": "All melee weapons +10% damage (total +35% with faction passive). Melee attack speed +5%.",
         "notes": "Hit harder, hit faster — the foundational Horde doctrine"
@@ -26,22 +26,22 @@
       },
       {
         "tier": "T3",
-        "name": "WAAAGH! Fervor",
+        "name": "Iron Tide Fervor",
         "cost": "25⚙ / 6 cycles",
         "effect": "First enemy kill each battle: all Horde units +15% damage, +10% speed for 8 seconds. Once per battle.",
         "notes": "First blood triggers faction-wide frenzy — timing the first kill matters"
       },
       {
         "tier": "T4",
-        "name": "WAAAGH! Momentum",
+        "name": "Iron Tide Momentum",
         "cost": "40⚙ / 8 cycles",
-        "effect": "WAAAGH! buff persists until the Horde takes a casualty. +30% damage, +15% speed. Each kill refreshes the timer.",
+        "effect": "Iron Tide buff persists until the Horde takes a casualty. +30% damage, +15% speed. Each kill refreshes the timer.",
         "notes": "CULMINATION — snowball until one casualty breaks the streak"
       }
     ]
   },
   {
-    "branch": "Scrap-Tek",
+    "branch": "Scrap-Tech",
     "branchNum": 2,
     "nodes": [
       {
@@ -63,7 +63,7 @@
         "name": "Looted Systems Integration",
         "cost": "15⚙ / 4 cycles",
         "effect": "Cross-faction looted equipment effectiveness 75%→90%. Random jam chance 8%→3%.",
-        "notes": "Stolen tech works better — Mek-Boys learn from experience"
+        "notes": "Stolen tech works better — Scrap-Smiths learn from experience"
       },
       {
         "tier": "T3",
@@ -82,19 +82,19 @@
     ]
   },
   {
-    "branch": "Kunnin'",
+    "branch": "Cunning",
     "branchNum": 3,
     "nodes": [
       {
         "tier": "T1",
-        "name": "Bigger Trukks",
+        "name": "Bigger Trucks",
         "cost": "8⚙ / 2 cycles",
-        "effect": "Scrap-Trukk capacity +4 (to 12 Brutes). All Horde vehicle movement speed +5%.",
+        "effect": "Scrap-Truck capacity +4 (to 12 Brutes). All Horde vehicle movement speed +5%.",
         "notes": "More bodies, faster delivery — core Horde logistics"
       },
       {
         "tier": "T2a",
-        "name": "Basic Rekon",
+        "name": "Basic Recon",
         "cost": "15⚙ / 4 cycles",
         "effect": "Unlocks basic Recon actions for Horde (normally unavailable). Intel cost: 0 (Brutes scout for free).",
         "notes": "Crude but free intelligence — the Horde stumbles onto useful information"
@@ -115,7 +115,7 @@
       },
       {
         "tier": "T4",
-        "name": "Da Grand Plan",
+        "name": "The Grand Plan",
         "cost": "40⚙ / 8 cycles",
         "effect": "General auto-resolve +15%. COMBINED OPERATIONS: two Horde Generals can assault one target simultaneously. Standing orders improved.",
         "notes": "CULMINATION — rare strategic coherence from the least strategic faction"
@@ -137,7 +137,7 @@
         "tier": "T2a",
         "name": "War-God Idol Activation",
         "cost": "15⚙ / 4 cycles",
-        "effect": "Unlocks War-God Idol production. 5 cycles at Advanced War Factory. +15% damage Waaagh!-Caller aura on deployment.",
+        "effect": "Unlocks War-God Idol production. 5 cycles at Advanced War Factory. +15% damage Iron Tide Caller aura on deployment.",
         "notes": "Walking shrine — 30 crew, 12 meters of mobile violence"
       },
       {
@@ -156,9 +156,9 @@
       },
       {
         "tier": "T4",
-        "name": "Da Biggest Gun",
+        "name": "The Biggest Gun",
         "cost": "40⚙ / 8 cycles",
-        "effect": "Asteroid-Fortress gains Da Big Gun: deals 50% of target's max HP as direct damage per shot, regardless of armor. Once per battle. Recoils Fortress 200m.",
+        "effect": "Asteroid-Fortress gains The Big Gun: deals 50% of target's max HP as direct damage per shot, regardless of armor. Once per battle. Recoils Fortress 200m.",
         "notes": "CULMINATION — one shot, one problem solved. Probably."
       }
     ]

@@ -32,7 +32,7 @@
       {
         "speaker": "Commander",
         "style": "italic",
-        "text": "AFTER-ACTION LOG: Territory lost. 6 units destroyed. Reanimation: 0 of 6. The enemy employed sustained incendiary bombardment — fire damage compromised the living metal's self-repair matrix, preventing molecular reassembly. Note: fire is a critical vulnerability. Thermal-resistant coatings now priority-one research."
+        "text": "AFTER-ACTION LOG: Territory lost. 6 units destroyed. Reanimation: 0 of 6. The enemy employed sustained incendiary bombardment — fire damage compromised the living obsidian's self-repair matrix, preventing molecular reassembly. Note: fire is a critical vulnerability. Thermal-resistant coatings now priority-one research."
       },
       {
         "speaker": "Valerius",
@@ -58,12 +58,12 @@
       {
         "speaker": "Commander",
         "style": "italic",
-        "text": "AFTER-ACTION LOG: First Vorax contact. They attack in overwhelming numbers. Melee attacks are corrosive — acid degrades living metal. Reanimation partially compromised by acid contamination. Note: the Swarm consumes everything organic. We are not organic. They attack anyway — not for biomass, but because we occupy space. We are terrain to be cleared. This is... unfamiliar."
+        "text": "AFTER-ACTION LOG: First Vorax contact. They attack in overwhelming numbers. Melee attacks are corrosive — acid degrades living obsidian. Reanimation partially compromised by acid contamination. Note: the Swarm consumes everything organic. We are not organic. They attack anyway — not for biomass, but because we occupy space. We are terrain to be cleared. This is... unfamiliar."
       },
       {
         "speaker": "Valerius",
         "style": "normal",
-        "text": "Vorax acid corrodes living metal's repair matrix similarly to fire. However, gauss weapons are fully effective against biological targets. Maintain range. Do NOT allow melee contact."
+        "text": "Vorax acid corrodes living obsidian's repair matrix similarly to fire. However, entropy weapons are fully effective against biological targets. Maintain range. Do NOT allow melee contact."
       },
       {
         "speaker": "Krell",
@@ -73,7 +73,7 @@
       {
         "speaker": "Vane",
         "style": "normal",
-        "text": "The Vorax are consuming the galaxy's archaeological record. Every tomb-world stripped is 100,000 years of history turned to mulch. This is not just military — it is a crime against memory. The Revenant has a specific reason to fight beyond survival: preservation of the record."
+        "text": "The Vorax are consuming the galaxy's archaeological record. Every vault-world stripped is 100,000 years of history turned to mulch. This is not just military — it is a crime against memory. The Revenant has a specific reason to fight beyond survival: preservation of the record."
       }
     ]
   },
@@ -94,7 +94,7 @@
       {
         "speaker": "Valerius",
         "style": "normal",
-        "text": "Energy weapons will HEAL Guardian constructs. All engagements require kinetic-only loadouts. Gauss flayers have a partial kinetic component — effectiveness against Guardians estimated at 60% of standard targets."
+        "text": "Energy weapons will HEAL Guardian constructs. All engagements require kinetic-only loadouts. Entropy rifles have a partial kinetic component — effectiveness against Guardians estimated at 60% of standard targets."
       },
       {
         "speaker": "Krell",
@@ -104,7 +104,7 @@
       {
         "speaker": "Vane",
         "style": "normal",
-        "text": "They are not alive. They are energy patterns held in geometric containment. We are not alive either — we are data patterns held in living metal. We have more in common with the Guardians than any biological faction. Perhaps that is an advantage."
+        "text": "They are not alive. They are energy patterns held in geometric containment. We are not alive either — we are data patterns held in living obsidian. We have more in common with the Guardians than any biological faction. Perhaps that is an advantage."
       }
     ]
   }
