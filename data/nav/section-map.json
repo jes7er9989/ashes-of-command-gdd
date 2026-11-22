@@ -357,6 +357,10 @@
       "label": "Command Points — Starting 3, Max 10, Regen 1/30sec"
     },
     {
+      "id": "sec-ch9-opening",
+      "label": "Unifying Solace"
+    },
+    {
       "id": "sec-ch9-4",
       "label": "Ground · Air · Space"
     },
@@ -1197,6 +1201,10 @@
     {
       "id": "sec-ch46-3",
       "label": "Decided November 17 to 20, 2026: The First Four Factions"
+    },
+    {
+      "id": "sec-ch46-4",
+      "label": "Decided November 20, 2026: The Unity Accord"
     },
     {
       "id": "sec-ch46-2",

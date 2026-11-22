@@ -895,7 +895,7 @@ const Dashboard = {
             Ashes of Command: The Reclamation \u2014 Complete Master GDD v5.9.1
           </div>
           <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--text-dim);letter-spacing:2px;margin-top:4px">
-            <span style="color:var(--accent)">46</span> Chapters \u00B7 <span style="color:var(--accent)">8</span> Parts \u00B7 <span style="color:var(--accent)">13</span> Appendices (incl. Appendix L &amp; M) \u00B7 <span style="color:var(--accent)">184</span> Resolved Decisions \u00B7 <span style="color:var(--accent)">15</span> Prototype Rulings
+            <span style="color:var(--accent)">46</span> Chapters \u00B7 <span style="color:var(--accent)">8</span> Parts \u00B7 <span style="color:var(--accent)">13</span> Appendices (incl. Appendix L &amp; M) \u00B7 <span style="color:var(--accent)">191</span> Resolved Decisions \u00B7 <span style="color:var(--accent)">15</span> Prototype Rulings
           </div>
           <div style="font-family:'Share Tech Mono',monospace;font-size:0.5rem;color:var(--text-dim);letter-spacing:2px;margin-top:4px">
             Last Updated: April 2026
